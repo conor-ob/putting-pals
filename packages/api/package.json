@@ -18,6 +18,7 @@
     "@apollo/datasource-rest": "catalog:",
     "@sentry/node": "catalog:",
     "@trpc/server": "catalog:",
+    "cheerio": "1.0.0-rc.12",
     "pako": "^2.1.0",
     "superjson": "catalog:",
     "zod": "catalog:"

@@ -1,12 +1,14 @@
 import { z } from "zod";
 
+import { PgaTourWebScrapingService } from "../service/pga/scraping";
 import { PgaTourTournamentService } from "../service/pga/tournament";
 import { publicProcedure, router } from "../trpc";
 
 export const tournamentRouter = router({
-  getCurrent: publicProcedure.query(({ ctx }) => {
-    const currentTournamentId = "R2024493";
-    return new PgaTourTournamentService({
+  getCurrent: publicProcedure.query(async ({ ctx }) => {
+    const currentTournamentId =
+      await new PgaTourWebScrapingService().getCurrentTournamentId();
+    return await new PgaTourTournamentService({
       apiKey: ctx.apiKey,
     }).getTournament({
       id: currentTournamentId,
