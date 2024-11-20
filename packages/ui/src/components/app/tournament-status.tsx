@@ -47,7 +47,9 @@ function TournamentStatus({
         <RoundStatusBadge color={roundStatusColor}>
           {roundDisplay}
         </RoundStatusBadge>
-        <RoundStatus color={roundStatusColor}>{roundStatusDisplay}</RoundStatus>
+        <RoundStatus className="line-clamp-1" color={roundStatusColor}>
+          {roundStatusDisplay}
+        </RoundStatus>
       </div>
     );
   }

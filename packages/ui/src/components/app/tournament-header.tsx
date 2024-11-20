@@ -51,7 +51,7 @@ export function TournamentHeader({
           tournamentStatus={tournamentStatus}
         />
         <TournamentName>{tournamentName}</TournamentName>
-        <div className="text-base font-medium leading-tight tracking-tight text-[#757575]">
+        <div className="line-clamp-1 text-base font-medium leading-tight tracking-tight text-[#757575]">
           {courses[0]?.courseName}
         </div>
       </div>

@@ -16,7 +16,7 @@ export function PgaTourLeaderboardPage() {
   console.log({ tournament, tournamentsFetchStatus, tournamentError });
 
   return (
-    <PageLayout title="PGA Tour">
+    <PageLayout title="PGA Tour" largeHeader>
       <IonList lines="none">
         <IonItem button={!!tournament} detail={!!tournament}>
           {tournament ? (

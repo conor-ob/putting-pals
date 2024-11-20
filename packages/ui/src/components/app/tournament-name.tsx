@@ -6,7 +6,10 @@ export function TournamentName({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("text-lg font-bold leading-snug tracking-tight", className)}
+      className={cn(
+        "line-clamp-2 text-lg font-bold leading-snug tracking-tight",
+        className,
+      )}
       {...props}
     />
   );
