@@ -1,0 +1,34 @@
+# global options
+{
+	admin off # theres no need for the admin api in railway's environment
+	persist_config off # storage isn't persistent anyway
+	auto_https off # railway handles https for us, this would cause issues if left enabled
+	# runtime logs
+	log {
+		format json # set runtime log format to json mode 
+	}
+	# server options
+	servers {
+		trusted_proxies static private_ranges # trust railway's proxy
+	}
+}
+
+# site block, listens on the $PORT environment variable, automatically assigned by railway
+:{$PORT} {
+	# access logs
+	log {
+		format json # set access log format to json mode
+	}
+
+	# proxy requests at / to the web server
+	reverse_proxy {$WEB_DOMAIN}:{$WEB_PORT} {
+		header_up Host {upstream_hostport}
+	}
+
+	# proxy requests at /api/* to the server and rewrite the path to /
+	handle_path /api/* {
+		reverse_proxy {$SERVER_DOMAIN}:{$SERVER_PORT} {
+			header_up Host {upstream_hostport}
+		}
+	}
+}

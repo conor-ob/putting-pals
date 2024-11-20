@@ -1,0 +1,10 @@
+{
+  "extends": "@total-typescript/tsconfig/bundler/no-dom/library-monorepo",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "tsBuildInfoFile": "${configDir}/.cache/tsconfig.tsbuildinfo"
+  },
+  "include": ["."],
+  "exclude": ["node_modules"]
+}

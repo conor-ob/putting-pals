@@ -1,0 +1,20 @@
+{
+  "name": "@pkg/assets",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "typecheck": "tsc --noEmit true",
+    "generate-pwa-assets": "pwa-assets-generator"
+  },
+  "devDependencies": {
+    "@pkg/eslint": "workspace:*",
+    "@pkg/prettier": "workspace:*",
+    "@total-typescript/tsconfig": "catalog:",
+    "@vite-pwa/assets-generator": "^0.2.6",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@pkg/prettier"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "clean": {
+      "cache": false
+    },
+    "build": {
+      "outputs": ["dist/**", ".cache/*.tsbuildinfo"]
+    },
+    "format": {
+      "outputs": [".cache/.prettiercache"],
+      "outputLogs": "new-only"
+    },
+    "lint": {
+      "outputs": [".cache/.eslintcache"]
+    },
+    "typecheck": {
+      "outputs": [".cache/*.tsbuildinfo"]
+    },
+    "test": {
+      "outputs": ["coverage/**"]
+    },
+    "storybook": {
+      "cache": false,
+      "persistent": true
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
+    }
+  },
+  "globalEnv": [
+    "NODE_ENV",
+    "PORT",
+    "ORIGIN",
+    "DATABASE_URL",
+    "DATABASE_PREFIX",
+    "SENTRY_DSN",
+    "SENTRY_AUTH_TOKEN",
+    "SENTRY_ORG",
+    "SENTRY_PROJECT",
+    "CI",
+    "GITHUB_SHA",
+    "GIT_COMMIT_SHA",
+    "RAILWAY_GIT_COMMIT_SHA"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "@app/server",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",
+    "build": "vite build",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest",
+    "dev": "vite",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@fastify/cors": "catalog:",
+    "@fastify/rate-limit": "catalog:",
+    "@mgcrea/fastify-request-logger": "catalog:",
+    "@mgcrea/pino-pretty-compact": "catalog:",
+    "@pkg/api": "workspace:*",
+    "@pkg/utils": "workspace:*",
+    "@sentry/node": "catalog:",
+    "@sentry/profiling-node": "catalog:",
+    "@trpc/server": "catalog:",
+    "fastify": "catalog:",
+    "pino": "catalog:",
+    "pino-pretty": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@pkg/eslint": "workspace:*",
+    "@pkg/prettier": "workspace:*",
+    "@sentry/vite-plugin": "catalog:",
+    "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
+    "dotenv": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-node": "catalog:"
+  },
+  "prettier": "@pkg/prettier"
+}

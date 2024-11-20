@@ -1,0 +1,28 @@
+{
+  "name": "turbostack",
+  "private": true,
+  "scripts": {
+    "clean": "turbo clean && rimraf node_modules",
+    "build": "turbo build",
+    "format": "turbo format --continue -- --cache --cache-location .cache/.prettiercache",
+    "lint": "turbo lint --continue -- --cache --cache-location .cache/.eslintcache",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "storybook": "turbo storybook",
+    "dev": "turbo dev",
+    "start": "turbo start"
+  },
+  "devDependencies": {
+    "@pkg/prettier": "workspace:*",
+    "prettier": "catalog:",
+    "rimraf": "catalog:",
+    "turbo": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "prettier": "@pkg/prettier",
+  "packageManager": "pnpm@9.12.3",
+  "engines": {
+    "node": ">=20"
+  }
+}

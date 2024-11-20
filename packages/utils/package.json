@@ -1,0 +1,28 @@
+{
+  "name": "@pkg/utils",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./greeting": "./src/greeting.ts",
+    "./math": "./src/math.ts"
+  },
+  "scripts": {
+    "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@pkg/eslint": "workspace:*",
+    "@pkg/prettier": "workspace:*",
+    "@total-typescript/tsconfig": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "rimraf": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "prettier": "@pkg/prettier"
+}
