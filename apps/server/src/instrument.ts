@@ -4,9 +4,9 @@ import { nodeProfilingIntegration } from "@sentry/profiling-node";
 import { env } from "./env/schema";
 
 Sentry.init({
+  enabled: env.NODE_ENV === "production",
   environment: env.NODE_ENV,
   dsn: env.SENTRY_DSN,
-  debug: env.NODE_ENV === "development",
   release: `${env.SENTRY_PROJECT}@${env.GIT_COMMIT_SHA}`,
   integrations: [
     // Add our Profiling integration

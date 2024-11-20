@@ -1,9 +1,9 @@
 import * as Sentry from "@sentry/react";
 
 Sentry.init({
+  enabled: import.meta.env.NODE_ENV === "production",
   environment: import.meta.env.NODE_ENV as string,
   dsn: import.meta.env.SENTRY_DSN as string,
-  debug: import.meta.env.NODE_ENV === "development",
   release: `${import.meta.env.SENTRY_PROJECT}@${import.meta.env.GIT_COMMIT_SHA}`,
   integrations: [
     // Registers and configures the Tracing integration,

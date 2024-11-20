@@ -18,12 +18,10 @@ suite("health/", () => {
     const healthCheckResponse = response.json<{
       env: string;
       message: string;
-      greeting: string;
     }>();
 
     expect(response.statusCode).toEqual(200);
     expect(healthCheckResponse.env).toEqual("test");
     expect(healthCheckResponse.message).toEqual("OK");
-    expect(healthCheckResponse.greeting).toEqual("Hello, Fastify!");
   });
 });

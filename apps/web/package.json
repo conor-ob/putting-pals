@@ -19,7 +19,6 @@
     "@ionic/react": "catalog:",
     "@ionic/react-router": "catalog:",
     "@pkg/ui": "workspace:*",
-    "@pkg/utils": "workspace:*",
     "@sentry/react": "catalog:",
     "@tanstack/react-query": "catalog:",
     "@trpc/client": "catalog:",

@@ -1,5 +1,5 @@
 {
-  "name": "turbostack",
+  "name": "putting-pals",
   "private": true,
   "scripts": {
     "clean": "turbo clean && rimraf node_modules",

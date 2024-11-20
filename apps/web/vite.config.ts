@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd(), "");
   const env = envSchema.parse({
     ...viteEnv,
-    SENTRY_PROJECT: "turbostack-web", // TODO CHANGEME
+    SENTRY_PROJECT: "putting-pals-web",
     GIT_COMMIT_SHA:
       process.env.RAILWAY_GIT_COMMIT_SHA ??
       process.env.GITHUB_SHA ??
@@ -68,26 +68,32 @@ export default defineConfig(({ mode }) => {
         VitePWA({
           registerType: "autoUpdate",
           manifest: {
-            short_name: "Turbostack",
-            name: "Turbostack",
+            short_name: "Putting Pals",
+            name: "Putting Pals",
             start_url: ".",
             display: "standalone",
             theme_color: "#1F1F1F", // Android theme color - not necessary for iOS
             background_color: "#121212", // Android background color - not necessary for iOS
             icons: [
-              { src: "/favicon.ico", type: "image/x-icon", sizes: "32x32" },
-              { src: "/icon-192.png", type: "image/png", sizes: "192x192" },
-              { src: "/icon-512.png", type: "image/png", sizes: "512x512" },
               {
-                src: "/icon-192-maskable.png",
+                src: "pwa-64x64.png",
+                sizes: "64x64",
                 type: "image/png",
-                sizes: "192x192",
-                purpose: "maskable",
               },
               {
-                src: "/icon-512-maskable.png",
+                src: "pwa-192x192.png",
+                sizes: "192x192",
                 type: "image/png",
+              },
+              {
+                src: "pwa-512x512.png",
                 sizes: "512x512",
+                type: "image/png",
+              },
+              {
+                src: "maskable-icon-512x512.png",
+                sizes: "512x512",
+                type: "image/png",
                 purpose: "maskable",
               },
             ],

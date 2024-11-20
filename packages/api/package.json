@@ -16,10 +16,8 @@
   },
   "dependencies": {
     "@apollo/datasource-rest": "catalog:",
-    "@pkg/db": "workspace:*",
     "@sentry/node": "catalog:",
     "@trpc/server": "catalog:",
-    "drizzle-orm": "catalog:",
     "superjson": "catalog:",
     "zod": "catalog:"
   },

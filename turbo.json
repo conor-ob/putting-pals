@@ -38,8 +38,6 @@
     "NODE_ENV",
     "PORT",
     "ORIGIN",
-    "DATABASE_URL",
-    "DATABASE_PREFIX",
     "SENTRY_DSN",
     "SENTRY_AUTH_TOKEN",
     "SENTRY_ORG",

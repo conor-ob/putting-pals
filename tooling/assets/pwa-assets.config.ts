@@ -1,5 +1,4 @@
 import {
-  combinePresetAndAppleSplashScreens,
   createAppleSplashScreens,
   defineConfig,
   minimal2023Preset,
