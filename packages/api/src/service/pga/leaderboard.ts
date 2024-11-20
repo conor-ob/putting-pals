@@ -1,5 +1,6 @@
 import pako from "pako";
 
+import { getCountryFlag } from "../../utils/flag-utils";
 import { PgaTourApiService } from "./api";
 
 export class PgaTourLeaderboardService extends PgaTourApiService {
@@ -35,6 +36,7 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
             if (row.__typename === "InformationRow") {
               const informationRow = row as InformationRow;
               return {
+                __typename: informationRow.__typename,
                 id: informationRow.id,
                 leaderboardSortOrder: informationRow.leaderboardSortOrder,
                 displayText: informationRow.displayText,
@@ -42,8 +44,24 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
             } else {
               const playerRow = row as PlayerRowV3;
               return {
+                __typename: playerRow.__typename,
                 id: playerRow.id,
                 leaderboardSortOrder: playerRow.leaderboardSortOrder,
+                player: {
+                  id: playerRow.player.id,
+                  firstName: playerRow.player.firstName,
+                  lastName: playerRow.player.lastName,
+                  displayName: playerRow.player.displayName,
+                  countryFlag: getCountryFlag({
+                    player: {
+                      id: playerRow.player.id,
+                      countryFlag: playerRow.player.countryFlag,
+                    },
+                  }),
+                },
+                scoringData: {
+                  position: playerRow.scoringData.position,
+                },
               };
             }
           }),

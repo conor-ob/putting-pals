@@ -35,11 +35,11 @@ export class PgaTourTournamentService extends PgaTourApiService {
         return response.data.tournaments.map((tournament) => {
           return {
             id: tournament.id,
-            name: tournament.tournamentName,
+            tournamentName: tournament.tournamentName,
             courses: tournament.courses,
-            logoUrl: tournament.tournamentLogo,
-            location: tournament.tournamentLocation,
-            status: tournament.tournamentStatus,
+            tournamentLogo: tournament.tournamentLogo,
+            tournamentLocation: tournament.tournamentLocation,
+            tournamentStatus: tournament.tournamentStatus,
             roundDisplay: tournament.roundDisplay,
             roundStatus: tournament.roundStatus,
             roundStatusDisplay: tournament.roundStatusDisplay,

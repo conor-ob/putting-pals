@@ -9,11 +9,19 @@ import { api } from "../providers/trpc-provider";
 export function PgaTourLeaderboardPage() {
   const {
     data: tournament,
-    fetchStatus: tournamentsFetchStatus,
+    fetchStatus: tournamentFetchStatus,
     error: tournamentError,
   } = api.tournament.getCurrent.useQuery();
 
-  console.log({ tournament, tournamentsFetchStatus, tournamentError });
+  console.log({ tournament, tournamentFetchStatus, tournamentError });
+
+  const {
+    data: leaderboard,
+    fetchStatus: leaderboardFetchStatus,
+    error: leaderboardError,
+  } = api.leaderboard.getCurrent.useQuery();
+
+  console.log({ leaderboard, leaderboardFetchStatus, leaderboardError });
 
   return (
     <PageLayout title="PGA Tour" largeHeader>
@@ -27,9 +35,9 @@ export function PgaTourLeaderboardPage() {
               roundStatus={tournament.roundStatus}
               roundStatusColor={tournament.roundStatusColor}
               roundStatusDisplay={tournament.roundStatusDisplay}
-              tournamentLogo={tournament.logoUrl}
-              tournamentName={tournament.name}
-              tournamentStatus={tournament.status}
+              tournamentLogo={tournament.tournamentLogo}
+              tournamentName={tournament.tournamentName}
+              tournamentStatus={tournament.tournamentStatus}
             />
           ) : (
             <div className="flex flex-row items-center gap-3 py-4">
@@ -42,7 +50,46 @@ export function PgaTourLeaderboardPage() {
             </div>
           )}
         </IonItem>
+        {leaderboard ? (
+          leaderboard.rows.map((row) => {
+            if (row.__typename === "InformationRow") {
+              return <div key={row.id}>{row.displayText}</div>;
+            } else {
+              return (
+                <PgaTourPlayerRow
+                  key={row.id}
+                  displayName={row.player?.displayName ?? ""}
+                  countryFlag={row.player?.countryFlag ?? ""}
+                />
+              );
+            }
+          })
+        ) : (
+          <div></div>
+        )}
       </IonList>
     </PageLayout>
+  );
+}
+
+function PgaTourPlayerRow({
+  displayName,
+  countryFlag,
+}: {
+  displayName: string;
+  countryFlag: string;
+}) {
+  return (
+    <IonItem>
+      <div className="flex flex-row items-center gap-3">
+        <img
+          className="xs:h-5 xs:w-7 h-4 w-6 rounded-sm"
+          src={`https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@2.4.0/Assets/PNG/${countryFlag}%403x.png`}
+        />
+        <div className="text-base font-normal tracking-tight">
+          {displayName}
+        </div>
+      </div>
+    </IonItem>
   );
 }
