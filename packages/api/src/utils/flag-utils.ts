@@ -1,18 +1,19 @@
-import countries from "i18n-iso-countries";
+const alpha3ToAlpha2: Record<string, string> = {
+  USA: "US",
+};
 
 export function getCountryFlag({
   player,
 }: {
   player: { id: string; countryFlag: string };
 }): string {
-  let alpha2 = countries.alpha3ToAlpha2(player.countryFlag);
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (alpha2 === null || alpha2 === undefined) {
+  let alpha2 = alpha3ToAlpha2[player.countryFlag] ?? undefined;
+
+  if (alpha2 === undefined) {
     alpha2 = getAlpha2({ alpha3: player.countryFlag });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (alpha2 === null || alpha2 === undefined) {
+  if (alpha2 === undefined) {
     alpha2 = resolveKnowFlagIssues({ player });
   }
 
