@@ -255,7 +255,7 @@ export function getCountryFlag({
 }: {
   player: { id: string; countryFlag: string };
 }): string {
-  let alpha2 = alpha3ToAlpha2[player.countryFlag] ?? undefined;
+  let alpha2 = alpha3ToAlpha2[player.countryFlag];
 
   if (alpha2 === undefined) {
     alpha2 = getAlpha2({ alpha3: player.countryFlag });
