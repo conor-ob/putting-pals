@@ -40,8 +40,7 @@ import "./theme/variables.css";
 // UI variables
 import "@pkg/ui/globals.css";
 
-import { PostPage } from "./pages/PostPage";
-import { PostsPage } from "./pages/PostsPage";
+import { PgaTourLeaderboardPage } from "./pages/PgaTourLeaderboardPage";
 import { TrpcProvider } from "./providers/trpc-provider";
 
 setupIonicReact({ mode: "ios" });
@@ -53,17 +52,17 @@ const App: React.FC = () => (
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/">
-              <Redirect to="/posts" />
+              <Redirect to="/pga-tour" />
             </Route>
-            <Route exact path="/posts">
-              <PostsPage />
+            <Route exact path="/pga-tour">
+              <PgaTourLeaderboardPage />
             </Route>
-            <Route path="/posts/:id" component={PostPage}></Route>
+            {/* <Route path="/pga-tour/:id" component={PgaTourLeaderboardPage}></Route> */}
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="posts" href="/posts">
+            <IonTabButton tab="pga-tour" href="/pga-tour">
               <IonIcon aria-hidden="true" icon={square} />
-              <IonLabel>Posts</IonLabel>
+              <IonLabel>PGA Tour</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

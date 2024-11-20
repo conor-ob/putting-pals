@@ -31,6 +31,7 @@ export function TournamentHeader({
   tournamentStatus,
   ...props
 }: TournamentHeaderProps) {
+  // TODO get rid of ml-[1px] padding
   return (
     <div
       className={cn("flex flex-row items-center gap-3", className)}

@@ -3,7 +3,6 @@ import { afterEach } from "vitest";
 
 import "@testing-library/jest-dom";
 
-console.log("setupTests.ts");
 // runs a clean after each test case (e.g. clearing jsdom)
 afterEach(() => {
   cleanup();

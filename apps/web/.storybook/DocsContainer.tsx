@@ -11,7 +11,6 @@ export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({
 }) => {
   const searchParams = new URL(window.location.href).searchParams;
   const isDarkTheme = searchParams.get("globals")?.includes("theme:dark");
-  console.log("themes.dark", themes.dark);
   return (
     <BaseContainer
       theme={

@@ -18,6 +18,7 @@
     "@apollo/datasource-rest": "catalog:",
     "@sentry/node": "catalog:",
     "@trpc/server": "catalog:",
+    "pako": "^2.1.0",
     "superjson": "catalog:",
     "zod": "catalog:"
   },
@@ -25,6 +26,7 @@
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
+    "@types/pako": "^2.0.3",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "rimraf": "catalog:",

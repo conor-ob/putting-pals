@@ -31,7 +31,11 @@ export function PageLayout({
         {largeHeader && (
           <IonHeader collapse="condense">
             <IonToolbar>
-              <IonTitle size="large">{title}</IonTitle>
+              <IonTitle size="large">
+                <div className="text-4xl font-bold leading-snug tracking-tight">
+                  {title}
+                </div>
+              </IonTitle>
             </IonToolbar>
           </IonHeader>
         )}
