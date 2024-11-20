@@ -4,7 +4,7 @@ This repo is set up to be deployed to [Railway](https://railway.app/)
 
 ## Prerequisites
 
-Create [Sentry](https://sentry.io/)
+Create [Sentry](https://sentry.io/) projects
 
 - Fastify based project for `server`
 - React based project for `web`
@@ -12,8 +12,6 @@ Create [Sentry](https://sentry.io/)
 ## Before deployment
 
 - Update app name in [package.json](../package.json)
-- Update `DATABASE_URL` environment variables
-- Update `DATABASE_PREFIX` environment variables
 - Update `SENTRY_PROJECT` environment variables
 
 ## Deploying to Railway
@@ -28,27 +26,19 @@ Create [Sentry](https://sentry.io/)
 ### 2. Railway
 
 - create a new empty project
-- add a service -> PostgreSQL
-  - rename to `postgres`
-  - update settings
-    - region
-    - resource limits
-    - restart policy
-- add a service -> GitHub -> turbostack
+- add a service -> GitHub -> putting-pals
   - rename to `server`
   - add variables including postgres reference
     ```sh
     PORT="4000"
-    ORIGIN="https://<domain.com>"
-    DATABASE_URL="${{postgres.DATABASE_URL}}"
-    DATABASE_PREFIX="turbostack"
+    ORIGIN="https://puttingpals.conorob.me"
     SENTRY_DSN="https://123abc@456.ingest.de.sentry.io/789"
     ```
   - update settings
     - railway config file `apps/server/railway.json`
     - region
     - resource limits
-- add a service -> GitHub -> turbostack
+- add a service -> GitHub -> putting-pals
   - rename to `web`
   - add variables
     ```sh
@@ -59,7 +49,7 @@ Create [Sentry](https://sentry.io/)
     - railway config file `apps/web/railway.json`
     - region
     - resource limits
-- add a service -> GitHub -> turbostack
+- add a service -> GitHub -> putting-pals
   - rename to `proxy`
   - add variables
     ```sh

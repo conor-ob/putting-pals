@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd(), "");
   const env = envSchema.parse({
     ...viteEnv,
-    SENTRY_PROJECT: "turbostack-web", // TODO CHANGEME
+    SENTRY_PROJECT: "putting-pals-web",
     GIT_COMMIT_SHA:
       process.env.RAILWAY_GIT_COMMIT_SHA ??
       process.env.GITHUB_SHA ??
@@ -68,8 +68,8 @@ export default defineConfig(({ mode }) => {
         VitePWA({
           registerType: "autoUpdate",
           manifest: {
-            short_name: "Turbostack",
-            name: "Turbostack",
+            short_name: "Putting Pals",
+            name: "Putting Pals",
             start_url: ".",
             display: "standalone",
             theme_color: "#1F1F1F", // Android theme color - not necessary for iOS

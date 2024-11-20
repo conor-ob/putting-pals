@@ -5,7 +5,7 @@
     "buildCommand": "pnpm build --filter @app/server"
   },
   "deploy": {
-    "startCommand": "pnpm start --filter @pkg/db --filter @app/server",
+    "startCommand": "pnpm start --filter @app/server",
     "numReplicas": 1,
     "healthcheckPath": "/health",
     "healthcheckTimeout": 300,

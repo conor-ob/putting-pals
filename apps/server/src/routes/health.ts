@@ -1,7 +1,5 @@
 import type { FastifyInstance } from "fastify";
 
-import { greeting } from "@pkg/utils/greeting";
-
 import { env } from "../env/schema";
 
 export default function (fastify: FastifyInstance) {
@@ -12,7 +10,6 @@ export default function (fastify: FastifyInstance) {
         message: "OK",
         uptime: process.uptime(),
         timestamp: Date.now(),
-        greeting: greeting("Fastify"),
       };
 
       res.status(200).send(healthCheck);

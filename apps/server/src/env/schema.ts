@@ -15,8 +15,6 @@ const envSchema = z.object({
     .transform((s) => parseInt(s, 10))
     .pipe(z.number()),
   ORIGIN: z.string().url(),
-  DATABASE_URL: z.string().url(),
-  DATABASE_PREFIX: z.string().min(1),
   SENTRY_DSN: z.string().url(),
   SENTRY_PROJECT: z.string().min(1),
   CI: z
@@ -29,7 +27,7 @@ const envSchema = z.object({
 
 export const env = envSchema.parse({
   ...process.env,
-  SENTRY_PROJECT: "turbostack-server", // TODO CHANGEME
+  SENTRY_PROJECT: "putting-pals-server",
   GIT_COMMIT_SHA:
     process.env.RAILWAY_GIT_COMMIT_SHA ??
     process.env.GITHUB_SHA ??

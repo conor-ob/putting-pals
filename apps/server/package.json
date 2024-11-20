@@ -19,7 +19,6 @@
     "@mgcrea/fastify-request-logger": "catalog:",
     "@mgcrea/pino-pretty-compact": "catalog:",
     "@pkg/api": "workspace:*",
-    "@pkg/utils": "workspace:*",
     "@sentry/node": "catalog:",
     "@sentry/profiling-node": "catalog:",
     "@trpc/server": "catalog:",
