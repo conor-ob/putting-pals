@@ -255,7 +255,8 @@ export function getCountryFlag({
 }: {
   player: { id: string; countryFlag: string };
 }): string {
-  let alpha2 = alpha3ToAlpha2[player.countryFlag];
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  let alpha2 = alpha3ToAlpha2[player.countryFlag] || undefined;
 
   if (alpha2 === undefined) {
     alpha2 = getAlpha2({ alpha3: player.countryFlag });
