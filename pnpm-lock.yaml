@@ -475,6 +475,9 @@ importers:
       vitest:
         specifier: ^0.34.6
         version: 0.34.6(jsdom@25.0.1)(terser@5.36.0)
+      workbox-window:
+        specifier: ^7.3.0
+        version: 7.3.0
 
   packages/api:
     dependencies:
