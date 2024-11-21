@@ -35,7 +35,6 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
         const leaderboardV3 = JSON.parse(
           leaderboardDecompressedV3,
         ) as LeaderboardV3;
-        console.log("player", leaderboardV3.players[0]);
         return {
           id: leaderboardV3.id,
           players: leaderboardV3.players.map((row) => {
