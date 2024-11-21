@@ -20,7 +20,7 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@radix-ui/react-avatar": "^1.1.1",
+    "@radix-ui/react-avatar": "catalog:",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
     "lucide-react": "catalog:",

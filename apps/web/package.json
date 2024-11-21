@@ -68,8 +68,8 @@
     "vite": "catalog:",
     "vite-plugin-pwa": "catalog:",
     "vite-tsconfig-paths": "catalog:",
-    "vitest": "^0.34.6",
-    "workbox-window": "^7.3.0"
+    "vitest": "catalog:",
+    "workbox-window": "catalog:"
   },
   "prettier": "@pkg/prettier"
 }

@@ -12,7 +12,7 @@
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
-    "@vite-pwa/assets-generator": "^0.2.6",
+    "@vite-pwa/assets-generator": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   },
