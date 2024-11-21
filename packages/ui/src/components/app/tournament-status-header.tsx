@@ -1,24 +1,24 @@
 import * as React from "react";
 
-import { cn } from "../../lib/utils";
-import { RoundStatus } from "./round-status";
-import { RoundStatusBadge } from "./round-status-badge";
+import type {
+  RoundStatus,
+  RoundStatusColor,
+  TournamentStatus,
+} from "@pkg/api/pga";
 
-export type TournamentStatusProps = {
+import { cn } from "../../lib/utils";
+import { RoundStatusBadge } from "./round-status-badge";
+import { RoundStatusLabel } from "./round-status-label";
+
+export type TournamentStatusHeaderProps = {
   roundDisplay: string;
-  roundStatus:
-    | "COMPLETE"
-    | "GROUPINGS_OFFICIAL"
-    | "IN_PROGRESS"
-    | "OFFICIAL"
-    | "SUSPENDED"
-    | "UPCOMING";
-  roundStatusColor: "BLUE" | "GRAY" | "GREEN" | "RED" | "YELLOW";
+  roundStatus: RoundStatus;
+  roundStatusColor: RoundStatusColor;
   roundStatusDisplay: string;
-  tournamentStatus: "COMPLETED" | "IN_PROGRESS" | "NOT_STARTED";
+  tournamentStatus: TournamentStatus;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-function TournamentStatus({
+function TournamentStatusHeader({
   className,
   roundDisplay,
   roundStatus,
@@ -26,7 +26,7 @@ function TournamentStatus({
   roundStatusDisplay,
   tournamentStatus,
   ...props
-}: TournamentStatusProps) {
+}: TournamentStatusHeaderProps) {
   if (
     (tournamentStatus === "NOT_STARTED" && roundStatus === "UPCOMING") ||
     (tournamentStatus === "COMPLETED" && roundStatus === "OFFICIAL")
@@ -47,10 +47,12 @@ function TournamentStatus({
         <RoundStatusBadge color={roundStatusColor}>
           {roundDisplay}
         </RoundStatusBadge>
-        <RoundStatus color={roundStatusColor}>{roundStatusDisplay}</RoundStatus>
+        <RoundStatusLabel className="line-clamp-1" color={roundStatusColor}>
+          {roundStatusDisplay}
+        </RoundStatusLabel>
       </div>
     );
   }
 }
 
-export { TournamentStatus };
+export { TournamentStatusHeader };

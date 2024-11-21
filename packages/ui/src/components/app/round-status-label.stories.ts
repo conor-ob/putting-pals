@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { RoundStatus } from "./round-status";
+import { RoundStatusLabel } from "./round-status-label";
 
-const meta: Meta<typeof RoundStatus> = {
-  title: "components/app/RoundStatus",
-  component: RoundStatus,
+const meta: Meta<typeof RoundStatusLabel> = {
+  title: "components/app/RoundStatusLabel",
+  component: RoundStatusLabel,
 };
 
 export default meta;

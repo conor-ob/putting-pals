@@ -6,7 +6,8 @@
   "exports": {
     "./context": "./src/context.ts",
     "./root": "./src/root.ts",
-    "./types": "./src/types.ts"
+    "./types": "./src/types.ts",
+    "./pga": "./src/pga.ts"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",
@@ -18,6 +19,8 @@
     "@apollo/datasource-rest": "catalog:",
     "@sentry/node": "catalog:",
     "@trpc/server": "catalog:",
+    "cheerio": "catalog:",
+    "pako": "catalog:",
     "superjson": "catalog:",
     "zod": "catalog:"
   },
@@ -25,6 +28,7 @@
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
+    "@types/pako": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "rimraf": "catalog:",
