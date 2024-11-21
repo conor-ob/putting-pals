@@ -1,9 +1,10 @@
 import { IonItem, IonList } from "@ionic/react";
 import { useParams } from "react-router-dom";
 
-import { Skeleton } from "@pkg/ui/skeleton";
-import { TournamentHeader } from "@pkg/ui/tournament";
+import { TournamentHeader } from "@pkg/ui/app";
+import { Skeleton } from "@pkg/ui/ui";
 
+import { LeaderboardListHeader } from "../components/LeaderboardListHeader";
 import { PageLayout } from "../layouts/PageLayout";
 import { api } from "../providers/trpc-provider";
 
@@ -53,6 +54,7 @@ export function PgaTourLeaderboardPage() {
             </div>
           )}
         </IonItem>
+        <LeaderboardListHeader />
         {leaderboard ? (
           leaderboard.players.map((row) => {
             if (row.__typename === "InformationRow") {

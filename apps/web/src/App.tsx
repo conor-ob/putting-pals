@@ -41,6 +41,7 @@ import "./theme/variables.css";
 import "@pkg/ui/globals.css";
 
 import { PgaTourLeaderboardPage } from "./pages/PgaTourLeaderboardPage";
+import { PuttinPalsLeaderboardPage } from "./pages/PuttingPalsLeaderboardPage";
 import { TrpcProvider } from "./providers/trpc-provider";
 
 setupIonicReact({ mode: "ios" });
@@ -54,12 +55,19 @@ const App: React.FC = () => (
             <Route exact path="/">
               <Redirect to="/pga-tour" />
             </Route>
+            <Route exact path="/putting-pals">
+              <PuttinPalsLeaderboardPage />
+            </Route>
             <Route exact path="/pga-tour">
               <PgaTourLeaderboardPage />
             </Route>
             <Route path="/pga-tour/:id" component={PgaTourLeaderboardPage} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
+            <IonTabButton tab="putting-pals" href="/putting-pals">
+              <IonIcon aria-hidden="true" icon={square} />
+              <IonLabel>Putting Pals</IonLabel>
+            </IonTabButton>
             <IonTabButton tab="pga-tour" href="/pga-tour">
               <IonIcon aria-hidden="true" icon={square} />
               <IonLabel>PGA Tour</IonLabel>

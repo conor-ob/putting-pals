@@ -9,11 +9,11 @@ const roundStatusLabelVariants = cva(
   {
     variants: {
       color: {
-        BLUE: "text-[#20487C]",
-        GRAY: "text-[#949494]",
-        GREEN: "text-[#25845d]",
-        RED: "text-[#ED0000]",
-        YELLOW: "text-[#FAE100]",
+        BLUE: "text-blue",
+        GRAY: "text-gray",
+        GREEN: "text-green",
+        RED: "text-red",
+        YELLOW: "text-black dark:text-yellow",
       },
     },
     defaultVariants: {

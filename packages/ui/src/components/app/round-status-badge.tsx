@@ -9,11 +9,11 @@ const roundStatusBadgeVariants = cva(
   {
     variants: {
       color: {
-        BLUE: "bg-[#20487C] text-white",
-        GRAY: "bg-[#949494] text-white",
-        GREEN: "bg-[#25845d] text-white",
-        RED: "bg-[#ED0000] text-white",
-        YELLOW: "bg-[#FAE100] text-black",
+        BLUE: "bg-blue text-white",
+        GRAY: "bg-gray text-white",
+        GREEN: "bg-green text-white",
+        RED: "bg-red text-white",
+        YELLOW: "bg-yellow text-black",
       },
     },
     defaultVariants: {

@@ -15,7 +15,7 @@ export function PageLayout({
 }: {
   title: string;
   largeHeader?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) {
   return (
     <IonPage>
