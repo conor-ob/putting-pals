@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 
 import { cn } from "../../lib/utils";
 
-const roundStatusVariants = cva(
+const roundStatusLabelVariants = cva(
   "inline-flex items-center gap-x-1.5 rounded-sm px-1.5 py-0.5 text-sm font-bold uppercase leading-tight tracking-tight transition-colors",
   {
     variants: {
@@ -22,13 +22,20 @@ const roundStatusVariants = cva(
   },
 );
 
-export type RoundStatusProps = {} & React.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof roundStatusVariants>;
+export type RoundStatusLabelProps = {} & React.HTMLAttributes<HTMLDivElement> &
+  VariantProps<typeof roundStatusLabelVariants>;
 
-function RoundStatus({ className, color, ...props }: RoundStatusProps) {
+function RoundStatusLabel({
+  className,
+  color,
+  ...props
+}: RoundStatusLabelProps) {
   return (
-    <div className={cn(roundStatusVariants({ color }), className)} {...props} />
+    <div
+      className={cn(roundStatusLabelVariants({ color }), className)}
+      {...props}
+    />
   );
 }
 
-export { RoundStatus, roundStatusVariants };
+export { RoundStatusLabel, roundStatusLabelVariants };

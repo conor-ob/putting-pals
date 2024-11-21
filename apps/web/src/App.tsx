@@ -57,7 +57,7 @@ const App: React.FC = () => (
             <Route exact path="/pga-tour">
               <PgaTourLeaderboardPage />
             </Route>
-            {/* <Route path="/pga-tour/:id" component={PgaTourLeaderboardPage}></Route> */}
+            <Route path="/pga-tour/:id" component={PgaTourLeaderboardPage} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="pga-tour" href="/pga-tour">

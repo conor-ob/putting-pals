@@ -30,6 +30,7 @@
     "tailwindcss-animate": "catalog:"
   },
   "devDependencies": {
+    "@pkg/api": "workspace:*",
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",
     "@storybook/react": "catalog:",

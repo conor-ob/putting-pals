@@ -1,5 +1,6 @@
 import pako from "pako";
 
+import type { LeaderboardCompressedV3, LeaderboardV3 } from "../../pga";
 import { getCountryFlag } from "../../utils/flag-utils";
 import { PgaTourApiService } from "./api";
 
@@ -19,7 +20,11 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
 
   public async getLeaderboard({ id }: { id: string }) {
     return super
-      .query<LeaderboardV3Response>({
+      .query<{
+        data: {
+          leaderboardCompressedV3: LeaderboardCompressedV3;
+        };
+      }>({
         query: this.leaderboardV3Query,
         variables: { leaderboardCompressedV3Id: id },
       })
@@ -30,11 +35,12 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
         const leaderboardV3 = JSON.parse(
           leaderboardDecompressedV3,
         ) as LeaderboardV3;
+        console.log("player", leaderboardV3.players[0]);
         return {
           id: leaderboardV3.id,
-          rows: leaderboardV3.players.map((row) => {
+          players: leaderboardV3.players.map((row) => {
             if (row.__typename === "InformationRow") {
-              const informationRow = row as InformationRow;
+              const informationRow = row;
               return {
                 __typename: informationRow.__typename,
                 id: informationRow.id,
@@ -42,7 +48,7 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
                 displayText: informationRow.displayText,
               };
             } else {
-              const playerRow = row as PlayerRowV3;
+              const playerRow = row;
               return {
                 __typename: playerRow.__typename,
                 id: playerRow.id,
@@ -61,6 +67,9 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
                 },
                 scoringData: {
                   position: playerRow.scoringData.position,
+                  total: playerRow.scoringData.total,
+                  score: playerRow.scoringData.score,
+                  thru: playerRow.scoringData.thru,
                 },
               };
             }
@@ -77,84 +86,3 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
     return new TextDecoder("utf-8").decode(decompressed);
   }
 }
-
-type LeaderboardV3Response = {
-  data: Data;
-};
-
-type Data = {
-  leaderboardCompressedV3: LeaderboardCompressedV3;
-};
-
-type LeaderboardCompressedV3 = {
-  id: string;
-  payload: string;
-};
-
-type LeaderboardV3 = {
-  id: string;
-  players: (PlayerRowV3 | InformationRow)[];
-};
-
-type PlayerRowV3 = {
-  __typename: string;
-  id: string;
-  leaderboardSortOrder: number;
-  player: PlayerV3;
-  scoringData: ScoringDataV3;
-};
-
-type InformationRow = {
-  __typename: string;
-  id: string;
-  leaderboardSortOrder: number;
-  displayText: string;
-};
-
-type PlayerV3 = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  amateur: boolean;
-  displayName: string;
-  abbreviations: string;
-  abbreviationAccessibiltyText: string;
-  country: string;
-  countryFlag: string;
-  shortName: string;
-  lineColor: string;
-  tourBound: boolean;
-  bettingProfile: string;
-};
-
-type ScoringDataV3 = {
-  position: string;
-  total: string;
-  totalSort: number;
-  thru: string;
-  thruSort: number;
-  score: string;
-  scoreSort: number;
-  courseId: string;
-  groupNumber: number;
-  currentRound: number;
-  backNine: boolean;
-  roundHeader: string;
-  rounds: string[];
-  movementDirection: string;
-  movementAmount: string;
-  playerState: string;
-  rankingMovement: string;
-  rankingMovementAmount: string;
-  rankingMovementAmountSort: number;
-  rankLogoLight: string;
-  rankLogoDark: string;
-  totalStrokes: string;
-  official: string;
-  officialSort: number;
-  projected: string;
-  projectedSort: number;
-  hasStoryContent: false;
-  storyContentRounds: string[];
-  roundStatus: string;
-};

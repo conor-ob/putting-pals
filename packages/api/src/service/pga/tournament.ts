@@ -1,3 +1,4 @@
+import type { Tournament } from "../../pga";
 import { PgaTourApiService } from "./api";
 
 export class PgaTourTournamentService extends PgaTourApiService {
@@ -27,7 +28,11 @@ export class PgaTourTournamentService extends PgaTourApiService {
 
   public async getTournaments({ ids }: { ids: string[] }) {
     return super
-      .query<TournamentsResponse>({
+      .query<{
+        data: {
+          tournaments: Tournament[];
+        };
+      }>({
         query: this.tournamentsQuery,
         variables: { ids: ids },
       })
@@ -55,31 +60,3 @@ export class PgaTourTournamentService extends PgaTourApiService {
     });
   }
 }
-
-type TournamentsResponse = {
-  data: TournamentsData;
-};
-
-type TournamentsData = {
-  tournaments: Tournament[];
-};
-
-type Tournament = {
-  id: string;
-  tournamentName: string;
-  tournamentLogo: string;
-  tournamentLocation: string;
-  tournamentStatus: "COMPLETED" | "IN_PROGRESS" | "NOT_STARTED";
-  roundStatusDisplay: string;
-  roundDisplay: string;
-  roundStatus:
-    | "COMPLETE"
-    | "GROUPINGS_OFFICIAL"
-    | "IN_PROGRESS"
-    | "OFFICIAL"
-    | "SUSPENDED"
-    | "UPCOMING";
-  roundStatusColor: "BLUE" | "GRAY" | "GREEN" | "RED" | "YELLOW";
-  currentRound: number;
-  courses: { courseName: string }[];
-};

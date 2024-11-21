@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { TournamentStatus } from "./tournament-status";
+import { TournamentStatusHeader } from "./tournament-status-header";
 
-const meta: Meta<typeof TournamentStatus> = {
-  title: "components/app/TournamentStatus",
-  component: TournamentStatus,
+const meta: Meta<typeof TournamentStatusHeader> = {
+  title: "components/app/TournamentStatusHeader",
+  component: TournamentStatusHeader,
 };
 
 export default meta;

@@ -1,22 +1,22 @@
+import type {
+  RoundStatus,
+  RoundStatusColor,
+  TournamentStatus,
+} from "@pkg/api/pga";
+
 import { cn } from "../../lib/utils";
 import { TournamentName } from "./tournament-name";
-import { TournamentStatus } from "./tournament-status";
+import { TournamentStatusHeader } from "./tournament-status-header";
 
 export type TournamentHeaderProps = {
   courses: { courseName: string }[];
   roundDisplay: string;
-  roundStatus:
-    | "COMPLETE"
-    | "GROUPINGS_OFFICIAL"
-    | "IN_PROGRESS"
-    | "OFFICIAL"
-    | "SUSPENDED"
-    | "UPCOMING";
-  roundStatusColor: "BLUE" | "GRAY" | "GREEN" | "RED" | "YELLOW";
+  roundStatus: RoundStatus;
+  roundStatusColor: RoundStatusColor;
   roundStatusDisplay: string;
   tournamentLogo: string;
   tournamentName: string;
-  tournamentStatus: "COMPLETED" | "IN_PROGRESS" | "NOT_STARTED";
+  tournamentStatus: TournamentStatus;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export function TournamentHeader({
@@ -42,7 +42,7 @@ export function TournamentHeader({
         src={tournamentLogo}
       />
       <div className="flex flex-col gap-1">
-        <TournamentStatus
+        <TournamentStatusHeader
           className="mb-0.5"
           roundDisplay={roundDisplay}
           roundStatus={roundStatus}

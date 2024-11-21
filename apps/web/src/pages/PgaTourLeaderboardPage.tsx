@@ -1,4 +1,5 @@
 import { IonItem, IonList } from "@ionic/react";
+import { useParams } from "react-router-dom";
 
 import { Skeleton } from "@pkg/ui/skeleton";
 import { TournamentHeader } from "@pkg/ui/tournament";
@@ -7,11 +8,13 @@ import { PageLayout } from "../layouts/PageLayout";
 import { api } from "../providers/trpc-provider";
 
 export function PgaTourLeaderboardPage() {
+  const params = useParams<{ id: string }>();
+
   const {
     data: tournament,
     fetchStatus: tournamentFetchStatus,
     error: tournamentError,
-  } = api.tournament.getCurrent.useQuery();
+  } = api.tournament.getById.useQuery({ id: params.id });
 
   console.log({ tournament, tournamentFetchStatus, tournamentError });
 
@@ -19,7 +22,7 @@ export function PgaTourLeaderboardPage() {
     data: leaderboard,
     fetchStatus: leaderboardFetchStatus,
     error: leaderboardError,
-  } = api.leaderboard.getCurrent.useQuery();
+  } = api.leaderboard.getById.useQuery({ id: params.id });
 
   console.log({ leaderboard, leaderboardFetchStatus, leaderboardError });
 
@@ -51,15 +54,19 @@ export function PgaTourLeaderboardPage() {
           )}
         </IonItem>
         {leaderboard ? (
-          leaderboard.rows.map((row) => {
+          leaderboard.players.map((row) => {
             if (row.__typename === "InformationRow") {
               return <div key={row.id}>{row.displayText}</div>;
             } else {
               return (
                 <PgaTourPlayerRow
                   key={row.id}
-                  displayName={row.player?.displayName ?? ""}
-                  countryFlag={row.player?.countryFlag ?? ""}
+                  position={row.scoringData.position}
+                  countryFlag={row.player.countryFlag}
+                  displayName={row.player.displayName}
+                  total={row.scoringData.total}
+                  score={row.scoringData.score}
+                  thru={row.scoringData.thru}
                 />
               );
             }
@@ -73,21 +80,37 @@ export function PgaTourLeaderboardPage() {
 }
 
 function PgaTourPlayerRow({
-  displayName,
+  position,
   countryFlag,
+  displayName,
+  total,
+  thru,
+  score,
 }: {
-  displayName: string;
+  position: string;
   countryFlag: string;
+  displayName: string;
+  total: string;
+  thru: string;
+  score: string;
 }) {
   return (
     <IonItem>
-      <div className="flex flex-row items-center gap-3">
-        <img
-          className="xs:h-5 xs:w-7 h-4 w-6 rounded-sm"
-          src={`https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@2.4.0/Assets/PNG/${countryFlag}%403x.png`}
-        />
-        <div className="text-base font-normal tracking-tight">
-          {displayName}
+      <div className="flex w-full flex-row justify-between">
+        <div className="flex flex-row items-center gap-3">
+          <div>{position}</div>
+          <img
+            className="xs:h-5 xs:w-7 h-4 w-6 rounded-sm"
+            src={`https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@2.4.0/Assets/PNG/${countryFlag}%403x.png`}
+          />
+          <div className="text-base font-normal tracking-tight">
+            {displayName}
+          </div>
+        </div>
+        <div className="flex flex-row gap-4">
+          <div>{total}</div>
+          <div>{thru}</div>
+          <div>{score}</div>
         </div>
       </div>
     </IonItem>
