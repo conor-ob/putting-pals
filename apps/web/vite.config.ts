@@ -48,7 +48,7 @@ export default defineConfig(({ mode }) => {
               }
             },
           },
-          // external: ["workbox-window"],
+          external: ["workbox-window"],
         },
         sourcemap: env.CI,
       },

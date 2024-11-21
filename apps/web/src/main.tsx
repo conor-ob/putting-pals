@@ -1,14 +1,28 @@
 import "./instrument";
 
+import { console } from "inspector";
 import React from "react";
 import * as Sentry from "@sentry/react";
 import { createRoot } from "react-dom/client";
-
-// import { registerSW } from "virtual:pwa-register";
+import { registerSW } from "virtual:pwa-register";
 
 import App from "./App";
 
-// registerSW({ immediate: true });
+registerSW({
+  immediate: true,
+  onNeedRefresh() {
+    console.log("onNeedRefresh");
+  },
+  onOfflineReady() {
+    console.log("onOfflineReady");
+  },
+  onRegisteredSW(swScriptUrl, registration) {
+    console.log("onRegisteredSW", swScriptUrl, registration);
+  },
+  onRegisterError(error) {
+    console.error("onRegisterError", error);
+  },
+});
 
 const container = document.getElementById("root");
 if (!container) {
