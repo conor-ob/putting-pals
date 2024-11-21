@@ -2,9 +2,10 @@ import { IonItem, IonList } from "@ionic/react";
 import { useParams } from "react-router-dom";
 
 import { TournamentHeader } from "@pkg/ui/app";
+import { cn } from "@pkg/ui/cn";
 import { Skeleton } from "@pkg/ui/ui";
 
-import { LeaderboardListHeader } from "../components/LeaderboardListHeader";
+// import { LeaderboardListHeader } from "../components/LeaderboardListHeader";
 import { PageLayout } from "../layouts/PageLayout";
 import { api } from "../providers/trpc-provider";
 
@@ -54,7 +55,7 @@ export function PgaTourLeaderboardPage() {
             </div>
           )}
         </IonItem>
-        <LeaderboardListHeader />
+        {/* <LeaderboardListHeader /> */}
         {leaderboard ? (
           leaderboard.players.map((row) => {
             if (row.__typename === "InformationRow") {
@@ -65,8 +66,10 @@ export function PgaTourLeaderboardPage() {
                   key={row.id}
                   position={row.scoringData.position}
                   countryFlag={row.player.countryFlag}
-                  displayName={row.player.displayName}
+                  shortName={row.player.shortName}
+                  abbreviations={row.player.abbreviations}
                   total={row.scoringData.total}
+                  totalSort={row.scoringData.totalSort}
                   score={row.scoringData.score}
                   thru={row.scoringData.thru}
                 />
@@ -84,35 +87,56 @@ export function PgaTourLeaderboardPage() {
 function PgaTourPlayerRow({
   position,
   countryFlag,
-  displayName,
+  shortName,
+  abbreviations,
   total,
+  totalSort,
   thru,
   score,
 }: {
   position: string;
   countryFlag: string;
-  displayName: string;
+  shortName: string;
+  abbreviations: string;
   total: string;
+  totalSort: number;
   thru: string;
   score: string;
 }) {
   return (
     <IonItem>
       <div className="flex w-full flex-row justify-between">
-        <div className="flex flex-row items-center gap-3">
-          <div>{position}</div>
-          <img
-            className="xs:h-5 xs:w-7 h-4 w-6 rounded-sm"
-            src={`https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@2.4.0/Assets/PNG/${countryFlag}%403x.png`}
-          />
-          <div className="text-base font-normal tracking-tight">
-            {displayName}
+        <div className="flex flex-row items-center">
+          <div className="w-10 text-sm font-bold tracking-tighter">
+            {position}
+          </div>
+          <div className="me-2 w-8 px-0.5">
+            <img
+              className="rounded-sm"
+              src={`https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@2.4.0/Assets/PNG/${countryFlag}%403x.png`}
+            />
+          </div>
+          <div className="text-sm font-bold tracking-tighter">
+            {shortName}
+            <span className="text-[#767676]">{` ${abbreviations}`}</span>
           </div>
         </div>
-        <div className="flex flex-row gap-4">
-          <div>{total}</div>
-          <div>{thru}</div>
-          <div>{score}</div>
+        <div className="flex flex-row">
+          <div
+            className={cn(
+              "flex w-10 justify-center text-sm font-bold tracking-tighter",
+              totalSort < 0 && "text-red",
+              totalSort === 0 && "text-green",
+            )}
+          >
+            {total}
+          </div>
+          <div className="flex w-10 justify-center text-sm font-bold tracking-tighter">
+            {thru}
+          </div>
+          <div className="flex w-8 justify-end text-sm font-bold tracking-tighter">
+            {score}
+          </div>
         </div>
       </div>
     </IonItem>

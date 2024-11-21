@@ -35,6 +35,7 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
         const leaderboardV3 = JSON.parse(
           leaderboardDecompressedV3,
         ) as LeaderboardV3;
+        console.log(leaderboardV3.players[0]);
         return {
           id: leaderboardV3.id,
           players: leaderboardV3.players.map((row) => {
@@ -54,9 +55,8 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
                 leaderboardSortOrder: playerRow.leaderboardSortOrder,
                 player: {
                   id: playerRow.player.id,
-                  firstName: playerRow.player.firstName,
-                  lastName: playerRow.player.lastName,
-                  displayName: playerRow.player.displayName,
+                  shortName: playerRow.player.shortName,
+                  abbreviations: playerRow.player.abbreviations,
                   countryFlag: getCountryFlag({
                     player: {
                       id: playerRow.player.id,
@@ -67,6 +67,7 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
                 scoringData: {
                   position: playerRow.scoringData.position,
                   total: playerRow.scoringData.total,
+                  totalSort: playerRow.scoringData.totalSort,
                   score: playerRow.scoringData.score,
                   thru: playerRow.scoringData.thru,
                 },

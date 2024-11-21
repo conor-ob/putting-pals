@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import {
   IonButton,
+  IonIcon,
   IonItem,
   IonLabel,
   IonListHeader,
@@ -8,6 +9,7 @@ import {
   IonRadio,
   IonRadioGroup,
 } from "@ionic/react";
+import { settingsOutline } from "ionicons/icons";
 
 import "./styles.css";
 
@@ -16,9 +18,14 @@ export function LeaderboardListHeader() {
 
   return (
     <IonListHeader>
-      <IonLabel>All Players</IonLabel>
-      <IonButton id="open-modal" expand="block">
-        See All
+      <IonLabel className="text-2xl font-bold leading-snug tracking-tight">
+        All Players
+      </IonLabel>
+      <IonButton id="open-modal" color="dark" expand="block">
+        <IonIcon
+          className="flex h-6 w-6 items-center justify-center rounded-full p-1 ring-1"
+          icon={settingsOutline}
+        />
       </IonButton>
       <IonModal
         ref={modal}
