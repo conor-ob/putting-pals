@@ -1,4 +1,4 @@
-import { IonItem, IonList } from "@ionic/react";
+import { IonItem, IonLabel, IonList, IonListHeader } from "@ionic/react";
 import { useParams } from "react-router-dom";
 
 import { TournamentHeader } from "@pkg/ui/app";
@@ -57,30 +57,72 @@ export function PgaTourLeaderboardPage() {
         </IonItem>
         {/* <LeaderboardListHeader /> */}
         {leaderboard ? (
-          leaderboard.players.map((row) => {
-            if (row.__typename === "InformationRow") {
-              return <div key={row.id}>{row.displayText}</div>;
-            } else {
-              return (
-                <PgaTourPlayerRow
-                  key={row.id}
-                  position={row.scoringData.position}
-                  countryFlag={row.player.countryFlag}
-                  shortName={row.player.shortName}
-                  abbreviations={row.player.abbreviations}
-                  total={row.scoringData.total}
-                  totalSort={row.scoringData.totalSort}
-                  score={row.scoringData.score}
-                  thru={row.scoringData.thru}
-                />
-              );
-            }
-          })
+          <>
+            <div>
+              <IonListHeader>
+                <IonLabel>
+                  <div className="text-2xl tracking-tight">All Players</div>
+                </IonLabel>
+              </IonListHeader>
+              <PgaTourLeaderboardHeader
+                roundDisplay={tournament?.roundDisplay}
+              />
+              <div className="mx-4 h-0.5 bg-foreground"></div>
+            </div>
+            {leaderboard.players.map((row) => {
+              if (row.__typename === "InformationRow") {
+                return <div key={row.id}>{row.displayText}</div>;
+              } else {
+                return (
+                  <div key={row.id}>
+                    <PgaTourPlayerRow
+                      position={row.scoringData.position}
+                      countryFlag={row.player.countryFlag}
+                      shortName={row.player.shortName}
+                      abbreviations={row.player.abbreviations}
+                      total={row.scoringData.total}
+                      totalSort={row.scoringData.totalSort}
+                      score={row.scoringData.score}
+                      thru={row.scoringData.thru}
+                    />
+                    <div className="mx-4 border-b"></div>
+                  </div>
+                );
+              }
+            })}
+          </>
         ) : (
           <div></div>
         )}
       </IonList>
     </PageLayout>
+  );
+}
+
+function PgaTourLeaderboardHeader({ roundDisplay }: { roundDisplay?: string }) {
+  return (
+    <div className="flex w-full flex-row justify-between px-4 py-2 text-[#767676]">
+      <div className="flex flex-row items-center">
+        <div className="w-10 text-xs font-bold tracking-tighter">POS</div>
+        <div className="me-2 w-8"></div>
+        <div className="text-xs font-bold tracking-tighter">PLAYER</div>
+      </div>
+      <div className="flex flex-row">
+        <div
+          className={cn(
+            "flex w-12 justify-center text-xs font-bold tracking-tighter",
+          )}
+        >
+          TOT
+        </div>
+        <div className="flex w-10 justify-center text-xs font-bold tracking-tighter">
+          THRU
+        </div>
+        <div className="flex w-8 justify-end text-xs font-bold tracking-tighter">
+          {roundDisplay ?? "RD"}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -124,7 +166,7 @@ function PgaTourPlayerRow({
         <div className="flex flex-row">
           <div
             className={cn(
-              "flex w-10 justify-center text-sm font-bold tracking-tighter",
+              "flex w-12 justify-center text-sm font-bold tracking-tighter",
               totalSort < 0 && "text-red",
               totalSort === 0 && "text-green",
             )}
