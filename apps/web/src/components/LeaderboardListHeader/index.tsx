@@ -1,17 +1,12 @@
 import { useRef } from "react";
 import {
   IonButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
   IonItem,
   IonLabel,
   IonListHeader,
   IonModal,
   IonRadio,
   IonRadioGroup,
-  IonTitle,
-  IonToolbar,
 } from "@ionic/react";
 
 import "./styles.css";
