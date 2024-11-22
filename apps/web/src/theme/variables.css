@@ -45,3 +45,9 @@
     --ion-tab-bar-color-selected: #ffffff;
   }
 }
+
+/* ion-item {
+  --min-height: 0px;
+  --padding-start: 0px;
+  --inner-padding-end: 0px;
+} */

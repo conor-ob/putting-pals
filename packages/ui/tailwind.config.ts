@@ -61,6 +61,9 @@ const config = {
         red: {
           DEFAULT: "#ed0000",
         },
+        rolex: {
+          DEFAULT: "#006039",
+        },
         yellow: {
           DEFAULT: "#fae100",
         },

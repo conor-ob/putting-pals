@@ -12,6 +12,9 @@ import { IonReactRouter } from "@ionic/react-router";
 import { square } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 
+import { PgaTourLeaderboardPage } from "./pages/PgaTourLeaderboard/PgaTourLeaderboardPage";
+import { PuttingPalsLeaderboardPage } from "./pages/PuttingPalsLeaderboard/PuttingPalsLeaderboardPage";
+import { TrpcProvider } from "./providers/trpc-provider";
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 /* Basic CSS for apps built with Ionic */
@@ -31,7 +34,6 @@ import "@ionic/react/css/display.css";
  * For more info, please see:
  * https://ionicframework.com/docs/theming/dark-mode
  */
-
 /* import '@ionic/react/css/palettes/dark.always.css'; */
 // import "@ionic/react/css/palettes/dark.class.css";
 import "@ionic/react/css/palettes/dark.system.css";
@@ -39,10 +41,6 @@ import "@ionic/react/css/palettes/dark.system.css";
 import "./theme/variables.css";
 // UI variables
 import "@pkg/ui/globals.css";
-
-import { PgaTourLeaderboardPage } from "./pages/PgaTourLeaderboardPage";
-import { PuttinPalsLeaderboardPage } from "./pages/PuttingPalsLeaderboardPage";
-import { TrpcProvider } from "./providers/trpc-provider";
 
 setupIonicReact({ mode: "ios" });
 
@@ -56,7 +54,7 @@ const App: React.FC = () => (
               <Redirect to="/pga-tour" />
             </Route>
             <Route exact path="/putting-pals">
-              <PuttinPalsLeaderboardPage />
+              <PuttingPalsLeaderboardPage />
             </Route>
             <Route exact path="/pga-tour">
               <PgaTourLeaderboardPage />

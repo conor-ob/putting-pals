@@ -32,7 +32,7 @@ export function PageLayout({
           <IonHeader collapse="condense">
             <IonToolbar>
               <IonTitle size="large">
-                <div className="text-4xl font-bold leading-snug tracking-tight">
+                <div className="text-3.5xl font-bold leading-snug tracking-tight">
                   {title}
                 </div>
               </IonTitle>

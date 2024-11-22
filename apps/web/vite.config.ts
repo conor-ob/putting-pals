@@ -65,6 +65,9 @@ export default defineConfig(({ mode }) => {
       plugins: [
         react(),
         VitePWA({
+          devOptions: {
+            enabled: true,
+          },
           registerType: "autoUpdate",
           manifest: {
             short_name: "Putting Pals",

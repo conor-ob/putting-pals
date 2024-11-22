@@ -2,53 +2,54 @@ import { useRef } from "react";
 import {
   IonButton,
   IonIcon,
-  IonItem,
-  IonLabel,
-  IonListHeader,
   IonModal,
   IonRadio,
   IonRadioGroup,
 } from "@ionic/react";
 import { settingsOutline } from "ionicons/icons";
 
-import "./styles.css";
+import { ListItem } from "../../components/ListItem/ListItem";
 
-export function LeaderboardListHeader() {
+export function SettingsHeader() {
   const modal = useRef<HTMLIonModalElement>(null);
 
   return (
-    <IonListHeader>
-      <IonLabel className="text-2xl font-bold leading-snug tracking-tight">
-        All Players
-      </IonLabel>
-      <IonButton id="open-modal" color="dark" expand="block">
-        <IonIcon
-          className="flex h-6 w-6 items-center justify-center rounded-full p-1 ring-1"
-          icon={settingsOutline}
-        />
-      </IonButton>
+    <>
+      <div className="flex flex-row items-center justify-between py-2 pr-1 ps-4">
+        <div className="text-2xl font-bold tracking-tight">All Players</div>
+        <div className="flex flex-row items-center">
+          <div className="text-sm font-medium text-[#767676]">Time in GMT</div>
+          <IonButton id="open-modal" color="dark" fill="clear" size="small">
+            <IonIcon
+              className="flex h-5 w-5 items-center justify-center rounded-full p-1 ring-1 ring-[#767676]"
+              icon={settingsOutline}
+            />
+          </IonButton>
+        </div>
+      </div>
       <IonModal
         ref={modal}
         trigger="open-modal"
         initialBreakpoint={1}
         breakpoints={[0, 1]}
+        style={{ "--height": "auto" }}
       >
         <div className="flex flex-col items-center px-4 py-8">
           <div className="text-lg font-bold leading-snug tracking-tight">
             Settings
           </div>
-          <div className="w-full">Hello there</div>
+          <div className="w-full">Time zone</div>
           <IonRadioGroup value="custom-checked" className="w-full">
-            <IonItem lines="full">
+            <ListItem>
               <IonRadio value="start" justify="start">
-                Packed at the Start of Line
+                Event time
               </IonRadio>
-            </IonItem>
-            <IonItem lines="full">
+            </ListItem>
+            <ListItem>
               <IonRadio value="end" justify="start">
-                Packed at the Start of Line
+                My time
               </IonRadio>
-            </IonItem>
+            </ListItem>
           </IonRadioGroup>
           <IonButton
             className="h-10 w-full"
@@ -61,6 +62,6 @@ export function LeaderboardListHeader() {
           </IonButton>
         </div>
       </IonModal>
-    </IonListHeader>
+    </>
   );
 }

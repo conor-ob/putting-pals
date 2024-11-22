@@ -31,14 +31,13 @@ export function TournamentHeader({
   tournamentStatus,
   ...props
 }: TournamentHeaderProps) {
-  // TODO get rid of ml-[1px] padding
   return (
     <div
       className={cn("flex flex-row items-center gap-3", className)}
       {...props}
     >
       <img
-        className="ml-[1px] h-20 w-20 rounded-full ring-1 ring-gray-300 dark:ring-0"
+        className="h-20 w-20 rounded-full ring-1 ring-gray-300 dark:ring-0"
         src={tournamentLogo}
       />
       <div className="flex flex-col gap-1">
