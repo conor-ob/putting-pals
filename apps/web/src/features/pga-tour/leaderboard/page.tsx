@@ -12,8 +12,6 @@ import { PgaTourTournamentHeader } from "./components/tournament-header";
 
 export function PgaTourLeaderboardPage() {
   const params = useParams<{ id: string }>();
-  params.id = "R2024100";
-  console.log("params", params.id);
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined);
 
   return (
