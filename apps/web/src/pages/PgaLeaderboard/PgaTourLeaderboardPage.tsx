@@ -5,9 +5,10 @@ import { useParams } from "react-router-dom";
 import { cn } from "@pkg/ui/cn";
 
 import { PageLayout } from "../../layouts/PageLayout";
-import { PgaTourTournamentHeader } from "./components/PgaTourTournamentHeader";
-import { LeaderBoardTableCell } from "./LeaderboardTableCell";
-import { SettingsHeader } from "./SettingsHeader";
+import { api } from "../../providers/trpc-provider";
+import { PgaLeaderBoardTable } from "./components/PgaLeaderBoardTable";
+import { PgaSettingsHeader } from "./components/PgaSettingsHeader";
+import { PgaTournamentHeader } from "./components/PgaTournamentHeader";
 
 export function PgaTourLeaderboardPage() {
   const params = useParams<{ id: string }>();
@@ -16,7 +17,7 @@ export function PgaTourLeaderboardPage() {
   return (
     <PageLayout title="Leaderboard" largeHeader>
       <IonList lines="none">
-        <PgaTourTournamentHeader id={params.id} />
+        <PgaTournamentHeader id={params.id} />
         {/* <RolexCell id={params.id} /> */}
         <IonSearchbar
           className="px-4"
@@ -31,15 +32,17 @@ export function PgaTourLeaderboardPage() {
           onIonClear={() => setSearchQuery(undefined)}
         />
 
-        <SettingsHeader />
-        <PgaTourLeaderboardHeader />
-        <LeaderBoardTableCell id={params.id} searchQuery={searchQuery} />
+        <PgaSettingsHeader />
+        <PgaTourLeaderboardHeader id={params.id} />
+        <PgaLeaderBoardTable id={params.id} searchQuery={searchQuery} />
       </IonList>
     </PageLayout>
   );
 }
 
-function PgaTourLeaderboardHeader({ roundDisplay }: { roundDisplay?: string }) {
+function PgaTourLeaderboardHeader({ id }: { id?: string }) {
+  const { data } = api.tournament.getById.useQuery({ id });
+
   return (
     <>
       <div className="flex w-full flex-row justify-between px-4 py-2 text-[#767676]">
@@ -60,7 +63,7 @@ function PgaTourLeaderboardHeader({ roundDisplay }: { roundDisplay?: string }) {
             THRU
           </div>
           <div className="flex w-8 justify-end text-xs font-bold tracking-tighter">
-            {roundDisplay ?? "RD"}
+            {data?.roundDisplay ?? "RD"}
           </div>
         </div>
       </div>

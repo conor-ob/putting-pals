@@ -4,7 +4,7 @@ import { Skeleton } from "@pkg/ui/ui";
 import { ListItem } from "../../../components/ListItem/ListItem";
 import { api } from "../../../providers/trpc-provider";
 
-export function PgaTourTournamentHeader({ id }: { id?: string }) {
+export function PgaTournamentHeader({ id }: { id?: string }) {
   const { data } = api.tournament.getById.useQuery({ id });
 
   if (data === undefined) {

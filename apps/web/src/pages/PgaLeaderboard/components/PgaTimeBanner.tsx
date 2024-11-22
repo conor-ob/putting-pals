@@ -1,7 +1,7 @@
-import { ListItem } from "../../components/ListItem/ListItem";
-import { api } from "../../providers/trpc-provider";
+import { ListItem } from "../../../components/ListItem/ListItem";
+import { api } from "../../../providers/trpc-provider";
 
-export function RolexCell({ id }: { id?: string }) {
+export function PgaTimeBanner({ id }: { id?: string }) {
   const { data } = api.tournament.getById.useQuery({ id });
 
   if (data === undefined) {
@@ -10,7 +10,7 @@ export function RolexCell({ id }: { id?: string }) {
     return (
       <ListItem>
         <div className="w-full px-4">
-          <div className="h-16 rounded-md bg-rolex"></div>
+          <div className="bg-rolex h-16 rounded-md"></div>
         </div>
       </ListItem>
     );
