@@ -31,7 +31,16 @@ export function PgaTourLeaderboardTable({
           })
           .map((row) => {
             if (row.__typename === "InformationRow") {
-              return <div key={row.id}>{row.displayText}</div>;
+              return (
+                <div
+                  key={row.id}
+                  className="flex items-center justify-center p-4"
+                >
+                  <div className="text-sm font-semibold tracking-tight">
+                    {row.displayText}
+                  </div>
+                </div>
+              );
             } else {
               return (
                 <div key={row.id}>
