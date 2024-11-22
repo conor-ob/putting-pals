@@ -1,3 +1,5 @@
+import { PgaTourLeaderboardPage } from "@features/pga-tour/leaderboard/page";
+import { PuttingPalsLeaderboardPage } from "@features/putting-pals/leaderboard/page";
 import {
   IonApp,
   IonIcon,
@@ -9,12 +11,10 @@ import {
   setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+import { TrpcProvider } from "@providers/trpc-provider";
 import { square } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 
-import { PgaTourLeaderboardPage } from "./features/pga-tour/leaderboard/page";
-import { PuttingPalsLeaderboardPage } from "./features/putting-pals/leaderboard/page";
-import { TrpcProvider } from "./providers/trpc-provider";
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 /* Basic CSS for apps built with Ionic */
@@ -38,7 +38,7 @@ import "@ionic/react/css/display.css";
 // import "@ionic/react/css/palettes/dark.class.css";
 import "@ionic/react/css/palettes/dark.system.css";
 /* Theme variables */
-import "./theme/variables.css";
+import "@theme/variables.css";
 // UI variables
 import "@pkg/ui/globals.css";
 

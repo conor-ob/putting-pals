@@ -1,5 +1,5 @@
-import { ListItem } from "../../../../components/list-item";
-import { api } from "../../../../providers/trpc-provider";
+import { ListItem } from "@components/list-item";
+import { api } from "@providers/trpc-provider";
 
 export function RolexBanner({ id }: { id?: string }) {
   const { data } = api.tournament.getById.useQuery({ id });

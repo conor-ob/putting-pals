@@ -1,7 +1,7 @@
-import { cn } from "@pkg/ui/cn";
+import { ListItem } from "@components/list-item";
+import { api } from "@providers/trpc-provider";
 
-import { ListItem } from "../../../../components/list-item";
-import { api } from "../../../../providers/trpc-provider";
+import { cn } from "@pkg/ui/cn";
 
 export function PgaTourLeaderboardTable({
   id,

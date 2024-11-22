@@ -22,7 +22,17 @@
     "noUncheckedSideEffectImports": true,
 
     /* tsbuildinfo */
-    "tsBuildInfoFile": "${configDir}/.cache/tsconfig.app.tsbuildinfo"
+    "tsBuildInfoFile": "${configDir}/.cache/tsconfig.app.tsbuildinfo",
+
+    /* alias */
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@env/*": ["src/env/*"],
+      "@features/*": ["src/features/*"],
+      "@providers/*": ["src/providers/*"],
+      "@theme/*": ["src/theme/*"]
+    }
   },
   "include": ["src"]
 }

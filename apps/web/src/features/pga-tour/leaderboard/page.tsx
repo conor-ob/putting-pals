@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { PageLayout } from "@components/page-layout";
 import { IonList, IonSearchbar } from "@ionic/react";
+import { api } from "@providers/trpc-provider";
 import { useParams } from "react-router-dom";
 
 import { cn } from "@pkg/ui/cn";
 
-import { PageLayout } from "../../../components/page-layout";
-import { api } from "../../../providers/trpc-provider";
 import { PgaTourSettingsHeader } from "./components/settings-header";
 import { PgaTourLeaderboardTable } from "./components/table";
 import { PgaTourTournamentHeader } from "./components/tournament-header";

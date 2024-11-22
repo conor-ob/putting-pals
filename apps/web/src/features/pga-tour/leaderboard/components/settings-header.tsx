@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { ListItem } from "@components/list-item";
 import {
   IonButton,
   IonIcon,
@@ -7,8 +8,6 @@ import {
   IonRadioGroup,
 } from "@ionic/react";
 import { settingsOutline } from "ionicons/icons";
-
-import { ListItem } from "../../../../components/list-item";
 
 export function PgaTourSettingsHeader() {
   const modal = useRef<HTMLIonModalElement>(null);

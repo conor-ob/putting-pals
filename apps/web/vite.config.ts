@@ -1,8 +1,10 @@
 import * as child from "child_process";
+import path from "path";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig, loadEnv } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 import { envSchema } from "./src/env/schema";
 
@@ -28,6 +30,15 @@ export default defineConfig(({ mode }) => {
     };
   } else {
     return {
+      resolve: {
+        alias: {
+          "@components": path.resolve(__dirname, "./src/components"),
+          "@env": path.resolve(__dirname, "./src/env"),
+          "@features": path.resolve(__dirname, "./src/features"),
+          "@providers": path.resolve(__dirname, "./src/providers"),
+          "@theme": path.resolve(__dirname, "./src/theme"),
+        },
+      },
       define: {
         "import.meta.env.NODE_ENV": JSON.stringify(env.NODE_ENV),
         "import.meta.env.SENTRY_DSN": JSON.stringify(env.SENTRY_DSN),
@@ -63,6 +74,7 @@ export default defineConfig(({ mode }) => {
         },
       },
       plugins: [
+        tsconfigPaths(),
         react(),
         VitePWA({
           devOptions: {

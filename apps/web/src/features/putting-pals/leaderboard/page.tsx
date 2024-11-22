@@ -1,7 +1,7 @@
+import { PageLayout } from "@components/page-layout";
 import { IonList } from "@ionic/react";
 import { useParams } from "react-router-dom";
 
-import { PageLayout } from "../../../components/page-layout";
 import { PuttingPalsTournamentHeader } from "./components/tournament-header";
 
 export function PuttingPalsLeaderboardPage() {

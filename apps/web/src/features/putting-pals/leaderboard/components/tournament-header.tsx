@@ -1,8 +1,8 @@
+import { ListItem } from "@components/list-item";
+import { api } from "@providers/trpc-provider";
+
 import { TournamentHeader } from "@pkg/ui/app";
 import { Skeleton } from "@pkg/ui/ui";
-
-import { ListItem } from "../../../../components/list-item";
-import { api } from "../../../../providers/trpc-provider";
 
 export function PuttingPalsTournamentHeader({ id }: { id?: string }) {
   const { data } = api.tournament.get.useQuery({ id });
