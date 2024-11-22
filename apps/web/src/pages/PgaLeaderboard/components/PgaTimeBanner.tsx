@@ -10,7 +10,7 @@ export function PgaTimeBanner({ id }: { id?: string }) {
     return (
       <ListItem>
         <div className="w-full px-4">
-          <div className="bg-rolex h-16 rounded-md"></div>
+          <div className="h-16 rounded-md bg-rolex"></div>
         </div>
       </ListItem>
     );
