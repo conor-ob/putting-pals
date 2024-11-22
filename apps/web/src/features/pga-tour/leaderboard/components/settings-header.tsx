@@ -8,9 +8,9 @@ import {
 } from "@ionic/react";
 import { settingsOutline } from "ionicons/icons";
 
-import { ListItem } from "../../../components/ListItem/ListItem";
+import { ListItem } from "../../../../components/list-item";
 
-export function PgaSettingsHeader() {
+export function PgaTourSettingsHeader() {
   const modal = useRef<HTMLIonModalElement>(null);
 
   return (

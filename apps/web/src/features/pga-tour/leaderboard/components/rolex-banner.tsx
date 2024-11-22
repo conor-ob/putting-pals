@@ -1,7 +1,7 @@
-import { ListItem } from "../../../components/ListItem/ListItem";
-import { api } from "../../../providers/trpc-provider";
+import { ListItem } from "../../../../components/list-item";
+import { api } from "../../../../providers/trpc-provider";
 
-export function PgaTimeBanner({ id }: { id?: string }) {
+export function RolexBanner({ id }: { id?: string }) {
   const { data } = api.tournament.getById.useQuery({ id });
 
   if (data === undefined) {

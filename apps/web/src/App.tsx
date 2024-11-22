@@ -12,8 +12,8 @@ import { IonReactRouter } from "@ionic/react-router";
 import { square } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 
-import { PgaTourLeaderboardPage } from "./pages/PgaLeaderboard/PgaTourLeaderboardPage";
-import { PuttingPalsLeaderboardPage } from "./pages/PuttingPalsLeaderboard/PuttingPalsLeaderboardPage";
+import { PgaTourLeaderboardPage } from "./features/pga-tour/leaderboard/page";
+import { PuttingPalsLeaderboardPage } from "./features/putting-pals/leaderboard/page";
 import { TrpcProvider } from "./providers/trpc-provider";
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";

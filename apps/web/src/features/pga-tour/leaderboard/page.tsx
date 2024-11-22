@@ -4,21 +4,22 @@ import { useParams } from "react-router-dom";
 
 import { cn } from "@pkg/ui/cn";
 
-import { PageLayout } from "../../layouts/PageLayout";
-import { api } from "../../providers/trpc-provider";
-import { PgaLeaderBoardTable } from "./components/PgaLeaderBoardTable";
-import { PgaSettingsHeader } from "./components/PgaSettingsHeader";
-import { PgaTournamentHeader } from "./components/PgaTournamentHeader";
+import { PageLayout } from "../../../components/page-layout";
+import { api } from "../../../providers/trpc-provider";
+import { PgaTourSettingsHeader } from "./components/settings-header";
+import { PgaTourLeaderboardTable } from "./components/table";
+import { PgaTourTournamentHeader } from "./components/tournament-header";
 
 export function PgaTourLeaderboardPage() {
   const params = useParams<{ id: string }>();
+  params.id = "R2024100";
+  console.log("params", params.id);
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined);
 
   return (
     <PageLayout title="Leaderboard" largeHeader>
       <IonList lines="none">
-        <PgaTournamentHeader id={params.id} />
-        {/* <RolexCell id={params.id} /> */}
+        <PgaTourTournamentHeader id={params.id} />
         <IonSearchbar
           className="px-4"
           showCancelButton="focus"
@@ -32,15 +33,15 @@ export function PgaTourLeaderboardPage() {
           onIonClear={() => setSearchQuery(undefined)}
         />
 
-        <PgaSettingsHeader />
+        <PgaTourSettingsHeader />
         <PgaTourLeaderboardHeader id={params.id} />
-        <PgaLeaderBoardTable id={params.id} searchQuery={searchQuery} />
+        <PgaTourLeaderboardTable id={params.id} searchQuery={searchQuery} />
       </IonList>
     </PageLayout>
   );
 }
 
-function PgaTourLeaderboardHeader({ id }: { id?: string }) {
+export function PgaTourLeaderboardHeader({ id }: { id?: string }) {
   const { data } = api.tournament.getById.useQuery({ id });
 
   return (

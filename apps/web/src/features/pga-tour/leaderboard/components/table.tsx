@@ -1,9 +1,9 @@
 import { cn } from "@pkg/ui/cn";
 
-import { ListItem } from "../../../components/ListItem/ListItem";
-import { api } from "../../../providers/trpc-provider";
+import { ListItem } from "../../../../components/list-item";
+import { api } from "../../../../providers/trpc-provider";
 
-export function PgaLeaderBoardTable({
+export function PgaTourLeaderboardTable({
   id,
   searchQuery,
 }: {

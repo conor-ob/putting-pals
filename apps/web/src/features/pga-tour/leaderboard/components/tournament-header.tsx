@@ -1,10 +1,10 @@
 import { TournamentHeader } from "@pkg/ui/app";
 import { Skeleton } from "@pkg/ui/ui";
 
-import { ListItem } from "../../../components/ListItem/ListItem";
-import { api } from "../../../providers/trpc-provider";
+import { ListItem } from "../../../../components/list-item";
+import { api } from "../../../../providers/trpc-provider";
 
-export function PgaTournamentHeader({ id }: { id?: string }) {
+export function PgaTourTournamentHeader({ id }: { id?: string }) {
   const { data } = api.tournament.getById.useQuery({ id });
 
   if (data === undefined) {
