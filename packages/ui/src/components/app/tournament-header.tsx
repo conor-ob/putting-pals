@@ -5,6 +5,7 @@ import type {
 } from "@pkg/api/pga";
 
 import { cn } from "../../lib/utils";
+import { TournamentInfo } from "./tournament-info";
 import { TournamentName } from "./tournament-name";
 import { TournamentStatusHeader } from "./tournament-status-header";
 
@@ -17,6 +18,28 @@ export type TournamentHeaderProps = {
   tournamentLogo: string;
   tournamentName: string;
   tournamentStatus: TournamentStatus;
+  city: string;
+  country: string;
+  state: string;
+  displayDate: string;
+  weather?: {
+    condition:
+      | "DAY_CLOUDY"
+      | "DAY_FOG_MIST"
+      | "DAY_MOSTLY_CLOUDY"
+      | "DAY_MOSTLY_SUNNY"
+      | "DAY_PARTLY_CLOUDY"
+      | "DAY_RAINY"
+      | "DAY_SCATTERED_SHOWERS"
+      | "DAY_SNOW"
+      | "DAY_SUNNY"
+      | "DAY_THUNDERSTORMS"
+      | "NIGHT_CLEAR"
+      | "NIGHT_ISOLATED_CLOUDS"
+      | "NIGHT_MOSTLY_CLOUDY"
+      | "NIGHT_PARTLY_CLOUDY";
+    tempC: string;
+  };
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export function TournamentHeader({
@@ -29,11 +52,16 @@ export function TournamentHeader({
   tournamentLogo,
   tournamentName,
   tournamentStatus,
+  city,
+  country,
+  state,
+  displayDate,
+  weather,
   ...props
 }: TournamentHeaderProps) {
   return (
     <div
-      className={cn("flex flex-row items-center gap-3", className)}
+      className={cn("flex flex-row items-center gap-4", className)}
       {...props}
     >
       <img
@@ -49,10 +77,15 @@ export function TournamentHeader({
           roundStatusDisplay={roundStatusDisplay}
           tournamentStatus={tournamentStatus}
         />
-        <TournamentName>{tournamentName}</TournamentName>
-        <div className="line-clamp-1 text-base font-medium leading-tight tracking-tight text-[#757575]">
-          {courses[0]?.courseName}
-        </div>
+        <TournamentName tournamentName={tournamentName} />
+        <TournamentInfo
+          courses={courses}
+          city={city}
+          country={country}
+          state={state}
+          displayDate={displayDate}
+          weather={weather}
+        />
       </div>
     </div>
   );

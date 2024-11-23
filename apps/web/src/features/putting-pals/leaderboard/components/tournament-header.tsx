@@ -33,6 +33,11 @@ export function PuttingPalsTournamentHeader({ id }: { id?: string }) {
           tournamentLogo={data.tournamentLogo}
           tournamentName={data.tournamentName}
           tournamentStatus={data.tournamentStatus}
+          city={data.city}
+          country={data.country}
+          state={data.state}
+          displayDate={data.displayDate}
+          weather={data.weather}
         />
       </ListItem>
     );

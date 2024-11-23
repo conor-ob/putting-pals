@@ -18,6 +18,14 @@ export class PgaTourTournamentService extends PgaTourApiService {
         courses {
           courseName
         }
+        city
+        state
+        country
+        displayDate
+        weather {
+          condition
+          tempC
+        }
       }
     }
   `;
@@ -49,6 +57,14 @@ export class PgaTourTournamentService extends PgaTourApiService {
             roundStatus: tournament.roundStatus,
             roundStatusDisplay: tournament.roundStatusDisplay,
             roundStatusColor: tournament.roundStatusColor,
+            city: tournament.city,
+            country: tournament.country,
+            state: tournament.state,
+            displayDate: tournament.displayDate,
+            weather: tournament.weather && {
+              condition: tournament.weather.condition,
+              tempC: tournament.weather.tempC,
+            },
           };
         });
       });

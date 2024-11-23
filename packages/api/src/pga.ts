@@ -85,7 +85,33 @@ export type Tournament = {
   roundStatusColor: RoundStatusColor;
   currentRound: number;
   courses: { courseName: string }[];
+  city: string;
+  country: string;
+  state: string;
+  displayDate: string;
+  weather?: TournamentWeather;
 };
+
+export type TournamentWeather = {
+  condition: WeatherCondition;
+  tempC: string;
+};
+
+export type WeatherCondition =
+  | "DAY_CLOUDY"
+  | "DAY_FOG_MIST"
+  | "DAY_MOSTLY_CLOUDY"
+  | "DAY_MOSTLY_SUNNY"
+  | "DAY_PARTLY_CLOUDY"
+  | "DAY_RAINY"
+  | "DAY_SCATTERED_SHOWERS"
+  | "DAY_SNOW"
+  | "DAY_SUNNY"
+  | "DAY_THUNDERSTORMS"
+  | "NIGHT_CLEAR"
+  | "NIGHT_ISOLATED_CLOUDS"
+  | "NIGHT_MOSTLY_CLOUDY"
+  | "NIGHT_PARTLY_CLOUDY";
 
 export type TournamentStatus = "COMPLETED" | "IN_PROGRESS" | "NOT_STARTED";
 

@@ -9,7 +9,7 @@ import {
 } from "@ionic/react";
 import { settingsOutline } from "ionicons/icons";
 
-export function PgaTourSettingsHeader() {
+export function PgaTourLeaderboardTableAllPlayersHeader() {
   const modal = useRef<HTMLIonModalElement>(null);
 
   return (
