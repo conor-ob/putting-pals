@@ -33,7 +33,7 @@ export function PgaTourLeaderboardTable({
               return (
                 <div
                   key={row.id}
-                  className="flex items-center justify-center p-4"
+                  className="flex items-center justify-center bg-border p-4"
                 >
                   <div className="text-sm font-semibold tracking-tight">
                     {row.displayText}
