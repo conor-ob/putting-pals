@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 
-import { PageLayout } from "./PageLayout";
+import { PageLayout } from "./page-layout";
 
 describe("PageLayout", () => {
   test("should render", () => {

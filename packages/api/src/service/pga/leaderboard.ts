@@ -56,7 +56,8 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
                   id: playerRow.player.id,
                   firstName: playerRow.player.firstName,
                   lastName: playerRow.player.lastName,
-                  displayName: playerRow.player.displayName,
+                  shortName: playerRow.player.shortName,
+                  abbreviations: playerRow.player.abbreviations,
                   countryFlag: getCountryFlag({
                     player: {
                       id: playerRow.player.id,
@@ -67,6 +68,7 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
                 scoringData: {
                   position: playerRow.scoringData.position,
                   total: playerRow.scoringData.total,
+                  totalSort: playerRow.scoringData.totalSort,
                   score: playerRow.scoringData.score,
                   thru: playerRow.scoringData.thru,
                 },

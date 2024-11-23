@@ -1,3 +1,5 @@
+import { PgaTourLeaderboardPage } from "@features/pga-tour/leaderboard/page";
+import { PuttingPalsLeaderboardPage } from "@features/putting-pals/leaderboard/page";
 import {
   IonApp,
   IonIcon,
@@ -9,6 +11,7 @@ import {
   setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+import { TrpcProvider } from "@providers/trpc-provider";
 import { square } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 
@@ -31,17 +34,13 @@ import "@ionic/react/css/display.css";
  * For more info, please see:
  * https://ionicframework.com/docs/theming/dark-mode
  */
-
 /* import '@ionic/react/css/palettes/dark.always.css'; */
 // import "@ionic/react/css/palettes/dark.class.css";
 import "@ionic/react/css/palettes/dark.system.css";
 /* Theme variables */
-import "./theme/variables.css";
+import "@theme/variables.css";
 // UI variables
 import "@pkg/ui/globals.css";
-
-import { PgaTourLeaderboardPage } from "./pages/PgaTourLeaderboardPage";
-import { TrpcProvider } from "./providers/trpc-provider";
 
 setupIonicReact({ mode: "ios" });
 
@@ -54,12 +53,19 @@ const App: React.FC = () => (
             <Route exact path="/">
               <Redirect to="/pga-tour" />
             </Route>
+            <Route exact path="/putting-pals">
+              <PuttingPalsLeaderboardPage />
+            </Route>
             <Route exact path="/pga-tour">
               <PgaTourLeaderboardPage />
             </Route>
             <Route path="/pga-tour/:id" component={PgaTourLeaderboardPage} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
+            <IonTabButton tab="putting-pals" href="/putting-pals">
+              <IonIcon aria-hidden="true" icon={square} />
+              <IonLabel>Putting Pals</IonLabel>
+            </IonTabButton>
             <IonTabButton tab="pga-tour" href="/pga-tour">
               <IonIcon aria-hidden="true" icon={square} />
               <IonLabel>PGA Tour</IonLabel>

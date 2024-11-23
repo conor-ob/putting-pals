@@ -48,24 +48,24 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom colors
-        red: {
-          DEFAULT: "#ff0000",
+        // PGA colors
+        blue: {
+          DEFAULT: "#20487c",
+        },
+        gray: {
+          DEFAULT: "#949494",
         },
         green: {
-          DEFAULT: "#00ff00",
+          DEFAULT: "#25845d",
         },
-        blue: {
-          DEFAULT: "#0000ff",
+        red: {
+          DEFAULT: "#ed0000",
+        },
+        rolex: {
+          DEFAULT: "#006039",
         },
         yellow: {
-          DEFAULT: "#ffff00",
-        },
-        cyan: {
-          DEFAULT: "#00ffff",
-        },
-        purple: {
-          DEFAULT: "#ff00ff",
+          DEFAULT: "#fae100",
         },
       },
       borderRadius: {
