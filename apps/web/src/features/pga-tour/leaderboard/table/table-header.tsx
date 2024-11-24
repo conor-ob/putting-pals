@@ -3,7 +3,7 @@ import { api } from "@providers/trpc-provider";
 import { cn } from "@pkg/ui/cn";
 
 export function PgaTourLeaderboardTableHeader({ id }: { id?: string }) {
-  const { data } = api.tournament.getById.useQuery({ id });
+  const { data } = api.pgaTour.tournament.getById.useQuery({ id });
 
   return (
     <>

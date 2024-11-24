@@ -1,5 +1,5 @@
-import type { Tournament } from "../../pga";
-import { PgaTourApiService } from "./api";
+import type { Tournament } from "../types/graphql";
+import { PgaTourApiService } from "./graphql-api";
 
 export class PgaTourTournamentService extends PgaTourApiService {
   private tournamentsQuery = `

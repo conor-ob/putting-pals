@@ -6,8 +6,7 @@
   "exports": {
     "./context": "./src/context.ts",
     "./root": "./src/root.ts",
-    "./types": "./src/types.ts",
-    "./pga": "./src/pga.ts"
+    "./pga": "./src/pga-tour/types/graphql.ts"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",

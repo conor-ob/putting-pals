@@ -5,7 +5,7 @@ import type {
 import type { FastifyInstance } from "fastify";
 import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
 
-import type { AppRouter } from "@pkg/api/types";
+import type { AppRouter } from "@pkg/api/root";
 import { createTrpcContext } from "@pkg/api/context";
 import { appRouter } from "@pkg/api/root";
 

@@ -4,8 +4,8 @@ import { api } from "@providers/trpc-provider";
 import { TournamentHeader } from "@pkg/ui/app";
 import { Skeleton } from "@pkg/ui/ui";
 
-export function PuttingPalsTournamentHeader({ id }: { id?: string }) {
-  const { data } = api.tournament.get.useQuery({ id });
+export function PuttingPalsLeaderboardHeader({ id }: { id?: string }) {
+  const { data } = api.puttingPals.tournament.getById.useQuery({ id });
 
   if (data === undefined) {
     return (
@@ -22,7 +22,7 @@ export function PuttingPalsTournamentHeader({ id }: { id?: string }) {
     );
   } else {
     return (
-      <ListItem button>
+      <ListItem>
         <TournamentHeader
           className="p-4"
           courses={data.courses}
