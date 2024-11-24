@@ -20,8 +20,8 @@ import {
   shaneLowry,
   tommyFleetwood,
   tonyFinau,
-  tyrrellHatton
-} from '../pgaTourPlayers'
+  tyrrellHatton,
+} from "../pgaTourPlayers";
 import {
   aidanWalsh,
   cameronFolens,
@@ -33,60 +33,60 @@ import {
   richByrne,
   robJoy,
   robKeartland,
-  stephenDevine
-} from '../puttingPalsPlayers.js'
+  stephenDevine,
+} from "../puttingPalsPlayers";
 
 export const theOpenChampionship2021 = {
-  id: 'R2021100',
-  seasonId: '2021',
-  shortName: 'Open',
-  name: 'The Open Championship',
+  id: "R2021100",
+  seasonId: "2021",
+  shortName: "Open",
+  name: "The Open Championship",
   winnerId: phelimOconnor.id,
   runnerUpId: robKeartland.id,
   players: [
     {
       ...conorObrien,
-      picks: [adamScott, louisOosthuizen, paulCasey]
+      picks: [adamScott, louisOosthuizen, paulCasey],
     },
     {
       ...cameronFolens,
-      picks: [jordanSpieth, tyrrellHatton, richardBland]
+      picks: [jordanSpieth, tyrrellHatton, richardBland],
     },
     {
       ...phelimOconnor,
-      picks: [martinKaymer, jonRahm, brooksKoepka]
+      picks: [martinKaymer, jonRahm, brooksKoepka],
     },
     {
       ...stephenDevine,
-      picks: [brooksKoepka, louisOosthuizen, minWooLee]
+      picks: [brooksKoepka, louisOosthuizen, minWooLee],
     },
     {
       ...richByrne,
-      picks: [tyrrellHatton, brandenGrace, lucasHerbert]
+      picks: [tyrrellHatton, brandenGrace, lucasHerbert],
     },
     {
       ...robKeartland,
-      picks: [robertMacIntyre, rickieFowler, louisOosthuizen]
+      picks: [robertMacIntyre, rickieFowler, louisOosthuizen],
     },
     {
       ...aidanWalsh,
-      picks: [sergioGarcia, marcLeishman, louisOosthuizen]
+      picks: [sergioGarcia, marcLeishman, louisOosthuizen],
     },
     {
       ...davidHynes,
-      picks: [ianPoulter, tonyFinau, tommyFleetwood]
+      picks: [ianPoulter, tonyFinau, tommyFleetwood],
     },
     {
       ...johnHannaway,
-      picks: [brandenGrace, shaneLowry, robertMacIntyre]
+      picks: [brandenGrace, shaneLowry, robertMacIntyre],
     },
     {
       ...niallCronin,
-      picks: [shaneLowry, tommyFleetwood, adamScott]
+      picks: [shaneLowry, tommyFleetwood, adamScott],
     },
     {
       ...robJoy,
-      picks: [jonRahm, roryMcilroy, mattWallace]
-    }
-  ]
-}
+      picks: [jonRahm, roryMcilroy, mattWallace],
+    },
+  ],
+};

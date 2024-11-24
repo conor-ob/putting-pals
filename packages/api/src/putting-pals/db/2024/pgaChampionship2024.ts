@@ -20,8 +20,8 @@ import {
   tommyFleetwood,
   tonyFinau,
   viktorHovland,
-  xanderSchauffele
-} from '../pgaTourPlayers'
+  xanderSchauffele,
+} from "../pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -37,77 +37,77 @@ import {
   richByrne,
   robJoy,
   robKeartland,
-  stephenDevine
-} from '../puttingPalsPlayers'
+  stephenDevine,
+} from "../puttingPalsPlayers";
 
 export const pgaChampionship2024 = {
-  id: 'R2024033',
-  seasonId: '2024',
-  shortName: 'PGA',
-  name: 'PGA Championship',
-  paddyPowerId: '12593099',
+  id: "R2024033",
+  seasonId: "2024",
+  shortName: "PGA",
+  name: "PGA Championship",
+  paddyPowerId: "12593099",
   winnerId: davidHynes.id,
   runnerUpId: aimeeOhanlon.id,
   players: [
     {
       ...markByrne,
-      picks: [roryMcilroy, ludvigAberg, rickieFowler] // 6 + 11 + 150 = 167/1
+      picks: [roryMcilroy, ludvigAberg, rickieFowler], // 6 + 11 + 150 = 167/1
     },
     {
       ...richByrne,
-      picks: [scottieScheffler, xanderSchauffele, chrisKirk] // 3 + 10 + 150 = 163/1
+      picks: [scottieScheffler, xanderSchauffele, chrisKirk], // 3 + 10 + 150 = 163/1
     },
     {
       ...brianObrolchain,
-      picks: [roryMcilroy, brysonDeChambeau, christiaanBezuidenhout] // 6 + 81 + 125 = 140/1
+      picks: [roryMcilroy, brysonDeChambeau, christiaanBezuidenhout], // 6 + 81 + 125 = 140/1
     },
     {
       ...robKeartland,
-      picks: [xanderSchauffele, jasonDay, sungjaeIm] // 10 + 60 + 70 = 140/1
+      picks: [xanderSchauffele, jasonDay, sungjaeIm], // 10 + 60 + 70 = 140/1
     },
     {
       ...johnHannaway,
-      picks: [scottieScheffler, ludvigAberg, tigerWoods] // 3 + 11 + 125 = 139/1
+      picks: [scottieScheffler, ludvigAberg, tigerWoods], // 3 + 11 + 125 = 139/1
     },
     {
       ...robJoy,
-      picks: [roryMcilroy, tonyFinau, sungjaeIm] // 6 + 60 + 70 = 136/1
+      picks: [roryMcilroy, tonyFinau, sungjaeIm], // 6 + 60 + 70 = 136/1
     },
     {
       ...niallCronin,
-      picks: [scottieScheffler, roryMcilroy, tigerWoods] // 3 + 6 + 125 = 134
+      picks: [scottieScheffler, roryMcilroy, tigerWoods], // 3 + 6 + 125 = 134
     },
     {
       ...conorObrien,
-      picks: [scottieScheffler, roryMcilroy, christiaanBezuidenhout] // 3 + 6 + 125 = 134/1
+      picks: [scottieScheffler, roryMcilroy, christiaanBezuidenhout], // 3 + 6 + 125 = 134/1
     },
     {
       ...karlCurran,
-      picks: [roryMcilroy, maxHoma, adamScott] // 6 + 28 + 100 = 134/1
+      picks: [roryMcilroy, maxHoma, adamScott], // 6 + 28 + 100 = 134/1
     },
     {
       ...aidanWalsh,
-      picks: [roryMcilroy, maxHoma, taylorPendrith] // 6 + 28 + 100 = 134/1
+      picks: [roryMcilroy, maxHoma, taylorPendrith], // 6 + 28 + 100 = 134/1
     },
     {
       ...stephenDevine,
-      picks: [roryMcilroy, viktorHovland, seppStraka] // 6 + 45 + 80 = 131/1
+      picks: [roryMcilroy, viktorHovland, seppStraka], // 6 + 45 + 80 = 131/1
     },
     {
       ...davidHynes,
-      picks: [tommyFleetwood, viktorHovland, tonyFinau] // 25 + 45 + 60 = 130/1
+      picks: [tommyFleetwood, viktorHovland, tonyFinau], // 25 + 45 + 60 = 130/1
     },
     {
       ...phelimOconnor,
-      picks: [roryMcilroy, ludvigAberg, tomKim] // 6 + 11 + 110 = 127/1
+      picks: [roryMcilroy, ludvigAberg, tomKim], // 6 + 11 + 110 = 127/1
     },
     {
       ...aimeeOhanlon,
-      picks: [scottieScheffler, joaquinNiemann, shaneLowry] // 3 + 33 + 90 = 126/1
+      picks: [scottieScheffler, joaquinNiemann, shaneLowry], // 3 + 33 + 90 = 126/1
     },
     {
       ...ciaranTighe,
-      picks: [ludvigAberg, tommyFleetwood, akshayBhatia] // 11 + 25 + 90 = 126/1
-    }
-  ]
-}
+      picks: [ludvigAberg, tommyFleetwood, akshayBhatia], // 11 + 25 + 90 = 126/1
+    },
+  ],
+};

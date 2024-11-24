@@ -28,8 +28,8 @@ import {
   tonyFinau,
   viktorHovland,
   wyndhamClark,
-  xanderSchauffele
-} from '../pgaTourPlayers'
+  xanderSchauffele,
+} from "../pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -47,85 +47,85 @@ import {
   richByrne,
   robJoy,
   robKeartland,
-  stephenDevine
-} from '../puttingPalsPlayers'
+  stephenDevine,
+} from "../puttingPalsPlayers";
 
 export const mastersTournament2024 = {
-  id: 'R2024014',
-  seasonId: '2024',
-  shortName: 'Masters',
-  name: 'Masters Tournament',
-  paddyPowerId: '12571448',
+  id: "R2024014",
+  seasonId: "2024",
+  shortName: "Masters",
+  name: "Masters Tournament",
+  paddyPowerId: "12571448",
   winnerId: richByrne.id,
   runnerUpId: brianObrolchain.id,
   players: [
     {
       ...robJoy,
-      picks: [scottieScheffler, roryMcilroy, taylorMoore] // 3 + 9 + 225 = 237/1
+      picks: [scottieScheffler, roryMcilroy, taylorMoore], // 3 + 9 + 225 = 237/1
     },
     {
       ...markByrne,
-      picks: [tommyFleetwood, patrickReed, harrisEnglish] // 33 + 50 + 100 = 183/1
+      picks: [tommyFleetwood, patrickReed, harrisEnglish], // 33 + 50 + 100 = 183/1
     },
     {
       ...stephenDevine,
-      picks: [xanderSchauffele, shaneLowry, chrisKirk] // 12 + 33 + 125 = 170/1
+      picks: [xanderSchauffele, shaneLowry, chrisKirk], // 12 + 33 + 125 = 170/1
     },
     {
       ...aimeeOhanlon,
-      picks: [scottieScheffler, jordanSpieth, chrisKirk] // 3 + 18 + 125 = 146/1
+      picks: [scottieScheffler, jordanSpieth, chrisKirk], // 3 + 18 + 125 = 146/1
     },
     {
       ...ciaranTighe,
-      picks: [wyndhamClark, minWooLee, adamScott] // 25 + 50 + 66 = 141/1
+      picks: [wyndhamClark, minWooLee, adamScott], // 25 + 50 + 66 = 141/1
     },
     {
       ...phelimOconnor,
-      picks: [scottieScheffler, jonRahm, chrisKirk] // 3 + 10 + 125 = 138/1
+      picks: [scottieScheffler, jonRahm, chrisKirk], // 3 + 10 + 125 = 138/1
     },
     {
       ...brianObrolchain,
-      picks: [scottieScheffler, roryMcilroy, chrisKirk] // 3 + 8 + 125 = 136/1
+      picks: [scottieScheffler, roryMcilroy, chrisKirk], // 3 + 8 + 125 = 136/1
     },
     {
       ...niallCronin,
-      picks: [jonRahm, siWooKim, adamScott] // 9 + 60 + 66 = 135/1
+      picks: [jonRahm, siWooKim, adamScott], // 9 + 60 + 66 = 135/1
     },
     {
       ...davidHynes,
-      picks: [tonyFinau, maxHoma, siWooKim] // 25 + 50 + 60 = 135/1
+      picks: [tonyFinau, maxHoma, siWooKim], // 25 + 50 + 60 = 135/1
     },
     {
       ...aidanWalsh,
-      picks: [brooksKoepka, hidekiMatsuyama, philMickelson] // 14 + 16 + 100 = 130/1
+      picks: [brooksKoepka, hidekiMatsuyama, philMickelson], // 14 + 16 + 100 = 130/1
     },
     {
       ...cameronFolens,
-      picks: [jonRahm, collinMorikawa, justinRose] // 9 + 50 + 70 = 129/1
+      picks: [jonRahm, collinMorikawa, justinRose], // 9 + 50 + 70 = 129/1
     },
     {
       ...robKeartland,
-      picks: [scottieScheffler, brooksKoepka, seppStraka] // 7 + 14 + 110 = 127/1
+      picks: [scottieScheffler, brooksKoepka, seppStraka], // 7 + 14 + 110 = 127/1
     },
     {
       ...conorObrien,
-      picks: [roryMcilroy, dustinJohnson, tomKim] // 9 + 28 + 90 = 127/1
+      picks: [roryMcilroy, dustinJohnson, tomKim], // 9 + 28 + 90 = 127/1
     },
     {
       ...johnHannaway,
-      picks: [justinThomas, viktorHovland, rickieFowler] // 22 + 25 + 80 = 127/1
+      picks: [justinThomas, viktorHovland, rickieFowler], // 22 + 25 + 80 = 127/1
     },
     {
       ...karlCurran,
-      picks: [ludvigAberg, dustinJohnson, rickieFowler] // 18 + 28 + 80 = 126/1
+      picks: [ludvigAberg, dustinJohnson, rickieFowler], // 18 + 28 + 80 = 126/1
     },
     {
       ...richByrne,
-      picks: [scottieScheffler, xanderSchauffele, seppStraka] // 3 + 12 + 110 = 125/1
+      picks: [scottieScheffler, xanderSchauffele, seppStraka], // 3 + 12 + 110 = 125/1
     },
     {
       ...cianMoynihan,
-      picks: [jonRahm, tonyFinau, sergioGarcia] // 10 + 25 + 90 = 125/1
-    }
-  ]
-}
+      picks: [jonRahm, tonyFinau, sergioGarcia], // 10 + 25 + 90 = 125/1
+    },
+  ],
+};

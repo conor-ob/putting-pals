@@ -24,8 +24,8 @@ import {
   siWooKim,
   tommyFleetwood,
   tonyFinau,
-  tyrrellHatton
-} from '../pgaTourPlayers.js'
+  tyrrellHatton,
+} from "../pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -41,76 +41,76 @@ import {
   richByrne,
   robJoy,
   robKeartland,
-  stephenDevine
-} from '../puttingPalsPlayers.js'
+  stephenDevine,
+} from "../puttingPalsPlayers";
 
 export const mastersTournament2023 = {
-  id: 'R2023014',
-  seasonId: '2023',
-  shortName: 'Masters',
-  name: 'Masters Tournament',
+  id: "R2023014",
+  seasonId: "2023",
+  shortName: "Masters",
+  name: "Masters Tournament",
   winnerId: brianObrolchain.id,
   runnerUpId: phelimOconnor.id,
   players: [
     {
       ...aidanWalsh,
-      picks: [roryMcilroy, jasonDay, kurtKitayama]
+      picks: [roryMcilroy, jasonDay, kurtKitayama],
     },
     {
       ...aimeeOhanlon,
-      picks: [scottieScheffler, tonyFinau, kurtKitayama]
+      picks: [scottieScheffler, tonyFinau, kurtKitayama],
     },
     {
       ...brianObrolchain,
-      picks: [jordanSpieth, shaneLowry, sahithTheegala]
+      picks: [jordanSpieth, shaneLowry, sahithTheegala],
     },
     {
       ...cameronFolens,
-      picks: [cameronSmith, cameronYoung, cameronChamp]
+      picks: [cameronSmith, cameronYoung, cameronChamp],
     },
     {
       ...conorObrien,
-      picks: [cameronSmith, justinThomas, keeganBradley]
+      picks: [cameronSmith, justinThomas, keeganBradley],
     },
     {
       ...ciaranTighe,
-      picks: [maxHoma, minWooLee, tyrrellHatton]
+      picks: [maxHoma, minWooLee, tyrrellHatton],
     },
     {
       ...stephenDevine,
-      picks: [roryMcilroy, minWooLee, seamusPower]
+      picks: [roryMcilroy, minWooLee, seamusPower],
     },
     {
       ...davidHynes,
-      picks: [tonyFinau, tommyFleetwood, seamusPower]
+      picks: [tonyFinau, tommyFleetwood, seamusPower],
     },
     {
       ...johnHannaway,
-      picks: [tonyFinau, tommyFleetwood, siWooKim]
+      picks: [tonyFinau, tommyFleetwood, siWooKim],
     },
     {
       ...karlCurran,
-      picks: [roryMcilroy, brooksKoepka, kurtKitayama]
+      picks: [roryMcilroy, brooksKoepka, kurtKitayama],
     },
     {
       ...markByrne,
-      picks: [roryMcilroy, cameronSmith, seamusPower]
+      picks: [roryMcilroy, cameronSmith, seamusPower],
     },
     {
       ...phelimOconnor,
-      picks: [scottieScheffler, jonRahm, dannyWillett]
+      picks: [scottieScheffler, jonRahm, dannyWillett],
     },
     {
       ...richByrne,
-      picks: [roryMcilroy, tonyFinau, kurtKitayama]
+      picks: [roryMcilroy, tonyFinau, kurtKitayama],
     },
     {
       ...robJoy,
-      picks: [roryMcilroy, collinMorikawa, mitoPereira]
+      picks: [roryMcilroy, collinMorikawa, mitoPereira],
     },
     {
       ...robKeartland,
-      picks: [roryMcilroy, coreyConners, keithMitchell]
-    }
-  ]
-}
+      picks: [roryMcilroy, coreyConners, keithMitchell],
+    },
+  ],
+};

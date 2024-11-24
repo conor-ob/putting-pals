@@ -19,8 +19,8 @@ import {
   ryanFox,
   scottieScheffler,
   tommyFleetwood,
-  viktorHovland
-} from '../pgaTourPlayers.js'
+  viktorHovland,
+} from "../pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -32,60 +32,60 @@ import {
   phelimOconnor,
   richByrne,
   robJoy,
-  stephenDevine
-} from '../puttingPalsPlayers.js'
+  stephenDevine,
+} from "../puttingPalsPlayers";
 
 export const usOpen2023 = {
-  id: 'R2023026',
-  seasonId: '2023',
-  shortName: 'US Open',
-  name: 'U.S. Open',
+  id: "R2023026",
+  seasonId: "2023",
+  shortName: "US Open",
+  name: "U.S. Open",
   winnerId: aidanWalsh.id,
   runnerUpId: robJoy.id,
   players: [
     {
       ...conorObrien,
-      picks: [maxHoma, justinThomas, adamScott]
+      picks: [maxHoma, justinThomas, adamScott],
     },
     {
       ...aimeeOhanlon,
-      picks: [viktorHovland, collinMorikawa, dennyMccarthy]
+      picks: [viktorHovland, collinMorikawa, dennyMccarthy],
     },
     {
       ...richByrne,
-      picks: [scottieScheffler, brooksKoepka, garyWoodland]
+      picks: [scottieScheffler, brooksKoepka, garyWoodland],
     },
     {
       ...johnHannaway,
-      picks: [scottieScheffler, viktorHovland, mattKuchar]
+      picks: [scottieScheffler, viktorHovland, mattKuchar],
     },
     {
       ...phelimOconnor,
-      picks: [tommyFleetwood, justinRose, patrickReed]
+      picks: [tommyFleetwood, justinRose, patrickReed],
     },
     {
       ...robJoy,
-      picks: [ryanFox, scottieScheffler, roryMcilroy]
+      picks: [ryanFox, scottieScheffler, roryMcilroy],
     },
     {
       ...ciaranTighe,
-      picks: [philMickelson, scottieScheffler, jonRahm]
+      picks: [philMickelson, scottieScheffler, jonRahm],
     },
     {
       ...davidHynes,
-      picks: [tommyFleetwood, adamScott, mattFitzpatrick]
+      picks: [tommyFleetwood, adamScott, mattFitzpatrick],
     },
     {
       ...stephenDevine,
-      picks: [viktorHovland, coreyConners, russellHenley]
+      picks: [viktorHovland, coreyConners, russellHenley],
     },
     {
       ...aidanWalsh,
-      picks: [scottieScheffler, jonRahm, russellHenley]
+      picks: [scottieScheffler, jonRahm, russellHenley],
     },
     {
       ...cameronFolens,
-      picks: [scottieScheffler, jonRahm, camDavis]
-    }
-  ]
-}
+      picks: [scottieScheffler, jonRahm, camDavis],
+    },
+  ],
+};

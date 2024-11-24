@@ -24,8 +24,8 @@ import {
   viktorHovland,
   wilcoNienaber,
   willZalatoris,
-  xanderSchauffele
-} from '../pgaTourPlayers'
+  xanderSchauffele,
+} from "../pgaTourPlayers";
 import {
   aidanWalsh,
   cameronFolens,
@@ -38,64 +38,64 @@ import {
   phelimOconnor,
   richByrne,
   robJoy,
-  stephenDevine
-} from '../puttingPalsPlayers.js'
+  stephenDevine,
+} from "../puttingPalsPlayers";
 
 export const usOpen2021 = {
-  id: 'R2021535',
-  seasonId: '2021',
-  shortName: 'US Open',
-  name: 'U.S. Open',
+  id: "R2021535",
+  seasonId: "2021",
+  shortName: "US Open",
+  name: "U.S. Open",
   winnerId: cameronFolens.id,
   runnerUpId: markByrne.id,
   players: [
     {
       ...conorObrien,
-      picks: [viktorHovland, willZalatoris, adamScott]
+      picks: [viktorHovland, willZalatoris, adamScott],
     },
     {
       ...aidanWalsh,
-      picks: [jonRahm, brysonDeChambeau, wilcoNienaber]
+      picks: [jonRahm, brysonDeChambeau, wilcoNienaber],
     },
     {
       ...markByrne,
-      picks: [brooksKoepka, louisOosthuizen, leeWestwood]
+      picks: [brooksKoepka, louisOosthuizen, leeWestwood],
     },
     {
       ...stephenDevine,
-      picks: [tonyFinau, viktorHovland, stewartCink]
+      picks: [tonyFinau, viktorHovland, stewartCink],
     },
     {
       ...davidHynes,
-      picks: [leeWestwood, shaneLowry, patrickReed]
+      picks: [leeWestwood, shaneLowry, patrickReed],
     },
     {
       ...cameronFolens,
-      picks: [xanderSchauffele, brianHarman, brooksKoepka]
+      picks: [xanderSchauffele, brianHarman, brooksKoepka],
     },
     {
       ...richByrne,
-      picks: [xanderSchauffele, collinMorikawa, christiaanBezuidenhout]
+      picks: [xanderSchauffele, collinMorikawa, christiaanBezuidenhout],
     },
     {
       ...phelimOconnor,
-      picks: [jasonKokrak, garyWoodland, jonRahm]
+      picks: [jasonKokrak, garyWoodland, jonRahm],
     },
     {
       ...johnHannaway,
-      picks: [coreyConners, scottieScheffler, viktorHovland]
+      picks: [coreyConners, scottieScheffler, viktorHovland],
     },
     {
       ...robJoy,
-      picks: [maxHoma, shaneLowry, brooksKoepka]
+      picks: [maxHoma, shaneLowry, brooksKoepka],
     },
     {
       ...karlCurran,
-      picks: [brooksKoepka, paulCasey, adamScott]
+      picks: [brooksKoepka, paulCasey, adamScott],
     },
     {
       ...niallCronin,
-      picks: [justinThomas, philMickelson, mattFitzpatrick]
-    }
-  ]
-}
+      picks: [justinThomas, philMickelson, mattFitzpatrick],
+    },
+  ],
+};

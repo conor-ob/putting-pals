@@ -23,8 +23,8 @@ import {
   tigerWoods,
   viktorHovland,
   willZalatoris,
-  xanderSchauffele
-} from '../pgaTourPlayers'
+  xanderSchauffele,
+} from "../pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -40,76 +40,76 @@ import {
   richByrne,
   robJoy,
   robKeartland,
-  stephenDevine
-} from '../puttingPalsPlayers.js'
+  stephenDevine,
+} from "../puttingPalsPlayers";
 
 export const theOpenChampionship2022 = {
-  id: 'R2022100',
-  seasonId: '2022',
-  shortName: 'Open',
-  name: 'The Open Championship',
+  id: "R2022100",
+  seasonId: "2022",
+  shortName: "Open",
+  name: "The Open Championship",
   winnerId: richByrne.id,
   runnerUpId: brianObrolchain.id,
   players: [
     {
       ...conorObrien,
-      picks: [xanderSchauffele, mattFitzpatrick, francescoMolinari]
+      picks: [xanderSchauffele, mattFitzpatrick, francescoMolinari],
     },
     {
       ...johnHannaway,
-      picks: [shaneLowry, thomasPieters, robertMacIntyre]
+      picks: [shaneLowry, thomasPieters, robertMacIntyre],
     },
     {
       ...karlCurran,
-      picks: [willZalatoris, seamusPower, viktorHovland]
+      picks: [willZalatoris, seamusPower, viktorHovland],
     },
     {
       ...richByrne,
-      picks: [roryMcilroy, shaneLowry, kevinKisner]
+      picks: [roryMcilroy, shaneLowry, kevinKisner],
     },
     {
       ...brianObrolchain,
-      picks: [roryMcilroy, dylanFrittelli, xanderSchauffele]
+      picks: [roryMcilroy, dylanFrittelli, xanderSchauffele],
     },
     {
       ...robJoy,
-      picks: [coreyConners, collinMorikawa, patrickCantlay]
+      picks: [coreyConners, collinMorikawa, patrickCantlay],
     },
     {
       ...ciaranTighe,
-      picks: [robertMacIntyre, jonRahm, seamusPower]
+      picks: [robertMacIntyre, jonRahm, seamusPower],
     },
     {
       ...aidanWalsh,
-      picks: [xanderSchauffele, seamusPower, tigerWoods]
+      picks: [xanderSchauffele, seamusPower, tigerWoods],
     },
     {
       ...robKeartland,
-      picks: [roryMcilroy, robertMacIntyre, billyHorschel]
+      picks: [roryMcilroy, robertMacIntyre, billyHorschel],
     },
     {
       ...cameronFolens,
-      picks: [willZalatoris, joaquinNiemann, robertMacIntyre]
+      picks: [willZalatoris, joaquinNiemann, robertMacIntyre],
     },
     {
       ...davidHynes,
-      picks: [viktorHovland, collinMorikawa, padraigHarrington]
+      picks: [viktorHovland, collinMorikawa, padraigHarrington],
     },
     {
       ...aimeeOhanlon,
-      picks: [roryMcilroy, louisOosthuizen, mitoPereira]
+      picks: [roryMcilroy, louisOosthuizen, mitoPereira],
     },
     {
       ...markByrne,
-      picks: [paulCasey, collinMorikawa, shaneLowry]
+      picks: [paulCasey, collinMorikawa, shaneLowry],
     },
     {
       ...stephenDevine,
-      picks: [kevinKisner, xanderSchauffele, mattFitzpatrick]
+      picks: [kevinKisner, xanderSchauffele, mattFitzpatrick],
     },
     {
       ...phelimOconnor,
-      picks: [jordanSmith, xanderSchauffele, scottieScheffler]
-    }
-  ]
-}
+      picks: [jordanSmith, xanderSchauffele, scottieScheffler],
+    },
+  ],
+};
