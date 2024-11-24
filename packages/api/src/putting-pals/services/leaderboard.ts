@@ -1,6 +1,6 @@
 import type { PlayerRowV3 } from "../../pga-tour/types/graphql";
 import { PgaTourLeaderboardService } from "../../pga-tour/services/leaderboard";
-import { Database } from "../db/Database";
+import { Database } from "../db";
 
 export class PuttingPalsLeaderboardService {
   private apiKey: string;
