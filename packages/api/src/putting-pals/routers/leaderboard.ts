@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-import { PgaTourLeaderboardService } from "../service/pga/leaderboard";
-import { PgaTourWebScrapingService } from "../service/pga/scraping";
-import { publicProcedure, router } from "../trpc";
+import { publicProcedure, router } from "../../trpc";
+import { PuttingPalsLeaderboardService } from "../services/leaderboard";
+import { PuttingPalsRedirectsService } from "../services/redirect";
 
 export const leaderboardRouter = router({
   getById: publicProcedure
@@ -10,14 +10,14 @@ export const leaderboardRouter = router({
     .query(async ({ ctx, input }) => {
       if (input.id === undefined) {
         const currentTournamentId =
-          await new PgaTourWebScrapingService().getCurrentTournamentId();
-        return await new PgaTourLeaderboardService({
+          new PuttingPalsRedirectsService().getCurrentTournamentId();
+        return new PuttingPalsLeaderboardService({
           apiKey: ctx.apiKey,
         }).getLeaderboard({
           id: currentTournamentId,
         });
       } else {
-        return new PgaTourLeaderboardService({
+        return new PuttingPalsLeaderboardService({
           apiKey: ctx.apiKey,
         }).getLeaderboard({
           id: input.id,

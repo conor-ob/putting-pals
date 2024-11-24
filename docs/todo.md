@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] leaderboard loading skeleton
 - [ ] refactor API
   - [ ] Create PGA tour graphql types
   - [ ] Create display types (name TBD) for all PGA tour graphql types
