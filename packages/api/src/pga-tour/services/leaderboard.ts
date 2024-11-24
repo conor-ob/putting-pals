@@ -71,6 +71,7 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
                   totalSort: playerRow.scoringData.totalSort,
                   score: playerRow.scoringData.score,
                   thru: playerRow.scoringData.thru,
+                  teeTime: playerRow.scoringData.teeTime,
                 },
               };
             }

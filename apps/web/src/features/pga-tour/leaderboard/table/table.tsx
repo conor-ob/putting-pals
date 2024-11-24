@@ -52,6 +52,7 @@ export function PgaTourLeaderboardTable({
                     totalSort={row.scoringData.totalSort}
                     score={row.scoringData.score}
                     thru={row.scoringData.thru}
+                    teeTime={row.scoringData.teeTime}
                   />
                   <div className="mx-4 border-b"></div>
                 </div>

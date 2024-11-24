@@ -49,6 +49,7 @@ export type ScoringDataV3 = {
   thruSort: number;
   score: string;
   scoreSort: number;
+  teeTime?: number;
   courseId: string;
   groupNumber: number;
   currentRound: number;

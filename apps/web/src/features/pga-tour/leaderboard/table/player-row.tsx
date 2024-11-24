@@ -11,6 +11,7 @@ export function PgaTourLeaderboardTablePlayerRow({
   totalSort,
   thru,
   score,
+  teeTime,
 }: {
   position: string;
   countryFlag: string;
@@ -20,6 +21,7 @@ export function PgaTourLeaderboardTablePlayerRow({
   totalSort: number;
   thru: string;
   score: string;
+  teeTime?: number;
 }) {
   return (
     <ListItem>
@@ -50,13 +52,33 @@ export function PgaTourLeaderboardTablePlayerRow({
             {total}
           </div>
           <div className="flex w-10 justify-center text-sm font-semibold tracking-tighter">
-            {thru}
+            {getThru(thru, teeTime)}
           </div>
           <div className="flex w-8 justify-end text-sm font-semibold tracking-tighter">
-            {score}
+            {getScore(score)}
           </div>
         </div>
       </div>
     </ListItem>
   );
+}
+
+function getThru(thru: string, teeTime?: number) {
+  if (thru !== "") {
+    return thru;
+  }
+  if (teeTime !== undefined) {
+    return new Date(teeTime).toLocaleTimeString(undefined, {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+  return "-";
+}
+
+function getScore(score: string) {
+  if (score === "") {
+    return "-";
+  }
+  return score;
 }
