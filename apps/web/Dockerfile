@@ -4,7 +4,7 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 
 # Setup pnpm and turbo on the alpine base
-FROM alpine as base
+FROM alpine AS base
 RUN npm install pnpm turbo --global
 RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
 
@@ -53,4 +53,4 @@ COPY --from=builder /app/apps/web/dist /srv
 COPY apps/web/Caddyfile /etc/caddy/Caddyfile
 
 RUN caddy fmt --overwrite /etc/caddy/Caddyfile
-CMD caddy run --config /etc/caddy/Caddyfile --adapter caddyfile 2>&1
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile", "2>&1"]
