@@ -10,5 +10,5 @@
 - [ ] fix colours
   - [ ] update shadcn design library colours
   - [ ] remove hardcoded colours like leaderboard abbreviations
-- [ ] implement text carousel for tournament info
+- [x] implement text carousel for tournament info
 - [ ] implement service worker prompt to refresh
