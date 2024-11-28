@@ -1,6 +1,6 @@
 import { Database } from "@pkg/db";
 
-import type { PlayerRowV3 } from "../../pga-tour/types/graphql";
+import type { PlayerRowV3 } from "../../graphql/types";
 import { PgaTourLeaderboardService } from "../../pga-tour/services/leaderboard";
 
 export class PuttingPalsLeaderboardService {
@@ -22,11 +22,13 @@ export class PuttingPalsLeaderboardService {
     return {
       players: puttingPalsTournament.players
         .map((player) => {
-          const picks = pgaTourLeaderboard.players
-            .filter((it) => it.__typename === "PlayerRowV3")
-            .filter((it) => player.picks.includes(it.player.id));
+          const picks = pgaTourLeaderboard.players.filter(
+            (it) =>
+              it.__typename === "PlayerRowV3" &&
+              player.picks.includes(it.player.id),
+          );
           const totalSort = picks.reduce((accumulator, player) => {
-            return accumulator + player.scoringData.totalSort;
+            return accumulator + (player as PlayerRowV3).scoringData.totalSort;
           }, 0);
           return {
             id: player.id,

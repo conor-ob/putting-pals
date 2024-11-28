@@ -1,4 +1,4 @@
-import type { WeatherCondition as GraphQlWeatherCondition } from "./pga-tour/types/graphql";
+import { WeatherCondition as GraphQlWeatherCondition } from "./graphql/types";
 
 export enum WeatherCondition {
   DAY_CLOUDY = "Cloudy",
@@ -8,7 +8,7 @@ function mapPgaToDomain(
   weatherCondition: GraphQlWeatherCondition,
 ): WeatherCondition | undefined {
   switch (weatherCondition) {
-    case "DAY_CLOUDY":
+    case GraphQlWeatherCondition.DayCloudy:
       return WeatherCondition.DAY_CLOUDY;
     default:
       return undefined;

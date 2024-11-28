@@ -7715,7 +7715,7 @@ export type YourTourStory = {
 
 // #endregion
 
-// #region GraphQL inferred types
+// #region GraphQL new types
 
 export type LeaderboardCompressedV3 = {
   __typename?: "LeaderboardCompressedV2";
@@ -7723,9 +7723,34 @@ export type LeaderboardCompressedV3 = {
   payload: Scalars["String"]["output"];
 };
 
+export type LeaderboardRowV3 = InformationRow | PlayerRowV3;
+
 export type LeaderboardV3 = {
   __typename?: "LeaderboardV3";
   id: Scalars["ID"]["output"];
+  players: Array<LeaderboardRowV3>;
+};
+
+export type PlayerRowV3 = {
+  __typename?: "PlayerRowV3";
+  id: Scalars["ID"]["output"];
+  leaderboardSortOrder: Scalars["Int"]["output"];
+  player: Player;
+  scoringData: ScoringData;
+};
+
+// does it need V3 suffix?
+export type ScoringData = {
+  __typename?: "ScoringData";
+  id: Scalars["ID"]["output"];
+  position: Scalars["String"]["output"];
+  score: Scalars["String"]["output"];
+  scoreSort: Scalars["Int"]["output"];
+  teeTime: Scalars["AWSTimestamp"]["output"];
+  thru: Scalars["String"]["output"];
+  thruSort: Scalars["Int"]["output"];
+  total: Scalars["String"]["output"];
+  totalSort: Scalars["Int"]["output"];
 };
 
 // #endregion

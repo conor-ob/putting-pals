@@ -1,6 +1,9 @@
 import pako from "pako";
 
-import type { LeaderboardCompressedV3, LeaderboardV3 } from "../types/graphql";
+import type {
+  LeaderboardCompressedV3,
+  LeaderboardV3,
+} from "../../graphql/types";
 import { getCountryFlag } from "../utils/flag-utils";
 import { PgaTourApiService } from "./graphql-api";
 
@@ -46,7 +49,7 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
                 leaderboardSortOrder: informationRow.leaderboardSortOrder,
                 displayText: informationRow.displayText,
               };
-            } else {
+            } else if (row.__typename === "PlayerRowV3") {
               const playerRow = row;
               return {
                 __typename: playerRow.__typename,
@@ -71,9 +74,11 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
                   totalSort: playerRow.scoringData.totalSort,
                   score: playerRow.scoringData.score,
                   thru: playerRow.scoringData.thru,
-                  teeTime: playerRow.scoringData.teeTime,
+                  teeTime: playerRow.scoringData.teeTime as number,
                 },
               };
+            } else {
+              throw new Error(`Unknown row type: ${row.__typename}`);
             }
           }),
         };
