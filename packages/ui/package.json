@@ -17,6 +17,7 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
+    "@pkg/utils": "workspace:*",
     "@radix-ui/react-avatar": "catalog:",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
