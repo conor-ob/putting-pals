@@ -21,7 +21,7 @@ import {
   tommyFleetwood,
   tonyFinau,
   tyrrellHatton,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   cameronFolens,
@@ -34,7 +34,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const theOpenChampionship2021 = {
   id: "R2021100",

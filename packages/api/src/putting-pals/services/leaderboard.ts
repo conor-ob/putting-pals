@@ -1,6 +1,7 @@
+import { Database } from "@pkg/db";
+
 import type { PlayerRowV3 } from "../../pga-tour/types/graphql";
 import { PgaTourLeaderboardService } from "../../pga-tour/services/leaderboard";
-import { Database } from "../db";
 
 export class PuttingPalsLeaderboardService {
   private apiKey: string;
@@ -10,9 +11,7 @@ export class PuttingPalsLeaderboardService {
   }
 
   public async getLeaderboard({ id }: { id: string }) {
-    const puttingPalsTournament = new Database()
-      .getTournaments()
-      .find((tournament) => tournament.id === id);
+    const puttingPalsTournament = new Database().getTournament(id);
     if (puttingPalsTournament === undefined) {
       throw new Error("Tournament not found");
     }
@@ -21,20 +20,20 @@ export class PuttingPalsLeaderboardService {
     }).getLeaderboard({ id });
 
     return {
-      players: puttingPalsTournament.playerPicks
-        .map((playerPick) => {
+      players: puttingPalsTournament.players
+        .map((player) => {
           const picks = pgaTourLeaderboard.players
             .filter((it) => it.__typename === "PlayerRowV3")
-            .filter((it) => playerPick.picks.includes(it.player.id));
+            .filter((it) => player.picks.includes(it.player.id));
           const totalSort = picks.reduce((accumulator, player) => {
             return accumulator + player.scoringData.totalSort;
           }, 0);
           return {
-            id: playerPick.player.id,
-            country: playerPick.player.country,
-            countryFlag: playerPick.player.countryFlag,
-            displayName: playerPick.player.displayName,
-            shortName: playerPick.player.shortName,
+            id: player.id,
+            country: player.country,
+            countryFlag: player.countryFlag,
+            displayName: player.displayName,
+            shortName: player.shortName,
             position: "",
             total:
               totalSort === 0

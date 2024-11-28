@@ -19,7 +19,7 @@ import {
   tommyFleetwood,
   viktorHovland,
   xanderSchauffele,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -33,7 +33,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const pgaChampionship2023 = {
   id: "R2023033",

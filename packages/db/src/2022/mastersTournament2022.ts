@@ -24,7 +24,7 @@ import {
   tomHoge,
   tommyFleetwood,
   viktorHovland,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   brianObrolchain,
@@ -39,7 +39,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const mastersTournament2022 = {
   id: "R2022014",

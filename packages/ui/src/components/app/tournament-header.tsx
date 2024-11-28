@@ -1,9 +1,3 @@
-import type {
-  RoundStatus,
-  RoundStatusColor,
-  TournamentStatus,
-} from "@pkg/api/pga";
-
 import { cn } from "../../lib/utils";
 import { TournamentInfo } from "./tournament-info";
 import { TournamentName } from "./tournament-name";
@@ -12,12 +6,18 @@ import { TournamentStatusHeader } from "./tournament-status-header";
 export type TournamentHeaderProps = {
   courses: { courseName: string }[];
   roundDisplay: string;
-  roundStatus: RoundStatus;
-  roundStatusColor: RoundStatusColor;
+  roundStatus:
+    | "COMPLETE"
+    | "GROUPINGS_OFFICIAL"
+    | "IN_PROGRESS"
+    | "OFFICIAL"
+    | "SUSPENDED"
+    | "UPCOMING";
+  roundStatusColor: "BLUE" | "GRAY" | "GREEN" | "RED" | "YELLOW";
   roundStatusDisplay: string;
   tournamentLogo: string;
   tournamentName: string;
-  tournamentStatus: TournamentStatus;
+  tournamentStatus: "COMPLETED" | "IN_PROGRESS" | "NOT_STARTED";
   city: string;
   country: string;
   state: string;

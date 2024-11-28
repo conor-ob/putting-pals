@@ -25,7 +25,7 @@ import {
   wilcoNienaber,
   willZalatoris,
   xanderSchauffele,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   cameronFolens,
@@ -39,7 +39,7 @@ import {
   richByrne,
   robJoy,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const usOpen2021 = {
   id: "R2021535",

@@ -1,11 +1,10 @@
 {
-  "name": "@pkg/api",
+  "name": "@pkg/db",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./context": "./src/context.ts",
-    "./router": "./src/root.ts"
+    ".": "./src/db.ts"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",
@@ -13,21 +12,11 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit true"
   },
-  "dependencies": {
-    "@apollo/datasource-rest": "catalog:",
-    "@pkg/db": "workspace:*",
-    "@sentry/node": "catalog:",
-    "@trpc/server": "catalog:",
-    "cheerio": "catalog:",
-    "pako": "catalog:",
-    "superjson": "catalog:",
-    "zod": "catalog:"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
-    "@types/pako": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "rimraf": "catalog:",

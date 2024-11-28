@@ -21,7 +21,7 @@ import {
   tyrrellHatton,
   willZalatoris,
   xanderSchauffele,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -36,7 +36,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const usOpen2022 = {
   id: "R2022026",

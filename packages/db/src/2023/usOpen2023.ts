@@ -20,7 +20,7 @@ import {
   scottieScheffler,
   tommyFleetwood,
   viktorHovland,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -33,7 +33,7 @@ import {
   richByrne,
   robJoy,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const usOpen2023 = {
   id: "R2023026",

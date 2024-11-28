@@ -25,7 +25,7 @@ import {
   tommyFleetwood,
   tonyFinau,
   tyrrellHatton,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -42,7 +42,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const mastersTournament2023 = {
   id: "R2023014",

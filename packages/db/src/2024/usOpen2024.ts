@@ -18,7 +18,7 @@ import {
   tonyFinau,
   viktorHovland,
   xanderSchauffele,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -33,7 +33,7 @@ import {
   richByrne,
   robJoy,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const usOpen2024 = {
   id: "R2024026",

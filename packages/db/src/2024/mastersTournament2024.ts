@@ -29,7 +29,7 @@ import {
   viktorHovland,
   wyndhamClark,
   xanderSchauffele,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -48,7 +48,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const mastersTournament2024 = {
   id: "R2024014",

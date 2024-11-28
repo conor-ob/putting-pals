@@ -47,26 +47,17 @@ const puttingPalsTournaments = [
 ];
 
 export class Database {
+  public getTournament(tournamentId: string) {
+    return puttingPalsTournaments.find((it) => it.id === tournamentId);
+  }
+
   public getTournaments(seasonId?: string) {
-    return puttingPalsTournaments
-      .filter((it) => {
-        if (seasonId === undefined) {
-          return true;
-        } else {
-          return it.seasonId === seasonId;
-        }
-      })
-      .map((t) => {
-        return {
-          ...t,
-          playerPicks: t.players.map((it) => {
-            return {
-              ...it,
-              id: `${t.id}-${it.id}`,
-              player: it,
-            };
-          }),
-        };
-      });
+    return puttingPalsTournaments.filter((it) => {
+      if (seasonId === undefined) {
+        return true;
+      } else {
+        return it.seasonId === seasonId;
+      }
+    });
   }
 }

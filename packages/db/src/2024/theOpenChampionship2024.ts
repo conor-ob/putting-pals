@@ -25,7 +25,7 @@ import {
   victorPerez,
   viktorHovland,
   wyndhamClark,
-} from "../pgaTourPlayers";
+} from "../players/pgaTourPlayers";
 import {
   aidanWalsh,
   aimeeOhanlon,
@@ -39,7 +39,7 @@ import {
   richByrne,
   robJoy,
   stephenDevine,
-} from "../puttingPalsPlayers";
+} from "../players/puttingPalsPlayers";
 
 export const theOpenChampionship2024 = {
   id: "R2024100",

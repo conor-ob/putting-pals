@@ -502,6 +502,9 @@ importers:
       '@apollo/datasource-rest':
         specifier: 'catalog:'
         version: 6.3.0(graphql@16.9.0)
+      '@pkg/db':
+        specifier: workspace:*
+        version: link:../db
       '@sentry/node':
         specifier: 'catalog:'
         version: 8.39.0
@@ -533,6 +536,30 @@ importers:
       '@types/pako':
         specifier: 'catalog:'
         version: 2.0.3
+      eslint:
+        specifier: 'catalog:'
+        version: 9.14.0(jiti@1.21.6)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.3.3
+      rimraf:
+        specifier: 'catalog:'
+        version: 6.0.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.6.3
+
+  packages/db:
+    devDependencies:
+      '@pkg/eslint':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@pkg/prettier':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@total-typescript/tsconfig':
+        specifier: 'catalog:'
+        version: 1.0.4
       eslint:
         specifier: 'catalog:'
         version: 9.14.0(jiti@1.21.6)

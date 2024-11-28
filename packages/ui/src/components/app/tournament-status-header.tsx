@@ -1,21 +1,21 @@
 import * as React from "react";
 
-import type {
-  RoundStatus,
-  RoundStatusColor,
-  TournamentStatus,
-} from "@pkg/api/pga";
-
 import { cn } from "../../lib/utils";
 import { RoundStatusBadge } from "./round-status-badge";
 import { RoundStatusLabel } from "./round-status-label";
 
 export type TournamentStatusHeaderProps = {
   roundDisplay: string;
-  roundStatus: RoundStatus;
-  roundStatusColor: RoundStatusColor;
+  roundStatus:
+    | "COMPLETE"
+    | "GROUPINGS_OFFICIAL"
+    | "IN_PROGRESS"
+    | "OFFICIAL"
+    | "SUSPENDED"
+    | "UPCOMING";
+  roundStatusColor: "BLUE" | "GRAY" | "GREEN" | "RED" | "YELLOW";
   roundStatusDisplay: string;
-  tournamentStatus: TournamentStatus;
+  tournamentStatus: "COMPLETED" | "IN_PROGRESS" | "NOT_STARTED";
 } & React.HTMLAttributes<HTMLDivElement>;
 
 function TournamentStatusHeader({
