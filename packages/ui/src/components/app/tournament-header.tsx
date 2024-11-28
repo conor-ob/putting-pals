@@ -15,7 +15,7 @@ export type TournamentHeaderProps = {
     | "UPCOMING";
   roundStatusColor: "BLUE" | "GRAY" | "GREEN" | "RED" | "YELLOW";
   roundStatusDisplay: string;
-  tournamentLogo: string;
+  tournamentLogo: string[];
   tournamentName: string;
   tournamentStatus: "COMPLETED" | "IN_PROGRESS" | "NOT_STARTED";
   city: string;
@@ -39,7 +39,7 @@ export type TournamentHeaderProps = {
       | "NIGHT_MOSTLY_CLOUDY"
       | "NIGHT_PARTLY_CLOUDY";
     tempC: string;
-  };
+  } | null;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export function TournamentHeader({
@@ -66,7 +66,7 @@ export function TournamentHeader({
     >
       <img
         className="h-20 w-20 rounded-full ring-1 ring-gray-300 dark:ring-0"
-        src={tournamentLogo}
+        src={tournamentLogo[0]}
       />
       <div className="flex flex-col gap-1">
         <TournamentStatusHeader

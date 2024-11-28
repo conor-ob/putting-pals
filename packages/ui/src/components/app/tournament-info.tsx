@@ -33,7 +33,7 @@ export function TournamentInfo({
       | "NIGHT_MOSTLY_CLOUDY"
       | "NIGHT_PARTLY_CLOUDY";
     tempC: string;
-  };
+  } | null;
 }) {
   const displayStrings = [
     displayDate,

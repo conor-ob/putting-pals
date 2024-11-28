@@ -22,10 +22,12 @@ export function PgaTourLeaderboardTable({
               return true;
             } else if (row.__typename === "InformationRow") {
               return false;
-            } else {
+            } else if (row.__typename === "PlayerRowV3") {
               return `${row.player.firstName} ${row.player.lastName}`
                 .toLowerCase()
                 .includes(searchQuery);
+            } else {
+              return false;
             }
           })
           .map((row) => {
@@ -40,7 +42,7 @@ export function PgaTourLeaderboardTable({
                   </div>
                 </div>
               );
-            } else {
+            } else if (row.__typename === "PlayerRowV3") {
               return (
                 <div key={row.id}>
                   <PgaTourLeaderboardTablePlayerRow
@@ -57,6 +59,8 @@ export function PgaTourLeaderboardTable({
                   <div className="mx-4 border-b"></div>
                 </div>
               );
+            } else {
+              return <div key={row.id}></div>;
             }
           })}
       </>

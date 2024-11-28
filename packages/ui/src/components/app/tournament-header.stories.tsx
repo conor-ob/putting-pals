@@ -19,8 +19,9 @@ export const TheSentry: Story = (args: TournamentHeaderProps) => {
 
 TheSentry.args = {
   tournamentName: "The Sentry",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r016.png",
+  ],
   courses: [{ courseName: "Plantation Course at Kapalua" }],
 };
 
@@ -32,8 +33,9 @@ export const SonyOpenInHawaii: Story = (args: TournamentHeaderProps) => {
 
 SonyOpenInHawaii.args = {
   tournamentName: "Sony Open in Hawaii",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r006.png",
+  ],
   courses: [{ courseName: "Waialae Country Club" }],
 };
 
@@ -45,8 +47,9 @@ export const TheAmericanExpress: Story = (args: TournamentHeaderProps) => {
 
 TheAmericanExpress.args = {
   tournamentName: "The American Express",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r002.png",
+  ],
   courses: [{ courseName: "Pete Dye Stadium Course" }],
 };
 
@@ -58,8 +61,9 @@ export const FarmersInsuranceOpen: Story = (args: TournamentHeaderProps) => {
 
 FarmersInsuranceOpen.args = {
   tournamentName: "Farmers Insurance Open",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r004.png",
+  ],
   courses: [{ courseName: "Torrey Pines Golf Course (South Course)" }],
 };
 
@@ -71,8 +75,9 @@ export const PebbleBeachProAm: Story = (args: TournamentHeaderProps) => {
 
 PebbleBeachProAm.args = {
   tournamentName: "AT&T Pebble Beach Pro-Am",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r005.png",
+  ],
   courses: [{ courseName: "Pebble Beach Golf Links" }],
 };
 
@@ -84,8 +89,9 @@ export const WMPhoenixOpen: Story = (args: TournamentHeaderProps) => {
 
 WMPhoenixOpen.args = {
   tournamentName: "WM Phoenix Open",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r003.png",
+  ],
   courses: [{ courseName: "TPC Scottsdale (Stadium Course)" }],
 };
 
@@ -97,8 +103,9 @@ export const MexicoOpenAtVidanta: Story = (args: TournamentHeaderProps) => {
 
 MexicoOpenAtVidanta.args = {
   tournamentName: "Mexico Open at Vidanta",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r540.png",
+  ],
   courses: [{ courseName: "VidantaWorld" }],
 };
 
@@ -112,8 +119,9 @@ export const CognizantClassicInThePalmBeaches: Story = (
 
 CognizantClassicInThePalmBeaches.args = {
   tournamentName: "Cognizant Classic in The Palm Beaches",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r010.png",
+  ],
   courses: [{ courseName: "PGA National Resort (The Champion Course)" }],
 };
 
@@ -127,8 +135,9 @@ export const ArnoldPalmerInvitationalPresentedByMastercard: Story = (
 
 ArnoldPalmerInvitationalPresentedByMastercard.args = {
   tournamentName: "Arnold Palmer Invitational presented by Mastercard",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r009.png",
+  ],
   courses: [{ courseName: "Arnold Palmer's Bay Hill Club & Lodge" }],
 };
 
@@ -140,8 +149,9 @@ export const PuertoRicoOpen: Story = (args: TournamentHeaderProps) => {
 
 PuertoRicoOpen.args = {
   tournamentName: "Puerto Rico Open",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r483.png",
+  ],
   courses: [{ courseName: "Grand Reserve Golf Club" }],
 };
 
@@ -153,8 +163,9 @@ export const ThePLAYERSChampionship: Story = (args: TournamentHeaderProps) => {
 
 ThePLAYERSChampionship.args = {
   tournamentName: "THE PLAYERS Championship",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r011.png",
+  ],
   courses: [{ courseName: "TPC Sawgrass (THE PLAYERS Stadium Course)" }],
 };
 
@@ -166,8 +177,9 @@ export const ValsparChampionship: Story = (args: TournamentHeaderProps) => {
 
 ValsparChampionship.args = {
   tournamentName: "Valspar Championship",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r475.png",
+  ],
   courses: [{ courseName: "Innisbrook Resort (Copperhead Course)" }],
 };
 
@@ -181,8 +193,9 @@ export const TexasChildrensHoustonOpen: Story = (
 
 TexasChildrensHoustonOpen.args = {
   tournamentName: "Texas Children's Houston Open",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r020.png",
+  ],
   courses: [{ courseName: "Memorial Park Golf Course" }],
 };
 
@@ -194,8 +207,9 @@ export const ValeroTexasOpen: Story = (args: TournamentHeaderProps) => {
 
 ValeroTexasOpen.args = {
   tournamentName: "Valero Texas Open",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r041.png",
+  ],
   courses: [{ courseName: "TPC San Antonio (Oaks Course)" }],
 };
 
@@ -207,8 +221,9 @@ export const MastersTournament: Story = (args: TournamentHeaderProps) => {
 
 MastersTournament.args = {
   tournamentName: "Masters Tournament",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r014.png",
+  ],
   courses: [{ courseName: "Augusta National Golf Club" }],
 };
 
@@ -220,8 +235,9 @@ export const RBCHeritage: Story = (args: TournamentHeaderProps) => {
 
 RBCHeritage.args = {
   tournamentName: "RBC Heritage",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r012.png",
+  ],
   courses: [{ courseName: "Harbour Town Golf Links" }],
 };
 
@@ -235,8 +251,9 @@ export const CoralesPuntacanaChampionship: Story = (
 
 CoralesPuntacanaChampionship.args = {
   tournamentName: "Corales Puntacana Championship",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r522.png",
+  ],
   courses: [{ courseName: "Puntacana Resort & Club (Corales Golf Course)" }],
 };
 
@@ -250,8 +267,9 @@ export const ZurichClassicOfNewOrleans: Story = (
 
 ZurichClassicOfNewOrleans.args = {
   tournamentName: "Zurich Classic of New Orleans",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r018.png",
+  ],
   courses: [{ courseName: "TPC Louisiana" }],
 };
 
@@ -263,8 +281,9 @@ export const TheCJCupByronNelson: Story = (args: TournamentHeaderProps) => {
 
 TheCJCupByronNelson.args = {
   tournamentName: "THE CJ CUP Byron Nelson",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r019.png",
+  ],
   courses: [{ courseName: "TPC Craig Ranch" }],
 };
 
@@ -276,8 +295,9 @@ export const WellsFargoChampionship: Story = (args: TournamentHeaderProps) => {
 
 WellsFargoChampionship.args = {
   tournamentName: "Wells Fargo Championship",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r480.png",
+  ],
   courses: [{ courseName: "Quail Hollow Club" }],
 };
 
@@ -289,8 +309,9 @@ export const MyrtleBeachClassic: Story = (args: TournamentHeaderProps) => {
 
 MyrtleBeachClassic.args = {
   tournamentName: "Myrtle Beach Classic",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r553.png",
+  ],
   courses: [{ courseName: "Dunes Golf and Beach Club" }],
 };
 
@@ -302,8 +323,9 @@ export const PGAChampionship: Story = (args: TournamentHeaderProps) => {
 
 PGAChampionship.args = {
   tournamentName: "PGA Championship",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r033.png",
+  ],
   courses: [{ courseName: "Valhalla Golf Club" }],
 };
 
@@ -315,8 +337,9 @@ export const CharlesSchwabChallenge: Story = (args: TournamentHeaderProps) => {
 
 CharlesSchwabChallenge.args = {
   tournamentName: "Charles Schwab Challenge",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r021.png",
+  ],
   courses: [{ courseName: "Colonial Country Club" }],
 };
 
@@ -328,8 +351,9 @@ export const RBCCanadianOpen: Story = (args: TournamentHeaderProps) => {
 
 RBCCanadianOpen.args = {
   tournamentName: "RBC Canadian Open",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r032.png",
+  ],
   courses: [{ courseName: "Hamilton Golf & Country Club" }],
 };
 
@@ -343,8 +367,9 @@ export const TheMemorialTournamentPresentedByWorkday: Story = (
 
 TheMemorialTournamentPresentedByWorkday.args = {
   tournamentName: "the Memorial Tournament presented by Workday",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r023.png",
+  ],
   courses: [{ courseName: "Muirfield Village Golf Club" }],
 };
 
@@ -356,8 +381,9 @@ export const USOpen: Story = (args: TournamentHeaderProps) => {
 
 USOpen.args = {
   tournamentName: "U.S. Open",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r026.png",
+  ],
   courses: [{ courseName: "Pinehurst Resort & Country Club (Course No. 2)" }],
 };
 
@@ -369,8 +395,9 @@ export const TravelersChampionship: Story = (args: TournamentHeaderProps) => {
 
 TravelersChampionship.args = {
   tournamentName: "Travelers Championship",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r034.png",
+  ],
   courses: [{ courseName: "TPC River Highlands" }],
 };
 
@@ -382,8 +409,9 @@ export const RocketMortgageClassic: Story = (args: TournamentHeaderProps) => {
 
 RocketMortgageClassic.args = {
   tournamentName: "Rocket Mortgage Classic",
-  tournamentLogo:
+  tournamentLogo: [
     "https://res.cloudinary.com/pgatour-prod/d_tournaments:logos:r000.png/tournaments/logos/r524.png",
+  ],
   courses: [{ courseName: "Detroit Golf Club" }],
 };
 
