@@ -79,7 +79,7 @@ catalog:
   typescript-eslint: ^8.16.0 # https://www.npmjs.com/package/typescript-eslint?activeTab=versions
   vite: ^5.4.11 # https://www.npmjs.com/package/vite?activeTab=versions
   vite-plugin-node: ^4.0.0 # https://www.npmjs.com/package/vite-plugin-node?activeTab=versions
-  vite-plugin-pwa: ^0.21.0 # https://www.npmjs.com/package/vite-plugin-pwa?activeTab=versions
+  vite-plugin-pwa: ^0.21.1 # https://www.npmjs.com/package/vite-plugin-pwa?activeTab=versions
   vite-tsconfig-paths: ^5.1.3 # https://www.npmjs.com/package/vite-tsconfig-paths?activeTab=versions
   vitest: ^2.1.6 # https://www.npmjs.com/package/vitest?activeTab=versions
   zod: ^3.23.8 # https://www.npmjs.com/package/zod?activeTab=versions

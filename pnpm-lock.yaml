@@ -232,8 +232,8 @@ catalogs:
       specifier: ^4.0.0
       version: 4.0.0
     vite-plugin-pwa:
-      specifier: ^0.21.0
-      version: 0.21.0
+      specifier: ^0.21.1
+      version: 0.21.1
     vite-tsconfig-paths:
       specifier: ^5.1.3
       version: 5.1.3
@@ -486,7 +486,7 @@ importers:
         version: 5.4.11(@types/node@22.10.1)(terser@5.36.0)
       vite-plugin-pwa:
         specifier: 'catalog:'
-        version: 0.21.0(@vite-pwa/assets-generator@0.2.6)(vite@5.4.11(@types/node@22.10.1)(terser@5.36.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0)
+        version: 0.21.1(@vite-pwa/assets-generator@0.2.6)(vite@5.4.11(@types/node@22.10.1)(terser@5.36.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0)
       vite-tsconfig-paths:
         specifier: 'catalog:'
         version: 5.1.3(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.1)(terser@5.36.0))
@@ -4378,8 +4378,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nwsapi@2.2.15:
-    resolution: {integrity: sha512-NWK6i6f70uRJgsqyNTNMQ/JbCzd8zQoFnOKdZpXqfyq0YFBQgCTFjDIXfAmkEJyV+/GzSrCCrz2iVJmJK9OX8w==}
+  nwsapi@2.2.16:
+    resolution: {integrity: sha512-F1I/bimDpj3ncaNDhfyMWuFqmQDBwDB0Fogc2qpL3BWvkQteFD/8BzWuIRl83rq0DXfm8SGt/HFhLXZyljTXcQ==}
 
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -5420,12 +5420,12 @@ packages:
       '@swc/core':
         optional: true
 
-  vite-plugin-pwa@0.21.0:
-    resolution: {integrity: sha512-gnDE5sN2hdxA4vTl0pe6PCTPXqChk175jH8dZVVTBjFhWarZZoXaAdoTIKCIa8Zbx94sC0CnCOyERBWpxvry+g==}
+  vite-plugin-pwa@0.21.1:
+    resolution: {integrity: sha512-rkTbKFbd232WdiRJ9R3u+hZmf5SfQljX1b45NF6oLA6DSktEKpYllgTo1l2lkiZWMWV78pABJtFjNXfBef3/3Q==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@vite-pwa/assets-generator': ^0.2.6
-      vite: ^3.1.0 || ^4.0.0 || ^5.0.0
+      vite: ^3.1.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
       workbox-build: ^7.3.0
       workbox-window: ^7.3.0
     peerDependenciesMeta:
@@ -9413,7 +9413,7 @@ snapshots:
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
       is-potential-custom-element-name: 1.0.1
-      nwsapi: 2.2.15
+      nwsapi: 2.2.16
       parse5: 7.2.1
       rrweb-cssom: 0.7.1
       saxes: 6.0.0
@@ -9644,7 +9644,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nwsapi@2.2.15: {}
+  nwsapi@2.2.16: {}
 
   object-assign@4.1.1: {}
 
@@ -10780,7 +10780,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-pwa@0.21.0(@vite-pwa/assets-generator@0.2.6)(vite@5.4.11(@types/node@22.10.1)(terser@5.36.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0):
+  vite-plugin-pwa@0.21.1(@vite-pwa/assets-generator@0.2.6)(vite@5.4.11(@types/node@22.10.1)(terser@5.36.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0):
     dependencies:
       debug: 4.3.7
       pretty-bytes: 6.1.1
