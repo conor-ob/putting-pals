@@ -12,7 +12,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   adriArnaus,
   billyHorschel,
@@ -45,7 +45,7 @@ export const usOpen2022 = {
   name: "U.S. Open",
   winnerId: johnHannaway.id,
   runnerUpId: aidanWalsh.id,
-  entrants: [
+  competitors: [
     {
       ...conorObrien,
       picks: [billyHorschel, brooksKoepka, tommyFleetwood],

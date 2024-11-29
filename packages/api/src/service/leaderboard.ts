@@ -1,7 +1,7 @@
 import { LeaderboardClient } from "@pkg/graphql/leaderboard";
 import { getCountryFlag } from "@pkg/utils/flags";
 
-import type { Leaderboard } from "../types";
+import type { InformationRow, Leaderboard, PlayerRow } from "../types";
 
 export class LeaderboardService {
   public async getLeaderboard(id: string): Promise<Leaderboard> {
@@ -14,7 +14,7 @@ export class LeaderboardService {
               displayText: player.displayText,
               id: player.id,
               leaderboardSortOrder: player.leaderboardSortOrder,
-            };
+            } as InformationRow;
           } else if (player.__typename === "PlayerRowV3") {
             return {
               id: player.id,
@@ -42,9 +42,9 @@ export class LeaderboardService {
                 total: player.scoringData.total,
                 totalSort: player.scoringData.totalSort,
               },
-            };
+            } as PlayerRow;
           } else {
-            throw new Error(`Unexpected player type: ${player.__typename}`);
+            throw new Error(`Unexpected type: ${player.__typename}`);
           }
         }),
       };

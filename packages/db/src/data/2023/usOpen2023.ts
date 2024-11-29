@@ -10,7 +10,7 @@ import {
   richByrne,
   robJoy,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   adamScott,
   brooksKoepka,
@@ -42,7 +42,7 @@ export const usOpen2023 = {
   name: "U.S. Open",
   winnerId: aidanWalsh.id,
   runnerUpId: robJoy.id,
-  entrants: [
+  competitors: [
     {
       ...conorObrien,
       picks: [maxHoma, justinThomas, adamScott],

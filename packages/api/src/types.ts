@@ -1,3 +1,20 @@
+export type Competition = {
+  id: string;
+  competitors: Competitor[];
+};
+
+export type Competitor = {
+  country: string;
+  countryFlag: string;
+  displayName: string;
+  id: string;
+  picks: PlayerRow[];
+  position: string;
+  shortName: string;
+  total: string;
+  totalSort: number;
+};
+
 export type Course = {
   name: string;
 };
@@ -50,23 +67,6 @@ export type ScoringData = {
   thruSort: number;
   total: string;
   totalSort: number;
-};
-
-export type PoolEntrant = {
-  country: string;
-  countryFlag: string;
-  displayName: string;
-  id: string;
-  picks: PlayerRow[];
-  position: string;
-  shortName: string;
-  total: string;
-  totalSort: number;
-};
-
-export type PoolLeaderboard = {
-  id: string;
-  entrants: PoolEntrant[];
 };
 
 export type Tournament = {

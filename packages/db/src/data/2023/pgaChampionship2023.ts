@@ -11,7 +11,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   adamScott,
   collinMorikawa,
@@ -42,7 +42,7 @@ export const pgaChampionship2023 = {
   name: "PGA Championship",
   winnerId: davidHynes.id,
   runnerUpId: robJoy.id,
-  entrants: [
+  competitors: [
     {
       ...stephenDevine,
       picks: [jonRahm, garyWoodland, mitoPereira],

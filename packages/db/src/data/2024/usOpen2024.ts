@@ -12,7 +12,7 @@ import {
   richByrne,
   robJoy,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   adamHadwin,
   billyHorschel,
@@ -43,7 +43,7 @@ export const usOpen2024 = {
   paddyPowerId: "12593221",
   winnerId: brianObrolchain.id,
   runnerUpId: davidHynes.id,
-  entrants: [
+  competitors: [
     {
       ...davidHynes,
       picks: [tommyFleetwood, tonyFinau, shaneLowry], // 25 + 60 + 90 = 145/1

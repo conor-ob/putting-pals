@@ -14,7 +14,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   adamScott,
   akshayBhatia,
@@ -48,7 +48,7 @@ export const pgaChampionship2024 = {
   paddyPowerId: "12593099",
   winnerId: davidHynes.id,
   runnerUpId: aimeeOhanlon.id,
-  entrants: [
+  competitors: [
     {
       ...markByrne,
       picks: [roryMcilroy, ludvigAberg, rickieFowler], // 6 + 11 + 150 = 167/1

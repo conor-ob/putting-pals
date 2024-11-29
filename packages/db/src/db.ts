@@ -15,44 +15,51 @@ import { pgaChampionship2024 } from "./data/2024/pgaChampionship2024";
 import { theOpenChampionship2024 } from "./data/2024/theOpenChampionship2024";
 import { usOpen2024 } from "./data/2024/usOpen2024";
 
-const majorPools2021 = [
+const majorCompetitions2021 = [
   mastersTournament2021,
   pgaChampionship2021,
   usOpen2021,
   theOpenChampionship2021,
 ];
-const majorPools2022 = [
+const majorCompetitions2022 = [
   mastersTournament2022,
   pgaChampionship2022,
   usOpen2022,
   theOpenChampionship2022,
 ];
-const majorPools2023 = [
+const majorCompetitions2023 = [
   mastersTournament2023,
   pgaChampionship2023,
   usOpen2023,
   theOpenChampionship2023,
 ];
-const majorPools2024 = [
+const majorCompetitions2024 = [
   mastersTournament2024,
   pgaChampionship2024,
   usOpen2024,
   theOpenChampionship2024,
 ];
-const pools = [
-  ...majorPools2021,
-  ...majorPools2022,
-  ...majorPools2023,
-  ...majorPools2024,
+const competitions = [
+  ...majorCompetitions2021,
+  ...majorCompetitions2022,
+  ...majorCompetitions2023,
+  ...majorCompetitions2024,
 ];
 
-export class PoolDatabase {
-  public getPool(tournamentId: string) {
-    return pools.find((it) => it.tournamentId === tournamentId);
+export class CompetitionDatabase {
+  public getCompetition(tournamentId: string) {
+    const competition = competitions.find(
+      (it) => it.tournamentId === tournamentId,
+    );
+    if (competition === undefined) {
+      throw new Error("Competition not found");
+    } else {
+      return competition;
+    }
   }
 
-  public getPools(seasonId?: string) {
-    return pools.filter((it) => {
+  public getCompetitions(seasonId?: string) {
+    return competitions.filter((it) => {
       if (seasonId === undefined) {
         return true;
       } else {
@@ -62,19 +69,20 @@ export class PoolDatabase {
   }
 
   public getCurrentTournamentId() {
-    const pools = this.getPools();
+    const competitions = this.getCompetitions();
 
-    const poolsWithPicks = pools.filter(
-      (it) => it.entrants.flatMap((it) => it.picks).length > 0,
+    const competitionsWithPicks = competitions.filter(
+      (it) => it.competitors.flatMap((it) => it.picks).length > 0,
     );
 
     // const tournamentsWithoutPicks = tournaments.filter(
     //   (it) => it.players.flatMap((it) => it.picks).length === 0,
     // );
 
-    const id = poolsWithPicks[poolsWithPicks.length - 1]?.tournamentId;
+    const id =
+      competitionsWithPicks[competitionsWithPicks.length - 1]?.tournamentId;
     if (id === undefined) {
-      throw new Error("No pool found");
+      throw new Error("No competition found");
     } else {
       return id;
     }

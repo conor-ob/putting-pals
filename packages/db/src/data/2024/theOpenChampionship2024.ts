@@ -11,7 +11,7 @@ import {
   richByrne,
   robJoy,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   aaronRai,
   adamScott,
@@ -48,7 +48,7 @@ export const theOpenChampionship2024 = {
   name: "The Open Championship",
   winnerId: conorObrien.id,
   runnerUpId: johnHannaway.id,
-  entrants: [
+  competitors: [
     {
       ...aidanWalsh,
       picks: [ludvigAberg, collinMorikawa, tigerWoods], // 14 + 18 + 250 = 282/1

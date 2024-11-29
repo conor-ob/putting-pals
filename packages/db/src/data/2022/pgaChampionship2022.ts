@@ -12,7 +12,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   adamScott,
   brooksKoepka,
@@ -44,7 +44,7 @@ export const pgaChampionship2022 = {
   name: "PGA Championship",
   winnerId: ciaranTighe.id,
   runnerUpId: markByrne.id,
-  entrants: [
+  competitors: [
     {
       ...conorObrien,
       picks: [adamScott, viktorHovland, roryMcilroy],

@@ -11,7 +11,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   brandenGrace,
   danielBerger,
@@ -44,7 +44,7 @@ export const pgaChampionship2021 = {
   name: "PGA Championship",
   winnerId: richByrne.id,
   runnerUpId: davidHynes.id,
-  entrants: [
+  competitors: [
     {
       ...conorObrien,
       picks: [danielBerger, tommyFleetwood, keeganBradley],

@@ -10,7 +10,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   adamScott,
   brandenGrace,
@@ -43,7 +43,7 @@ export const theOpenChampionship2021 = {
   name: "The Open Championship",
   winnerId: phelimOconnor.id,
   runnerUpId: robKeartland.id,
-  entrants: [
+  competitors: [
     {
       ...conorObrien,
       picks: [adamScott, louisOosthuizen, paulCasey],

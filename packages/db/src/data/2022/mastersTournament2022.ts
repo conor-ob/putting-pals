@@ -12,7 +12,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   billyHorschel,
   brooksKoepka,
@@ -48,7 +48,7 @@ export const mastersTournament2022 = {
   name: "Masters Tournament",
   winnerId: richByrne.id,
   runnerUpId: johnHannaway.id,
-  entrants: [
+  competitors: [
     {
       ...conorObrien,
       picks: [jonRahm, brooksKoepka, robertMacIntyre],

@@ -9,7 +9,7 @@ import {
   richByrne,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   byeongHunAn,
   cameronSmith,
@@ -35,7 +35,7 @@ export const theOpenChampionship2023 = {
   name: "The Open Championship",
   winnerId: phelimOconnor.id,
   runnerUpId: ciaranTighe.id,
-  entrants: [
+  competitors: [
     {
       ...stephenDevine,
       picks: [roryMcilroy, mattFitzpatrick, siWooKim],

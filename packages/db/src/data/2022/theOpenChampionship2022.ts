@@ -14,7 +14,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   billyHorschel,
   collinMorikawa,
@@ -50,7 +50,7 @@ export const theOpenChampionship2022 = {
   name: "The Open Championship",
   winnerId: richByrne.id,
   runnerUpId: brianObrolchain.id,
-  entrants: [
+  competitors: [
     {
       ...conorObrien,
       picks: [xanderSchauffele, mattFitzpatrick, francescoMolinari],

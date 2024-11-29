@@ -16,7 +16,7 @@ import {
   robJoy,
   robKeartland,
   stephenDevine,
-} from "../entrants/puttingPalsEntrants";
+} from "../competitors/puttingPalsCompetitors";
 import {
   adamScott,
   brooksKoepka,
@@ -58,7 +58,7 @@ export const mastersTournament2024 = {
   paddyPowerId: "12571448",
   winnerId: richByrne.id,
   runnerUpId: brianObrolchain.id,
-  entrants: [
+  competitors: [
     {
       ...robJoy,
       picks: [scottieScheffler, roryMcilroy, taylorMoore], // 3 + 9 + 225 = 237/1
