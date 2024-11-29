@@ -9,7 +9,7 @@ export function PuttingPalsLeaderboardTable({ id }: { id?: string }) {
 
   return (
     <div>
-      {data?.players.map((agg) => {
+      {data?.rows.map((agg) => {
         return (
           <div key={agg.id}>
             <ListItem>
@@ -50,7 +50,7 @@ export function PuttingPalsLeaderboardTable({ id }: { id?: string }) {
                     totalSort={player.scoringData.totalSort}
                     thru={player.scoringData.thru}
                     score={player.scoringData.score}
-                    teeTime={player.scoringData.teeTime as number}
+                    teeTime={player.scoringData.teeTime}
                   />
                 </div>
               );

@@ -1,5 +1,7 @@
 import { api } from "@providers/trpc-provider";
 
+import type { InformationRow, PlayerRow } from "@pkg/api/types";
+
 import { PgaTourLeaderboardTablePlayerRow } from "./player-row";
 
 export function PgaTourLeaderboardTable({
@@ -16,14 +18,14 @@ export function PgaTourLeaderboardTable({
   } else {
     return (
       <>
-        {data.players
+        {data.rows
           .filter((row) => {
             if (searchQuery === undefined) {
               return true;
-            } else if (row.__typename === "InformationRow") {
+            } else if (Object.keys(row).includes("displayText")) {
               return false;
-            } else if (row.__typename === "PlayerRowV3") {
-              return `${row.player.firstName} ${row.player.lastName}`
+            } else if (Object.keys(row).includes("player")) {
+              return `${(row as PlayerRow).player.firstName} ${(row as PlayerRow).player.lastName}`
                 .toLowerCase()
                 .includes(searchQuery);
             } else {
@@ -31,30 +33,30 @@ export function PgaTourLeaderboardTable({
             }
           })
           .map((row) => {
-            if (row.__typename === "InformationRow") {
+            if (Object.keys(row).includes("displayText")) {
               return (
                 <div
                   key={row.id}
                   className="flex items-center justify-center bg-border p-4"
                 >
                   <div className="text-sm font-semibold tracking-tight">
-                    {row.displayText}
+                    {(row as InformationRow).displayText}
                   </div>
                 </div>
               );
-            } else if (row.__typename === "PlayerRowV3") {
+            } else if (Object.keys(row).includes("player")) {
               return (
                 <div key={row.id}>
                   <PgaTourLeaderboardTablePlayerRow
-                    position={row.scoringData.position}
-                    countryFlag={row.player.countryFlag}
-                    shortName={row.player.shortName}
-                    abbreviations={row.player.abbreviations}
-                    total={row.scoringData.total}
-                    totalSort={row.scoringData.totalSort}
-                    score={row.scoringData.score}
-                    thru={row.scoringData.thru}
-                    teeTime={row.scoringData.teeTime}
+                    position={(row as PlayerRow).scoringData.position}
+                    countryFlag={(row as PlayerRow).player.countryFlag}
+                    shortName={(row as PlayerRow).player.shortName}
+                    abbreviations={(row as PlayerRow).player.abbreviations}
+                    total={(row as PlayerRow).scoringData.total}
+                    totalSort={(row as PlayerRow).scoringData.totalSort}
+                    score={(row as PlayerRow).scoringData.score}
+                    thru={(row as PlayerRow).scoringData.thru}
+                    teeTime={(row as PlayerRow).scoringData.teeTime}
                   />
                   <div className="mx-4 border-b"></div>
                 </div>

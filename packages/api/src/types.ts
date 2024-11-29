@@ -2,6 +2,28 @@ export type Course = {
   name: string;
 };
 
+export type InformationRow = {
+  displayText: string;
+  id: string;
+  leaderboardSortOrder: number;
+};
+
+export type Player = {
+  abbreviations: string;
+  countryFlag: string;
+  firstName: string;
+  id: string;
+  lastName: string;
+  shortName: string;
+};
+
+export type PlayerRow = {
+  id: string;
+  leaderboardSortOrder: number;
+  player: Player;
+  scoringData: ScoringData;
+};
+
 export type RoundStatus =
   | "COMPLETE"
   | "GROUPINGS_OFFICIAL"
@@ -12,12 +34,37 @@ export type RoundStatus =
 
 export type RoundStatusColor = "BLUE" | "GRAY" | "GREEN" | "RED" | "YELLOW";
 
+export type ScoringData = {
+  id: string;
+  position: string;
+  score: string;
+  scoreSort: number;
+  teeTime?: number;
+  thru: string;
+  thruSort: number;
+  total: string;
+  totalSort: number;
+};
+
 export type StrokePlayLeaderboard = {
   id: string;
+  rows: StrokePlayLeaderboardRow[];
 };
+
+export type StrokePlayLeaderboardRow = InformationRow | PlayerRow;
 
 export type SweepstakesLeaderboard = {
   id: string;
+  rows: SweepstakesLeaderboardRow[];
+};
+
+export type SweepstakesLeaderboardRow = {
+  player: SweepstakesPlayer;
+};
+
+export type SweepstakesPlayer = {
+  id: string;
+  picks: PlayerRow[];
 };
 
 export type Tournament = {

@@ -1,6 +1,6 @@
-import { leaderboardRouter } from "./routers/leaderboard";
-import { sweepstakesRouter } from "./routers/sweepstakes";
-import { tournamentRouter } from "./routers/tournament";
+import { leaderboardRouter } from "./router/leaderboard";
+import { sweepstakesRouter } from "./router/sweepstakes";
+import { tournamentRouter } from "./router/tournament";
 import { createCallerFactory, router } from "./trpc";
 
 /**

@@ -3,7 +3,7 @@ import { z } from "zod";
 import { PgaTourWebScrapingService } from "@pkg/data/scraper";
 import { Database } from "@pkg/db";
 
-import { PgaTourTournamentService } from "../graphql/tournament";
+import { mapTournament } from "../service/tournament";
 import { publicProcedure, router } from "../trpc";
 
 export const tournamentRouter = router({
@@ -23,27 +23,12 @@ export const tournamentRouter = router({
           tournamentId =
             await new PgaTourWebScrapingService().getCurrentTournamentId();
         }
-        return await new PgaTourTournamentService({
+        return mapTournament({
           apiKey: ctx.apiKey,
-        }).getTournament({
           id: tournamentId,
         });
       } else {
-        return new PgaTourTournamentService({
-          apiKey: ctx.apiKey,
-        }).getTournament({
-          id: input.id,
-        });
+        return mapTournament({ apiKey: ctx.apiKey, id: input.id });
       }
-    }),
-
-  getByIds: publicProcedure
-    .input(z.object({ ids: z.array(z.string().min(1)) }))
-    .query(({ ctx, input }) => {
-      return new PgaTourTournamentService({
-        apiKey: ctx.apiKey,
-      }).getTournaments({
-        ids: input.ids,
-      });
     }),
 });
