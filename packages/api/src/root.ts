@@ -1,5 +1,6 @@
-import { pgaTourRouter } from "./pga-tour/routers/root";
-import { puttingPalsRouter } from "./putting-pals/routers/root";
+import { leaderboardRouter } from "./routers/leaderboard";
+import { sweepstakesRouter } from "./routers/sweepstakes";
+import { tournamentRouter } from "./routers/tournament";
 import { createCallerFactory, router } from "./trpc";
 
 /**
@@ -8,8 +9,9 @@ import { createCallerFactory, router } from "./trpc";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = router({
-  pgaTour: pgaTourRouter,
-  puttingPals: puttingPalsRouter,
+  leaderboard: leaderboardRouter,
+  sweepstakes: sweepstakesRouter,
+  tournament: tournamentRouter,
 });
 
 export type AppRouter = typeof appRouter;

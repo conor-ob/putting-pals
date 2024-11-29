@@ -1,8 +1,8 @@
 import pako from "pako";
 
 import type { LeaderboardCompressedV3, LeaderboardV3 } from "./gql";
-import { getCountryFlag } from "../pga-tour/utils/flag-utils";
 import { PgaTourApiService } from "./graphql-api";
+import { getCountryFlag } from "./utils/flag-utils";
 
 export class PgaTourLeaderboardService extends PgaTourApiService {
   private leaderboardV3Query = `

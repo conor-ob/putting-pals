@@ -1,20 +1,32 @@
 import { z } from "zod";
 
-import { PgaTourTournamentService } from "../../graphql/tournament";
-import { publicProcedure, router } from "../../trpc";
-import { PgaTourWebScrapingService } from "../services/web-scraping";
+import { Database } from "@pkg/db";
+
+import { PgaTourTournamentService } from "../graphql/tournament";
+import { publicProcedure, router } from "../trpc";
+import { PgaTourWebScrapingService } from "../web/scraping";
 
 export const tournamentRouter = router({
   getById: publicProcedure
-    .input(z.object({ id: z.string().optional() }))
+    .input(
+      z.object({
+        context: z.enum(["DEFAULT", "SWEEPSTAKES"]).default("DEFAULT"),
+        id: z.string().optional(),
+      }),
+    )
     .query(async ({ ctx, input }) => {
       if (input.id === undefined) {
-        const currentTournamentId =
-          await new PgaTourWebScrapingService().getCurrentTournamentId();
+        let tournamentId: string;
+        if (input.context === "SWEEPSTAKES") {
+          tournamentId = new Database().getCurrentTournamentId();
+        } else {
+          tournamentId =
+            await new PgaTourWebScrapingService().getCurrentTournamentId();
+        }
         return await new PgaTourTournamentService({
           apiKey: ctx.apiKey,
         }).getTournament({
-          id: currentTournamentId,
+          id: tournamentId,
         });
       } else {
         return new PgaTourTournamentService({

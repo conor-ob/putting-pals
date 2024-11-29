@@ -5,7 +5,7 @@ import { api } from "@providers/trpc-provider";
 import { cn } from "@pkg/ui/cn";
 
 export function PuttingPalsLeaderboardTable({ id }: { id?: string }) {
-  const { data } = api.puttingPals.leaderboard.getById.useQuery({ id });
+  const { data } = api.sweepstakes.getById.useQuery({ id });
 
   return (
     <div>

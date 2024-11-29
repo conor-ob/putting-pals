@@ -60,4 +60,38 @@ export class Database {
       }
     });
   }
+
+  public getCurrentTournamentId() {
+    const tournaments = this.getTournaments();
+
+    const tournamentsWithPicks = tournaments.filter(
+      (it) => it.players.flatMap((it) => it.picks).length > 0,
+    );
+
+    // const tournamentsWithoutPicks = tournaments.filter(
+    //   (it) => it.players.flatMap((it) => it.picks).length === 0,
+    // );
+
+    const id = tournamentsWithPicks[tournamentsWithPicks.length - 1]?.id;
+    if (id === undefined) {
+      throw new Error("No tournaments found");
+    } else {
+      return id;
+    }
+
+    // const oddsAvailable =
+    //   tournamentsWithoutPicks.length > 0 &&
+    //   tournamentsWithoutPicks[0].paddyPowerId;
+
+    // if (oddsAvailable) {
+    //   return {
+    //     currentTournamentId: tournamentsWithoutPicks[0].id,
+    //   };
+    // } else {
+    //   return {
+    //     currentTournamentId:
+    //       tournamentsWithPicks[tournamentsWithPicks.length - 1].id,
+    //   };
+    // }
+  }
 }

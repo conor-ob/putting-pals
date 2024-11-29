@@ -9,7 +9,7 @@ export function PgaTourLeaderboardTable({
   id?: string;
   searchQuery?: string;
 }) {
-  const { data } = api.pgaTour.leaderboard.getById.useQuery({ id });
+  const { data } = api.leaderboard.getById.useQuery({ id });
 
   if (data === undefined) {
     return <div></div>;

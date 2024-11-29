@@ -5,7 +5,7 @@ import { TournamentHeader } from "@pkg/ui/app";
 import { Skeleton } from "@pkg/ui/ui";
 
 export function PgaTourLeaderboardHeader({ id }: { id?: string }) {
-  const { data } = api.pgaTour.tournament.getById.useQuery({ id });
+  const { data } = api.tournament.getById.useQuery({ id });
 
   if (data === undefined) {
     return (
