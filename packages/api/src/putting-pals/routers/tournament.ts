@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { PgaTourTournamentService } from "../../pga-tour/services/tournament";
+import { PgaTourTournamentService } from "../../graphql/tournament";
 import { publicProcedure, router } from "../../trpc";
 import { PuttingPalsRedirectsService } from "../services/redirect";
 

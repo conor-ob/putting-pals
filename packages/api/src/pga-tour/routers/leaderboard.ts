@@ -1,7 +1,7 @@
 import { z } from "zod";
 
+import { PgaTourLeaderboardService } from "../../graphql/leaderboard";
 import { publicProcedure, router } from "../../trpc";
-import { PgaTourLeaderboardService } from "../services/leaderboard";
 import { PgaTourWebScrapingService } from "../services/web-scraping";
 
 export const leaderboardRouter = router({

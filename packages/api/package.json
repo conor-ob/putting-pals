@@ -5,7 +5,8 @@
   "private": true,
   "exports": {
     "./context": "./src/context.ts",
-    "./router": "./src/root.ts"
+    "./router": "./src/root.ts",
+    "./types": "./src/types.ts"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",

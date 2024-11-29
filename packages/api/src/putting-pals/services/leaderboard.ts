@@ -1,7 +1,7 @@
 import { Database } from "@pkg/db";
 
-import type { PlayerRowV3 } from "../../graphql/types";
-import { PgaTourLeaderboardService } from "../../pga-tour/services/leaderboard";
+import type { PlayerRowV3 } from "../../graphql/gql";
+import { PgaTourLeaderboardService } from "../../graphql/leaderboard";
 
 export class PuttingPalsLeaderboardService {
   private apiKey: string;

@@ -23,22 +23,7 @@ export function PuttingPalsLeaderboardHeader({ id }: { id?: string }) {
   } else {
     return (
       <ListItem>
-        <TournamentHeader
-          className="p-4"
-          courses={data.courses}
-          roundDisplay={data.roundDisplay}
-          roundStatus={data.roundStatus}
-          roundStatusColor={data.roundStatusColor}
-          roundStatusDisplay={data.roundStatusDisplay}
-          tournamentLogo={data.tournamentLogo}
-          tournamentName={data.tournamentName}
-          tournamentStatus={data.tournamentStatus}
-          city={data.city}
-          country={data.country}
-          state={data.state}
-          displayDate={data.displayDate}
-          weather={data.weather}
-        />
+        <TournamentHeader className="p-4" tournament={data} />
       </ListItem>
     );
   }

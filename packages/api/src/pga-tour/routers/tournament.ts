@@ -1,7 +1,7 @@
 import { z } from "zod";
 
+import { PgaTourTournamentService } from "../../graphql/tournament";
 import { publicProcedure, router } from "../../trpc";
-import { PgaTourTournamentService } from "../services/tournament";
 import { PgaTourWebScrapingService } from "../services/web-scraping";
 
 export const tournamentRouter = router({

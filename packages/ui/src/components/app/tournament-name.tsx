@@ -2,14 +2,14 @@ import { cn } from "../../lib/utils";
 
 export function TournamentName({
   className,
-  tournamentName,
+  name,
   ...props
-}: { tournamentName: string } & React.HTMLAttributes<HTMLDivElement>) {
+}: { name: string } & React.HTMLAttributes<HTMLDivElement>) {
   const isNumeric = (val: string): boolean => {
     return !isNaN(Number(val));
   };
 
-  let adjustedName = tournamentName;
+  let adjustedName = name;
   const parts = adjustedName.split("(");
   if (parts.length > 1) {
     const remainder = parts[1]?.split(")");

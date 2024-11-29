@@ -1,50 +1,20 @@
 import React, { useEffect, useState } from "react";
 
+import type { Tournament, WeatherCondition } from "@pkg/api/types";
 import { getLocation } from "@pkg/utils/location";
 import { getWeatherIconSvgUrl } from "@pkg/utils/weather";
 
-export function TournamentInfo({
-  courses,
-  city,
-  country,
-  state,
-  displayDate,
-  weather,
-}: {
-  courses: { courseName: string }[];
-  city: string;
-  country: string;
-  state: string;
-  displayDate: string;
-  weather?: {
-    condition:
-      | "DAY_CLOUDY"
-      | "DAY_FOG_MIST"
-      | "DAY_MOSTLY_CLOUDY"
-      | "DAY_MOSTLY_SUNNY"
-      | "DAY_PARTLY_CLOUDY"
-      | "DAY_RAINY"
-      | "DAY_SCATTERED_SHOWERS"
-      | "DAY_SNOW"
-      | "DAY_SUNNY"
-      | "DAY_THUNDERSTORMS"
-      | "NIGHT_CLEAR"
-      | "NIGHT_ISOLATED_CLOUDS"
-      | "NIGHT_MOSTLY_CLOUDY"
-      | "NIGHT_PARTLY_CLOUDY";
-    tempC: string;
-  } | null;
-}) {
+export function TournamentInfo({ tournament }: { tournament: Tournament }) {
   const displayStrings = [
-    displayDate,
-    getLocation({ city, state, country }),
-    ...courses.map((c) => c.courseName),
-    getWeatherDisplay(weather?.condition, weather?.tempC),
+    tournament.displayDate,
+    getLocation({
+      city: tournament.city,
+      state: tournament.state,
+      country: tournament.country,
+    }),
+    ...tournament.courses.map((c) => c.name),
+    getWeatherDisplay(tournament.weather?.condition, tournament.weather?.tempC),
   ].filter((s) => s !== undefined);
-
-  void courses;
-  void weather;
-  void displayDate;
 
   return <Carousel displayStrings={displayStrings} />;
 }
@@ -96,21 +66,7 @@ function Carousel({ displayStrings }: { displayStrings: React.ReactNode[] }) {
 }
 
 function getWeatherDisplay(
-  condition?:
-    | "DAY_CLOUDY"
-    | "DAY_FOG_MIST"
-    | "DAY_MOSTLY_CLOUDY"
-    | "DAY_MOSTLY_SUNNY"
-    | "DAY_PARTLY_CLOUDY"
-    | "DAY_RAINY"
-    | "DAY_SCATTERED_SHOWERS"
-    | "DAY_SNOW"
-    | "DAY_SUNNY"
-    | "DAY_THUNDERSTORMS"
-    | "NIGHT_CLEAR"
-    | "NIGHT_ISOLATED_CLOUDS"
-    | "NIGHT_MOSTLY_CLOUDY"
-    | "NIGHT_PARTLY_CLOUDY",
+  condition?: WeatherCondition,
   tempC?: string,
 ): React.ReactNode {
   if (condition === undefined || tempC === undefined) {
@@ -130,23 +86,7 @@ function getWeatherDisplay(
   }
 }
 
-function getDisplayCondition(
-  condition:
-    | "DAY_CLOUDY"
-    | "DAY_FOG_MIST"
-    | "DAY_MOSTLY_CLOUDY"
-    | "DAY_MOSTLY_SUNNY"
-    | "DAY_PARTLY_CLOUDY"
-    | "DAY_RAINY"
-    | "DAY_SCATTERED_SHOWERS"
-    | "DAY_SNOW"
-    | "DAY_SUNNY"
-    | "DAY_THUNDERSTORMS"
-    | "NIGHT_CLEAR"
-    | "NIGHT_ISOLATED_CLOUDS"
-    | "NIGHT_MOSTLY_CLOUDY"
-    | "NIGHT_PARTLY_CLOUDY",
-): string | undefined {
+function getDisplayCondition(condition: WeatherCondition): string | undefined {
   switch (condition) {
     case "DAY_CLOUDY":
       return "Cloudy";
