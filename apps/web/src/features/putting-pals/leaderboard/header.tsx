@@ -5,8 +5,7 @@ import { TournamentHeader } from "@pkg/ui/app";
 import { Skeleton } from "@pkg/ui/ui";
 
 export function PuttingPalsLeaderboardHeader({ id }: { id?: string }) {
-  const { data } = api.tournament.getById.useQuery({
-    context: "COMPETITION",
+  const { data } = api.tournament.getByCompetitionId.useQuery({
     id,
   });
 

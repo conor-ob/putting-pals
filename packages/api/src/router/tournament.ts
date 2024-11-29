@@ -10,18 +10,28 @@ export const tournamentRouter = router({
   getById: publicProcedure
     .input(
       z.object({
-        context: z.enum(["PGA_TOUR", "COMPETITION"]).default("PGA_TOUR"),
         id: z.string().optional(),
       }),
     )
     .query(async ({ input }) => {
       if (input.id === undefined) {
-        let tournamentId: string;
-        if (input.context === "COMPETITION") {
-          tournamentId = new CompetitionDatabase().getCurrentTournamentId();
-        } else {
-          tournamentId = await new PgaTourWebScraper().getCurrentTournamentId();
-        }
+        const tournamentId =
+          await new PgaTourWebScraper().getCurrentTournamentId();
+        return new TournamentService().getTournament(tournamentId);
+      } else {
+        return new TournamentService().getTournament(input.id);
+      }
+    }),
+
+  getByCompetitionId: publicProcedure
+    .input(
+      z.object({
+        id: z.string().optional(),
+      }),
+    )
+    .query(async ({ input }) => {
+      if (input.id === undefined) {
+        const tournamentId = new CompetitionDatabase().getCurrentTournamentId();
         return new TournamentService().getTournament(tournamentId);
       } else {
         return new TournamentService().getTournament(input.id);
