@@ -1,8 +1,9 @@
 import { z } from "zod";
 
+import { PgaTourWebScrapingService } from "@pkg/data/scraper";
+
 import { PgaTourLeaderboardService } from "../graphql/leaderboard";
 import { publicProcedure, router } from "../trpc";
-import { PgaTourWebScrapingService } from "../web/scraping";
 
 export const leaderboardRouter = router({
   getById: publicProcedure

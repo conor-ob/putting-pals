@@ -1,12 +1,10 @@
 {
-  "name": "@pkg/utils",
+  "name": "@pkg/data",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./flags": "./src/flags.ts",
-    "./location": "./src/location.ts",
-    "./weather": "./src/weather.ts"
+    "./scraper": "./src/scraper.ts"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",
@@ -14,7 +12,10 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit true"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@apollo/datasource-rest": "catalog:",
+    "cheerio": "catalog:"
+  },
   "devDependencies": {
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",

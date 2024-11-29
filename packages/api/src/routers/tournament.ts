@@ -1,10 +1,10 @@
 import { z } from "zod";
 
+import { PgaTourWebScrapingService } from "@pkg/data/scraper";
 import { Database } from "@pkg/db";
 
 import { PgaTourTournamentService } from "../graphql/tournament";
 import { publicProcedure, router } from "../trpc";
-import { PgaTourWebScrapingService } from "../web/scraping";
 
 export const tournamentRouter = router({
   getById: publicProcedure

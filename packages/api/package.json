@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "@apollo/datasource-rest": "catalog:",
+    "@pkg/data": "workspace:*",
     "@pkg/db": "workspace:*",
+    "@pkg/utils": "workspace:*",
     "@sentry/node": "catalog:",
     "@trpc/server": "catalog:",
     "cheerio": "catalog:",

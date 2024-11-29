@@ -502,9 +502,15 @@ importers:
       '@apollo/datasource-rest':
         specifier: 'catalog:'
         version: 6.3.0(graphql@16.9.0)
+      '@pkg/data':
+        specifier: workspace:*
+        version: link:../data
       '@pkg/db':
         specifier: workspace:*
         version: link:../db
+      '@pkg/utils':
+        specifier: workspace:*
+        version: link:../utils
       '@sentry/node':
         specifier: 'catalog:'
         version: 8.41.0
@@ -536,6 +542,37 @@ importers:
       '@types/pako':
         specifier: 'catalog:'
         version: 2.0.3
+      eslint:
+        specifier: 'catalog:'
+        version: 9.14.0(jiti@1.21.6)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.4.1
+      rimraf:
+        specifier: 'catalog:'
+        version: 6.0.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.2
+
+  packages/data:
+    dependencies:
+      '@apollo/datasource-rest':
+        specifier: 'catalog:'
+        version: 6.3.0(graphql@16.9.0)
+      cheerio:
+        specifier: 'catalog:'
+        version: 1.0.0
+    devDependencies:
+      '@pkg/eslint':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@pkg/prettier':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@total-typescript/tsconfig':
+        specifier: 'catalog:'
+        version: 1.0.4
       eslint:
         specifier: 'catalog:'
         version: 9.14.0(jiti@1.21.6)
