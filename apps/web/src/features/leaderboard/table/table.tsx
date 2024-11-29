@@ -1,10 +1,11 @@
 import { api } from "@providers/trpc-provider";
 
 import type { InformationRow, PlayerRow } from "@pkg/api/types";
+import { Skeleton } from "@pkg/ui/ui";
 
-import { PgaTourLeaderboardTablePlayerRow } from "./player-row";
+import { LeadboardPlayerRow } from "./player-row";
 
-export function PgaTourLeaderboardTable({
+export function LeaderboardTable({
   id,
   searchQuery,
 }: {
@@ -14,7 +15,25 @@ export function PgaTourLeaderboardTable({
   const { data } = api.leaderboard.getById.useQuery({ id });
 
   if (data === undefined) {
-    return <div></div>;
+    return (
+      <div className="flex flex-col px-4">
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+      </div>
+    );
   } else {
     return (
       <>
@@ -47,7 +66,7 @@ export function PgaTourLeaderboardTable({
             } else if (Object.keys(row).includes("player")) {
               return (
                 <div key={row.id}>
-                  <PgaTourLeaderboardTablePlayerRow
+                  <LeadboardPlayerRow
                     position={(row as PlayerRow).scoringData.position}
                     countryFlag={(row as PlayerRow).player.countryFlag}
                     shortName={(row as PlayerRow).player.shortName}

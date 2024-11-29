@@ -1,10 +1,10 @@
 import { ListItem } from "@components/list-item";
-import { PgaTourLeaderboardTablePlayerRow } from "@features/pga-tour/leaderboard/table/player-row";
+import { LeadboardPlayerRow } from "@features/leaderboard/table/player-row";
 import { api } from "@providers/trpc-provider";
 
 import { cn } from "@pkg/ui/cn";
 
-export function PuttingPalsLeaderboardTable({ id }: { id?: string }) {
+export function CompetitionTable({ id }: { id?: string }) {
   const { data } = api.competition.getById.useQuery({ id });
 
   return (
@@ -41,7 +41,7 @@ export function PuttingPalsLeaderboardTable({ id }: { id?: string }) {
             {competitor.picks.map((player) => {
               return (
                 <div key={player.id}>
-                  <PgaTourLeaderboardTablePlayerRow
+                  <LeadboardPlayerRow
                     position={player.scoringData.position}
                     countryFlag={player.player.countryFlag}
                     shortName={player.player.shortName}

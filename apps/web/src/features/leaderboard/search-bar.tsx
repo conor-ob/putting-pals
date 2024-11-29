@@ -1,6 +1,6 @@
 import { IonSearchbar } from "@ionic/react";
 
-export function PgaTourLeaderboardSearchBar({
+export function LeaderboardSearchBar({
   onSearchQueryChange,
 }: {
   onSearchQueryChange: (searchQuery: string | undefined) => void;

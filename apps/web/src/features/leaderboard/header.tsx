@@ -4,7 +4,7 @@ import { api } from "@providers/trpc-provider";
 import { TournamentHeader } from "@pkg/ui/app";
 import { Skeleton } from "@pkg/ui/ui";
 
-export function PgaTourLeaderboardHeader({ id }: { id?: string }) {
+export function LeaderboardHeader({ id }: { id?: string }) {
   const { data } = api.tournament.getById.useQuery({ id });
 
   if (data === undefined) {

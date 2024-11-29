@@ -1,4 +1,4 @@
-export function PgaTourLeaderboardTableAllPlayersHeader() {
+export function LeaderboardTableAllPlayersHeader() {
   return (
     <div className="px-4 py-2">
       <div className="text-2xl font-bold tracking-tight">All Players</div>

@@ -2,7 +2,7 @@ import { ListItem } from "@components/list-item";
 
 import { cn } from "@pkg/ui/cn";
 
-export function PgaTourLeaderboardTablePlayerRow({
+export function LeadboardPlayerRow({
   position,
   countryFlag,
   shortName,

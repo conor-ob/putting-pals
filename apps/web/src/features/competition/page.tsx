@@ -2,16 +2,16 @@ import { PageLayout } from "@components/page-layout";
 import { IonList } from "@ionic/react";
 import { useParams } from "react-router-dom";
 
-import { PuttingPalsLeaderboardHeader } from "./header";
-import { PuttingPalsLeaderboardTable } from "./table/table";
+import { CompetitionHeader } from "./header";
+import { CompetitionTable } from "./leaderboard/table";
 
-export function PuttingPalsLeaderboardPage() {
+export function CompetitionPage() {
   const params = useParams<{ id: string }>();
   return (
     <PageLayout title="Putting Pals" largeHeader>
       <IonList lines="none">
-        <PuttingPalsLeaderboardHeader id={params.id} />
-        <PuttingPalsLeaderboardTable id={params.id} />
+        <CompetitionHeader id={params.id} />
+        <CompetitionTable id={params.id} />
       </IonList>
     </PageLayout>
   );
