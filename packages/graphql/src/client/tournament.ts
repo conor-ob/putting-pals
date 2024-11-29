@@ -1,7 +1,7 @@
-import type { Tournament } from "./types";
-import { PgaTourApiService } from "./graphql-api";
+import type { Tournament } from "../types";
+import { GraphqlApi } from "../api";
 
-export class PgaTourTournamentService extends PgaTourApiService {
+export class TournamentClient extends GraphqlApi {
   private tournamentsQuery = `
     query Tournaments($ids: [ID!]) {
       tournaments(ids: $ids) {
@@ -30,11 +30,7 @@ export class PgaTourTournamentService extends PgaTourApiService {
     }
   `;
 
-  constructor({ apiKey }: { apiKey: string }) {
-    super({ apiKey });
-  }
-
-  public async getTournaments({ ids }: { ids: string[] }) {
+  public async getTournaments(ids: string[]) {
     return super
       .query<{
         data: {
@@ -49,8 +45,8 @@ export class PgaTourTournamentService extends PgaTourApiService {
       });
   }
 
-  public async getTournament({ id }: { id: string }) {
-    return this.getTournaments({ ids: [id] }).then((tournaments) => {
+  public async getTournament(id: string) {
+    return this.getTournaments([id]).then((tournaments) => {
       if (tournaments.length === 0 || !tournaments[0]) {
         throw new Error(`Tournament with id ${id} not found`);
       } else {

@@ -2,20 +2,20 @@ import type { AugmentedRequest, CacheOptions } from "@apollo/datasource-rest";
 import type { ValueOrPromise } from "@apollo/datasource-rest/dist/RESTDataSource";
 import { RESTDataSource } from "@apollo/datasource-rest";
 
-export class PgaTourApiService extends RESTDataSource {
-  override baseURL = "https://orchestrator.pgatour.com";
-  private apiKey;
+import { env } from "./env/schema";
 
-  constructor({ apiKey }: { apiKey: string }) {
-    super();
-    this.apiKey = apiKey;
+export class GraphqlApi extends RESTDataSource {
+  override baseURL = "https://orchestrator.pgatour.com";
+
+  constructor() {
+    super({ fetch: fetch });
   }
 
   protected override willSendRequest(
     _: string,
     requestOpts: AugmentedRequest<CacheOptions>,
   ): ValueOrPromise<void> {
-    requestOpts.headers["X-Api-Key"] = this.apiKey;
+    requestOpts.headers["X-Api-Key"] = env.PGA_TOUR_API_KEY;
   }
 
   protected async query<TResult = unknown>({

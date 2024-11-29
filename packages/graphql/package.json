@@ -4,8 +4,8 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./leaderboard": "./src/leaderboard.ts",
-    "./tournament": "./src/tournament.ts"
+    "./leaderboard": "./src/client/leaderboard.ts",
+    "./tournament": "./src/client/tournament.ts"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",
@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "@apollo/datasource-rest": "catalog:",
-    "pako": "catalog:"
+    "dotenv": "catalog:",
+    "pako": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@pkg/eslint": "workspace:*",

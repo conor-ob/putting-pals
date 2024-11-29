@@ -5,7 +5,7 @@
 import { RESTDataSource } from "@apollo/datasource-rest";
 import * as cheerio from "cheerio";
 
-export class PgaTourWebScrapingService extends RESTDataSource {
+export class PgaTourWebScraper extends RESTDataSource {
   override baseURL = "https://www.pgatour.com";
 
   constructor() {

@@ -1,4 +1,18 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   adamScott,
   collinMorikawa,
   garyWoodland,
@@ -20,29 +34,15 @@ import {
   viktorHovland,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const pgaChampionship2023 = {
-  id: "R2023033",
+  tournamentId: "R2023033",
   seasonId: "2023",
   shortName: "PGA",
   name: "PGA Championship",
   winnerId: davidHynes.id,
   runnerUpId: robJoy.id,
-  players: [
+  entrants: [
     {
       ...stephenDevine,
       picks: [jonRahm, garyWoodland, mitoPereira],

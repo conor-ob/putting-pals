@@ -1,4 +1,18 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  cameronFolens,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   aaronRai,
   adamScott,
   akshayBhatia,
@@ -26,29 +40,15 @@ import {
   viktorHovland,
   wyndhamClark,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  cameronFolens,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const theOpenChampionship2024 = {
-  id: "R2024100",
+  tournamentId: "R2024100",
   seasonId: "2024",
   shortName: "Open",
   name: "The Open Championship",
   winnerId: conorObrien.id,
   runnerUpId: johnHannaway.id,
-  players: [
+  entrants: [
     {
       ...aidanWalsh,
       picks: [ludvigAberg, collinMorikawa, tigerWoods], // 14 + 18 + 250 = 282/1

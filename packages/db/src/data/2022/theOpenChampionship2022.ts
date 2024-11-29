@@ -1,4 +1,21 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  cameronFolens,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  karlCurran,
+  markByrne,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   billyHorschel,
   collinMorikawa,
   coreyConners,
@@ -25,32 +42,15 @@ import {
   willZalatoris,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  cameronFolens,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  karlCurran,
-  markByrne,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const theOpenChampionship2022 = {
-  id: "R2022100",
+  tournamentId: "R2022100",
   seasonId: "2022",
   shortName: "Open",
   name: "The Open Championship",
   winnerId: richByrne.id,
   runnerUpId: brianObrolchain.id,
-  players: [
+  entrants: [
     {
       ...conorObrien,
       picks: [xanderSchauffele, mattFitzpatrick, francescoMolinari],

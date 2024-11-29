@@ -4,8 +4,8 @@
   "type": "module",
   "private": true,
   "exports": {
+    "./router": "./src/api.ts",
     "./context": "./src/context.ts",
-    "./router": "./src/root.ts",
     "./types": "./src/types.ts"
   },
   "scripts": {

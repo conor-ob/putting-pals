@@ -1,4 +1,18 @@
 import {
+  aidanWalsh,
+  cameronFolens,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  karlCurran,
+  markByrne,
+  niallCronin,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   adamScott,
   brianHarman,
   brooksKoepka,
@@ -26,29 +40,15 @@ import {
   willZalatoris,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  cameronFolens,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  karlCurran,
-  markByrne,
-  niallCronin,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const usOpen2021 = {
-  id: "R2021535",
+  tournamentId: "R2021535",
   seasonId: "2021",
   shortName: "US Open",
   name: "U.S. Open",
   winnerId: cameronFolens.id,
   runnerUpId: markByrne.id,
-  players: [
+  entrants: [
     {
       ...conorObrien,
       picks: [viktorHovland, willZalatoris, adamScott],

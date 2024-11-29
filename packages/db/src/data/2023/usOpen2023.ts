@@ -1,4 +1,17 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  cameronFolens,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   adamScott,
   brooksKoepka,
   camDavis,
@@ -21,28 +34,15 @@ import {
   tommyFleetwood,
   viktorHovland,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  cameronFolens,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const usOpen2023 = {
-  id: "R2023026",
+  tournamentId: "R2023026",
   seasonId: "2023",
   shortName: "US Open",
   name: "U.S. Open",
   winnerId: aidanWalsh.id,
   runnerUpId: robJoy.id,
-  players: [
+  entrants: [
     {
       ...conorObrien,
       picks: [maxHoma, justinThomas, adamScott],

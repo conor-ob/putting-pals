@@ -1,4 +1,19 @@
 import {
+  aidanWalsh,
+  brianObrolchain,
+  ciaranTighe,
+  conorObrien,
+  cormacObrolchain,
+  davidHynes,
+  johnHannaway,
+  markByrne,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   adamScott,
   brooksKoepka,
   cameronChamp,
@@ -21,30 +36,15 @@ import {
   viktorHovland,
   willZalatoris,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  brianObrolchain,
-  ciaranTighe,
-  conorObrien,
-  cormacObrolchain,
-  davidHynes,
-  johnHannaway,
-  markByrne,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const pgaChampionship2022 = {
-  id: "R2022033",
+  tournamentId: "R2022033",
   seasonId: "2022",
   shortName: "PGA",
   name: "PGA Championship",
   winnerId: ciaranTighe.id,
   runnerUpId: markByrne.id,
-  players: [
+  entrants: [
     {
       ...conorObrien,
       picks: [adamScott, viktorHovland, roryMcilroy],

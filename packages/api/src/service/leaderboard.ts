@@ -1,22 +1,11 @@
-import { PgaTourLeaderboardService } from "@pkg/graphql/leaderboard";
+import { LeaderboardClient } from "@pkg/graphql/leaderboard";
 import { getCountryFlag } from "@pkg/utils/flags";
 
-import type { StrokePlayLeaderboard } from "../types";
+import type { Leaderboard } from "../types";
 
-export async function mapLeaderboard({
-  apiKey,
-  id,
-}: {
-  apiKey: string;
-  id: string;
-}): Promise<StrokePlayLeaderboard> {
-  return new PgaTourLeaderboardService({
-    apiKey,
-  })
-    .getLeaderboard({
-      id,
-    })
-    .then((leaderboard) => {
+export class LeaderboardService {
+  public async getLeaderboard(id: string): Promise<Leaderboard> {
+    return new LeaderboardClient().getLeaderboard(id).then((leaderboard) => {
       return {
         id: leaderboard.id,
         rows: leaderboard.players.map((player) => {
@@ -44,11 +33,10 @@ export async function mapLeaderboard({
                 shortName: player.player.shortName,
               },
               scoringData: {
-                id: player.scoringData.id,
                 position: player.scoringData.position,
                 score: player.scoringData.score,
                 scoreSort: player.scoringData.scoreSort,
-                teeTime: mapTeeTime(player.scoringData.teeTime),
+                teeTime: player.scoringData.teeTime,
                 thru: player.scoringData.thru,
                 thruSort: player.scoringData.thruSort,
                 total: player.scoringData.total,
@@ -61,12 +49,5 @@ export async function mapLeaderboard({
         }),
       };
     });
-}
-
-function mapTeeTime(teeTime: unknown): number | undefined {
-  if (typeof teeTime === "number") {
-    return teeTime;
-  } else {
-    return undefined;
   }
 }

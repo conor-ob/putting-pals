@@ -1,4 +1,21 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  karlCurran,
+  markByrne,
+  niallCronin,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   adamScott,
   akshayBhatia,
   brysonDeChambeau,
@@ -22,33 +39,16 @@ import {
   viktorHovland,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  karlCurran,
-  markByrne,
-  niallCronin,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const pgaChampionship2024 = {
-  id: "R2024033",
+  tournamentId: "R2024033",
   seasonId: "2024",
   shortName: "PGA",
   name: "PGA Championship",
   paddyPowerId: "12593099",
   winnerId: davidHynes.id,
   runnerUpId: aimeeOhanlon.id,
-  players: [
+  entrants: [
     {
       ...markByrne,
       picks: [roryMcilroy, ludvigAberg, rickieFowler], // 6 + 11 + 150 = 167/1

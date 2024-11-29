@@ -1,4 +1,16 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  cameronFolens,
+  ciaranTighe,
+  davidHynes,
+  johnHannaway,
+  phelimOconnor,
+  richByrne,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   byeongHunAn,
   cameronSmith,
   dustinJohnson,
@@ -15,27 +27,15 @@ import {
   tommyFleetwood,
   viktorHovland,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  cameronFolens,
-  ciaranTighe,
-  davidHynes,
-  johnHannaway,
-  phelimOconnor,
-  richByrne,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const theOpenChampionship2023 = {
-  id: "R2023100",
+  tournamentId: "R2023100",
   seasonId: "2023",
   shortName: "Open",
   name: "The Open Championship",
   winnerId: phelimOconnor.id,
   runnerUpId: ciaranTighe.id,
-  players: [
+  entrants: [
     {
       ...stephenDevine,
       picks: [roryMcilroy, mattFitzpatrick, siWooKim],

@@ -1,4 +1,21 @@
 import {
+  aidanWalsh,
+  brianObrolchain,
+  cameronFolens,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  karlCurran,
+  markByrne,
+  niallCronin,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   abrahamAncer,
   adamScott,
   brooksKoepka,
@@ -26,32 +43,15 @@ import {
   victorPerez,
   willZalatoris,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  brianObrolchain,
-  cameronFolens,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  karlCurran,
-  markByrne,
-  niallCronin,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const mastersTournament2021 = {
-  id: "R2021536",
+  tournamentId: "R2021536",
   seasonId: "2021",
   shortName: "Masters",
   name: "Masters Tournament",
   winnerId: stephenDevine.id,
   runnerUpId: conorObrien.id,
-  players: [
+  entrants: [
     {
       ...conorObrien,
       picks: [cameronSmith, scottieScheffler, coreyConners],

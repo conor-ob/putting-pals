@@ -1,4 +1,19 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  cameronFolens,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  markByrne,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   adriArnaus,
   billyHorschel,
   brooksKoepka,
@@ -22,30 +37,15 @@ import {
   willZalatoris,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  cameronFolens,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  markByrne,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const usOpen2022 = {
-  id: "R2022026",
+  tournamentId: "R2022026",
   seasonId: "2022",
   shortName: "US Open",
   name: "U.S. Open",
   winnerId: johnHannaway.id,
   runnerUpId: aidanWalsh.id,
-  players: [
+  entrants: [
     {
       ...conorObrien,
       picks: [billyHorschel, brooksKoepka, tommyFleetwood],

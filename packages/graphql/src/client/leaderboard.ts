@@ -1,23 +1,19 @@
 import pako from "pako";
 
-import type { LeaderboardCompressedV3, LeaderboardV3 } from "./types";
-import { PgaTourApiService } from "./graphql-api";
+import type { LeaderboardCompressedV3, LeaderboardV3 } from "../types";
+import { GraphqlApi } from "../api";
 
-export class PgaTourLeaderboardService extends PgaTourApiService {
+export class LeaderboardClient extends GraphqlApi {
   private leaderboardV3Query = `
-    query LeaderboardCompressedV3($leaderboardCompressedV3Id: ID!) {
-      leaderboardCompressedV3(id: $leaderboardCompressedV3Id) {
+    query LeaderboardCompressedV3($id: ID!) {
+      leaderboardCompressedV3(id: $id) {
         id
         payload
       }
     }
   `;
 
-  constructor({ apiKey }: { apiKey: string }) {
-    super({ apiKey });
-  }
-
-  public async getLeaderboard({ id }: { id: string }) {
+  public async getLeaderboard(id: string) {
     return super
       .query<{
         data: {
@@ -25,7 +21,7 @@ export class PgaTourLeaderboardService extends PgaTourApiService {
         };
       }>({
         query: this.leaderboardV3Query,
-        variables: { leaderboardCompressedV3Id: id },
+        variables: { id: id },
       })
       .then((response) => {
         const leaderboardDecompressedV3 = this.pakoDecompress(

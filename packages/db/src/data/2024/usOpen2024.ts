@@ -1,4 +1,19 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  cameronFolens,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  karlCurran,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   adamHadwin,
   billyHorschel,
   brianHarman,
@@ -19,31 +34,16 @@ import {
   viktorHovland,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  cameronFolens,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  karlCurran,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const usOpen2024 = {
-  id: "R2024026",
+  tournamentId: "R2024026",
   seasonId: "2024",
   shortName: "US Open",
   name: "U.S. Open",
   paddyPowerId: "12593221",
   winnerId: brianObrolchain.id,
   runnerUpId: davidHynes.id,
-  players: [
+  entrants: [
     {
       ...davidHynes,
       picks: [tommyFleetwood, tonyFinau, shaneLowry], // 25 + 60 + 90 = 145/1

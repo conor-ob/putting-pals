@@ -21,7 +21,7 @@ export function PgaTourLeaderboardTablePlayerRow({
   totalSort: number;
   thru: string;
   score: string;
-  teeTime?: number;
+  teeTime: number;
 }) {
   return (
     <ListItem>
@@ -63,11 +63,11 @@ export function PgaTourLeaderboardTablePlayerRow({
   );
 }
 
-function getThru(thru: string, teeTime?: number) {
+function getThru(thru: string, teeTime: number) {
   if (thru !== "") {
     return thru;
   }
-  if (teeTime !== undefined) {
+  if (teeTime !== -1) {
     return new Date(teeTime).toLocaleTimeString(undefined, {
       hour: "2-digit",
       minute: "2-digit",

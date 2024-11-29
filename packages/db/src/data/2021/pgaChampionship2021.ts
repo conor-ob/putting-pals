@@ -1,4 +1,18 @@
 import {
+  aidanWalsh,
+  cameronFolens,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  karlCurran,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   brandenGrace,
   danielBerger,
   dustinJohnson,
@@ -22,29 +36,15 @@ import {
   willZalatoris,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  cameronFolens,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  karlCurran,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const pgaChampionship2021 = {
-  id: "R2021033",
+  tournamentId: "R2021033",
   seasonId: "2021",
   shortName: "PGA",
   name: "PGA Championship",
   winnerId: richByrne.id,
   runnerUpId: davidHynes.id,
-  players: [
+  entrants: [
     {
       ...conorObrien,
       picks: [danielBerger, tommyFleetwood, keeganBradley],

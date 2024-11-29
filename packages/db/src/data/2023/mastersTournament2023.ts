@@ -1,4 +1,21 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  cameronFolens,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  karlCurran,
+  markByrne,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   brooksKoepka,
   cameronChamp,
   cameronSmith,
@@ -26,32 +43,15 @@ import {
   tonyFinau,
   tyrrellHatton,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  cameronFolens,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  karlCurran,
-  markByrne,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const mastersTournament2023 = {
-  id: "R2023014",
+  tournamentId: "R2023014",
   seasonId: "2023",
   shortName: "Masters",
   name: "Masters Tournament",
   winnerId: brianObrolchain.id,
   runnerUpId: phelimOconnor.id,
-  players: [
+  entrants: [
     {
       ...aidanWalsh,
       picks: [roryMcilroy, jasonDay, kurtKitayama],

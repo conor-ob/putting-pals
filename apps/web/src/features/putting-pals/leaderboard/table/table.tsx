@@ -5,40 +5,40 @@ import { api } from "@providers/trpc-provider";
 import { cn } from "@pkg/ui/cn";
 
 export function PuttingPalsLeaderboardTable({ id }: { id?: string }) {
-  const { data } = api.sweepstakes.getById.useQuery({ id });
+  const { data } = api.pool.getById.useQuery({ id });
 
   return (
     <div>
-      {data?.rows.map((agg) => {
+      {data?.entrants.map((entrant) => {
         return (
-          <div key={agg.id}>
+          <div key={entrant.id}>
             <ListItem>
               <div className="flex w-full flex-row justify-between px-4 py-3">
                 <div className="flex flex-row items-center">
                   <div className="w-10 text-sm font-semibold tracking-tighter">
-                    {agg.position}
+                    {entrant.position}
                   </div>
                   <div className="me-2 w-8 px-0.5"></div>
                   <div className="line-clamp-1 text-sm font-semibold tracking-tighter">
-                    {agg.shortName}
+                    {entrant.shortName}
                   </div>
                 </div>
                 <div className="flex flex-row">
                   <div
                     className={cn(
                       "flex w-12 justify-center text-sm font-semibold tracking-tighter",
-                      agg.totalSort < 0 && "text-red",
-                      agg.totalSort === 0 && "text-green",
+                      entrant.totalSort < 0 && "text-red",
+                      entrant.totalSort === 0 && "text-green",
                     )}
                   >
-                    {agg.total}
+                    {entrant.total}
                   </div>
                   <div className="flex w-10 justify-center text-sm font-semibold tracking-tighter"></div>
                   <div className="flex w-8 justify-end text-sm font-semibold tracking-tighter"></div>
                 </div>
               </div>
             </ListItem>
-            {agg.players.map((player) => {
+            {entrant.picks.map((player) => {
               return (
                 <div key={player.id}>
                   <PgaTourLeaderboardTablePlayerRow

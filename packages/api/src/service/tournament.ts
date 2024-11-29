@@ -1,21 +1,10 @@
-import { PgaTourTournamentService } from "@pkg/graphql/tournament";
+import { TournamentClient } from "@pkg/graphql/tournament";
 
 import type { Tournament } from "../types";
 
-export async function mapTournament({
-  apiKey,
-  id,
-}: {
-  apiKey: string;
-  id: string;
-}): Promise<Tournament> {
-  return await new PgaTourTournamentService({
-    apiKey,
-  })
-    .getTournament({
-      id,
-    })
-    .then((tournament) => {
+export class TournamentService {
+  public async getTournament(id: string): Promise<Tournament> {
+    return new TournamentClient().getTournament(id).then((tournament) => {
       return {
         city: tournament.city,
         country: tournament.country,
@@ -32,13 +21,13 @@ export async function mapTournament({
         roundStatusColor: tournament.roundStatusColor,
         state: tournament.state,
         status: tournament.tournamentStatus,
-        weather:
-          tournament.weather !== null && tournament.weather !== undefined
-            ? {
-                condition: tournament.weather.condition,
-                tempC: tournament.weather.tempC,
-              }
-            : undefined,
+        weather: tournament.weather
+          ? {
+              condition: tournament.weather.condition,
+              tempC: tournament.weather.tempC,
+            }
+          : undefined,
       };
     });
+  }
 }

@@ -1,4 +1,23 @@
 import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  cameronFolens,
+  cianMoynihan,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  karlCurran,
+  markByrne,
+  niallCronin,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   adamScott,
   brooksKoepka,
   chrisKirk,
@@ -30,35 +49,16 @@ import {
   wyndhamClark,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  cameronFolens,
-  cianMoynihan,
-  ciaranTighe,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  karlCurran,
-  markByrne,
-  niallCronin,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const mastersTournament2024 = {
-  id: "R2024014",
+  tournamentId: "R2024014",
   seasonId: "2024",
   shortName: "Masters",
   name: "Masters Tournament",
   paddyPowerId: "12571448",
   winnerId: richByrne.id,
   runnerUpId: brianObrolchain.id,
-  players: [
+  entrants: [
     {
       ...robJoy,
       picks: [scottieScheffler, roryMcilroy, taylorMoore], // 3 + 9 + 225 = 237/1

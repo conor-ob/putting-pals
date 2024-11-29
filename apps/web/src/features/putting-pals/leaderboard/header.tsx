@@ -6,7 +6,7 @@ import { Skeleton } from "@pkg/ui/ui";
 
 export function PuttingPalsLeaderboardHeader({ id }: { id?: string }) {
   const { data } = api.tournament.getById.useQuery({
-    context: "SWEEPSTAKES",
+    context: "POOL",
     id,
   });
 

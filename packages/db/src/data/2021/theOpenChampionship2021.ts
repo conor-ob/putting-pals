@@ -1,4 +1,17 @@
 import {
+  aidanWalsh,
+  cameronFolens,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  niallCronin,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../entrants/puttingPalsEntrants";
+import {
   adamScott,
   brandenGrace,
   brooksKoepka,
@@ -22,28 +35,15 @@ import {
   tonyFinau,
   tyrrellHatton,
 } from "../players/pgaTourPlayers";
-import {
-  aidanWalsh,
-  cameronFolens,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  niallCronin,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../players/puttingPalsPlayers";
 
 export const theOpenChampionship2021 = {
-  id: "R2021100",
+  tournamentId: "R2021100",
   seasonId: "2021",
   shortName: "Open",
   name: "The Open Championship",
   winnerId: phelimOconnor.id,
   runnerUpId: robKeartland.id,
-  players: [
+  entrants: [
     {
       ...conorObrien,
       picks: [adamScott, louisOosthuizen, paulCasey],

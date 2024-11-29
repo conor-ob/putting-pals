@@ -1,5 +1,5 @@
 import { leaderboardRouter } from "./router/leaderboard";
-import { sweepstakesRouter } from "./router/sweepstakes";
+import { poolRouter } from "./router/pool";
 import { tournamentRouter } from "./router/tournament";
 import { createCallerFactory, router } from "./trpc";
 
@@ -10,7 +10,7 @@ import { createCallerFactory, router } from "./trpc";
  */
 export const appRouter = router({
   leaderboard: leaderboardRouter,
-  sweepstakes: sweepstakesRouter,
+  pool: poolRouter,
   tournament: tournamentRouter,
 });
 
