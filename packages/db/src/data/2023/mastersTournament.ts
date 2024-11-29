@@ -44,11 +44,9 @@ import {
   tyrrellHatton,
 } from "../players/pgaTourPlayers";
 
-export const mastersTournament2023 = {
+export default {
   tournamentId: "R2023014",
-  seasonId: "2023",
-  shortName: "Masters",
-  name: "Masters Tournament",
+  paddyPowerId: undefined,
   winnerId: brianObrolchain.id,
   runnerUpId: phelimOconnor.id,
   competitors: [

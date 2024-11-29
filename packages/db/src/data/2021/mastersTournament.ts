@@ -44,11 +44,9 @@ import {
   willZalatoris,
 } from "../players/pgaTourPlayers";
 
-export const mastersTournament2021 = {
+export default {
   tournamentId: "R2021536",
-  seasonId: "2021",
-  shortName: "Masters",
-  name: "Masters Tournament",
+  paddyPowerId: undefined,
   winnerId: stephenDevine.id,
   runnerUpId: conorObrien.id,
   competitors: [

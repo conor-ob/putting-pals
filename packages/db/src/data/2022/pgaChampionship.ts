@@ -37,11 +37,9 @@ import {
   willZalatoris,
 } from "../players/pgaTourPlayers";
 
-export const pgaChampionship2022 = {
+export default {
   tournamentId: "R2022033",
-  seasonId: "2022",
-  shortName: "PGA",
-  name: "PGA Championship",
+  paddyPowerId: undefined,
   winnerId: ciaranTighe.id,
   runnerUpId: markByrne.id,
   competitors: [

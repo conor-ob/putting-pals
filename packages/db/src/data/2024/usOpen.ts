@@ -35,11 +35,8 @@ import {
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
 
-export const usOpen2024 = {
+export default {
   tournamentId: "R2024026",
-  seasonId: "2024",
-  shortName: "US Open",
-  name: "U.S. Open",
   paddyPowerId: "12593221",
   winnerId: brianObrolchain.id,
   runnerUpId: davidHynes.id,

@@ -36,11 +36,9 @@ import {
   tyrrellHatton,
 } from "../players/pgaTourPlayers";
 
-export const theOpenChampionship2021 = {
+export default {
   tournamentId: "R2021100",
-  seasonId: "2021",
-  shortName: "Open",
-  name: "The Open Championship",
+  paddyPowerId: undefined,
   winnerId: phelimOconnor.id,
   runnerUpId: robKeartland.id,
   competitors: [

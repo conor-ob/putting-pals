@@ -37,11 +37,9 @@ import {
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
 
-export const pgaChampionship2021 = {
+export default {
   tournamentId: "R2021033",
-  seasonId: "2021",
-  shortName: "PGA",
-  name: "PGA Championship",
+  paddyPowerId: undefined,
   winnerId: richByrne.id,
   runnerUpId: davidHynes.id,
   competitors: [

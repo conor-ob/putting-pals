@@ -40,11 +40,8 @@ import {
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
 
-export const pgaChampionship2024 = {
+export default {
   tournamentId: "R2024033",
-  seasonId: "2024",
-  shortName: "PGA",
-  name: "PGA Championship",
   paddyPowerId: "12593099",
   winnerId: davidHynes.id,
   runnerUpId: aimeeOhanlon.id,

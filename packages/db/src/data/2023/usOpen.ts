@@ -35,11 +35,9 @@ import {
   viktorHovland,
 } from "../players/pgaTourPlayers";
 
-export const usOpen2023 = {
+export default {
   tournamentId: "R2023026",
-  seasonId: "2023",
-  shortName: "US Open",
-  name: "U.S. Open",
+  paddyPowerId: undefined,
   winnerId: aidanWalsh.id,
   runnerUpId: robJoy.id,
   competitors: [

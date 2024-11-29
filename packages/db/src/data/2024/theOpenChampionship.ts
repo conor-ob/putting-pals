@@ -41,11 +41,9 @@ import {
   wyndhamClark,
 } from "../players/pgaTourPlayers";
 
-export const theOpenChampionship2024 = {
+export default {
   tournamentId: "R2024100",
-  seasonId: "2024",
-  shortName: "Open",
-  name: "The Open Championship",
+  paddyPowerId: undefined,
   winnerId: conorObrien.id,
   runnerUpId: johnHannaway.id,
   competitors: [

@@ -50,11 +50,8 @@ import {
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
 
-export const mastersTournament2024 = {
+export default {
   tournamentId: "R2024014",
-  seasonId: "2024",
-  shortName: "Masters",
-  name: "Masters Tournament",
   paddyPowerId: "12571448",
   winnerId: richByrne.id,
   runnerUpId: brianObrolchain.id,

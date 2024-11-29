@@ -38,11 +38,9 @@ import {
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
 
-export const usOpen2022 = {
+export default {
   tournamentId: "R2022026",
-  seasonId: "2022",
-  shortName: "US Open",
-  name: "U.S. Open",
+  paddyPowerId: undefined,
   winnerId: johnHannaway.id,
   runnerUpId: aidanWalsh.id,
   competitors: [

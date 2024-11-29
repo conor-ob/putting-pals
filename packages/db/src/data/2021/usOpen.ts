@@ -41,11 +41,9 @@ import {
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
 
-export const usOpen2021 = {
+export default {
   tournamentId: "R2021535",
-  seasonId: "2021",
-  shortName: "US Open",
-  name: "U.S. Open",
+  paddyPowerId: undefined,
   winnerId: cameronFolens.id,
   runnerUpId: markByrne.id,
   competitors: [

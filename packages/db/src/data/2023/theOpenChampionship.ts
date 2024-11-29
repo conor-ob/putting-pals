@@ -28,11 +28,9 @@ import {
   viktorHovland,
 } from "../players/pgaTourPlayers";
 
-export const theOpenChampionship2023 = {
+export default {
   tournamentId: "R2023100",
-  seasonId: "2023",
-  shortName: "Open",
-  name: "The Open Championship",
+  paddyPowerId: undefined,
   winnerId: phelimOconnor.id,
   runnerUpId: ciaranTighe.id,
   competitors: [

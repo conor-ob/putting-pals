@@ -43,11 +43,9 @@ import {
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
 
-export const theOpenChampionship2022 = {
+export default {
   tournamentId: "R2022100",
-  seasonId: "2022",
-  shortName: "Open",
-  name: "The Open Championship",
+  paddyPowerId: undefined,
   winnerId: richByrne.id,
   runnerUpId: brianObrolchain.id,
   competitors: [

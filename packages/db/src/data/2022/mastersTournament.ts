@@ -41,11 +41,9 @@ import {
   viktorHovland,
 } from "../players/pgaTourPlayers";
 
-export const mastersTournament2022 = {
+export default {
   tournamentId: "R2022014",
-  seasonId: "2022",
-  shortName: "Masters",
-  name: "Masters Tournament",
+  paddyPowerId: undefined,
   winnerId: richByrne.id,
   runnerUpId: johnHannaway.id,
   competitors: [

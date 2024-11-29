@@ -35,11 +35,9 @@ import {
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
 
-export const pgaChampionship2023 = {
+export default {
   tournamentId: "R2023033",
-  seasonId: "2023",
-  shortName: "PGA",
-  name: "PGA Championship",
+  paddyPowerId: undefined,
   winnerId: davidHynes.id,
   runnerUpId: robJoy.id,
   competitors: [
