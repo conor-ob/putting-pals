@@ -1,40 +1,29 @@
 import * as React from "react";
 
-import type {
-  RoundStatus,
-  RoundStatusColor,
-  TournamentStatus,
-} from "@pkg/api/pga";
+import type { Tournament } from "@pkg/api/types";
 
 import { cn } from "../../lib/utils";
 import { RoundStatusBadge } from "./round-status-badge";
 import { RoundStatusLabel } from "./round-status-label";
 
 export type TournamentStatusHeaderProps = {
-  roundDisplay: string;
-  roundStatus: RoundStatus;
-  roundStatusColor: RoundStatusColor;
-  roundStatusDisplay: string;
-  tournamentStatus: TournamentStatus;
+  tournament: Tournament;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 function TournamentStatusHeader({
   className,
-  roundDisplay,
-  roundStatus,
-  roundStatusColor,
-  roundStatusDisplay,
-  tournamentStatus,
+  tournament,
   ...props
 }: TournamentStatusHeaderProps) {
   if (
-    (tournamentStatus === "NOT_STARTED" && roundStatus === "UPCOMING") ||
-    (tournamentStatus === "COMPLETED" && roundStatus === "OFFICIAL")
+    (tournament.status === "NOT_STARTED" &&
+      tournament.roundStatus === "UPCOMING") ||
+    (tournament.status === "COMPLETED" && tournament.roundStatus === "OFFICIAL")
   ) {
     return (
       <div className={className} {...props}>
-        <RoundStatusBadge color={roundStatusColor}>
-          {roundStatusDisplay}
+        <RoundStatusBadge color={tournament.roundStatusColor}>
+          {tournament.roundStatusDisplay}
         </RoundStatusBadge>
       </div>
     );
@@ -44,11 +33,14 @@ function TournamentStatusHeader({
         className={cn("flex flex-row items-center gap-0.5", className)}
         {...props}
       >
-        <RoundStatusBadge color={roundStatusColor}>
-          {roundDisplay}
+        <RoundStatusBadge color={tournament.roundStatusColor}>
+          {tournament.roundDisplay}
         </RoundStatusBadge>
-        <RoundStatusLabel className="line-clamp-1" color={roundStatusColor}>
-          {roundStatusDisplay}
+        <RoundStatusLabel
+          className="line-clamp-1"
+          color={tournament.roundStatusColor}
+        >
+          {tournament.roundStatusDisplay}
         </RoundStatusLabel>
       </div>
     );

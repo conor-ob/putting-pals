@@ -1,5 +1,5 @@
-import { PgaTourLeaderboardPage } from "@features/pga-tour/leaderboard/page";
-import { PuttingPalsLeaderboardPage } from "@features/putting-pals/leaderboard/page";
+import { CompetitionPage } from "@features/competition/page";
+import { LeaderboardPage } from "@features/leaderboard/page";
 import {
   IonApp,
   IonIcon,
@@ -54,12 +54,12 @@ const App: React.FC = () => (
               <Redirect to="/pga-tour" />
             </Route>
             <Route exact path="/putting-pals">
-              <PuttingPalsLeaderboardPage />
+              <CompetitionPage />
             </Route>
             <Route exact path="/pga-tour">
-              <PgaTourLeaderboardPage />
+              <LeaderboardPage />
             </Route>
-            <Route path="/pga-tour/:id" component={PgaTourLeaderboardPage} />
+            <Route path="/pga-tour/:id" component={LeaderboardPage} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="putting-pals" href="/putting-pals">

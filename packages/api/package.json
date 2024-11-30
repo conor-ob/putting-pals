@@ -4,9 +4,9 @@
   "type": "module",
   "private": true,
   "exports": {
+    "./router": "./src/api.ts",
     "./context": "./src/context.ts",
-    "./root": "./src/root.ts",
-    "./pga": "./src/pga-tour/types/graphql.ts"
+    "./types": "./src/types.ts"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",
@@ -15,11 +15,12 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@apollo/datasource-rest": "catalog:",
+    "@pkg/data": "workspace:*",
+    "@pkg/db": "workspace:*",
+    "@pkg/graphql": "workspace:*",
+    "@pkg/utils": "workspace:*",
     "@sentry/node": "catalog:",
     "@trpc/server": "catalog:",
-    "cheerio": "catalog:",
-    "pako": "catalog:",
     "superjson": "catalog:",
     "zod": "catalog:"
   },
@@ -27,7 +28,6 @@
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
-    "@types/pako": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "rimraf": "catalog:",

@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "exports": {
+    "./flags": "./src/flags.ts",
     "./location": "./src/location.ts",
     "./weather": "./src/weather.ts"
   },

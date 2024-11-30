@@ -5,11 +5,9 @@ import type {
 import type { FastifyInstance } from "fastify";
 import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
 
-import type { AppRouter } from "@pkg/api/root";
+import type { AppRouter } from "@pkg/api/router";
 import { createTrpcContext } from "@pkg/api/context";
-import { appRouter } from "@pkg/api/root";
-
-import { env } from "../env/schema";
+import { appRouter } from "@pkg/api/router";
 
 export default function (fastify: FastifyInstance) {
   fastify.register(fastifyTRPCPlugin, {
@@ -19,7 +17,6 @@ export default function (fastify: FastifyInstance) {
       createContext: (opts: CreateFastifyContextOptions) =>
         createTrpcContext({
           opts,
-          apiKey: env.PGA_TOUR_API_KEY,
         }),
       onError({ path, type, error }) {
         fastify.log.error(

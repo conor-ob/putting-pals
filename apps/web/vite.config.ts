@@ -77,9 +77,9 @@ export default defineConfig(({ mode }) => {
         tsconfigPaths(),
         react(),
         VitePWA({
-          devOptions: {
-            enabled: true,
-          },
+          // devOptions: {
+          //   enabled: true, // TODO script dev:pwa
+          // },
           registerType: "autoUpdate",
           manifest: {
             short_name: "Putting Pals",
