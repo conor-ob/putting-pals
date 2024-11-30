@@ -70,6 +70,7 @@ export type ScoringData = {
 };
 
 export type Tournament = {
+  beautyImage: string;
   city: string;
   country: string;
   courses: Course[];

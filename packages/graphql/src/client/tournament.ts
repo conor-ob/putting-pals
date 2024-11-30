@@ -5,6 +5,7 @@ export class TournamentClient extends GraphqlApi {
   private tournamentsQuery = `
     query Tournaments($ids: [ID!]) {
       tournaments(ids: $ids) {
+        beautyImage
         id
         tournamentName
         tournamentLogo
@@ -43,15 +44,5 @@ export class TournamentClient extends GraphqlApi {
       .then((response) => {
         return response.data.tournaments;
       });
-  }
-
-  public async getTournament(id: string) {
-    return this.getTournaments([id]).then((tournaments) => {
-      if (tournaments.length === 0 || !tournaments[0]) {
-        throw new Error(`Tournament with id ${id} not found`);
-      } else {
-        return tournaments[0];
-      }
-    });
   }
 }
