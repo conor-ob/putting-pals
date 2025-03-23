@@ -8,7 +8,7 @@
     "numReplicas": 1,
     "region": "us-west1",
     "multiRegionConfig": {
-      "europe-west4-drams3a": {
+      "us-west1": {
         "numReplicas": 1
       }
     },
