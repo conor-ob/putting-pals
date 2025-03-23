@@ -12,6 +12,12 @@
         "numReplicas": 1
       }
     },
+    "limitOverride": {
+      "containers": {
+        "cpu": 1,
+        "memoryBytes": 2147483648
+      }
+    },
     "sleepApplication": false,
     "healthcheckPath": "/health",
     "healthcheckTimeout": 300,
