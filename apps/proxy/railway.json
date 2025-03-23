@@ -6,9 +6,9 @@
   },
   "deploy": {
     "numReplicas": 1,
-    "region": "us-west1",
+    "region": "europe-west4-drams3a",
     "multiRegionConfig": {
-      "us-west1": {
+      "europe-west4-drams3a": {
         "numReplicas": 1
       }
     },
