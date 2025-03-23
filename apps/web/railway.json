@@ -6,10 +6,22 @@
   },
   "deploy": {
     "numReplicas": 1,
+    "region": "europe-west4-drams3a",
+    "multiRegionConfig": {
+      "europe-west4-drams3a": {
+        "numReplicas": 1
+      }
+    },
+    "limitOverride": {
+      "containers": {
+        "cpu": 1,
+        "memoryBytes": 1000000000
+      }
+    },
+    "sleepApplication": false,
     "healthcheckPath": "/",
     "healthcheckTimeout": 300,
-    "sleepApplication": false,
-    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyType": "ALWAYS",
     "restartPolicyMaxRetries": 5
   }
 }
