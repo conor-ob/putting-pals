@@ -60,7 +60,7 @@ export function CompetitionTable({ id }: { id?: string }) {
                     <div className="flex w-8 justify-end text-sm font-semibold tracking-tighter"></div>
                   </div>
                 </div>
-                <div className="mx-4 h-0.5 bg-foreground"></div>
+                <div className="mx-4 border-b"></div>
               </div>
             </ListItem>
             {competitor.picks.map((player) => {
@@ -77,10 +77,10 @@ export function CompetitionTable({ id }: { id?: string }) {
                     score={player.scoringData.score}
                     teeTime={player.scoringData.teeTime}
                   />
-                  <div className="mx-4 border-b"></div>
                 </div>
               );
             })}
+            <div className="mx-4 border-b"></div>
           </div>
         );
       })}
