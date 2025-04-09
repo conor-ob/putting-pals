@@ -89,25 +89,19 @@ export default defineConfig(({ mode }) => {
             theme_color: "#1F1F1F", // Android theme color - not necessary for iOS
             background_color: "#121212", // Android background color - not necessary for iOS
             icons: [
+              { src: "/favicon.ico", type: "image/x-icon", sizes: "32x32" },
+              { src: "/icon-192.png", type: "image/png", sizes: "192x192" },
+              { src: "/icon-512.png", type: "image/png", sizes: "512x512" },
               {
-                src: "pwa-64x64.png",
-                sizes: "64x64",
+                src: "/icon-192-maskable.png",
                 type: "image/png",
-              },
-              {
-                src: "pwa-192x192.png",
                 sizes: "192x192",
-                type: "image/png",
+                purpose: "maskable",
               },
               {
-                src: "pwa-512x512.png",
-                sizes: "512x512",
+                src: "/icon-512-maskable.png",
                 type: "image/png",
-              },
-              {
-                src: "maskable-icon-512x512.png",
                 sizes: "512x512",
-                type: "image/png",
                 purpose: "maskable",
               },
             ],
