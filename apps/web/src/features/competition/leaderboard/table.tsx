@@ -23,7 +23,7 @@ export function CompetitionTable({
 
   const [favourites, setFavourites] = useState<string[]>([]);
 
-  // TODO remove hardcoded key
+  // TODO remove hardcoded favourites key
   const cacheKey = favouritesStorageKey("R2025014");
   useEffect(() => {
     function loadPicks() {
