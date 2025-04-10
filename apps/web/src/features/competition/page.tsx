@@ -2,8 +2,6 @@ import type { RefresherEventDetail } from "@ionic/react";
 import { useState } from "react";
 import { PageLayout } from "@components/page-layout";
 import { LeaderboardSearchBar } from "@features/leaderboard/search-bar";
-import { LeaderboardTableAllPlayersHeader } from "@features/leaderboard/table/all-players-header";
-import { LeaderboardTableHeader } from "@features/leaderboard/table/table-header";
 import { IonList, IonRefresher, IonRefresherContent } from "@ionic/react";
 import { api } from "@providers/trpc-provider";
 import { useParams } from "react-router-dom";
@@ -40,8 +38,6 @@ export function CompetitionPage() {
       <IonList lines="none">
         <CompetitionHeader id={params.id} />
         <LeaderboardSearchBar onSearchQueryChange={setSearchQuery} />
-        <LeaderboardTableAllPlayersHeader />
-        <LeaderboardTableHeader id={params.id} />
         <CompetitionTable id={params.id} searchQuery={searchQuery} />
       </IonList>
     </PageLayout>
