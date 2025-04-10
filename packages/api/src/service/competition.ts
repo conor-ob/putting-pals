@@ -43,11 +43,11 @@ export class CompetitionService {
               if (previous.totalSort === it.totalSort) {
                 accumulator[accumulator.length - 1] = {
                   ...previous,
-                  position: this.getPosition(previous.position, it.picks),
+                  position: this.getPosition(previous.position),
                 };
                 accumulator.push({
                   ...it,
-                  position: this.getPosition(previous.position, it.picks),
+                  position: this.getPosition(previous.position),
                 });
               } else {
                 accumulator.push({
@@ -62,14 +62,8 @@ export class CompetitionService {
     });
   }
 
-  private getPosition(previousPosition: string, picks: PlayerRow[]): string {
-    if (
-      picks
-        .map((pick) => pick.scoringData.position)
-        .every((position) => position === "-")
-    ) {
-      return "-";
-    } else if (previousPosition.startsWith("T")) {
+  private getPosition(previousPosition: string): string {
+    if (previousPosition.startsWith("T")) {
       return previousPosition;
     } else {
       const rank = Number(previousPosition);
