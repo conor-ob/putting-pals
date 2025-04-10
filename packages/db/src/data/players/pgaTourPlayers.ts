@@ -92,6 +92,8 @@ export const leeWestwood = "20396";
 
 export const louisOosthuizen = "26329";
 
+export const lucasGlover = "25900";
+
 export const lucasHerbert = "39058";
 
 export const ludvigAberg = "52955";
@@ -135,6 +137,8 @@ export const patrickReed = "34360";
 export const paulCasey = "25364";
 
 export const philMickelson = "01810";
+
+export const rasmusHojgaard = "52686";
 
 export const richardBland = "45836";
 

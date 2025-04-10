@@ -51,7 +51,7 @@ const App: React.FC = () => (
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/">
-              <Redirect to="/pga-tour" />
+              <Redirect to="/putting-pals" />
             </Route>
             <Route exact path="/putting-pals">
               <CompetitionPage />
