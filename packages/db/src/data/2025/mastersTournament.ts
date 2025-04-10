@@ -27,6 +27,7 @@ import {
   joaquinNiemann,
   justinRose,
   justinThomas,
+  keeganBradley,
   lucasGlover,
   ludvigAberg,
   mattFitzpatrick,
@@ -91,7 +92,7 @@ export default {
     },
     {
       ...karlCurran,
-      picks: [roryMcilroy, shaneLowry, justinRose], // 6 + 33 + 90 = 129/1
+      picks: [roryMcilroy, shaneLowry, keeganBradley], // 6 + 33 + 90 = 129/1
     },
     {
       ...aimeeOhanlon,
