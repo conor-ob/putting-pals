@@ -134,6 +134,14 @@ export const robKeartland = {
   shortName: "R. Keartland",
 };
 
+export const roryCoffey = {
+  id: "30423",
+  country: "IRL",
+  countryFlag: "IE",
+  displayName: "Rory Coffey",
+  shortName: "R. Coffey",
+};
+
 export const stephenDevine = {
   id: "74028",
   country: "IRL",

@@ -13,6 +13,7 @@ import {
   phelimOconnor,
   richByrne,
   robJoy,
+  roryCoffey,
   stephenDevine,
 } from "../competitors/puttingPalsCompetitors";
 import {
@@ -20,8 +21,8 @@ import {
   akshayBhatia,
   brysonDeChambeau,
   cameronSmith,
-  cameronYoung,
   collinMorikawa,
+  coreyConners,
   joaquinNiemann,
   justinRose,
   justinThomas,
@@ -35,6 +36,7 @@ import {
   roryMcilroy,
   sahithTheegala,
   scottieScheffler,
+  seppStraka,
   sergioGarcia,
   shaneLowry,
   tomKim,
@@ -65,6 +67,10 @@ export default {
     {
       ...robJoy,
       picks: [roryMcilroy, justinThomas, sahithTheegala], // 6 + 21 + 110 = 137/1
+    },
+    {
+      ...aidanWalsh,
+      picks: [collinMorikawa, minWooLee, seppStraka], // 15 + 50 + 70 = 135/1
     },
     {
       ...davidHynes,
@@ -107,8 +113,8 @@ export default {
       picks: [scottieScheffler, cameronSmith, patrickReed], // 5 + 50 + 70 = 125/1
     },
     {
-      ...aidanWalsh,
-      picks: [scottieScheffler, roryMcilroy, cameronYoung], // 5 + 6 + 110 = 121/1
+      ...roryCoffey,
+      picks: [scottieScheffler, coreyConners, patrickReed], // 5 + 50 + 70 = 125/1
     },
   ],
 };
