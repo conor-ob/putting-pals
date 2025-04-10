@@ -2,17 +2,17 @@ import { CompetitionPage } from "@features/competition/page";
 import { LeaderboardPage } from "@features/leaderboard/page";
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
+  // IonIcon,
+  // IonLabel,
   IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
+  // IonTabBar,
+  // IonTabButton,
   IonTabs,
   setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { TrpcProvider } from "@providers/trpc-provider";
-import { square } from "ionicons/icons";
+// import { square, trophy } from "ionicons/icons";
 import { Redirect, Route } from "react-router-dom";
 
 /* Core CSS required for Ionic components to work properly */
@@ -61,7 +61,7 @@ const App: React.FC = () => (
             </Route>
             <Route path="/pga-tour/:id" component={LeaderboardPage} />
           </IonRouterOutlet>
-          <IonTabBar slot="bottom">
+          {/* <IonTabBar slot="bottom">
             <IonTabButton tab="putting-pals" href="/putting-pals">
               <IonIcon aria-hidden="true" icon={square} />
               <IonLabel>Putting Pals</IonLabel>
@@ -70,7 +70,7 @@ const App: React.FC = () => (
               <IonIcon aria-hidden="true" icon={square} />
               <IonLabel>PGA Tour</IonLabel>
             </IonTabButton>
-          </IonTabBar>
+          </IonTabBar> */}
         </IonTabs>
       </IonReactRouter>
     </TrpcProvider>
