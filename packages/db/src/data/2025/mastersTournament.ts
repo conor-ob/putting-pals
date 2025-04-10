@@ -3,6 +3,7 @@ import {
   aimeeOhanlon,
   brianObrolchain,
   cameronFolens,
+  cianMoynihan,
   ciaranTighe,
   conorObrien,
   davidHynes,
@@ -107,6 +108,10 @@ export default {
     {
       ...johnHannaway,
       picks: [joaquinNiemann, viktorHovland, akshayBhatia], // 25 + 35 + 66 = 126/1
+    },
+    {
+      ...cianMoynihan,
+      picks: [ludvigAberg, robertMacIntyre, tonyFinau], // 15 + 45 + 66 = 126/1
     },
     {
       ...phelimOconnor,
