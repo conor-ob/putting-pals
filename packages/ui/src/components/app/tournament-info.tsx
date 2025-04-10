@@ -39,7 +39,7 @@ function Carousel({ displayStrings }: { displayStrings: React.ReactNode[] }) {
   }, [displayStrings.length]);
 
   return (
-    <div className="line-clamp-1 text-base font-medium leading-tight tracking-tight text-[#767676]">
+    <div className="line-clamp-1 text-base font-medium leading-tight tracking-tight text-muted-foreground">
       <style>
         {`
           @keyframes fadeIn {

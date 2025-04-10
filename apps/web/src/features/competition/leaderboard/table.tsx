@@ -148,6 +148,7 @@ export function CompetitionTable({
                           thru={player.scoringData.thru}
                           score={player.scoringData.score}
                           teeTime={player.scoringData.teeTime}
+                          variant="secondary"
                         />
                       </div>
                     );
@@ -215,6 +216,7 @@ export function CompetitionTable({
                       thru={player.scoringData.thru}
                       score={player.scoringData.score}
                       teeTime={player.scoringData.teeTime}
+                      variant="secondary"
                     />
                   </div>
                 );

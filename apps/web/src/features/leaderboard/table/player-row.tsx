@@ -12,6 +12,7 @@ export function LeadboardPlayerRow({
   thru,
   score,
   teeTime,
+  variant = "primary",
 }: {
   position: string;
   countryFlag: string;
@@ -22,12 +23,18 @@ export function LeadboardPlayerRow({
   thru: string;
   score: string;
   teeTime: number;
+  variant?: "primary" | "secondary";
 }) {
   return (
     <ListItem>
       <div className="flex w-full flex-row justify-between px-4 py-3">
         <div className="flex flex-row items-center">
-          <div className="w-10 text-sm font-semibold tracking-tighter">
+          <div
+            className={cn(
+              "w-10 text-sm font-semibold tracking-tighter",
+              variant === "secondary" && "text-muted-foreground",
+            )}
+          >
             {position}
           </div>
           <div className="me-2 w-8 px-0.5">
@@ -38,7 +45,7 @@ export function LeadboardPlayerRow({
           </div>
           <div className="line-clamp-1 text-sm font-semibold tracking-tighter">
             {shortName}
-            <span className="text-[#767676]">{` ${abbreviations}`}</span>
+            <span className="text-muted-foreground">{` ${abbreviations}`}</span>
           </div>
         </div>
         <div className="flex flex-row">

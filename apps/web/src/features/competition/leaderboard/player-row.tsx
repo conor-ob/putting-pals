@@ -33,7 +33,7 @@ export function CompetitionPlayerRow({
               <IonIcon
                 className={cn(
                   isFavourite && "text-yellow",
-                  !isFavourite && "text-[#767676]",
+                  !isFavourite && "text-muted-foreground",
                 )}
                 icon={isFavourite ? star : starOutline}
                 size="small"
