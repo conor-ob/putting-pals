@@ -13,9 +13,11 @@ export function CompetitionTable({
   id?: string;
   searchQuery?: string;
 }) {
-  const { data } = api.competition.getById.useQuery({ id });
+  const { data, isLoading, isRefetching } = api.competition.getById.useQuery({
+    id,
+  });
 
-  if (data === undefined) {
+  if (isLoading || isRefetching || !data) {
     return (
       <div className="flex flex-col px-4">
         <div className="border-b py-4">

@@ -5,11 +5,12 @@ import { TournamentHeader } from "@pkg/ui/app";
 import { Skeleton } from "@pkg/ui/ui";
 
 export function CompetitionHeader({ id }: { id?: string }) {
-  const { data } = api.tournament.getByCompetitionId.useQuery({
-    id,
-  });
+  const { data, isLoading, isRefetching } =
+    api.tournament.getByCompetitionId.useQuery({
+      id,
+    });
 
-  if (data === undefined) {
+  if (isLoading || isRefetching || !data) {
     return (
       <ListItem>
         <div className="flex flex-row items-center gap-3 p-4">
