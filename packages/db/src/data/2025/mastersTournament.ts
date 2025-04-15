@@ -51,8 +51,8 @@ import {
 export default {
   tournamentId: "R2025014",
   paddyPowerId: undefined,
-  winnerId: undefined,
-  runnerUpId: undefined,
+  winnerId: roryCoffey.id,
+  runnerUpId: brianObrolchain.id,
   competitors: [
     {
       ...brianObrolchain,
