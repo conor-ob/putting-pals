@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { LeaderboardTableAllPlayersHeader } from "@features/leaderboard/table/all-players-header";
 import { LeadboardPlayerRow } from "@features/leaderboard/table/player-row";
-import { LeaderboardTableHeader } from "@features/leaderboard/table/table-header";
 import { api } from "@providers/trpc-provider";
 import _ from "lodash";
 
@@ -9,6 +8,7 @@ import { Skeleton } from "@pkg/ui/ui";
 
 import { favouritesStorageKey } from "../utils/favourites";
 import { CompetitionPlayerRow } from "./player-row";
+import { CompetitionTableHeader } from "./table-header";
 
 export function CompetitionTable({
   id,
@@ -91,7 +91,7 @@ export function CompetitionTable({
           <div className="px-4 py-2">
             <div className="text-2xl font-bold tracking-tight">Favourites</div>
           </div>
-          <LeaderboardTableHeader id={id} />
+          <CompetitionTableHeader id={id} />
           {data.competitors
             .filter((competitor) => favourites.includes(competitor.id))
             .filter((competitor) => {
@@ -160,7 +160,7 @@ export function CompetitionTable({
         </div>
       )}
       <LeaderboardTableAllPlayersHeader />
-      <LeaderboardTableHeader id={id} />
+      <CompetitionTableHeader id={id} />
       {data.competitors
         .filter((competitor) => {
           if (searchQuery === undefined) {
