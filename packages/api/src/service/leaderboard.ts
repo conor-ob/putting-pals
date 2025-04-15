@@ -8,6 +8,7 @@ export class LeaderboardService {
     return new LeaderboardClient().getLeaderboard(id).then((leaderboard) => {
       return {
         id: leaderboard.id,
+        leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
         rows: leaderboard.players.map((player) => {
           if (player.__typename === "InformationRow") {
             return {

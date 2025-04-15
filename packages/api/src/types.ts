@@ -27,6 +27,7 @@ export type InformationRow = {
 
 export type Leaderboard = {
   id: string;
+  leaderboardRoundHeader: string;
   rows: LeaderboardRow[];
 };
 

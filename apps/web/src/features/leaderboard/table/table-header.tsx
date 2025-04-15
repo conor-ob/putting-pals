@@ -3,7 +3,7 @@ import { api } from "@providers/trpc-provider";
 import { cn } from "@pkg/ui/cn";
 
 export function LeaderboardTableHeader({ id }: { id?: string }) {
-  const { data } = api.tournament.getById.useQuery({ id });
+  const { data } = api.leaderboard.getById.useQuery({ id });
 
   return (
     <>
@@ -25,7 +25,7 @@ export function LeaderboardTableHeader({ id }: { id?: string }) {
             THRU
           </div>
           <div className="flex w-8 justify-end text-xs font-semibold tracking-tighter">
-            {data?.roundDisplay ?? "RD"}
+            {data?.leaderboardRoundHeader ?? "RD"}
           </div>
         </div>
       </div>
