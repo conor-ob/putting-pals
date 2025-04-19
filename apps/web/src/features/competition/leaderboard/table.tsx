@@ -1,63 +1,218 @@
-import { ListItem } from "@components/list-item";
+import { useEffect, useState } from "react";
+import { LeaderboardTableAllPlayersHeader } from "@features/leaderboard/table/all-players-header";
 import { LeadboardPlayerRow } from "@features/leaderboard/table/player-row";
 import { api } from "@providers/trpc-provider";
+import _ from "lodash";
 
-import { cn } from "@pkg/ui/cn";
+import { Skeleton } from "@pkg/ui/ui";
 
-export function CompetitionTable({ id }: { id?: string }) {
-  const { data } = api.competition.getById.useQuery({ id });
+import { favouritesStorageKey } from "../utils/favourites";
+import { CompetitionPlayerRow } from "./player-row";
+import { CompetitionTableHeader } from "./table-header";
 
+export function CompetitionTable({
+  id,
+  searchQuery,
+}: {
+  id?: string;
+  searchQuery?: string;
+}) {
+  const { data, isLoading, isRefetching } = api.competition.getById.useQuery({
+    id,
+  });
+
+  const [favourites, setFavourites] = useState<string[]>([]);
+
+  // TODO remove hardcoded favourites key
+  const cacheKey = favouritesStorageKey("R2025014");
+  useEffect(() => {
+    function loadPicks() {
+      const favouritesJson = localStorage.getItem(cacheKey);
+      if (favouritesJson !== null) {
+        const favourites = JSON.parse(favouritesJson) as string[];
+        if (favourites.length !== 0) {
+          setFavourites(favourites);
+        }
+      }
+    }
+
+    loadPicks();
+  }, [cacheKey]);
+
+  function handleAddFavourite(id: string) {
+    const newFavourites = [...favourites, id];
+    localStorage.setItem(cacheKey, JSON.stringify(newFavourites));
+    setFavourites(newFavourites);
+  }
+
+  function handleRemoveFavourite(id: string) {
+    const newFavourites = favourites.filter((it) => it !== id);
+    localStorage.setItem(cacheKey, JSON.stringify(newFavourites));
+    setFavourites(newFavourites);
+  }
+
+  if (isLoading || isRefetching || !data) {
+    return (
+      <div className="flex flex-col px-4">
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+        <div className="border-b py-4">
+          <Skeleton className="h-3 w-full" />
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
-      {data?.competitors.map((competitor) => {
-        return (
-          <div key={competitor.id}>
-            <ListItem>
-              <div className="flex w-full flex-row justify-between px-4 py-3">
-                <div className="flex flex-row items-center">
-                  <div className="w-10 text-sm font-semibold tracking-tighter">
-                    {competitor.position}
-                  </div>
-                  <div className="me-2 w-8 px-0.5"></div>
-                  <div className="line-clamp-1 text-sm font-semibold tracking-tighter">
-                    {competitor.shortName}
-                  </div>
-                </div>
-                <div className="flex flex-row">
-                  <div
-                    className={cn(
-                      "flex w-12 justify-center text-sm font-semibold tracking-tighter",
-                      competitor.totalSort < 0 && "text-red",
-                      competitor.totalSort === 0 && "text-green",
-                    )}
-                  >
-                    {competitor.total}
-                  </div>
-                  <div className="flex w-10 justify-center text-sm font-semibold tracking-tighter"></div>
-                  <div className="flex w-8 justify-end text-sm font-semibold tracking-tighter"></div>
-                </div>
-              </div>
-            </ListItem>
-            {competitor.picks.map((player) => {
+      {favourites.length > 0 && (
+        <div className="mb-4">
+          <div className="px-4 py-2">
+            <div className="text-2xl font-bold tracking-tight">Favourites</div>
+          </div>
+          <CompetitionTableHeader id={id} />
+          {data.competitors
+            .filter((competitor) => favourites.includes(competitor.id))
+            .filter((competitor) => {
+              if (searchQuery === undefined) {
+                return true;
+              } else {
+                const deburredSearchQuery = _.deburr(
+                  searchQuery.toLowerCase(),
+                ).trim();
+
+                const competitorName = competitor.displayName;
+                const playerNames = competitor.picks.map(
+                  (player) =>
+                    `${player.player.firstName} ${player.player.lastName}`,
+                );
+
+                const deburredNames = [competitorName, ...playerNames].map(
+                  (value) => _.deburr(value.toLowerCase()).trim(),
+                );
+
+                return deburredNames.some((name) =>
+                  name.includes(deburredSearchQuery),
+                );
+              }
+            })
+            .map((competitor) => {
               return (
-                <div key={player.id}>
-                  <LeadboardPlayerRow
-                    position={player.scoringData.position}
-                    countryFlag={player.player.countryFlag}
-                    shortName={player.player.shortName}
-                    abbreviations={player.player.abbreviations}
-                    total={player.scoringData.total}
-                    totalSort={player.scoringData.totalSort}
-                    thru={player.scoringData.thru}
-                    score={player.scoringData.score}
-                    teeTime={player.scoringData.teeTime}
+                <div key={competitor.id}>
+                  <CompetitionPlayerRow
+                    id={competitor.id}
+                    position={competitor.position}
+                    shortName={competitor.shortName}
+                    total={competitor.total}
+                    totalSort={competitor.totalSort}
+                    isFavourite={favourites.includes(competitor.id)}
+                    onFavouriteClick={(id, isFavourite) => {
+                      if (isFavourite) {
+                        handleRemoveFavourite(id);
+                      } else {
+                        handleAddFavourite(id);
+                      }
+                    }}
                   />
+                  {competitor.picks.map((player) => {
+                    return (
+                      <div key={player.id}>
+                        <LeadboardPlayerRow
+                          position={player.scoringData.position}
+                          countryFlag={player.player.countryFlag}
+                          shortName={player.player.shortName}
+                          abbreviations={player.player.abbreviations}
+                          total={player.scoringData.total}
+                          totalSort={player.scoringData.totalSort}
+                          thru={player.scoringData.thru}
+                          score={player.scoringData.score}
+                          teeTime={player.scoringData.teeTime}
+                          variant="secondary"
+                        />
+                      </div>
+                    );
+                  })}
+                  <div className="mx-4 border-b"></div>
                 </div>
               );
             })}
-          </div>
-        );
-      })}
+        </div>
+      )}
+      <LeaderboardTableAllPlayersHeader />
+      <CompetitionTableHeader id={id} />
+      {data.competitors
+        .filter((competitor) => {
+          if (searchQuery === undefined) {
+            return true;
+          } else {
+            const deburredSearchQuery = _.deburr(
+              searchQuery.toLowerCase(),
+            ).trim();
+
+            const competitorName = competitor.displayName;
+            const playerNames = competitor.picks.map(
+              (player) =>
+                `${player.player.firstName} ${player.player.lastName}`,
+            );
+
+            const deburredNames = [competitorName, ...playerNames].map(
+              (value) => _.deburr(value.toLowerCase()).trim(),
+            );
+
+            return deburredNames.some((name) =>
+              name.includes(deburredSearchQuery),
+            );
+          }
+        })
+        .map((competitor) => {
+          return (
+            <div key={competitor.id}>
+              <CompetitionPlayerRow
+                id={competitor.id}
+                position={competitor.position}
+                shortName={competitor.shortName}
+                total={competitor.total}
+                totalSort={competitor.totalSort}
+                isFavourite={favourites.includes(competitor.id)}
+                onFavouriteClick={(id, isFavourite) => {
+                  if (isFavourite) {
+                    handleRemoveFavourite(id);
+                  } else {
+                    handleAddFavourite(id);
+                  }
+                }}
+              />
+              {competitor.picks.map((player) => {
+                return (
+                  <div key={player.id}>
+                    <LeadboardPlayerRow
+                      position={player.scoringData.position}
+                      countryFlag={player.player.countryFlag}
+                      shortName={player.player.shortName}
+                      abbreviations={player.player.abbreviations}
+                      total={player.scoringData.total}
+                      totalSort={player.scoringData.totalSort}
+                      thru={player.scoringData.thru}
+                      score={player.scoringData.score}
+                      teeTime={player.scoringData.teeTime}
+                      variant="secondary"
+                    />
+                  </div>
+                );
+              })}
+              <div className="mx-4 border-b"></div>
+            </div>
+          );
+        })}
     </div>
   );
 }

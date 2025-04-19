@@ -7719,7 +7719,7 @@ export type YourTourStory = {
 // #region inferred types after PGA TOUR turned off GraphQL introspection
 
 export type LeaderboardCompressedV3 = {
-  __typename?: "LeaderboardCompressedV2";
+  __typename?: "LeaderboardCompressedV3";
   id: Scalars["ID"]["output"];
   payload: Scalars["String"]["output"];
 };
@@ -7727,7 +7727,7 @@ export type LeaderboardCompressedV3 = {
 export type LeaderboardRowV3 = InformationRow | PlayerRowV3;
 
 export type LeaderboardScoringDataV3 = {
-  __typename?: "ScoringData";
+  __typename?: "LeaderboardScoringDataV3";
   backNine: Scalars["Boolean"]["output"];
   courseId: Scalars["String"]["output"];
   currentRound: Scalars["Int"]["output"];

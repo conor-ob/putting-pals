@@ -8,6 +8,7 @@ export class LeaderboardService {
     return new LeaderboardClient().getLeaderboard(id).then((leaderboard) => {
       return {
         id: leaderboard.id,
+        leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
         rows: leaderboard.players.map((player) => {
           if (player.__typename === "InformationRow") {
             return {
@@ -40,7 +41,10 @@ export class LeaderboardService {
                 thru: player.scoringData.thru,
                 thruSort: player.scoringData.thruSort,
                 total: player.scoringData.total,
-                totalSort: player.scoringData.totalSort,
+                totalSort: this.getTotalSort(
+                  player.scoringData.total,
+                  player.scoringData.totalSort,
+                ),
               },
             } as PlayerRow;
           } else {
@@ -49,5 +53,14 @@ export class LeaderboardService {
         }),
       };
     });
+  }
+
+  // TODO check if PGA TOUR fixed their API...
+  private getTotalSort(total: string, totalSort: number): number {
+    if (total.startsWith("-")) {
+      return -parseInt(total.slice(1), 10);
+    } else {
+      return totalSort;
+    }
   }
 }

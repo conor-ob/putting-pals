@@ -33,6 +33,7 @@ catalog:
   "@trpc/client": ^11.0.0-rc.648 # https://www.npmjs.com/package/@trpc/client?activeTab=versions
   "@trpc/react-query": ^11.0.0-rc.648 # https://www.npmjs.com/package/@trpc/react-query?activeTab=versions
   "@trpc/server": ^11.0.0-rc.648 # https://www.npmjs.com/package/@trpc/server?activeTab=versions
+  "@types/lodash": ^4.17.16 # https://www.npmjs.com/package/@types/lodash?activeTab=versions
   "@types/node": ^22.9.3 # https://www.npmjs.com/package/@types/node?activeTab=versions
   "@types/pako": ^2.0.3 # https://www.npmjs.com/package/@types/pako?activeTab=versions
   "@types/react": ^18.3.12 # https://www.npmjs.com/package/@types/react?activeTab=versions
@@ -58,6 +59,7 @@ catalog:
   ionicons: ^7.4.0 # https://www.npmjs.com/package/ionicons?activeTab=versions
   jsdom: ^25.0.1 # https://www.npmjs.com/package/jsdom?activeTab=versions
   lucide-react: ^0.462.0 # https://www.npmjs.com/package/lucide-react?activeTab=versions
+  lodash: ^4.17.21 # https://www.npmjs.com/package/lodash?activeTab=versions
   pako: ^2.1.0 # https://www.npmjs.com/package/pako?activeTab=versions
   pino: ^9.5.0 # https://www.npmjs.com/package/pino?activeTab=versions
   pino-pretty: ^13.0.0 # https://www.npmjs.com/package/pino-pretty?activeTab=versions

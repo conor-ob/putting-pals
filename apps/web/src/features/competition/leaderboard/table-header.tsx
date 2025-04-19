@@ -2,8 +2,8 @@ import { api } from "@providers/trpc-provider";
 
 import { cn } from "@pkg/ui/cn";
 
-export function LeaderboardTableHeader({ id }: { id?: string }) {
-  const { data } = api.leaderboard.getById.useQuery({ id });
+export function CompetitionTableHeader({ id }: { id?: string }) {
+  const { data } = api.leaderboard.getByCompetitionId.useQuery({ id });
 
   return (
     <>
