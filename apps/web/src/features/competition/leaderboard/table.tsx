@@ -27,16 +27,12 @@ export function CompetitionTable({
   const cacheKey = favouritesStorageKey("R2025014");
   useEffect(() => {
     function loadPicks() {
-      try {
-        const favouritesJson = localStorage.getItem(cacheKey);
-        if (favouritesJson !== null) {
-          const favourites = JSON.parse(favouritesJson) as string[];
-          if (favourites.length !== 0) {
-            setFavourites(favourites);
-          }
+      const favouritesJson = localStorage.getItem(cacheKey);
+      if (favouritesJson !== null) {
+        const favourites = JSON.parse(favouritesJson) as string[];
+        if (favourites.length !== 0) {
+          setFavourites(favourites);
         }
-      } catch (e) {
-        // error reading value
       }
     }
 
@@ -45,22 +41,14 @@ export function CompetitionTable({
 
   function handleAddFavourite(id: string) {
     const newFavourites = [...favourites, id];
-    try {
-      localStorage.setItem(cacheKey, JSON.stringify(newFavourites));
-      setFavourites(newFavourites);
-    } catch (e) {
-      // saving error
-    }
+    localStorage.setItem(cacheKey, JSON.stringify(newFavourites));
+    setFavourites(newFavourites);
   }
 
   function handleRemoveFavourite(id: string) {
     const newFavourites = favourites.filter((it) => it !== id);
-    try {
-      localStorage.setItem(cacheKey, JSON.stringify(newFavourites));
-      setFavourites(newFavourites);
-    } catch (e) {
-      // saving error
-    }
+    localStorage.setItem(cacheKey, JSON.stringify(newFavourites));
+    setFavourites(newFavourites);
   }
 
   if (isLoading || isRefetching || !data) {
