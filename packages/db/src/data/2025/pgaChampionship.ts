@@ -62,7 +62,7 @@ export default {
     },
     {
       ...cameronFolens,
-      picks: [roryMcilroy, brysonDeChambeau, harrisEnglish], // 3.5 + 11 + 125 = 139.5/1
+      picks: [roryMcilroy, brysonDeChambeau, rasmusHojgaard], // 3.5 + 11 + 125 = 139.5/1
     },
     {
       ...robJoy,
