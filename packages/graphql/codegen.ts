@@ -4,7 +4,6 @@ import { env } from "./src/env/schema";
 
 const config: CodegenConfig = {
   schema: [
-    "**/schema.graphql",
     {
       "https://orchestrator.pgatour.com/graphql": {
         headers: {
