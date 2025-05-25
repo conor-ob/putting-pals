@@ -76,6 +76,8 @@ export const jordanSmith = "46464";
 
 export const jordanSpieth = "34046";
 
+export const jtPoston = "49771";
+
 export const justinRose = "22405";
 
 export const justinThomas = "33448";
