@@ -12,8 +12,13 @@ export class PgaTourWebScraper {
   // }
 
   async getCurrentTournamentId() {
-    return fetch("https://www.pgatour.com/leaderboard").then(async (text) => {
-      const $ = cheerio.load(await text.text());
+    return fetch("https://www.pgatour.com/leaderboard", {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36",
+      },
+    }).then(async (response) => {
+      const $ = cheerio.load(await response.text());
 
       const scriptsById = $("#__NEXT_DATA__")
         .map((_, el) => $(el).html())
