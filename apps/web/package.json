@@ -18,11 +18,13 @@
   "dependencies": {
     "@ionic/react": "catalog:",
     "@ionic/react-router": "catalog:",
+    "@pkg/api": "workspace:*",
     "@pkg/ui": "workspace:*",
     "@sentry/react": "catalog:",
     "@tanstack/react-query": "catalog:",
     "@trpc/client": "catalog:",
     "@trpc/react-query": "catalog:",
+    "@trpc/server": "catalog:",
     "ionicons": "catalog:",
     "lodash": "catalog:",
     "react": "catalog:",
@@ -33,7 +35,8 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@pkg/api": "workspace:*",
+    "@cloudflare/vite-plugin": "^1.3.0",
+    "@cloudflare/workers-types": "^4.20250525.0",
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",
     "@sentry/vite-plugin": "catalog:",
@@ -67,11 +70,12 @@
     "tailwindcss": "catalog:",
     "terser": "^5.4.0",
     "typescript": "catalog:",
-    "vite": "catalog:",
+    "vite": "^6.1.0",
     "vite-plugin-pwa": "catalog:",
     "vite-tsconfig-paths": "catalog:",
     "vitest": "catalog:",
-    "workbox-window": "catalog:"
+    "workbox-window": "catalog:",
+    "wrangler": "^4.17.0"
   },
   "prettier": "@pkg/prettier"
 }

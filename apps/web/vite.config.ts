@@ -1,5 +1,6 @@
 import * as child from "child_process";
 import path from "path";
+import { cloudflare } from "@cloudflare/vite-plugin";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig, loadEnv } from "vite";
@@ -62,20 +63,21 @@ export default defineConfig(({ mode }) => {
         },
         sourcemap: env.CI,
       },
-      server: {
-        open: true,
-        port: env.PORT,
-        proxy: {
-          "/api": {
-            target: "http://localhost:4000",
-            changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, ""),
-          },
-        },
-      },
+      // server: {
+      //   open: true,
+      //   port: env.PORT,
+      //   proxy: {
+      //     "/api": {
+      //       target: "http://localhost:4000",
+      //       changeOrigin: true,
+      //       rewrite: (path) => path.replace(/^\/api/, ""),
+      //     },
+      //   },
+      // },
       plugins: [
         tsconfigPaths(),
         react(),
+        cloudflare(),
         VitePWA({
           // devOptions: {
           //   enabled: true, // TODO script dev:pwa

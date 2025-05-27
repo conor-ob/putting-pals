@@ -43,3 +43,7 @@ tsconfig.*.tsbuildinfo
 
 # pwa
 dev-dist/
+
+# cloudflare
+.wrangler
+.dev.vars*

@@ -4,7 +4,6 @@ packages:
   - "tooling/*"
 
 catalog:
-  "@apollo/datasource-rest": ^6.3.0 # https://www.npmjs.com/package/@apollo/datasource-rest?activeTab=versions
   "@eslint/compat": ^1.2.3 # https://www.npmjs.com/package/@eslint/compat?activeTab=versions
   "@fastify/cors": ^10.0.1 # https://www.npmjs.com/package/@fastify/cors?activeTab=versions
   "@fastify/rate-limit": ^10.2.1 # https://www.npmjs.com/package/@fastify/rate-limit?activeTab=versions

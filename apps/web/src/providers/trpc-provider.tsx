@@ -50,7 +50,7 @@ export function TrpcProvider(props: { children: React.ReactNode }) {
         }),
         unstable_httpBatchStreamLink({
           transformer: SuperJSON,
-          url: "/api/trpc",
+          url: "/trpc",
           headers: () => {
             const headers = new Headers();
             headers.set("x-trpc-source", "ionic-react");

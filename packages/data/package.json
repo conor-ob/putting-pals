@@ -13,7 +13,6 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@apollo/datasource-rest": "catalog:",
     "cheerio": "catalog:"
   },
   "devDependencies": {

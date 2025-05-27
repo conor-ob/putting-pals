@@ -14,7 +14,6 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@apollo/datasource-rest": "catalog:",
     "dotenv": "catalog:",
     "pako": "catalog:",
     "zod": "catalog:"
