@@ -1,4 +1,4 @@
-import "./instrument";
+// import "./instrument";
 
 import React from "react";
 import * as Sentry from "@sentry/react";

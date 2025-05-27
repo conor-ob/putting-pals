@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
   const env = envSchema.parse({
     ...viteEnv,
     SENTRY_PROJECT: "putting-pals-web",
+    SENTRY_DSN: "https://123abc@456.ingest.de.sentry.io/789",
     GIT_COMMIT_SHA:
       process.env.RAILWAY_GIT_COMMIT_SHA ??
       process.env.GITHUB_SHA ??
