@@ -70,7 +70,6 @@ catalog:
   react-dom: ^18.3.1 # https://www.npmjs.com/package/react-dom?activeTab=versions
   react-router: ^5.3.4 # https://www.npmjs.com/package/react-router?activeTab=versions
   react-router-dom: ^5.3.4 # https://www.npmjs.com/package/react-router-dom?activeTab=versions
-  rimraf: ^6.0.1 # https://www.npmjs.com/package/rimraf?activeTab=versions
   storybook: ^8.4.5 # https://www.npmjs.com/package/storybook?activeTab=versions
   superjson: ^2.2.1 # https://www.npmjs.com/package/superjson?activeTab=versions
   tailwind-merge: ^2.5.5 # https://www.npmjs.com/package/tailwind-merge?activeTab=versions

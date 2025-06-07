@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "clean": "rimraf dist && rimraf storybook-static && rimraf .cache && rimraf .turbo && rimraf node_modules",
+    "clean": "git clean -xdf .cache .turbo dist node_modules storybook-static",
     "build": "tsc -b && vite build",
     "build-storybook": "storybook build",
     "format": "prettier --check . --ignore-path ../../.gitignore",
@@ -62,7 +62,6 @@
     "jsdom": "catalog:",
     "postcss": "catalog:",
     "prettier": "catalog:",
-    "rimraf": "catalog:",
     "storybook": "catalog:",
     "tailwindcss": "catalog:",
     "terser": "^5.4.0",
