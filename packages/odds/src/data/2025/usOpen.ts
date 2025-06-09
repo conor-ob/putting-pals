@@ -1,4 +1,4 @@
-// Mon, 09 Jun 2025 19:39:29 GMT
+// Mon, 09 Jun 2025 21:30:55 GMT
 export default {
   layout: {
     defaultTab: "OUTRIGHTS",
@@ -437,10 +437,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2.8,
+                  decimalOdds: 2.6,
                 },
                 fractionalOdds: {
-                  numerator: 9,
+                  numerator: 8,
                   denominator: 5,
                 },
               },
@@ -701,11 +701,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3.5,
+                  decimalOdds: 3.6,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 2,
+                  numerator: 13,
+                  denominator: 5,
                 },
               },
             },
@@ -1145,10 +1145,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 10,
+                  decimalOdds: 11,
                 },
                 fractionalOdds: {
-                  numerator: 9,
+                  numerator: 10,
                   denominator: 1,
                 },
               },
@@ -1205,10 +1205,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -1245,10 +1245,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 56,
+                  decimalOdds: 46,
                 },
                 fractionalOdds: {
-                  numerator: 55,
+                  numerator: 45,
                   denominator: 1,
                 },
               },
@@ -1285,10 +1285,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 61,
+                  decimalOdds: 56,
                 },
                 fractionalOdds: {
-                  numerator: 60,
+                  numerator: 55,
                   denominator: 1,
                 },
               },
@@ -1345,10 +1345,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 51,
+                  decimalOdds: 46,
                 },
                 fractionalOdds: {
-                  numerator: 50,
+                  numerator: 45,
                   denominator: 1,
                 },
               },
@@ -1365,10 +1365,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 81,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 80,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -1573,11 +1573,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 4.5,
+                  decimalOdds: 4.2,
                 },
                 fractionalOdds: {
-                  numerator: 7,
-                  denominator: 2,
+                  numerator: 16,
+                  denominator: 5,
                 },
               },
             },
@@ -1593,11 +1593,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 4.2,
+                  decimalOdds: 5,
                 },
                 fractionalOdds: {
-                  numerator: 16,
-                  denominator: 5,
+                  numerator: 4,
+                  denominator: 1,
                 },
               },
             },
@@ -1653,11 +1653,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 4.5,
+                  decimalOdds: 4.2,
                 },
                 fractionalOdds: {
-                  numerator: 7,
-                  denominator: 2,
+                  numerator: 16,
+                  denominator: 5,
                 },
               },
             },
@@ -2589,10 +2589,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -2689,10 +2689,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 501,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 500,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -2729,10 +2729,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -2769,10 +2769,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -2809,10 +2809,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 501,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 500,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -2849,10 +2849,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -2889,10 +2889,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 751,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 750,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -2969,10 +2969,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 251,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 250,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -3029,10 +3029,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 351,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 350,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -3049,10 +3049,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -3189,10 +3189,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -3429,10 +3429,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -3529,10 +3529,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -3589,10 +3589,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -3649,10 +3649,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -3789,10 +3789,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -3849,10 +3849,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 251,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 250,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -3969,10 +3969,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -4109,10 +4109,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -4269,10 +4269,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 251,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 250,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -4329,10 +4329,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 276,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 275,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -4449,10 +4449,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -4649,10 +4649,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -4689,10 +4689,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 251,
+                  decimalOdds: 276,
                 },
                 fractionalOdds: {
-                  numerator: 250,
+                  numerator: 275,
                   denominator: 1,
                 },
               },
@@ -4829,10 +4829,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 276,
+                  decimalOdds: 301,
                 },
                 fractionalOdds: {
-                  numerator: 275,
+                  numerator: 300,
                   denominator: 1,
                 },
               },
@@ -5009,10 +5009,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 401,
+                  decimalOdds: 501,
                 },
                 fractionalOdds: {
-                  numerator: 400,
+                  numerator: 500,
                   denominator: 1,
                 },
               },
@@ -5069,10 +5069,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -5537,41 +5537,10 @@ export default {
             },
           },
           {
-            selectionId: 13470521,
-            handicap: 0,
-            runnerName: "Sepp Straka",
-            sortPriority: 13,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 41,
-                },
-                fractionalOdds: {
-                  numerator: 40,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 25,
-                },
-                fractionalOdds: {
-                  numerator: 24,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
             selectionId: 13496400,
             handicap: 0,
             runnerName: "Brooks Koepka",
-            sortPriority: 14,
+            sortPriority: 13,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -5602,7 +5571,7 @@ export default {
             selectionId: 13496402,
             handicap: 0,
             runnerName: "Hideki Matsuyama",
-            sortPriority: 15,
+            sortPriority: 14,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -5633,7 +5602,7 @@ export default {
             selectionId: 19817826,
             handicap: 0,
             runnerName: "Viktor Hovland",
-            sortPriority: 16,
+            sortPriority: 15,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -5664,7 +5633,7 @@ export default {
             selectionId: 13469613,
             handicap: 0,
             runnerName: "Tyrrell Hatton",
-            sortPriority: 17,
+            sortPriority: 16,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -5695,7 +5664,7 @@ export default {
             selectionId: 13496393,
             handicap: 0,
             runnerName: "Jordan Spieth",
-            sortPriority: 18,
+            sortPriority: 17,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -5726,7 +5695,7 @@ export default {
             selectionId: 13496417,
             handicap: 0,
             runnerName: "Russell Henley",
-            sortPriority: 19,
+            sortPriority: 18,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -5757,6 +5726,37 @@ export default {
             selectionId: 13470440,
             handicap: 0,
             runnerName: "Corey Conners",
+            sortPriority: 19,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 51,
+                },
+                fractionalOdds: {
+                  numerator: 50,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 31,
+                },
+                fractionalOdds: {
+                  numerator: 30,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 13470521,
+            handicap: 0,
+            runnerName: "Sepp Straka",
             sortPriority: 20,
             result: {},
             runnerStatus: "ACTIVE",
@@ -6538,10 +6538,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -6550,10 +6550,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -6622,10 +6622,41 @@ export default {
             },
           },
           {
+            selectionId: 26962136,
+            handicap: 0,
+            runnerName: "Davis Thompson",
+            sortPriority: 48,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 151,
+                },
+                fractionalOdds: {
+                  numerator: 150,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 91,
+                },
+                fractionalOdds: {
+                  numerator: 90,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
             selectionId: 13469288,
             handicap: 0,
             runnerName: "J.T. Poston",
-            sortPriority: 48,
+            sortPriority: 49,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6656,7 +6687,7 @@ export default {
             selectionId: 13470431,
             handicap: 0,
             runnerName: "Carlos Ortiz",
-            sortPriority: 49,
+            sortPriority: 50,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6687,7 +6718,7 @@ export default {
             selectionId: 69334067,
             handicap: 0,
             runnerName: "Denny McCarthy",
-            sortPriority: 50,
+            sortPriority: 51,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6718,7 +6749,7 @@ export default {
             selectionId: 13469610,
             handicap: 0,
             runnerName: "Adam Scott",
-            sortPriority: 51,
+            sortPriority: 52,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6749,7 +6780,7 @@ export default {
             selectionId: 13469312,
             handicap: 0,
             runnerName: "Nick Taylor",
-            sortPriority: 52,
+            sortPriority: 53,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6780,7 +6811,7 @@ export default {
             selectionId: 35880414,
             handicap: 0,
             runnerName: "Tom Kim",
-            sortPriority: 53,
+            sortPriority: 54,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6808,10 +6839,72 @@ export default {
             },
           },
           {
-            selectionId: 26962136,
+            selectionId: 13469204,
             handicap: 0,
-            runnerName: "Davis Thompson",
-            sortPriority: 54,
+            runnerName: "Bud Cauley",
+            sortPriority: 55,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 176,
+                },
+                fractionalOdds: {
+                  numerator: 175,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 106,
+                },
+                fractionalOdds: {
+                  numerator: 105,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 13469250,
+            handicap: 0,
+            runnerName: "Michael Kim",
+            sortPriority: 56,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 176,
+                },
+                fractionalOdds: {
+                  numerator: 175,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 106,
+                },
+                fractionalOdds: {
+                  numerator: 105,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 15281129,
+            handicap: 0,
+            runnerName: "Mackenzie Hughes",
+            sortPriority: 57,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6842,7 +6935,7 @@ export default {
             selectionId: 13469663,
             handicap: 0,
             runnerName: "Matt Wallace",
-            sortPriority: 55,
+            sortPriority: 58,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6873,7 +6966,7 @@ export default {
             selectionId: 45743765,
             handicap: 0,
             runnerName: "Ryan Gerard",
-            sortPriority: 56,
+            sortPriority: 59,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6901,10 +6994,10 @@ export default {
             },
           },
           {
-            selectionId: 13496403,
+            selectionId: 13469742,
             handicap: 0,
-            runnerName: "Gary Woodland",
-            sortPriority: 57,
+            runnerName: "Jordan Smith",
+            sortPriority: 60,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -6935,69 +7028,7 @@ export default {
             selectionId: 28387385,
             handicap: 0,
             runnerName: "Rasmus Neergaard-Petersen",
-            sortPriority: 58,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 201,
-                },
-                fractionalOdds: {
-                  numerator: 200,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 121,
-                },
-                fractionalOdds: {
-                  numerator: 120,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 13469204,
-            handicap: 0,
-            runnerName: "Bud Cauley",
-            sortPriority: 59,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 201,
-                },
-                fractionalOdds: {
-                  numerator: 200,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 121,
-                },
-                fractionalOdds: {
-                  numerator: 120,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 13469250,
-            handicap: 0,
-            runnerName: "Michael Kim",
-            sortPriority: 60,
+            sortPriority: 61,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7028,7 +7059,7 @@ export default {
             selectionId: 13469754,
             handicap: 0,
             runnerName: "Thomas Detry",
-            sortPriority: 61,
+            sortPriority: 62,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7059,7 +7090,7 @@ export default {
             selectionId: 13496381,
             handicap: 0,
             runnerName: "Marc Leishman",
-            sortPriority: 62,
+            sortPriority: 63,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7090,7 +7121,38 @@ export default {
             selectionId: 21918904,
             handicap: 0,
             runnerName: "Max Greyserman",
-            sortPriority: 63,
+            sortPriority: 64,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 201,
+                },
+                fractionalOdds: {
+                  numerator: 200,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 121,
+                },
+                fractionalOdds: {
+                  numerator: 120,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 25628570,
+            handicap: 0,
+            runnerName: "Stephan Jaeger",
+            sortPriority: 65,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7121,7 +7183,38 @@ export default {
             selectionId: 13469632,
             handicap: 0,
             runnerName: "Byeong Hun An",
-            sortPriority: 64,
+            sortPriority: 66,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 201,
+                },
+                fractionalOdds: {
+                  numerator: 200,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 121,
+                },
+                fractionalOdds: {
+                  numerator: 120,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 28214825,
+            handicap: 0,
+            runnerName: "Sam Stevens",
+            sortPriority: 67,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7152,7 +7245,7 @@ export default {
             selectionId: 13469228,
             handicap: 0,
             runnerName: "Lucas Glover",
-            sortPriority: 65,
+            sortPriority: 68,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7183,7 +7276,7 @@ export default {
             selectionId: 66881307,
             handicap: 0,
             runnerName: "Rasmus Højgaard",
-            sortPriority: 66,
+            sortPriority: 69,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7214,7 +7307,7 @@ export default {
             selectionId: 24908171,
             handicap: 0,
             runnerName: "Eric Cole",
-            sortPriority: 67,
+            sortPriority: 70,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7242,10 +7335,41 @@ export default {
             },
           },
           {
+            selectionId: 13469620,
+            handicap: 0,
+            runnerName: "Emiliano Grillo",
+            sortPriority: 71,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 251,
+                },
+                fractionalOdds: {
+                  numerator: 250,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 151,
+                },
+                fractionalOdds: {
+                  numerator: 150,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
             selectionId: 13469239,
             handicap: 0,
             runnerName: "Tom Hoge",
-            sortPriority: 68,
+            sortPriority: 72,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7276,7 +7400,7 @@ export default {
             selectionId: 13496401,
             handicap: 0,
             runnerName: "Phil Mickelson",
-            sortPriority: 69,
+            sortPriority: 73,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7307,7 +7431,7 @@ export default {
             selectionId: 41582471,
             handicap: 0,
             runnerName: "Matt McCarty",
-            sortPriority: 70,
+            sortPriority: 74,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7335,10 +7459,10 @@ export default {
             },
           },
           {
-            selectionId: 13469742,
+            selectionId: 13481307,
             handicap: 0,
-            runnerName: "Jordan Smith",
-            sortPriority: 71,
+            runnerName: "Christiaan Bezuidenhout",
+            sortPriority: 75,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7366,41 +7490,10 @@ export default {
             },
           },
           {
-            selectionId: 25628570,
+            selectionId: 13496403,
             handicap: 0,
-            runnerName: "Stephan Jaeger",
-            sortPriority: 72,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 251,
-                },
-                fractionalOdds: {
-                  numerator: 250,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 151,
-                },
-                fractionalOdds: {
-                  numerator: 150,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 15281129,
-            handicap: 0,
-            runnerName: "Mackenzie Hughes",
-            sortPriority: 73,
+            runnerName: "Gary Woodland",
+            sortPriority: 76,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7431,38 +7524,7 @@ export default {
             selectionId: 83391304,
             handicap: 0,
             runnerName: "Johnny Keefer",
-            sortPriority: 74,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 251,
-                },
-                fractionalOdds: {
-                  numerator: 250,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 151,
-                },
-                fractionalOdds: {
-                  numerator: 150,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 28214825,
-            handicap: 0,
-            runnerName: "Sam Stevens",
-            sortPriority: 75,
+            sortPriority: 77,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7493,7 +7555,7 @@ export default {
             selectionId: 70085640,
             handicap: 0,
             runnerName: "Jackson Koivun",
-            sortPriority: 76,
+            sortPriority: 78,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7524,38 +7586,7 @@ export default {
             selectionId: 25784238,
             handicap: 0,
             runnerName: "Erik Van Rooyen",
-            sortPriority: 77,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 276,
-                },
-                fractionalOdds: {
-                  numerator: 275,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 166,
-                },
-                fractionalOdds: {
-                  numerator: 165,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 13481307,
-            handicap: 0,
-            runnerName: "Christiaan Bezuidenhout",
-            sortPriority: 78,
+            sortPriority: 79,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7586,7 +7617,7 @@ export default {
             selectionId: 51736822,
             handicap: 0,
             runnerName: "Niklas Norgaard",
-            sortPriority: 79,
+            sortPriority: 80,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7617,7 +7648,7 @@ export default {
             selectionId: 44701656,
             handicap: 0,
             runnerName: "Jacob Bridgeman",
-            sortPriority: 80,
+            sortPriority: 81,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7648,7 +7679,7 @@ export default {
             selectionId: 13496415,
             handicap: 0,
             runnerName: "Jhonattan Vegas",
-            sortPriority: 81,
+            sortPriority: 82,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7679,7 +7710,7 @@ export default {
             selectionId: 13469242,
             handicap: 0,
             runnerName: "Mark Hubbard",
-            sortPriority: 82,
+            sortPriority: 83,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7710,37 +7741,6 @@ export default {
             selectionId: 13481313,
             handicap: 0,
             runnerName: "Victor Perez",
-            sortPriority: 83,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 276,
-                },
-                fractionalOdds: {
-                  numerator: 275,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 166,
-                },
-                fractionalOdds: {
-                  numerator: 165,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 39518595,
-            handicap: 0,
-            runnerName: "Cam Davis",
             sortPriority: 84,
             result: {},
             runnerStatus: "ACTIVE",
@@ -7862,41 +7862,10 @@ export default {
             },
           },
           {
-            selectionId: 13469620,
-            handicap: 0,
-            runnerName: "Emiliano Grillo",
-            sortPriority: 88,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 351,
-                },
-                fractionalOdds: {
-                  numerator: 350,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 211,
-                },
-                fractionalOdds: {
-                  numerator: 210,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
             selectionId: 13469682,
             handicap: 0,
             runnerName: "Richard Bland",
-            sortPriority: 89,
+            sortPriority: 88,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7927,7 +7896,7 @@ export default {
             selectionId: 13469251,
             handicap: 0,
             runnerName: "Chris Kirk",
-            sortPriority: 90,
+            sortPriority: 89,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -7958,6 +7927,37 @@ export default {
             selectionId: 48417081,
             handicap: 0,
             runnerName: "Nico Echavarria",
+            sortPriority: 90,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 351,
+                },
+                fractionalOdds: {
+                  numerator: 350,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 211,
+                },
+                fractionalOdds: {
+                  numerator: 210,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 39518595,
+            handicap: 0,
+            runnerName: "Cam Davis",
             sortPriority: 91,
             result: {},
             runnerStatus: "ACTIVE",
@@ -7995,10 +7995,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 351,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 350,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -8007,10 +8007,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 211,
+                  decimalOdds: 241,
                 },
                 fractionalOdds: {
-                  numerator: 210,
+                  numerator: 240,
                   denominator: 1,
                 },
               },
@@ -8141,41 +8141,10 @@ export default {
             },
           },
           {
-            selectionId: 24800335,
-            handicap: 0,
-            runnerName: "Preston Summerhays",
-            sortPriority: 97,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 501,
-                },
-                fractionalOdds: {
-                  numerator: 500,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 301,
-                },
-                fractionalOdds: {
-                  numerator: 300,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
             selectionId: 14753557,
             handicap: 0,
             runnerName: "Matthew Jordan",
-            sortPriority: 98,
+            sortPriority: 97,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8206,7 +8175,7 @@ export default {
             selectionId: 13469200,
             handicap: 0,
             runnerName: "Brian Campbell",
-            sortPriority: 99,
+            sortPriority: 98,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8237,7 +8206,7 @@ export default {
             selectionId: 84564319,
             handicap: 0,
             runnerName: "Michael La Sasso",
-            sortPriority: 100,
+            sortPriority: 99,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8268,7 +8237,7 @@ export default {
             selectionId: 13469637,
             handicap: 0,
             runnerName: "Edoardo Molinari",
-            sortPriority: 101,
+            sortPriority: 100,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8299,7 +8268,7 @@ export default {
             selectionId: 13470477,
             handicap: 0,
             runnerName: "Justin Lower",
-            sortPriority: 102,
+            sortPriority: 101,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8330,7 +8299,7 @@ export default {
             selectionId: 15294972,
             handicap: 0,
             runnerName: "Jinichiro Kozuma",
-            sortPriority: 103,
+            sortPriority: 102,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8361,38 +8330,7 @@ export default {
             selectionId: 65218765,
             handicap: 0,
             runnerName: "Frederic Lacroix",
-            sortPriority: 104,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 501,
-                },
-                fractionalOdds: {
-                  numerator: 500,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 301,
-                },
-                fractionalOdds: {
-                  numerator: 300,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 66735658,
-            handicap: 0,
-            runnerName: "Justin Hastings",
-            sortPriority: 105,
+            sortPriority: 103,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8423,38 +8361,7 @@ export default {
             selectionId: 13481294,
             handicap: 0,
             runnerName: "Thriston Lawrence",
-            sortPriority: 106,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 501,
-                },
-                fractionalOdds: {
-                  numerator: 500,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 301,
-                },
-                fractionalOdds: {
-                  numerator: 300,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 25155264,
-            handicap: 0,
-            runnerName: "Alistair Docherty",
-            sortPriority: 107,
+            sortPriority: 104,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8485,7 +8392,7 @@ export default {
             selectionId: 15403740,
             handicap: 0,
             runnerName: "Takumi Kanaya",
-            sortPriority: 108,
+            sortPriority: 105,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8513,41 +8420,10 @@ export default {
             },
           },
           {
-            selectionId: 13469690,
-            handicap: 0,
-            runnerName: "Joakim Lagergren",
-            sortPriority: 109,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 801,
-                },
-                fractionalOdds: {
-                  numerator: 800,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 481,
-                },
-                fractionalOdds: {
-                  numerator: 480,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
             selectionId: 13470402,
             handicap: 0,
             runnerName: "Adam Schenk",
-            sortPriority: 110,
+            sortPriority: 106,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8578,7 +8454,38 @@ export default {
             selectionId: 13481287,
             handicap: 0,
             runnerName: "Guido Migliozzi",
-            sortPriority: 111,
+            sortPriority: 107,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 801,
+                },
+                fractionalOdds: {
+                  numerator: 800,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 481,
+                },
+                fractionalOdds: {
+                  numerator: 480,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 24800335,
+            handicap: 0,
+            runnerName: "Preston Summerhays",
+            sortPriority: 108,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8609,7 +8516,7 @@ export default {
             selectionId: 23230853,
             handicap: 0,
             runnerName: "Alvaro Ortiz",
-            sortPriority: 112,
+            sortPriority: 109,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8640,7 +8547,7 @@ export default {
             selectionId: 13481247,
             handicap: 0,
             runnerName: "Andrea Pavan",
-            sortPriority: 113,
+            sortPriority: 110,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8671,7 +8578,7 @@ export default {
             selectionId: 28483249,
             handicap: 0,
             runnerName: "Nick Dunlap",
-            sortPriority: 114,
+            sortPriority: 111,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8702,7 +8609,38 @@ export default {
             selectionId: 13852102,
             handicap: 0,
             runnerName: "Jacques Kruyswijk",
-            sortPriority: 115,
+            sortPriority: 112,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 801,
+                },
+                fractionalOdds: {
+                  numerator: 800,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 481,
+                },
+                fractionalOdds: {
+                  numerator: 480,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 66735658,
+            handicap: 0,
+            runnerName: "Justin Hastings",
+            sortPriority: 113,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8733,7 +8671,38 @@ export default {
             selectionId: 14035800,
             handicap: 0,
             runnerName: "Scott Vincent",
-            sortPriority: 116,
+            sortPriority: 114,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 801,
+                },
+                fractionalOdds: {
+                  numerator: 800,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 481,
+                },
+                fractionalOdds: {
+                  numerator: 480,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 25155264,
+            handicap: 0,
+            runnerName: "Alistair Docherty",
+            sortPriority: 115,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8764,7 +8733,7 @@ export default {
             selectionId: 38069162,
             handicap: 0,
             runnerName: "Emilio Gonzalez",
-            sortPriority: 117,
+            sortPriority: 116,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8795,7 +8764,7 @@ export default {
             selectionId: 13470484,
             handicap: 0,
             runnerName: "Lanto Griffin",
-            sortPriority: 118,
+            sortPriority: 117,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -8817,6 +8786,37 @@ export default {
                 },
                 fractionalOdds: {
                   numerator: 480,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 13469690,
+            handicap: 0,
+            runnerName: "Joakim Lagergren",
+            sortPriority: 118,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 1251,
+                },
+                fractionalOdds: {
+                  numerator: 1250,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 751,
+                },
+                fractionalOdds: {
+                  numerator: 750,
                   denominator: 1,
                 },
               },
@@ -10347,10 +10347,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 81,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 80,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -10631,11 +10631,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5,
+                  decimalOdds: 5.5,
                 },
                 fractionalOdds: {
-                  numerator: 4,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 2,
                 },
               },
             },
@@ -10651,11 +10651,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 7.5,
+                  decimalOdds: 7,
                 },
                 fractionalOdds: {
-                  numerator: 13,
-                  denominator: 2,
+                  numerator: 6,
+                  denominator: 1,
                 },
               },
             },
@@ -10671,11 +10671,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2.8,
+                  decimalOdds: 2.875,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 5,
+                  numerator: 15,
+                  denominator: 8,
                 },
               },
             },
@@ -10795,10 +10795,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 11,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 10,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -10835,10 +10835,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 121,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 120,
                   denominator: 1,
                 },
               },
@@ -10975,10 +10975,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 71,
+                  decimalOdds: 81,
                 },
                 fractionalOdds: {
-                  numerator: 70,
+                  numerator: 80,
                   denominator: 1,
                 },
               },
@@ -11235,10 +11235,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 15,
+                  decimalOdds: 17,
                 },
                 fractionalOdds: {
-                  numerator: 14,
+                  numerator: 16,
                   denominator: 1,
                 },
               },
@@ -11255,10 +11255,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -11335,10 +11335,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 26,
+                  decimalOdds: 34,
                 },
                 fractionalOdds: {
-                  numerator: 25,
+                  numerator: 33,
                   denominator: 1,
                 },
               },
@@ -11455,10 +11455,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 46,
+                  decimalOdds: 41,
                 },
                 fractionalOdds: {
-                  numerator: 45,
+                  numerator: 40,
                   denominator: 1,
                 },
               },
@@ -11495,10 +11495,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 29,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 28,
                   denominator: 1,
                 },
               },
@@ -11895,10 +11895,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 61,
+                  decimalOdds: 81,
                 },
                 fractionalOdds: {
-                  numerator: 60,
+                  numerator: 80,
                   denominator: 1,
                 },
               },
@@ -11915,10 +11915,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 41,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 40,
                   denominator: 1,
                 },
               },
@@ -11955,10 +11955,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 23,
+                  decimalOdds: 21,
                 },
                 fractionalOdds: {
-                  numerator: 22,
+                  numerator: 20,
                   denominator: 1,
                 },
               },
@@ -11995,10 +11995,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 26,
+                  decimalOdds: 23,
                 },
                 fractionalOdds: {
-                  numerator: 25,
+                  numerator: 22,
                   denominator: 1,
                 },
               },
@@ -12095,10 +12095,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 13,
+                  decimalOdds: 15,
                 },
                 fractionalOdds: {
-                  numerator: 12,
+                  numerator: 14,
                   denominator: 1,
                 },
               },
@@ -12335,10 +12335,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -12455,10 +12455,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 41,
+                  decimalOdds: 34,
                 },
                 fractionalOdds: {
-                  numerator: 40,
+                  numerator: 33,
                   denominator: 1,
                 },
               },
@@ -12615,10 +12615,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 26,
+                  decimalOdds: 23,
                 },
                 fractionalOdds: {
-                  numerator: 25,
+                  numerator: 22,
                   denominator: 1,
                 },
               },
@@ -12655,10 +12655,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 26,
+                  decimalOdds: 23,
                 },
                 fractionalOdds: {
-                  numerator: 25,
+                  numerator: 22,
                   denominator: 1,
                 },
               },
@@ -13115,10 +13115,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 41,
+                  decimalOdds: 29,
                 },
                 fractionalOdds: {
-                  numerator: 40,
+                  numerator: 28,
                   denominator: 1,
                 },
               },
@@ -13135,10 +13135,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 29,
+                  decimalOdds: 26,
                 },
                 fractionalOdds: {
-                  numerator: 28,
+                  numerator: 25,
                   denominator: 1,
                 },
               },
@@ -13155,10 +13155,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 29,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 28,
                   denominator: 1,
                 },
               },
@@ -13255,10 +13255,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 29,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 28,
                   denominator: 1,
                 },
               },
@@ -13395,10 +13395,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 29,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 28,
                   denominator: 1,
                 },
               },
@@ -13435,10 +13435,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 46,
+                  decimalOdds: 34,
                 },
                 fractionalOdds: {
-                  numerator: 45,
+                  numerator: 33,
                   denominator: 1,
                 },
               },
@@ -13555,10 +13555,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 29,
+                  decimalOdds: 23,
                 },
                 fractionalOdds: {
-                  numerator: 28,
+                  numerator: 22,
                   denominator: 1,
                 },
               },
@@ -13635,10 +13635,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 81,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 80,
                   denominator: 1,
                 },
               },
@@ -13755,10 +13755,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 46,
+                  decimalOdds: 56,
                 },
                 fractionalOdds: {
-                  numerator: 45,
+                  numerator: 55,
                   denominator: 1,
                 },
               },
@@ -13879,10 +13879,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 251,
+                  decimalOdds: 276,
                 },
                 fractionalOdds: {
-                  numerator: 250,
+                  numerator: 275,
                   denominator: 1,
                 },
               },
@@ -14183,10 +14183,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 41,
+                  decimalOdds: 31,
                 },
                 fractionalOdds: {
-                  numerator: 40,
+                  numerator: 30,
                   denominator: 1,
                 },
               },
@@ -14263,10 +14263,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 31,
+                  decimalOdds: 26,
                 },
                 fractionalOdds: {
-                  numerator: 30,
+                  numerator: 25,
                   denominator: 1,
                 },
               },
@@ -14443,10 +14443,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 23,
+                  decimalOdds: 26,
                 },
                 fractionalOdds: {
-                  numerator: 22,
+                  numerator: 25,
                   denominator: 1,
                 },
               },
@@ -14463,10 +14463,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 36,
+                  decimalOdds: 31,
                 },
                 fractionalOdds: {
-                  numerator: 35,
+                  numerator: 30,
                   denominator: 1,
                 },
               },
@@ -14483,10 +14483,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 326,
+                  decimalOdds: 376,
                 },
                 fractionalOdds: {
-                  numerator: 325,
+                  numerator: 375,
                   denominator: 1,
                 },
               },
@@ -14623,10 +14623,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 71,
+                  decimalOdds: 81,
                 },
                 fractionalOdds: {
-                  numerator: 70,
+                  numerator: 80,
                   denominator: 1,
                 },
               },
@@ -14743,11 +14743,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5.5,
+                  decimalOdds: 6,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 2,
+                  numerator: 5,
+                  denominator: 1,
                 },
               },
             },
@@ -14803,10 +14803,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -16021,10 +16021,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 476,
+                  decimalOdds: 651,
                 },
                 fractionalOdds: {
-                  numerator: 475,
+                  numerator: 650,
                   denominator: 1,
                 },
               },
@@ -16033,10 +16033,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 286,
+                  decimalOdds: 391,
                 },
                 fractionalOdds: {
-                  numerator: 285,
+                  numerator: 390,
                   denominator: 1,
                 },
               },
@@ -16176,10 +16176,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -16188,10 +16188,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 76,
+                  decimalOdds: 61,
                 },
                 fractionalOdds: {
-                  numerator: 75,
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -16424,10 +16424,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -16436,10 +16436,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 106,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 105,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -16455,10 +16455,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 476,
+                  decimalOdds: 651,
                 },
                 fractionalOdds: {
-                  numerator: 475,
+                  numerator: 650,
                   denominator: 1,
                 },
               },
@@ -16467,10 +16467,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 286,
+                  decimalOdds: 391,
                 },
                 fractionalOdds: {
-                  numerator: 285,
+                  numerator: 390,
                   denominator: 1,
                 },
               },
@@ -16641,10 +16641,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 651,
+                  decimalOdds: 1251,
                 },
                 fractionalOdds: {
-                  numerator: 650,
+                  numerator: 1250,
                   denominator: 1,
                 },
               },
@@ -16653,10 +16653,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 391,
+                  decimalOdds: 751,
                 },
                 fractionalOdds: {
-                  numerator: 390,
+                  numerator: 750,
                   denominator: 1,
                 },
               },
@@ -16765,10 +16765,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 251,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 250,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -16777,10 +16777,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 121,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 120,
                   denominator: 1,
                 },
               },
@@ -16796,10 +16796,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 476,
+                  decimalOdds: 651,
                 },
                 fractionalOdds: {
-                  numerator: 475,
+                  numerator: 650,
                   denominator: 1,
                 },
               },
@@ -16808,10 +16808,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 286,
+                  decimalOdds: 391,
                 },
                 fractionalOdds: {
-                  numerator: 285,
+                  numerator: 390,
                   denominator: 1,
                 },
               },
@@ -16858,10 +16858,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -16870,10 +16870,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 106,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -17075,10 +17075,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -17087,10 +17087,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -17106,10 +17106,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -17118,10 +17118,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 121,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 120,
                   denominator: 1,
                 },
               },
@@ -17912,10 +17912,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 36,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 35,
                   denominator: 1,
                 },
               },
@@ -17924,11 +17924,11 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 20.8,
+                  decimalOdds: 22,
                 },
                 fractionalOdds: {
-                  numerator: 99,
-                  denominator: 5,
+                  numerator: 21,
+                  denominator: 1,
                 },
               },
             },
@@ -18284,10 +18284,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 376,
+                  decimalOdds: 476,
                 },
                 fractionalOdds: {
-                  numerator: 375,
+                  numerator: 475,
                   denominator: 1,
                 },
               },
@@ -18296,10 +18296,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 286,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 285,
                   denominator: 1,
                 },
               },
@@ -18408,10 +18408,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -18420,10 +18420,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -18873,10 +18873,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 326,
+                  decimalOdds: 376,
                 },
                 fractionalOdds: {
-                  numerator: 325,
+                  numerator: 375,
                   denominator: 1,
                 },
               },
@@ -18885,10 +18885,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 196,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 195,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -18904,10 +18904,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -18916,10 +18916,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 76,
+                  decimalOdds: 106,
                 },
                 fractionalOdds: {
-                  numerator: 75,
+                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -19090,10 +19090,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -19102,10 +19102,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -19152,10 +19152,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -19164,10 +19164,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 106,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 105,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -19400,10 +19400,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -19412,10 +19412,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 76,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 75,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -19431,10 +19431,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 651,
+                  decimalOdds: 1001,
                 },
                 fractionalOdds: {
-                  numerator: 650,
+                  numerator: 1000,
                   denominator: 1,
                 },
               },
@@ -19443,10 +19443,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 391,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 390,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -19493,10 +19493,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -19505,10 +19505,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 106,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 105,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -19617,10 +19617,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -19629,10 +19629,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 106,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -19772,10 +19772,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -19784,10 +19784,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 106,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 105,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -19803,10 +19803,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 376,
+                  decimalOdds: 476,
                 },
                 fractionalOdds: {
-                  numerator: 375,
+                  numerator: 475,
                   denominator: 1,
                 },
               },
@@ -19815,10 +19815,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 286,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 285,
                   denominator: 1,
                 },
               },
@@ -19896,10 +19896,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -19908,10 +19908,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -19958,10 +19958,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 81,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 80,
                   denominator: 1,
                 },
               },
@@ -19970,10 +19970,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 61,
+                  decimalOdds: 49,
                 },
                 fractionalOdds: {
-                  numerator: 60,
+                  numerator: 48,
                   denominator: 1,
                 },
               },
@@ -20113,10 +20113,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -20125,10 +20125,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -20144,10 +20144,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -20156,10 +20156,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -20516,10 +20516,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -20528,10 +20528,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -20671,10 +20671,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 251,
+                  decimalOdds: 326,
                 },
                 fractionalOdds: {
-                  numerator: 250,
+                  numerator: 325,
                   denominator: 1,
                 },
               },
@@ -20683,10 +20683,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 196,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 195,
                   denominator: 1,
                 },
               },
@@ -20948,10 +20948,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -20960,10 +20960,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 76,
+                  decimalOdds: 67,
                 },
                 fractionalOdds: {
-                  numerator: 75,
+                  numerator: 66,
                   denominator: 1,
                 },
               },
@@ -21258,10 +21258,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 111,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 110,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -21270,10 +21270,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 67,
+                  decimalOdds: 61,
                 },
                 fractionalOdds: {
-                  numerator: 66,
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -21444,10 +21444,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -21456,10 +21456,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 76,
+                  decimalOdds: 67,
                 },
                 fractionalOdds: {
-                  numerator: 75,
+                  numerator: 66,
                   denominator: 1,
                 },
               },
@@ -21847,10 +21847,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -21859,10 +21859,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 76,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 75,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -22157,10 +22157,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -22169,10 +22169,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 106,
+                  decimalOdds: 121,
                 },
                 fractionalOdds: {
-                  numerator: 105,
+                  numerator: 120,
                   denominator: 1,
                 },
               },
@@ -22436,10 +22436,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -22448,10 +22448,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 136,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 135,
                   denominator: 1,
                 },
               },
@@ -22498,37 +22498,6 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
-                },
-                fractionalOdds: {
-                  numerator: 125,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 76,
-                },
-                fractionalOdds: {
-                  numerator: 75,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 13469204,
-            handicap: 0,
-            runnerName: "Bud Cauley",
-            sortPriority: 58,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
                   decimalOdds: 111,
                 },
                 fractionalOdds: {
@@ -22545,6 +22514,37 @@ export default {
                 },
                 fractionalOdds: {
                   numerator: 66,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 13469204,
+            handicap: 0,
+            runnerName: "Bud Cauley",
+            sortPriority: 58,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 101,
+                },
+                fractionalOdds: {
+                  numerator: 100,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 61,
+                },
+                fractionalOdds: {
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -22653,10 +22653,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -22665,10 +22665,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 61,
+                  decimalOdds: 67,
                 },
                 fractionalOdds: {
-                  numerator: 60,
+                  numerator: 66,
                   denominator: 1,
                 },
               },
@@ -22777,10 +22777,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -22789,10 +22789,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 136,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 135,
                   denominator: 1,
                 },
               },
@@ -23397,10 +23397,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 111,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 110,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -23409,10 +23409,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 67,
+                  decimalOdds: 61,
                 },
                 fractionalOdds: {
-                  numerator: 66,
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -23428,10 +23428,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -23440,10 +23440,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 136,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 135,
                   denominator: 1,
                 },
               },
@@ -23583,10 +23583,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -23595,10 +23595,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 61,
+                  decimalOdds: 67,
                 },
                 fractionalOdds: {
-                  numerator: 60,
+                  numerator: 66,
                   denominator: 1,
                 },
               },
@@ -24017,10 +24017,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -24029,10 +24029,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 61,
+                  decimalOdds: 55,
                 },
                 fractionalOdds: {
-                  numerator: 60,
+                  numerator: 54,
                   denominator: 1,
                 },
               },
@@ -26184,10 +26184,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 501,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 500,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -26284,10 +26284,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -26304,10 +26304,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -26504,10 +26504,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 351,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 350,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -26584,10 +26584,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -26624,10 +26624,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 351,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 350,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -26644,10 +26644,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -26724,10 +26724,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -26884,10 +26884,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -27184,10 +27184,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -27204,10 +27204,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -27264,10 +27264,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 111,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 110,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -27384,10 +27384,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 501,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 500,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -27424,10 +27424,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -27464,10 +27464,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -27524,10 +27524,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -27664,10 +27664,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -27724,10 +27724,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 56,
+                  decimalOdds: 61,
                 },
                 fractionalOdds: {
-                  numerator: 55,
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -27784,10 +27784,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -27844,10 +27844,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 501,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 500,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -27924,10 +27924,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 501,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 500,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -28244,10 +28244,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 111,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 110,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -28264,10 +28264,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 111,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 110,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -28364,10 +28364,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 111,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 110,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -28504,10 +28504,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -28704,10 +28704,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 81,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 80,
                   denominator: 1,
                 },
               },
@@ -28744,10 +28744,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -28764,10 +28764,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -29648,10 +29648,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -29748,10 +29748,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -29788,10 +29788,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -30028,10 +30028,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -30228,10 +30228,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -30448,10 +30448,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -30468,10 +30468,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 71,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 70,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -30528,10 +30528,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -30608,10 +30608,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 51,
+                  decimalOdds: 56,
                 },
                 fractionalOdds: {
-                  numerator: 50,
+                  numerator: 55,
                   denominator: 1,
                 },
               },
@@ -30708,10 +30708,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -31076,10 +31076,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 41,
+                  decimalOdds: 36,
                 },
                 fractionalOdds: {
-                  numerator: 40,
+                  numerator: 35,
                   denominator: 1,
                 },
               },
@@ -31136,10 +31136,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 31,
+                  decimalOdds: 36,
                 },
                 fractionalOdds: {
-                  numerator: 30,
+                  numerator: 35,
                   denominator: 1,
                 },
               },
@@ -31176,10 +31176,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 31,
+                  decimalOdds: 41,
                 },
                 fractionalOdds: {
-                  numerator: 30,
+                  numerator: 40,
                   denominator: 1,
                 },
               },
@@ -31400,10 +31400,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 6.5,
+                  decimalOdds: 5.5,
                 },
                 fractionalOdds: {
-                  numerator: 11,
+                  numerator: 9,
                   denominator: 2,
                 },
               },
@@ -31560,11 +31560,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3.5,
+                  decimalOdds: 3.75,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 2,
+                  numerator: 11,
+                  denominator: 4,
                 },
               },
             },
@@ -31640,11 +31640,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 8.5,
+                  decimalOdds: 9,
                 },
                 fractionalOdds: {
-                  numerator: 15,
-                  denominator: 2,
+                  numerator: 8,
+                  denominator: 1,
                 },
               },
             },
@@ -31700,11 +31700,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 6,
+                  decimalOdds: 5.5,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 2,
                 },
               },
             },
@@ -31860,11 +31860,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 6,
+                  decimalOdds: 5.5,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 2,
                 },
               },
             },
@@ -31960,11 +31960,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 7,
+                  decimalOdds: 6.5,
                 },
                 fractionalOdds: {
-                  numerator: 6,
-                  denominator: 1,
+                  numerator: 11,
+                  denominator: 2,
                 },
               },
             },
@@ -32020,10 +32020,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 6.5,
+                  decimalOdds: 7.5,
                 },
                 fractionalOdds: {
-                  numerator: 11,
+                  numerator: 13,
                   denominator: 2,
                 },
               },
@@ -32240,11 +32240,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3,
+                  decimalOdds: 3.25,
                 },
                 fractionalOdds: {
-                  numerator: 2,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 4,
                 },
               },
             },
@@ -32300,11 +32300,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 6,
+                  decimalOdds: 5.5,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 2,
                 },
               },
             },
@@ -32520,11 +32520,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2.75,
+                  decimalOdds: 2.875,
                 },
                 fractionalOdds: {
-                  numerator: 7,
-                  denominator: 4,
+                  numerator: 15,
+                  denominator: 8,
                 },
               },
             },
@@ -32560,11 +32560,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 6,
+                  decimalOdds: 5.5,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 2,
                 },
               },
             },
@@ -32660,10 +32660,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5,
+                  decimalOdds: 6,
                 },
                 fractionalOdds: {
-                  numerator: 4,
+                  numerator: 5,
                   denominator: 1,
                 },
               },
@@ -32680,11 +32680,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5.5,
+                  decimalOdds: 5,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 2,
+                  numerator: 4,
+                  denominator: 1,
                 },
               },
             },
@@ -32840,11 +32840,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5.5,
+                  decimalOdds: 5,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 2,
+                  numerator: 4,
+                  denominator: 1,
                 },
               },
             },
@@ -32860,11 +32860,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 6,
+                  decimalOdds: 5.5,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 2,
                 },
               },
             },
@@ -32920,10 +32920,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 11,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 10,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -32940,11 +32940,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 4.5,
+                  decimalOdds: 5,
                 },
                 fractionalOdds: {
-                  numerator: 7,
-                  denominator: 2,
+                  numerator: 4,
+                  denominator: 1,
                 },
               },
             },
@@ -33320,10 +33320,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 13,
+                  decimalOdds: 19,
                 },
                 fractionalOdds: {
-                  numerator: 12,
+                  numerator: 18,
                   denominator: 1,
                 },
               },
@@ -33340,11 +33340,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 6.5,
+                  decimalOdds: 7,
                 },
                 fractionalOdds: {
-                  numerator: 11,
-                  denominator: 2,
+                  numerator: 6,
+                  denominator: 1,
                 },
               },
             },
@@ -33380,11 +33380,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 7.5,
+                  decimalOdds: 7,
                 },
                 fractionalOdds: {
-                  numerator: 13,
-                  denominator: 2,
+                  numerator: 6,
+                  denominator: 1,
                 },
               },
             },
@@ -33400,11 +33400,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 8.5,
+                  decimalOdds: 9,
                 },
                 fractionalOdds: {
-                  numerator: 15,
-                  denominator: 2,
+                  numerator: 8,
+                  denominator: 1,
                 },
               },
             },
@@ -33540,10 +33540,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 11,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 10,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -33600,10 +33600,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 9,
+                  decimalOdds: 10,
                 },
                 fractionalOdds: {
-                  numerator: 8,
+                  numerator: 9,
                   denominator: 1,
                 },
               },
@@ -33780,10 +33780,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5.5,
+                  decimalOdds: 4.5,
                 },
                 fractionalOdds: {
-                  numerator: 9,
+                  numerator: 7,
                   denominator: 2,
                 },
               },
@@ -33860,10 +33860,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 11,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 10,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -33900,11 +33900,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3,
+                  decimalOdds: 3.25,
                 },
                 fractionalOdds: {
-                  numerator: 2,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 4,
                 },
               },
             },
@@ -33920,11 +33920,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5,
+                  decimalOdds: 4.5,
                 },
                 fractionalOdds: {
-                  numerator: 4,
-                  denominator: 1,
+                  numerator: 7,
+                  denominator: 2,
                 },
               },
             },
@@ -33960,11 +33960,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3,
+                  decimalOdds: 3.25,
                 },
                 fractionalOdds: {
-                  numerator: 2,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 4,
                 },
               },
             },
@@ -34060,10 +34060,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 11,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 10,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -34300,11 +34300,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 6,
+                  decimalOdds: 6.5,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 1,
+                  numerator: 11,
+                  denominator: 2,
                 },
               },
             },
@@ -34360,11 +34360,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 7.5,
+                  decimalOdds: 8,
                 },
                 fractionalOdds: {
-                  numerator: 13,
-                  denominator: 2,
+                  numerator: 7,
+                  denominator: 1,
                 },
               },
             },
@@ -34484,10 +34484,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 21,
+                  decimalOdds: 19,
                 },
                 fractionalOdds: {
-                  numerator: 20,
+                  numerator: 18,
                   denominator: 1,
                 },
               },
@@ -34524,10 +34524,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 21,
+                  decimalOdds: 19,
                 },
                 fractionalOdds: {
-                  numerator: 20,
+                  numerator: 18,
                   denominator: 1,
                 },
               },
@@ -34624,10 +34624,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 31,
+                  decimalOdds: 34,
                 },
                 fractionalOdds: {
-                  numerator: 30,
+                  numerator: 33,
                   denominator: 1,
                 },
               },
@@ -34784,10 +34784,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 41,
+                  decimalOdds: 51,
                 },
                 fractionalOdds: {
-                  numerator: 40,
+                  numerator: 50,
                   denominator: 1,
                 },
               },
@@ -34972,10 +34972,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -35172,10 +35172,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -35292,10 +35292,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 351,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 350,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -35652,10 +35652,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -35672,10 +35672,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 351,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 350,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -35752,10 +35752,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -35772,10 +35772,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -36732,10 +36732,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 301,
+                  decimalOdds: 351,
                 },
                 fractionalOdds: {
-                  numerator: 300,
+                  numerator: 350,
                   denominator: 1,
                 },
               },
@@ -36792,10 +36792,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 351,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 350,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -37092,10 +37092,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -37252,10 +37252,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 111,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 110,
                   denominator: 1,
                 },
               },
@@ -37352,10 +37352,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 301,
+                  decimalOdds: 351,
                 },
                 fractionalOdds: {
-                  numerator: 300,
+                  numerator: 350,
                   denominator: 1,
                 },
               },
@@ -37392,10 +37392,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -37592,10 +37592,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -37632,10 +37632,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -37832,10 +37832,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -38284,10 +38284,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -38296,10 +38296,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 76,
+                  decimalOdds: 61,
                 },
                 fractionalOdds: {
-                  numerator: 75,
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -38346,10 +38346,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -38358,10 +38358,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 61,
+                  decimalOdds: 55,
                 },
                 fractionalOdds: {
-                  numerator: 60,
+                  numerator: 54,
                   denominator: 1,
                 },
               },
@@ -38532,10 +38532,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -38544,10 +38544,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 106,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -38656,10 +38656,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -38668,10 +38668,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -38842,6 +38842,37 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
+                  decimalOdds: 551,
+                },
+                fractionalOdds: {
+                  numerator: 550,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 331,
+                },
+                fractionalOdds: {
+                  numerator: 330,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 13469637,
+            handicap: 0,
+            runnerName: "Edoardo Molinari",
+            sortPriority: 24,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
                   decimalOdds: 401,
                 },
                 fractionalOdds: {
@@ -38864,37 +38895,6 @@ export default {
             },
           },
           {
-            selectionId: 13469637,
-            handicap: 0,
-            runnerName: "Edoardo Molinari",
-            sortPriority: 24,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 326,
-                },
-                fractionalOdds: {
-                  numerator: 325,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 196,
-                },
-                fractionalOdds: {
-                  numerator: 195,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
             selectionId: 22948438,
             handicap: 0,
             runnerName: "Taylor Pendrith",
@@ -38904,10 +38904,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 67,
+                  decimalOdds: 71,
                 },
                 fractionalOdds: {
-                  numerator: 66,
+                  numerator: 70,
                   denominator: 1,
                 },
               },
@@ -38916,11 +38916,11 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 40.6,
+                  decimalOdds: 43,
                 },
                 fractionalOdds: {
-                  numerator: 198,
-                  denominator: 5,
+                  numerator: 42,
+                  denominator: 1,
                 },
               },
             },
@@ -39121,10 +39121,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 67,
+                  decimalOdds: 71,
                 },
                 fractionalOdds: {
-                  numerator: 66,
+                  numerator: 70,
                   denominator: 1,
                 },
               },
@@ -39133,11 +39133,11 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 40.6,
+                  decimalOdds: 43,
                 },
                 fractionalOdds: {
-                  numerator: 198,
-                  denominator: 5,
+                  numerator: 42,
+                  denominator: 1,
                 },
               },
             },
@@ -39462,10 +39462,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -39474,10 +39474,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -39679,10 +39679,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 401,
+                  decimalOdds: 551,
                 },
                 fractionalOdds: {
-                  numerator: 400,
+                  numerator: 550,
                   denominator: 1,
                 },
               },
@@ -39691,10 +39691,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 241,
+                  decimalOdds: 331,
                 },
                 fractionalOdds: {
-                  numerator: 240,
+                  numerator: 330,
                   denominator: 1,
                 },
               },
@@ -39927,10 +39927,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -39939,10 +39939,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 106,
+                  decimalOdds: 121,
                 },
                 fractionalOdds: {
-                  numerator: 105,
+                  numerator: 120,
                   denominator: 1,
                 },
               },
@@ -40020,10 +40020,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -40032,10 +40032,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 55,
+                  decimalOdds: 46,
                 },
                 fractionalOdds: {
-                  numerator: 54,
+                  numerator: 45,
                   denominator: 1,
                 },
               },
@@ -40082,10 +40082,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -40094,10 +40094,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -40113,10 +40113,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 326,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 325,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -40125,10 +40125,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 196,
+                  decimalOdds: 241,
                 },
                 fractionalOdds: {
-                  numerator: 195,
+                  numerator: 240,
                   denominator: 1,
                 },
               },
@@ -40237,10 +40237,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -40249,10 +40249,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 106,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 105,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -40268,10 +40268,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 67,
+                  decimalOdds: 71,
                 },
                 fractionalOdds: {
-                  numerator: 66,
+                  numerator: 70,
                   denominator: 1,
                 },
               },
@@ -40280,11 +40280,11 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 40.6,
+                  decimalOdds: 43,
                 },
                 fractionalOdds: {
-                  numerator: 198,
-                  denominator: 5,
+                  numerator: 42,
+                  denominator: 1,
                 },
               },
             },
@@ -40330,10 +40330,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -40342,10 +40342,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 76,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 75,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -40361,10 +40361,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 401,
+                  decimalOdds: 551,
                 },
                 fractionalOdds: {
-                  numerator: 400,
+                  numerator: 550,
                   denominator: 1,
                 },
               },
@@ -40373,10 +40373,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 241,
+                  decimalOdds: 331,
                 },
                 fractionalOdds: {
-                  numerator: 240,
+                  numerator: 330,
                   denominator: 1,
                 },
               },
@@ -40392,10 +40392,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -40404,10 +40404,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 76,
+                  decimalOdds: 61,
                 },
                 fractionalOdds: {
-                  numerator: 75,
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -40733,10 +40733,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -40745,10 +40745,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -40795,10 +40795,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -40807,10 +40807,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 106,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -40826,10 +40826,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -40838,10 +40838,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -41415,10 +41415,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 551,
+                  decimalOdds: 801,
                 },
                 fractionalOdds: {
-                  numerator: 550,
+                  numerator: 800,
                   denominator: 1,
                 },
               },
@@ -41427,10 +41427,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 331,
+                  decimalOdds: 481,
                 },
                 fractionalOdds: {
-                  numerator: 330,
+                  numerator: 480,
                   denominator: 1,
                 },
               },
@@ -41477,10 +41477,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 67,
+                  decimalOdds: 71,
                 },
                 fractionalOdds: {
-                  numerator: 66,
+                  numerator: 70,
                   denominator: 1,
                 },
               },
@@ -41489,11 +41489,11 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 40.6,
+                  decimalOdds: 43,
                 },
                 fractionalOdds: {
-                  numerator: 198,
-                  denominator: 5,
+                  numerator: 42,
+                  denominator: 1,
                 },
               },
             },
@@ -41601,10 +41601,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -41613,10 +41613,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 61,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -41694,10 +41694,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 276,
+                  decimalOdds: 326,
                 },
                 fractionalOdds: {
-                  numerator: 275,
+                  numerator: 325,
                   denominator: 1,
                 },
               },
@@ -41706,10 +41706,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 166,
+                  decimalOdds: 196,
                 },
                 fractionalOdds: {
-                  numerator: 165,
+                  numerator: 195,
                   denominator: 1,
                 },
               },
@@ -42252,10 +42252,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 31,
+                  decimalOdds: 34,
                 },
                 fractionalOdds: {
-                  numerator: 30,
+                  numerator: 33,
                   denominator: 1,
                 },
               },
@@ -42264,11 +42264,11 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 19,
+                  decimalOdds: 20.8,
                 },
                 fractionalOdds: {
-                  numerator: 18,
-                  denominator: 1,
+                  numerator: 99,
+                  denominator: 5,
                 },
               },
             },
@@ -42469,10 +42469,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 551,
+                  decimalOdds: 1001,
                 },
                 fractionalOdds: {
-                  numerator: 550,
+                  numerator: 1000,
                   denominator: 1,
                 },
               },
@@ -42481,10 +42481,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 331,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 330,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -42593,10 +42593,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 67,
+                  decimalOdds: 71,
                 },
                 fractionalOdds: {
-                  numerator: 66,
+                  numerator: 70,
                   denominator: 1,
                 },
               },
@@ -42605,11 +42605,11 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 40.6,
+                  decimalOdds: 43,
                 },
                 fractionalOdds: {
-                  numerator: 198,
-                  denominator: 5,
+                  numerator: 42,
+                  denominator: 1,
                 },
               },
             },
@@ -42624,10 +42624,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -42636,10 +42636,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -42748,10 +42748,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -42760,10 +42760,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -42903,10 +42903,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 67,
+                  decimalOdds: 71,
                 },
                 fractionalOdds: {
-                  numerator: 66,
+                  numerator: 70,
                   denominator: 1,
                 },
               },
@@ -42915,11 +42915,11 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 40.6,
+                  decimalOdds: 43,
                 },
                 fractionalOdds: {
-                  numerator: 198,
-                  denominator: 5,
+                  numerator: 42,
+                  denominator: 1,
                 },
               },
             },
@@ -42965,10 +42965,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 276,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 275,
                   denominator: 1,
                 },
               },
@@ -42977,10 +42977,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 166,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 165,
                   denominator: 1,
                 },
               },
@@ -43145,10 +43145,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 13,
+                  decimalOdds: 11,
                 },
                 fractionalOdds: {
-                  numerator: 12,
+                  numerator: 10,
                   denominator: 1,
                 },
               },
@@ -43285,10 +43285,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 10,
+                  decimalOdds: 11,
                 },
                 fractionalOdds: {
-                  numerator: 9,
+                  numerator: 10,
                   denominator: 1,
                 },
               },
@@ -43325,10 +43325,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 17,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 16,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -43365,10 +43365,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 10,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 9,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -43405,10 +43405,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 41,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 40,
                   denominator: 1,
                 },
               },
@@ -43465,10 +43465,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 13,
+                  decimalOdds: 15,
                 },
                 fractionalOdds: {
-                  numerator: 12,
+                  numerator: 14,
                   denominator: 1,
                 },
               },
@@ -43505,10 +43505,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 21,
+                  decimalOdds: 23,
                 },
                 fractionalOdds: {
-                  numerator: 20,
+                  numerator: 22,
                   denominator: 1,
                 },
               },
@@ -43605,10 +43605,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 15,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 14,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -43685,10 +43685,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 29,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 28,
                   denominator: 1,
                 },
               },
@@ -43785,10 +43785,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 10,
+                  decimalOdds: 9,
                 },
                 fractionalOdds: {
-                  numerator: 9,
+                  numerator: 8,
                   denominator: 1,
                 },
               },
@@ -43925,11 +43925,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5.5,
+                  decimalOdds: 6,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 2,
+                  numerator: 5,
+                  denominator: 1,
                 },
               },
             },
@@ -43985,10 +43985,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 11,
+                  decimalOdds: 10,
                 },
                 fractionalOdds: {
-                  numerator: 10,
+                  numerator: 9,
                   denominator: 1,
                 },
               },
@@ -44005,11 +44005,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3.25,
+                  decimalOdds: 3.5,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 4,
+                  numerator: 5,
+                  denominator: 2,
                 },
               },
             },
@@ -44025,10 +44025,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 15,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 14,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -44185,10 +44185,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 41,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 40,
                   denominator: 1,
                 },
               },
@@ -44205,10 +44205,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 13,
+                  decimalOdds: 11,
                 },
                 fractionalOdds: {
-                  numerator: 12,
+                  numerator: 10,
                   denominator: 1,
                 },
               },
@@ -44285,10 +44285,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 11,
+                  decimalOdds: 13,
                 },
                 fractionalOdds: {
-                  numerator: 10,
+                  numerator: 12,
                   denominator: 1,
                 },
               },
@@ -44325,10 +44325,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 61,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -44365,10 +44365,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 13,
+                  decimalOdds: 11,
                 },
                 fractionalOdds: {
-                  numerator: 12,
+                  numerator: 10,
                   denominator: 1,
                 },
               },
@@ -44565,10 +44565,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 21,
+                  decimalOdds: 26,
                 },
                 fractionalOdds: {
-                  numerator: 20,
+                  numerator: 25,
                   denominator: 1,
                 },
               },
@@ -44785,10 +44785,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 10,
+                  decimalOdds: 11,
                 },
                 fractionalOdds: {
-                  numerator: 9,
+                  numerator: 10,
                   denominator: 1,
                 },
               },
@@ -44865,11 +44865,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 8,
+                  decimalOdds: 8.5,
                 },
                 fractionalOdds: {
-                  numerator: 7,
-                  denominator: 1,
+                  numerator: 15,
+                  denominator: 2,
                 },
               },
             },
@@ -44905,11 +44905,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2.875,
+                  decimalOdds: 3,
                 },
                 fractionalOdds: {
-                  numerator: 15,
-                  denominator: 8,
+                  numerator: 2,
+                  denominator: 1,
                 },
               },
             },
@@ -45105,10 +45105,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 13,
+                  decimalOdds: 11,
                 },
                 fractionalOdds: {
-                  numerator: 12,
+                  numerator: 10,
                   denominator: 1,
                 },
               },
@@ -45205,10 +45205,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 11,
+                  decimalOdds: 9,
                 },
                 fractionalOdds: {
-                  numerator: 10,
+                  numerator: 8,
                   denominator: 1,
                 },
               },
@@ -45385,10 +45385,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 13,
+                  decimalOdds: 11,
                 },
                 fractionalOdds: {
-                  numerator: 12,
+                  numerator: 10,
                   denominator: 1,
                 },
               },
@@ -45485,10 +45485,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 71,
+                  decimalOdds: 81,
                 },
                 fractionalOdds: {
-                  numerator: 70,
+                  numerator: 80,
                   denominator: 1,
                 },
               },
@@ -45585,10 +45585,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 34,
+                  decimalOdds: 41,
                 },
                 fractionalOdds: {
-                  numerator: 33,
+                  numerator: 40,
                   denominator: 1,
                 },
               },
@@ -45605,10 +45605,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 61,
+                  decimalOdds: 71,
                 },
                 fractionalOdds: {
-                  numerator: 60,
+                  numerator: 70,
                   denominator: 1,
                 },
               },
@@ -45625,10 +45625,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 15,
+                  decimalOdds: 17,
                 },
                 fractionalOdds: {
-                  numerator: 14,
+                  numerator: 16,
                   denominator: 1,
                 },
               },
@@ -45665,11 +45665,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 7,
+                  decimalOdds: 7.5,
                 },
                 fractionalOdds: {
-                  numerator: 6,
-                  denominator: 1,
+                  numerator: 13,
+                  denominator: 2,
                 },
               },
             },
@@ -46105,10 +46105,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 17,
+                  decimalOdds: 19,
                 },
                 fractionalOdds: {
-                  numerator: 16,
+                  numerator: 18,
                   denominator: 1,
                 },
               },
@@ -46313,11 +46313,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.533333333333333,
+                  decimalOdds: 1.444444444444444,
                 },
                 fractionalOdds: {
-                  numerator: 8,
-                  denominator: 15,
+                  numerator: 4,
+                  denominator: 9,
                 },
               },
             },
@@ -46713,11 +46713,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.909090909090909,
+                  decimalOdds: 1.8,
                 },
                 fractionalOdds: {
-                  numerator: 10,
-                  denominator: 11,
+                  numerator: 4,
+                  denominator: 5,
                 },
               },
             },
@@ -46853,11 +46853,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.615384615384615,
+                  decimalOdds: 1.533333333333333,
                 },
                 fractionalOdds: {
                   numerator: 8,
-                  denominator: 13,
+                  denominator: 15,
                 },
               },
             },
@@ -47353,11 +47353,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.666666666666667,
+                  decimalOdds: 1.615384615384615,
                 },
                 fractionalOdds: {
-                  numerator: 4,
-                  denominator: 6,
+                  numerator: 8,
+                  denominator: 13,
                 },
               },
             },
@@ -47673,11 +47673,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.615384615384615,
+                  decimalOdds: 1.571428571428571,
                 },
                 fractionalOdds: {
-                  numerator: 8,
-                  denominator: 13,
+                  numerator: 4,
+                  denominator: 7,
                 },
               },
             },
@@ -47953,11 +47953,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.533333333333333,
+                  decimalOdds: 1.444444444444444,
                 },
                 fractionalOdds: {
-                  numerator: 8,
-                  denominator: 15,
+                  numerator: 4,
+                  denominator: 9,
                 },
               },
             },
@@ -48573,11 +48573,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2,
+                  decimalOdds: 1.833333333333333,
                 },
                 fractionalOdds: {
-                  numerator: 1,
-                  denominator: 1,
+                  numerator: 5,
+                  denominator: 6,
                 },
               },
             },
@@ -51140,11 +51140,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2.875,
+                  decimalOdds: 3,
                 },
                 fractionalOdds: {
-                  numerator: 15,
-                  denominator: 8,
+                  numerator: 2,
+                  denominator: 1,
                 },
               },
             },
@@ -51180,11 +51180,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3.6,
+                  decimalOdds: 3.75,
                 },
                 fractionalOdds: {
-                  numerator: 13,
-                  denominator: 5,
+                  numerator: 11,
+                  denominator: 4,
                 },
               },
             },
@@ -51200,11 +51200,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3.5,
+                  decimalOdds: 3.2,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 2,
+                  numerator: 11,
+                  denominator: 5,
                 },
               },
             },
@@ -51264,11 +51264,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5,
+                  decimalOdds: 5.5,
                 },
                 fractionalOdds: {
-                  numerator: 4,
-                  denominator: 1,
+                  numerator: 9,
+                  denominator: 2,
                 },
               },
             },
@@ -51284,11 +51284,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3.2,
+                  decimalOdds: 3,
                 },
                 fractionalOdds: {
-                  numerator: 11,
-                  denominator: 5,
+                  numerator: 2,
+                  denominator: 1,
                 },
               },
             },
@@ -51304,11 +51304,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5.5,
+                  decimalOdds: 6,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 2,
+                  numerator: 5,
+                  denominator: 1,
                 },
               },
             },
@@ -51324,11 +51324,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 3.5,
+                  decimalOdds: 3.4,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 2,
+                  numerator: 12,
+                  denominator: 5,
                 },
               },
             },
@@ -51523,10 +51523,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -51535,10 +51535,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -51554,10 +51554,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 551,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 550,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -51566,10 +51566,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 331,
+                  decimalOdds: 361,
                 },
                 fractionalOdds: {
-                  numerator: 330,
+                  numerator: 360,
                   denominator: 1,
                 },
               },
@@ -51616,10 +51616,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 276,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 275,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -51628,10 +51628,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 166,
+                  decimalOdds: 121,
                 },
                 fractionalOdds: {
-                  numerator: 165,
+                  numerator: 120,
                   denominator: 1,
                 },
               },
@@ -51709,10 +51709,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 276,
+                  decimalOdds: 326,
                 },
                 fractionalOdds: {
-                  numerator: 275,
+                  numerator: 325,
                   denominator: 1,
                 },
               },
@@ -51721,10 +51721,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 166,
+                  decimalOdds: 196,
                 },
                 fractionalOdds: {
-                  numerator: 165,
+                  numerator: 195,
                   denominator: 1,
                 },
               },
@@ -51740,10 +51740,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 551,
+                  decimalOdds: 801,
                 },
                 fractionalOdds: {
-                  numerator: 550,
+                  numerator: 800,
                   denominator: 1,
                 },
               },
@@ -51752,10 +51752,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 331,
+                  decimalOdds: 481,
                 },
                 fractionalOdds: {
-                  numerator: 330,
+                  numerator: 480,
                   denominator: 1,
                 },
               },
@@ -51771,10 +51771,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 376,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 375,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -51783,10 +51783,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 241,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 240,
                   denominator: 1,
                 },
               },
@@ -51895,10 +51895,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 301,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 300,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -51907,10 +51907,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 181,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 180,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -51957,10 +51957,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 226,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 225,
                   denominator: 1,
                 },
               },
@@ -51969,10 +51969,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 136,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 135,
                   denominator: 1,
                 },
               },
@@ -52174,10 +52174,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -52186,10 +52186,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 91,
+                  decimalOdds: 106,
                 },
                 fractionalOdds: {
-                  numerator: 90,
+                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -52329,10 +52329,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -52341,10 +52341,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 106,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -52515,10 +52515,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 376,
+                  decimalOdds: 476,
                 },
                 fractionalOdds: {
-                  numerator: 375,
+                  numerator: 475,
                   denominator: 1,
                 },
               },
@@ -52527,10 +52527,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 286,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 285,
                   denominator: 1,
                 },
               },
@@ -52541,6 +52541,37 @@ export default {
             handicap: 0,
             runnerName: "Dustin Johnson",
             sortPriority: 39,
+            result: {},
+            runnerStatus: "ACTIVE",
+            winRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 101,
+                },
+                fractionalOdds: {
+                  numerator: 100,
+                  denominator: 1,
+                },
+              },
+            },
+            previousWinRunnerOdds: [],
+            eachwayRunnerOdds: {
+              trueOdds: {
+                decimalOdds: {
+                  decimalOdds: 61,
+                },
+                fractionalOdds: {
+                  numerator: 60,
+                  denominator: 1,
+                },
+              },
+            },
+          },
+          {
+            selectionId: 13469204,
+            handicap: 0,
+            runnerName: "Bud Cauley",
+            sortPriority: 40,
             result: {},
             runnerStatus: "ACTIVE",
             winRunnerOdds: {
@@ -52562,37 +52593,6 @@ export default {
                 },
                 fractionalOdds: {
                   numerator: 75,
-                  denominator: 1,
-                },
-              },
-            },
-          },
-          {
-            selectionId: 13469204,
-            handicap: 0,
-            runnerName: "Bud Cauley",
-            sortPriority: 40,
-            result: {},
-            runnerStatus: "ACTIVE",
-            winRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 176,
-                },
-                fractionalOdds: {
-                  numerator: 175,
-                  denominator: 1,
-                },
-              },
-            },
-            previousWinRunnerOdds: [],
-            eachwayRunnerOdds: {
-              trueOdds: {
-                decimalOdds: {
-                  decimalOdds: 106,
-                },
-                fractionalOdds: {
-                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -53042,10 +53042,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 301,
+                  decimalOdds: 326,
                 },
                 fractionalOdds: {
-                  numerator: 300,
+                  numerator: 325,
                   denominator: 1,
                 },
               },
@@ -53054,10 +53054,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 181,
+                  decimalOdds: 196,
                 },
                 fractionalOdds: {
-                  numerator: 180,
+                  numerator: 195,
                   denominator: 1,
                 },
               },
@@ -53383,10 +53383,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -53395,10 +53395,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 121,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 120,
                   denominator: 1,
                 },
               },
@@ -53507,10 +53507,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 551,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 550,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -53519,10 +53519,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 331,
+                  decimalOdds: 361,
                 },
                 fractionalOdds: {
-                  numerator: 330,
+                  numerator: 360,
                   denominator: 1,
                 },
               },
@@ -53600,10 +53600,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 801,
+                  decimalOdds: 1001,
                 },
                 fractionalOdds: {
-                  numerator: 800,
+                  numerator: 1000,
                   denominator: 1,
                 },
               },
@@ -53612,10 +53612,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 481,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 480,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -53662,10 +53662,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -53674,10 +53674,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 106,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -53755,10 +53755,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 251,
+                  decimalOdds: 276,
                 },
                 fractionalOdds: {
-                  numerator: 250,
+                  numerator: 275,
                   denominator: 1,
                 },
               },
@@ -53767,10 +53767,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 166,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 165,
                   denominator: 1,
                 },
               },
@@ -54127,10 +54127,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -54139,10 +54139,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 106,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 105,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -54189,10 +54189,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 551,
+                  decimalOdds: 801,
                 },
                 fractionalOdds: {
-                  numerator: 550,
+                  numerator: 800,
                   denominator: 1,
                 },
               },
@@ -54201,10 +54201,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 331,
+                  decimalOdds: 481,
                 },
                 fractionalOdds: {
-                  numerator: 330,
+                  numerator: 480,
                   denominator: 1,
                 },
               },
@@ -54251,10 +54251,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -54263,10 +54263,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 136,
+                  decimalOdds: 121,
                 },
                 fractionalOdds: {
-                  numerator: 135,
+                  numerator: 120,
                   denominator: 1,
                 },
               },
@@ -54375,10 +54375,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 301,
+                  decimalOdds: 326,
                 },
                 fractionalOdds: {
-                  numerator: 300,
+                  numerator: 325,
                   denominator: 1,
                 },
               },
@@ -54387,10 +54387,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 181,
+                  decimalOdds: 196,
                 },
                 fractionalOdds: {
-                  numerator: 180,
+                  numerator: 195,
                   denominator: 1,
                 },
               },
@@ -54499,10 +54499,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 251,
+                  decimalOdds: 201,
                 },
                 fractionalOdds: {
-                  numerator: 250,
+                  numerator: 200,
                   denominator: 1,
                 },
               },
@@ -54511,10 +54511,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 151,
+                  decimalOdds: 121,
                 },
                 fractionalOdds: {
-                  numerator: 150,
+                  numerator: 120,
                   denominator: 1,
                 },
               },
@@ -54654,10 +54654,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 376,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 375,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -54666,10 +54666,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 226,
+                  decimalOdds: 241,
                 },
                 fractionalOdds: {
-                  numerator: 225,
+                  numerator: 240,
                   denominator: 1,
                 },
               },
@@ -54995,10 +54995,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 476,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 475,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -55007,10 +55007,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 286,
+                  decimalOdds: 361,
                 },
                 fractionalOdds: {
-                  numerator: 285,
+                  numerator: 360,
                   denominator: 1,
                 },
               },
@@ -55181,10 +55181,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 551,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 550,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -55193,10 +55193,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 331,
+                  decimalOdds: 361,
                 },
                 fractionalOdds: {
-                  numerator: 330,
+                  numerator: 360,
                   denominator: 1,
                 },
               },
@@ -55398,10 +55398,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -55410,10 +55410,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 76,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 75,
                   denominator: 1,
                 },
               },
@@ -55677,10 +55677,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 276,
+                  decimalOdds: 251,
                 },
                 fractionalOdds: {
-                  numerator: 275,
+                  numerator: 250,
                   denominator: 1,
                 },
               },
@@ -55689,10 +55689,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 166,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 165,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -55708,10 +55708,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 801,
+                  decimalOdds: 1501,
                 },
                 fractionalOdds: {
-                  numerator: 800,
+                  numerator: 1500,
                   denominator: 1,
                 },
               },
@@ -55720,10 +55720,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 481,
+                  decimalOdds: 901,
                 },
                 fractionalOdds: {
-                  numerator: 480,
+                  numerator: 900,
                   denominator: 1,
                 },
               },
@@ -55770,10 +55770,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 551,
+                  decimalOdds: 801,
                 },
                 fractionalOdds: {
-                  numerator: 550,
+                  numerator: 800,
                   denominator: 1,
                 },
               },
@@ -55782,10 +55782,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 331,
+                  decimalOdds: 481,
                 },
                 fractionalOdds: {
-                  numerator: 330,
+                  numerator: 480,
                   denominator: 1,
                 },
               },
@@ -55925,10 +55925,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 201,
+                  decimalOdds: 176,
                 },
                 fractionalOdds: {
-                  numerator: 200,
+                  numerator: 175,
                   denominator: 1,
                 },
               },
@@ -55937,10 +55937,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 121,
+                  decimalOdds: 106,
                 },
                 fractionalOdds: {
-                  numerator: 120,
+                  numerator: 105,
                   denominator: 1,
                 },
               },
@@ -55956,10 +55956,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 476,
+                  decimalOdds: 601,
                 },
                 fractionalOdds: {
-                  numerator: 475,
+                  numerator: 600,
                   denominator: 1,
                 },
               },
@@ -55968,10 +55968,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 286,
+                  decimalOdds: 361,
                 },
                 fractionalOdds: {
-                  numerator: 285,
+                  numerator: 360,
                   denominator: 1,
                 },
               },
@@ -56111,10 +56111,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 301,
+                  decimalOdds: 401,
                 },
                 fractionalOdds: {
-                  numerator: 300,
+                  numerator: 400,
                   denominator: 1,
                 },
               },
@@ -56123,10 +56123,10 @@ export default {
             eachwayRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 181,
+                  decimalOdds: 241,
                 },
                 fractionalOdds: {
-                  numerator: 180,
+                  numerator: 240,
                   denominator: 1,
                 },
               },
@@ -56713,11 +56713,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.666666666666667,
+                  decimalOdds: 1.727272727272727,
                 },
                 fractionalOdds: {
-                  numerator: 4,
-                  denominator: 6,
+                  numerator: 8,
+                  denominator: 11,
                 },
               },
             },
@@ -56873,11 +56873,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2,
+                  decimalOdds: 2.1,
                 },
                 fractionalOdds: {
-                  numerator: 1,
-                  denominator: 1,
+                  numerator: 11,
+                  denominator: 10,
                 },
               },
             },
@@ -56953,11 +56953,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2.1,
+                  decimalOdds: 2.4,
                 },
                 fractionalOdds: {
-                  numerator: 11,
-                  denominator: 10,
+                  numerator: 7,
+                  denominator: 5,
                 },
               },
             },
@@ -57173,11 +57173,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2.1,
+                  decimalOdds: 2.4,
                 },
                 fractionalOdds: {
-                  numerator: 11,
-                  denominator: 10,
+                  numerator: 7,
+                  denominator: 5,
                 },
               },
             },
@@ -57693,11 +57693,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.615384615384615,
+                  decimalOdds: 1.666666666666667,
                 },
                 fractionalOdds: {
-                  numerator: 8,
-                  denominator: 13,
+                  numerator: 4,
+                  denominator: 6,
                 },
               },
             },
@@ -57833,11 +57833,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.666666666666667,
+                  decimalOdds: 1.8,
                 },
                 fractionalOdds: {
                   numerator: 4,
-                  denominator: 6,
+                  denominator: 5,
                 },
               },
             },
@@ -58013,11 +58013,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 1.833333333333333,
+                  decimalOdds: 2,
                 },
                 fractionalOdds: {
-                  numerator: 5,
-                  denominator: 6,
+                  numerator: 1,
+                  denominator: 1,
                 },
               },
             },
@@ -58493,11 +58493,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2,
+                  decimalOdds: 2.1,
                 },
                 fractionalOdds: {
-                  numerator: 1,
-                  denominator: 1,
+                  numerator: 11,
+                  denominator: 10,
                 },
               },
             },
@@ -59637,10 +59637,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 126,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 125,
                   denominator: 1,
                 },
               },
@@ -59797,10 +59797,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -59917,10 +59917,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 56,
+                  decimalOdds: 61,
                 },
                 fractionalOdds: {
-                  numerator: 55,
+                  numerator: 60,
                   denominator: 1,
                 },
               },
@@ -59997,10 +59997,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 101,
+                  decimalOdds: 91,
                 },
                 fractionalOdds: {
-                  numerator: 100,
+                  numerator: 90,
                   denominator: 1,
                 },
               },
@@ -60197,10 +60197,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -60337,10 +60337,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 126,
+                  decimalOdds: 101,
                 },
                 fractionalOdds: {
-                  numerator: 125,
+                  numerator: 100,
                   denominator: 1,
                 },
               },
@@ -60377,10 +60377,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 176,
+                  decimalOdds: 151,
                 },
                 fractionalOdds: {
-                  numerator: 175,
+                  numerator: 150,
                   denominator: 1,
                 },
               },
@@ -60581,11 +60581,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 4,
+                  decimalOdds: 4.2,
                 },
                 fractionalOdds: {
-                  numerator: 3,
-                  denominator: 1,
+                  numerator: 16,
+                  denominator: 5,
                 },
               },
             },
@@ -60601,11 +60601,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5,
+                  decimalOdds: 4.5,
                 },
                 fractionalOdds: {
-                  numerator: 4,
-                  denominator: 1,
+                  numerator: 7,
+                  denominator: 2,
                 },
               },
             },
@@ -60913,11 +60913,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5.5,
+                  decimalOdds: 6,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 2,
+                  numerator: 5,
+                  denominator: 1,
                 },
               },
             },
@@ -60933,11 +60933,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 5.5,
+                  decimalOdds: 5,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 2,
+                  numerator: 4,
+                  denominator: 1,
                 },
               },
             },
@@ -61017,11 +61017,11 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 2.8,
+                  decimalOdds: 2.875,
                 },
                 fractionalOdds: {
-                  numerator: 9,
-                  denominator: 5,
+                  numerator: 15,
+                  denominator: 8,
                 },
               },
             },
@@ -61037,10 +61037,10 @@ export default {
             winRunnerOdds: {
               trueOdds: {
                 decimalOdds: {
-                  decimalOdds: 7.5,
+                  decimalOdds: 6.5,
                 },
                 fractionalOdds: {
-                  numerator: 13,
+                  numerator: 11,
                   denominator: 2,
                 },
               },
