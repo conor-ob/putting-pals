@@ -48,36 +48,44 @@ setupIonicReact({ mode: "ios" });
 const App: React.FC = () => (
   <IonApp>
     <TrpcProvider>
-      <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            <Route exact path="/">
-              <Redirect to="/odds" />
-            </Route>
-            <Route exact path="/putting-pals">
-              <CompetitionPage />
-            </Route>
-            <Route exact path="/pga-tour">
-              <LeaderboardPage />
-            </Route>
-            <Route path="/putting-pals/:id" component={CompetitionPage} />
-            <Route path="/pga-tour/:id" component={LeaderboardPage} />
-            <Route path="/odds" component={OddsPage} />
-          </IonRouterOutlet>
-          {/* <IonTabBar slot="bottom">
-            <IonTabButton tab="putting-pals" href="/putting-pals">
-              <IonIcon aria-hidden="true" icon={square} />
-              <IonLabel>Putting Pals</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="pga-tour" href="/pga-tour">
-              <IonIcon aria-hidden="true" icon={square} />
-              <IonLabel>PGA Tour</IonLabel>
-            </IonTabButton>
-          </IonTabBar> */}
-        </IonTabs>
-      </IonReactRouter>
+      <OddsPage />
     </TrpcProvider>
   </IonApp>
 );
+
+// const App: React.FC = () => (
+//   <IonApp>
+//     <TrpcProvider>
+//       <IonReactRouter>
+//         <IonTabs>
+//           <IonRouterOutlet>
+//             <Route exact path="/">
+//               <Redirect to="/putting-pals" />
+//             </Route>
+//             <Route exact path="/putting-pals">
+//               <CompetitionPage />
+//             </Route>
+//             <Route exact path="/pga-tour">
+//               <LeaderboardPage />
+//             </Route>
+//             <Route path="/putting-pals/:id" component={CompetitionPage} />
+//             <Route path="/pga-tour/:id" component={LeaderboardPage} />
+//             <Route path="/odds" component={OddsPage} />
+//           </IonRouterOutlet>
+//           {/* <IonTabBar slot="bottom">
+//             <IonTabButton tab="putting-pals" href="/putting-pals">
+//               <IonIcon aria-hidden="true" icon={square} />
+//               <IonLabel>Putting Pals</IonLabel>
+//             </IonTabButton>
+//             <IonTabButton tab="pga-tour" href="/pga-tour">
+//               <IonIcon aria-hidden="true" icon={square} />
+//               <IonLabel>PGA Tour</IonLabel>
+//             </IonTabButton>
+//           </IonTabBar> */}
+//         </IonTabs>
+//       </IonReactRouter>
+//     </TrpcProvider>
+//   </IonApp>
+// );
 
 export default App;
