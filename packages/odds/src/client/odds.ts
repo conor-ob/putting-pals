@@ -14,7 +14,7 @@ export class OddsClient extends RESTDataSource {
   }
 
   public async getPaddyPowerOdds(id: string): Promise<PaddyPowerOdds> {
-    const useSnapshot = false;
+    const useSnapshot = true;
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (useSnapshot) {
       return this.parsePaddyPowerResponse({
