@@ -1,5 +1,6 @@
 import { CompetitionPage } from "@features/competition/page";
 import { LeaderboardPage } from "@features/leaderboard/page";
+import { OddsPage } from "@features/odds/page";
 import {
   IonApp,
   // IonIcon,
@@ -51,7 +52,7 @@ const App: React.FC = () => (
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/">
-              <Redirect to="/putting-pals" />
+              <Redirect to="/odds" />
             </Route>
             <Route exact path="/putting-pals">
               <CompetitionPage />
@@ -61,6 +62,7 @@ const App: React.FC = () => (
             </Route>
             <Route path="/putting-pals/:id" component={CompetitionPage} />
             <Route path="/pga-tour/:id" component={LeaderboardPage} />
+            <Route path="/odds" component={OddsPage} />
           </IonRouterOutlet>
           {/* <IonTabBar slot="bottom">
             <IonTabButton tab="putting-pals" href="/putting-pals">

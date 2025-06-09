@@ -2,9 +2,13 @@ import { IonItem } from "@ionic/react";
 
 export function ListItem({
   button = false,
+  detail = false,
+  onClick,
   children,
 }: {
   button?: boolean;
+  detail?: boolean;
+  onClick?: () => void;
   children?: React.ReactNode;
 }) {
   let baseStyles: {
@@ -22,7 +26,13 @@ export function ListItem({
     };
   }
   return (
-    <IonItem button={button} style={baseStyles} lines="none">
+    <IonItem
+      button={button}
+      detail={detail}
+      style={baseStyles}
+      lines="none"
+      onClick={onClick}
+    >
       {children}
     </IonItem>
   );
