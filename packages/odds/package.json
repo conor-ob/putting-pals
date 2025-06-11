@@ -1,12 +1,10 @@
 {
-  "name": "@pkg/api",
+  "name": "@pkg/odds",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./router": "./src/api.ts",
-    "./context": "./src/context.ts",
-    "./types": "./src/types.ts"
+    "./client": "./src/client/odds.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
@@ -15,15 +13,7 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@pkg/data": "workspace:*",
-    "@pkg/db": "workspace:*",
-    "@pkg/graphql": "workspace:*",
-    "@pkg/odds": "workspace:*",
-    "@pkg/utils": "workspace:*",
-    "@sentry/node": "catalog:",
-    "@trpc/server": "catalog:",
-    "superjson": "catalog:",
-    "zod": "catalog:"
+    "@apollo/datasource-rest": "catalog:"
   },
   "devDependencies": {
     "@pkg/eslint": "workspace:*",

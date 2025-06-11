@@ -511,6 +511,9 @@ importers:
       '@pkg/graphql':
         specifier: workspace:*
         version: link:../graphql
+      '@pkg/odds':
+        specifier: workspace:*
+        version: link:../odds
       '@pkg/utils':
         specifier: workspace:*
         version: link:../utils
@@ -622,6 +625,31 @@ importers:
       '@types/pako':
         specifier: 'catalog:'
         version: 2.0.3
+      eslint:
+        specifier: 'catalog:'
+        version: 9.14.0(jiti@1.21.7)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.5.3
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.3
+
+  packages/odds:
+    dependencies:
+      '@apollo/datasource-rest':
+        specifier: 'catalog:'
+        version: 6.4.1(graphql@16.11.0)
+    devDependencies:
+      '@pkg/eslint':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@pkg/prettier':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@total-typescript/tsconfig':
+        specifier: 'catalog:'
+        version: 1.0.4
       eslint:
         specifier: 'catalog:'
         version: 9.14.0(jiti@1.21.7)
