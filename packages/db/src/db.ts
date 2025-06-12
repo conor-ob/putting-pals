@@ -60,6 +60,7 @@ const competitions = [
   seasonId: getSeasonId(it.tournamentId),
   name: getName(it.tournamentId),
   shortName: getShortName(it.tournamentId),
+  scoringRules: getScoringRules(it.tournamentId),
 }));
 
 export class CompetitionDatabase {
@@ -157,4 +158,12 @@ function getShortName(tournamentId: string) {
   } else {
     throw new Error("Invalid tournamentId");
   }
+}
+
+function getScoringRules(tournamentId: string) {
+  if (tournamentId === "R2025026") {
+    return "MISSED_CUT";
+  }
+
+  return undefined;
 }
