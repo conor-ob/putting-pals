@@ -2,10 +2,10 @@ import {
   aidanWalsh,
   aimeeOhanlon,
   brianObrolchain,
-  // cameronFolens,
+  cameronFolens,
   conorObrien,
   davidHynes,
-  // johnHannaway,
+  johnHannaway,
   phelimOconnor,
   richByrne,
   robJoy,
@@ -64,6 +64,10 @@ export default {
       picks: [scottieScheffler, jonRahm, cameronYoung], // 2.75 + 12 + 125 = 139.75/1
     },
     {
+      ...johnHannaway,
+      picks: [scottieScheffler, jonRahm, akshayBhatia], // 2.75 + 12 + 125 = 139.75/1
+    },
+    {
       ...brianObrolchain,
       picks: [scottieScheffler, brysonDeChambeau, akshayBhatia], // 2.75 + 7 + 125 = 134.75/1
     },
@@ -83,13 +87,9 @@ export default {
       ...roryCoffey,
       picks: [brysonDeChambeau, xanderSchauffele, aaronRai], // 7 + 22 + 100 = 129/1
     },
-    // {
-    //   ...cameronFolens,
-    //   picks: [brysonDeChambeau, shaneLowry, harrisEnglish], // 7 + 40 + 80 = 127/1
-    // },
-    // {
-    //   ...johnHannaway,
-    //   picks: [brysonDeChambeau, shaneLowry, harrisEnglish], // 7 + 40 + 80 = 127/1
-    // },
+    {
+      ...cameronFolens,
+      picks: [brysonDeChambeau, shaneLowry, harrisEnglish], // 7 + 40 + 80 = 127/1
+    },
   ],
 };
