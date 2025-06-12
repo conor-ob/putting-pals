@@ -42,7 +42,23 @@ export class CompetitionService {
               totalSort: totalSort,
             };
           })
-          .sort((a, b) => a.totalSort - b.totalSort)
+          .sort((a, b) => {
+            if (
+              a.picks.every((pick) => pick.scoringData.position === "-") &&
+              b.picks.every((pick) => pick.scoringData.position === "-")
+            ) {
+              return 0;
+            } else if (
+              a.picks.every((pick) => pick.scoringData.position === "-")
+            ) {
+              return 1;
+            } else if (
+              b.picks.every((pick) => pick.scoringData.position === "-")
+            ) {
+              return -1;
+            }
+            return a.totalSort - b.totalSort;
+          })
           .reduce((accumulator, it, index) => {
             if (accumulator.length === 0) {
               accumulator.push({
@@ -54,22 +70,29 @@ export class CompetitionService {
                   : (index + 1).toString(),
               });
             } else {
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              const previous = accumulator[accumulator.length - 1]!; // TODO !
-              if (previous.totalSort === it.totalSort) {
-                accumulator[accumulator.length - 1] = {
-                  ...previous,
-                  position: this.getPosition(previous.position),
-                };
+              if (it.picks.every((pick) => pick.scoringData.position === "-")) {
                 accumulator.push({
                   ...it,
-                  position: this.getPosition(previous.position),
+                  position: "-",
                 });
               } else {
-                accumulator.push({
-                  ...it,
-                  position: `${index + 1}`,
-                });
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                const previous = accumulator[accumulator.length - 1]!; // TODO !
+                if (previous.totalSort === it.totalSort) {
+                  accumulator[accumulator.length - 1] = {
+                    ...previous,
+                    position: this.getPosition(previous.position),
+                  };
+                  accumulator.push({
+                    ...it,
+                    position: this.getPosition(previous.position),
+                  });
+                } else {
+                  accumulator.push({
+                    ...it,
+                    position: `${index + 1}`,
+                  });
+                }
               }
             }
             return accumulator;
