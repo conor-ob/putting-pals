@@ -14,12 +14,24 @@ export class CompetitionService {
             const picks = leaderboard.rows.filter((it) =>
               competitor.picks.includes(it.id),
             ) as PlayerRow[];
-            const totalSort = picks.reduce((accumulator, player) => {
-              return accumulator + player.scoringData.totalSort;
-            }, 0);
+            const scoringAdjustedPicks = this.applyScoringRules({
+              picks: picks,
+              allPicks: leaderboard.rows.filter((it) =>
+                competition.competitors
+                  .flatMap((it) => it.picks)
+                  .includes(it.id),
+              ) as PlayerRow[],
+              scoringRules: competition.scoringRules,
+            });
+            const totalSort = scoringAdjustedPicks.reduce(
+              (accumulator, player) => {
+                return accumulator + player.scoringData.totalSort;
+              },
+              0,
+            );
             return {
               ...competitor,
-              picks: picks,
+              picks: scoringAdjustedPicks,
               position: "",
               total:
                 totalSort === 0
@@ -35,7 +47,11 @@ export class CompetitionService {
             if (accumulator.length === 0) {
               accumulator.push({
                 ...it,
-                position: (index + 1).toString(),
+                position: it.picks.every(
+                  (pick) => pick.scoringData.position === "-",
+                )
+                  ? "-"
+                  : (index + 1).toString(),
               });
             } else {
               // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -63,7 +79,9 @@ export class CompetitionService {
   }
 
   private getPosition(previousPosition: string): string {
-    if (previousPosition.startsWith("T")) {
+    if (previousPosition === "-") {
+      return previousPosition;
+    } else if (previousPosition.startsWith("T")) {
       return previousPosition;
     } else {
       const rank = Number(previousPosition);
@@ -72,6 +90,62 @@ export class CompetitionService {
       } else {
         return `T${previousPosition}`;
       }
+    }
+  }
+
+  private applyScoringRules({
+    picks,
+    allPicks,
+    scoringRules,
+  }: {
+    picks: PlayerRow[];
+    allPicks: PlayerRow[];
+    scoringRules?: string;
+  }): PlayerRow[] {
+    if (scoringRules === "MISSED_CUT") {
+      return picks.map((playerRow) => {
+        if (
+          playerRow.scoringData.position === "CUT" ||
+          playerRow.scoringData.position === "WD"
+        ) {
+          const otherPlayersMakingCut = allPicks.filter(
+            (it) =>
+              it.id !== playerRow.id &&
+              it.scoringData.position !== "CUT" &&
+              it.scoringData.position !== "WD",
+          );
+          if (otherPlayersMakingCut.length === 0) {
+            return playerRow;
+          } else {
+            const worstPerformingPlayerMakingCut = otherPlayersMakingCut.sort(
+              (a, b) => b.scoringData.totalSort - a.scoringData.totalSort,
+            )[0];
+            if (worstPerformingPlayerMakingCut === undefined) {
+              return playerRow;
+            } else if (
+              playerRow.scoringData.position === "WD" ||
+              worstPerformingPlayerMakingCut.scoringData.totalSort >
+                playerRow.scoringData.totalSort
+            ) {
+              return {
+                ...playerRow,
+                scoringData: {
+                  ...playerRow.scoringData,
+                  total: `${worstPerformingPlayerMakingCut.scoringData.total}*`,
+                  totalSort:
+                    worstPerformingPlayerMakingCut.scoringData.totalSort,
+                },
+              };
+            } else {
+              return playerRow;
+            }
+          }
+        } else {
+          return playerRow;
+        }
+      });
+    } else {
+      return picks;
     }
   }
 }
