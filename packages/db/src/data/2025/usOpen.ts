@@ -83,13 +83,13 @@ export default {
       ...roryCoffey,
       picks: [brysonDeChambeau, xanderSchauffele, aaronRai], // 7 + 22 + 100 = 129/1
     },
-    {
-      ...cameronFolens,
-      picks: [brysonDeChambeau, shaneLowry, harrisEnglish], // 7 + 40 + 80 = 127/1
-    },
-    {
-      ...johnHannaway,
-      picks: [brysonDeChambeau, shaneLowry, harrisEnglish], // 7 + 40 + 80 = 127/1
-    },
+    // {
+    //   ...cameronFolens,
+    //   picks: [brysonDeChambeau, shaneLowry, harrisEnglish], // 7 + 40 + 80 = 127/1
+    // },
+    // {
+    //   ...johnHannaway,
+    //   picks: [brysonDeChambeau, shaneLowry, harrisEnglish], // 7 + 40 + 80 = 127/1
+    // },
   ],
 };
