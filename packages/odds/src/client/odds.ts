@@ -4,7 +4,7 @@ import type {
   PaddyPowerCompetitionResponse,
   PaddyPowerOdds,
 } from "../types/types";
-import usOpen2025 from "../data/2025/usOpen";
+import theOpenChampionship2025 from "../data/2025/theOpenChampionship";
 
 export class OddsClient extends RESTDataSource {
   override baseURL = "https://apisms.paddypower.com";
@@ -19,7 +19,7 @@ export class OddsClient extends RESTDataSource {
     if (useSnapshot) {
       return this.parsePaddyPowerResponse({
         id: id,
-        json: usOpen2025 as PaddyPowerCompetitionResponse,
+        json: theOpenChampionship2025 as PaddyPowerCompetitionResponse,
       });
     } else {
       return super
