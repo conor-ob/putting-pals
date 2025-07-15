@@ -10,6 +10,8 @@ export const adamScott = "24502";
 
 export const akshayBhatia = "56630";
 
+export const aldrichPotgieter = "63343";
+
 export const alexNoren = "27349";
 
 export const benGriffin = "54591";
