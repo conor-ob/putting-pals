@@ -48,6 +48,8 @@ export const coreyConners = "39997";
 
 export const danielBerger = "40026";
 
+export const danielBrown = "57259";
+
 export const dannyWillett = "32139";
 
 export const dennyMccarthy = "47993";
@@ -107,6 +109,8 @@ export const ludvigAberg = "52955";
 export const lukeList = "27129";
 
 export const mackenzieHughes = "35506";
+
+export const marcoPenge = "51003";
 
 export const marcLeishman = "26851";
 
