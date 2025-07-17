@@ -7,6 +7,7 @@ import {
   davidHynes,
   johnHannaway,
   karlCurran,
+  niallCronin,
   phelimOconnor,
   richByrne,
   robJoy,
@@ -94,6 +95,10 @@ export default {
     {
       ...aimeeOhanlon,
       picks: [xanderSchauffele, mattFitzpatrick, justinThomas], // 25 + 50 + 50 = 125/1
+    },
+    {
+      ...niallCronin,
+      picks: [roryMcilroy, tommyFleetwood, keeganBradley], // 7 + 28 + 90 = 125/1
     },
   ],
 };
