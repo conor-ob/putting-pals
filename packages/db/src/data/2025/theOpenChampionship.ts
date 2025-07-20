@@ -41,8 +41,8 @@ import {
 export default {
   tournamentId: "R2025100",
   paddyPowerId: undefined,
-  winnerId: undefined,
-  runnerUpId: undefined,
+  winnerId: johnHannaway.id,
+  runnerUpId: conorObrien.id,
   competitors: [
     {
       ...davidHynes,
