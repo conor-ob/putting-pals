@@ -38,6 +38,7 @@ export default {
 	// The scheduled handler is invoked at the interval set in our wrangler.jsonc's
 	// [[triggers]] configuration.
 	async scheduled(event, env, ctx): Promise<void> {
+		console.log('starting scheduled job');
 		const leaderboardId = 'R2025027';
 		const leaderboardClient = new LeaderboardClient();
 		const leaderboard = await leaderboardClient.getLeaderboard(leaderboardId);
