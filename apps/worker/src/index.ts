@@ -103,6 +103,8 @@ async function handleRequest(env: Env) {
 			await env.DB.prepare('INSERT INTO feed (post) VALUES (?)').bind(aiResponse).run();
 
 			return Response.json(json);
+		} else {
+			console.log('leaderboard did not change');
 		}
 	}
 
