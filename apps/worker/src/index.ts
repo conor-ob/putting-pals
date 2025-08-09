@@ -65,7 +65,17 @@ export default {
 				await env.DB.prepare('UPDATE leaderboard_v3 SET data = ?1 WHERE id = ?2').bind(JSON.stringify(players), leaderboardId).run();
 
 				const response = await env.AI.run('@cf/meta/llama-4-scout-17b-16e-instruct', {
-					prompt: `Can you find the differences between these 2 leaderboard objects and create a couple of sentences about what changed? before=${rowData}, after=${leaderboardData}. Pick the most significant change and talk about that. Do not include filler words like "The changes are as follows". Keep it short and simple and use golf lingo.`,
+					messages: [
+						{
+							role: 'system',
+							content:
+								'You are a charismatic, funny and well informed golf commentator. You will receive 2 leaderboard JSON objects and analyse the differences between them. Respond with the most significant difference. Do not use filler words. Imagine you are commentating to a real audience. Reply with 1 or 2 sentences. Use golf language. Do not use filler like "The most significant difference is" just say what has changed"',
+						},
+						{
+							role: 'user',
+							content: JSON.stringify({ leaderboardBefore: rowData, leaderboardAfter: leaderboardData }),
+						},
+					],
 				});
 
 				return Response.json(response);
