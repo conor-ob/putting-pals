@@ -36,7 +36,7 @@ export default {
 		const leaderboardClient = new LeaderboardClient();
 		const leaderboard = await leaderboardClient.getLeaderboard(leaderboardId);
 		const players = leaderboard.players
-			// .slice(0, 10)
+			.slice(0, 10)
 			.filter((row) => row.__typename === 'PlayerRowV3')
 			.map((row) => {
 				const playerRow = row as PlayerRowV3;
