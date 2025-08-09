@@ -39,6 +39,15 @@ export default {
 
 		if (results.length === 0) {
 			await env.DB.prepare('INSERT INTO leaderboard_v3 (id, data) VALUES (?1, ?2)').bind(leaderboardId, JSON.stringify(leaderboard)).run();
+		} else if (results.length === 1) {
+			const leaderboardData = JSON.stringify(leaderboard);
+			const rowData = results[0].data as string;
+			if (leaderboardData !== rowData) {
+				console.log('leaderboard changed');
+				await env.DB.prepare('INSERT INTO leaderboard_v3 (id, data) VALUES (?1, ?2)')
+					.bind(leaderboardId, JSON.stringify(leaderboard))
+					.run();
+			}
 		}
 
 		return new Response(
@@ -52,6 +61,16 @@ export default {
 		const leaderboardId = 'R2025027';
 		const leaderboardClient = new LeaderboardClient();
 		const leaderboard = await leaderboardClient.getLeaderboard('R2025027');
+
+		const { results } = await env.DB.prepare('SELECT * FROM leaderboard_v3 where id = ?').bind(leaderboardId).run();
+
+		if (results.length === 0) {
+			console.log('inserting into db');
+			await env.DB.prepare('INSERT INTO leaderboard_v3 (id, data) VALUES (?1, ?2)').bind(leaderboardId, JSON.stringify(leaderboard)).run();
+		} else if (results.length === 1) {
+			const row = results[0];
+		}
+
 		console.log(`trigger fired at ${event.cron}: ${leaderboard.id}`);
 	},
 } satisfies ExportedHandler<Env>;
