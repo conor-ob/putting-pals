@@ -1,23 +1,4 @@
-import type { AugmentedRequest, CacheOptions } from "@apollo/datasource-rest";
-import type { ValueOrPromise } from "@apollo/datasource-rest/dist/RESTDataSource";
-import { RESTDataSource } from "@apollo/datasource-rest";
-
-import { env } from "./env/schema";
-
-export class GraphqlApi extends RESTDataSource {
-  override baseURL = "https://orchestrator.pgatour.com";
-
-  constructor() {
-    super({ fetch: fetch });
-  }
-
-  protected override willSendRequest(
-    _: string,
-    requestOpts: AugmentedRequest<CacheOptions>,
-  ): ValueOrPromise<void> {
-    requestOpts.headers["X-Api-Key"] = env.PGA_TOUR_API_KEY;
-  }
-
+export class GraphqlApi {
   protected async query<TResult = unknown>({
     query,
     variables,
@@ -25,8 +6,12 @@ export class GraphqlApi extends RESTDataSource {
     query: string;
     variables: Record<string, unknown>;
   }): Promise<TResult> {
-    return super.post<TResult>("graphql", {
+    return fetch("https://orchestrator.pgatour.com/graphql", {
+      method: "POST",
       body: JSON.stringify({ query, variables }),
-    });
+      headers: {
+        "X-Api-Key": "da2-gsrx5bibzbb4njvhl7t37wqyl4",
+      },
+    }).then((res) => res.json());
   }
 }

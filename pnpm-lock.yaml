@@ -501,6 +501,10 @@ importers:
         version: 7.3.0
 
   apps/worker:
+    dependencies:
+      '@pkg/graphql':
+        specifier: workspace:*
+        version: link:../../packages/graphql
     devDependencies:
       typescript:
         specifier: ^5.5.2
