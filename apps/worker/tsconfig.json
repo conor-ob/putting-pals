@@ -10,9 +10,9 @@
 		"jsx": "react-jsx",
 
 		/* Specify what module code is generated. */
-		"module": "NodeNext",
+		"module": "es2022",
 		/* Specify how TypeScript looks up a file from a given module specifier. */
-		"moduleResolution": "nodenext",
+		"moduleResolution": "bundler",
 		/* Enable importing .json files */
 		"resolveJsonModule": true,
 
