@@ -37,7 +37,7 @@ export default {
 		const stmt = env.DB.prepare('SELECT * FROM leaderboard_v3');
 		const { results } = await stmt.all();
 
-		return new Response(JSON.stringify(results, null, 2));
+		return new Response(`Results: ${JSON.stringify(results, null, 2)}`);
 	},
 
 	// The scheduled handler is invoked at the interval set in our wrangler.jsonc's
