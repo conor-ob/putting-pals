@@ -33,7 +33,11 @@ export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const leaderboardClient = new LeaderboardClient();
 		const leaderboard = await leaderboardClient.getLeaderboard('R2025027');
-		return Response.json(leaderboard);
+
+		const stmt = env.DB.prepare('SELECT * FROM leaderboard_v3');
+		const { results } = await stmt.all();
+
+		return new Response(JSON.stringify(results, null, 2));
 	},
 
 	// The scheduled handler is invoked at the interval set in our wrangler.jsonc's
