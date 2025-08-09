@@ -11,6 +11,9 @@
     { "pattern": "packages/*/" },
     { "pattern": "tooling/*/" }
   ],
+  "files.associations": {
+    "wrangler.json": "jsonc"
+  },
   "prettier.ignorePath": ".gitignore",
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
