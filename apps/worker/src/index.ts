@@ -11,6 +11,8 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { LeaderboardClient } from './graphql/client/leaderboard';
+
 /**
  * Welcome to Cloudflare Workers!
  *
@@ -29,12 +31,16 @@
  */
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
+		const leaderboardClient = new LeaderboardClient();
+		const leaderboard = await leaderboardClient.getLeaderboard('R2025027');
+		return Response.json(leaderboard);
 	},
 
 	// The scheduled handler is invoked at the interval set in our wrangler.jsonc's
 	// [[triggers]] configuration.
 	async scheduled(event, env, ctx): Promise<void> {
-		console.log(`trigger fired at ${event.cron}`);
+		const leaderboardClient = new LeaderboardClient();
+		const leaderboard = await leaderboardClient.getLeaderboard('R2025027');
+		console.log(`trigger fired at ${event.cron}: ${leaderboard.id}`);
 	},
 } satisfies ExportedHandler<Env>;
