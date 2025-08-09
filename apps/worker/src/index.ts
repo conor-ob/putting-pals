@@ -32,7 +32,8 @@ import { PlayerRowV3 } from './graphql/types';
  */
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return handleRequest(env);
+		const { results } = await env.DB.prepare('SELECT * FROM feed ORDER BY id DESC').run();
+		return Response.json(results);
 	},
 
 	// The scheduled handler is invoked at the interval set in our wrangler.jsonc's
