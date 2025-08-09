@@ -36,7 +36,7 @@ export default {
 		const leaderboardClient = new LeaderboardClient();
 		const leaderboard = await leaderboardClient.getLeaderboard(leaderboardId);
 		const players = leaderboard.players
-			.slice(0, 10)
+			.slice(0, 39)
 			.filter((row) => row.__typename === 'PlayerRowV3')
 			.map((row) => {
 				const playerRow = row as PlayerRowV3;
@@ -47,8 +47,8 @@ export default {
 					scoringData: {
 						position: playerRow.scoringData.position,
 						totalScore: playerRow.scoringData.total,
-						todayScore: playerRow.scoringData.score,
-						holesPlayed: playerRow.scoringData.thru,
+						// todayScore: playerRow.scoringData.score,
+						// holesPlayed: playerRow.scoringData.thru,
 					},
 				};
 			});
@@ -64,21 +64,34 @@ export default {
 				console.log('leaderboard changed');
 				await env.DB.prepare('UPDATE leaderboard_v3 SET data = ?1 WHERE id = ?2').bind(JSON.stringify(players), leaderboardId).run();
 
-				const response = await env.AI.run('@cf/meta/llama-4-scout-17b-16e-instruct', {
-					messages: [
-						{
-							role: 'system',
-							content:
-								'You are a charismatic, funny and well informed golf commentator. You will receive 2 leaderboard JSON objects and analyse the differences between them. Respond with the most significant difference. Do not use filler words. Imagine you are commentating to a real audience. Reply with 1 or 2 sentences. Use golf language. Do not use filler like "The most significant difference is" just say what has changed"',
-						},
-						{
-							role: 'user',
-							content: JSON.stringify({ leaderboardBefore: rowData, leaderboardAfter: leaderboardData }),
-						},
-					],
-				});
+				const response = await env.AI.run(
+					'@cf/meta/llama-4-scout-17b-16e-instruct',
+					{
+						messages: [
+							{
+								role: 'system',
+								content:
+									'You are a charismatic, funny and well informed golf commentator. You will receive 2 leaderboard JSON objects and analyse the differences between them. Respond with the most significant difference. Do not use filler words. Imagine you are commentating to a real audience. Reply with 1 or 2 sentences. Use golf language. Do not use filler like "The most significant difference is ..." or "The only change is ..." just say what has changed and NOTHING ELSE."',
+							},
+							{
+								role: 'user',
+								content: JSON.stringify({ leaderboardBefore: rowData, leaderboardAfter: leaderboardData }),
+							},
+						],
+						max_tokens: 1024,
+					},
+					{
+						returnRawResponse: true,
+					},
+				);
 
-				return Response.json(response);
+				const json = await response.json();
+
+				const aiResponse = (json as { response: string }).response;
+
+				await env.DB.prepare('INSERT INTO feed (post) VALUES (?)').bind(aiResponse).run();
+
+				return Response.json(json);
 			}
 		}
 
