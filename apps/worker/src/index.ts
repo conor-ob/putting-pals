@@ -31,18 +31,25 @@ import { LeaderboardClient } from './graphql/client/leaderboard';
  */
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
+		const leaderboardId = 'R2025027';
 		const leaderboardClient = new LeaderboardClient();
 		const leaderboard = await leaderboardClient.getLeaderboard('R2025027');
 
-		const stmt = env.DB.prepare('SELECT * FROM leaderboard_v3');
-		const { results } = await stmt.all();
+		const { results } = await env.DB.prepare('SELECT * FROM leaderboard_v3 where id = ?').bind(leaderboardId).run();
 
-		return new Response(`Results: ${JSON.stringify(results, null, 2)}`);
+		if (results.length === 0) {
+			await env.DB.prepare('INSERT INTO leaderboard_v3 (id, data) VALUES (?1, ?2)').bind(leaderboardId, JSON.stringify(leaderboard)).run();
+		}
+
+		return new Response(
+			`Results: ${JSON.stringify(await env.DB.prepare('SELECT * FROM leaderboard_v3 where id = ?').bind(leaderboardId).run(), null, 2)}`,
+		);
 	},
 
 	// The scheduled handler is invoked at the interval set in our wrangler.jsonc's
 	// [[triggers]] configuration.
 	async scheduled(event, env, ctx): Promise<void> {
+		const leaderboardId = 'R2025027';
 		const leaderboardClient = new LeaderboardClient();
 		const leaderboard = await leaderboardClient.getLeaderboard('R2025027');
 		console.log(`trigger fired at ${event.cron}: ${leaderboard.id}`);
