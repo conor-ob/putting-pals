@@ -31,7 +31,7 @@ export default {
 		//
 		// We'll keep it simple and make an API call to a Cloudflare API:
 		let resp = await fetch('https://api.cloudflare.com/client/v4/ips');
-		let wasSuccessful = resp.ok ? 'success' : 'fail';
+		let wasSuccessful = resp.ok ? 'ok' : 'fail';
 
 		// You could store this result in KV, write to a D1 Database, or publish to a Queue.
 		// In this template, we'll just log the result:
