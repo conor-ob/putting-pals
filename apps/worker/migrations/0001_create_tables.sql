@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS leaderboard_v3 (
+    id INTEGER PRIMARY KEY NOT NULL,
+    leaderboard_v3 TEXT NOT NULL
+);

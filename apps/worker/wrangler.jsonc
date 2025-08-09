@@ -13,6 +13,13 @@
 	"triggers": {
 		"crons": ["* * * * *"],
 	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "production-putting-pals-db",
+			"database_id": "dd3b552f-f075-4ed8-ad91-60b6ce1023d4",
+		},
+	],
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

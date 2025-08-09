@@ -7,7 +7,9 @@
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
 		"test": "vitest",
-		"cf-typegen": "wrangler types"
+		"cf-typegen": "wrangler types",
+		"predeploy": "wrangler d1 migrations apply DB --remote",
+		"seedLocalD1": "wrangler d1 migrations apply DB --local"
 	},
 	"dependencies": {
 		"pako": "catalog:"
