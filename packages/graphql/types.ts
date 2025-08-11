@@ -70,6 +70,7 @@ export type AdConfig = {
   leaderboardShotDetails?: Maybe<AdTagConfig>;
   leaderboardStrokesGained?: Maybe<AdTagConfig>;
   liveLeaderboard?: Maybe<AdTagConfig>;
+  mobileHeroStory?: Maybe<AdTagConfig>;
   mobilePlayerStory?: Maybe<AdTagConfig>;
   mobileTopicStory?: Maybe<AdTagConfig>;
   mobileYourTourHomeStory?: Maybe<AdTagConfig>;
@@ -463,8 +464,23 @@ export type BroadcastNetworks = {
   networks: Array<BroadcastNetwork>;
 };
 
+export type BroadcastTableFragment = {
+  __typename?: 'BroadcastTableFragment';
+  path: Scalars['String']['output'];
+  webviewUrl: Scalars['String']['output'];
+};
+
+export type BubblePill = {
+  __typename?: 'BubblePill';
+  iconDark: ImageAsset;
+  iconLight: ImageAsset;
+  pillText: Scalars['String']['output'];
+};
+
 export type CallToAction = {
   __typename?: 'CallToAction';
+  color?: Maybe<Scalars['String']['output']>;
+  fontColor?: Maybe<Scalars['String']['output']>;
   link: Scalars['String']['output'];
   target?: Maybe<Scalars['String']['output']>;
   text: Scalars['String']['output'];
@@ -542,6 +558,7 @@ export type ContentFragmentTab = {
 export type ContentFragmentTabs = {
   __typename?: 'ContentFragmentTabs';
   pageHeader: Scalars['String']['output'];
+  partnerShipAssets?: Maybe<Array<Scalars['String']['output']>>;
   path: Scalars['String']['output'];
   tabs: Array<ContentFragmentTab>;
 };
@@ -596,6 +613,14 @@ export enum ContentType {
   RyderCupNewsArticle = 'RYDER_CUP_NEWS_ARTICLE'
 }
 
+export type ContentVideoCarousel = {
+  __typename?: 'ContentVideoCarousel';
+  bottomCta?: Maybe<CallToAction>;
+  sectionTitle?: Maybe<Scalars['String']['output']>;
+  topCta?: Maybe<CallToAction>;
+  videos?: Maybe<Array<Video>>;
+};
+
 export type Course = {
   __typename?: 'Course';
   courseCode: Scalars['String']['output'];
@@ -627,6 +652,7 @@ export type CourseHoleHeader = {
 
 export type CourseHoleStats = {
   __typename?: 'CourseHoleStats';
+  averagePaceOfPlay?: Maybe<Scalars['String']['output']>;
   birdies?: Maybe<Scalars['Int']['output']>;
   bogeys?: Maybe<Scalars['Int']['output']>;
   courseHoleNum: Scalars['Int']['output'];
@@ -701,8 +727,11 @@ export type CourseResultsTournament = {
 
 export type CourseRound = {
   __typename?: 'CourseRound';
+  enablePaceOfPlay?: Maybe<Scalars['Boolean']['output']>;
   holeStats: Array<HoleStat>;
   live: Scalars['Boolean']['output'];
+  paceOfPlayDescription?: Maybe<Scalars['String']['output']>;
+  paceOfPlayLabelTitle?: Maybe<Scalars['String']['output']>;
   roundHeader: Scalars['String']['output'];
   roundNum?: Maybe<Scalars['Int']['output']>;
 };
@@ -770,10 +799,12 @@ export type CourseStatsOverview = {
 export type CupLeaderboardMatch = {
   __typename?: 'CupLeaderboardMatch';
   displayScore: Scalars['String']['output'];
+  euMatchWin?: Maybe<Scalars['Float']['output']>;
   holeScores?: Maybe<Array<CupLeaderboardMatchHoles>>;
   location: Scalars['String']['output'];
   locationDescription?: Maybe<Scalars['String']['output']>;
   locationSort: Scalars['Int']['output'];
+  matchDraw?: Maybe<Scalars['Float']['output']>;
   matchId: Scalars['ID']['output'];
   matchStatus: Scalars['String']['output'];
   matchStatusColor: Scalars['String']['output'];
@@ -787,6 +818,7 @@ export type CupLeaderboardMatch = {
   tourcastURL?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
   tourcastURLWeb?: Maybe<Scalars['String']['output']>;
+  usMatchWin?: Maybe<Scalars['Float']['output']>;
 };
 
 export type CupLeaderboardMatchHoles = {
@@ -801,7 +833,9 @@ export type CupLeaderboardMatchPlayer = {
   __typename?: 'CupLeaderboardMatchPlayer';
   color?: Maybe<Scalars['String']['output']>;
   displayName: Scalars['String']['output'];
+  firstName?: Maybe<Scalars['String']['output']>;
   hideHeadshot?: Maybe<Scalars['Boolean']['output']>;
+  lastName?: Maybe<Scalars['String']['output']>;
   playerId: Scalars['ID']['output'];
   results?: Maybe<CupLeaderboardMatchPlayerResults>;
   shortName: Scalars['String']['output'];
@@ -826,6 +860,7 @@ export type CupLeaderboardMatchTeam = {
   teamId: Scalars['ID']['output'];
   teamName: Scalars['String']['output'];
   teamScore?: Maybe<Scalars['String']['output']>;
+  teamStoryContentInfo?: Maybe<Array<TeamStoryContentInfo>>;
   textColor?: Maybe<Scalars['String']['output']>;
 };
 
@@ -907,6 +942,12 @@ export type CupRankingTotal = {
   __typename?: 'CupRankingTotal';
   display: Scalars['String']['output'];
   value: Scalars['String']['output'];
+};
+
+export type CupRound = {
+  __typename?: 'CupRound';
+  roundDisplayName: Scalars['String']['output'];
+  roundNum: Scalars['Int']['output'];
 };
 
 export enum CupRoundFormat {
@@ -998,6 +1039,7 @@ export type CupTeeTimesRound = {
 
 export type CupTournamentLeaderboard = {
   __typename?: 'CupTournamentLeaderboard';
+  allRounds: Array<CupRound>;
   completedMatches: Scalars['Int']['output'];
   currentId: Scalars['String']['output'];
   currentRound: Scalars['Int']['output'];
@@ -1078,6 +1120,7 @@ export type CurrentLeaderPlayer = {
   id: Scalars['ID']['output'];
   lastName: Scalars['String']['output'];
   leaderboardSortOrder: Scalars['Int']['output'];
+  playerIcon?: Maybe<LeaderboardPlayerIcon>;
   playerState?: Maybe<PlayerState>;
   position: Scalars['String']['output'];
   roundHeader: Scalars['String']['output'];
@@ -1103,7 +1146,12 @@ export type CurrentLeaders = {
   miniatureLeaderboardImgOverride?: Maybe<Scalars['String']['output']>;
   players: Array<CurrentLeaderPlayer>;
   profileEnabled: Scalars['Boolean']['output'];
+  roundDisplay: Scalars['String']['output'];
+  roundStatus: RoundStatus;
+  roundStatusColor: RoundStatusColor;
+  roundStatusDisplay: Scalars['String']['output'];
   sponsor?: Maybe<CurrentLeaderSponsors>;
+  tournamentName: Scalars['String']['output'];
 };
 
 export type CurrentLeadersCompressed = {
@@ -1234,6 +1282,27 @@ export type EventGuideConfig = {
   eventGuideURL?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
 };
+
+export type EventHub = {
+  __typename?: 'EventHub';
+  bottomSectionTitle?: Maybe<Scalars['String']['output']>;
+  notSharingLocationFallbackDescriptionText?: Maybe<Scalars['String']['output']>;
+  notSharingLocationFallbackTitle?: Maybe<Scalars['String']['output']>;
+  outOfRangeFallbackDescriptionText?: Maybe<Scalars['String']['output']>;
+  outOfRangeFallbackPromoImage?: Maybe<Scalars['String']['output']>;
+  outOfRangeFallbackTitle?: Maybe<Scalars['String']['output']>;
+  partnershipAsset?: Maybe<Scalars['String']['output']>;
+  partnershipText?: Maybe<Scalars['String']['output']>;
+  path: Scalars['String']['output'];
+  radius?: Maybe<Scalars['Float']['output']>;
+  topSectionTitle?: Maybe<Scalars['String']['output']>;
+};
+
+export enum EventRegion {
+  Europe = 'EUROPE',
+  International = 'INTERNATIONAL',
+  Us = 'US'
+}
 
 export type ExpertPicks = {
   __typename?: 'ExpertPicks';
@@ -1505,8 +1574,10 @@ export type Group = {
 };
 
 export enum GroupHoleLocation {
+  Complete = 'COMPLETE',
   Fairway = 'FAIRWAY',
   Green = 'GREEN',
+  NotStarted = 'NOT_STARTED',
   Tee = 'TEE',
   Unknown = 'UNKNOWN'
 }
@@ -1529,10 +1600,13 @@ export type GroupLocationCourse = {
 
 export type GroupLocationData = {
   __typename?: 'GroupLocationData';
+  backNinePaceOfPlayTime?: Maybe<Scalars['String']['output']>;
   courseId: Scalars['String']['output'];
   currentHole?: Maybe<Scalars['String']['output']>;
+  frontNinePaceOfPlayTime?: Maybe<Scalars['String']['output']>;
   group: Scalars['Int']['output'];
   location: Scalars['String']['output'];
+  locationCode: GroupHoleLocation;
   locationSort: Scalars['String']['output'];
   teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
 };
@@ -1784,6 +1858,7 @@ export enum HeaderType {
 
 export type HeroCarousel = {
   __typename?: 'HeroCarousel';
+  displayInline: Scalars['Boolean']['output'];
   slides: Array<HeroCarouselItem>;
 };
 
@@ -2237,11 +2312,14 @@ export type HomepageProgramStanding = {
   cta?: Maybe<HomepageCta>;
   lastProcessed?: Maybe<Scalars['String']['output']>;
   pullFieldUpdates?: Maybe<Scalars['Boolean']['output']>;
+  secondaryStandings?: Maybe<Array<Maybe<HomePageStanding>>>;
+  secondaryStandingsTitle?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use sponsorImgAsset */
   sponsorImg?: Maybe<Scalars['String']['output']>;
   sponsorImgAsset?: Maybe<ImageAsset>;
   standingLayout: HomePageProgramStandingLayout;
   standings?: Maybe<Array<Maybe<HomePageStanding>>>;
+  standingsTitle?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
 };
 
@@ -2516,6 +2594,7 @@ export type LeaderboardMessage = {
   messageText: Scalars['String']['output'];
   platforms: Array<Platform>;
   timing?: Maybe<Scalars['Int']['output']>;
+  webViewLink?: Maybe<Scalars['String']['output']>;
 };
 
 export enum LeaderboardMessageIcon {
@@ -2711,6 +2790,7 @@ export type LeaderboardUpdateV3 = {
   subEvent: Scalars['Boolean']['output'];
   tournamentStatus: TournamentStatus;
   winner?: Maybe<Winner>;
+  winners?: Maybe<Array<Winner>>;
 };
 
 export type LeaderboardV2 = {
@@ -2750,6 +2830,7 @@ export type LeaderboardV2 = {
 
 export type LeaderboardV3 = {
   __typename?: 'LeaderboardV3';
+  bubblePill?: Maybe<BubblePill>;
   courses: Array<Course>;
   cutLineProbabilities?: Maybe<CutLineInfo>;
   disableBettingProfileColumn: Scalars['Boolean']['output'];
@@ -3040,6 +3121,15 @@ export type MarketPill = {
   marketType: OddsMarketType;
 };
 
+export type MatchCard = {
+  __typename?: 'MatchCard';
+  matchId?: Maybe<Scalars['String']['output']>;
+  path: Scalars['String']['output'];
+  round?: Maybe<Scalars['String']['output']>;
+  tourcastWebview?: Maybe<Scalars['String']['output']>;
+  tournamentId?: Maybe<Scalars['String']['output']>;
+};
+
 export type MatchHole = {
   __typename?: 'MatchHole';
   courseHoleNumber: Scalars['String']['output'];
@@ -3148,6 +3238,7 @@ export type Mutation = {
   deleteFavorites: Array<FavoritePlayer>;
   deleteNotificationTags: NotificationTagResponse;
   unsubscribe: UnsubscribeResponse;
+  updateBubbleWatch?: Maybe<TourCupRankingEvent>;
   updateCourseStats?: Maybe<TournamentHoleStats>;
   updateCoverage?: Maybe<BroadcastCoverage>;
   updateCupOverviewLeaderboard?: Maybe<CupTournamentStatus>;
@@ -3163,6 +3254,7 @@ export type Mutation = {
   updateLeaderboardStrokes?: Maybe<LeaderboardStrokes>;
   updateLeaderboardStrokesCompressed?: Maybe<LeaderboardStrokesCompressed>;
   updateLeaderboardV2?: Maybe<LeaderboardV2>;
+  updateMatchOutcomeIq?: Maybe<RyderCupMatchOutcomeIq>;
   updateMatchPlayLeaderboard?: Maybe<MpLeaderboard>;
   updateMatchPlayLeaderboardCompressed?: Maybe<LeaderboardCompressed>;
   updateMatchPlayPlayoffScorecard?: Maybe<MpPlayoffScorecard>;
@@ -3170,6 +3262,7 @@ export type Mutation = {
   updateMatchPlayTeeTimes: MpTeeTimes;
   updateMatchPlayTeeTimesCompressed?: Maybe<TeeTimesCompressed>;
   updateOddsToWinMarket?: Maybe<OddsToWinMarket>;
+  updateOddsToWinMarketCompressed?: Maybe<OddsToWinMarketCompressed>;
   updatePlayoffScorecard?: Maybe<PlayoffScorecard>;
   updatePlayoffScorecardV2: Array<PlayoffScorecard>;
   updatePlayoffScorecardV3: TournamentPlayoffScorecards;
@@ -3230,6 +3323,11 @@ export type MutationDeleteNotificationTagsArgs = {
 export type MutationUnsubscribeArgs = {
   email: Scalars['String']['input'];
   subscriptionIds: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+
+export type MutationUpdateBubbleWatchArgs = {
+  tourCode: TourCode;
 };
 
 
@@ -3319,6 +3417,12 @@ export type MutationUpdateLeaderboardV2Args = {
 };
 
 
+export type MutationUpdateMatchOutcomeIqArgs = {
+  matchId: Scalars['Int']['input'];
+  tournamentId: Scalars['ID']['input'];
+};
+
+
 export type MutationUpdateMatchPlayLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
@@ -3350,6 +3454,11 @@ export type MutationUpdateMatchPlayTeeTimesCompressedArgs = {
 
 
 export type MutationUpdateOddsToWinMarketArgs = {
+  oddsToWinId: Scalars['ID']['input'];
+};
+
+
+export type MutationUpdateOddsToWinMarketCompressedArgs = {
   oddsToWinId: Scalars['ID']['input'];
 };
 
@@ -3530,6 +3639,7 @@ export type NewsArticle = {
   /** @deprecated Use contentTournamentIds */
   contentTournamentId?: Maybe<Scalars['String']['output']>;
   contentTournamentIds?: Maybe<Array<Scalars['String']['output']>>;
+  dateTextOverride?: Maybe<Scalars['String']['output']>;
   externalLinkOverride?: Maybe<Scalars['String']['output']>;
   franchise: Scalars['String']['output'];
   franchiseDisplayName: Scalars['String']['output'];
@@ -3590,6 +3700,7 @@ export type NewsArticleContentSegment = {
   imageOrientation?: Maybe<Orientation>;
   type: Scalars['String']['output'];
   value?: Maybe<Scalars['String']['output']>;
+  webViewLink?: Maybe<Scalars['String']['output']>;
 };
 
 export type NewsArticleDetails = {
@@ -3879,6 +3990,11 @@ export type NewsFranchise = {
   franchiseLabel: Scalars['String']['output'];
 };
 
+export enum NewsLetterType {
+  Global = 'GLOBAL',
+  Tournament = 'TOURNAMENT'
+}
+
 export type NewsSponsor = {
   __typename?: 'NewsSponsor';
   accessibilityText: Scalars['String']['output'];
@@ -3896,7 +4012,9 @@ export type Newsletter = {
   description?: Maybe<Scalars['String']['output']>;
   gigyaSubscriptionId: Scalars['String']['output'];
   image: Scalars['String']['output'];
+  newsLetterType: NewsLetterType;
   title: Scalars['String']['output'];
+  tourCode?: Maybe<TourCode>;
 };
 
 export type NotificationTag = {
@@ -4171,13 +4289,19 @@ export type OddsToWin = {
   total: Scalars['String']['output'];
 };
 
-/**  Odds V3 */
 export type OddsToWinMarket = {
   __typename?: 'OddsToWinMarket';
   message?: Maybe<OddsMessage>;
   oddsEnabled: Scalars['Boolean']['output'];
   oddsToWinId: Scalars['ID']['output'];
   players: Array<OddsToWinPlayer>;
+};
+
+/**  Odds V3 */
+export type OddsToWinMarketCompressed = {
+  __typename?: 'OddsToWinMarketCompressed';
+  id: Scalars['ID']['output'];
+  payload: Scalars['String']['output'];
 };
 
 export type OddsToWinPlayer = {
@@ -4220,6 +4344,14 @@ export enum Orientation {
   Landscape = 'Landscape',
   Portrait = 'Portrait'
 }
+
+export type OutComeIqHole = {
+  __typename?: 'OutComeIQHole';
+  euMatchWin: Scalars['Float']['output'];
+  holeNum: Scalars['Int']['output'];
+  matchDraw: Scalars['Float']['output'];
+  usMatchWin: Scalars['Float']['output'];
+};
 
 export type OverviewStat = {
   __typename?: 'OverviewStat';
@@ -5386,6 +5518,7 @@ export type Query = {
   articleDetails: NewsArticleDetails;
   articleDetailsCompressed: NewsArticleDetailsCompressed;
   broadcastTimes: BroadcastCoverage;
+  bubbleWatch?: Maybe<TourCupRankingEvent>;
   completeSchedule: Array<Schedule>;
   contentFragmentTabs: ContentFragmentTabs;
   contentFragmentType?: Maybe<ContentFragmentType>;
@@ -5437,6 +5570,7 @@ export type Query = {
   legalDocsCompressed: GenericContentCompressed;
   liveAudioStream: AudioStream;
   liveVideoOverride: LiveVideoOverride;
+  matchOutcomeIq: RyderCupMatchOutcomeIq;
   matchPlayLeaderboard: MpLeaderboard;
   matchPlayLeaderboardCompressed: LeaderboardCompressed;
   matchPlayPlayoffScorecard: MpPlayoffScorecard;
@@ -5451,6 +5585,7 @@ export type Query = {
   oddsGraph: OddsTimeline;
   oddsTable: OddsTable;
   oddsToWin: OddsToWinMarket;
+  oddsToWinCompressed: OddsToWinMarketCompressed;
   player: PlayerBioWrapper;
   playerComparison: PlayerComparison;
   playerDirectory: PlayerDirectory;
@@ -5487,6 +5622,7 @@ export type Query = {
   rsm: RsmStandings;
   rsmLeaderboard: RsmLeaderboard;
   ryderCupArticleDetailsCompressed: NewsArticleDetailsCompressed;
+  ryderCupBroadcastCoverage: RyderCupBroadcastCoverage;
   ryderCupContentFragmentsCompressed: ContentFragmentsCompressed;
   ryderCupContentOptions: RyderCupMediaSearchOptions;
   ryderCupContentPageTabs: ContentFragmentTabs;
@@ -5623,6 +5759,11 @@ export type QueryBroadcastTimesArgs = {
 };
 
 
+export type QueryBubbleWatchArgs = {
+  tourCode: TourCode;
+};
+
+
 export type QueryCompleteScheduleArgs = {
   filter?: InputMaybe<TournamentCategory>;
   tourCode: TourCode;
@@ -5718,7 +5859,8 @@ export type QueryCupTeeTimesArgs = {
 
 
 export type QueryCurrentLeadersCompressedArgs = {
-  tournamentId: Scalars['ID']['input'];
+  tourCode?: InputMaybe<TourCode>;
+  tournamentId?: InputMaybe<Scalars['ID']['input']>;
 };
 
 
@@ -5903,6 +6045,12 @@ export type QueryLiveVideoOverrideArgs = {
 };
 
 
+export type QueryMatchOutcomeIqArgs = {
+  matchId: Scalars['Int']['input'];
+  tournamentId: Scalars['String']['input'];
+};
+
+
 export type QueryMatchPlayLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
@@ -5949,6 +6097,11 @@ export type QueryNetworksArgs = {
 };
 
 
+export type QueryNewletterSubscriptionsArgs = {
+  includeTournaments?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
 export type QueryNewsArticlesArgs = {
   franchise?: InputMaybe<Scalars['String']['input']>;
   franchises?: InputMaybe<Array<Scalars['String']['input']>>;
@@ -5956,6 +6109,7 @@ export type QueryNewsArticlesArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   playerId?: InputMaybe<Scalars['ID']['input']>;
   playerIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+  sectionName?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<Array<Scalars['String']['input']>>;
   targetYear?: InputMaybe<Scalars['String']['input']>;
   tour?: InputMaybe<TourCode>;
@@ -5988,6 +6142,11 @@ export type QueryOddsTableArgs = {
 
 
 export type QueryOddsToWinArgs = {
+  oddsToWinId: Scalars['ID']['input'];
+};
+
+
+export type QueryOddsToWinCompressedArgs = {
   oddsToWinId: Scalars['ID']['input'];
 };
 
@@ -6171,6 +6330,11 @@ export type QueryRsmLeaderboardArgs = {
 
 export type QueryRyderCupArticleDetailsCompressedArgs = {
   path: Scalars['String']['input'];
+};
+
+
+export type QueryRyderCupBroadcastCoverageArgs = {
+  eventRegion?: InputMaybe<EventRegion>;
 };
 
 
@@ -6766,6 +6930,11 @@ export type RsmStandings = {
   weeklyWinners: Array<RsmEventWinner>;
 };
 
+export enum Ryder_Cup_Ranking_Tooltip {
+  QualificationInfo = 'QUALIFICATION_INFO',
+  QualifiedLogo = 'QUALIFIED_LOGO'
+}
+
 export type RadarBallTracjectory = {
   __typename?: 'RadarBallTracjectory';
   kind: Scalars['String']['output'];
@@ -6854,6 +7023,62 @@ export enum RankingsTeams {
   Europe = 'EUROPE',
   Usa = 'USA'
 }
+
+export type RcBroadcastPrograms = {
+  __typename?: 'RcBroadcastPrograms';
+  broadcastDate: Scalars['String']['output'];
+  programs: Array<RcProgram>;
+};
+
+export enum RcBroadcastType {
+  Audio = 'AUDIO',
+  Video = 'VIDEO'
+}
+
+export type RcProducts = {
+  __typename?: 'RcProducts';
+  cta?: Maybe<CallToAction>;
+  header?: Maybe<Scalars['String']['output']>;
+  imageGallery?: Maybe<Array<Scalars['String']['output']>>;
+  path: Scalars['String']['output'];
+  productDescription?: Maybe<Array<Maybe<NewsArticleNode>>>;
+};
+
+export type RcProgram = {
+  __typename?: 'RcProgram';
+  androidLink?: Maybe<Scalars['String']['output']>;
+  appleAppStore?: Maybe<Scalars['String']['output']>;
+  brightcoveId?: Maybe<Scalars['String']['output']>;
+  broadcastType: RcBroadcastType;
+  cta1?: Maybe<CallToAction>;
+  cta2?: Maybe<CallToAction>;
+  endTime?: Maybe<Scalars['String']['output']>;
+  endTimeUtc?: Maybe<Scalars['AWSTimestamp']['output']>;
+  featuredMatchPlayers?: Maybe<Array<Scalars['String']['output']>>;
+  googlePlayStore?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  iosLink?: Maybe<Scalars['String']['output']>;
+  isLive?: Maybe<Scalars['Boolean']['output']>;
+  matchId?: Maybe<Scalars['String']['output']>;
+  networkBackgroundColor?: Maybe<Scalars['String']['output']>;
+  networkFontColor?: Maybe<Scalars['String']['output']>;
+  networkLogo?: Maybe<Scalars['String']['output']>;
+  networkLogoAsset?: Maybe<ImageAsset>;
+  networkLogoDark?: Maybe<Scalars['String']['output']>;
+  networkLogoDarkAsset?: Maybe<ImageAsset>;
+  networkName?: Maybe<Scalars['String']['output']>;
+  posterImage?: Maybe<Scalars['String']['output']>;
+  posterImageAsset?: Maybe<ImageAsset>;
+  regions?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
+  startTime?: Maybe<Scalars['String']['output']>;
+  startTimeUtc?: Maybe<Scalars['AWSTimestamp']['output']>;
+  streamUrl?: Maybe<Scalars['String']['output']>;
+  thumbnailImage?: Maybe<Scalars['String']['output']>;
+  thumbnailImageAsset?: Maybe<ImageAsset>;
+  title: Scalars['String']['output'];
+  url: Scalars['String']['output'];
+};
 
 export type RelatedFact = {
   __typename?: 'RelatedFact';
@@ -6956,6 +7181,11 @@ export enum RoundStatusColor {
   Yellow = 'YELLOW'
 }
 
+export type RyderCupBroadcastCoverage = {
+  __typename?: 'RyderCupBroadcastCoverage';
+  broadcastPrograms: Array<RcBroadcastPrograms>;
+};
+
 export type RyderCupCaptain = {
   __typename?: 'RyderCupCaptain';
   displayName: Scalars['String']['output'];
@@ -6985,7 +7215,7 @@ export type RyderCupContentFragment = {
   totalLength: Scalars['Int']['output'];
 };
 
-export type RyderCupContentFragments = ContentFragmentTabs | ContentStory | CourseInfo | DropdownFragment | FutureVenuesFragment | FutureVenuesTableFragment | GenericContent | HeroCarousel | HistoryInfo | HistoryScore | HomepageLead | HomepageNews | HomepageProgramStanding | HomepageScoring | HospitalityCard | ImageBlock | JumpToSection | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopZigZag | MediaGallery | OddsToWinTracker | RolexClock | RyderCupLatestNewsSection | SecondaryHero | TeamRankings | ThreeUpPhoto | ThreeUpStats | TicketSectionContainer | TwoColumn | VideoHero;
+export type RyderCupContentFragments = BroadcastTableFragment | ContentFragmentTabs | ContentStory | ContentVideoCarousel | CourseInfo | DropdownFragment | EventHub | FutureVenuesFragment | FutureVenuesTableFragment | GenericContent | HeroCarousel | HistoryInfo | HistoryScore | HomepageLead | HomepageNews | HomepageProgramStanding | HomepageScoring | HospitalityCard | ImageBlock | JumpToSection | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopZigZag | MatchCard | MediaGallery | OddsToWinTracker | RcProducts | RolexClock | RyderCupLatestNewsSection | SecondaryHero | TeamRankings | ThreeUpPhoto | ThreeUpStats | TicketSectionContainer | TwoColumn | VideoHero;
 
 export type RyderCupContentPlayer = {
   __typename?: 'RyderCupContentPlayer';
@@ -7035,6 +7265,16 @@ export type RyderCupLatestNewsSection = {
   limit?: Maybe<Scalars['Int']['output']>;
   sectionTitle?: Maybe<Scalars['String']['output']>;
   topCta?: Maybe<CallToAction>;
+};
+
+export type RyderCupMatchOutcomeIq = {
+  __typename?: 'RyderCupMatchOutcomeIQ';
+  euMatchWin: Scalars['Float']['output'];
+  holes: Array<OutComeIqHole>;
+  id: Scalars['String']['output'];
+  matchDraw: Scalars['Float']['output'];
+  matchId: Scalars['Int']['output'];
+  usMatchWin: Scalars['Float']['output'];
 };
 
 export type RyderCupMediaSearchOptions = {
@@ -7094,6 +7334,7 @@ export type RyderCupTeamRankings = {
   euroYears?: Maybe<Array<StatYearPills>>;
   europeCaptain?: Maybe<Scalars['String']['output']>;
   europeInfoBlurb?: Maybe<Scalars['String']['output']>;
+  europeQualifiedIndex?: Maybe<Scalars['Int']['output']>;
   europeViceCaptain?: Maybe<Scalars['String']['output']>;
   usBanner: Scalars['String']['output'];
   usCaptain?: Maybe<Scalars['String']['output']>;
@@ -7102,6 +7343,7 @@ export type RyderCupTeamRankings = {
   usHeader: Scalars['String']['output'];
   usInfoBlurb?: Maybe<Scalars['String']['output']>;
   usLastUpdated: Scalars['String']['output'];
+  usQualifiedIndex?: Maybe<Scalars['Int']['output']>;
   usRankings: Array<RyderCupRankingsRow>;
   usToolTips?: Maybe<Array<ToolTipComponent>>;
   usTournamentPills?: Maybe<Array<StatTournamentPill>>;
@@ -7158,6 +7400,7 @@ export type RyderCupTournamentOverview = {
 };
 
 export enum Story_Type {
+  Moments = 'MOMENTS',
   PlayerStories = 'PLAYER_STORIES',
   TopicStories = 'TOPIC_STORIES'
 }
@@ -7986,6 +8229,7 @@ export type SubMarket = {
 
 export type Subscription = {
   __typename?: 'Subscription';
+  onUpdateBubbleWatch?: Maybe<TourCupRankingEvent>;
   onUpdateCourseStats?: Maybe<TournamentHoleStats>;
   onUpdateCoverage?: Maybe<BroadcastCoverage>;
   onUpdateCupOverviewLeaderboard?: Maybe<CupTournamentStatus>;
@@ -8001,6 +8245,7 @@ export type Subscription = {
   onUpdateLeaderboardStrokes?: Maybe<LeaderboardStrokes>;
   onUpdateLeaderboardStrokesCompresssed?: Maybe<LeaderboardStrokesCompressed>;
   onUpdateLeaderboardV2?: Maybe<LeaderboardV2>;
+  onUpdateMatchOutcomeIq?: Maybe<RyderCupMatchOutcomeIq>;
   onUpdateMatchPlayLeaderboard?: Maybe<MpLeaderboard>;
   onUpdateMatchPlayLeaderboardCompressed?: Maybe<LeaderboardCompressed>;
   onUpdateMatchPlayPlayoffScorecard?: Maybe<MpPlayoffScorecard>;
@@ -8008,6 +8253,7 @@ export type Subscription = {
   onUpdateMatchPlayTeeTimes?: Maybe<MpTeeTimes>;
   onUpdateMatchPlayTeeTimesCompressed?: Maybe<TeeTimesCompressed>;
   onUpdateOddsToWinMarket?: Maybe<OddsToWinMarket>;
+  onUpdateOddsToWinMarketCompressed?: Maybe<OddsToWinMarketCompressed>;
   onUpdatePlayoffScorecard?: Maybe<PlayoffScorecard>;
   /** @deprecated Use onUpdatePlayoffScorecardV3. This sub does not work */
   onUpdatePlayoffScorecardV2?: Maybe<Array<Maybe<PlayoffScorecard>>>;
@@ -8038,6 +8284,11 @@ export type Subscription = {
   onUpdateTournament?: Maybe<Tournament>;
   onUpdateTournamentGroupLocations?: Maybe<TournamentGroupLocation>;
   onUpdateUpcomingSchedule?: Maybe<ScheduleUpcoming>;
+};
+
+
+export type SubscriptionOnUpdateBubbleWatchArgs = {
+  id: Scalars['ID']['input'];
 };
 
 
@@ -8120,6 +8371,11 @@ export type SubscriptionOnUpdateLeaderboardV2Args = {
 };
 
 
+export type SubscriptionOnUpdateMatchOutcomeIqArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
 export type SubscriptionOnUpdateMatchPlayLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
@@ -8152,6 +8408,11 @@ export type SubscriptionOnUpdateMatchPlayTeeTimesCompressedArgs = {
 
 export type SubscriptionOnUpdateOddsToWinMarketArgs = {
   oddsToWinId: Scalars['ID']['input'];
+};
+
+
+export type SubscriptionOnUpdateOddsToWinMarketCompressedArgs = {
+  id: Scalars['ID']['input'];
 };
 
 
@@ -8299,6 +8560,7 @@ export type SubscriptionOnUpdateUpcomingScheduleArgs = {
 
 export type SummaryRow = {
   __typename?: 'SummaryRow';
+  averagePaceOfPlay?: Maybe<Scalars['String']['output']>;
   birdies?: Maybe<Scalars['Int']['output']>;
   bogeys?: Maybe<Scalars['Int']['output']>;
   doubleBogey?: Maybe<Scalars['Int']['output']>;
@@ -8768,6 +9030,7 @@ export type TicketSectionContainer = {
   __typename?: 'TicketSectionContainer';
   bottomCta?: Maybe<CallToAction>;
   cards?: Maybe<Array<TicketCards>>;
+  layout?: Maybe<Scalars['String']['output']>;
   sectionTitle?: Maybe<Scalars['String']['output']>;
   topCta?: Maybe<CallToAction>;
 };
@@ -8777,6 +9040,7 @@ export type ToolTipComponent = {
   detailCopy?: Maybe<Scalars['String']['output']>;
   detailCopyRichText?: Maybe<Array<Maybe<NewsArticleNode>>>;
   header: Scalars['String']['output'];
+  id?: Maybe<Ryder_Cup_Ranking_Tooltip>;
   logo: Scalars['String']['output'];
 };
 
@@ -9215,6 +9479,7 @@ export type TournamentChampion = {
   seed?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
   total: Scalars['String']['output'];
+  year: Scalars['Int']['output'];
 };
 
 export type TournamentCourse = {
@@ -9822,6 +10087,11 @@ export type VideoFilterPillConfig = {
 
 export type VideoHero = {
   __typename?: 'VideoHero';
+  gtmAssetKey?: Maybe<Scalars['String']['output']>;
+  partnershipAsset?: Maybe<Scalars['String']['output']>;
+  partnershipText?: Maybe<Scalars['String']['output']>;
+  sectionTitle?: Maybe<Scalars['String']['output']>;
+  tourcastWebviewLink?: Maybe<Scalars['String']['output']>;
   video?: Maybe<Video>;
   videos: Array<Video>;
 };
@@ -10156,6 +10426,7 @@ export type YourTourNews = NewsArticle | Video;
 
 export type YourTourStory = {
   __typename?: 'YourTourStory';
+  cardTopic?: Maybe<Scalars['String']['output']>;
   cards: Array<YourTourCard>;
   homeCard?: Maybe<YourTourCard>;
   id: Scalars['ID']['output'];
