@@ -8,9 +8,9 @@ import * as cheerio from "cheerio";
 export class PgaTourWebScraper extends RESTDataSource {
   override baseURL = "https://www.pgatour.com";
 
-  constructor() {
-    super({ fetch: fetch });
-  }
+  // constructor() {
+  //   super({ fetch: fetch });
+  // }
 
   async getCurrentTournamentId() {
     return super.get<string>("leaderboard").then((text) => {

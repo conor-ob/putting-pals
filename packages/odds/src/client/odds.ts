@@ -9,9 +9,9 @@ import theOpenChampionship2025 from "../data/2025/theOpenChampionship";
 export class OddsClient extends RESTDataSource {
   override baseURL = "https://apisms.paddypower.com";
 
-  constructor() {
-    super({ fetch: fetch });
-  }
+  // constructor() {
+  //   super({ fetch: fetch });
+  // }
 
   public async getPaddyPowerOdds(id: string): Promise<PaddyPowerOdds> {
     const useSnapshot = true;
