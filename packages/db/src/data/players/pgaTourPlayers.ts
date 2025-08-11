@@ -10,7 +10,11 @@ export const adamScott = "24502";
 
 export const akshayBhatia = "56630";
 
+export const aldrichPotgieter = "63343";
+
 export const alexNoren = "27349";
+
+export const benGriffin = "54591";
 
 export const billyHorschel = "29420";
 
@@ -43,6 +47,8 @@ export const collinMorikawa = "50525";
 export const coreyConners = "39997";
 
 export const danielBerger = "40026";
+
+export const danielBrown = "57259";
 
 export const dannyWillett = "32139";
 
@@ -103,6 +109,8 @@ export const ludvigAberg = "52955";
 export const lukeList = "27129";
 
 export const mackenzieHughes = "35506";
+
+export const marcoPenge = "51003";
 
 export const marcLeishman = "26851";
 
@@ -191,6 +199,8 @@ export const tigerWoods = "08793";
 export const tomHoge = "35532";
 
 export const tomKim = "55182";
+
+export const tomMcKibbin = "50823";
 
 export const tommyFleetwood = "30911";
 

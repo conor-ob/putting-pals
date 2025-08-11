@@ -258,13 +258,9 @@ export function getCountryFlag({
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   let alpha2 = alpha3ToAlpha2[player.countryFlag] || undefined;
 
-  if (alpha2 === undefined) {
-    alpha2 = getAlpha2({ alpha3: player.countryFlag });
-  }
+  alpha2 ??= getAlpha2({ alpha3: player.countryFlag });
 
-  if (alpha2 === undefined) {
-    alpha2 = resolveKnowFlagIssues({ player });
-  }
+  alpha2 ??= resolveKnowFlagIssues({ player });
 
   if (alpha2 === undefined) {
     // TODO: log to Sentry

@@ -1,12 +1,10 @@
 {
-  "name": "@pkg/utils",
+  "name": "@pkg/odds",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./flags": "./src/flags.ts",
-    "./location": "./src/location.ts",
-    "./weather": "./src/weather.ts"
+    "./client": "./src/client/odds.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
@@ -14,7 +12,9 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit true"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@apollo/datasource-rest": "catalog:"
+  },
   "devDependencies": {
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",

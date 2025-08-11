@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "clean": "rimraf dist && rimraf .cache && rimraf .turbo && rimraf node_modules",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
     "build": "vite build",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
