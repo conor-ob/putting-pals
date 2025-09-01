@@ -19,6 +19,8 @@ export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 
+    console.log('url', url)
+
 		if (url.pathname.startsWith("/trpc")) {
       return fetchRequestHandler({
         endpoint: "/trpc",
