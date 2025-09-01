@@ -1345,6 +1345,15 @@ export type EventHub = {
   topSectionTitle?: Maybe<Scalars["String"]["output"]>;
 };
 
+export type EventHubTable = {
+  __typename?: "EventHubTable";
+  cta?: Maybe<CallToAction>;
+  partnershipAsset?: Maybe<Scalars["String"]["output"]>;
+  partnershipText?: Maybe<Scalars["String"]["output"]>;
+  path: Scalars["String"]["output"];
+  sectionTitle?: Maybe<Scalars["String"]["output"]>;
+};
+
 export enum EventRegion {
   Europe = "EUROPE",
   International = "INTERNATIONAL",
@@ -1570,6 +1579,7 @@ export type FutureVenuesTableFragment = {
 
 export type GenericContent = {
   __typename?: "GenericContent";
+  adConfigNode?: Maybe<Scalars["String"]["output"]>;
   authorReference?: Maybe<NewsArticleAuthor>;
   datePublished: Scalars["AWSTimestamp"]["output"];
   headline: Scalars["String"]["output"];
@@ -5690,8 +5700,13 @@ export type Query = {
   ryderCupContentPageTabs: ContentFragmentTabs;
   ryderCupMixedMedia: Array<RyderCupContent>;
   ryderCupMixedMediaCompressed: RyderCupContentCompressed;
+  ryderCupPlayerProfileCompressed: RyderCupPlayerProfileCompressed;
+  /** @deprecated use ryderCupTeamRankingsV2 */
   ryderCupTeamRankings?: Maybe<RyderCupTeamRankings>;
+  /** @deprecated use ryderCupTeamRankingsCompressedV2 */
   ryderCupTeamRankingsCompressed?: Maybe<RyderCupTeamRankingsCompressed>;
+  ryderCupTeamRankingsCompressedV2?: Maybe<RyderCupTeamRankingsCompressed>;
+  ryderCupTeamRankingsV2?: Maybe<RyderCupRankingsV2>;
   ryderCupTournament?: Maybe<RyderCupTournament>;
   ryderCupTournaments: Array<RyderCupTournamentOverview>;
   ryderCupVideoById?: Maybe<RcVideoPage>;
@@ -6332,12 +6347,26 @@ export type QueryRyderCupMixedMediaCompressedArgs = {
   year?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
+export type QueryRyderCupPlayerProfileCompressedArgs = {
+  playerId: Scalars["String"]["input"];
+};
+
 export type QueryRyderCupTeamRankingsArgs = {
   eventQuery?: InputMaybe<RyderCupRankingsQueryInput>;
   year?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type QueryRyderCupTeamRankingsCompressedArgs = {
+  eventQuery?: InputMaybe<RyderCupRankingsQueryInput>;
+  year?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type QueryRyderCupTeamRankingsCompressedV2Args = {
+  eventQuery?: InputMaybe<RyderCupRankingsQueryInput>;
+  year?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type QueryRyderCupTeamRankingsV2Args = {
   eventQuery?: InputMaybe<RyderCupRankingsQueryInput>;
   year?: InputMaybe<Scalars["Int"]["input"]>;
 };
@@ -6732,6 +6761,22 @@ export type RcPhotoGallery = {
   url?: Maybe<Scalars["String"]["output"]>;
 };
 
+/**
+ *   type RCPlayerProfileContent {
+ *      header: String!
+ *      content: [NewsArticleNode]
+ *  }
+ */
+export type RcPlayerTournamentRecord = {
+  __typename?: "RCPlayerTournamentRecord";
+  fourBallPoints: Scalars["Int"]["output"];
+  foursomesPoints: Scalars["Int"]["output"];
+  matchesPlayed: Scalars["Int"]["output"];
+  pointsEarned: Scalars["Int"]["output"];
+  sectionTitle?: Maybe<Scalars["String"]["output"]>;
+  singlesPoints: Scalars["Int"]["output"];
+};
+
 export type RcTeamTypeParent = {
   __typename?: "RCTeamTypeParent";
   displayValue: Scalars["String"]["output"];
@@ -7060,6 +7105,11 @@ export enum RoundStatusColor {
   Yellow = "YELLOW",
 }
 
+export type RyderCupBio = {
+  __typename?: "RyderCupBio";
+  bio?: Maybe<Array<Maybe<NewsArticleNode>>>;
+};
+
 export type RyderCupBroadcastCoverage = {
   __typename?: "RyderCupBroadcastCoverage";
   broadcastPrograms: Array<RcBroadcastPrograms>;
@@ -7102,6 +7152,7 @@ export type RyderCupContentFragments =
   | CourseInfo
   | DropdownFragment
   | EventHub
+  | EventHubTable
   | FutureVenuesFragment
   | FutureVenuesTableFragment
   | GenericContent
@@ -7126,7 +7177,9 @@ export type RyderCupContentFragments =
   | OddsToWinTracker
   | RcProducts
   | RolexClock
+  | RyderCupCourseModel
   | RyderCupLatestNewsSection
+  | RyderCupPlayerBios
   | SecondaryHero
   | TeamRankings
   | ThreeUpPhoto
@@ -7163,6 +7216,30 @@ export type RyderCupCourse = {
   courseCountry?: Maybe<Scalars["String"]["output"]>;
   courseName?: Maybe<Scalars["String"]["output"]>;
   courseState?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type RyderCupCourseModel = {
+  __typename?: "RyderCupCourseModel";
+  city?: Maybe<Scalars["String"]["output"]>;
+  country?: Maybe<Scalars["String"]["output"]>;
+  courseDescription?: Maybe<Array<Maybe<NewsArticleNode>>>;
+  courseId?: Maybe<Scalars["String"]["output"]>;
+  courseName?: Maybe<Scalars["String"]["output"]>;
+  courseYardage?: Maybe<Scalars["String"]["output"]>;
+  holes?: Maybe<Array<RyderCupCourseModelHole>>;
+  par?: Maybe<Scalars["Int"]["output"]>;
+  state?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type RyderCupCourseModelHole = {
+  __typename?: "RyderCupCourseModelHole";
+  holeBeautyImage?: Maybe<Scalars["String"]["output"]>;
+  holeDescription?: Maybe<Array<Maybe<NewsArticleNode>>>;
+  holeFlyoverVideo?: Maybe<Video>;
+  holeNumber: Scalars["Int"]["output"];
+  holePickleImage?: Maybe<Scalars["String"]["output"]>;
+  par: Scalars["Int"]["output"];
+  yardage: Scalars["Int"]["output"];
 };
 
 /**  ## Ryder Cup */
@@ -7214,6 +7291,12 @@ export type RyderCupPlayer = {
   playerId: Scalars["String"]["output"];
 };
 
+export type RyderCupPlayerBios = {
+  __typename?: "RyderCupPlayerBios";
+  bios?: Maybe<Array<Maybe<RyderCupBio>>>;
+  headshots?: Maybe<Array<Scalars["String"]["output"]>>;
+};
+
 export type RyderCupPlayerOption = {
   __typename?: "RyderCupPlayerOption";
   displayName: Scalars["String"]["output"];
@@ -7221,12 +7304,70 @@ export type RyderCupPlayerOption = {
   name: Scalars["String"]["output"];
 };
 
+export type RyderCupPlayerProfile = {
+  __typename?: "RyderCupPlayerProfile";
+  playerId: Scalars["String"]["output"];
+  playerProfileHeader: RyderCupPlayerProfileHeader;
+  profileContentSections: Array<RyderCupPlayerProfileSection>;
+  team: RankingsTeams;
+};
+
+export type RyderCupPlayerProfileCompressed = {
+  __typename?: "RyderCupPlayerProfileCompressed";
+  payload: Scalars["String"]["output"];
+  playerId: Scalars["String"]["output"];
+};
+
+export type RyderCupPlayerProfileHeader = {
+  __typename?: "RyderCupPlayerProfileHeader";
+  age?: Maybe<Scalars["String"]["output"]>;
+  appearances?: Maybe<Scalars["Int"]["output"]>;
+  headshot: ProfileHeadshot;
+  wins?: Maybe<Scalars["Int"]["output"]>;
+};
+
+export type RyderCupPlayerProfileSection =
+  | GenericContent
+  | RcPlayerTournamentRecord
+  | RolexClock
+  | RyderCupLatestNewsSection
+  | ThreeUpStats;
+
 export type RyderCupRankingsQueryInput = {
   team: RankingsTeams;
   tournamentId: Scalars["String"]["input"];
 };
 
 export type RyderCupRankingsRow = InformationRow | StatDetailsPlayer;
+
+export type RyderCupRankingsTeam = {
+  __typename?: "RyderCupRankingsTeam";
+  banner?: Maybe<Scalars["String"]["output"]>;
+  captain?: Maybe<Scalars["String"]["output"]>;
+  captainLabel?: Maybe<Scalars["String"]["output"]>;
+  displaySeason?: Maybe<Scalars["String"]["output"]>;
+  europeCaptain?: Maybe<Scalars["String"]["output"]>;
+  europeInfoBlurb?: Maybe<Scalars["String"]["output"]>;
+  europeViceCaptain?: Maybe<Scalars["String"]["output"]>;
+  header?: Maybe<Scalars["String"]["output"]>;
+  lastUpdated?: Maybe<Scalars["String"]["output"]>;
+  qualifiedIndex?: Maybe<Scalars["Int"]["output"]>;
+  rankings: Array<RyderCupRankingsRow>;
+  teamName: Scalars["String"]["output"];
+  toolTips: Array<ToolTipComponent>;
+  tournamentPills: Array<StatTournamentPill>;
+  usInfoBlurb?: Maybe<Scalars["String"]["output"]>;
+  viceCaptain?: Maybe<Scalars["String"]["output"]>;
+  viceCaptainLabel?: Maybe<Scalars["String"]["output"]>;
+  year?: Maybe<Scalars["Int"]["output"]>;
+  years: Array<StatYearPills>;
+};
+
+export type RyderCupRankingsV2 = {
+  __typename?: "RyderCupRankingsV2";
+  defaultUS: Scalars["Boolean"]["output"];
+  teams: Array<RyderCupRankingsTeam>;
+};
 
 export type RyderCupTeam = {
   __typename?: "RyderCupTeam";
@@ -8730,6 +8871,7 @@ export type TeamRankings = {
   __typename?: "TeamRankings";
   defaultEuropeRankings: Scalars["Boolean"]["output"];
   defaultUsRankings: Scalars["Boolean"]["output"];
+  displayRoster: Scalars["Boolean"]["output"];
   euroCaptainLabel?: Maybe<Scalars["String"]["output"]>;
   euroHeader: Scalars["String"]["output"];
   euroViceCaptainLabel?: Maybe<Scalars["String"]["output"]>;
@@ -9283,6 +9425,7 @@ export type Tournament = {
   hideSov: Scalars["Boolean"]["output"];
   id: Scalars["ID"]["output"];
   infoPath?: Maybe<Scalars["String"]["output"]>;
+  infoPathWebview?: Maybe<Scalars["String"]["output"]>;
   leaderboardTakeover: Scalars["Boolean"]["output"];
   pdfUrl?: Maybe<Scalars["String"]["output"]>;
   rightRailConfig?: Maybe<TournamentRightRailConfig>;
@@ -9861,6 +10004,9 @@ export type UniversityTotalPointsPlayer = {
   playerName: Scalars["String"]["output"];
   rank: Scalars["String"]["output"];
   rankSort: Scalars["Int"]["output"];
+  rankingMovement: CupRankMovementDirection;
+  rankingMovementAmount: Scalars["String"]["output"];
+  rankingMovementAmountSort: Scalars["Int"]["output"];
   tournaments: Array<UniversityRankingsTournament>;
 };
 
