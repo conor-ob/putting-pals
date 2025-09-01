@@ -1,7 +1,7 @@
-import "./instrument";
+// import "./instrument";
 
 import React from "react";
-import * as Sentry from "@sentry/react";
+// import * as Sentry from "@sentry/react";
 import { createRoot } from "react-dom/client";
 import { registerSW } from "virtual:pwa-register";
 
@@ -30,8 +30,8 @@ if (!container) {
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
+    {/* <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}> */}
       <App />
-    </Sentry.ErrorBoundary>
+    {/* </Sentry.ErrorBoundary> */}
   </React.StrictMode>,
 );
