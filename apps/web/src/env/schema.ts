@@ -9,7 +9,7 @@ export const envSchema = z.object({
     .transform((s) => parseInt(s, 10))
     .pipe(z.number())
     .default("3000"),
-  SENTRY_DSN: z.string().url(),
+  SENTRY_DSN: z.string().url().default("https://123abc@456.ingest.de.sentry.io/789"),
   SENTRY_PROJECT: z.string().min(1),
   CI: z
     .string()
