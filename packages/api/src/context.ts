@@ -1,4 +1,4 @@
-import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
+import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 
 /**
  * 1. CONTEXT
@@ -12,10 +12,6 @@ import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify"
  *
  * @see https://trpc.io/docs/server/context
  */
-export function createTrpcContext({
-  opts,
-}: {
-  opts: CreateFastifyContextOptions;
-}) {
-  return { opts };
+export function createTrpcContext(opts: FetchCreateContextFnOptions) {
+  return opts;
 }

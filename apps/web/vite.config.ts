@@ -66,10 +66,10 @@ export default defineConfig(({ mode }) => {
         open: true,
         port: env.PORT,
         proxy: {
-          "/api": {
-            target: "http://localhost:4000",
+          "/trpc": {
+            target: "http://localhost:8787",
             changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, ""),
+            // rewrite: (path) => path.replace(/^\/api/, ""),
           },
         },
       },

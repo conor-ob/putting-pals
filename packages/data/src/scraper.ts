@@ -2,19 +2,24 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { RESTDataSource } from "@apollo/datasource-rest";
+// import { RESTDataSource } from "@apollo/datasource-rest";
 import * as cheerio from "cheerio";
 
-export class PgaTourWebScraper extends RESTDataSource {
-  override baseURL = "https://www.pgatour.com";
+export class PgaTourWebScraper {
+  // override baseURL = "https://www.pgatour.com";
 
-  constructor() {
-    super({ fetch: fetch });
-  }
+  // constructor() {
+  //   super({ fetch: fetch });
+  // }
 
   async getCurrentTournamentId() {
-    return super.get<string>("leaderboard").then((text) => {
-      const $ = cheerio.load(text);
+    return fetch("https://www.pgatour.com/leaderboard", {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36",
+      },
+    }).then(async (response) => {
+      const $ = cheerio.load(await response.text());
 
       const scriptsById = $("#__NEXT_DATA__")
         .map((_, el) => $(el).html())
