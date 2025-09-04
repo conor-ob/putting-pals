@@ -17,8 +17,8 @@ const server = createServer({
 if (env.NODE_ENV === "production") {
   server.listen({ host: "::", port: env.PORT }, (err, address) => {
     if (err) {
-      server.log.error("Error starting server: %s", err);
-      server.log.error("Stacktrace: %s", err.stack);
+      server.log.error(err, "Error starting server: %s");
+      server.log.error(err.stack, "Stacktrace: %s");
       process.exit(1);
     }
     server.log.info(`Server listening on ${address} 🚀`);
