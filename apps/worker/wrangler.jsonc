@@ -13,6 +13,7 @@
 	"assets": {
 		"directory": "../web/dist",
 		"binding": "ASSETS",
+		"not_found_handling": "single-page-application",
 	},
 	"build": {
 		"command": "pnpm --filter @app/web build",
