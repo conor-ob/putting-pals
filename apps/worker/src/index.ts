@@ -10,24 +10,24 @@
  *
  * Learn more at https://developers.cloudflare.com/workers/
  */
-import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
-import { appRouter } from "@pkg/api/router";
-import { createTrpcContext } from "@pkg/api/context";
+import { appRouter } from '@pkg/api/router';
+import { createTrpcContext } from '@pkg/api/context';
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 
-		if (url.pathname.startsWith("/trpc")) {
-      return fetchRequestHandler({
-        endpoint: "/trpc",
-        req: request,
-        router: appRouter,
-        createContext: createTrpcContext,
-      });
-    }
+		if (url.pathname.startsWith('/trpc')) {
+			return fetchRequestHandler({
+				endpoint: '/trpc',
+				req: request,
+				router: appRouter,
+				createContext: createTrpcContext,
+			});
+		}
 
-		return env.ASSETS.fetch(request);
+		return new Response(null, { status: 404 });
 	},
 } satisfies ExportedHandler<Env>;
