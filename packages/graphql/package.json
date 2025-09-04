@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
     "codegen": "graphql-codegen --config codegen.ts",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format": "prettier --check . --ignore-path .prettierignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit true"
   },
