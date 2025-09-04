@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "clean": "turbo clean && git clean -xdf node_modules",
+    "codegen": "turbo codegen",
     "build": "turbo build",
     "format": "turbo format --continue -- --cache --cache-location .cache/.prettiercache",
     "lint": "turbo lint --continue -- --cache --cache-location .cache/.eslintcache",

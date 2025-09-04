@@ -9,10 +9,10 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
+    "codegen": "graphql-codegen --config codegen.ts",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit true",
-    "types": "graphql-codegen --config codegen.ts"
+    "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
     "@apollo/datasource-rest": "catalog:",
