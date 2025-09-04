@@ -8,12 +8,15 @@
 	"main": "src/index.ts",
 	"compatibility_date": "2025-08-31",
 	"observability": {
-		"enabled": true
+		"enabled": true,
 	},
 	"assets": {
-    "directory": "../web/dist",
-    "binding": "ASSETS"
-  }
+		"directory": "../web/dist",
+		"binding": "ASSETS",
+	},
+	"build": {
+		"command": "pnpm --filter @app/web build",
+	},
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
