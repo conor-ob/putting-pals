@@ -44,3 +44,5 @@ This will start the Fastify server and Ionic app using Vite for HMR
 
 - Managing environment [variables](./docs/variables.md)
 - [Deployment](./docs/deployment.md) on Railway
+
+test
