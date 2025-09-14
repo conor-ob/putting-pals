@@ -27,7 +27,7 @@ ARG RAILWAY_SERVICE_ID
 
 RUN echo "PORT: $PORT" && \
     echo "ORIGIN: $ORIGIN" && \
-    echo "PGA_TOUR_API_KEY: $PGA_TOUR_API_KEY" \
+    echo "PGA_TOUR_API_KEY: $PGA_TOUR_API_KEY" && \
     echo "RAILWAY_SERVICE_ID: $RAILWAY_SERVICE_ID"
 
 # Copy pruned lockfiles and manifests
