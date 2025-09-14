@@ -5,11 +5,16 @@
 import { RESTDataSource } from "@apollo/datasource-rest";
 import * as cheerio from "cheerio";
 
+// Wrapper function to convert FetcherRequestInit to RequestInit
+const fetchWrapper = (url: string, init?: unknown) => {
+  return fetch(url, init as RequestInit);
+};
+
 export class PgaTourWebScraper extends RESTDataSource {
   override baseURL = "https://www.pgatour.com";
 
   constructor() {
-    super({ fetch: fetch });
+    super({ fetch: fetchWrapper });
   }
 
   async getCurrentTournamentId() {

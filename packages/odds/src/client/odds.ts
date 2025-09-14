@@ -6,11 +6,16 @@ import type {
 } from "../types/types";
 import theOpenChampionship2025 from "../data/2025/theOpenChampionship";
 
+// Wrapper function to convert FetcherRequestInit to RequestInit
+const fetchWrapper = (url: string, init?: unknown) => {
+  return fetch(url, init as RequestInit);
+};
+
 export class OddsClient extends RESTDataSource {
   override baseURL = "https://apisms.paddypower.com";
 
   constructor() {
-    super({ fetch: fetch });
+    super({ fetch: fetchWrapper });
   }
 
   public async getPaddyPowerOdds(id: string): Promise<PaddyPowerOdds> {
