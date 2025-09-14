@@ -213,6 +213,9 @@ catalogs:
     tailwindcss-animate:
       specifier: ^1.0.7
       version: 1.0.7
+    turbo:
+      specifier: ^2.5.6
+      version: 2.5.6
     typescript:
       specifier: ^5.9.2
       version: 5.8.3
@@ -252,7 +255,7 @@ importers:
         specifier: 'catalog:'
         version: 3.6.2
       turbo:
-        specifier: ^2.5.6
+        specifier: 'catalog:'
         version: 2.5.6
       typescript:
         specifier: 'catalog:'
