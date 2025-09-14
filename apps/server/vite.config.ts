@@ -11,7 +11,6 @@ export default defineConfig({
       entry: path.resolve(__dirname, "./src"),
       formats: ["es"],
     },
-    sourcemap: env.CI,
   },
   server: {
     // vite server configs, for details see [vite doc](https://vitejs.dev/config/#server-host)
