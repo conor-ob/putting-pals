@@ -23,6 +23,16 @@ ARG PORT
 ARG ORIGIN
 ARG PGA_TOUR_API_KEY
 
+ARG TARGET_PATH="/root/local/share/pnpm/store/v3"
+ARG CACHE_ID="s/${RAILWAY_SERVICE_ID}-${TARGET_PATH}}"
+
+RUN echo "PORT: $PORT" && \
+    echo "ORIGIN: $ORIGIN" && \
+    echo "PGA_TOUR_API_KEY: $PGA_TOUR_API_KEY" && \
+    echo "RAILWAY_SERVICE_ID: $RAILWAY_SERVICE_ID" && \
+    echo "TARGET_PATH: $TARGET_PATH" && \
+    echo "CACHE_ID: $CACHE_ID"
+
 WORKDIR /app
 
 # Copy lockfile and package.json's of isolated subworkspace
@@ -31,7 +41,7 @@ COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
 # First install the dependencies (as they change less often)
-# RUN --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
+# RUN --mount=type=cache,id=${CACHE_ID},target=${TARGET_PATH}} pnpm install --frozen-lockfile
 RUN pnpm install --frozen-lockfile
 
 # Copy source code of isolated subworkspace
