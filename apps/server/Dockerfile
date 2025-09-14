@@ -1,30 +1,16 @@
 # -------------------------
 # Base Alpine image
 # -------------------------
-FROM node:22-alpine AS alpine
+FROM node:22-alpine AS base
 RUN apk add --no-cache libc6-compat
-
-# -------------------------
-# Base with pnpm & turbo
-# -------------------------
-FROM alpine AS base
-# Enable corepack and pin pnpm + install turbo
-RUN corepack enable && corepack prepare pnpm@9.12.3 --activate
-# Set shell for pnpm setup
-ENV SHELL=/bin/sh
-# Setup pnpm global bin directory
-RUN pnpm setup
-# Add pnpm global bin to PATH
-ENV PATH="/root/.local/share/pnpm:$PATH"
-RUN pnpm add -g turbo
+RUN npm install -g pnpm turbo
 RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
-
-WORKDIR /app
 
 # -------------------------
 # Prune unused workspaces
 # -------------------------
 FROM base AS pruner
+WORKDIR /app
 COPY . .
 RUN turbo prune --scope=@app/server --docker
 
