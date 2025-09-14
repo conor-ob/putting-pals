@@ -36,7 +36,7 @@ COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
 # Install dependencies (cached if possible)
-RUN --mount=type=cache,id=pnpm-cache:${RAILWAY_SERVICE_ID},target=/root/.local/share/pnpm/store \
+RUN --mount=type=cache,id=s/9f7fc579-219b-497f-aa57-18d68a0327ba-/root/.local/share/pnpm/store,target=/root/.local/share/pnpm/store \
     pnpm install --frozen-lockfile
 
 # Copy full source
