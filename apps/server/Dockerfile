@@ -10,6 +10,10 @@ RUN apk add --no-cache libc6-compat
 FROM alpine AS base
 # Enable corepack and pin pnpm + install turbo
 RUN corepack enable && corepack prepare pnpm@9.12.3 --activate
+# Setup pnpm global bin directory
+RUN pnpm setup
+# Add pnpm global bin to PATH
+ENV PATH="/root/.local/share/pnpm:$PATH"
 RUN pnpm add -g turbo
 RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
 
