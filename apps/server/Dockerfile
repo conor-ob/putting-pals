@@ -1,3 +1,5 @@
+# https://fintlabs.medium.com/optimized-multi-stage-docker-builds-with-turborepo-and-pnpm-for-nodejs-microservices-in-a-monorepo-c686fdcf051f
+
 # Alpine image
 FROM node:22-alpine AS alpine
 RUN apk update
