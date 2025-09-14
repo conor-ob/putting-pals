@@ -20,12 +20,20 @@ RUN turbo prune --scope=@app/server --docker
 FROM base AS builder
 WORKDIR /app
 
+ARG PORT
+ARG ORIGIN
+ARG PGA_TOUR_API_KEY
+ARG RAILWAY_SERVICE_ID
+
+RUN echo "PORT: $PORT" && \
+    echo "ORIGIN: $ORIGIN" && \
+    echo "PGA_TOUR_API_KEY: $PGA_TOUR_API_KEY" \
+    echo "RAILWAY_SERVICE_ID: $RAILWAY_SERVICE_ID"
+
 # Copy pruned lockfiles and manifests
 COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
-
-ARG RAILWAY_SERVICE_ID
 
 # Install dependencies (cached if possible)
 RUN --mount=type=cache,id=s/9f7fc579-219b-497f-aa57-18d68a0327ba-/root/.local/share/pnpm/store,target=/root/.local/share/pnpm/store \
