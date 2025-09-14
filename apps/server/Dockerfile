@@ -25,16 +25,18 @@ RUN turbo prune --scope=@app/server --docker
 # -------------------------
 # Build the project
 # -------------------------
-  FROM base AS builder
-  WORKDIR /app
+FROM base AS builder
+WORKDIR /app
 
 # Copy pruned lockfiles and manifests
 COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
+ARG RAILWAY_SERVICE_ID
+
 # Install dependencies (cached if possible)
-RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
+RUN --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-/root/.local/share/pnpm/store,target=/root/.local/share/pnpm/store \
     pnpm install --frozen-lockfile
 
 # Copy full source
