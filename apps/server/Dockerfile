@@ -58,4 +58,4 @@ ENV PORT=${PORT}
 ENV NODE_ENV=production
 EXPOSE ${PORT}
 
-CMD ["pnpm", "start"]
+CMD ["node", "dist/index.js"]
