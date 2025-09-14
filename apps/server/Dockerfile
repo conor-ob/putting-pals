@@ -36,7 +36,7 @@ COPY --from=pruner /app/out/json/ .
 ARG RAILWAY_SERVICE_ID
 
 # Install dependencies (cached if possible)
-RUN --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-/root/.local/share/pnpm/store,target=/root/.local/share/pnpm/store \
+RUN --mount=type=cache,id=s/9f7fc579-219b-497f-aa57-18d68a0327ba-/root/.local/share/pnpm/store,target=/root/.local/share/pnpm/store \
     pnpm install --frozen-lockfile
 
 # Copy full source
