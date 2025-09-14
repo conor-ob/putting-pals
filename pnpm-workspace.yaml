@@ -73,6 +73,7 @@ catalog:
   tailwind-merge: ^3.3.1 # https://www.npmjs.com/package/tailwind-merge?activeTab=versions
   tailwindcss: ^3.4.17 # https://www.npmjs.com/package/tailwindcss?activeTab=versions
   tailwindcss-animate: ^1.0.7 # https://www.npmjs.com/package/tailwindcss-animate?activeTab=versions
+  terser: ^5.44.0 # https://www.npmjs.com/package/terser?activeTab=versions
   turbo: ^2.5.6 # https://www.npmjs.com/package/turbo?activeTab=versions
   typescript: ^5.9.2 # https://www.npmjs.com/package/typescript?activeTab=versions
   typescript-eslint: ^8.43.0 # https://www.npmjs.com/package/typescript-eslint?activeTab=versions
