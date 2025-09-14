@@ -22,9 +22,6 @@ FROM base AS builder
 ARG PORT
 ARG ORIGIN
 ARG PGA_TOUR_API_KEY
-ARG SENTRY_DSN
-ARG GITHUB_SHA
-ARG RAILWAY_GIT_COMMIT_SHA
 
 WORKDIR /app
 
@@ -63,4 +60,4 @@ ENV PORT=${PORT}
 ENV NODE_ENV=production
 EXPOSE ${PORT}
 
-CMD ["node", "--import", "@sentry/node/preload", "dist/index.js"]
+CMD ["node", "dist/index.js"]
