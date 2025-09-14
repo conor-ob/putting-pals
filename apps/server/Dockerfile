@@ -1,73 +1,63 @@
-# -------------------------
-# Base Alpine image
-# -------------------------
-FROM node:22-alpine AS base
+# Alpine image
+FROM node:22-alpine AS alpine
+RUN apk update
 RUN apk add --no-cache libc6-compat
-RUN npm install -g pnpm turbo
+
+# Setup pnpm and turbo on the alpine base
+FROM alpine AS base
+RUN npm install pnpm turbo --global
 RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
 
-# -------------------------
-# Prune unused workspaces
-# -------------------------
+# Prune projects
 FROM base AS pruner
+
 WORKDIR /app
 COPY . .
 RUN turbo prune --scope=@app/server --docker
 
-# -------------------------
 # Build the project
-# -------------------------
 FROM base AS builder
-WORKDIR /app
-
+# TODO needs to be hardcoded in cache key
+# ARG RAILWAY_SERVICE_ID
 ARG PORT
 ARG ORIGIN
 ARG PGA_TOUR_API_KEY
-ARG RAILWAY_SERVICE_ID
 
-RUN echo "PORT: $PORT" && \
-    echo "ORIGIN: $ORIGIN" && \
-    echo "PGA_TOUR_API_KEY: $PGA_TOUR_API_KEY" && \
-    echo "RAILWAY_SERVICE_ID: $RAILWAY_SERVICE_ID"
+WORKDIR /app
 
-# Copy pruned lockfiles and manifests
+# Copy lockfile and package.json's of isolated subworkspace
 COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
-# Install dependencies (cached if possible)
-RUN --mount=type=cache,id=s/9f7fc579-219b-497f-aa57-18d68a0327ba-/root/.local/share/pnpm/store,target=/root/.local/share/pnpm/store \
-    pnpm install --frozen-lockfile
+# First install the dependencies (as they change less often)
+# RUN --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
-# Copy full source
+# Copy source code of isolated subworkspace
 COPY --from=pruner /app/out/full/ .
 
-# Build only @app/server
 RUN turbo build --filter=@app/server
+# RUN --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm prune --prod --no-optional
+RUN pnpm prune --prod --no-optional
+RUN rm -rf ./**/*/src
 
-# Prune dev deps, optional deps, sources
-RUN pnpm prune --prod --no-optional && \
-    rm -rf ./**/*/src && \
-    pnpm store prune
-
-# -------------------------
-# Final runtime image
-# -------------------------
+# Final image
 FROM alpine AS runner
+ARG PROJECT
 
-# Use official node user from base image (uid=1000)
-USER node
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nodejs
+USER nodejs
+
+WORKDIR /app
+COPY --from=builder --chown=nodejs:nodejs /app .
 WORKDIR /app/apps/server
 
-# Copy built server + packages + node_modules
-COPY --from=builder --chown=nodejs:nodejs /app/apps/server ./apps/server
-COPY --from=builder --chown=nodejs:nodejs /app/packages ./packages
-COPY --from=builder --chown=nodejs:nodejs /app/node_modules ./node_modules
-
-# Runtime environment
-ENV NODE_ENV=production
+ARG NODE_ENV
 ARG PORT
 ENV PORT=${PORT}
+ENV NODE_ENV=production
 EXPOSE ${PORT}
 
 CMD ["node", "dist/index.js"]
