@@ -17,11 +17,11 @@ RUN turbo prune --scope=@app/server --docker
 
 # Build the project
 FROM base AS builder
-# TODO needs to be hardcoded in cache key
-# ARG RAILWAY_SERVICE_ID
+
 ARG PORT
 ARG ORIGIN
 ARG PGA_TOUR_API_KEY
+ARG RAILWAY_SERVICE_ID
 
 ARG TARGET_PATH="/root/local/share/pnpm/store/v3"
 ARG CACHE_ID="s/${RAILWAY_SERVICE_ID}-${TARGET_PATH}}"
