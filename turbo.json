@@ -5,6 +5,9 @@
     "clean": {
       "cache": false
     },
+    "codegen": {
+      "outputs": ["src/types.ts"]
+    },
     "build": {
       "outputs": ["dist/**", ".cache/*.tsbuildinfo"]
     },
