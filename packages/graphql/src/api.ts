@@ -7,10 +7,6 @@ import { env } from "./env/schema";
 export class GraphqlApi extends RESTDataSource {
   override baseURL = "https://orchestrator.pgatour.com";
 
-  constructor() {
-    super({ fetch: fetch });
-  }
-
   protected override willSendRequest(
     _: string,
     requestOpts: AugmentedRequest<CacheOptions>,
