@@ -90,22 +90,22 @@ export default defineConfig(({ mode }) => {
             background_color: "#121212", // Android background color - not necessary for iOS
             icons: [
               {
-                src: "https://cdn.jsdelivr.net/gh/conor-ob/putting-pals@main/apps/cdn/pwa-64x64.png",
+                src: "/pwa-64x64.png",
                 sizes: "64x64",
                 type: "image/png",
               },
               {
-                src: "https://cdn.jsdelivr.net/gh/conor-ob/putting-pals@main/apps/cdn/pwa-192x192.png",
+                src: "/pwa-192x192.png",
                 sizes: "192x192",
                 type: "image/png",
               },
               {
-                src: "https://cdn.jsdelivr.net/gh/conor-ob/putting-pals@main/apps/cdn/pwa-512x512.png",
+                src: "/pwa-512x512.png",
                 sizes: "512x512",
                 type: "image/png",
               },
               {
-                src: "https://cdn.jsdelivr.net/gh/conor-ob/putting-pals@main/apps/cdn/maskable-icon-512x512.png",
+                src: "/maskable-icon-512x512.png",
                 sizes: "512x512",
                 type: "image/png",
                 purpose: "maskable",

@@ -20,7 +20,6 @@
     "@pkg/graphql": "workspace:*",
     "@pkg/odds": "workspace:*",
     "@pkg/utils": "workspace:*",
-    "@sentry/node": "catalog:",
     "@trpc/server": "catalog:",
     "superjson": "catalog:",
     "zod": "catalog:"

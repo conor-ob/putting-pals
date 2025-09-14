@@ -1,6 +1,5 @@
 /// <reference types="vitest" />
 import * as path from "path";
-import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
 
@@ -12,7 +11,6 @@ export default defineConfig({
       entry: path.resolve(__dirname, "./src"),
       formats: ["es"],
     },
-    sourcemap: env.CI,
   },
   server: {
     // vite server configs, for details see [vite doc](https://vitejs.dev/config/#server-host)
@@ -42,13 +40,6 @@ export default defineConfig({
       // 'swc' compiler is supported to use as well for frameworks
       // like Nestjs (esbuild dont support 'emitDecoratorMetadata' yet)
       tsCompiler: "esbuild",
-    }),
-    sentryVitePlugin({
-      project: env.SENTRY_PROJECT,
-      disable: !env.CI,
-      release: {
-        name: `${env.SENTRY_PROJECT}@${env.GIT_COMMIT_SHA}`,
-      },
     }),
   ],
 });

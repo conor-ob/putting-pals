@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit true",
     "test": "vitest",
     "dev": "vite",
-    "start": "node --import @sentry/node/preload dist/index.js"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@fastify/cors": "catalog:",
@@ -19,8 +19,6 @@
     "@mgcrea/fastify-request-logger": "catalog:",
     "@mgcrea/pino-pretty-compact": "catalog:",
     "@pkg/api": "workspace:*",
-    "@sentry/node": "catalog:",
-    "@sentry/profiling-node": "catalog:",
     "@trpc/server": "catalog:",
     "fastify": "catalog:",
     "pino": "catalog:",
@@ -30,7 +28,6 @@
   "devDependencies": {
     "@pkg/eslint": "workspace:*",
     "@pkg/prettier": "workspace:*",
-    "@sentry/vite-plugin": "catalog:",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "dotenv": "catalog:",

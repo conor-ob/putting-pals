@@ -1,5 +1,3 @@
-import "./instrument";
-
 import { env } from "./env/schema";
 import { createServer } from "./server";
 

@@ -7,7 +7,6 @@
  * need to use are documented accordingly near the end.
  */
 
-import * as Sentry from "@sentry/node";
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
@@ -81,12 +80,6 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
   return result;
 });
 
-const sentryMiddleware = t.middleware(
-  Sentry.trpcMiddleware({
-    attachRpcInput: true,
-  }),
-);
-
 /**
  * Public (unauthenticated) procedure
  *
@@ -94,9 +87,7 @@ const sentryMiddleware = t.middleware(
  * guarantee that a user querying is authorized, but you can still access user session data if they
  * are logged in.
  */
-export const publicProcedure = t.procedure
-  .use(sentryMiddleware)
-  .use(timingMiddleware);
+export const publicProcedure = t.procedure.use(timingMiddleware);
 
 export const protectedProcedure = publicProcedure.use(async (opts) => {
   const { ctx } = opts;
