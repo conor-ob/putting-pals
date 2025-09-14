@@ -7,8 +7,7 @@ export const envSchema = z.object({
   PORT: z
     .string()
     .transform((s) => parseInt(s, 10))
-    .pipe(z.number())
-    .default("3000"),
+    .pipe(z.number()),
   SENTRY_DSN: z.string().url(),
   SENTRY_PROJECT: z.string().min(1),
   CI: z
