@@ -14,8 +14,6 @@ catalog:
   "@mgcrea/fastify-request-logger": ^1.9.0 # https://www.npmjs.com/package/@mgcrea/fastify-request-logger?activeTab=versions
   "@mgcrea/pino-pretty-compact": ^1.4.2 # https://www.npmjs.com/package/@mgcrea/pino-pretty-compact?activeTab=versions
   "@radix-ui/react-avatar": ^1.1.1 # https://www.npmjs.com/package/@radix-ui/react-avatar?activeTab=versions
-  "@sentry/node": ^8.41.0 # https://www.npmjs.com/package/@sentry/node?activeTab=versions
-  "@sentry/profiling-node": ^8.41.0 # https://www.npmjs.com/package/@sentry/profiling-node?activeTab=versions
   "@sentry/react": ^8.41.0 # https://www.npmjs.com/package/@sentry/react?activeTab=versions
   "@sentry/vite-plugin": ^2.22.6 # https://www.npmjs.com/package/@sentry/vite-plugin?activeTab=versions
   "@storybook/addon-a11y": ^8.4.5 # https://www.npmjs.com/package/@storybook/addon-a11y?activeTab=versions
