@@ -37,7 +37,7 @@ COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
 # Install dependencies with proper cache mount
-RUN --mount=type=cache,id=pnpm-store,target=/root/.local/share/pnpm/store/v3 \
+RUN --mount=type=cache,id=s/9f7fc579-219b-497f-aa57-18d68a0327ba-pnpm-store,target=/root/.local/share/pnpm/store/v3 \
     pnpm install --frozen-lockfile
 
 # Copy source code
