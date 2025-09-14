@@ -4,17 +4,8 @@ import { RESTDataSource } from "@apollo/datasource-rest";
 
 import { env } from "./env/schema";
 
-// Wrapper function to convert FetcherRequestInit to RequestInit
-const fetchWrapper = (url: string, init?: unknown) => {
-  return fetch(url, init as RequestInit);
-};
-
 export class GraphqlApi extends RESTDataSource {
   override baseURL = "https://orchestrator.pgatour.com";
-
-  constructor() {
-    super({ fetch: fetchWrapper });
-  }
 
   protected override willSendRequest(
     _: string,
