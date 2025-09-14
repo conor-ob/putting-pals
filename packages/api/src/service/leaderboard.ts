@@ -37,6 +37,7 @@ export class LeaderboardService {
                 position: player.scoringData.position,
                 score: player.scoringData.score,
                 scoreSort: player.scoringData.scoreSort,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 teeTime: player.scoringData.teeTime,
                 thru: player.scoringData.thru,
                 thruSort: player.scoringData.thruSort,
