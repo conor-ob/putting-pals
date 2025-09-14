@@ -48,7 +48,6 @@ RUN pnpm install --frozen-lockfile
 COPY --from=pruner /app/out/full/ .
 
 RUN turbo build --filter=@app/server
-# RUN --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-/root/local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm prune --prod --no-optional
 RUN pnpm prune --prod --no-optional
 RUN rm -rf ./**/*/src
 
