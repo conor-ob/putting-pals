@@ -3,7 +3,7 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "clean": "git clean -xdf .cache .expo .turbo dist node_modules",
     "start": "expo start",
     "dev": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -30,8 +30,8 @@
     "expo-symbols": "~1.0.7",
     "expo-system-ui": "~6.0.7",
     "expo-web-browser": "~15.0.7",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "react-native": "0.81.4",
     "react-native-gesture-handler": "~2.28.0",
     "react-native-worklets": "0.5.1",
@@ -41,9 +41,9 @@
     "react-native-web": "~0.21.0"
   },
   "devDependencies": {
-    "@types/react": "~19.1.0",
-    "typescript": "~5.9.2",
-    "eslint": "^9.25.0",
+    "@types/react": "catalog:",
+    "typescript": "catalog:",
+    "eslint": "catalog:",
     "eslint-config-expo": "~10.0.0"
   },
   "private": true
