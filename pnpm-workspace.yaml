@@ -34,7 +34,7 @@ catalog:
   "@types/lodash": ^4.17.20 # https://www.npmjs.com/package/@types/lodash?activeTab=versions
   "@types/node": ^24.4.0 # https://www.npmjs.com/package/@types/node?activeTab=versions
   "@types/pako": ^2.0.4 # https://www.npmjs.com/package/@types/pako?activeTab=versions
-  "@types/react": ^19.1.13 # https://www.npmjs.com/package/@types/react?activeTab=versions
+  "@types/react": ~19.1.0 # https://www.npmjs.com/package/@types/react?activeTab=versions
   "@types/react-dom": ^19.1.9 # https://www.npmjs.com/package/@types/react-dom?activeTab=versions
   "@types/react-router": ^5.1.20 # https://www.npmjs.com/package/@types/react-router?activeTab=versions
   "@types/react-router-dom": ^5.3.3 # https://www.npmjs.com/package/@types/react-router-dom?activeTab=versions
@@ -45,7 +45,7 @@ catalog:
   class-variance-authority: ^0.7.1 # https://www.npmjs.com/package/class-variance-authority?activeTab=versions
   clsx: ^2.1.1 # https://www.npmjs.com/package/clsx?activeTab=versions
   dotenv: ^17.2.2 # https://www.npmjs.com/package/dotenv?activeTab=versions
-  eslint: 9.35.0 # https://www.npmjs.com/package/eslint?activeTab=versions TODO: update to 9.15.0 when 'Cannot read properties of undefined (reading 'allowShortCircuit')' bug is fixed
+  eslint: ^9.25.0 # https://www.npmjs.com/package/eslint?activeTab=versions TODO: update to 9.15.0 when 'Cannot read properties of undefined (reading 'allowShortCircuit')' bug is fixed
   eslint-plugin-import: ^2.32.0 # https://www.npmjs.com/package/eslint-plugin-import?activeTab=versions
   eslint-plugin-jsx-a11y: ^6.10.2 # https://www.npmjs.com/package/eslint-plugin-jsx-a11y?activeTab=versions
   eslint-plugin-react: ^7.37.5 # https://www.npmjs.com/package/eslint-plugin-react?activeTab=versions
@@ -64,8 +64,8 @@ catalog:
   postcss: ^8.5.6 # https://www.npmjs.com/package/postcss?activeTab=versions
   prettier: ^3.6.2 # https://www.npmjs.com/package/prettier?activeTab=versions
   prettier-plugin-tailwindcss: ^0.6.14 # https://www.npmjs.com/package/prettier-plugin-tailwindcss?activeTab=versions
-  react: ^19.1.1 # https://www.npmjs.com/package/react?activeTab=versions
-  react-dom: ^19.1.1 # https://www.npmjs.com/package/react-dom?activeTab=versions
+  react: 19.1.0 # https://www.npmjs.com/package/react?activeTab=versions
+  react-dom: 19.1.0 # https://www.npmjs.com/package/react-dom?activeTab=versions
   react-router: ^5.3.4 # https://www.npmjs.com/package/react-router?activeTab=versions
   react-router-dom: ^5.3.4 # https://www.npmjs.com/package/react-router-dom?activeTab=versions
   storybook: ^8.6.14 # https://www.npmjs.com/package/storybook?activeTab=versions
@@ -75,7 +75,7 @@ catalog:
   tailwindcss-animate: ^1.0.7 # https://www.npmjs.com/package/tailwindcss-animate?activeTab=versions
   terser: ^5.44.0 # https://www.npmjs.com/package/terser?activeTab=versions
   turbo: ^2.5.6 # https://www.npmjs.com/package/turbo?activeTab=versions
-  typescript: ^5.9.2 # https://www.npmjs.com/package/typescript?activeTab=versions
+  typescript: ~5.9.2 # https://www.npmjs.com/package/typescript?activeTab=versions
   typescript-eslint: ^8.43.0 # https://www.npmjs.com/package/typescript-eslint?activeTab=versions
   vite: ^7.1.5 # https://www.npmjs.com/package/vite?activeTab=versions
   vite-plugin-node: ^7.0.0 # https://www.npmjs.com/package/vite-plugin-node?activeTab=versions
