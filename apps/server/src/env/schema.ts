@@ -3,6 +3,8 @@ import { z } from "zod";
 
 dotenv({
   encoding: "utf8",
+  quiet: process.env.NODE_ENV === "production",
+  debug: process.env.NODE_ENV !== "production",
 });
 
 const envSchema = z.object({
