@@ -42,6 +42,9 @@ This will start the Fastify server and Ionic app using Vite for HMR
 
 ## TODO
 
+- [ ] remove warnings from prod deployment
+  - [ ] [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+  - [ ] ExperimentalWarning: SQLite is an experimental feature and might change at any time (--experimental-sqlite ??)
 - [ ] refactor API
   - [ ] Create PGA tour graphql types
   - [ ] Create display types (name TBD) for all PGA tour graphql types
