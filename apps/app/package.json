@@ -5,6 +5,7 @@
   "main": "expo-router/entry",
   "scripts": {
     "clean": "git clean -xdf .cache .expo .turbo dist node_modules",
+    "build": "expo export -p web",
     "start": "expo start",
     "dev": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
