@@ -1,7 +1,8 @@
 {
   "name": "@app/app",
+  "private": true,
+  "version": "0.0.0",
   "main": "expo-router/entry",
-  "version": "1.0.0",
   "scripts": {
     "clean": "git clean -xdf .cache .expo .turbo dist node_modules",
     "start": "expo start",
@@ -44,7 +45,8 @@
     "@types/react": "catalog:",
     "typescript": "catalog:",
     "eslint": "catalog:",
-    "eslint-config-expo": "~10.0.0"
+    "eslint-config-expo": "~10.0.0",
+    "prettier": "catalog:"
   },
-  "private": true
+  "prettier": "@pkg/prettier"
 }
