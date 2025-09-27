@@ -45,7 +45,7 @@ catalog:
   class-variance-authority: ^0.7.1 # https://www.npmjs.com/package/class-variance-authority?activeTab=versions
   clsx: ^2.1.1 # https://www.npmjs.com/package/clsx?activeTab=versions
   dotenv: ^17.2.2 # https://www.npmjs.com/package/dotenv?activeTab=versions
-  eslint: ^9.25.0 # https://www.npmjs.com/package/eslint?activeTab=versions TODO: update to 9.15.0 when 'Cannot read properties of undefined (reading 'allowShortCircuit')' bug is fixed
+  eslint: ^9.25.0 # https://www.npmjs.com/package/eslint?activeTab=versions
   eslint-plugin-import: ^2.32.0 # https://www.npmjs.com/package/eslint-plugin-import?activeTab=versions
   eslint-plugin-jsx-a11y: ^6.10.2 # https://www.npmjs.com/package/eslint-plugin-jsx-a11y?activeTab=versions
   eslint-plugin-react: ^7.37.5 # https://www.npmjs.com/package/eslint-plugin-react?activeTab=versions
