@@ -8,7 +8,7 @@ RUN apk add --no-cache libc6-compat
 # Setup pnpm and turbo on the alpine base
 FROM alpine as base
 RUN npm install pnpm turbo --global
-RUN pnpm config set store-dir ~/.pnpm-store
+RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
 
 # Prune projects
 FROM base AS pruner
@@ -32,13 +32,14 @@ COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
 # First install the dependencies (as they change less often)
-RUN --mount=type=cache,id=s/9f7fc579-219b-497f-aa57-18d68a0327ba-~/.pnpm-store,target=~/.pnpm-store pnpm install --frozen-lockfile
+# https://docs.railway.com/guides/dockerfiles#cache-mounts
+RUN --mount=type=cache,id=s/9f7fc579-219b-497f-aa57-18d68a0327ba-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
 
 # Copy source code of isolated subworkspace
 COPY --from=pruner /app/out/full/ .
 
 RUN turbo build --filter=@app/server
-RUN --mount=type=cache,id=s/9f7fc579-219b-497f-aa57-18d68a0327ba-~/.pnpm-store,target=~/.pnpm-store pnpm prune --prod --no-optional
+RUN --mount=type=cache,id=s/9f7fc579-219b-497f-aa57-18d68a0327ba-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm prune --prod --no-optional
 RUN rm -rf ./**/*/src
 
 # Final image

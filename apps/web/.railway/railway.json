@@ -6,6 +6,11 @@
   },
   "deploy": {
     "numReplicas": 1,
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 300,
+    "sleepApplication": false,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 3,
     "region": "europe-west4-drams3a",
     "multiRegionConfig": {
       "europe-west4-drams3a": {
@@ -18,10 +23,16 @@
         "memoryBytes": 1000000000
       }
     },
-    "sleepApplication": false,
-    "healthcheckPath": "/",
-    "healthcheckTimeout": 300,
-    "restartPolicyType": "ALWAYS",
-    "restartPolicyMaxRetries": 5
+    "overlapSeconds": 30,
+    "drainingSeconds": 10
+  },
+  "environments": {
+    "pr": {
+      "deploy": {
+        "sleepApplication": true,
+        "overlapSeconds": 0,
+        "drainingSeconds": 0
+      }
+    }
   }
 }
