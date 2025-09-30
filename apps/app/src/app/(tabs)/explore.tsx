@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, Text } from "react-native";
 import { ExternalLink } from "@/components/external-link";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
 import { ThemedText } from "@/components/themed-text";
@@ -31,6 +31,9 @@ export default function TabTwoScreen() {
           Explore
         </ThemedText>
       </ThemedView>
+      <Text className="text-xl font-bold text-blue-500">
+        Welcome to Nativewind!
+      </Text>
       <ThemedText>
         This app includes example code to help you get started.
       </ThemedText>
