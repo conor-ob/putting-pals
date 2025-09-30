@@ -348,6 +348,9 @@ importers:
         specifier: 0.5.1
         version: 0.5.1(@babel/core@7.28.4)(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.16)(react@19.1.0))(react@19.1.0)
     devDependencies:
+      '@pkg/eslint':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
       '@types/react':
         specifier: 'catalog:'
         version: 19.1.16

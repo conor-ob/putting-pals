@@ -12,7 +12,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
@@ -43,6 +45,7 @@
     "react-native-web": "~0.21.0"
   },
   "devDependencies": {
+    "@pkg/eslint": "workspace:*",
     "@types/react": "catalog:",
     "typescript": "catalog:",
     "eslint": "catalog:",
