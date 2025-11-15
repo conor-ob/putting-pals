@@ -10,7 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: "var(--brand)",
+        "brand-1": "var(--brand-1)",
+        "brand-2": "var(--brand-2)",
       },
     },
   },

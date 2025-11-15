@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, Text } from "react-native";
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
 import { ThemedText } from "@/components/themed-text";
@@ -22,6 +22,9 @@ export default function HomeScreen() {
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
+      <Text className="text-brand-1 text-xl font-bold">
+        Welcome to Nativewind!
+      </Text>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
