@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --brand: oklch(40.1% 0.123 21.57);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --brand: oklch(from hsl(180 100% 50%) calc(l - 0.1) c h);
+    }
+  }
+}

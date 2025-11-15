@@ -31,7 +31,7 @@ export default function TabTwoScreen() {
           Explore
         </ThemedText>
       </ThemedView>
-      <Text className="text-xl font-bold text-blue-500">
+      <Text className="text-brand text-xl font-bold">
         Welcome to Nativewind!
       </Text>
       <ThemedText>
