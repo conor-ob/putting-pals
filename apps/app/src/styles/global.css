@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-1: oklch(0.7 0.1 286);
+    --brand-2: oklch(0.7 0.1 249);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --brand-1: oklch(0.7 0.1 134);
+      --brand-2: oklch(0.7 0.1 95);
+    }
+  }
+}
