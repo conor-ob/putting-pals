@@ -1,6 +1,5 @@
+import { baseConfig } from "@putting-pals/eslint-config/base";
 import { defineConfig } from "eslint/config";
-
-import { baseConfig } from "@acme/eslint-config/base";
 
 export default defineConfig(
   {

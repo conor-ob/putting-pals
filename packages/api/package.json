@@ -1,5 +1,5 @@
 {
-  "name": "@acme/api",
+  "name": "@putting-pals/api",
   "private": true,
   "type": "module",
   "exports": {
@@ -18,20 +18,17 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@acme/auth": "workspace:*",
-    "@acme/db": "workspace:*",
-    "@acme/validators": "workspace:*",
     "@trpc/server": "catalog:",
     "superjson": "2.2.3",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@putting-pals/eslint-config": "workspace:*",
+    "@putting-pals/prettier-config": "workspace:*",
+    "@putting-pals/tsconfig": "workspace:*",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@putting-pals/prettier-config"
 }
