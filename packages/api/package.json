@@ -1,36 +1,37 @@
 {
-  "name": "@pkg/api",
-  "version": "0.0.0",
-  "type": "module",
+  "name": "@acme/api",
   "private": true,
+  "type": "module",
   "exports": {
-    "./router": "./src/api.ts",
-    "./context": "./src/context.ts",
-    "./types": "./src/types.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
   },
+  "license": "MIT",
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo node_modules",
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
-    "typecheck": "tsc --noEmit true"
+    "lint": "eslint --flag unstable_native_nodejs_ts_config",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@pkg/data": "workspace:*",
-    "@pkg/db": "workspace:*",
-    "@pkg/graphql": "workspace:*",
-    "@pkg/odds": "workspace:*",
-    "@pkg/utils": "workspace:*",
+    "@acme/auth": "workspace:*",
+    "@acme/db": "workspace:*",
+    "@acme/validators": "workspace:*",
     "@trpc/server": "catalog:",
-    "superjson": "catalog:",
+    "superjson": "2.2.3",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@pkg/eslint": "workspace:*",
-    "@pkg/prettier": "workspace:*",
-    "@total-typescript/tsconfig": "catalog:",
+    "@acme/eslint-config": "workspace:*",
+    "@acme/prettier-config": "workspace:*",
+    "@acme/tsconfig": "workspace:*",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@pkg/prettier"
+  "prettier": "@acme/prettier-config"
 }

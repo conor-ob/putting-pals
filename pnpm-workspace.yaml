@@ -1,86 +1,47 @@
 packages:
-  - "apps/*"
-  - "packages/*"
-  - "tooling/*"
+  - apps/*
+  - packages/*
+  - tooling/*
 
 catalog:
-  "@apollo/datasource-rest": ^6.4.1 # https://www.npmjs.com/package/@apollo/datasource-rest?activeTab=versions
-  "@eslint/compat": ^1.3.2 # https://www.npmjs.com/package/@eslint/compat?activeTab=versions
-  "@fastify/cors": ^11.1.0 # https://www.npmjs.com/package/@fastify/cors?activeTab=versions
-  "@fastify/rate-limit": ^10.3.0 # https://www.npmjs.com/package/@fastify/rate-limit?activeTab=versions
-  "@ianvs/prettier-plugin-sort-imports": ^4.7.0 # https://www.npmjs.com/package/@ianvs/prettier-plugin-sort-imports?activeTab=versions
-  "@ionic/react": ^8.7.3 # https://www.npmjs.com/package/@ionic/react?activeTab=versions
-  "@ionic/react-router": ^8.7.3 # https://www.npmjs.com/package/@ionic/react-router?activeTab=versions
-  "@mgcrea/fastify-request-logger": ^1.9.1 # https://www.npmjs.com/package/@mgcrea/fastify-request-logger?activeTab=versions
-  "@mgcrea/pino-pretty-compact": ^1.4.2 # https://www.npmjs.com/package/@mgcrea/pino-pretty-compact?activeTab=versions
-  "@radix-ui/react-avatar": ^1.1.1 # https://www.npmjs.com/package/@radix-ui/react-avatar?activeTab=versions
-  "@sentry/react": ^10.11.0 # https://www.npmjs.com/package/@sentry/react?activeTab=versions
-  "@sentry/vite-plugin": ^4.3.0 # https://www.npmjs.com/package/@sentry/vite-plugin?activeTab=versions
-  "@storybook/addon-a11y": ^9.1.5 # https://www.npmjs.com/package/@storybook/addon-a11y?activeTab=versions
-  "@storybook/addon-essentials": ^8.6.14 # https://www.npmjs.com/package/@storybook/addon-essentials?activeTab=versions
-  "@storybook/addon-themes": ^9.1.5 # https://www.npmjs.com/package/@storybook/addon-themes?activeTab=versions
-  "@storybook/blocks": ^8.6.14 # https://www.npmjs.com/package/@storybook/blocks?activeTab=versions
-  "@storybook/react": ^9.1.5 # https://www.npmjs.com/package/@storybook/react?activeTab=versions
-  "@storybook/react-vite": ^9.1.5 # https://www.npmjs.com/package/@storybook/react-vite?activeTab=versions
-  "@storybook/theming": ^8.6.14 # https://www.npmjs.com/package/@storybook/theming?activeTab=versions
-  "@tanstack/react-query": ^5.87.4 # https://www.npmjs.com/package/@tanstack/react-query?activeTab=versions
-  "@testing-library/dom": ^10.4.1 # https://www.npmjs.com/package/@testing-library/dom?activeTab=versions
-  "@testing-library/jest-dom": ^6.8.0 # https://www.npmjs.com/package/@testing-library/jest-dom?activeTab=versions
-  "@testing-library/react": ^16.3.0 # https://www.npmjs.com/package/@testing-library/react?activeTab=versions
-  "@total-typescript/tsconfig": ^1.0.4 # https://www.npmjs.com/package/@total-typescript/tsconfig?activeTab=versions
-  "@trpc/client": ^11.5.1 # https://www.npmjs.com/package/@trpc/client?activeTab=versions
-  "@trpc/react-query": ^11.5.1 # https://www.npmjs.com/package/@trpc/react-query?activeTab=versions
-  "@trpc/server": ^11.5.1 # https://www.npmjs.com/package/@trpc/server?activeTab=versions
-  "@types/lodash": ^4.17.20 # https://www.npmjs.com/package/@types/lodash?activeTab=versions
-  "@types/node": ^24.4.0 # https://www.npmjs.com/package/@types/node?activeTab=versions
-  "@types/pako": ^2.0.4 # https://www.npmjs.com/package/@types/pako?activeTab=versions
-  "@types/react": ^19.1.13 # https://www.npmjs.com/package/@types/react?activeTab=versions
-  "@types/react-dom": ^19.1.9 # https://www.npmjs.com/package/@types/react-dom?activeTab=versions
-  "@types/react-router": ^5.1.20 # https://www.npmjs.com/package/@types/react-router?activeTab=versions
-  "@types/react-router-dom": ^5.3.3 # https://www.npmjs.com/package/@types/react-router-dom?activeTab=versions
-  "@vite-pwa/assets-generator": ^1.0.1 # https://www.npmjs.com/package/@vite-pwa/assets-generator?activeTab=versions
-  "@vitejs/plugin-react-swc": ^4.0.1 # https://www.npmjs.com/package/@vitejs/plugin-react-swc?activeTab=versions
-  autoprefixer: ^10.4.21 # https://www.npmjs.com/package/autoprefixer?activeTab=versions
-  cheerio: ^1.1.2 # https://www.npmjs.com/package/cheerio?activeTab=versions
-  class-variance-authority: ^0.7.1 # https://www.npmjs.com/package/class-variance-authority?activeTab=versions
-  clsx: ^2.1.1 # https://www.npmjs.com/package/clsx?activeTab=versions
-  dotenv: ^17.2.2 # https://www.npmjs.com/package/dotenv?activeTab=versions
-  eslint: 9.35.0 # https://www.npmjs.com/package/eslint?activeTab=versions TODO: update to 9.15.0 when 'Cannot read properties of undefined (reading 'allowShortCircuit')' bug is fixed
-  eslint-plugin-import: ^2.32.0 # https://www.npmjs.com/package/eslint-plugin-import?activeTab=versions
-  eslint-plugin-jsx-a11y: ^6.10.2 # https://www.npmjs.com/package/eslint-plugin-jsx-a11y?activeTab=versions
-  eslint-plugin-react: ^7.37.5 # https://www.npmjs.com/package/eslint-plugin-react?activeTab=versions
-  eslint-plugin-react-hooks: ^5.2.0 # https://www.npmjs.com/package/eslint-plugin-react-hooks?activeTab=versions
-  eslint-plugin-storybook: ^9.1.5 # https://www.npmjs.com/package/eslint-plugin-storybook?activeTab=versions
-  eslint-plugin-turbo: ^2.5.6 # https://www.npmjs.com/package/eslint-plugin-turbo?activeTab=versions
-  fastify: ^5.6.0 # https://www.npmjs.com/package/fastify?activeTab=versions
-  globals: ^16.4.0 # https://www.npmjs.com/package/globals?activeTab=versions
-  ionicons: ^8.0.13 # https://www.npmjs.com/package/ionicons?activeTab=versions
-  jsdom: ^27.0.0 # https://www.npmjs.com/package/jsdom?activeTab=versions
-  lucide-react: ^0.544.0 # https://www.npmjs.com/package/lucide-react?activeTab=versions
-  lodash: ^4.17.21 # https://www.npmjs.com/package/lodash?activeTab=versions
-  pako: ^2.1.0 # https://www.npmjs.com/package/pako?activeTab=versions
-  pino: ^9.9.5 # https://www.npmjs.com/package/pino?activeTab=versions
-  pino-pretty: ^13.1.1 # https://www.npmjs.com/package/pino-pretty?activeTab=versions
-  postcss: ^8.5.6 # https://www.npmjs.com/package/postcss?activeTab=versions
-  prettier: ^3.6.2 # https://www.npmjs.com/package/prettier?activeTab=versions
-  prettier-plugin-tailwindcss: ^0.6.14 # https://www.npmjs.com/package/prettier-plugin-tailwindcss?activeTab=versions
-  react: ^19.1.1 # https://www.npmjs.com/package/react?activeTab=versions
-  react-dom: ^19.1.1 # https://www.npmjs.com/package/react-dom?activeTab=versions
-  react-router: ^5.3.4 # https://www.npmjs.com/package/react-router?activeTab=versions
-  react-router-dom: ^5.3.4 # https://www.npmjs.com/package/react-router-dom?activeTab=versions
-  storybook: ^8.6.14 # https://www.npmjs.com/package/storybook?activeTab=versions
-  superjson: ^2.2.2 # https://www.npmjs.com/package/superjson?activeTab=versions
-  tailwind-merge: ^3.3.1 # https://www.npmjs.com/package/tailwind-merge?activeTab=versions
-  tailwindcss: ^3.4.17 # https://www.npmjs.com/package/tailwindcss?activeTab=versions
-  tailwindcss-animate: ^1.0.7 # https://www.npmjs.com/package/tailwindcss-animate?activeTab=versions
-  terser: ^5.44.0 # https://www.npmjs.com/package/terser?activeTab=versions
-  turbo: ^2.5.6 # https://www.npmjs.com/package/turbo?activeTab=versions
-  typescript: ^5.9.2 # https://www.npmjs.com/package/typescript?activeTab=versions
-  typescript-eslint: ^8.43.0 # https://www.npmjs.com/package/typescript-eslint?activeTab=versions
-  vite: ^7.1.5 # https://www.npmjs.com/package/vite?activeTab=versions
-  vite-plugin-node: ^7.0.0 # https://www.npmjs.com/package/vite-plugin-node?activeTab=versions
-  vite-plugin-pwa: ^1.0.3 # https://www.npmjs.com/package/vite-plugin-pwa?activeTab=versions
-  vite-tsconfig-paths: ^5.1.4 # https://www.npmjs.com/package/vite-tsconfig-paths?activeTab=versions
-  vitest: ^3.2.4 # https://www.npmjs.com/package/vitest?activeTab=versions
-  zod: ^4.1.8 # https://www.npmjs.com/package/zod?activeTab=versions
-  workbox-window: ^7.3.0 # https://www.npmjs.com/package/workbox-window?activeTab=versions
+  "@better-auth/cli": 1.4.0-beta.9
+  "@better-auth/expo": 1.4.0-beta.9
+  "@eslint/js": ^9.38.0
+  "@tailwindcss/postcss": ^4.1.16
+  "@tailwindcss/vite": ^4.1.16
+  "@tanstack/react-form": ^1.23.8
+  "@tanstack/react-query": ^5.90.8
+  "@trpc/client": ^11.7.1
+  "@trpc/server": ^11.7.1
+  "@trpc/tanstack-react-query": ^11.7.1
+  "@types/node": ^22.18.12
+  "@vitejs/plugin-react": 5.1.0
+  better-auth: 1.4.0-beta.9
+  eslint: ^9.38.0
+  prettier: ^3.6.2
+  tailwindcss: ^4.1.16
+  typescript: ^5.9.3
+  zod: ^4.1.12
+  vite: 7.1.12
+
+catalogs:
+  react19:
+    "@types/react": ^19.1.12
+    "@types/react-dom": ^19.1.9
+    react: 19.1.1
+    react-dom: 19.1.1
+
+linkWorkspacePackages: true
+
+onlyBuiltDependencies:
+  - "@tailwindcss/oxide"
+  - esbuild
+
+overrides:
+  "@types/minimatch": 5.1.2
+  lightningcss: 1.30.1
+  vite: 7.1.12
+
+publicHoistPattern:
+  - "@ianvs/prettier-plugin-sort-imports"
+  - prettier-plugin-tailwindcss

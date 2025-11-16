@@ -1,54 +1,64 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
   "tasks": {
-    "clean": {
-      "cache": false
-    },
-    "codegen": {
-      "outputs": ["src/types.ts"]
+    "topo": {
+      "dependsOn": ["^topo"]
     },
     "build": {
-      "outputs": ["dist/**", ".cache/*.tsbuildinfo"]
+      "dependsOn": ["^build"],
+      "outputs": [".cache/tsbuildinfo.json", "dist/**"]
+    },
+    "dev": {
+      "dependsOn": ["^dev"],
+      "cache": false,
+      "persistent": false
     },
     "format": {
       "outputs": [".cache/.prettiercache"],
       "outputLogs": "new-only"
     },
     "lint": {
+      "dependsOn": ["^topo", "^build"],
       "outputs": [".cache/.eslintcache"]
     },
     "typecheck": {
-      "outputs": [".cache/*.tsbuildinfo"]
+      "dependsOn": ["^topo", "^build"],
+      "outputs": [".cache/tsbuildinfo.json"]
     },
-    "test": {
-      "outputs": ["coverage/**"]
+    "clean": {
+      "cache": false
     },
-    "storybook": {
+    "//#clean": {
+      "cache": false
+    },
+    "push": {
+      "cache": false,
+      "interactive": true
+    },
+    "studio": {
       "cache": false,
       "persistent": true
     },
-    "dev": {
+    "ui-add": {
       "cache": false,
-      "persistent": true
-    },
-    "start": {
-      "cache": false,
-      "persistent": true
+      "interactive": true
     }
   },
   "globalEnv": [
+    "POSTGRES_URL",
+    "AUTH_DISCORD_ID",
+    "AUTH_DISCORD_SECRET",
+    "AUTH_REDIRECT_PROXY_URL",
+    "AUTH_SECRET",
+    "PORT"
+  ],
+  "globalPassThroughEnv": [
     "NODE_ENV",
-    "PORT",
-    "ORIGIN",
-    "PGA_TOUR_API_KEY",
-    "SENTRY_DSN",
-    "SENTRY_AUTH_TOKEN",
-    "SENTRY_ORG",
-    "SENTRY_PROJECT",
     "CI",
-    "GITHUB_SHA",
-    "GIT_COMMIT_SHA",
-    "RAILWAY_GIT_COMMIT_SHA"
+    "VERCEL",
+    "VERCEL_ENV",
+    "VERCEL_URL",
+    "npm_lifecycle_event"
   ]
 }
