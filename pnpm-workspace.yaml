@@ -84,3 +84,9 @@ catalog:
   vitest: ^3.2.4
   workbox-window: ^7.3.0
   zod: ^4.1.8
+
+linkWorkspacePackages: true
+
+publicHoistPattern:
+  - "@ianvs/prettier-plugin-sort-imports"
+  - prettier-plugin-tailwindcss
