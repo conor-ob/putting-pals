@@ -1,11 +1,5 @@
 {
   "extends": "@putting-pals/tsconfig/compiled-package.json",
-  "compilerOptions": {
-    /**
-     * Use Node.js type definitions in this package (for things like `console`, timers, etc).
-     */
-    "types": ["node"]
-  },
   "include": ["src"],
   "exclude": ["node_modules"]
 }

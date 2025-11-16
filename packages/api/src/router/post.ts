@@ -3,7 +3,7 @@ import { z } from "zod/v4";
 
 import { publicProcedure } from "../trpc";
 
-const posts = [
+let posts = [
   {
     id: "1",
     title: "Hello, world!",
@@ -19,17 +19,17 @@ const posts = [
     title: "Hello, world!",
     content: "This is a test post",
   },
-]
+];
 
 export const postRouter = {
   all: publicProcedure.query(({ ctx }) => {
-    return posts
+    return posts;
   }),
 
   byId: publicProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
-        return posts.find((post) => post.id === input.id);
+      return posts.find((post) => post.id === input.id);
     }),
 
   create: publicProcedure
@@ -39,6 +39,7 @@ export const postRouter = {
     }),
 
   delete: publicProcedure.input(z.string()).mutation(({ ctx, input }) => {
+    posts = posts.filter((post) => post.id !== input);
     return posts.filter((post) => post.id !== input);
   }),
 } satisfies TRPCRouterRecord;
