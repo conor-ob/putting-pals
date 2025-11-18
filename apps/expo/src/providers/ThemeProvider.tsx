@@ -5,7 +5,7 @@ import {
   DefaultTheme,
   ThemeProvider as NavigationThemeProvider,
 } from "@react-navigation/native";
-import { useResolveClassNames } from "uniwind";
+import { useCSSVariable } from "uniwind";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const colorScheme = useColorScheme();
@@ -13,14 +13,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const theme = {
     dark: colorScheme === "dark",
     colors: {
-      primary: useResolveClassNames("bg-primary").backgroundColor as string,
-      background: useResolveClassNames("bg-background")
-        ?.backgroundColor as string,
-      card: useResolveClassNames("bg-card")?.backgroundColor as string,
-      text: useResolveClassNames("text-card-foreground")?.color as string,
-      border: useResolveClassNames("bg-border").backgroundColor as string,
-      notification: useResolveClassNames("bg-notification")
-        ?.backgroundColor as string,
+      primary: useThemeColor("--color-primary", (colors) => colors.primary),
+      background: useThemeColor(
+        "--color-background",
+        (colors) => colors.background,
+      ),
+      card: useThemeColor("--color-card", (colors) => colors.card),
+      text: useThemeColor("--color-card-foreground", (colors) => colors.text),
+      border: useThemeColor("--color-border", (colors) => colors.border),
+      notification: useThemeColor(
+        "--color-notification",
+        (colors) => colors.notification,
+      ),
     },
     fonts: colorScheme === "dark" ? DarkTheme.fonts : DefaultTheme.fonts,
   } satisfies Theme;
@@ -28,4 +32,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
     <NavigationThemeProvider value={theme}>{children}</NavigationThemeProvider>
   );
+}
+
+function useThemeColor(
+  cssVariable: string,
+  fallback: (colors: Theme["colors"]) => string,
+) {
+  const color = useCSSVariable(cssVariable);
+  const colorScheme = useColorScheme();
+  return color !== undefined
+    ? String(color)
+    : fallback(colorScheme === "dark" ? DarkTheme.colors : DefaultTheme.colors);
 }
