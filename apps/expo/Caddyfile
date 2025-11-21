@@ -38,7 +38,7 @@
 	header /registerSW.js Cache-Control "max-age=0"
 	header /sw.js Cache-Control "max-age=0"
 	header /index.html Cache-Control "max-age=0"
-	header /manifest.webmanifest Cache-Control "max-age=0"
+	header /manifest.json Cache-Control "max-age=0"
 
 	# all assets contain hash in filename, cache forever
 	header /assets/* Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
