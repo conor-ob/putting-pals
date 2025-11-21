@@ -13,7 +13,7 @@ const trpcClient = createTRPCClient<AppRouter>({
       url:
         process.env.NODE_ENV === "development"
           ? "http://localhost:4000/trpc"
-          : "https://putting-pals.conorob.me/api/trpc",
+          : "https://puttingpals.up.railway.app/api/trpc",
       transformer: superjson,
     }),
   ],
