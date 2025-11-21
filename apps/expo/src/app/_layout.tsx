@@ -1,15 +1,18 @@
 import { Stack } from "expo-router";
 
-import { ThemeProvider } from "../providers/ThemeProvider";
+import { ThemeProvider } from "../providers/theme/theme-provider";
+import { TrpcProvider } from "../providers/trpc/trpc-provider";
 
 import "../../global.css";
 
 export default function Layout() {
   return (
     <ThemeProvider>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <TrpcProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+      </TrpcProvider>
     </ThemeProvider>
   );
 }
