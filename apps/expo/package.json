@@ -36,7 +36,7 @@
     "react-native-web": "~0.21.0",
     "react-native-worklets": "0.5.1",
     "tailwindcss": "^4.1.17",
-    "uniwind": "^1.0.2"
+    "uniwind": "^1.0.4"
   },
   "devDependencies": {
     "@types/react": "~19.1.1",
