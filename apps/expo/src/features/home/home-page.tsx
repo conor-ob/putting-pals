@@ -8,7 +8,7 @@ export function HomePage() {
   return (
     <View className="flex-1 items-center justify-center bg-background">
       {data?.map((post) => (
-        <Text key={post.id} className="text-foreground">
+        <Text key={post.id} className="text-blue-500">
           {post.title}
         </Text>
       )) ?? <Text className="text-foreground">Loading...</Text>}
