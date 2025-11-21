@@ -1,7 +1,6 @@
+import { ThemeProvider } from "@/providers/theme/theme-provider";
+import { TrpcProvider } from "@/providers/trpc/trpc-provider";
 import { Stack } from "expo-router";
-
-import { ThemeProvider } from "../providers/theme/theme-provider";
-import { TrpcProvider } from "../providers/trpc/trpc-provider";
 
 import "../../global.css";
 

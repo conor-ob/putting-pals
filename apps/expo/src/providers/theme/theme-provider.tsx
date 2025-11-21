@@ -33,5 +33,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 function useThemeColor(cssVariable: string, fallback: string) {
   const color = useCSSVariable(cssVariable);
+  if (!color) {
+    console.warn(`CSS variable ${cssVariable} not found`);
+  }
+
   return color ? String(color) : fallback;
 }

@@ -1,7 +1,6 @@
 import { Text, View } from "react-native";
+import { trpc } from "@/providers/trpc/utils/trpc";
 import { useQuery } from "@tanstack/react-query";
-
-import { trpc } from "../../providers/trpc/utils/trpc";
 
 export function HomePage() {
   const { data } = useQuery(trpc.posts.getAll.queryOptions());
@@ -12,7 +11,7 @@ export function HomePage() {
         <Text key={post.id} className="text-foreground">
           {post.title}
         </Text>
-      ))}
+      )) ?? <Text className="text-foreground">Loading...</Text>}
     </View>
   );
 }

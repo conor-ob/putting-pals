@@ -10,7 +10,10 @@ export const queryClient = new QueryClient();
 const trpcClient = createTRPCClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: "http://localhost:4000/trpc",
+      url:
+        process.env.NODE_ENV === "development"
+          ? "http://localhost:4000/trpc"
+          : "https://putting-pals.conorob.me/api/trpc",
       transformer: superjson,
     }),
   ],
