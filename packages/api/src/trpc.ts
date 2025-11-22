@@ -20,21 +20,18 @@ import type { createTrpcContext } from "./context";
  * ZodErrors so that you get typesafety on the frontend if your procedure fails due to validation
  * errors on the backend.
  */
-const t = initTRPC
-  .context<Awaited<ReturnType<typeof createTrpcContext>>>()
-  .create({
-    transformer: superjson,
-    errorFormatter({ shape, error }) {
-      return {
-        ...shape,
-        data: {
-          ...shape.data,
-          zodError:
-            error.cause instanceof ZodError ? error.cause.flatten() : null,
-        },
-      };
-    },
-  });
+const t = initTRPC.context<Awaited<ReturnType<typeof createTrpcContext>>>().create({
+  transformer: superjson,
+  errorFormatter({ shape, error }) {
+    return {
+      ...shape,
+      data: {
+        ...shape.data,
+        zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
+      },
+    };
+  },
+});
 
 /**
  * Create a server-side caller.
@@ -75,6 +72,7 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
   const result = await next();
 
   const end = Date.now();
+  // biome-ignore lint/suspicious/noConsole: logging request execution time
   console.log(`[tRPC] ${path} took ${end - start}ms to execute`);
 
   return result;
