@@ -13,38 +13,30 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: 🔨 Build
+  check:
+    name: 🔬 Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Run build
-        run: pnpm build
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
 
-  format:
-    name: 🖊️ Format
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Format files
-        run: pnpm format
+      - name: Run check
+        run: biome ci .
 
   typecheck:
     name: 🧬 Typecheck
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup
         uses: ./.github/actions/setup
@@ -52,25 +44,25 @@ jobs:
       - name: Run typecheck
         run: pnpm typecheck
 
-  lint:
-    name: 🔬 Lint
+  build:
+    name: 🔨 Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Lint files
-        run: pnpm lint
+      - name: Run build
+        run: pnpm build
 
   test:
     name: 🧪 Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup
         uses: ./.github/actions/setup
