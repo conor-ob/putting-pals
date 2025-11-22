@@ -26,6 +26,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@biomejs/biome": "catalog:",
     "@putting-pals/eslint": "workspace:*",
     "@putting-pals/prettier": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",

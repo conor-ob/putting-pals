@@ -1,0 +1,15 @@
+{
+  "name": "@putting-pals/biome",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./base": "./biome.json"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:"
+  }
+}
