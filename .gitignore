@@ -5,6 +5,24 @@ node_modules
 .pnp
 .pnp.js
 
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
 # Local env files
 .env
 
@@ -35,3 +53,7 @@ vite.config.ts.timestamp-*
 .cache
 tsconfig.tsbuildinfo
 tsconfig.*.tsbuildinfo
+
+# generated native folders
+/ios
+/android
