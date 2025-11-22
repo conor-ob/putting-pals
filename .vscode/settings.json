@@ -3,6 +3,9 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript,typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.formatOnSave": true,
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
   "eslint.runtime": "node",
@@ -11,6 +14,9 @@
     { "pattern": "packages/*/" },
     { "pattern": "tooling/*/" }
   ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "prettier.ignorePath": ".gitignore",
   "tailwindCSS.classAttributes": [
     "class",
