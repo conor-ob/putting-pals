@@ -8,24 +8,6 @@
     "build": {
       "outputs": ["dist/**"]
     },
-    "format": {
-      "cache": false
-    },
-    "format:fix": {
-      "cache": false
-    },
-    "lint": {
-      "cache": false
-    },
-    "lint:fix": {
-      "cache": false
-    },
-    "check": {
-      "cache": false
-    },
-    "check:fix": {
-      "cache": false
-    },
     "typecheck": {
       "cache": false
     },
