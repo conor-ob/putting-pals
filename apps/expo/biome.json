@@ -1,8 +1,6 @@
 {
   "extends": "//",
-  "formatter": {
-    "files": {
-      "includes": ["!src/uniwind-types.d.ts", "!workbox-config.js"]
-    }
+  "files": {
+    "includes": ["!src/uniwind-types.d.ts", "!workbox-config.js"]
   }
 }
