@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import * as path from "path";
+import * as path from "node:path";
 import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
 import tsconfigPaths from "vite-tsconfig-paths";
