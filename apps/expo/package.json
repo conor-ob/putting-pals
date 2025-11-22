@@ -11,8 +11,6 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
@@ -51,13 +49,7 @@
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@putting-pals/api": "workspace:*",
-    "@putting-pals/eslint": "workspace:*",
-    "@putting-pals/prettier": "workspace:*",
     "@types/react": "~19.1.1",
-    "eslint": "catalog:",
-    "eslint-config-expo": "~10.0.0",
-    "prettier": "catalog:",
     "typescript": "catalog:"
-  },
-  "prettier": "@putting-pals/prettier"
+  }
 }

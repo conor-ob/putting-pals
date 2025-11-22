@@ -10,8 +10,6 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
@@ -21,12 +19,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
-    "@putting-pals/eslint": "workspace:*",
-    "@putting-pals/prettier": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
-    "eslint": "catalog:",
-    "prettier": "catalog:",
     "typescript": "catalog:"
-  },
-  "prettier": "@putting-pals/prettier"
+  }
 }

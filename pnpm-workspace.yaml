@@ -8,8 +8,6 @@ catalog:
   "@total-typescript/tsconfig": ^1.0.4
   "@trpc/server": ^11.7.1
   "@types/node": ^24.4.0
-  eslint: ^9.38.0
-  prettier: ^3.6.2
   superjson: ^2.2.2
   typescript: ^5.9.3
   zod: ^4.1.12
