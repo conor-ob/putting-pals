@@ -16,6 +16,7 @@
     "start": "turbo start"
   },
   "devDependencies": {
+    "@biomejs/biome": "catalog:",
     "turbo": "^2.5.8",
     "typescript": "catalog:",
     "vitest": "^3.2.4"
