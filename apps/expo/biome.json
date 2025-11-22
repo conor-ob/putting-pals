@@ -1,6 +1,6 @@
 {
   "extends": "//",
   "files": {
-    "includes": ["!src/uniwind-types.d.ts", "!workbox-config.js"]
+    "includes": ["**", "!src/uniwind-types.d.ts", "!workbox-config.js"]
   }
 }
