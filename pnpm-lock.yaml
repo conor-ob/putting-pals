@@ -236,12 +236,6 @@ importers:
         specifier: 'catalog:'
         version: 5.9.3
 
-  tooling/biome:
-    devDependencies:
-      '@biomejs/biome':
-        specifier: 'catalog:'
-        version: 2.3.7
-
 packages:
 
   '@0no-co/graphql.web@1.2.0':
