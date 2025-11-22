@@ -1,6 +1,6 @@
 import { expect, onTestFinished, suite, test } from "vitest";
 
-import { createServer } from "../server";
+import { createServer } from "~/server";
 
 suite("health/", () => {
   test("should return response", { retry: 3 }, async () => {

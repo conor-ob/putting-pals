@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 
-import { env } from "../env/schema";
+import { env } from "~/env/schema";
 
 export default function (fastify: FastifyInstance) {
   fastify.get("/health", (_req, res) => {

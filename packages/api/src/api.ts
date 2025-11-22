@@ -1,8 +1,4 @@
-import { competitionRouter } from "./router/competition";
-import { leaderboardRouter } from "./router/leaderboard";
-import { oddsRouter } from "./router/odds";
-import { scheduleRouter } from "./router/schedule";
-import { tournamentRouter } from "./router/tournament";
+import { postsRouter } from "./router/posts";
 import { createCallerFactory, router } from "./trpc";
 
 /**
@@ -11,11 +7,7 @@ import { createCallerFactory, router } from "./trpc";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = router({
-  competition: competitionRouter,
-  leaderboard: leaderboardRouter,
-  odds: oddsRouter,
-  schedule: scheduleRouter,
-  tournament: tournamentRouter,
+  posts: postsRouter,
 });
 
 export type AppRouter = typeof appRouter;

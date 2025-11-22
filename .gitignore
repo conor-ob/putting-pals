@@ -5,6 +5,24 @@ node_modules
 .pnp
 .pnp.js
 
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
 # Local env files
 .env
 
@@ -18,7 +36,6 @@ coverage
 out/
 build
 dist
-storybook-static
 
 # Debug
 npm-debug.log*
@@ -37,9 +54,6 @@ vite.config.ts.timestamp-*
 tsconfig.tsbuildinfo
 tsconfig.*.tsbuildinfo
 
-# storybook
-*storybook.log
-/storybook-static
-
-# pwa
-dev-dist/
+# generated native folders
+/ios
+/android
