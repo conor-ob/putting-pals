@@ -1,27 +1,45 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "ui": "tui",
-  "tasks": {
-    "clean": {
-      "cache": false
-    },
-    "build": {
-      "outputs": [".cache/tsbuildinfo.json", "dist/**"]
-    },
-    "typecheck": {
-      "cache": false
-    },
-    "test": {
-      "outputs": ["coverage/**"]
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    },
-    "start": {
-      "cache": false,
-      "persistent": true
-    }
-  },
-  "globalEnv": ["NODE_ENV", "PORT", "ORIGIN", "PGA_TOUR_API_KEY"]
+	"$schema": "https://turbo.build/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"clean": {
+			"cache": false
+		},
+		"build": {
+			"outputs": [".cache/tsbuildinfo.json", "dist/**"]
+		},
+		"format": {
+			"cache": false
+		},
+		"format:fix": {
+			"cache": false
+		},
+		"lint": {
+			"cache": false
+		},
+		"lint:fix": {
+			"cache": false
+		},
+		"check": {
+			"cache": false
+		},
+		"check:fix": {
+			"cache": false
+		},
+		"typecheck": {
+			"cache": false
+		},
+		"test": {
+			"outputs": ["coverage/**"]
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"start": {
+			"cache": false,
+			"persistent": true
+		}
+	},
+	"globalEnv": ["NODE_ENV", "PORT", "ORIGIN", "PGA_TOUR_API_KEY"]
 }
