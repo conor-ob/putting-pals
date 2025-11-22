@@ -58,3 +58,4 @@ This will start the Fastify server and Ionic app using Vite for HMR
 - [x] implement text carousel for tournament info
 - [ ] implement service worker prompt to refresh
 - [ ] implement servic worker reload https://github.com/ccssmnn/tilly/blob/main/src/app/sw.ts https://github.com/ccssmnn/tilly/blob/main/src/app/lib/service-worker.ts
+- [ ] expo lint config

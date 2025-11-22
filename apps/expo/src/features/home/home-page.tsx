@@ -6,7 +6,7 @@ export function HomePage() {
   const { data } = useQuery(trpc.posts.getAll.queryOptions());
 
   return (
-    <View className="flex-1 items-center justify-center bg-background">
+    <View className="bg-background flex-1 items-center justify-center">
       {data?.map((post) => (
         <Text key={post.id} className="text-blue-500">
           {post.title}

@@ -1,10 +1,14 @@
-// https://docs.expo.dev/guides/using-eslint/
-const { defineConfig } = require('eslint/config');
-const expoConfig = require('eslint-config-expo/flat');
+import baseConfig from "@putting-pals/eslint/base";
+import reactConfig from "@putting-pals/eslint/react";
 
-module.exports = defineConfig([
-  expoConfig,
+// import expoConfig from "eslint-config-expo/flat.js";
+
+/** @type {import('typescript-eslint').Config} */
+export default [
   {
-    ignores: ['dist/*'],
+    ignores: ["workbox-config.js"],
   },
-]);
+  ...baseConfig,
+  ...reactConfig,
+  // ...expoConfig,
+];

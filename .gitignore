@@ -18,7 +18,6 @@ coverage
 out/
 build
 dist
-storybook-static
 
 # Debug
 npm-debug.log*
@@ -36,10 +35,3 @@ vite.config.ts.timestamp-*
 .cache
 tsconfig.tsbuildinfo
 tsconfig.*.tsbuildinfo
-
-# storybook
-*storybook.log
-/storybook-static
-
-# pwa
-dev-dist/

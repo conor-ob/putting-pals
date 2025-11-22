@@ -1,4 +1,5 @@
 name: 🌱 Setup
+description: Setup the project CI environment
 
 runs:
   using: "composite"
@@ -17,7 +18,7 @@ runs:
 
     - name: Copy env
       shell: bash
-      run: cp ./apps/server/.env.example ./apps/server/.env && cp ./apps/web/.env.example ./apps/web/.env
+      run: cp ./apps/server/.env.example ./apps/server/.env
 
     - name: Install deps
       shell: bash
