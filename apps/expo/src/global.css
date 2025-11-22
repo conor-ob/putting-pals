@@ -15,6 +15,7 @@
     }
 
     @variant dark {
+      /* biome-ignore lint/suspicious/noDuplicateCustomProperties: separate theme */
       --color-background: oklch(0.145 0 0);
       --color-foreground: oklch(0.985 0 0);
       --color-card: oklch(0.205 0 0);

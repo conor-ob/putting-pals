@@ -48,12 +48,14 @@
           navigator.serviceWorker
             .register("/sw.js")
             .then((registration) => {
+              // biome-ignore lint/suspicious/noConsole: logging registration
               console.log(
                 "Service Worker registered with scope:",
                 registration.scope,
               );
             })
             .catch((error) => {
+              // biome-ignore lint/suspicious/noConsole: logging error
               console.error("Service Worker registration failed:", error);
             });
         });

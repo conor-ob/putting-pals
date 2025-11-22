@@ -24,7 +24,6 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "dotenv": "^17.2.2",
