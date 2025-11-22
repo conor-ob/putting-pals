@@ -1,31 +1,31 @@
 {
-	"name": "@putting-pals/api",
-	"version": "0.0.0",
-	"type": "module",
-	"private": true,
-	"exports": {
-		"./router": "./src/api.ts",
-		"./context": "./src/context.ts",
-		"./types": "./src/types.ts"
-	},
-	"scripts": {
-		"clean": "git clean -xdf .cache .turbo node_modules",
-		"format": "biome format",
-		"format:fix": "biome format --write",
-		"lint": "biome lint",
-		"lint:fix": "biome lint --write",
-		"check": "biome check",
-		"check:fix": "biome check --write",
-		"typecheck": "tsc --noEmit true"
-	},
-	"dependencies": {
-		"@trpc/server": "catalog:",
-		"superjson": "catalog:",
-		"zod": "catalog:"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "catalog:",
-		"@total-typescript/tsconfig": "catalog:",
-		"typescript": "catalog:"
-	}
+  "name": "@putting-pals/api",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./router": "./src/api.ts",
+    "./context": "./src/context.ts",
+    "./types": "./src/types.ts"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "format": "biome format",
+    "format:fix": "biome format --write",
+    "lint": "biome lint",
+    "lint:fix": "biome lint --write",
+    "check": "biome check",
+    "check:fix": "biome check --write",
+    "typecheck": "tsc --noEmit true"
+  },
+  "dependencies": {
+    "@trpc/server": "catalog:",
+    "superjson": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@total-typescript/tsconfig": "catalog:",
+    "typescript": "catalog:"
+  }
 }

@@ -8,9 +8,7 @@ dotenv({
 });
 
 const envSchema = z.object({
-  NODE_ENV: z
-    .enum(["production", "development", "test"])
-    .default("development"),
+  NODE_ENV: z.enum(["production", "development", "test"]).default("development"),
   PORT: z
     .string()
     .transform((s) => parseInt(s, 10))

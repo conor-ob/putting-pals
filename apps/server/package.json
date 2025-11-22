@@ -1,42 +1,42 @@
 {
-	"name": "@putting-pals/server",
-	"version": "0.0.0",
-	"type": "module",
-	"private": true,
-	"scripts": {
-		"clean": "git clean -xdf .cache .turbo dist node_modules",
-		"build": "vite build",
-		"format": "biome format",
-		"format:fix": "biome format --write",
-		"lint": "biome lint",
-		"lint:fix": "biome lint --write",
-		"check": "biome check",
-		"check:fix": "biome check --write",
-		"typecheck": "tsc --noEmit true",
-		"test": "vitest",
-		"dev": "vite",
-		"start": "node dist/index.js"
-	},
-	"dependencies": {
-		"@fastify/cors": "^11.1.0",
-		"@fastify/rate-limit": "^10.3.0",
-		"@mgcrea/fastify-request-logger": "^1.9.1",
-		"@mgcrea/pino-pretty-compact": "^1.4.2",
-		"@putting-pals/api": "workspace:*",
-		"@trpc/server": "catalog:",
-		"fastify": "^5.6.0",
-		"pino": "^9.9.5",
-		"pino-pretty": "^13.1.1",
-		"zod": "catalog:"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "catalog:",
-		"@total-typescript/tsconfig": "catalog:",
-		"@types/node": "catalog:",
-		"dotenv": "^17.2.2",
-		"typescript": "catalog:",
-		"vite": "^7.1.5",
-		"vite-plugin-node": "^7.0.0",
-		"vite-tsconfig-paths": "^5.1.4"
-	}
+  "name": "@putting-pals/server",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "build": "vite build",
+    "format": "biome format",
+    "format:fix": "biome format --write",
+    "lint": "biome lint",
+    "lint:fix": "biome lint --write",
+    "check": "biome check",
+    "check:fix": "biome check --write",
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest",
+    "dev": "vite",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@fastify/rate-limit": "^10.3.0",
+    "@mgcrea/fastify-request-logger": "^1.9.1",
+    "@mgcrea/pino-pretty-compact": "^1.4.2",
+    "@putting-pals/api": "workspace:*",
+    "@trpc/server": "catalog:",
+    "fastify": "^5.6.0",
+    "pino": "^9.9.5",
+    "pino-pretty": "^13.1.1",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
+    "dotenv": "^17.2.2",
+    "typescript": "catalog:",
+    "vite": "^7.1.5",
+    "vite-plugin-node": "^7.0.0",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
 }
