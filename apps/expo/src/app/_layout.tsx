@@ -1,8 +1,9 @@
-import "@/global.css";
+import "~/global.css";
 
 import { Stack } from "expo-router";
-import { ThemeProvider } from "@/providers/theme/theme-provider";
-import { TrpcProvider } from "@/providers/trpc/trpc-provider";
+
+import { ThemeProvider } from "~/providers/theme/theme-provider";
+import { TrpcProvider } from "~/providers/trpc/trpc-provider";
 
 export default function Layout() {
   return (

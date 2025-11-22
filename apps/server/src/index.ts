@@ -1,5 +1,5 @@
-import { env } from "./env/schema";
-import { createServer } from "./server";
+import { env } from "~/env/schema";
+import { createServer } from "~/server";
 
 const server = createServer({
   logger: {

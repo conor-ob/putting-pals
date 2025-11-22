@@ -2,6 +2,7 @@
 import * as path from "path";
 import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 import { env } from "./src/env/schema";
 
@@ -17,6 +18,7 @@ export default defineConfig({
     port: env.PORT,
   },
   plugins: [
+    tsconfigPaths(),
     ...VitePluginNode({
       // Nodejs native Request adapter
       // currently this plugin support 'express', 'nest', 'koa' and 'fastify' out of box,
