@@ -1,10 +1,10 @@
 import type { Theme } from "@react-navigation/native";
-import { useColorScheme } from "react-native";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider as NavigationThemeProvider,
 } from "@react-navigation/native";
+import { useColorScheme } from "react-native";
 import { useCSSVariable } from "uniwind";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -26,9 +26,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     fonts,
   } satisfies Theme;
 
-  return (
-    <NavigationThemeProvider value={theme}>{children}</NavigationThemeProvider>
-  );
+  return <NavigationThemeProvider value={theme}>{children}</NavigationThemeProvider>;
 }
 
 function useThemeColor(cssVariable: string, fallback: string) {

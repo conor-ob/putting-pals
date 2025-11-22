@@ -8,10 +8,12 @@
   "scripts": {
     "clean": "turbo clean && git clean -xdf node_modules",
     "build": "turbo build",
-    "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
-    "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
-    "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
-    "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
+    "format": "biome format .",
+    "format:fix": "biome format --write .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo typecheck",
@@ -20,11 +22,9 @@
     "start": "turbo start"
   },
   "devDependencies": {
-    "@putting-pals/prettier": "workspace:*",
-    "prettier": "catalog:",
+    "@biomejs/biome": "2.3.7",
     "turbo": "^2.5.8",
     "typescript": "catalog:",
     "vitest": "^3.2.4"
-  },
-  "prettier": "@putting-pals/prettier"
+  }
 }

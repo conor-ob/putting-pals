@@ -1,5 +1,5 @@
-import type { FastifyInstance } from "fastify";
 import FastifyRateLimit from "@fastify/rate-limit";
+import type { FastifyInstance } from "fastify";
 
 export default function (fastify: FastifyInstance) {
   fastify.register(FastifyRateLimit, {

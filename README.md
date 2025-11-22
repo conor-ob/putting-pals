@@ -1,6 +1,6 @@
 # v0 template
 
-This is a full-stack [Turborepo](https://turbo.build/) template using a Fastify server on the backend and an Ionic PWA on the frontend which are both sitting behind a Caddy reverse proxy
+This is a full-stack [Turborepo](https://turbo.build/) template using a Fastify server on the backend and an Expo app on the frontend which are both sitting behind a Caddy reverse proxy
 
 ## What's inside?
 
@@ -8,23 +8,21 @@ This template includes the following packages/apps:
 
 ### Apps
 
+- `expo`: [Expo](https://expo.dev/) app
 - `proxy`: [Caddy](https://caddyserver.com/) reverse proxy
 - `server`: [Fastify](https://fastify.dev/) server
-- `web`: [Ionic](https://ionicframework.com/) PWA
 
 ### Packages
 
 - `api`: [tRPC](https://trpc.io/) router
-- `ui`: [Shadcn](https://ui.shadcn.com/) component library
 
 ### Tooling
 
-- `eslint`: [ESLint](https://eslint.org/) configuration
-- `prettier`: [Prettier](https://prettier.io/) configuration
+- `biome`: [Biome](https://biomejs.dev/) configuration
 
 ## Using this template
 
-1. Copy `.env.example` into `.env` in both `server` and `web`
+1. Copy `.env.example` into `.env` in `server`
 
 2. Install dependencies with pnpm:
 
@@ -38,7 +36,7 @@ pnpm install
 pnpm dev
 ```
 
-This will start the Fastify server and Ionic app using Vite for HMR
+This will start the Fastify server and Expo app
 
 ## TODO
 

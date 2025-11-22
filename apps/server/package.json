@@ -6,8 +6,6 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "build": "vite build",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
     "typecheck": "tsc --noEmit true",
     "test": "vitest",
     "dev": "vite",
@@ -26,8 +24,6 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@putting-pals/eslint": "workspace:*",
-    "@putting-pals/prettier": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "dotenv": "^17.2.2",
@@ -35,6 +31,5 @@
     "vite": "^7.1.5",
     "vite-plugin-node": "^7.0.0",
     "vite-tsconfig-paths": "^5.1.4"
-  },
-  "prettier": "@putting-pals/prettier"
+  }
 }

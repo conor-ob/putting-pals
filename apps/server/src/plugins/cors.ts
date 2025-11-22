@@ -1,6 +1,5 @@
-import type { FastifyInstance } from "fastify";
 import FastifyCors from "@fastify/cors";
-
+import type { FastifyInstance } from "fastify";
 import { env } from "~/env/schema";
 
 export default function (fastify: FastifyInstance) {

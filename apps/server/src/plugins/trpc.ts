@@ -1,13 +1,12 @@
+import { createTrpcContext } from "@putting-pals/api/context";
+import type { AppRouter } from "@putting-pals/api/router";
+import { appRouter } from "@putting-pals/api/router";
 import type {
   CreateFastifyContextOptions,
   FastifyTRPCPluginOptions,
 } from "@trpc/server/adapters/fastify";
-import type { FastifyInstance } from "fastify";
 import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
-
-import type { AppRouter } from "@putting-pals/api/router";
-import { createTrpcContext } from "@putting-pals/api/context";
-import { appRouter } from "@putting-pals/api/router";
+import type { FastifyInstance } from "fastify";
 
 export default function (fastify: FastifyInstance) {
   fastify.register(fastifyTRPCPlugin, {

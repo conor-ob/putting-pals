@@ -1,6 +1,5 @@
-import { Text, View } from "react-native";
 import { useQuery } from "@tanstack/react-query";
-
+import { Text, View } from "react-native";
 import { trpc } from "~/providers/trpc/utils/trpc";
 
 export function HomePage() {

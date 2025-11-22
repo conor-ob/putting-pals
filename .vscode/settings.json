@@ -1,23 +1,16 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "biomejs.biome",
   "[typescript,typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "editor.formatOnSave": true,
-  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
-  "eslint.runtime": "node",
-  "eslint.workingDirectories": [
-    { "pattern": "apps/*/" },
-    { "pattern": "packages/*/" },
-    { "pattern": "tooling/*/" }
-  ],
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "prettier.ignorePath": ".gitignore",
   "tailwindCSS.classAttributes": [
     "class",
     "className",
