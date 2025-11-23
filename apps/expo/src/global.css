@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noDuplicateCustomProperties: separate theme */
 @import "tailwindcss";
 @import "uniwind";
 
@@ -10,12 +11,20 @@
       --color-card-foreground: oklch(0.145 0 0);
       --color-primary: oklch(0.205 0 0);
       --color-primary-foreground: oklch(0.985 0 0);
+      --color-secondary: oklch(0.97 0 0);
+      --color-secondary-foreground: oklch(0.205 0 0);
+      --color-muted: oklch(0.97 0 0);
+      --color-muted-foreground: oklch(0.556 0 0);
       --color-border: oklch(0.8 0 0);
       --color-notification: oklch(0.577 0.245 27.325);
+      --color-pga-blue: oklch(0.4012 0.0988 256.08);
+      --color-pga-gray: oklch(0.6665 0 0);
+      --color-pga-green: oklch(0.5484 0.1068 161.53);
+      --color-pga-red: oklch(0.5941 0.243796 29.2339);
+      --color-pga-yellow: oklch(0.9022 0.188359 101.2275);
     }
 
     @variant dark {
-      /* biome-ignore lint/suspicious/noDuplicateCustomProperties: separate theme */
       --color-background: oklch(0.145 0 0);
       --color-foreground: oklch(0.985 0 0);
       --color-card: oklch(0.205 0 0);
@@ -23,7 +32,16 @@
       --color-border: oklch(0.2 0 0);
       --color-primary: oklch(0.922 0 0);
       --color-primary-foreground: oklch(0.205 0 0);
+      --color-secondary: oklch(0.269 0 0);
+      --color-secondary-foreground: oklch(0.985 0 0);
+      --color-muted: oklch(0.269 0 0);
+      --color-muted-foreground: oklch(0.708 0 0);
       --color-notification: oklch(0.637 0.237 25.331);
+      --color-pga-blue: oklch(0.4012 0.0988 256.08);
+      --color-pga-gray: oklch(0.6665 0 0);
+      --color-pga-green: oklch(0.5484 0.1068 161.53);
+      --color-pga-red: oklch(0.5941 0.243796 29.2339);
+      --color-pga-yellow: oklch(0.9022 0.188359 101.2275);
     }
   }
 }
