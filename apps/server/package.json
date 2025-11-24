@@ -16,7 +16,7 @@
     "@fastify/rate-limit": "^10.3.0",
     "@mgcrea/fastify-request-logger": "^1.9.1",
     "@mgcrea/pino-pretty-compact": "^1.4.2",
-    "@putting-pals/api": "workspace:*",
+    "@putting-pals/putting-pals-api": "workspace:*",
     "@trpc/server": "catalog:",
     "fastify": "^5.6.0",
     "pino": "^9.9.5",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
-    "dotenv": "^17.2.2",
+    "dotenv": "catalog:",
     "typescript": "catalog:",
     "vite": "^7.1.5",
     "vite-plugin-node": "^7.0.0",

@@ -11,6 +11,9 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
   "tailwindCSS.classAttributes": [
     "class",
     "className",
@@ -41,7 +44,14 @@
     "ListFooterComponentClassName",
     "ListHeaderComponentClassName"
   ],
-  "tailwindCSS.classFunctions": ["useResolveClassNames"],
+  "tailwindCSS.classFunctions": [
+    "clsx",
+    "cn",
+    "cva",
+    "cx",
+    "twMerge",
+    "useResolveClassNames"
+  ],
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }

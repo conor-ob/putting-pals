@@ -9,7 +9,8 @@ import registerTrpcPlugin from "~/plugins/trpc";
 import registerHealthCheckRoute from "~/routes/health";
 
 export function createServer(opts?: FastifyServerOptions) {
-  const fastify: FastifyInstance<Server, IncomingMessage, ServerResponse> = Fastify(opts);
+  const fastify: FastifyInstance<Server, IncomingMessage, ServerResponse> =
+    Fastify(opts);
 
   registerLoggerPlugin(fastify);
   registerCorsPlugin(fastify);

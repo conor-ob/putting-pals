@@ -1,0 +1,22 @@
+{
+  "name": "@putting-pals/putting-pals-core",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
+    "./tournament": "./src/tournament/tournament-service.ts"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "typecheck": "tsc --noEmit true"
+  },
+  "dependencies": {
+    "@putting-pals/pga-tour-api": "workspace:*",
+    "@putting-pals/pga-tour-scaper": "workspace:*"
+  },
+  "devDependencies": {
+    "@total-typescript/tsconfig": "catalog:",
+    "typescript": "catalog:"
+  }
+}

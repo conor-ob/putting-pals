@@ -1,0 +1,27 @@
+{
+  "name": "@putting-pals/pga-tour-api",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./leaderboard": "./src/client/leaderboard-client.ts",
+    "./tournament": "./src/client/tournament-client.ts"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "typecheck": "tsc --noEmit true"
+  },
+  "dependencies": {
+    "dotenv": "catalog:",
+    "pako": "^2.1.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/typescript": "^5.0.5",
+    "@total-typescript/tsconfig": "catalog:",
+    "@types/pako": "^2.0.4",
+    "typescript": "catalog:"
+  }
+}

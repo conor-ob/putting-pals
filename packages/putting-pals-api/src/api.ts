@@ -1,4 +1,5 @@
-import { postsRouter } from "./router/posts";
+import { leaderboardRouter } from "./router/leaderboard";
+import { tournamentRouter } from "./router/tournament";
 import { createCallerFactory, router } from "./trpc";
 
 /**
@@ -7,7 +8,8 @@ import { createCallerFactory, router } from "./trpc";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = router({
-  posts: postsRouter,
+  leaderboard: leaderboardRouter,
+  tournament: tournamentRouter,
 });
 
 export type AppRouter = typeof appRouter;

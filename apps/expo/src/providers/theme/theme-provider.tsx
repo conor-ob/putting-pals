@@ -26,7 +26,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     fonts,
   } satisfies Theme;
 
-  return <NavigationThemeProvider value={theme}>{children}</NavigationThemeProvider>;
+  return (
+    <NavigationThemeProvider value={theme}>{children}</NavigationThemeProvider>
+  );
 }
 
 function useThemeColor(cssVariable: string, fallback: string) {
