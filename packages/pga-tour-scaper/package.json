@@ -1,21 +1,17 @@
 {
-  "name": "@putting-pals/api",
+  "name": "@putting-pals/pga-tour-scaper",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./router": "./src/api.ts",
-    "./context": "./src/context.ts",
-    "./types": "./src/types.ts"
+    "./scraper": "./src/scraper.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@trpc/server": "catalog:",
-    "superjson": "catalog:",
-    "zod": "catalog:"
+    "cheerio": "^1.1.2"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",

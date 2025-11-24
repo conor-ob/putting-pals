@@ -12,6 +12,12 @@ import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify"
  *
  * @see https://trpc.io/docs/server/context
  */
-export function createTrpcContext({ opts }: { opts: CreateFastifyContextOptions }) {
-  return { opts };
+export function createTrpcContext({
+  opts,
+  apiKey,
+}: {
+  opts: CreateFastifyContextOptions;
+  apiKey: string;
+}) {
+  return { opts, apiKey };
 }
