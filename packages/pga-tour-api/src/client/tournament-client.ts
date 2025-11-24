@@ -1,4 +1,4 @@
-import type { Tournament } from "../types/types";
+import type { Tournament } from "../api/types";
 import { GraphQlClient } from "./graphql-client";
 
 export class TournamentClient extends GraphQlClient {

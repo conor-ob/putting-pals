@@ -36,12 +36,31 @@ export class LeaderboardService {
                     countryFlag: row.player.countryFlag,
                   }),
                 },
+                scoringData: {
+                  ...row.scoringData,
+                  totalSort: this.fixTotalSort(
+                    row.scoringData.total,
+                    row.scoringData.totalSort,
+                  ),
+                },
               } satisfies typeof row;
             } else {
               return row;
             }
           }),
-        };
+        } satisfies typeof leaderboard;
       });
+  }
+
+  private fixTotalSort(total: string, totalSort: number) {
+    if (total.startsWith("-") && totalSort > 0) {
+      // biome-ignore lint/suspicious/noConsole: logging PGA Tour API issue
+      console.warn(
+        `totalSort: ${totalSort} is positive for negative total: ${total}`,
+      );
+      return -parseInt(total.slice(1), 10);
+    } else {
+      return totalSort;
+    }
   }
 }

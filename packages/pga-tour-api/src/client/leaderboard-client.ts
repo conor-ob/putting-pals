@@ -1,5 +1,5 @@
 import pako from "pako";
-import type { LeaderboardCompressedV3, LeaderboardV3 } from "../types/types";
+import type { LeaderboardCompressedV3, LeaderboardV3 } from "../api/types";
 import { GraphQlClient } from "./graphql-client";
 
 export class LeaderboardClient extends GraphQlClient {

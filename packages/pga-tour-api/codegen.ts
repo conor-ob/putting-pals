@@ -13,7 +13,7 @@ const config: CodegenConfig = {
     },
   ],
   generates: {
-    "src/types.ts": {
+    "src/api/types.ts": {
       plugins: ["typescript"],
     },
   },
