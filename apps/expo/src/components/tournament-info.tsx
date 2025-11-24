@@ -1,6 +1,6 @@
 import { Text, View, type ViewProps } from "react-native";
+import type { Tournament } from "~/components/tournament-header";
 import { cn } from "~/lib/utils";
-import type { Tournament } from "./tournament-header";
 
 export function TournamentInfo({
   className,

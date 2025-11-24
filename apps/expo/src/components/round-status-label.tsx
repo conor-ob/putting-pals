@@ -1,8 +1,9 @@
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
-import { Text, type TextProps } from "react-native";
+import type { TextProps } from "react-native";
+import type { Tournament } from "~/components/tournament-header";
+import { Text } from "~/components/ui/text";
 import { cn } from "~/lib/utils";
-import type { Tournament } from "./tournament-header";
 
 const roundStatusLabelVariants = cva(
   // "inline-flex items-center gap-x-1.5 rounded-sm px-1.5 py-0.5 text-sm font-bold uppercase leading-tight tracking-tight transition-colors",

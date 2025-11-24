@@ -1,8 +1,9 @@
 import { View, type ViewProps } from "react-native";
+import { RoundStatusBadge } from "~/components/round-status-badge";
+import { RoundStatusLabel } from "~/components/round-status-label";
+import type { Tournament } from "~/components/tournament-header";
+import { Text } from "~/components/ui/text";
 import { cn } from "~/lib/utils";
-import { RoundStatusBadge } from "./round-status-badge";
-import { RoundStatusLabel } from "./round-status-label";
-import type { Tournament } from "./tournament-header";
 
 export function TournamentStatus({
   className,
@@ -13,7 +14,7 @@ export function TournamentStatus({
     return (
       <View className={cn("flex flex-row items-center gap-1.5", className)} {...props}>
         <RoundStatusBadge color={tournament.roundStatusColor}>
-          {tournament.roundDisplay}
+          <Text>{tournament.roundDisplay}</Text>
         </RoundStatusBadge>
         <RoundStatusLabel className="line-clamp-1" color={tournament.roundStatusColor}>
           {tournament.roundStatusDisplay}

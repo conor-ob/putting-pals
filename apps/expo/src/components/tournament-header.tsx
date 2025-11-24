@@ -1,9 +1,9 @@
 import { View, type ViewProps } from "react-native";
+import { TournamentInfo } from "~/components/tournament-info";
+import { TournamentLogo } from "~/components/tournament-logo";
+import { TournamentName } from "~/components/tournament-name";
+import { TournamentStatus } from "~/components/tournament-status";
 import { cn } from "~/lib/utils";
-import { TournamentInfo } from "./tournament-info";
-import { TournamentLogo } from "./tournament-logo";
-import { TournamentName } from "./tournament-name";
-import { TournamentStatus } from "./tournament-status";
 
 export type Tournament = {
   beautyImage: string;

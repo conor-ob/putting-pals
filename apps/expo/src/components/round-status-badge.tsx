@@ -1,32 +1,60 @@
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
-import { Text, type TextProps } from "react-native";
+import { View, type ViewProps } from "react-native";
+import * as Slot from "~/components/primitives/slot";
+import type { Tournament } from "~/components/tournament-header";
+import { badgeTextVariants, badgeVariants } from "~/components/ui/badge";
+import { TextClassContext } from "~/components/ui/text";
 import { cn } from "~/lib/utils";
-import type { Tournament } from "./tournament-header";
 
-const roundStatusBadgeVariants = cva(
-  // "inline-flex items-center gap-x-1.5 rounded-sm px-1.5 py-0.5 text-xs font-bold uppercase leading-tight tracking-tight transition-colors",
-  "rounded-sm px-1.5 py-0.5 text-sm font-semibold uppercase leading-tight tracking-tight",
-  {
-    variants: {
-      color: {
-        BLUE: "bg-pga-blue text-foreground",
-        GRAY: "bg-pga-gray text-foreground",
-        GREEN: "bg-pga-green text-foreground",
-        RED: "bg-pga-red text-foreground",
-        YELLOW: "bg-pga-yellow text-foreground",
-      } satisfies Record<Tournament["roundStatusColor"], string>,
-    },
-    defaultVariants: {
-      color: "GRAY",
-    },
+const roundStatusBadgeVariants = cva("px-1.5 py-0.25", {
+  variants: {
+    color: {
+      BLUE: "bg-pga-blue",
+      GRAY: "bg-pga-gray",
+      GREEN: "bg-pga-green",
+      RED: "bg-pga-red",
+      YELLOW: "bg-pga-yellow",
+    } satisfies Record<Tournament["roundStatusColor"], string>,
   },
-);
+  defaultVariants: {
+    color: "GRAY",
+  },
+});
 
-export function RoundStatusBadge({
-  className,
-  color,
-  ...props
-}: TextProps & VariantProps<typeof roundStatusBadgeVariants>) {
-  return <Text className={cn(roundStatusBadgeVariants({ color }), className)} {...props} />;
+const roundStatusBadgeTextVariants = cva("text-xs font-semibold", {
+  variants: {
+    color: {
+      BLUE: "text-white",
+      GRAY: "text-white",
+      GREEN: "text-white",
+      RED: "text-white",
+      YELLOW: "text-black",
+    } satisfies Record<Tournament["roundStatusColor"], string>,
+  },
+  defaultVariants: {
+    color: "GRAY",
+  },
+});
+
+type RoundStatusBadgeProps = ViewProps &
+  React.RefAttributes<View> & {
+    asChild?: boolean;
+  } & VariantProps<typeof roundStatusBadgeVariants>;
+
+function RoundStatusBadge({ className, color, asChild, ...props }: RoundStatusBadgeProps) {
+  const Component = asChild ? Slot.View : View;
+  return (
+    <TextClassContext.Provider
+      value={cn(badgeTextVariants(), roundStatusBadgeTextVariants({ color }))}
+    >
+      <Component
+        className={cn(badgeVariants(), roundStatusBadgeVariants({ color }), className)}
+        {...props}
+      />
+    </TextClassContext.Provider>
+  );
 }
+
+export { RoundStatusBadge, roundStatusBadgeTextVariants, roundStatusBadgeVariants };
+export type { RoundStatusBadgeProps };
