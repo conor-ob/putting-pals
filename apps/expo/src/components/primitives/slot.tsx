@@ -17,24 +17,27 @@ import {
   StyleSheet,
 } from "react-native";
 
-const Pressable = React.forwardRef<React.ElementRef<typeof RNPressable>, RNPressableProps>(
-  (props, forwardedRef) => {
-    const { children, ...pressableSlotProps } = props;
+const Pressable = React.forwardRef<
+  React.ElementRef<typeof RNPressable>,
+  RNPressableProps
+>((props, forwardedRef) => {
+  const { children, ...pressableSlotProps } = props;
 
-    if (!React.isValidElement(children)) {
-      console.log("Slot.Pressable - Invalid asChild element", children);
-      return null;
-    }
+  if (!React.isValidElement(children)) {
+    console.log("Slot.Pressable - Invalid asChild element", children);
+    return null;
+  }
 
-    return React.cloneElement<
-      React.ComponentPropsWithoutRef<typeof RNPressable>,
-      React.ElementRef<typeof RNPressable>
-    >(isTextChildren(children) ? <></> : children, {
-      ...mergeProps(pressableSlotProps, children.props as AnyProps),
-      ref: forwardedRef ? composeRefs(forwardedRef, (children as any).ref) : (children as any).ref,
-    });
-  },
-);
+  return React.cloneElement<
+    React.ComponentPropsWithoutRef<typeof RNPressable>,
+    React.ElementRef<typeof RNPressable>
+  >(isTextChildren(children) ? <></> : children, {
+    ...mergeProps(pressableSlotProps, children.props as AnyProps),
+    ref: forwardedRef
+      ? composeRefs(forwardedRef, (children as any).ref)
+      : (children as any).ref,
+  });
+});
 
 Pressable.displayName = "SlotPressable";
 
@@ -52,7 +55,9 @@ const View = React.forwardRef<React.ElementRef<typeof RNView>, RNViewProps>(
       React.ElementRef<typeof RNView>
     >(isTextChildren(children) ? <></> : children, {
       ...mergeProps(viewSlotProps, children.props as AnyProps),
-      ref: forwardedRef ? composeRefs(forwardedRef, (children as any).ref) : (children as any).ref,
+      ref: forwardedRef
+        ? composeRefs(forwardedRef, (children as any).ref)
+        : (children as any).ref,
     });
   },
 );
@@ -73,7 +78,9 @@ const Text = React.forwardRef<React.ElementRef<typeof RNText>, RNTextProps>(
       React.ElementRef<typeof RNText>
     >(isTextChildren(children) ? <></> : children, {
       ...mergeProps(textSlotProps, children.props as AnyProps),
-      ref: forwardedRef ? composeRefs(forwardedRef, (children as any).ref) : (children as any).ref,
+      ref: forwardedRef
+        ? composeRefs(forwardedRef, (children as any).ref)
+        : (children as any).ref,
     });
   },
 );
@@ -84,24 +91,27 @@ type ImageSlotProps = RNImageProps & {
   children?: React.ReactNode;
 };
 
-const Image = React.forwardRef<React.ElementRef<typeof RNImage>, ImageSlotProps>(
-  (props, forwardedRef) => {
-    const { children, ...imageSlotProps } = props;
+const Image = React.forwardRef<
+  React.ElementRef<typeof RNImage>,
+  ImageSlotProps
+>((props, forwardedRef) => {
+  const { children, ...imageSlotProps } = props;
 
-    if (!React.isValidElement(children)) {
-      console.log("Slot.Image - Invalid asChild element", children);
-      return null;
-    }
+  if (!React.isValidElement(children)) {
+    console.log("Slot.Image - Invalid asChild element", children);
+    return null;
+  }
 
-    return React.cloneElement<
-      React.ComponentPropsWithoutRef<typeof RNImage>,
-      React.ElementRef<typeof RNImage>
-    >(isTextChildren(children) ? <></> : children, {
-      ...mergeProps(imageSlotProps, children.props as AnyProps),
-      ref: forwardedRef ? composeRefs(forwardedRef, (children as any).ref) : (children as any).ref,
-    });
-  },
-);
+  return React.cloneElement<
+    React.ComponentPropsWithoutRef<typeof RNImage>,
+    React.ElementRef<typeof RNImage>
+  >(isTextChildren(children) ? <></> : children, {
+    ...mergeProps(imageSlotProps, children.props as AnyProps),
+    ref: forwardedRef
+      ? composeRefs(forwardedRef, (children as any).ref)
+      : (children as any).ref,
+  });
+});
 
 Image.displayName = "SlotImage";
 
@@ -150,7 +160,9 @@ function mergeProps(slotProps: AnyProps, childProps: AnyProps) {
     else if (propName === "style") {
       overrideProps[propName] = combineStyles(slotPropValue, childPropValue);
     } else if (propName === "className") {
-      overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
+      overrideProps[propName] = [slotPropValue, childPropValue]
+        .filter(Boolean)
+        .join(" ");
     }
   }
 
@@ -169,12 +181,16 @@ function combineStyles(slotStyle?: Style, childValue?: Style) {
   }
   if (typeof slotStyle === "function") {
     return (state: PressableStateCallbackType) => {
-      return childValue ? StyleSheet.flatten([slotStyle(state), childValue]) : slotStyle(state);
+      return childValue
+        ? StyleSheet.flatten([slotStyle(state), childValue])
+        : slotStyle(state);
     };
   }
   if (typeof childValue === "function") {
     return (state: PressableStateCallbackType) => {
-      return slotStyle ? StyleSheet.flatten([slotStyle, childValue(state)]) : childValue(state);
+      return slotStyle
+        ? StyleSheet.flatten([slotStyle, childValue(state)])
+        : childValue(state);
     };
   }
 
@@ -182,7 +198,9 @@ function combineStyles(slotStyle?: Style, childValue?: Style) {
 }
 
 export function isTextChildren(
-  children: React.ReactNode | ((state: PressableStateCallbackType) => React.ReactNode),
+  children:
+    | React.ReactNode
+    | ((state: PressableStateCallbackType) => React.ReactNode),
 ) {
   return Array.isArray(children)
     ? children.every((child) => typeof child === "string")

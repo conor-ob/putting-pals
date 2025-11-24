@@ -26,7 +26,9 @@ const badgeVariants = cva(
           "bg-destructive border-transparent",
           Platform.select({ web: "[a&]:hover:bg-destructive/90" }),
         ),
-        outline: Platform.select({ web: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground" }),
+        outline: Platform.select({
+          web: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        }),
       },
     },
     defaultVariants: {
@@ -58,7 +60,10 @@ function Badge({ className, variant, asChild, ...props }: BadgeProps) {
   const Component = asChild ? Slot.View : View;
   return (
     <TextClassContext.Provider value={badgeTextVariants({ variant })}>
-      <Component className={cn(badgeVariants({ variant }), className)} {...props} />
+      <Component
+        className={cn(badgeVariants({ variant }), className)}
+        {...props}
+      />
     </TextClassContext.Provider>
   );
 }

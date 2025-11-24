@@ -29,5 +29,10 @@ export function RoundStatusLabel({
   color,
   ...props
 }: TextProps & VariantProps<typeof roundStatusLabelVariants>) {
-  return <Text className={cn(roundStatusLabelVariants({ color }), className)} {...props} />;
+  return (
+    <Text
+      className={cn(roundStatusLabelVariants({ color }), className)}
+      {...props}
+    />
+  );
 }

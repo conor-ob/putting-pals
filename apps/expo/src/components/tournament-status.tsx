@@ -11,11 +11,17 @@ export function TournamentStatus({
 }: { tournament: Tournament } & ViewProps) {
   if (isTournamentInProgress(tournament)) {
     return (
-      <View className={cn("flex flex-row items-center gap-1.5", className)} {...props}>
+      <View
+        className={cn("flex flex-row items-center gap-1.5", className)}
+        {...props}
+      >
         <RoundStatusBadge color={tournament.roundStatusColor}>
           {tournament.roundDisplay}
         </RoundStatusBadge>
-        <RoundStatusLabel className="line-clamp-1" color={tournament.roundStatusColor}>
+        <RoundStatusLabel
+          className="line-clamp-1"
+          color={tournament.roundStatusColor}
+        >
           {tournament.roundStatusDisplay}
         </RoundStatusLabel>
       </View>
@@ -33,9 +39,11 @@ export function TournamentStatus({
 
 function isTournamentInProgress(tournament: Tournament) {
   const isNotStarted =
-    tournament.tournamentStatus === "NOT_STARTED" && tournament.roundStatus === "UPCOMING";
+    tournament.tournamentStatus === "NOT_STARTED" &&
+    tournament.roundStatus === "UPCOMING";
   const isCompleted =
-    tournament.tournamentStatus === "COMPLETED" && tournament.roundStatus === "OFFICIAL";
+    tournament.tournamentStatus === "COMPLETED" &&
+    tournament.roundStatus === "OFFICIAL";
 
   return !isNotStarted && !isCompleted;
 }

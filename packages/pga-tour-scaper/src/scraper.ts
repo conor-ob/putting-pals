@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/suspicious/noConsole: N/A */
+/** biome-ignore-all lint/suspicious/noExplicitAny: N/A */
 import * as cheerio from "cheerio";
 
 export class PgaTourWebScraper {

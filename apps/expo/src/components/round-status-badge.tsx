@@ -40,13 +40,27 @@ type RoundStatusBadgeProps = ViewProps &
   React.RefAttributes<View> &
   VariantProps<typeof roundStatusBadgeVariants>;
 
-function RoundStatusBadge({ className, color, children, ...props }: RoundStatusBadgeProps) {
+function RoundStatusBadge({
+  className,
+  color,
+  children,
+  ...props
+}: RoundStatusBadgeProps) {
   return (
-    <Badge className={cn(roundStatusBadgeVariants({ color }), className)} {...props}>
-      <Text className={cn(roundStatusBadgeTextVariants({ color }))}>{children}</Text>
+    <Badge
+      className={cn(roundStatusBadgeVariants({ color }), className)}
+      {...props}
+    >
+      <Text className={cn(roundStatusBadgeTextVariants({ color }))}>
+        {children}
+      </Text>
     </Badge>
   );
 }
 
-export { RoundStatusBadge, roundStatusBadgeTextVariants, roundStatusBadgeVariants };
+export {
+  RoundStatusBadge,
+  roundStatusBadgeTextVariants,
+  roundStatusBadgeVariants,
+};
 export type { RoundStatusBadgeProps };
