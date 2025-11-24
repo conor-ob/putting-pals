@@ -1,6 +1,6 @@
 import { View, type ViewProps } from "react-native";
 import { cn } from "~/lib/utils";
-import { RoundStatusBadge } from "./round-status.badge";
+import { RoundStatusBadge } from "./round-status-badge";
 import { RoundStatusLabel } from "./round-status-label";
 import type { Tournament } from "./tournament-header";
 
@@ -34,7 +34,17 @@ export function TournamentStatus({
 function isTournamentInProgress(tournament: Tournament) {
   const isTournamentNotStarted =
     tournament.tournamentStatus === "NOT_STARTED" && tournament.roundStatus === "UPCOMING";
+
+  if (isTournamentNotStarted) {
+    return false;
+  }
+
   const isTournamentCompleted =
     tournament.tournamentStatus === "COMPLETED" && tournament.roundStatus === "OFFICIAL";
-  return !isTournamentNotStarted && !isTournamentCompleted;
+
+  if (isTournamentCompleted) {
+    return false;
+  }
+
+  return true;
 }

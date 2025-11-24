@@ -6,7 +6,7 @@ import type { Tournament } from "./tournament-header";
 
 const roundStatusBadgeVariants = cva(
   // "inline-flex items-center gap-x-1.5 rounded-sm px-1.5 py-0.5 text-xs font-bold uppercase leading-tight tracking-tight transition-colors",
-  "rounded-sm px-1.5 py-0.5 text-sm font-bold uppercase leading-tight tracking-tight",
+  "rounded-sm px-1.5 py-0.5 text-sm font-semibold uppercase leading-tight tracking-tight",
   {
     variants: {
       color: {

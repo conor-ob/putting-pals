@@ -8,7 +8,7 @@ export function HomePage() {
 
   return (
     <View className="">
-      <TournamentHeader tournament={tournament} />
+      <TournamentHeader tournament={tournament} className="p-4" />
       {/* {data?.map((post) => (
         <Text key={post.id} className="text-blue-500">
           {post.title}
