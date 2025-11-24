@@ -1,10 +1,9 @@
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
-import { View, type ViewProps } from "react-native";
-import * as Slot from "~/components/primitives/slot";
+import type { View, ViewProps } from "react-native";
 import type { Tournament } from "~/components/tournament-header";
-import { badgeTextVariants, badgeVariants } from "~/components/ui/badge";
-import { TextClassContext } from "~/components/ui/text";
+import { Badge } from "~/components/ui/badge";
+import { Text } from "~/components/ui/text";
 import { cn } from "~/lib/utils";
 
 const roundStatusBadgeVariants = cva("px-1.5 py-0.25", {
@@ -38,21 +37,14 @@ const roundStatusBadgeTextVariants = cva("text-xs font-semibold", {
 });
 
 type RoundStatusBadgeProps = ViewProps &
-  React.RefAttributes<View> & {
-    asChild?: boolean;
-  } & VariantProps<typeof roundStatusBadgeVariants>;
+  React.RefAttributes<View> &
+  VariantProps<typeof roundStatusBadgeVariants>;
 
-function RoundStatusBadge({ className, color, asChild, ...props }: RoundStatusBadgeProps) {
-  const Component = asChild ? Slot.View : View;
+function RoundStatusBadge({ className, color, children, ...props }: RoundStatusBadgeProps) {
   return (
-    <TextClassContext.Provider
-      value={cn(badgeTextVariants(), roundStatusBadgeTextVariants({ color }))}
-    >
-      <Component
-        className={cn(badgeVariants(), roundStatusBadgeVariants({ color }), className)}
-        {...props}
-      />
-    </TextClassContext.Provider>
+    <Badge className={cn(roundStatusBadgeVariants({ color }), className)} {...props}>
+      <Text className={cn(roundStatusBadgeTextVariants({ color }))}>{children}</Text>
+    </Badge>
   );
 }
 
