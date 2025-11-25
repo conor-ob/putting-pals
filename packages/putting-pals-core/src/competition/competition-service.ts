@@ -1,12 +1,11 @@
-import { Database } from "@putting-pals/putting-pals-data/database";
+import { FileReader } from "@putting-pals/putting-pals-data/file-reader";
 import { CompetitionSchema } from "@putting-pals/putting-pals-schema/schemas";
 
 export class CompetitionService {
   async getAllCompetitions() {
-    const database = new Database();
-    return database.getAllCompetitions().then((competitions) => {
-      return competitions.map((competition) =>
-        CompetitionSchema.parse(competition),
+    return new FileReader().readAllCompetitionFiles().then((fileContents) => {
+      return fileContents.map((fileContent) =>
+        CompetitionSchema.parse(fileContent),
       );
     });
   }
