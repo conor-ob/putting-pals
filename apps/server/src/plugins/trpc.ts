@@ -1,6 +1,8 @@
 import { createTrpcContext } from "@putting-pals/putting-pals-api/context";
-import type { AppRouter } from "@putting-pals/putting-pals-api/router";
-import { appRouter } from "@putting-pals/putting-pals-api/router";
+import {
+  type AppRouter,
+  appRouter,
+} from "@putting-pals/putting-pals-api/router";
 import type {
   CreateFastifyContextOptions,
   FastifyTRPCPluginOptions,

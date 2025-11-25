@@ -1,4 +1,4 @@
-import type { Tournament } from "../api/types";
+import type { Tournament } from "@putting-pals/pga-tour-schema/types";
 import { GraphQlClient } from "./graphql-client";
 
 export class TournamentClient extends GraphQlClient {
@@ -8,6 +8,7 @@ export class TournamentClient extends GraphQlClient {
         tournaments: Tournament[];
       };
     }>({
+      operationName: "Tournaments",
       query: `
         query Tournaments($ids: [ID!]) {
           tournaments(ids: $ids) {

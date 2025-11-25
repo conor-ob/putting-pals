@@ -6,9 +6,11 @@ export class GraphQlClient {
   }
 
   protected async query<TResult = unknown>({
+    operationName,
     query,
     variables,
   }: {
+    operationName: string;
     query: string;
     variables: Record<string, unknown>;
   }) {
@@ -18,7 +20,7 @@ export class GraphQlClient {
         "Content-Type": "application/json",
         "X-Api-Key": this.pgaTourApiKey,
       },
-      body: JSON.stringify({ query, variables }),
+      body: JSON.stringify({ operationName, query, variables }),
     }).then((res) => res.json()) as Promise<TResult>;
   }
 }

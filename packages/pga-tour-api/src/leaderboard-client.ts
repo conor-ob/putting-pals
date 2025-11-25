@@ -1,5 +1,8 @@
+import type {
+  LeaderboardCompressedV3,
+  LeaderboardV3,
+} from "@putting-pals/pga-tour-schema/types";
 import pako from "pako";
-import type { LeaderboardCompressedV3, LeaderboardV3 } from "../api/types";
 import { GraphQlClient } from "./graphql-client";
 
 export class LeaderboardClient extends GraphQlClient {
@@ -9,6 +12,7 @@ export class LeaderboardClient extends GraphQlClient {
         leaderboardCompressedV3: LeaderboardCompressedV3;
       };
     }>({
+      operationName: "LeaderboardCompressedV3",
       query: `
         query LeaderboardCompressedV3($id: ID!) {
           leaderboardCompressedV3(id: $id) {

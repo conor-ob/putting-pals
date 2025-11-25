@@ -1,23 +1,22 @@
 {
-  "name": "@putting-pals/putting-pals-api",
+  "name": "@putting-pals/pga-tour-schema",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./router": "./src/api.ts",
-    "./context": "./src/context.ts"
+    "./types": "./src/types.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
+    "codegen": "graphql-codegen --config codegen.ts",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-core": "workspace:*",
-    "@trpc/server": "catalog:",
-    "superjson": "catalog:",
-    "zod": "catalog:"
+    "dotenv": "catalog:"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/typescript": "^5.0.5",
     "@total-typescript/tsconfig": "catalog:",
     "typescript": "catalog:"
   }

@@ -1,5 +1,6 @@
 import { TournamentClient } from "@putting-pals/pga-tour-api/tournament";
 import { PgaTourWebScraper } from "@putting-pals/pga-tour-scaper/scraper";
+import { transformTournament } from "./tournament-transformer";
 
 export class TournamentService {
   private readonly pgaTourApiKey: string;
@@ -20,7 +21,7 @@ export class TournamentService {
   }
 
   private async getTournamentById(id: string) {
-    return this.getTournaments([id]).then((tournaments) => {
+    return this.getTournamentsByIds([id]).then((tournaments) => {
       const tournament = tournaments[0];
       if (tournament) {
         return tournament;
@@ -31,37 +32,9 @@ export class TournamentService {
     });
   }
 
-  private async getTournaments(ids: string[]) {
+  private async getTournamentsByIds(ids: string[]) {
     return (
       await new TournamentClient(this.pgaTourApiKey).getTournaments(ids)
-    ).map(
-      (tournament) =>
-        ({
-          ...tournament,
-          tournamentName: this.sanitizeTournamentName(
-            tournament.tournamentName,
-          ),
-        }) satisfies typeof tournament,
-    );
-  }
-
-  private sanitizeTournamentName(name: string) {
-    const isNumeric = (val: string): boolean => {
-      return !Number.isNaN(Number(val));
-    };
-
-    let adjustedName = name;
-    const parts = adjustedName.split("(");
-    if (parts.length > 1) {
-      const remainder = parts[1]?.split(")");
-      if (
-        remainder !== undefined &&
-        remainder.length > 1 &&
-        isNumeric(remainder[0] ?? "")
-      ) {
-        adjustedName = `${parts[0]?.trim()} ${remainder[1]?.trim()}`;
-      }
-    }
-    return adjustedName;
+    ).map(transformTournament);
   }
 }

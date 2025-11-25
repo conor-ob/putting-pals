@@ -1,20 +1,17 @@
 {
-  "name": "@putting-pals/putting-pals-api",
+  "name": "@putting-pals/putting-pals-schema",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./router": "./src/api.ts",
-    "./context": "./src/context.ts"
+    "./schemas": "./src/schemas.ts",
+    "./types": "./src/types.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-core": "workspace:*",
-    "@trpc/server": "catalog:",
-    "superjson": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

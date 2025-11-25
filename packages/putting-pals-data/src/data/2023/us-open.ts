@@ -1,0 +1,89 @@
+import {
+  aidanWalsh,
+  aimeeOhanlon,
+  cameronFolens,
+  ciaranTighe,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  stephenDevine,
+} from "../../competitors/putting-pals-competitors";
+import {
+  adamScott,
+  brooksKoepka,
+  camDavis,
+  collinMorikawa,
+  coreyConners,
+  dennyMccarthy,
+  garyWoodland,
+  jonRahm,
+  justinRose,
+  justinThomas,
+  mattFitzpatrick,
+  mattKuchar,
+  maxHoma,
+  patrickReed,
+  philMickelson,
+  roryMcilroy,
+  russellHenley,
+  ryanFox,
+  scottieScheffler,
+  tommyFleetwood,
+  viktorHovland,
+} from "../../players/pga-tour-players";
+
+export default {
+  tournamentId: "R2023026",
+  paddyPowerId: undefined,
+  winnerId: aidanWalsh.id,
+  runnerUpId: robJoy.id,
+  competitors: [
+    {
+      ...conorObrien,
+      picks: [maxHoma, justinThomas, adamScott],
+    },
+    {
+      ...aimeeOhanlon,
+      picks: [viktorHovland, collinMorikawa, dennyMccarthy],
+    },
+    {
+      ...richByrne,
+      picks: [scottieScheffler, brooksKoepka, garyWoodland],
+    },
+    {
+      ...johnHannaway,
+      picks: [scottieScheffler, viktorHovland, mattKuchar],
+    },
+    {
+      ...phelimOconnor,
+      picks: [tommyFleetwood, justinRose, patrickReed],
+    },
+    {
+      ...robJoy,
+      picks: [ryanFox, scottieScheffler, roryMcilroy],
+    },
+    {
+      ...ciaranTighe,
+      picks: [philMickelson, scottieScheffler, jonRahm],
+    },
+    {
+      ...davidHynes,
+      picks: [tommyFleetwood, adamScott, mattFitzpatrick],
+    },
+    {
+      ...stephenDevine,
+      picks: [viktorHovland, coreyConners, russellHenley],
+    },
+    {
+      ...aidanWalsh,
+      picks: [scottieScheffler, jonRahm, russellHenley],
+    },
+    {
+      ...cameronFolens,
+      picks: [scottieScheffler, jonRahm, camDavis],
+    },
+  ],
+};

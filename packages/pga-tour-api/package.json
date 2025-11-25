@@ -4,22 +4,18 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./leaderboard": "./src/client/leaderboard-client.ts",
-    "./tournament": "./src/client/tournament-client.ts"
+    "./leaderboard": "./src/leaderboard-client.ts",
+    "./tournament": "./src/tournament-client.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "codegen": "graphql-codegen --config codegen.ts",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "dotenv": "catalog:",
-    "pako": "^2.1.0",
-    "zod": "catalog:"
+    "pako": "^2.1.0"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^6.1.0",
-    "@graphql-codegen/typescript": "^5.0.5",
+    "@putting-pals/pga-tour-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
     "@types/pako": "^2.0.4",
     "typescript": "catalog:"

@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "exports": {
+    "./competition": "./src/competition/competition-service.ts",
     "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
     "./tournament": "./src/tournament/tournament-service.ts"
   },
@@ -13,9 +14,12 @@
   },
   "dependencies": {
     "@putting-pals/pga-tour-api": "workspace:*",
-    "@putting-pals/pga-tour-scaper": "workspace:*"
+    "@putting-pals/pga-tour-scaper": "workspace:*",
+    "@putting-pals/putting-pals-data": "workspace:*",
+    "@putting-pals/putting-pals-schema": "workspace:*"
   },
   "devDependencies": {
+    "@putting-pals/pga-tour-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
     "typescript": "catalog:"
   }

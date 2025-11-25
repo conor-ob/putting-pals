@@ -8,6 +8,21 @@ export function HomePage() {
     trpc.tournament.getById.queryOptions({ id: undefined }),
   );
 
+  const { data: leaderboard } = useQuery(
+    trpc.leaderboard.getById.queryOptions({ id: undefined }),
+  );
+
+  const { data: competition } = useQuery(
+    trpc.competition.getAll.queryOptions(),
+  );
+
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("tournament", tournament);
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("leaderboard", leaderboard);
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("competition", competition);
+
   return (
     <View className="">
       {tournament && (

@@ -219,22 +219,13 @@ importers:
 
   packages/pga-tour-api:
     dependencies:
-      dotenv:
-        specifier: 'catalog:'
-        version: 17.2.3
       pako:
         specifier: ^2.1.0
         version: 2.1.0
-      zod:
-        specifier: 'catalog:'
-        version: 4.1.13
     devDependencies:
-      '@graphql-codegen/cli':
-        specifier: ^6.1.0
-        version: 6.1.0(@types/node@24.10.1)(graphql@16.12.0)(typescript@5.9.3)
-      '@graphql-codegen/typescript':
-        specifier: ^5.0.5
-        version: 5.0.5(graphql@16.12.0)
+      '@putting-pals/pga-tour-schema':
+        specifier: workspace:*
+        version: link:../pga-tour-schema
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
@@ -251,6 +242,25 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2
     devDependencies:
+      '@total-typescript/tsconfig':
+        specifier: 'catalog:'
+        version: 1.0.4
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
+  packages/pga-tour-schema:
+    dependencies:
+      dotenv:
+        specifier: 'catalog:'
+        version: 17.2.3
+    devDependencies:
+      '@graphql-codegen/cli':
+        specifier: ^6.1.0
+        version: 6.1.0(@types/node@24.10.1)(graphql@16.12.0)(typescript@5.9.3)
+      '@graphql-codegen/typescript':
+        specifier: ^5.0.5
+        version: 5.0.5(graphql@16.12.0)
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
@@ -288,6 +298,40 @@ importers:
       '@putting-pals/pga-tour-scaper':
         specifier: workspace:*
         version: link:../pga-tour-scaper
+      '@putting-pals/putting-pals-data':
+        specifier: workspace:*
+        version: link:../putting-pals-data
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
+    devDependencies:
+      '@putting-pals/pga-tour-schema':
+        specifier: workspace:*
+        version: link:../pga-tour-schema
+      '@total-typescript/tsconfig':
+        specifier: 'catalog:'
+        version: 1.0.4
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
+  packages/putting-pals-data:
+    devDependencies:
+      '@total-typescript/tsconfig':
+        specifier: 'catalog:'
+        version: 1.0.4
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.10.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
+  packages/putting-pals-schema:
+    dependencies:
+      zod:
+        specifier: 'catalog:'
+        version: 4.1.13
     devDependencies:
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
