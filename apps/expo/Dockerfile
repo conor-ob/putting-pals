@@ -39,7 +39,7 @@ RUN --mount=type=cache,id=s/e4878a57-e3e0-4333-8010-4214a23d4cb3-/root/.local/sh
 RUN rm -rf ./**/*/src
 
 # Final image
-FROM ghcr.io/caddyserver/caddy:alpine AS runner
+FROM caddy:latest AS runner
 
 WORKDIR /app
 
