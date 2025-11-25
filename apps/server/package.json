@@ -27,6 +27,7 @@
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "dotenv": "catalog:",
+    "rollup-plugin-copy": "^3.5.0",
     "typescript": "catalog:",
     "vite": "^7.1.5",
     "vite-plugin-node": "^7.0.0",
