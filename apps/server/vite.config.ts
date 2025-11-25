@@ -1,6 +1,5 @@
 /// <reference types="vitest" />
 import * as path from "node:path";
-import copy from "rollup-plugin-copy";
 import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -43,15 +42,6 @@ export default defineConfig({
       // 'swc' compiler is supported to use as well for frameworks
       // like Nestjs (esbuild dont support 'emitDecoratorMetadata' yet)
       tsCompiler: "esbuild",
-    }),
-    copy({
-      targets: [
-        {
-          src: "../../packages/putting-pals-data/src/data/**/*",
-          dest: "dist/data",
-        },
-      ],
-      hook: "writeBundle",
     }),
   ],
 });
