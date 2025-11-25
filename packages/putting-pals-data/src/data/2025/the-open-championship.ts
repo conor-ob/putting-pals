@@ -1,20 +1,4 @@
 import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  cameronFolens,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  karlCurran,
-  niallCronin,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../../competitors/putting-pals-competitors";
-import {
   aldrichPotgieter,
   brianHarman,
   coreyConners,
@@ -36,7 +20,23 @@ import {
   tommyFleetwood,
   viktorHovland,
   xanderSchauffele,
-} from "../../players/pga-tour-players";
+} from "../pga-tour-players";
+import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  cameronFolens,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  karlCurran,
+  niallCronin,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../putting-pals-competitors";
 
 export default {
   tournamentId: "R2025100",

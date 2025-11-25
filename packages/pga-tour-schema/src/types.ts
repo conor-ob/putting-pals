@@ -712,6 +712,21 @@ export type CourseInfo = {
   topCta?: Maybe<CallToAction>;
 };
 
+export type CourseOverviewInfo = {
+  __typename?: 'CourseOverviewInfo';
+  cutsMade: Scalars['String']['output'];
+  cutsMissed: Scalars['String']['output'];
+  events: Scalars['String']['output'];
+  money: Scalars['String']['output'];
+  runnerUp: Scalars['String']['output'];
+  second: Scalars['String']['output'];
+  third: Scalars['String']['output'];
+  top10: Scalars['String']['output'];
+  top25: Scalars['String']['output'];
+  wins: Scalars['String']['output'];
+  withdrew: Scalars['String']['output'];
+};
+
 export type CourseOverviewItem = {
   __typename?: 'CourseOverviewItem';
   details: Array<CourseOverviewItemDetails>;
@@ -4665,6 +4680,7 @@ export type PlayerCourse = {
   courseState?: Maybe<Scalars['String']['output']>;
   cupEyebrowText: Scalars['String']['output'];
   overview: Array<PlayerProfileOverviewItem>;
+  overviewInfo?: Maybe<CourseOverviewInfo>;
   tournaments: Array<CourseResultsTournament>;
 };
 
@@ -4919,6 +4935,7 @@ export type PlayerHubShotCommentaryWidget = {
   /**   Optional widget sponsor */
   sponsor?: Maybe<PlayerHubWidgetSponsor>;
   subTitle: Scalars['String']['output'];
+  tourcastURL?: Maybe<Scalars['String']['output']>;
 };
 
 export type PlayerHubStatisticsWidget = {
@@ -5053,6 +5070,7 @@ export type PlayerProfileCareerResults = {
 export type PlayerProfileCareerYear = {
   __typename?: 'PlayerProfileCareerYear';
   cutsMade?: Maybe<Scalars['String']['output']>;
+  cutsMissed?: Maybe<Scalars['String']['output']>;
   displaySeason: Scalars['String']['output'];
   events?: Maybe<Scalars['String']['output']>;
   officialMoney?: Maybe<Scalars['String']['output']>;
@@ -5205,9 +5223,13 @@ export type PlayerProfileTournamentRow = {
   __typename?: 'PlayerProfileTournamentRow';
   courseName: Scalars['String']['output'];
   date: Scalars['String']['output'];
+  fedexFallPoints: Scalars['String']['output'];
+  fedexFallRank: Scalars['String']['output'];
   points: Scalars['String']['output'];
+  pointsRank: Scalars['String']['output'];
   position: Scalars['String']['output'];
   roundScores: Array<RoundScoreItem>;
+  startDate: Scalars['String']['output'];
   toPar: Scalars['String']['output'];
   total: Scalars['String']['output'];
   tourcastURI?: Maybe<Scalars['String']['output']>;
@@ -5255,6 +5277,7 @@ export type PlayerResultTournament = {
   tournamentEndDate: Scalars['String']['output'];
   tournamentId: Scalars['ID']['output'];
   tournamentName: Scalars['String']['output'];
+  tournamentStartDate: Scalars['String']['output'];
 };
 
 export type PlayerResults = {
@@ -5290,6 +5313,8 @@ export type PlayerResults = {
   /** @deprecated use standingsDetails */
   secondaryCup?: Maybe<SecondaryCupDetails>;
   standingsDetails: Array<ResultsStandingsDetail>;
+  thirds?: Maybe<Scalars['String']['output']>;
+  top5?: Maybe<Scalars['String']['output']>;
   top10?: Maybe<Scalars['String']['output']>;
   top25?: Maybe<Scalars['String']['output']>;
   tour: TourCode;
@@ -5933,17 +5958,25 @@ export type Query = {
   playerDirectory: PlayerDirectory;
   playerFinishStats?: Maybe<PlayerFinishStats>;
   playerHub?: Maybe<PlayerHubPlayerCompressed>;
+  /** @deprecated use REST API */
   playerProfileCareer: PlayerProfileCareer;
+  /** @deprecated use REST API */
   playerProfileCareerResults: PlayerProfileCareerResults;
   playerProfileCourseResults?: Maybe<PlayerProfileCourseResults>;
   playerProfileMajorResults?: Maybe<PlayerProfileMajors>;
+  /** @deprecated use REST API */
   playerProfileOverview: ProfileOverview;
   playerProfileScorecards: HistoricalPlayerScorecards;
+  /** @deprecated use REST API */
   playerProfileSeasonResults: PlayerResults;
+  /** @deprecated use REST API */
   playerProfileStandings: Array<PlayerOverviewStandings>;
   playerProfileStats: Array<PlayerProfileStat>;
+  /** @deprecated use REST API */
   playerProfileStatsFull: Array<PlayerProfileStatFull>;
+  /** @deprecated use REST API */
   playerProfileStatsFullV2: PlayerProfileStatsFullV2;
+  /** @deprecated use REST API */
   playerProfileStatsYears: Array<PlayerProfileStatYear>;
   playerProfileTournamentResults: PlayerProfileTournamentResults;
   /** @deprecated use REST API */
@@ -6815,6 +6848,7 @@ export type QueryScheduleYearsArgs = {
 
 
 export type QueryScorecardCompressedV3Args = {
+  officialEventData?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
   tournamentId: Scalars['ID']['input'];
 };
@@ -6853,6 +6887,7 @@ export type QueryScorecardV2Args = {
 
 
 export type QueryScorecardV3Args = {
+  officialEventData?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
   tournamentId: Scalars['ID']['input'];
 };
@@ -8098,6 +8133,13 @@ export type ScorecardRow = {
   totalLabel: Scalars['String']['output'];
 };
 
+export type ScorecardStandings = {
+  __typename?: 'ScorecardStandings';
+  logo?: Maybe<ImageAsset>;
+  logoDark?: Maybe<ImageAsset>;
+  points: Scalars['String']['output'];
+};
+
 export type ScorecardStatsComparison = {
   __typename?: 'ScorecardStatsComparison';
   category: PlayerComparisonCategory;
@@ -8169,7 +8211,9 @@ export type ScorecardV3 = {
   playerState?: Maybe<PlayerState>;
   profileEnabled: Scalars['Boolean']['output'];
   roundScores: Array<RoundScore>;
+  standings?: Maybe<ScorecardStandings>;
   teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
+  totalStrokes?: Maybe<Scalars['String']['output']>;
   tournamentName: Scalars['String']['output'];
 };
 
@@ -10196,6 +10240,21 @@ export type TournamentOverview = {
   webviewBrowserControls: Scalars['Boolean']['output'];
 };
 
+export type TournamentOverviewInfo = {
+  __typename?: 'TournamentOverviewInfo';
+  cutsMade: Scalars['Int']['output'];
+  cutsMissed: Scalars['Int']['output'];
+  events: Scalars['Int']['output'];
+  money: Scalars['Int']['output'];
+  runnerUp: Scalars['Int']['output'];
+  second: Scalars['Int']['output'];
+  third: Scalars['Int']['output'];
+  top10: Scalars['Int']['output'];
+  top25: Scalars['Int']['output'];
+  wins: Scalars['Int']['output'];
+  withdrew: Scalars['Int']['output'];
+};
+
 export type TournamentPlayoffScorecards = {
   __typename?: 'TournamentPlayoffScorecards';
   playoffs: Array<PlayoffScorecard>;
@@ -10246,6 +10305,7 @@ export type TournamentResults = {
   __typename?: 'TournamentResults';
   cupEyebrowText: Scalars['String']['output'];
   overview: Array<PlayerProfileInfoItem>;
+  overviewInfo?: Maybe<TournamentOverviewInfo>;
   tournamentNum: Scalars['ID']['output'];
   tournamentOverview?: Maybe<TournamentResultOverview>;
   tournaments: Array<PlayerProfileTournamentRow>;

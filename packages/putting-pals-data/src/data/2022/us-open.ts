@@ -1,19 +1,4 @@
 import {
-  aidanWalsh,
-  aimeeOhanlon,
-  brianObrolchain,
-  cameronFolens,
-  conorObrien,
-  davidHynes,
-  johnHannaway,
-  markByrne,
-  phelimOconnor,
-  richByrne,
-  robJoy,
-  robKeartland,
-  stephenDevine,
-} from "../../competitors/putting-pals-competitors";
-import {
   adriArnaus,
   billyHorschel,
   brooksKoepka,
@@ -36,7 +21,22 @@ import {
   tyrrellHatton,
   willZalatoris,
   xanderSchauffele,
-} from "../../players/pga-tour-players";
+} from "../pga-tour-players";
+import {
+  aidanWalsh,
+  aimeeOhanlon,
+  brianObrolchain,
+  cameronFolens,
+  conorObrien,
+  davidHynes,
+  johnHannaway,
+  markByrne,
+  phelimOconnor,
+  richByrne,
+  robJoy,
+  robKeartland,
+  stephenDevine,
+} from "../putting-pals-competitors";
 
 export default {
   tournamentId: "R2022026",

@@ -20,7 +20,7 @@ import theOpenChampionship2025 from "./data/2025/the-open-championship";
 import usOpen2025 from "./data/2025/us-open";
 
 export class FileReader {
-  async readAllCompetitionFiles() {
+  readAllCompetitionFiles() {
     return [
       mastersTournament2021,
       pgaChampionship2021,
