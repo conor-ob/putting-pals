@@ -5,7 +5,7 @@ import { publicProcedure, router } from "../trpc";
 export const leaderboardRouter = router({
   getById: publicProcedure
     .input(z.object({ id: z.string().optional() }))
-    .query(async ({ ctx, input }) => {
-      return new LeaderboardService(ctx.apiKey).getLeaderboard(input.id);
+    .query(async ({ input }) => {
+      return new LeaderboardService().getLeaderboard(input.id);
     }),
 });

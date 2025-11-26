@@ -5,7 +5,7 @@
   "private": true,
   "exports": {
     "./router": "./src/api.ts",
-    "./context": "./src/context.ts"
+    "./trpc": "./src/trpc.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",

@@ -7,6 +7,7 @@ type RecursivePartial<T> = {
 export function transformTournament(tournament: Tournament) {
   return {
     displayDate: tournament.displayDate,
+    id: tournament.id,
     roundDisplay: tournament.roundDisplay,
     roundStatus: tournament.roundStatus,
     roundStatusColor: tournament.roundStatusColor,

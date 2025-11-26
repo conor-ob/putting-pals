@@ -1,23 +1,27 @@
-import mastersTournament2021 from "./data/2021/masters-tournament";
-import pgaChampionship2021 from "./data/2021/pga-championship";
-import theOpenChampionship2021 from "./data/2021/the-open-championship";
-import usOpen2021 from "./data/2021/us-open";
-import mastersTournament2022 from "./data/2022/masters-tournament";
-import pgaChampionship2022 from "./data/2022/pga-championship";
-import theOpenChampionship2022 from "./data/2022/the-open-championship";
-import usOpen2022 from "./data/2022/us-open";
-import mastersTournament2023 from "./data/2023/masters-tournament";
-import pgaChampionship2023 from "./data/2023/pga-championship";
-import theOpenChampionship2023 from "./data/2023/the-open-championship";
-import usOpen2023 from "./data/2023/us-open";
-import mastersTournament2024 from "./data/2024/masters-tournament";
-import pgaChampionship2024 from "./data/2024/pga-championship";
-import theOpenChampionship2024 from "./data/2024/the-open-championship";
-import usOpen2024 from "./data/2024/us-open";
-import mastersTournament2025 from "./data/2025/masters-tournament";
-import pgaChampionship2025 from "./data/2025/pga-championship";
-import theOpenChampionship2025 from "./data/2025/the-open-championship";
-import usOpen2025 from "./data/2025/us-open";
+import mastersTournament2021 from "./data/2021/01-masters-tournament";
+import pgaChampionship2021 from "./data/2021/02-pga-championship";
+import usOpen2021 from "./data/2021/03-us-open";
+import theOpenChampionship2021 from "./data/2021/04-the-open-championship";
+import mastersTournament2022 from "./data/2022/01-masters-tournament";
+import pgaChampionship2022 from "./data/2022/02-pga-championship";
+import usOpen2022 from "./data/2022/03-us-open";
+import theOpenChampionship2022 from "./data/2022/04-the-open-championship";
+import mastersTournament2023 from "./data/2023/01-masters-tournament";
+import pgaChampionship2023 from "./data/2023/02-pga-championship";
+import usOpen2023 from "./data/2023/03-us-open";
+import theOpenChampionship2023 from "./data/2023/04-the-open-championship";
+import mastersTournament2024 from "./data/2024/01-masters-tournament";
+import pgaChampionship2024 from "./data/2024/02-pga-championshi";
+import usOpen2024 from "./data/2024/03-us-open";
+import theOpenChampionship2024 from "./data/2024/04-the-open-championship";
+import mastersTournament2025 from "./data/2025/01-masters-tournament";
+import pgaChampionship2025 from "./data/2025/02-pga-championship";
+import usOpen2025 from "./data/2025/03-us-open";
+import theOpenChampionship2025 from "./data/2025/04-the-open-championship";
+import mastersTournament2026 from "./data/2026/01-masters-tournament";
+import pgaChampionship2026 from "./data/2026/02-pga-championship";
+import usOpen2026 from "./data/2026/03-us-open";
+import theOpenChampionship2026 from "./data/2026/04-the-open-championship";
 
 export class FileReader {
   readAllCompetitionFiles() {
@@ -42,40 +46,10 @@ export class FileReader {
       pgaChampionship2025,
       theOpenChampionship2025,
       usOpen2025,
+      mastersTournament2026,
+      pgaChampionship2026,
+      theOpenChampionship2026,
+      usOpen2026,
     ];
   }
 }
-
-// import fs from "node:fs/promises";
-// import path from "node:path";
-// import { fileURLToPath } from "node:url";
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-
-// export class FileReader {
-//   async readAllCompetitionFiles() {
-//     const dataDir = path.join(__dirname, "data");
-//     const filePaths = (await this.walk(dataDir)).filter((f) =>
-//       f.endsWith(".ts"),
-//     );
-//     const modules = await Promise.all(filePaths.map((f) => import(f)));
-//     return modules.map((m) => m.default);
-//   }
-
-//   private async walk(dir: string): Promise<string[]> {
-//     const entries = await fs.readdir(dir, { withFileTypes: true });
-//     const filePaths: string[] = [];
-
-//     for (const entry of entries) {
-//       const fullPath = path.join(dir, entry.name);
-//       if (entry.isDirectory()) {
-//         filePaths.push(...(await this.walk(fullPath)));
-//       } else {
-//         filePaths.push(fullPath);
-//       }
-//     }
-
-//     return filePaths;
-//   }
-// }

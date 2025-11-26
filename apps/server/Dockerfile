@@ -22,7 +22,6 @@ FROM base AS builder
 
 ARG PORT
 ARG ORIGIN
-ARG PGA_TOUR_API_KEY
 
 WORKDIR /app
 

@@ -16,12 +16,16 @@ export function HomePage() {
     trpc.competition.getAll.queryOptions(),
   );
 
+  const { data: schedule } = useQuery(trpc.schedule.get.queryOptions());
+
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("tournament", tournament);
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("leaderboard", leaderboard);
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("competition", competition);
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("schedule", schedule);
 
   return (
     <View className="">

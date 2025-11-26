@@ -253,13 +253,6 @@ importers:
         version: 5.9.3
 
   packages/pga-tour-schema:
-    dependencies:
-      dotenv:
-        specifier: 'catalog:'
-        version: 17.2.3
-      zod:
-        specifier: 'catalog:'
-        version: 4.1.13
     devDependencies:
       '@graphql-codegen/cli':
         specifier: ^6.1.0
@@ -310,6 +303,9 @@ importers:
       '@putting-pals/putting-pals-schema':
         specifier: workspace:*
         version: link:../putting-pals-schema
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
     devDependencies:
       '@putting-pals/pga-tour-schema':
         specifier: workspace:*
@@ -3322,6 +3318,9 @@ packages:
 
   dataloader@2.2.3:
     resolution: {integrity: sha512-y2krtASINtPFS1rSDjacrFgn1dcUuoREVabwlOGOe4SdxenREqwjwjElAdwvbGM7kgZz9a3KVicWR7vcz8rnzA==}
+
+  date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
 
   dateformat@4.6.3:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}
@@ -10372,6 +10371,8 @@ snapshots:
       is-data-view: 1.0.2
 
   dataloader@2.2.3: {}
+
+  date-fns@4.1.0: {}
 
   dateformat@4.6.3: {}
 

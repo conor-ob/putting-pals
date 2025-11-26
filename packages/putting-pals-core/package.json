@@ -6,6 +6,7 @@
   "exports": {
     "./competition": "./src/competition/competition-service.ts",
     "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
+    "./schedule": "./src/schedule/schedule-service.ts",
     "./tournament": "./src/tournament/tournament-service.ts"
   },
   "scripts": {
@@ -16,7 +17,8 @@
     "@putting-pals/pga-tour-api": "workspace:*",
     "@putting-pals/pga-tour-scaper": "workspace:*",
     "@putting-pals/putting-pals-data": "workspace:*",
-    "@putting-pals/putting-pals-schema": "workspace:*"
+    "@putting-pals/putting-pals-schema": "workspace:*",
+    "date-fns": "^4.1.0"
   },
   "devDependencies": {
     "@putting-pals/pga-tour-schema": "workspace:*",

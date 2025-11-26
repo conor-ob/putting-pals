@@ -11,10 +11,6 @@
     "codegen": "graphql-codegen --config codegen.ts",
     "typecheck": "tsc --noEmit true"
   },
-  "dependencies": {
-    "dotenv": "catalog:",
-    "zod": "catalog:"
-  },
   "devDependencies": {
     "@graphql-codegen/cli": "^6.1.0",
     "@graphql-codegen/typescript": "^5.0.5",

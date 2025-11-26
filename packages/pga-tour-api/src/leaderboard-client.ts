@@ -23,17 +23,17 @@ export class LeaderboardClient extends GraphQlClient {
       `,
       variables: { id },
     }).then((response) => {
-      const leaderboardDecompressedV3 = this.pakoDecompress(
+      const leaderboardDecompressedV3 = this.decompress(
         response.data.leaderboardCompressedV3.payload,
       );
       return JSON.parse(leaderboardDecompressedV3) as LeaderboardV3;
     });
   }
 
-  private pakoDecompress(compressed: string) {
-    const stringData = atob(compressed);
-    const charData = stringData.split("").map((x) => x.charCodeAt(0));
-    const binaryData = new Uint8Array(charData);
+  private decompress(compressed: string) {
+    const binaryData = Uint8Array.from(atob(compressed), (c) =>
+      c.charCodeAt(0),
+    );
     const decompressed = pako.inflate(binaryData);
     return new TextDecoder("utf-8").decode(decompressed);
   }
