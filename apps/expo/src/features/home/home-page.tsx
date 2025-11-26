@@ -33,8 +33,8 @@ export function HomePage() {
       {tournament && (
         <TournamentHeader tournament={tournament} className="p-4" />
       )}
-      {leaderboard?.players.map((player) => (
-        <View key={player.id}>
+      {leaderboard?.players.map((player, index) => (
+        <View key={`${player.id}-${index}`}>
           <Text>{player.__typename}</Text>
         </View>
       ))}
