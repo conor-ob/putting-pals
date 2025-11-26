@@ -1,13 +1,8 @@
 import type { LeaderboardV3 } from "@putting-pals/pga-tour-schema/types";
+import { assertNever, type RecursivePartial } from "../utils/type-utils";
 import { getCountryFlag } from "./leaderboard-flag-utils";
 
-type RecursivePartial<T> = {
-  [K in keyof T]?: T[K] extends object ? RecursivePartial<T[K]> : T[K];
-};
-
-function assertNever(x?: never): never {
-  throw new Error(`Unexpected object: ${x}`);
-}
+export type TransformedLeaderboard = ReturnType<typeof transformLeaderboard>;
 
 export function transformLeaderboard(leaderboard: LeaderboardV3) {
   return {
@@ -17,6 +12,7 @@ export function transformLeaderboard(leaderboard: LeaderboardV3) {
       switch (row.__typename) {
         case "PlayerRowV3":
           return {
+            __typename: row.__typename,
             id: row.id,
             leaderboardSortOrder: row.leaderboardSortOrder,
             player: {
@@ -45,6 +41,7 @@ export function transformLeaderboard(leaderboard: LeaderboardV3) {
           };
         case "InformationRow":
           return {
+            __typename: row.__typename,
             displayText: row.displayText,
             id: row.id,
             leaderboardSortOrder: row.leaderboardSortOrder,

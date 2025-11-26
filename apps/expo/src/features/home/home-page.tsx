@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { TournamentHeader } from "~/components/tournament-header";
+import { Text } from "~/components/ui/text";
 import { trpc } from "~/providers/trpc/utils/trpc";
 
 export function HomePage() {
@@ -9,7 +10,7 @@ export function HomePage() {
   );
 
   const { data: leaderboard } = useQuery(
-    trpc.leaderboard.getById.queryOptions({ id: undefined }),
+    trpc.leaderboard.getById.queryOptions({ tourCode: "P", id: "R2024100" }),
   );
 
   const { data: competition } = useQuery(
@@ -28,10 +29,15 @@ export function HomePage() {
   console.log("schedule", schedule);
 
   return (
-    <View className="">
+    <ScrollView className="">
       {tournament && (
         <TournamentHeader tournament={tournament} className="p-4" />
       )}
-    </View>
+      {leaderboard?.players.map((player) => (
+        <View key={player.id}>
+          <Text>{player.__typename}</Text>
+        </View>
+      ))}
+    </ScrollView>
   );
 }

@@ -282,6 +282,9 @@ importers:
         specifier: 'catalog:'
         version: 4.1.13
     devDependencies:
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4

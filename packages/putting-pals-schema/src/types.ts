@@ -1,5 +1,11 @@
 import type { z } from "zod";
-import type { CompetitionSchema, CompetitorSchema } from "./schemas";
+import type {
+  CompetitionSchema,
+  CompetitorSchema,
+  TourCodeSchema,
+} from "./schemas";
+
+export type TourCode = z.infer<typeof TourCodeSchema>;
 
 export type Competitor = z.infer<typeof CompetitorSchema>;
 

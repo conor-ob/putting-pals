@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+export const TourCodeSchema = z.enum(["P", "R"]);
+
 export const CompetitorSchema = z.object({
   id: z.string(),
   country: z.string(),
