@@ -4,6 +4,7 @@ import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 import { CompetitionService } from "../competition/competition-service";
 import { parseStartDate } from "../schedule/schedule.utils";
 import { TournamentService } from "../tournament/tournament-service";
+import { NotFoundError } from "../utils/service-error";
 import { assertNever } from "../utils/type-utils";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 import { transformLeaderboard } from "./leaderboard-transformer";
@@ -45,7 +46,7 @@ export class LeaderboardService {
           )[0];
 
           if (!tournament) {
-            throw new Error("No tournament found");
+            throw new NotFoundError("No tournament found");
           }
 
           return this.getPgaTourLeaderboard(tournament.id).then(

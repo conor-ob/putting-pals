@@ -1,5 +1,6 @@
 import { FileReader } from "@putting-pals/putting-pals-data/file-reader";
 import { CompetitionSchema } from "@putting-pals/putting-pals-schema/schemas";
+import { NotFoundError } from "../utils/service-error";
 
 export class CompetitionService {
   getCompetition(id: string) {
@@ -7,8 +8,7 @@ export class CompetitionService {
       (competition) => competition.tournamentId === id,
     );
     if (!competition) {
-      // TODO: error handling
-      throw new Error(`Competition with id=${id} not found`);
+      throw new NotFoundError(`Competition with id=${id} not found`);
     }
     return competition;
   }

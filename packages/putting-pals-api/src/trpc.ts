@@ -124,17 +124,3 @@ const _errorHandlingMiddleware = t.middleware(async ({ next }) => {
 export const publicProcedure = t.procedure
   // .use(errorHandlingMiddleware)
   .use(timingMiddleware);
-
-export const protectedProcedure = publicProcedure.use(async (opts) => {
-  const { ctx } = opts;
-  const userId = ctx.opts.req.headers.userId;
-  if (!userId) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
-  return opts.next({
-    ctx: {
-      userId: userId as string,
-      ...ctx,
-    },
-  });
-});

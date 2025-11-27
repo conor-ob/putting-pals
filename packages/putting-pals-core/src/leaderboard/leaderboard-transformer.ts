@@ -71,7 +71,7 @@ function parseTeeTime(teeTime?: any) {
 }
 
 function fixTotalSort(total: string, totalSort: number) {
-  if (total.startsWith("-") && totalSort > 0) {
+  if (total !== "-" && total.startsWith("-") && totalSort > 0) {
     // biome-ignore lint/suspicious/noConsole: logging PGA Tour API issue
     console.warn(
       `totalSort: ${totalSort} is positive for negative total: ${total}`,
