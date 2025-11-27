@@ -101,7 +101,8 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
   return result;
 });
 
-const errorHandlingMiddleware = t.middleware(async ({ next }) => {
+// TODO: make the error handling middleware work
+const _errorHandlingMiddleware = t.middleware(async ({ next }) => {
   try {
     return await next();
   } catch (error) {
@@ -121,7 +122,7 @@ const errorHandlingMiddleware = t.middleware(async ({ next }) => {
  * are logged in.
  */
 export const publicProcedure = t.procedure
-  .use(errorHandlingMiddleware)
+  // .use(errorHandlingMiddleware)
   .use(timingMiddleware);
 
 export const protectedProcedure = publicProcedure.use(async (opts) => {
