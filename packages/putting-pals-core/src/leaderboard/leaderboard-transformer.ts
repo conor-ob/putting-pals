@@ -27,6 +27,7 @@ export function transformLeaderboard(leaderboard: LeaderboardV3) {
                 countryFlag: row.player.countryFlag,
               }),
               displayName: row.player.displayName,
+              id: row.player.id,
               shortName: row.player.shortName,
             },
             scoringData: {

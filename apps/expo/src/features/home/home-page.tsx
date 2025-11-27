@@ -29,8 +29,8 @@ export function HomePage() {
       {tournament && (
         <TournamentHeader tournament={tournament} className="p-4" />
       )}
-      {leaderboard?.rows.map((row, index) => (
-        <View key={`${row.id}-${index}`}>
+      {leaderboard?.rows.map((row) => (
+        <View key={row.id}>
           <Text>{row.__typename}</Text>
         </View>
       ))}
