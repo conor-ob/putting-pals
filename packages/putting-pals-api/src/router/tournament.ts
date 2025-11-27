@@ -3,10 +3,15 @@ import { TournamentService } from "@putting-pals/putting-pals-core/tournament";
 import { TRPCError } from "@trpc/server";
 import z from "zod";
 import { publicProcedure, router } from "../trpc";
+import { TournamentIdSchema } from "../validation/input-schema";
 
 export const tournamentRouter = router({
   getById: publicProcedure
-    .input(z.object({ id: z.string().optional() }))
+    .input(
+      z.object({
+        id: TournamentIdSchema.optional(),
+      }),
+    )
     .query(async ({ input }) => {
       return new TournamentService().getTournament(input.id).catch((error) => {
         if (error instanceof ServiceError) {

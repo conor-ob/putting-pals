@@ -11,7 +11,7 @@ import { ServiceError } from "@putting-pals/putting-pals-core/service-error";
 import { initTRPC, TRPCError } from "@trpc/server";
 import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
 import superjson from "superjson";
-import { ZodError } from "zod";
+import z, { ZodError } from "zod";
 
 /**
  * 1. CONTEXT
@@ -50,7 +50,9 @@ const t = initTRPC
         data: {
           ...shape.data,
           zodError:
-            error.cause instanceof ZodError ? error.cause.flatten() : null,
+            error.code === "BAD_REQUEST" && error.cause instanceof ZodError
+              ? z.treeifyError(error.cause)
+              : null,
         },
       };
     },
