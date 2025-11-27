@@ -29,9 +29,9 @@ export function HomePage() {
       {tournament && (
         <TournamentHeader tournament={tournament} className="p-4" />
       )}
-      {leaderboard?.players.map((player, index) => (
-        <View key={`${player.id}-${index}`}>
-          <Text>{player.__typename}</Text>
+      {leaderboard?.rows.map((row, index) => (
+        <View key={`${row.id}-${index}`}>
+          <Text>{row.__typename}</Text>
         </View>
       ))}
     </ScrollView>

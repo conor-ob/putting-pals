@@ -1,4 +1,7 @@
-import type { LeaderboardV3 } from "@putting-pals/pga-tour-schema/types";
+import type {
+  LeaderboardRowV3,
+  LeaderboardV3,
+} from "@putting-pals/pga-tour-schema/types";
 import { assertNever, type RecursivePartial } from "../utils/type-utils";
 import { getCountryFlag } from "./leaderboard-flag-utils";
 
@@ -9,7 +12,7 @@ export function transformLeaderboard(leaderboard: LeaderboardV3) {
     formatType: leaderboard.formatType,
     id: leaderboard.id,
     leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
-    players: leaderboard.players.map((row) => {
+    rows: leaderboard.players.map((row) => {
       switch (row.__typename) {
         case "PlayerRowV3":
           return {
@@ -51,7 +54,7 @@ export function transformLeaderboard(leaderboard: LeaderboardV3) {
           return assertNever(row.__typename);
       }
     }),
-  } satisfies RecursivePartial<LeaderboardV3>;
+  } satisfies RecursivePartial<LeaderboardV3 & { rows: LeaderboardRowV3[] }>;
 }
 
 // biome-ignore lint/suspicious/noExplicitAny: AWSTimestamp

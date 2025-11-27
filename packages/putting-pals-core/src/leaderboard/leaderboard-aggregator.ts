@@ -6,12 +6,12 @@ export function aggregateLeaderboard(
   competition: Competition,
 ) {
   const competitors = competition.competitors.map((competitor) => {
-    const picks = leaderboard.players
+    const picks = leaderboard.rows
       .filter((it) => it.__typename === "PlayerRowV3")
       .filter((it) => competitor.picks.includes(it.id));
     const scoringAdjustedPicks = applyScoringRules({
       picks: picks,
-      allPicks: leaderboard.players.filter((it) =>
+      allPicks: leaderboard.rows.filter((it) =>
         competition.competitors.flatMap((it) => it.picks).includes(it.id),
       ),
       scoringRules: competition.scoringRules,
@@ -117,7 +117,7 @@ export function aggregateLeaderboard(
   return {
     formatType: leaderboard.formatType,
     leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
-    players: res
+    rows: res
       .flatMap((it) => [
         { ...it, __typename: "PuttingPalsPlayerRow" as const },
         ...it.picks,
@@ -149,10 +149,10 @@ function applyScoringRules({
   allPicks,
   scoringRules,
 }: {
-  picks: TransformedLeaderboard["players"];
-  allPicks: TransformedLeaderboard["players"];
+  picks: TransformedLeaderboard["rows"];
+  allPicks: TransformedLeaderboard["rows"];
   scoringRules?: string;
-}): TransformedLeaderboard["players"] {
+}): TransformedLeaderboard["rows"] {
   if (scoringRules === "MISSED_CUT") {
     return picks
       .filter((it) => it.__typename === "PlayerRowV3")
