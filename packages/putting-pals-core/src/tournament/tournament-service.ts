@@ -1,5 +1,6 @@
 import { TournamentClient } from "@putting-pals/pga-tour-api/tournament";
 import { PgaTourWebScraper } from "@putting-pals/pga-tour-scaper/scraper";
+import { NotFoundError } from "../utils/service-error";
 import { transformTournament } from "./tournament-transformer";
 
 export class TournamentService {
@@ -26,8 +27,7 @@ export class TournamentService {
       if (tournament) {
         return tournament;
       } else {
-        // TODO: error handling
-        throw new Error(`Tournament with id=${id} not found`);
+        throw new NotFoundError(`Tournament with id=${id} not found`);
       }
     });
   }

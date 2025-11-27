@@ -7,6 +7,7 @@
  * need to use are documented accordingly near the end.
  */
 
+import { ServiceError } from "@putting-pals/putting-pals-core/service-error";
 import { initTRPC, TRPCError } from "@trpc/server";
 import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
 import superjson from "superjson";
@@ -100,6 +101,18 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
   return result;
 });
 
+const errorHandlingMiddleware = t.middleware(async ({ next }) => {
+  try {
+    return await next();
+  } catch (error) {
+    if (error instanceof ServiceError) {
+      throw new TRPCError({ code: error.code, message: error.message });
+    } else {
+      throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+    }
+  }
+});
+
 /**
  * Public (unauthenticated) procedure
  *
@@ -107,7 +120,9 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
  * guarantee that a user querying is authorized, but you can still access user session data if they
  * are logged in.
  */
-export const publicProcedure = t.procedure.use(timingMiddleware);
+export const publicProcedure = t.procedure
+  .use(errorHandlingMiddleware)
+  .use(timingMiddleware);
 
 export const protectedProcedure = publicProcedure.use(async (opts) => {
   const { ctx } = opts;

@@ -5,6 +5,7 @@
   "private": true,
   "exports": {
     "./competition": "./src/competition/competition-service.ts",
+    "./service-error": "./src/utils/service-error.ts",
     "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
     "./schedule": "./src/schedule/schedule-service.ts",
     "./tournament": "./src/tournament/tournament-service.ts"

@@ -62,15 +62,15 @@ export class LeaderboardService {
 
   private async getPgaTourLeaderboard(id?: string) {
     if (id) {
-      return this.getLeaderboardById(id);
+      return this.getPgaTourLeaderboardById(id);
     } else {
       return new PgaTourWebScraper()
         .getCurrentTournamentId()
-        .then((id) => this.getLeaderboardById(id));
+        .then((id) => this.getPgaTourLeaderboardById(id));
     }
   }
 
-  private async getLeaderboardById(id: string) {
+  private async getPgaTourLeaderboardById(id: string) {
     return new LeaderboardClient()
       .getLeaderboard(id)
       .then(transformLeaderboard);

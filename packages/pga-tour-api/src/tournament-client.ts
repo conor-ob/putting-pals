@@ -12,7 +12,6 @@ export class TournamentClient extends GraphQlClient {
       query: `
         query Tournaments($ids: [ID!]) {
           tournaments(ids: $ids) {
-            beautyImage
             beautyImageAsset {
               fallbackImage
               imageOrg
@@ -20,7 +19,6 @@ export class TournamentClient extends GraphQlClient {
             }
             id
             tournamentName
-            tournamentLogo
             tournamentLogoAsset {
               fallbackImage
               imageOrg

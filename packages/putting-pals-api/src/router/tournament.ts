@@ -6,6 +6,14 @@ export const tournamentRouter = router({
   getById: publicProcedure
     .input(z.object({ id: z.string().optional() }))
     .query(async ({ input }) => {
-      return new TournamentService().getTournament(input.id);
+      console.log("[tournament] getById called with input:", input);
+      try {
+        const result = await new TournamentService().getTournament(input.id);
+        console.log("[tournament] getById succeeded");
+        return result;
+      } catch (error) {
+        console.error("[tournament] getById threw error:", error);
+        throw error;
+      }
     }),
 });

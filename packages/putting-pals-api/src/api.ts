@@ -1,4 +1,3 @@
-import { competitionRouter } from "./router/competition";
 import { leaderboardRouter } from "./router/leaderboard";
 import { scheduleRouter } from "./router/schedule";
 import { tournamentRouter } from "./router/tournament";
@@ -10,7 +9,6 @@ import { createCallerFactory, router } from "./trpc";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = router({
-  competition: competitionRouter,
   leaderboard: leaderboardRouter,
   schedule: scheduleRouter,
   tournament: tournamentRouter,
