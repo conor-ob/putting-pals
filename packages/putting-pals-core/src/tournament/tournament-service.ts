@@ -1,16 +1,16 @@
 import { TournamentClient } from "@putting-pals/pga-tour-api/tournament";
-import { PgaTourWebScraper } from "@putting-pals/pga-tour-scaper/scraper";
+import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import { ScheduleService } from "../schedule/schedule-service";
 import { NotFoundError } from "../utils/service-error";
 import { transformTournament } from "./tournament-transformer";
 
 export class TournamentService {
-  // TODO: get by tournament id or competition id
-  async getTournament(id?: string) {
+  async getTournament(tourCode: TourCode, id?: string) {
     if (id) {
       return this.getTournamentById(id);
     } else {
-      return new PgaTourWebScraper()
-        .getCurrentTournamentId()
+      return new ScheduleService()
+        .getCurrentTournamentId(tourCode)
         .then((id) => this.getTournamentById(id));
     }
   }

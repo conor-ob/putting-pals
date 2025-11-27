@@ -7,6 +7,7 @@ export type TransformedLeaderboard = ReturnType<typeof transformLeaderboard>;
 export function transformLeaderboard(leaderboard: LeaderboardV3) {
   return {
     formatType: leaderboard.formatType,
+    id: leaderboard.id,
     leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
     players: leaderboard.players.map((row) => {
       switch (row.__typename) {

@@ -6,14 +6,16 @@ import { trpc } from "~/providers/trpc/utils/trpc";
 
 export function HomePage() {
   const { data: tournament } = useQuery(
-    trpc.tournament.getById.queryOptions({ id: undefined }),
+    trpc.tournament.getById.queryOptions({ tourCode: "P" }),
   );
 
   const { data: leaderboard } = useQuery(
-    trpc.leaderboard.getById.queryOptions({ tourCode: "P", id: "R2024100" }),
+    trpc.leaderboard.getById.queryOptions({ tourCode: "P" }),
   );
 
-  const { data: schedule } = useQuery(trpc.schedule.get.queryOptions());
+  const { data: schedule } = useQuery(
+    trpc.schedule.get.queryOptions({ tourCode: "P" }),
+  );
 
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("tournament", tournament);

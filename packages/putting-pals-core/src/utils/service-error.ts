@@ -1,4 +1,7 @@
-export type ServiceErrorCode = "NOT_FOUND" | "INTERNAL_SERVER_ERROR";
+export type ServiceErrorCode =
+  | "INTERNAL_SERVER_ERROR"
+  | "NOT_FOUND"
+  | "NOT_IMPLEMENTED";
 
 export class ServiceError extends Error {
   constructor(
@@ -9,14 +12,20 @@ export class ServiceError extends Error {
   }
 }
 
+export class InternalServerError extends ServiceError {
+  constructor(message = "Internal server error") {
+    super("INTERNAL_SERVER_ERROR", message);
+  }
+}
+
 export class NotFoundError extends ServiceError {
   constructor(message = "Not found") {
     super("NOT_FOUND", message);
   }
 }
 
-export class InternalServerError extends ServiceError {
-  constructor(message = "Internal server error") {
-    super("INTERNAL_SERVER_ERROR", message);
+export class NotImplementedError extends ServiceError {
+  constructor(message = "Not implemented") {
+    super("NOT_IMPLEMENTED", message);
   }
 }
