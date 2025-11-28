@@ -33,7 +33,9 @@ export function aggregateLeaderboard(
         position: "",
         total:
           totalSort === 0
-            ? "E"
+            ? leaderboard.tournamentStatus === "NOT_STARTED"
+              ? "-"
+              : "E"
             : totalSort > 0
               ? `+${totalSort}`
               : `${totalSort}`,

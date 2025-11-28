@@ -55,6 +55,7 @@ export function transformLeaderboard(leaderboard: LeaderboardV3) {
           return assertNever(row.__typename);
       }
     }),
+    tournamentStatus: leaderboard.tournamentStatus,
   } satisfies RecursivePartial<LeaderboardV3 & { rows: LeaderboardRowV3[] }>;
 }
 
