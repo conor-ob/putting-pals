@@ -103,20 +103,32 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
   return result;
 });
 
-// TODO: make the error handling middleware work
-const _errorHandlingMiddleware = t.middleware(async ({ next }) => {
-  const result = await next();
-  if (result.ok) {
-    return result;
+const errorHandlingMiddleware = t.middleware(async ({ ctx, next }) => {
+  const response = await next({ ctx });
+
+  if (response.ok) {
+    return response;
   }
 
-  if (result.error instanceof ServiceError) {
+  if (response.error.cause instanceof ZodError) {
     throw new TRPCError({
-      code: result.error.code,
-      message: result.error.message,
+      code: "BAD_REQUEST",
+      message: response.error.cause.message,
+      cause: response.error.cause,
     });
+  } else if (response.error.cause instanceof TypeError) {
+    throw new TRPCError({
+      code: "NOT_IMPLEMENTED",
+      message: "GraphQL query not implemented",
+    });
+  } else if (response.error.cause instanceof ServiceError) {
+    throw new TRPCError({
+      code: response.error.cause.code,
+      message: response.error.cause.message,
+    });
+  } else {
+    throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
   }
-  throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
 });
 
 /**
@@ -127,5 +139,5 @@ const _errorHandlingMiddleware = t.middleware(async ({ next }) => {
  * are logged in.
  */
 export const publicProcedure = t.procedure
-  // .use(errorHandlingMiddleware)
+  .use(errorHandlingMiddleware)
   .use(timingMiddleware);
