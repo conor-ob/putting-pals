@@ -128,6 +128,28 @@ export class ScheduleService {
 
   private async getCurrentPuttingPalsTournamentId() {
     const competitions = new CompetitionService().getAllCompetitions();
+
+    const oddsAvailableCompetition = competitions.find(
+      (competition) =>
+        competition.competitors.length === 0 &&
+        competition.paddyPowerId !== undefined,
+    );
+
+    if (oddsAvailableCompetition) {
+      return oddsAvailableCompetition.tournamentId;
+    }
+
+    const inProgressCompetition = competitions.find(
+      (competition) =>
+        competition.competitors.length > 0 &&
+        competition.winnerId === undefined &&
+        competition.runnerUpId === undefined,
+    );
+
+    if (inProgressCompetition) {
+      return inProgressCompetition.tournamentId;
+    }
+
     const competitionIds = competitions
       .filter((competition) => competition.competitors.length > 0)
       .map((competition) => competition.tournamentId);

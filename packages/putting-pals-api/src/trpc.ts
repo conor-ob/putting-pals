@@ -105,15 +105,18 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
 
 // TODO: make the error handling middleware work
 const _errorHandlingMiddleware = t.middleware(async ({ next }) => {
-  try {
-    return await next();
-  } catch (error) {
-    if (error instanceof ServiceError) {
-      throw new TRPCError({ code: error.code, message: error.message });
-    } else {
-      throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
-    }
+  const result = await next();
+  if (result.ok) {
+    return result;
   }
+
+  if (result.error instanceof ServiceError) {
+    throw new TRPCError({
+      code: result.error.code,
+      message: result.error.message,
+    });
+  }
+  throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
 });
 
 /**

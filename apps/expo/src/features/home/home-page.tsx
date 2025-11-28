@@ -6,49 +6,57 @@ import { trpc } from "~/providers/trpc/utils/trpc";
 
 export function HomePage() {
   const tourCode = "P";
-  const { data: tournament } = useQuery(
+  const { data: tournament, error: tournamentError } = useQuery(
     trpc.tournament.getById.queryOptions({ tourCode }),
   );
 
-  const { data: leaderboard } = useQuery(
+  const { data: leaderboard, error: leaderboardError } = useQuery(
     trpc.leaderboard.getById.queryOptions({ tourCode }),
   );
 
-  const { data: schedule } = useQuery(
+  const { data: schedule, error: scheduleError } = useQuery(
     trpc.schedule.get.queryOptions({ tourCode }),
   );
 
   // biome-ignore lint/suspicious/noConsole: testing
-  console.log("tournament", tournament);
+  console.log("tournament.data", tournament);
   // biome-ignore lint/suspicious/noConsole: testing
-  console.log("leaderboard", leaderboard);
+  console.log("tournament.error", tournamentError);
   // biome-ignore lint/suspicious/noConsole: testing
-  console.log("schedule", schedule);
+  console.log("leaderboard.data", leaderboard);
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("leaderboard.error", leaderboardError);
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("schedule.data", schedule);
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("schedule.error", scheduleError);
 
   return (
     <ScrollView className="p-4">
       {tournament && <TournamentHeader tournament={tournament} />}
-      {leaderboard?.rows.map((row) => (
-        <View key={row.id} className="flex flex-row items-center gap-2">
-          {row.__typename === "PlayerRowV3" ? (
-            <View className="flex flex-row w-full items-center gap-2">
-              <Text className="w-1/3">{row.player.displayName}</Text>
-              <Text className="w-1/3">{row.scoringData.position}</Text>
-              <Text className="w-1/3">{row.scoringData.total}</Text>
-            </View>
-          ) : row.__typename === "PuttingPalsPlayerRow" ? (
-            <View className="flex flex-row w-full items-center gap-2">
-              <Text className="w-1/3">{row.player.displayName}</Text>
-              <Text className="w-1/3">{row.scoringData.position}</Text>
-              <Text className="w-1/3">{row.scoringData.total}</Text>
-            </View>
-          ) : row.__typename === "InformationRow" ? (
-            <View className="flex flex-row w-full items-center gap-2">
-              <Text>{row.displayText}</Text>
-            </View>
-          ) : null}
-        </View>
-      ))}
+      {leaderboard?.rows
+        .sort((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder)
+        .map((row) => (
+          <View key={row.id} className="flex flex-row items-center gap-2">
+            {row.__typename === "PlayerRowV3" ? (
+              <View className="flex flex-row w-full items-center gap-2">
+                <Text className="w-1/3">{row.player.displayName}</Text>
+                <Text className="w-1/3">{row.scoringData.position}</Text>
+                <Text className="w-1/3">{row.scoringData.total}</Text>
+              </View>
+            ) : row.__typename === "PuttingPalsPlayerRow" ? (
+              <View className="flex flex-row w-full items-center gap-2">
+                <Text className="w-1/3">{row.player.displayName}</Text>
+                <Text className="w-1/3">{row.scoringData.position}</Text>
+                <Text className="w-1/3">{row.scoringData.total}</Text>
+              </View>
+            ) : row.__typename === "InformationRow" ? (
+              <View className="flex flex-row w-full items-center gap-2">
+                <Text>{row.displayText}</Text>
+              </View>
+            ) : null}
+          </View>
+        ))}
     </ScrollView>
   );
 }
