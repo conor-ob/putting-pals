@@ -106,7 +106,7 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
 const errorHandlingMiddleware = t.middleware(async ({ ctx, next }) => {
   const response = await next({ ctx });
 
-  if (response.ok || response.error.cause instanceof ZodError) {
+  if (response.ok || response.error.code === "BAD_REQUEST") {
     return response;
   }
 
