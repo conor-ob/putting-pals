@@ -15,6 +15,7 @@
     "@graphql-codegen/cli": "^6.1.0",
     "@graphql-codegen/typescript": "^5.0.5",
     "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
     "typescript": "catalog:"
   }
 }

@@ -17,6 +17,7 @@
   "devDependencies": {
     "@putting-pals/pga-tour-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
     "@types/pako": "^2.0.4",
     "typescript": "catalog:"
   }
