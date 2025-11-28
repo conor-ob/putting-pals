@@ -1,5 +1,6 @@
 import { LeaderboardService } from "@putting-pals/putting-pals-core/leaderboard";
 import { TourCodeSchema } from "@putting-pals/putting-pals-schema/schemas";
+import { TRPCError } from "@trpc/server";
 import z from "zod";
 import { publicProcedure, router } from "../trpc";
 import { onError } from "../validation/error-handler";
@@ -16,6 +17,13 @@ export const leaderboardRouter = router({
     .query(async ({ input }) => {
       return new LeaderboardService()
         .getLeaderboard(input.tourCode, input.id)
-        .catch(onError);
+        .catch(onError)
+        .then((result) => {
+          if (result instanceof TRPCError) {
+            throw result;
+          } else {
+            return result;
+          }
+        });
     }),
 });

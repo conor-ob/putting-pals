@@ -25,7 +25,7 @@ export function LeaderboardPage() {
 
   return (
     <ScrollView className="p-4 gap-4">
-      {tournament ? <TournamentHeader tournament={tournament} /> : null}
+      {tournament && <TournamentHeader tournament={tournament} />}
       <Button
         title="Putting Pals"
         onPress={() => {

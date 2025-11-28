@@ -3,13 +3,13 @@ import { TRPCError } from "@trpc/server";
 
 export function onError(error: unknown) {
   if (error instanceof ServiceError) {
-    throw new TRPCError({ code: error.code, message: error.message });
+    return new TRPCError({ code: error.code, message: error.message });
   } else if (error instanceof TypeError) {
-    throw new TRPCError({
+    return new TRPCError({
       code: "NOT_IMPLEMENTED",
       message: "GraphQL query not implemented",
     });
   } else {
-    throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+    return new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
   }
 }

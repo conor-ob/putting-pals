@@ -35,18 +35,16 @@ export function SchedulePage() {
           setTourCode("R");
         }}
       />
-      {schedule
-        ? schedule.completed.map((month) => (
-            <View key={month.month}>
-              <Text className="text-foreground">{month.month}</Text>
-              {month.tournaments.map((tournament) => (
-                <Text key={tournament.id} className="text-foreground">
-                  {tournament.tournamentName}
-                </Text>
-              ))}
-            </View>
-          ))
-        : null}
+      {schedule?.completed?.map((month) => (
+        <View key={month.month}>
+          <Text className="text-foreground">{month.month}</Text>
+          {month.tournaments.map((tournament) => (
+            <Text key={tournament.id} className="text-foreground">
+              {tournament.tournamentName}
+            </Text>
+          ))}
+        </View>
+      ))}
     </ScrollView>
   );
 }
