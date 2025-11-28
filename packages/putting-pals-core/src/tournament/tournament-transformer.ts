@@ -5,6 +5,8 @@ import type {
 import { formatISO, parse } from "date-fns";
 import type { RecursivePartial } from "../utils/type-utils";
 
+export type TransformedTournament = ReturnType<typeof transformTournament>;
+
 export function transformTournament(tournament: Tournament) {
   return {
     beautyImage: getImageUrl(

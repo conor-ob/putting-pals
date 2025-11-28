@@ -9,23 +9,30 @@ export function HomePage() {
   const { data: tournament, error: tournamentError } = useQuery(
     trpc.tournament.getById.queryOptions({ tourCode }),
   );
-
-  const { data: leaderboard, error: leaderboardError } = useQuery(
-    trpc.leaderboard.getById.queryOptions({ tourCode }),
-  );
-
-  const { data: schedule, error: scheduleError } = useQuery(
-    trpc.schedule.get.queryOptions({ tourCode }),
-  );
-
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("tournament.data", tournament);
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("tournament.error", tournamentError);
+
+  const { data: leaderboard, error: leaderboardError } = useQuery(
+    trpc.leaderboard.getById.queryOptions({ tourCode }),
+  );
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("leaderboard.data", leaderboard);
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("leaderboard.error", leaderboardError);
+
+  const { data: scheduleYears, error: scheduleYearsError } = useQuery(
+    trpc.schedule.getScheduleYears.queryOptions({ tourCode }),
+  );
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("scheduleYears.data", scheduleYears);
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("scheduleYears.error", scheduleYearsError);
+
+  const { data: schedule, error: scheduleError } = useQuery(
+    trpc.schedule.getByYear.queryOptions({ tourCode }),
+  );
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("schedule.data", schedule);
   // biome-ignore lint/suspicious/noConsole: testing
@@ -33,7 +40,7 @@ export function HomePage() {
 
   return (
     <ScrollView className="p-4">
-      {tournament && <TournamentHeader tournament={tournament} />}
+      {tournament ? <TournamentHeader tournament={tournament} /> : null}
       {leaderboard?.rows
         .sort((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder)
         .map((row) => (

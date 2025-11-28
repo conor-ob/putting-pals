@@ -5,6 +5,7 @@
   "private": true,
   "exports": {
     "./leaderboard": "./src/leaderboard-client.ts",
+    "./schedule": "./src/schedule-client.ts",
     "./tournament": "./src/tournament-client.ts"
   },
   "scripts": {
