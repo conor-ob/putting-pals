@@ -106,17 +106,11 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
 const errorHandlingMiddleware = t.middleware(async ({ ctx, next }) => {
   const response = await next({ ctx });
 
-  if (response.ok) {
+  if (response.ok || response.error.cause instanceof ZodError) {
     return response;
   }
 
-  if (response.error.cause instanceof ZodError) {
-    throw new TRPCError({
-      code: "BAD_REQUEST",
-      message: response.error.cause.message,
-      cause: response.error.cause,
-    });
-  } else if (response.error.cause instanceof TypeError) {
+  if (response.error.cause instanceof TypeError) {
     throw new TRPCError({
       code: "NOT_IMPLEMENTED",
       message: "GraphQL query not implemented",
