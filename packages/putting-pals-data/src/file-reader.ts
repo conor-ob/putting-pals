@@ -24,32 +24,32 @@ import usOpen2026 from "./data/2026/03-us-open";
 import theOpenChampionship2026 from "./data/2026/04-the-open-championship";
 
 export class FileReader {
-  readAllCompetitionFiles() {
+  readCompetitionFiles() {
     return [
       mastersTournament2021,
       pgaChampionship2021,
-      theOpenChampionship2021,
       usOpen2021,
+      theOpenChampionship2021,
       mastersTournament2022,
       pgaChampionship2022,
-      theOpenChampionship2022,
       usOpen2022,
+      theOpenChampionship2022,
       mastersTournament2023,
       pgaChampionship2023,
-      theOpenChampionship2023,
       usOpen2023,
+      theOpenChampionship2023,
       mastersTournament2024,
       pgaChampionship2024,
-      theOpenChampionship2024,
       usOpen2024,
+      theOpenChampionship2024,
       mastersTournament2025,
       pgaChampionship2025,
-      theOpenChampionship2025,
       usOpen2025,
+      theOpenChampionship2025,
       mastersTournament2026,
       pgaChampionship2026,
-      theOpenChampionship2026,
       usOpen2026,
+      theOpenChampionship2026,
     ];
   }
 }

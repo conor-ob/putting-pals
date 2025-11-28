@@ -1,11 +1,9 @@
-import {
-  type ImageAsset,
-  RoundStatus,
-  RoundStatusColor,
-  type Schedule,
-  type ScheduleMonth,
+import type {
+  ImageAsset,
+  Schedule,
+  ScheduleMonth,
 } from "@putting-pals/pga-tour-schema/types";
-import type { TransformedSchedule } from "./schedule-grouper";
+import type { RecursivePartial } from "../utils/type-utils";
 
 export function transformSchedule(schedule: Schedule) {
   function transformScheduleMonth(scheduleMonth: ScheduleMonth) {
@@ -15,17 +13,23 @@ export function transformSchedule(schedule: Schedule) {
       tournaments: scheduleMonth.tournaments.map((tournament) => ({
         beautyImage: tournament.beautyImageAsset
           ? getImageUrl(tournament.beautyImageAsset, "jpg", "ar_0.667,c_crop")
-          : "",
-        displayDate: tournament.date, // TODO format
-        endDate: tournament.date, // TODO format
+          : undefined,
+        date: tournament.date,
+        // displayDate: tournament.date, // TODO format
+        // endDate: tournament.date, // TODO format
         id: tournament.id,
-        roundDisplay: tournament.status?.roundDisplay ?? "",
-        roundStatus: tournament.status?.roundStatus ?? RoundStatus.Upcoming,
-        roundStatusColor:
-          tournament.status?.roundStatusColor ?? RoundStatusColor.Gray,
-        roundStatusDisplay: tournament.status?.roundStatusDisplay ?? "",
-        startDate: tournament.date, // TODO format
-        tournamentLogo: [getImageUrl(tournament.tournamentLogoAsset, "png")],
+        sortDate: tournament.sortDate,
+        status: tournament.status
+          ? {
+              leaderboardTakeover: tournament.status.leaderboardTakeover, // TODO: remove
+              roundDisplay: tournament.status.roundDisplay,
+              roundStatus: tournament.status.roundStatus,
+              roundStatusColor: tournament.status.roundStatusColor,
+              roundStatusDisplay: tournament.status.roundStatusDisplay,
+            }
+          : undefined,
+        // startDate: tournament.date, // TODO format
+        tournamentLogo: getImageUrl(tournament.tournamentLogoAsset, "png"),
         tournamentName: sanitizeTournamentName(tournament.tournamentName),
         tournamentStatus: tournament.tournamentStatus,
       })),
@@ -37,7 +41,7 @@ export function transformSchedule(schedule: Schedule) {
     yearSort: Number(schedule.seasonYear),
     completed: schedule.completed.map(transformScheduleMonth),
     upcoming: schedule.upcoming.map(transformScheduleMonth),
-  } satisfies TransformedSchedule[number];
+  } satisfies RecursivePartial<Schedule> & { year: string; yearSort: number };
 }
 
 function sanitizeTournamentName(tournamentName: string) {

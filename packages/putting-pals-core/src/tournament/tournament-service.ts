@@ -24,11 +24,10 @@ export class TournamentService {
   private async getTournamentById(id: string) {
     return this.getTournaments([id]).then((tournaments) => {
       const tournament = tournaments[0];
-      if (tournament) {
-        return tournament;
-      } else {
+      if (tournament === undefined) {
         throw new NotFoundError(`Tournament with id=${id} not found`);
       }
+      return tournament;
     });
   }
 }

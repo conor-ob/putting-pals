@@ -4,18 +4,18 @@ import { NotFoundError } from "../utils/service-error";
 
 export class CompetitionService {
   getCompetition(id: string) {
-    const competition = this.getAllCompetitions().find(
+    const competition = this.getCompetitions().find(
       (competition) => competition.tournamentId === id,
     );
-    if (!competition) {
+    if (competition === undefined) {
       throw new NotFoundError(`Competition with id=${id} not found`);
     }
     return competition;
   }
 
-  getAllCompetitions() {
+  getCompetitions() {
     return new FileReader()
-      .readAllCompetitionFiles()
+      .readCompetitionFiles()
       .map((fileContent) => CompetitionSchema.parse(fileContent));
   }
 }

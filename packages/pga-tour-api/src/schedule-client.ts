@@ -49,6 +49,7 @@ export class ScheduleClient extends GraphQlClient {
                 }
                 date
                 id
+                sortDate
                 status {
                   roundDisplay
                   roundStatus
@@ -75,6 +76,7 @@ export class ScheduleClient extends GraphQlClient {
                 }
                 date
                 id
+                sortDate
                 status {
                   roundDisplay
                   roundStatus
