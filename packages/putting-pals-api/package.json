@@ -9,7 +9,8 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "typecheck": "tsc --noEmit true"
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest"
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
@@ -21,6 +22,7 @@
     "@putting-pals/putting-pals-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }
