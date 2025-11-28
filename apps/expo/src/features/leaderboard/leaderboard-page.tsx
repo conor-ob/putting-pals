@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { ScrollView, View } from "react-native";
+import { Button, ScrollView, View } from "react-native";
 import { TournamentHeader } from "~/components/tournament-header";
 import { Text } from "~/components/ui/text";
+import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { trpc } from "~/providers/trpc/utils/trpc";
 
-export function HomePage() {
-  const tourCode = "P";
+export function LeaderboardPage() {
+  const { tourCode, setTourCode } = useTourCode();
   const { data: tournament, error: tournamentError } = useQuery(
     trpc.tournament.getById.queryOptions({ tourCode }),
   );
@@ -22,25 +23,21 @@ export function HomePage() {
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("leaderboard.error", leaderboardError);
 
-  const { data: scheduleYears, error: scheduleYearsError } = useQuery(
-    trpc.schedule.getScheduleYears.queryOptions({ tourCode }),
-  );
-  // biome-ignore lint/suspicious/noConsole: testing
-  console.log("scheduleYears.data", scheduleYears);
-  // biome-ignore lint/suspicious/noConsole: testing
-  console.log("scheduleYears.error", scheduleYearsError);
-
-  const { data: schedule, error: scheduleError } = useQuery(
-    trpc.schedule.getByYear.queryOptions({ tourCode }),
-  );
-  // biome-ignore lint/suspicious/noConsole: testing
-  console.log("schedule.data", schedule);
-  // biome-ignore lint/suspicious/noConsole: testing
-  console.log("schedule.error", scheduleError);
-
   return (
-    <ScrollView className="p-4">
+    <ScrollView className="p-4 gap-4">
       {tournament ? <TournamentHeader tournament={tournament} /> : null}
+      <Button
+        title="Putting Pals"
+        onPress={() => {
+          setTourCode("P");
+        }}
+      />
+      <Button
+        title="PGA Tour"
+        onPress={() => {
+          setTourCode("R");
+        }}
+      />
       {leaderboard?.rows
         .sort((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder)
         .map((row) => (
