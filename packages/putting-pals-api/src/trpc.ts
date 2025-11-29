@@ -7,11 +7,11 @@
  * need to use are documented accordingly near the end.
  */
 
-import { ServiceError } from "@putting-pals/putting-pals-core/service-error";
-import { initTRPC, TRPCError } from "@trpc/server";
+import { initTRPC } from "@trpc/server";
 import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
 import superjson from "superjson";
 import z, { ZodError } from "zod";
+import { onError } from "./error/error-handler";
 
 /**
  * 1. CONTEXT
@@ -106,23 +106,11 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
 const errorHandlingMiddleware = t.middleware(async ({ ctx, next }) => {
   const response = await next({ ctx });
 
-  if (response.ok || response.error.code === "BAD_REQUEST") {
-    return response;
+  if (!response.ok) {
+    onError(response.error);
   }
 
-  if (response.error.cause instanceof TypeError) {
-    throw new TRPCError({
-      code: "NOT_IMPLEMENTED",
-      message: "GraphQL query not implemented",
-    });
-  } else if (response.error.cause instanceof ServiceError) {
-    throw new TRPCError({
-      code: response.error.cause.code,
-      message: response.error.cause.message,
-    });
-  } else {
-    throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
-  }
+  return response;
 });
 
 /**
