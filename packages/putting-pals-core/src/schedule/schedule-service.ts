@@ -31,55 +31,44 @@ export class ScheduleService {
   }
 
   private async getPuttingPalsSchedule(year?: string) {
-    const competitionIds = new CompetitionService()
+    function filterScheduleMonths(
+      months: ReturnType<typeof transformSchedule>["completed" | "upcoming"],
+    ) {
+      return months
+        .filter(
+          (month) =>
+            month.tournaments.filter((tournament) =>
+              puttingPalsTournamentIds.includes(tournament.id),
+            ).length > 0,
+        )
+        .map((month) => ({
+          ...month,
+          tournaments: month.tournaments.filter((tournament) =>
+            puttingPalsTournamentIds.includes(tournament.id),
+          ),
+        }));
+    }
+
+    const puttingPalsTournamentIds = new CompetitionService()
       .getCompetitions()
       .map((competition) => competition.tournamentId);
     const pgaTourSchedule = await this.getPgaTourSchedule(year);
     return pgaTourSchedule
       .filter((season) => {
-        const completedTournamentIds = season.completed.flatMap((month) =>
+        const pgaTourTournamentIds = [
+          ...season.completed,
+          ...season.upcoming,
+        ].flatMap((month) =>
           month.tournaments.map((tournament) => tournament.id),
         );
-        const upcomingTournamentIds = season.upcoming.flatMap((month) =>
-          month.tournaments.map((tournament) => tournament.id),
-        );
-        return (
-          completedTournamentIds.some((tournamentId) =>
-            competitionIds.includes(tournamentId),
-          ) ||
-          upcomingTournamentIds.some((tournamentId) =>
-            competitionIds.includes(tournamentId),
-          )
+        return pgaTourTournamentIds.some((tournamentId) =>
+          puttingPalsTournamentIds.includes(tournamentId),
         );
       })
       .map((season) => ({
         ...season,
-        completed: season.completed
-          .filter(
-            (month) =>
-              month.tournaments.filter((tournament) =>
-                competitionIds.includes(tournament.id),
-              ).length > 0,
-          )
-          .map((month) => ({
-            ...month,
-            tournaments: month.tournaments.filter((tournament) =>
-              competitionIds.includes(tournament.id),
-            ),
-          })),
-        upcoming: season.upcoming
-          .filter(
-            (month) =>
-              month.tournaments.filter((tournament) =>
-                competitionIds.includes(tournament.id),
-              ).length > 0,
-          )
-          .map((month) => ({
-            ...month,
-            tournaments: month.tournaments.filter((tournament) =>
-              competitionIds.includes(tournament.id),
-            ),
-          })),
+        completed: filterScheduleMonths(season.completed),
+        upcoming: filterScheduleMonths(season.upcoming),
       }));
   }
 
@@ -99,7 +88,6 @@ export class ScheduleService {
       .map((competition) => competition.tournamentId);
     const upcomingSchedule = await this.getPgaTourUpcomingSchedule();
     return {
-      ...upcomingSchedule,
       tournaments: upcomingSchedule.tournaments.filter((tournament) =>
         competitionIds.includes(tournament.id),
       ),
@@ -109,7 +97,6 @@ export class ScheduleService {
   private async getPgaTourUpcomingSchedule() {
     const upcomingSchedule = await new ScheduleClient().getUpcomingSchedule();
     return {
-      ...upcomingSchedule,
       tournaments: upcomingSchedule.tournaments.map(
         transformScheduleTournament,
       ),
