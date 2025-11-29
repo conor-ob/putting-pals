@@ -22,14 +22,6 @@ export type RouterOutputs = inferRouterOutputs<AppRouter>;
 
 export const queryClient = new QueryClient();
 
-// export const queryClient = new QueryClient({
-//   defaultOptions: {
-//     queries: {
-//       retry: false,
-//     },
-//   },
-// });
-
 const trpcClient = createTRPCClient<AppRouter>({
   links: [
     httpBatchLink({

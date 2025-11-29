@@ -46,3 +46,4 @@ This will start the Fastify server and Expo app
 - [ ] implement service worker prompt to refresh
   - [ ] implement servic worker reload https://github.com/ccssmnn/tilly/blob/main/src/app/sw.ts https://github.com/ccssmnn/tilly/blob/main/src/app/lib/service-worker.ts
 - [ ] expo lint config
+- [ ] revert to caddy:alpine image for expo app
