@@ -17,31 +17,19 @@ export class TournamentClient extends GraphQlClient {
               imageOrg
               imagePath
             }
+            displayDate
             id
-            tournamentName
+            roundDisplay
+            roundStatus
+            roundStatusColor
+            roundStatusDisplay
             tournamentLogoAsset {
               fallbackImage
               imageOrg
               imagePath
             }
-            tournamentLocation
+            tournamentName
             tournamentStatus
-            roundStatusDisplay
-            roundDisplay
-            roundStatus
-            roundStatusColor
-            currentRound
-            courses {
-              courseName
-            }
-            city
-            state
-            country
-            displayDate
-            weather {
-              condition
-              tempC
-            }
           }
         }
       `,
