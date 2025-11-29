@@ -43,17 +43,7 @@ This will start the Fastify server and Expo app
 - [ ] remove warnings from prod deployment
   - [ ] [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
   - [ ] ExperimentalWarning: SQLite is an experimental feature and might change at any time (--experimental-sqlite ??)
-- [ ] refactor API
-  - [ ] Create PGA tour graphql types
-  - [ ] Create display types (name TBD) for all PGA tour graphql types
-- [ ] leaderboard loading skeleton
-- [ ] search improvements
-  - [ ] add empty state
-  - [ ] cancel button colour
-- [ ] fix colours
-  - [ ] update shadcn design library colours
-  - [ ] remove hardcoded colours like leaderboard abbreviations
-- [x] implement text carousel for tournament info
 - [ ] implement service worker prompt to refresh
-- [ ] implement servic worker reload https://github.com/ccssmnn/tilly/blob/main/src/app/sw.ts https://github.com/ccssmnn/tilly/blob/main/src/app/lib/service-worker.ts
+  - [ ] implement servic worker reload https://github.com/ccssmnn/tilly/blob/main/src/app/sw.ts https://github.com/ccssmnn/tilly/blob/main/src/app/lib/service-worker.ts
 - [ ] expo lint config
+- [ ] revert to caddy:alpine image for expo app

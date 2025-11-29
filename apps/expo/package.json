@@ -51,7 +51,9 @@
   },
   "devDependencies": {
     "@putting-pals/putting-pals-api": "workspace:*",
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "@types/react": "~19.1.1",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "workbox-cli": "^7.4.0"
   }
 }

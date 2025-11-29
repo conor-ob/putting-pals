@@ -16,7 +16,6 @@ const envSchema = z.object({
     .transform((s) => parseInt(s, 10))
     .pipe(z.number()),
   ORIGIN: z.string().url(),
-  PGA_TOUR_API_KEY: z.string().min(1),
   CI: z
     .string()
     .default("false")

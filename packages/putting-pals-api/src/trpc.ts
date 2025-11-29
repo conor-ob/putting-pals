@@ -7,11 +7,31 @@
  * need to use are documented accordingly near the end.
  */
 
-import { initTRPC, TRPCError } from "@trpc/server";
+import { initTRPC } from "@trpc/server";
+import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
 import superjson from "superjson";
-import { ZodError } from "zod";
+import z, { ZodError } from "zod";
+import { onError } from "./error/error-handler";
 
-import type { createTrpcContext } from "./context";
+/**
+ * 1. CONTEXT
+ *
+ * This section defines the "contexts" that are available in the backend API.
+ *
+ * These allow you to access things when processing a request, like the database, the session, etc.
+ *
+ * This helper generates the "internals" for a tRPC context. The API handler and RSC clients each
+ * wrap this and provides the required context.
+ *
+ * @see https://trpc.io/docs/server/context
+ */
+export function createTrpcContext({
+  opts,
+}: {
+  opts: CreateFastifyContextOptions;
+}) {
+  return { opts };
+}
 
 /**
  * 2. INITIALIZATION
@@ -30,7 +50,9 @@ const t = initTRPC
         data: {
           ...shape.data,
           zodError:
-            error.cause instanceof ZodError ? error.cause.flatten() : null,
+            error.code === "BAD_REQUEST" && error.cause instanceof ZodError
+              ? z.treeifyError(error.cause)
+              : null,
         },
       };
     },
@@ -81,6 +103,16 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
   return result;
 });
 
+const errorHandlingMiddleware = t.middleware(async ({ ctx, next }) => {
+  const response = await next({ ctx });
+
+  if (!response.ok) {
+    onError(response.error);
+  }
+
+  return response;
+});
+
 /**
  * Public (unauthenticated) procedure
  *
@@ -88,18 +120,6 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
  * guarantee that a user querying is authorized, but you can still access user session data if they
  * are logged in.
  */
-export const publicProcedure = t.procedure.use(timingMiddleware);
-
-export const protectedProcedure = publicProcedure.use(async (opts) => {
-  const { ctx } = opts;
-  const userId = ctx.opts.req.headers.userId;
-  if (!userId) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
-  return opts.next({
-    ctx: {
-      userId: userId as string,
-      ...ctx,
-    },
-  });
-});
+export const publicProcedure = t.procedure
+  .use(errorHandlingMiddleware)
+  .use(timingMiddleware);

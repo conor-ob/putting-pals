@@ -1,0 +1,22 @@
+{
+  "name": "@putting-pals/putting-pals-schema",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./schemas": "./src/schemas.ts",
+    "./types": "./src/types.ts"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "typecheck": "tsc --noEmit true"
+  },
+  "dependencies": {
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  }
+}

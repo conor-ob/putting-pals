@@ -5,12 +5,12 @@
   "private": true,
   "exports": {
     "./router": "./src/api.ts",
-    "./context": "./src/context.ts",
-    "./types": "./src/types.ts"
+    "./trpc": "./src/trpc.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "typecheck": "tsc --noEmit true"
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest"
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
@@ -19,7 +19,10 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
-    "typescript": "catalog:"
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }

@@ -26,5 +26,5 @@
       "persistent": true
     }
   },
-  "globalEnv": ["NODE_ENV", "PORT", "ORIGIN", "PGA_TOUR_API_KEY"]
+  "globalEnv": ["NODE_ENV", "PORT", "ORIGIN"]
 }

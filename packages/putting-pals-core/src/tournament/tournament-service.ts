@@ -1,67 +1,33 @@
 import { TournamentClient } from "@putting-pals/pga-tour-api/tournament";
-import { PgaTourWebScraper } from "@putting-pals/pga-tour-scaper/scraper";
+import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import { NotFoundError } from "../utils/service-error";
+import { TournamentResolver } from "./tournament-resolver";
+import { transformTournament } from "./tournament-transformer";
 
 export class TournamentService {
-  private readonly pgaTourApiKey: string;
-
-  constructor(pgaTourApiKey: string) {
-    this.pgaTourApiKey = pgaTourApiKey;
+  async getTournament(tourCode: TourCode, id?: string) {
+    const tournamentId = await this.resolveTournamentId(tourCode, id);
+    return this.getTournamentById(tournamentId);
   }
 
-  // TODO: get by tournament id or competition id
-  async getTournament(id?: string) {
-    if (id) {
-      return this.getTournamentById(id);
-    } else {
-      return new PgaTourWebScraper()
-        .getCurrentTournamentId()
-        .then((id) => this.getTournamentById(id));
+  private async resolveTournamentId(tourCode: TourCode, id?: string) {
+    if (id === undefined) {
+      return await new TournamentResolver().getCurrentTournamentId(tourCode);
     }
+    return id;
+  }
+
+  async getTournaments(ids: string[]) {
+    const tournaments = await new TournamentClient().getTournaments(ids);
+    return tournaments.map(transformTournament);
   }
 
   private async getTournamentById(id: string) {
-    return this.getTournaments([id]).then((tournaments) => {
-      const tournament = tournaments[0];
-      if (tournament) {
-        return tournament;
-      } else {
-        // TODO: error handling
-        throw new Error(`Tournament with id=${id} not found`);
-      }
-    });
-  }
-
-  private async getTournaments(ids: string[]) {
-    return (
-      await new TournamentClient(this.pgaTourApiKey).getTournaments(ids)
-    ).map(
-      (tournament) =>
-        ({
-          ...tournament,
-          tournamentName: this.sanitizeTournamentName(
-            tournament.tournamentName,
-          ),
-        }) satisfies typeof tournament,
-    );
-  }
-
-  private sanitizeTournamentName(name: string) {
-    const isNumeric = (val: string): boolean => {
-      return !Number.isNaN(Number(val));
-    };
-
-    let adjustedName = name;
-    const parts = adjustedName.split("(");
-    if (parts.length > 1) {
-      const remainder = parts[1]?.split(")");
-      if (
-        remainder !== undefined &&
-        remainder.length > 1 &&
-        isNumeric(remainder[0] ?? "")
-      ) {
-        adjustedName = `${parts[0]?.trim()} ${remainder[1]?.trim()}`;
-      }
+    const tournaments = await this.getTournaments([id]);
+    const tournament = tournaments[0];
+    if (tournament === undefined) {
+      throw new NotFoundError(`Tournament with id=${id} not found`);
     }
-    return adjustedName;
+    return tournament;
   }
 }

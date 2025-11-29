@@ -1,7 +1,13 @@
 {
   "extends": "//",
   "files": {
-    "includes": ["**", "!src/uniwind-types.d.ts", "!workbox-config.js"]
+    "includes": [
+      "**",
+      "!src/uniwind-types.d.ts",
+      "!workbox-config.js",
+      "!src/components/primitives",
+      "!src/components/ui"
+    ]
   },
   "linter": {
     "rules": {

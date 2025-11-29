@@ -1,3 +1,3 @@
-import { HomePage } from "~/features/home/home-page";
+import { LeaderboardPage } from "~/features/leaderboard/leaderboard-page";
 
-export default HomePage;
+export default LeaderboardPage;

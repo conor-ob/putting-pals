@@ -4,19 +4,29 @@
   "type": "module",
   "private": true,
   "exports": {
+    "./competition": "./src/competition/competition-service.ts",
+    "./service-error": "./src/utils/service-error.ts",
     "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
+    "./schedule": "./src/schedule/schedule-service.ts",
     "./tournament": "./src/tournament/tournament-service.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "typecheck": "tsc --noEmit true"
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest"
   },
   "dependencies": {
     "@putting-pals/pga-tour-api": "workspace:*",
-    "@putting-pals/pga-tour-scaper": "workspace:*"
+    "@putting-pals/pga-tour-scaper": "workspace:*",
+    "@putting-pals/putting-pals-data": "workspace:*",
+    "@putting-pals/putting-pals-schema": "workspace:*",
+    "date-fns": "^4.1.0"
   },
   "devDependencies": {
+    "@putting-pals/pga-tour-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
-    "typescript": "catalog:"
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }
