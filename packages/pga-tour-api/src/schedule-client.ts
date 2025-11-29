@@ -4,6 +4,49 @@ import type {
 } from "@putting-pals/pga-tour-schema/types";
 import { GraphQlClient } from "./graphql-client";
 
+const scheduleTournamentFragment = `
+  beautyImageAsset {
+    fallbackImage
+    imageOrg
+    imagePath
+  }
+  date
+  id
+  sortDate
+  status {
+    roundDisplay
+    roundStatus
+    roundStatusColor
+    roundStatusDisplay
+  }
+  tournamentLogoAsset {
+    fallbackImage
+    imageOrg
+    imagePath
+  }
+  tournamentName
+  tournamentStatus
+`;
+
+const scheduleMonthFragment = `
+  year
+  month
+  monthSort
+  tournaments {
+    ${scheduleTournamentFragment}
+  }
+`;
+
+const scheduleFragment = `
+  seasonYear
+  completed {
+    ${scheduleMonthFragment}
+  }
+  upcoming {
+    ${scheduleMonthFragment}
+  }
+`;
+
 export class ScheduleClient extends GraphQlClient {
   async getScheduleYears() {
     return this.query<{
@@ -37,65 +80,29 @@ export class ScheduleClient extends GraphQlClient {
       query: `
         query Schedule($tourCode: String!, $year: String) {
           schedule(tourCode: $tourCode, year: $year) {
-            seasonYear
-            completed {
-              month
-              monthSort
-              tournaments {
-                beautyImageAsset {
-                  fallbackImage
-                  imageOrg
-                  imagePath
-                }
-                date
-                id
-                sortDate
-                status {
-                  roundDisplay
-                  roundStatus
-                  roundStatusColor
-                  roundStatusDisplay
-                }
-                tournamentLogoAsset {
-                  fallbackImage
-                  imageOrg
-                  imagePath
-                }
-                tournamentName
-                tournamentStatus
-              }
-            }
-            upcoming {
-              month
-              monthSort
-              tournaments {
-                beautyImageAsset {
-                  fallbackImage
-                  imageOrg
-                  imagePath
-                }
-                date
-                id
-                sortDate
-                status {
-                  roundDisplay
-                  roundStatus
-                  roundStatusColor
-                  roundStatusDisplay
-                }
-                tournamentLogoAsset {
-                  fallbackImage
-                  imageOrg
-                  imagePath
-                }
-                tournamentName
-                tournamentStatus
-              }
-            }
+            ${scheduleFragment}
           }
         }
       `,
       variables: { tourCode: "R", year },
     }).then((response) => response.data.schedule);
+  }
+
+  async getCompleteSchedule() {
+    return this.query<{
+      data: {
+        completeSchedule: Schedule[];
+      };
+    }>({
+      operationName: "CompleteSchedule",
+      query: `
+        query CompleteSchedule($tourCode: TourCode!) {
+          completeSchedule(tourCode: $tourCode) {
+            ${scheduleFragment}
+          }
+        }
+      `,
+      variables: { tourCode: "R" },
+    }).then((response) => response.data.completeSchedule);
   }
 }

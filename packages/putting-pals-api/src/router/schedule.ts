@@ -1,6 +1,7 @@
 import { ScheduleService } from "@putting-pals/putting-pals-core/schedule";
 import { TourCodeSchema } from "@putting-pals/putting-pals-schema/schemas";
 import z from "zod";
+import { ScheduleYearsService } from "../../../putting-pals-core/src/schedule/schedule-years-service";
 import { publicProcedure, router } from "../trpc";
 
 export const scheduleRouter = router({
@@ -11,7 +12,7 @@ export const scheduleRouter = router({
       }),
     )
     .query(async ({ input }) => {
-      return new ScheduleService().getScheduleYears(input.tourCode);
+      return new ScheduleYearsService().getScheduleYears(input.tourCode);
     }),
 
   getByYear: publicProcedure

@@ -1,18 +1,20 @@
 import { TournamentClient } from "@putting-pals/pga-tour-api/tournament";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
-import { ScheduleService } from "../schedule/schedule-service";
 import { NotFoundError } from "../utils/service-error";
+import { TournamentResolver } from "./tournament-resolver";
 import { transformTournament } from "./tournament-transformer";
 
 export class TournamentService {
   async getTournament(tourCode: TourCode, id?: string) {
-    if (id) {
-      return this.getTournamentById(id);
-    } else {
-      const currentTournamentId =
-        await new ScheduleService().getCurrentTournamentId(tourCode);
-      return this.getTournamentById(currentTournamentId);
+    const tournamentId = await this.resolveTournamentId(tourCode, id);
+    return this.getTournamentById(tournamentId);
+  }
+
+  private async resolveTournamentId(tourCode: TourCode, id?: string) {
+    if (id === undefined) {
+      return await new TournamentResolver().getCurrentTournamentId(tourCode);
     }
+    return id;
   }
 
   async getTournaments(ids: string[]) {
