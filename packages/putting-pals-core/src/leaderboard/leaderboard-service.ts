@@ -7,7 +7,7 @@ import { aggregateLeaderboard } from "./leaderboard-aggregator";
 import { transformLeaderboard } from "./leaderboard-transformer";
 
 export class LeaderboardService {
-  async getLeaderboard(tourCode: TourCode, id?: string) {
+  getLeaderboard(tourCode: TourCode, id?: string) {
     switch (tourCode) {
       case "P":
         return this.getPuttingPalsLeaderboard(id);
@@ -22,9 +22,9 @@ export class LeaderboardService {
     if (id) {
       return this.getPuttingPalsLeaderboardById(id);
     } else {
-      return new ScheduleService()
-        .getCurrentTournamentId("P")
-        .then((id) => this.getPuttingPalsLeaderboardById(id));
+      const currentTournamentId =
+        await new ScheduleService().getCurrentTournamentId("P");
+      return this.getPuttingPalsLeaderboardById(currentTournamentId);
     }
   }
 
@@ -32,22 +32,20 @@ export class LeaderboardService {
     if (id) {
       return this.getPgaTourLeaderboardById(id);
     } else {
-      return new ScheduleService()
-        .getCurrentTournamentId("R")
-        .then((id) => this.getPgaTourLeaderboardById(id));
+      const currentTournamentId =
+        await new ScheduleService().getCurrentTournamentId("R");
+      return this.getPgaTourLeaderboardById(currentTournamentId);
     }
   }
 
   private async getPuttingPalsLeaderboardById(id: string) {
-    return this.getPgaTourLeaderboardById(id).then((leaderboard) => {
-      const competition = new CompetitionService().getCompetition(id);
-      return aggregateLeaderboard(leaderboard, competition);
-    });
+    const competition = new CompetitionService().getCompetition(id);
+    const pgaTourLeaderboard = await this.getPgaTourLeaderboardById(id);
+    return aggregateLeaderboard(pgaTourLeaderboard, competition);
   }
 
   private async getPgaTourLeaderboardById(id: string) {
-    return new LeaderboardClient()
-      .getLeaderboard(id)
-      .then(transformLeaderboard);
+    const leaderboard = await new LeaderboardClient().getLeaderboard(id);
+    return transformLeaderboard(leaderboard);
   }
 }

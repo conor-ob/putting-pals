@@ -128,6 +128,7 @@ export function aggregateLeaderboard(
     id: leaderboard.id,
     leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
     rows,
+    tournamentStatus: leaderboard.tournamentStatus,
   };
 }
 

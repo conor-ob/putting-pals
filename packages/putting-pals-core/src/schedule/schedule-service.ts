@@ -11,7 +11,7 @@ import { transformSchedule } from "./schedule-transformer";
 import { transformScheduleYears } from "./schedule-years-transformer";
 
 export class ScheduleService {
-  async getScheduleYears(tourCode: TourCode) {
+  getScheduleYears(tourCode: TourCode) {
     switch (tourCode) {
       case "P":
         return this.getPuttingPalsScheduleYears();
@@ -23,23 +23,24 @@ export class ScheduleService {
   }
 
   private async getPuttingPalsScheduleYears() {
-    return Promise.all([
-      this.getPgaTourScheduleYears(),
-      this.getPuttingPalsHistoricalSchedule(),
-    ]).then(([pgaTourScheduleYears, puttingPalsHistoricalSchedule]) => {
-      return pgaTourScheduleYears.filter((year) =>
-        puttingPalsHistoricalSchedule.some(
-          (schedule) => schedule.year === year.queryValue,
-        ),
-      );
-    });
+    const [pgaTourScheduleYears, puttingPalsHistoricalSchedule] =
+      await Promise.all([
+        this.getPgaTourScheduleYears(),
+        this.getPuttingPalsHistoricalSchedule(),
+      ]);
+    return pgaTourScheduleYears.filter((year) =>
+      puttingPalsHistoricalSchedule.some(
+        (schedule) => schedule.year === year.queryValue,
+      ),
+    );
   }
 
   private async getPgaTourScheduleYears() {
-    return new ScheduleClient().getScheduleYears().then(transformScheduleYears);
+    const scheduleYears = await new ScheduleClient().getScheduleYears();
+    return transformScheduleYears(scheduleYears);
   }
 
-  async getSchedule(tourCode: TourCode, year?: string) {
+  getSchedule(tourCode: TourCode, year?: string) {
     switch (tourCode) {
       case "P":
         return this.getPuttingPalsSchedule(year);
@@ -50,7 +51,7 @@ export class ScheduleService {
     }
   }
 
-  async getCurrentTournamentId(tourCode: TourCode) {
+  getCurrentTournamentId(tourCode: TourCode) {
     switch (tourCode) {
       case "P":
         return this.getCurrentPuttingPalsTournamentId();
@@ -63,73 +64,74 @@ export class ScheduleService {
 
   private async getPuttingPalsHistoricalSchedule() {
     const competitions = new CompetitionService().getCompetitions();
-    return new TournamentService()
-      .getTournaments(
-        competitions.map((competition) => competition.tournamentId),
-      )
-      .then(groupScheduleByYear);
+    const tournamentIds = competitions.map(
+      (competition) => competition.tournamentId,
+    );
+    const tournaments = await new TournamentService().getTournaments(
+      tournamentIds,
+    );
+    return groupScheduleByYear(tournaments);
   }
 
   private async getPuttingPalsSchedule(year?: string) {
     if (year) {
       return this.getPuttingPalsScheduleByYear(year);
     } else {
-      return this.getPuttingPalsScheduleYears().then((scheduleYears) => {
-        const currentYear = scheduleYears.find((year) => year.current);
-        if (currentYear === undefined) {
-          throw new NotFoundError("No current year found");
-        }
-        return this.getPuttingPalsScheduleByYear(currentYear.queryValue);
-      });
+      const scheduleYears = await this.getPuttingPalsScheduleYears();
+      const currentYear = scheduleYears.find((year) => year.current);
+      if (currentYear === undefined) {
+        throw new NotFoundError("No current year found");
+      }
+      return this.getPuttingPalsScheduleByYear(currentYear.queryValue);
     }
   }
 
   private async getPuttingPalsScheduleByYear(year: string) {
-    return Promise.all([
+    const [schedule, tournaments] = await Promise.all([
       this.getPgaTourScheduleByYear(year),
       new TournamentService().getTournaments(
         new CompetitionService()
           .getCompetitions()
           .map((competition) => competition.tournamentId),
       ),
-    ]).then(([schedule, tournaments]) => {
-      const seasonTournamentIds = tournaments
+    ]);
+    const seasonTournamentIds = tournaments
+      .filter(
+        (tournament) =>
+          parseISO(tournament.startDate).getFullYear() === schedule.yearSort,
+      )
+      .map((tournament) => tournament.id);
+    return {
+      year: schedule.year,
+      yearSort: schedule.yearSort,
+      completed: schedule.completed
         .filter(
-          (tournament) =>
-            parseISO(tournament.startDate).getFullYear() === schedule.yearSort,
+          (month) =>
+            month.tournaments.filter((tournament) =>
+              seasonTournamentIds.includes(tournament.id),
+            ).length > 0,
         )
-        .map((tournament) => tournament.id);
-      return {
-        year: schedule.year,
-        yearSort: schedule.yearSort,
-        completed: schedule.completed
-          .filter(
-            (month) =>
-              month.tournaments.filter((tournament) =>
-                seasonTournamentIds.includes(tournament.id),
-              ).length > 0,
-          )
-          .map((month) => ({
-            ...month,
-            tournaments: month.tournaments.filter((tournament) =>
+        .map((month) => ({
+          ...month,
+          tournaments: month.tournaments.filter((tournament) =>
+            seasonTournamentIds.includes(tournament.id),
+          ),
+        })),
+      upcoming: schedule.upcoming
+        .filter(
+          (month) =>
+            month.tournaments.filter((tournament) =>
               seasonTournamentIds.includes(tournament.id),
-            ),
-          })),
-        upcoming: schedule.upcoming
-          .filter(
-            (month) =>
-              month.tournaments.filter((tournament) =>
-                seasonTournamentIds.includes(tournament.id),
-              ).length > 0,
-          )
-          .map((month) => ({
-            ...month,
-            tournaments: month.tournaments.filter((tournament) =>
-              seasonTournamentIds.includes(tournament.id),
-            ),
-          })),
-      };
-    });
+            ).length > 0,
+        )
+        .map((month) => ({
+          ...month,
+          tournaments: month.tournaments.filter((tournament) =>
+            seasonTournamentIds.includes(tournament.id),
+          ),
+        })),
+    };
+
     // return this.getPuttingPalsHistoricalSchedule().then((groupedSchedule) => {
     //   const seasonSchedule = groupedSchedule.find(
     //     (season) => season.year === year,
@@ -145,23 +147,21 @@ export class ScheduleService {
     if (year) {
       return this.getPgaTourScheduleByYear(year);
     } else {
-      return this.getPgaTourScheduleYears().then((scheduleYears) => {
-        const currentYear = scheduleYears.find((year) => year.current);
-        if (currentYear === undefined) {
-          throw new NotFoundError("No current year found");
-        }
-        return this.getPgaTourScheduleByYear(currentYear.queryValue);
-      });
+      const scheduleYears = await this.getPgaTourScheduleYears();
+      const currentYear = scheduleYears.find((year) => year.current);
+      if (currentYear === undefined) {
+        throw new NotFoundError("No current year found");
+      }
+      return this.getPgaTourScheduleByYear(currentYear.queryValue);
     }
   }
 
   private async getPgaTourScheduleByYear(year: string) {
-    return new ScheduleClient()
-      .getSchedule(year)
-      .then((schedule) => transformSchedule(schedule));
+    const schedule = await new ScheduleClient().getSchedule(year);
+    return transformSchedule(schedule);
   }
 
-  private async getCurrentPgaTourTournamentId() {
+  private getCurrentPgaTourTournamentId() {
     return new PgaTourWebScraper().getCurrentTournamentId();
   }
 
@@ -193,18 +193,17 @@ export class ScheduleService {
       .filter((competition) => competition.competitors.length > 0)
       .map((competition) => competition.tournamentId);
 
-    return new TournamentService()
-      .getTournaments(competitionIds)
-      .then((tournaments) => {
-        const currentTournament = tournaments.sort((a, b) =>
-          b.startDate.localeCompare(a.startDate),
-        )[0];
+    const tournaments = await new TournamentService().getTournaments(
+      competitionIds,
+    );
+    const currentTournament = tournaments.sort((a, b) =>
+      b.startDate.localeCompare(a.startDate),
+    )[0];
 
-        if (currentTournament === undefined) {
-          throw new NotFoundError("No tournament found");
-        }
+    if (currentTournament === undefined) {
+      throw new NotFoundError("No tournament found");
+    }
 
-        return currentTournament.id;
-      });
+    return currentTournament.id;
   }
 }

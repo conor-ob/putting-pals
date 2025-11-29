@@ -9,25 +9,23 @@ export class TournamentService {
     if (id) {
       return this.getTournamentById(id);
     } else {
-      return new ScheduleService()
-        .getCurrentTournamentId(tourCode)
-        .then((id) => this.getTournamentById(id));
+      const currentTournamentId =
+        await new ScheduleService().getCurrentTournamentId(tourCode);
+      return this.getTournamentById(currentTournamentId);
     }
   }
 
   async getTournaments(ids: string[]) {
-    return new TournamentClient()
-      .getTournaments(ids)
-      .then((tournaments) => tournaments.map(transformTournament));
+    const tournaments = await new TournamentClient().getTournaments(ids);
+    return tournaments.map(transformTournament);
   }
 
   private async getTournamentById(id: string) {
-    return this.getTournaments([id]).then((tournaments) => {
-      const tournament = tournaments[0];
-      if (tournament === undefined) {
-        throw new NotFoundError(`Tournament with id=${id} not found`);
-      }
-      return tournament;
-    });
+    const tournaments = await this.getTournaments([id]);
+    const tournament = tournaments[0];
+    if (tournament === undefined) {
+      throw new NotFoundError(`Tournament with id=${id} not found`);
+    }
+    return tournament;
   }
 }
