@@ -2,37 +2,42 @@ import type {
   ImageAsset,
   Schedule,
   ScheduleMonth,
+  ScheduleTournament,
 } from "@putting-pals/pga-tour-schema/types";
 import type { RecursivePartial } from "../utils/type-utils";
+
+export function transformScheduleTournament(tournament: ScheduleTournament) {
+  return {
+    beautyImage: tournament.beautyImageAsset
+      ? getImageUrl(tournament.beautyImageAsset, "jpg", "ar_0.667,c_crop")
+      : undefined,
+    date: tournament.date,
+    // displayDate: tournament.date, // TODO format
+    // endDate: tournament.date, // TODO format
+    id: tournament.id,
+    sortDate: tournament.sortDate,
+    status: tournament.status
+      ? {
+          leaderboardTakeover: tournament.status.leaderboardTakeover, // TODO: remove
+          roundDisplay: tournament.status.roundDisplay,
+          roundStatus: tournament.status.roundStatus,
+          roundStatusColor: tournament.status.roundStatusColor,
+          roundStatusDisplay: tournament.status.roundStatusDisplay,
+        }
+      : undefined,
+    // startDate: tournament.date, // TODO format
+    tournamentLogo: getImageUrl(tournament.tournamentLogoAsset, "png"),
+    tournamentName: sanitizeTournamentName(tournament.tournamentName),
+    tournamentStatus: tournament.tournamentStatus,
+  };
+}
 
 export function transformSchedule(schedule: Schedule) {
   function transformScheduleMonth(scheduleMonth: ScheduleMonth) {
     return {
       month: scheduleMonth.month,
       monthSort: scheduleMonth.monthSort ?? 0, // TODO: add default month sort
-      tournaments: scheduleMonth.tournaments.map((tournament) => ({
-        beautyImage: tournament.beautyImageAsset
-          ? getImageUrl(tournament.beautyImageAsset, "jpg", "ar_0.667,c_crop")
-          : undefined,
-        date: tournament.date,
-        // displayDate: tournament.date, // TODO format
-        // endDate: tournament.date, // TODO format
-        id: tournament.id,
-        sortDate: tournament.sortDate,
-        status: tournament.status
-          ? {
-              leaderboardTakeover: tournament.status.leaderboardTakeover, // TODO: remove
-              roundDisplay: tournament.status.roundDisplay,
-              roundStatus: tournament.status.roundStatus,
-              roundStatusColor: tournament.status.roundStatusColor,
-              roundStatusDisplay: tournament.status.roundStatusDisplay,
-            }
-          : undefined,
-        // startDate: tournament.date, // TODO format
-        tournamentLogo: getImageUrl(tournament.tournamentLogoAsset, "png"),
-        tournamentName: sanitizeTournamentName(tournament.tournamentName),
-        tournamentStatus: tournament.tournamentStatus,
-      })),
+      tournaments: scheduleMonth.tournaments.map(transformScheduleTournament),
     };
   }
 

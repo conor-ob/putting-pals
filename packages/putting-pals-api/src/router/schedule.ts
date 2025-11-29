@@ -25,4 +25,14 @@ export const scheduleRouter = router({
     .query(async ({ input }) => {
       return new ScheduleService().getSchedule(input.tourCode, input.year);
     }),
+
+  getUpcoming: publicProcedure
+    .input(
+      z.object({
+        tourCode: TourCodeSchema,
+      }),
+    )
+    .query(async ({ input }) => {
+      return new ScheduleService().getUpcomingSchedule(input.tourCode);
+    }),
 });

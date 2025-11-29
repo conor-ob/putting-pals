@@ -1,5 +1,6 @@
 import type {
   Schedule,
+  ScheduleUpcoming,
   ScheduleYears,
 } from "@putting-pals/pga-tour-schema/types";
 import { GraphQlClient } from "./graphql-client";
@@ -104,5 +105,25 @@ export class ScheduleClient extends GraphQlClient {
       `,
       variables: { tourCode: "R" },
     }).then((response) => response.data.completeSchedule);
+  }
+
+  async getUpcomingSchedule() {
+    return this.query<{
+      data: {
+        upcomingSchedule: ScheduleUpcoming;
+      };
+    }>({
+      operationName: "UpcomingSchedule",
+      query: `
+        query UpcomingSchedule($tourCode: String!) {
+          upcomingSchedule(tourCode: $tourCode) {
+            tournaments {
+              ${scheduleTournamentFragment}
+            }
+          }
+        }
+      `,
+      variables: { tourCode: "R" },
+    }).then((response) => response.data.upcomingSchedule);
   }
 }

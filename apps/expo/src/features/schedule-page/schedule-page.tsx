@@ -21,6 +21,14 @@ export function SchedulePage() {
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("schedule.error", scheduleError);
 
+  const { data: upcomingSchedule, error: upcomingScheduleError } = useQuery(
+    trpc.schedule.getUpcoming.queryOptions({ tourCode }),
+  );
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("upcomingSchedule.data", upcomingSchedule);
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("upcomingSchedule.error", upcomingScheduleError);
+
   return (
     <ScrollView className="bg-background flex-1 justify-center gap-4">
       <Button
@@ -35,13 +43,33 @@ export function SchedulePage() {
           setTourCode("R");
         }}
       />
-      {schedule?.completed?.map((month) => (
-        <View key={month.month}>
-          <Text className="text-foreground">{month.month}</Text>
-          {month.tournaments.map((tournament) => (
-            <Text key={tournament.id} className="text-foreground">
-              {tournament.tournamentName}
-            </Text>
+      {schedule?.map((season) => (
+        <View key={`${tourCode}-${season.year}`}>
+          {season.completed.map((month) => (
+            <View key={`${tourCode}-${month.month}-completed`}>
+              <Text className="text-foreground">{`${month.month} ${season.year}`}</Text>
+              {month.tournaments.map((tournament) => (
+                <Text
+                  key={`${tourCode}-${tournament.id}-completed`}
+                  className="text-foreground"
+                >
+                  {tournament.tournamentName}
+                </Text>
+              ))}
+            </View>
+          ))}
+          {season.upcoming.map((month) => (
+            <View key={`${tourCode}-${month.month}-upcoming`}>
+              <Text className="text-foreground">{`${month.month} ${season.year}`}</Text>
+              {month.tournaments.map((tournament) => (
+                <Text
+                  key={`${tourCode}-${tournament.id}-upcoming`}
+                  className="text-foreground"
+                >
+                  {tournament.tournamentName}
+                </Text>
+              ))}
+            </View>
           ))}
         </View>
       ))}
