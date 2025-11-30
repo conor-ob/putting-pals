@@ -1,13 +1,16 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - apps/*
+  - packages/*
 
 catalog:
-  "@total-typescript/tsconfig": ^1.0.4
-  "@trpc/server": ^11.7.2
-  "@types/node": ^24.10.1
+  '@total-typescript/tsconfig': ^1.0.4
+  '@trpc/server': ^11.7.2
+  '@types/node': ^24.10.1
   dotenv: ^17.2.3
-  superjson: ^2.2.5
+  superjson: ^2.2.6
   typescript: ^5.9.3
   vitest: ^4.0.14
   zod: ^4.1.13
+
+onlyBuiltDependencies:
+  - esbuild
