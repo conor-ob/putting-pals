@@ -22,6 +22,8 @@ FROM base AS builder
 
 WORKDIR /app
 
+ENV CI=true
+
 # Copy lockfile and package.json's of isolated subworkspace
 COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
