@@ -20,6 +20,8 @@ RUN turbo prune --scope=@putting-pals/expo --docker
 # Build the project
 FROM base AS builder
 
+ENV CI=true
+
 WORKDIR /app
 
 # Copy lockfile and package.json's of isolated subworkspace
