@@ -12,7 +12,5 @@ catalog:
   vitest: ^4.0.14
   zod: ^4.1.13
 
-linkWorkspacePackages: true
-
 onlyBuiltDependencies:
   - esbuild
