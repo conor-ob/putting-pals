@@ -18,6 +18,7 @@
     "@mgcrea/pino-pretty-compact": "^1.4.2",
     "@putting-pals/putting-pals-api": "workspace:*",
     "@trpc/server": "catalog:",
+    "dotenv": "catalog:",
     "fastify": "^5.6.2",
     "pino": "^10.1.0",
     "pino-pretty": "^13.1.2",
@@ -26,7 +27,6 @@
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
-    "dotenv": "catalog:",
     "typescript": "catalog:",
     "vite": "^7.2.4",
     "vite-plugin-node": "^7.0.0",
