@@ -1,7 +1,12 @@
 import { ScheduleClient } from "@putting-pals/pga-tour-api/schedule";
+import {
+  RoundStatus,
+  RoundStatusColor,
+  type ScheduleTournament,
+} from "@putting-pals/pga-tour-schema/types";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 import { CompetitionService } from "../competition/competition-service";
-import { assertNever } from "../utils/type-utils";
+import { assertNever, type RecursivePartial } from "../utils/type-utils";
 import {
   transformSchedule,
   transformScheduleTournament,
@@ -86,11 +91,38 @@ export class ScheduleService {
     const competitionIds = new CompetitionService()
       .getCompetitions()
       .map((competition) => competition.tournamentId);
-    const upcomingSchedule = await this.getPgaTourUpcomingSchedule();
+    const pgaTourUpcomingSchedule = await this.getPgaTourUpcomingSchedule();
+    const upcomingTournaments = pgaTourUpcomingSchedule.tournaments.filter(
+      (tournament) => competitionIds.includes(tournament.id),
+    );
+
+    if (upcomingTournaments.length === 0) {
+      const puttingPalsCompleteSchedule = await this.getPuttingPalsSchedule();
+      return {
+        tournaments: puttingPalsCompleteSchedule
+          .flatMap((season) => season.upcoming)
+          .flatMap((month) => month.tournaments)
+          .slice(0, pgaTourUpcomingSchedule.tournaments.length)
+          .map((tournament) => {
+            if (tournament.status === undefined) {
+              return {
+                ...tournament,
+                status: {
+                  leaderboardTakeover: false, // TODO: remove
+                  roundDisplay: "",
+                  roundStatus: RoundStatus.Upcoming,
+                  roundStatusColor: RoundStatusColor.Gray,
+                  roundStatusDisplay: "Upcoming",
+                },
+              } satisfies RecursivePartial<ScheduleTournament>;
+            }
+            return tournament;
+          }),
+      };
+    }
+
     return {
-      tournaments: upcomingSchedule.tournaments.filter((tournament) =>
-        competitionIds.includes(tournament.id),
-      ),
+      tournaments: upcomingTournaments,
     };
   }
 

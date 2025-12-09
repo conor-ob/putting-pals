@@ -17,8 +17,12 @@ export class TournamentResolver {
     }
   }
 
-  private getCurrentPgaTourTournamentId() {
-    return new PgaTourWebScraper().getCurrentTournamentId();
+  private async getCurrentPgaTourTournamentId() {
+    const tournamentId = await new PgaTourWebScraper().getCurrentTournamentId();
+    if (tournamentId === undefined) {
+      throw new NotFoundError("Failed to get current PGA TOUR tournament id");
+    }
+    return tournamentId;
   }
 
   private async getCurrentPuttingPalsTournamentId() {

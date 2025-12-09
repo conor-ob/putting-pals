@@ -22,6 +22,15 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="earnings"
+        options={{
+          title: "Earnings",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name="money" color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

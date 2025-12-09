@@ -1,92 +1,54 @@
-/** biome-ignore-all lint/suspicious/noConsole: N/A */
-/** biome-ignore-all lint/suspicious/noExplicitAny: N/A */
 import * as cheerio from "cheerio";
+
+type NextDataProps = {
+  props: {
+    pageProps: {
+      pageContext?: {
+        tournaments?: {
+          id?: string;
+          tourCode?: string;
+        }[];
+      };
+      leaderboardId?: string;
+      tournament?: {
+        id?: string;
+      };
+    };
+  };
+};
 
 export class PgaTourWebScraper {
   async getCurrentTournamentId() {
-    return fetch("https://www.pgatour.com/leaderboard")
-      .then((response) => response.text())
-      .then((text) => {
-        const $ = cheerio.load(text);
+    const response = await fetch("https://www.pgatour.com/leaderboard");
+    const text = await response.text();
+    const $ = cheerio.load(text);
+    const nextDataScript = $("#__NEXT_DATA__").html();
 
-        const scriptsById = $("#__NEXT_DATA__")
-          .map((_, el) => $(el).html())
-          .toArray();
+    if (nextDataScript) {
+      try {
+        const data = JSON.parse(nextDataScript) as NextDataProps;
 
-        for (const text of scriptsById) {
-          try {
-            return JSON.parse(text).props.pageProps.leaderboardId as string;
-          } catch (e) {
-            console.error(
-              "Failed parsing 'props.pageProps.leaderboardId' on <script id='#__NEXT_DATA__'>",
-              e,
-            );
-          }
-
-          try {
-            return JSON.parse(text).props.pageProps.tournament.id as string;
-          } catch (e) {
-            console.error(
-              "Failed parsing 'props.pageProps.tournament.id' on <script id='#__NEXT_DATA__'>",
-              e,
-            );
-          }
-
-          try {
-            const tournaments =
-              JSON.parse(text).props.pageProps.pageContext.tournaments;
-            const pgaTourTournaments = tournaments.filter(
-              (it: any) => it.tourCode === "R",
-            );
-            return pgaTourTournaments[0].id as string;
-          } catch (e) {
-            console.error(
-              "Failed parsing 'props.pageProps.pageContext.tournaments' on <script id='#__NEXT_DATA__'>",
-              e,
-            );
-          }
+        if (data.props.pageProps.leaderboardId !== undefined) {
+          return data.props.pageProps.leaderboardId;
         }
 
-        const allScripts = $("script")
-          .map((_, el) => $(el).html())
-          .filter((_, it) => it !== "")
-          .toArray();
-
-        for (const text of allScripts) {
-          try {
-            return JSON.parse(text).props.pageProps.leaderboardId as string;
-          } catch (e) {
-            console.error(
-              "Failed parsing 'props.pageProps.leaderboardId' on all scripts",
-              e,
-            );
-          }
-
-          try {
-            return JSON.parse(text).props.pageProps.tournament.id as string;
-          } catch (e) {
-            console.error(
-              "Failed parsing 'props.pageProps.tournament.id' on all scripts",
-              e,
-            );
-          }
-
-          try {
-            const tournaments =
-              JSON.parse(text).props.pageProps.pageContext.tournaments;
-            const pgaTourTournaments = tournaments.filter(
-              (it: any) => it.tourCode === "R",
-            );
-            return pgaTourTournaments[0].id as string;
-          } catch (e) {
-            console.error(
-              "Failed parsing 'props.pageProps.pageContext.tournaments' on all scripts",
-              e,
-            );
-          }
+        if (data.props.pageProps.tournament?.id !== undefined) {
+          return data.props.pageProps.tournament.id;
         }
 
-        throw new Error("Query 'pgaTourActiveTournamentId' failed");
-      });
+        const tournaments = data.props.pageProps.pageContext?.tournaments;
+        if (tournaments !== undefined) {
+          const tournament = tournaments.find((it) => it.tourCode === "R");
+          if (tournament?.id !== undefined) {
+            return tournament.id;
+          }
+        }
+      } catch {
+        // Not valid JSON or doesn't match expected structure
+        // Silently continue to next script
+      }
+    }
+
+    return undefined;
   }
 }

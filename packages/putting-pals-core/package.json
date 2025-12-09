@@ -8,6 +8,7 @@
     "./service-error": "./src/utils/service-error.ts",
     "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
     "./schedule": "./src/schedule/schedule-service.ts",
+    "./stats": "./src/stats/stats-service.ts",
     "./tournament": "./src/tournament/tournament-service.ts"
   },
   "scripts": {
