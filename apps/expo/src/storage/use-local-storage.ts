@@ -22,14 +22,29 @@ export function useLocalStorage<K extends LocalStorageKey>(
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setData(undefined);
+    setLoading(true);
+
+    let cancelled = false;
+
     AsyncStorage.getItem(key).then((value) => {
+      if (cancelled) {
+        return;
+      }
+
       if (value != null) {
         setData(
           options?.deserialize ? options.deserialize(value) : JSON.parse(value),
         );
+      } else {
+        setData(undefined);
       }
       setLoading(false);
     });
+
+    return () => {
+      cancelled = true;
+    };
   }, [key, options?.deserialize]);
 
   const setValue = useCallback(
