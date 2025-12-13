@@ -26,7 +26,7 @@ export function LeaderboardPage() {
 
   // biome-ignore lint/correctness/noUnusedVariables: testing
   const { value: favourites, setValue: setFavourites } = useLocalStorage(
-    `Favourites:${leaderboard?.id}`,
+    `putting-pals:favourites:v1:${leaderboard?.id}`,
   );
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("favourites", favourites);

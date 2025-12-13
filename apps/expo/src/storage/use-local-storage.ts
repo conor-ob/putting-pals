@@ -1,11 +1,10 @@
+import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 
-type FavouritesKey = `Favourites:${string}`;
-
 type LocalStorageKeyValueTypes = {
-  [key: FavouritesKey]: string[];
-  updatedAt: Date;
+  [key: `putting-pals:favourites:v1:${string}`]: string[];
+  "putting-pals:tour-code:v1": TourCode;
 };
 
 type LocalStorageKey = keyof LocalStorageKeyValueTypes;
