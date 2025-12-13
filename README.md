@@ -50,8 +50,5 @@ This will start the Fastify server and Expo app
 
 ## BUGS
 
-- [ ] fix bug when trpc responds with 404s
-  - change tab
-  - change tour code
 - [ ] fix bug where favourites key does not change with tour code changes
   - change tour code

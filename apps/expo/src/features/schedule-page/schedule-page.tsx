@@ -1,10 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
 import { Button, ScrollView, Text, View } from "react-native";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { trpc } from "~/providers/trpc/utils/trpc";
+import { useQuery } from "~/providers/trpc/utils/use-query";
 
 export function SchedulePage() {
   const { tourCode, setTourCode } = useTourCode();
+
   const { data: scheduleYears, error: scheduleYearsError } = useQuery(
     trpc.schedule.getScheduleYears.queryOptions({ tourCode }),
   );

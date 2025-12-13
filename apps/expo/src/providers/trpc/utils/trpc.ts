@@ -1,6 +1,6 @@
 import type { AppRouter } from "@putting-pals/putting-pals-api/router";
 import { QueryClient } from "@tanstack/react-query";
-import { createTRPCClient, httpBatchLink } from "@trpc/client";
+import { createTRPCClient, httpBatchStreamLink } from "@trpc/client";
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import { Platform } from "react-native";
@@ -20,11 +20,22 @@ export type RouterInputs = inferRouterInputs<AppRouter>;
  */
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // Prevent refetching when window regains focus if component is not mounted/visible
+      refetchOnWindowFocus: false,
+      // Prevent refetching on reconnect if component is not mounted/visible
+      refetchOnReconnect: false,
+      // Only refetch on mount if data is stale
+      refetchOnMount: true,
+    },
+  },
+});
 
 const trpcClient = createTRPCClient<AppRouter>({
   links: [
-    httpBatchLink({
+    httpBatchStreamLink({
       url: Platform.select({
         web:
           process.env.NODE_ENV === "production"
