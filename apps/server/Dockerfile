@@ -22,6 +22,7 @@ FROM base AS builder
 
 ARG PORT
 ARG ORIGIN
+ENV CI=true
 
 WORKDIR /app
 
