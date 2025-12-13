@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import { Button, ScrollView, View } from "react-native";
 import { TournamentHeader } from "~/components/tournament-header";
 import { Text } from "~/components/ui/text";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { trpc } from "~/providers/trpc/utils/trpc";
+import { useQuery } from "~/providers/trpc/utils/use-query";
 import { useLocalStorage } from "~/storage/use-local-storage";
 
 export function LeaderboardPage() {
