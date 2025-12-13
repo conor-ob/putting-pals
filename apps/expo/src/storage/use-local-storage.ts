@@ -1,30 +1,35 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 
-type FavouriteKey = `Favourites:${string}`;
+type LocalStorageKey = `Favourites:${string}`;
 
-type LocalStorageKeyValueTypes = {
-  FavouriteKey: string[];
-};
-
-export function useLocalStorage<T>(key: FavouriteKey, initial?: T) {
+export function useLocalStorage<T>(
+  key: LocalStorageKey,
+  options: {
+    serialize: (value: T) => string;
+    deserialize: (value: string) => T;
+  },
+  initial?: T,
+) {
   const [data, setData] = useState<T | undefined>(initial);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    AsyncStorage.getItem(key).then((v) => {
-      if (v != null) setData(v as T);
+    AsyncStorage.getItem(key).then((value) => {
+      if (value != null) {
+        setData(options.deserialize(value));
+      }
       setLoading(false);
     });
-  }, [key]);
+  }, [key, options.deserialize]);
 
-  const update = useCallback(
-    async (v: T) => {
-      setData(v);
-      await AsyncStorage.setItem(key, v as string);
+  const setValue = useCallback(
+    async (value: T) => {
+      setData(value);
+      await AsyncStorage.setItem(key, options.serialize(value));
     },
-    [key],
+    [key, options.serialize],
   );
 
-  return { data, set: update, loading };
+  return { value: data, setValue, loading };
 }

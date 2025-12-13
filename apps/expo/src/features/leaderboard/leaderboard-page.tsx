@@ -24,7 +24,10 @@ export function LeaderboardPage() {
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("leaderboard.error", leaderboardError);
 
-  const { data: testItem } = useLocalStorage("Favourites:R2024014");
+  const { value: testItem } = useLocalStorage<string[]>("Favourites:R2024014", {
+    serialize: (value) => JSON.stringify(value),
+    deserialize: (value) => JSON.parse(value),
+  });
   console.log("testItem", testItem);
 
   return (
