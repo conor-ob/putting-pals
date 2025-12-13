@@ -47,3 +47,11 @@ This will start the Fastify server and Expo app
   - [ ] implement servic worker reload https://github.com/ccssmnn/tilly/blob/main/src/app/sw.ts https://github.com/ccssmnn/tilly/blob/main/src/app/lib/service-worker.ts
 - [ ] expo lint config
 - [ ] revert to caddy:alpine image for expo app
+
+## BUGS
+
+- [ ] fix bug when trpc responds with 404s
+  - change tab
+  - change tour code
+- [ ] fix bug where favourites key does not change with tour code changes
+  - change tour code

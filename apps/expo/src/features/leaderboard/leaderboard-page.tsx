@@ -4,6 +4,7 @@ import { TournamentHeader } from "~/components/tournament-header";
 import { Text } from "~/components/ui/text";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { trpc } from "~/providers/trpc/utils/trpc";
+import { useLocalStorage } from "~/storage/use-local-storage";
 
 export function LeaderboardPage() {
   const { tourCode, setTourCode } = useTourCode();
@@ -22,6 +23,13 @@ export function LeaderboardPage() {
   console.log("leaderboard.data", leaderboard);
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("leaderboard.error", leaderboardError);
+
+  // biome-ignore lint/correctness/noUnusedVariables: testing
+  const { value: favourites, setValue: setFavourites } = useLocalStorage(
+    `putting-pals:leaderboard:favourites:v1:${tourCode}:${leaderboard?.id}`,
+  );
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("favourites", favourites);
 
   return (
     <ScrollView className="p-4 gap-4">

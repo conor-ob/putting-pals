@@ -1,5 +1,6 @@
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
-import { createContext, type ReactNode, useContext, useState } from "react";
+import { createContext, type ReactNode, useContext } from "react";
+import { useLocalStorage } from "~/storage/use-local-storage";
 
 interface TourCodeContextType {
   tourCode: TourCode;
@@ -11,10 +12,14 @@ const TourCodeContext = createContext<TourCodeContextType | undefined>(
 );
 
 export function TourCodeProvider({ children }: { children: ReactNode }) {
-  const [tourCode, setTourCode] = useState<TourCode>("P");
+  const { value: tourCode, setValue: setTourCode } = useLocalStorage(
+    "putting-pals:app:tour-code:v1",
+  );
 
   return (
-    <TourCodeContext.Provider value={{ tourCode, setTourCode }}>
+    <TourCodeContext.Provider
+      value={{ tourCode: tourCode ?? "P", setTourCode }}
+    >
       {children}
     </TourCodeContext.Provider>
   );
