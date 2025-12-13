@@ -2,25 +2,23 @@ import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 
-type LocalStorageKeyValueTypes = {
+type LocalStorageTypes = {
   [
     key: `putting-pals:leaderboard:favourites:v1:${TourCode}:${string}`
   ]: string[];
   "putting-pals:app:tour-code:v1": TourCode;
 };
 
-type LocalStorageKey = keyof LocalStorageKeyValueTypes;
+type LocalStorageKey = keyof LocalStorageTypes;
 
 export function useLocalStorage<K extends LocalStorageKey>(
   key: K,
   options?: {
-    serialize: (value: LocalStorageKeyValueTypes[K]) => string;
-    deserialize: (value: string) => LocalStorageKeyValueTypes[K];
+    serialize: (value: LocalStorageTypes[K]) => string;
+    deserialize: (value: string) => LocalStorageTypes[K];
   },
 ) {
-  const [data, setData] = useState<LocalStorageKeyValueTypes[K] | undefined>(
-    undefined,
-  );
+  const [data, setData] = useState<LocalStorageTypes[K] | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,7 +33,7 @@ export function useLocalStorage<K extends LocalStorageKey>(
   }, [key, options?.deserialize]);
 
   const setValue = useCallback(
-    async (value: LocalStorageKeyValueTypes[K]) => {
+    async (value: LocalStorageTypes[K]) => {
       setData(value);
       await AsyncStorage.setItem(
         key,
