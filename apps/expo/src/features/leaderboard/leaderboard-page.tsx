@@ -24,11 +24,12 @@ export function LeaderboardPage() {
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("leaderboard.error", leaderboardError);
 
-  const { value: testItem } = useLocalStorage<string[]>("Favourites:R2024014", {
-    serialize: (value) => JSON.stringify(value),
-    deserialize: (value) => JSON.parse(value),
-  });
-  console.log("testItem", testItem);
+  // biome-ignore lint/correctness/noUnusedVariables: testing
+  const { value: favourites, setValue: setFavourites } = useLocalStorage(
+    `Favourites:${leaderboard?.id}`,
+  );
+  // biome-ignore lint/suspicious/noConsole: testing
+  console.log("favourites", favourites);
 
   return (
     <ScrollView className="p-4 gap-4">
