@@ -3,8 +3,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 
 type LocalStorageKeyValueTypes = {
-  [key: `putting-pals:favourites:v1:${string}`]: string[];
-  "putting-pals:tour-code:v1": TourCode;
+  [
+    key: `putting-pals:leaderboard:favourites:v1:${TourCode}:${string}`
+  ]: string[];
+  "putting-pals:app:tour-code:v1": TourCode;
 };
 
 type LocalStorageKey = keyof LocalStorageKeyValueTypes;

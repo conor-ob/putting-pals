@@ -13,7 +13,7 @@ const TourCodeContext = createContext<TourCodeContextType | undefined>(
 
 export function TourCodeProvider({ children }: { children: ReactNode }) {
   const { value: tourCode, setValue: setTourCode } = useLocalStorage(
-    "putting-pals:tour-code:v1",
+    "putting-pals:app:tour-code:v1",
   );
 
   return (
