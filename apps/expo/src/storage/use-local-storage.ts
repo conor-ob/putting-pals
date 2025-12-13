@@ -22,15 +22,15 @@ export function useLocalStorage<K extends LocalStorageKey>(
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Reset state when key changes
     setData(undefined);
     setLoading(true);
 
     let cancelled = false;
 
     AsyncStorage.getItem(key).then((value) => {
-      // Don't update state if the key changed during the async operation
-      if (cancelled) return;
+      if (cancelled) {
+        return;
+      }
 
       if (value != null) {
         setData(
