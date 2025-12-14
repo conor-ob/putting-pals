@@ -17,7 +17,7 @@
     {
       "binding": "DB",
       "database_name": "production-putting-pals-worker-db",
-      "database_id": "5efcd6de-036d-4c1c-9e78-da8a1a270327",
+      "database_id": "201ef19e-dc2e-490e-9f36-d6ca16f1077b",
       "migrations_dir": "drizzle"
     }
   ]
