@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import { ScrollView } from "react-native";
 import { trpc } from "~/providers/trpc/utils/trpc";
+import { useQuery } from "~/providers/trpc/utils/use-query";
 
 export function EarningsPage() {
   const { data: earningsData, error: earningsError } = useQuery(
