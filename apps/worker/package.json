@@ -1,18 +1,20 @@
 {
-	"name": "worker",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"deploy": "wrangler deploy",
-		"dev": "wrangler dev",
-		"start": "wrangler dev",
-		"test": "vitest",
-		"cf-typegen": "wrangler types"
-	},
-	"devDependencies": {
-		"@cloudflare/vitest-pool-workers": "^0.8.19",
-		"typescript": "^5.5.2",
-		"vitest": "~3.2.0",
-		"wrangler": "^4.54.0"
-	}
+  "name": "@putting-pals/worker",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "codegen": "wrangler types",
+    "typecheck": "tsc --noEmit true",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev --test-scheduled",
+    "start": "wrangler dev --test-scheduled",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.8.19",
+    "typescript": "catalog:",
+    "vitest": "~3.2.0",
+    "wrangler": "^4.54.0"
+  }
 }
