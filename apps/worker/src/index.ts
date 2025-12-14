@@ -17,12 +17,23 @@
  */
 
 import { drizzle } from "drizzle-orm/d1";
+import { leaderboardFeedTable } from "./db/schema";
 
 export default {
   // biome-ignore lint/correctness/noUnusedFunctionParameters: dev
   async fetch(request, env, ctx): Promise<Response> {
-    // biome-ignore lint/correctness/noUnusedVariables: dev
-    const db = drizzle(env.DB);
+    const { pathname } = new URL(request.url);
+    if (pathname === "/leaderboard-feed") {
+      const db = drizzle(env.DB);
+      const result = await db
+        .insert(leaderboardFeedTable)
+        .values({
+          tournamentId: "R2025100",
+          tourCode: "P",
+        })
+        .returning();
+      return Response.json(result);
+    }
     const url = new URL(request.url);
     url.pathname = "/__scheduled";
     url.searchParams.append("cron", "* * * * *");
@@ -35,6 +46,16 @@ export default {
   // [[triggers]] configuration.
   // biome-ignore lint/correctness/noUnusedFunctionParameters: dev
   async scheduled(event, env, ctx): Promise<void> {
+    const db = drizzle(env.DB);
+    const result = await db
+      .insert(leaderboardFeedTable)
+      .values({
+        tournamentId: "R2025100",
+        tourCode: "P",
+      })
+      .returning();
+    // biome-ignore lint/suspicious/noConsole: dev
+    console.log("result", result);
     // A Cron Trigger can make requests to other endpoints on the Internet,
     // publish to a Queue, query a D1 Database, and much more.
     //

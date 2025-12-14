@@ -10,8 +10,10 @@
     "db:studio": "drizzle-kit studio",
     "typecheck": "tsc --noEmit true",
     "deploy": "wrangler deploy",
-    "dev": "wrangler dev --test-scheduled",
-    "start": "wrangler dev --test-scheduled",
+    "dev": "wrangler dev",
+    "dev:remote": "wrangler dev --remote",
+    "dev:scheduled": "wrangler dev --test-scheduled",
+    "start": "wrangler dev",
     "test": "vitest"
   },
   "dependencies": {
