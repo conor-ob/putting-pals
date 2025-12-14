@@ -16,9 +16,13 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { drizzle } from "drizzle-orm/d1";
+
 export default {
   // biome-ignore lint/correctness/noUnusedFunctionParameters: dev
   async fetch(request, env, ctx): Promise<Response> {
+    // biome-ignore lint/correctness/noUnusedVariables: dev
+    const db = drizzle(env.DB);
     const url = new URL(request.url);
     url.pathname = "/__scheduled";
     url.searchParams.append("cron", "* * * * *");

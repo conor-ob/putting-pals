@@ -12,7 +12,15 @@
   },
   "triggers": {
     "crons": ["* * * * *"]
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "production-putting-pals-worker-db",
+      "database_id": "201ef19e-dc2e-490e-9f36-d6ca16f1077b",
+      "migrations_dir": "drizzle"
+    }
+  ]
   /**
    * Smart Placement
    * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
