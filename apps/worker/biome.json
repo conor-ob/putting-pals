@@ -1,0 +1,6 @@
+{
+  "extends": "//",
+  "files": {
+    "includes": ["**", "!worker-configuration.d.ts", "!test/env.d.ts"]
+  }
+}

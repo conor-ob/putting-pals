@@ -17,6 +17,7 @@
  */
 
 export default {
+  // biome-ignore lint/correctness/noUnusedFunctionParameters: dev
   async fetch(request, env, ctx): Promise<Response> {
     const url = new URL(request.url);
     url.pathname = "/__scheduled";
@@ -28,6 +29,7 @@ export default {
 
   // The scheduled handler is invoked at the interval set in our wrangler.jsonc's
   // [[triggers]] configuration.
+  // biome-ignore lint/correctness/noUnusedFunctionParameters: dev
   async scheduled(event, env, ctx): Promise<void> {
     // A Cron Trigger can make requests to other endpoints on the Internet,
     // publish to a Queue, query a D1 Database, and much more.
@@ -38,6 +40,7 @@ export default {
 
     // You could store this result in KV, write to a D1 Database, or publish to a Queue.
     // In this template, we'll just log the result:
+    // biome-ignore lint/suspicious/noConsole: dev
     console.log(`trigger fired at ${event.cron}: ${wasSuccessful}`);
   },
 } satisfies ExportedHandler<Env>;
