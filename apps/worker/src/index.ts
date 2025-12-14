@@ -16,10 +16,6 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import {
-  RoundStatus,
-  RoundStatusColor,
-} from "@putting-pals/pga-tour-schema/types";
 import { LeaderboardService } from "@putting-pals/putting-pals-core/leaderboard";
 import { TournamentService } from "@putting-pals/putting-pals-core/tournament";
 import { desc } from "drizzle-orm";
@@ -67,6 +63,7 @@ export default {
       "R",
       "R2025551",
     );
+    // biome-ignore lint/suspicious/noConsole: dev
     console.log("leaderboard", leaderboard);
 
     const results = await db
@@ -78,7 +75,7 @@ export default {
     const existingSnapshot = results[0]?.snapshot;
 
     const newSnapshot = {
-      __typename: "LeaderboardSnapshotV1" as const,
+      __typename: "PgaTourLeaderboardSnapshotV1" as const,
       leaderboard: {
         tournamentStatus: leaderboard.tournamentStatus,
       },
@@ -90,7 +87,20 @@ export default {
       },
     };
 
-    if (existingSnapshot === undefined || existingSnapshot !== newSnapshot) {
+    if (
+      existingSnapshot === undefined ||
+      existingSnapshot.__typename !== newSnapshot.__typename ||
+      existingSnapshot.leaderboard.tournamentStatus !==
+        newSnapshot.leaderboard.tournamentStatus ||
+      existingSnapshot.tournament.roundDisplay !==
+        newSnapshot.tournament.roundDisplay ||
+      existingSnapshot.tournament.roundStatus !==
+        newSnapshot.tournament.roundStatus ||
+      existingSnapshot.tournament.roundStatusColor !==
+        newSnapshot.tournament.roundStatusColor ||
+      existingSnapshot.tournament.roundStatusDisplay !==
+        newSnapshot.tournament.roundStatusDisplay
+    ) {
       await db.insert(leaderboardSnapshotTable).values({
         tournamentId: leaderboard.id,
         tourCode: "P",

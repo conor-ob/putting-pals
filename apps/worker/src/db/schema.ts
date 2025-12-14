@@ -32,8 +32,21 @@ export const leaderboardFeedTable = sqliteTable("leaderboard_feed", {
     .$defaultFn(() => new Date().toISOString()),
 });
 
-type LeaderboardSnapshotV1 = {
-  __typename: "LeaderboardSnapshotV1";
+type PgaTourLeaderboardSnapshotV1 = {
+  __typename: "PgaTourLeaderboardSnapshotV1";
+  leaderboard: {
+    tournamentStatus: TournamentStatus;
+  };
+  tournament: {
+    roundDisplay: string;
+    roundStatus: RoundStatus;
+    roundStatusColor: RoundStatusColor;
+    roundStatusDisplay: string;
+  };
+};
+
+type PuttingPalsLeaderboardSnapshotV1 = {
+  __typename: "PuttingPalsLeaderboardSnapshotV1";
   leaderboard: {
     tournamentStatus: TournamentStatus;
   };
@@ -53,7 +66,7 @@ export const leaderboardSnapshotTable = sqliteTable("leaderboard_snapshot", {
   tourCode: text("tour_code", { enum: ["P", "R"] }).notNull(),
   snapshot: text("snapshot", { mode: "json" })
     .notNull()
-    .$type<LeaderboardSnapshotV1>(),
+    .$type<PgaTourLeaderboardSnapshotV1 | PuttingPalsLeaderboardSnapshotV1>(),
   createdAt: text("created_at")
     .notNull()
     .$defaultFn(() => new Date().toISOString()),
