@@ -57,8 +57,8 @@ export default {
     //   .limit(1);
     // console.log("leaderboardSnapshot", leaderboardSnapshot);
     const [tournament, leaderboard] = await Promise.all([
-      new TournamentService().getTournament(tourCode, "R2025551"),
-      new LeaderboardService().getLeaderboard(tourCode, "R2025551"),
+      new TournamentService().getTournament(tourCode, "R2025088"),
+      new LeaderboardService().getLeaderboard(tourCode, "R2025088"),
     ]);
     // biome-ignore lint/suspicious/noConsole: dev
     console.log("leaderboard", leaderboard);
