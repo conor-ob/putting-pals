@@ -16,8 +16,15 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import {
+  RoundStatus,
+  RoundStatusColor,
+} from "@putting-pals/pga-tour-schema/types";
+import { LeaderboardService } from "@putting-pals/putting-pals-core/leaderboard";
+import { TournamentService } from "@putting-pals/putting-pals-core/tournament";
+import { desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/d1";
-import { leaderboardFeedTable } from "./db/schema";
+import { leaderboardFeedTable, leaderboardSnapshotTable } from "./db/schema";
 
 export default {
   // biome-ignore lint/correctness/noUnusedFunctionParameters: dev
@@ -25,14 +32,11 @@ export default {
     const { pathname } = new URL(request.url);
     if (pathname === "/leaderboard-feed") {
       const db = drizzle(env.DB);
-      const result = await db
-        .insert(leaderboardFeedTable)
-        .values({
-          tournamentId: "R2025100",
-          tourCode: "P",
-        })
-        .returning();
-      return Response.json(result);
+      const results = await db
+        .select()
+        .from(leaderboardFeedTable)
+        .orderBy(desc(leaderboardFeedTable.createdAt));
+      return Response.json(results);
     }
     const url = new URL(request.url);
     url.pathname = "/__scheduled";
@@ -44,18 +48,44 @@ export default {
 
   // The scheduled handler is invoked at the interval set in our wrangler.jsonc's
   // [[triggers]] configuration.
-  // biome-ignore lint/correctness/noUnusedFunctionParameters: dev
-  async scheduled(event, env, ctx): Promise<void> {
+  async scheduled(event, env, _ctx): Promise<void> {
     const db = drizzle(env.DB);
-    const result = await db
-      .insert(leaderboardFeedTable)
-      .values({
-        tournamentId: "R2025100",
-        tourCode: "P",
-      })
-      .returning();
-    // biome-ignore lint/suspicious/noConsole: dev
-    console.log("result", result);
+
+    // const leaderboardSnapshot = await db
+    //   .select({
+    //     snapshot: leaderboardSnapshotTable.snapshot,
+    //   })
+    //   .from(leaderboardSnapshotTable)
+    //   .orderBy(desc(leaderboardSnapshotTable.createdAt))
+    //   .limit(1);
+    // console.log("leaderboardSnapshot", leaderboardSnapshot);
+    const tournament = await new TournamentService().getTournament(
+      "R",
+      "R2025551",
+    );
+    const leaderboard = await new LeaderboardService().getLeaderboard(
+      "R",
+      "R2025551",
+    );
+    console.log("leaderboard", leaderboard);
+
+    await db.insert(leaderboardSnapshotTable).values({
+      tournamentId: leaderboard.id,
+      tourCode: "P",
+      snapshot: {
+        __typename: "LeaderboardSnapshotV1",
+        leaderboard: {
+          tournamentStatus: leaderboard.tournamentStatus,
+        },
+        tournament: {
+          roundDisplay: tournament.roundDisplay,
+          roundStatus: tournament.roundStatus,
+          roundStatusColor: tournament.roundStatusColor,
+          roundStatusDisplay: tournament.roundStatusDisplay,
+        },
+      },
+    });
+
     // A Cron Trigger can make requests to other endpoints on the Internet,
     // publish to a Queue, query a D1 Database, and much more.
     //
