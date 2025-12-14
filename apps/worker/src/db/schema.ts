@@ -6,4 +6,5 @@ export const usersTable = sqliteTable("users_table", {
   age: int().notNull(),
   email: text().notNull().unique(),
   role: text().notNull().default("user"),
+  some_pr_column: text().notNull().default("some_pr_column"),
 });

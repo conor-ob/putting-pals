@@ -1,0 +1,1 @@
+ALTER TABLE `users_table` ADD `some_pr_column` text DEFAULT 'some_pr_column' NOT NULL;
