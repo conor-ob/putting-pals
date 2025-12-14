@@ -490,9 +490,15 @@ export type BubblePill = {
   pillText: Scalars['String']['output'];
 };
 
+export enum BubbleType {
+  Playoffs = 'PLAYOFFS',
+  SignatureEvents = 'SIGNATURE_EVENTS'
+}
+
 export type BubbleWatch = {
   __typename?: 'BubbleWatch';
   bubbleId: Scalars['ID']['output'];
+  bubbleType: BubbleType;
   items: Array<BubbleWatchItem>;
 };
 
@@ -4092,6 +4098,7 @@ export type NewsArticles = {
   __typename?: 'NewsArticles';
   articles: Array<NewsArticle>;
   franchiseSponsors?: Maybe<Array<NewsSponsor>>;
+  /** @deprecated not needed */
   integratedComponents: Array<IntegratedComponent>;
 };
 
@@ -4814,6 +4821,7 @@ export type PlayerHubDetailData = {
 export type PlayerHubHoleDetailShotTrail = {
   __typename?: 'PlayerHubHoleDetailShotTrail';
   color: Scalars['String']['output'];
+  finalShot: Scalars['Boolean']['output'];
   from: PlayerHubHoleDetailShotTrailCoordinates;
   shotNumber: Scalars['Int']['output'];
   strokeType: HoleStrokeType;
@@ -4829,12 +4837,14 @@ export type PlayerHubHoleDetailShotTrailCoordinates = {
 export type PlayerHubHoleDetailWidget = {
   __typename?: 'PlayerHubHoleDetailWidget';
   dataElements: Array<PlayerHubDetailData>;
+  flagCoords?: Maybe<PlayerHubHoleDetailShotTrailCoordinates>;
   holePickleAsset: ImageAsset;
   icon: PlayerHubWidgetIcon;
   shots: Array<PlayerHubHoleDetailShotTrail>;
   /**   Optional widget sponsor */
   sponsor?: Maybe<PlayerHubWidgetSponsor>;
   subTitle?: Maybe<Scalars['String']['output']>;
+  tourcastURL?: Maybe<Scalars['String']['output']>;
 };
 
 export type PlayerHubLeaderboardWidget = {
@@ -4855,6 +4865,7 @@ export type PlayerHubLeaderboardWidget = {
   round?: Maybe<Scalars['String']['output']>;
   roundDisplay: Scalars['String']['output'];
   roundHeader: Scalars['String']['output'];
+  roundNum: Scalars['Int']['output'];
   /**   Final scores by round */
   roundScores: Array<Scalars['String']['output']>;
   roundStatus: RoundStatus;
@@ -5521,10 +5532,19 @@ export enum PlayerState {
 
 export type PlayerStoriesWidget = {
   __typename?: 'PlayerStoriesWidget';
+  playerSponsorships?: Maybe<Array<PlayerStorySponsorship>>;
   storyRounds: Array<Scalars['String']['output']>;
   subTitle: Scalars['String']['output'];
   title: Scalars['String']['output'];
   tournamentId: Scalars['String']['output'];
+};
+
+export type PlayerStorySponsorship = {
+  __typename?: 'PlayerStorySponsorship';
+  logoDarkUrl: Scalars['String']['output'];
+  logoUrl: Scalars['String']['output'];
+  sponsor: Scalars['String']['output'];
+  type: Scalars['String']['output'];
 };
 
 export type PlayerTournamentStatus = {
@@ -8432,7 +8452,9 @@ export type ShotLinkCoordinates = {
 export type SignatureEventsRankLogos = {
   __typename?: 'SignatureEventsRankLogos';
   dark: Scalars['String']['output'];
+  darkAsset: ImageAsset;
   light: Scalars['String']['output'];
+  lightAsset: ImageAsset;
   tooltipText: Scalars['String']['output'];
   tooltipTitle: Scalars['String']['output'];
 };

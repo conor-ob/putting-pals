@@ -8,11 +8,12 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "editor.formatOnSave": true,
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
   "editor.quickSuggestions": {
     "strings": "on"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "wrangler.json": "jsonc"
   },
   "tailwindCSS.classAttributes": [
     "class",
