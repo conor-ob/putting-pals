@@ -46,6 +46,7 @@ export default {
   // [[triggers]] configuration.
   async scheduled(event, env, _ctx): Promise<void> {
     const db = drizzle(env.DB);
+    const tourCode = "R";
 
     // const leaderboardSnapshot = await db
     //   .select({
@@ -55,14 +56,10 @@ export default {
     //   .orderBy(desc(leaderboardSnapshotTable.createdAt))
     //   .limit(1);
     // console.log("leaderboardSnapshot", leaderboardSnapshot);
-    const tournament = await new TournamentService().getTournament(
-      "R",
-      "R2025551",
-    );
-    const leaderboard = await new LeaderboardService().getLeaderboard(
-      "R",
-      "R2025551",
-    );
+    const [tournament, leaderboard] = await Promise.all([
+      new TournamentService().getTournament(tourCode, "R2025551"),
+      new LeaderboardService().getLeaderboard(tourCode, "R2025551"),
+    ]);
     // biome-ignore lint/suspicious/noConsole: dev
     console.log("leaderboard", leaderboard);
 
@@ -103,7 +100,7 @@ export default {
     ) {
       await db.insert(leaderboardSnapshotTable).values({
         tournamentId: leaderboard.id,
-        tourCode: "P",
+        tourCode: tourCode,
         snapshot: newSnapshot,
       });
     }
