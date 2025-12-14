@@ -1,10 +1,24 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-export const usersTable = sqliteTable("users_table", {
-  id: int().primaryKey({ autoIncrement: true }),
-  name: text().notNull(),
-  age: int().notNull(),
-  email: text().notNull().unique(),
-  role: text().notNull().default("user"),
-  some_pr_column: text().notNull().default("some_pr_column"),
+export const leaderboardFeedTable = sqliteTable("leaderboard_feed", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  tournamentId: text("tournament_id").notNull(),
+  tourCode: text("tour_code", { enum: ["P", "R"] }).notNull(),
+  createdAt: text("created_at")
+    .notNull()
+    .$defaultFn(() => new Date().toISOString()),
+});
+
+export const leaderboardSnapshotTable = sqliteTable("leaderboard_snapshot", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  tournamentId: text("tournament_id").notNull(),
+  tourCode: text("tour_code", { enum: ["P", "R"] }).notNull(),
+  snapshot: text("snapshot", { mode: "json" }).notNull(),
+  createdAt: text("created_at")
+    .notNull()
+    .$defaultFn(() => new Date().toISOString()),
 });
