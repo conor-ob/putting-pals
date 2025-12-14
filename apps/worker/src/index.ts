@@ -69,22 +69,34 @@ export default {
     );
     console.log("leaderboard", leaderboard);
 
-    await db.insert(leaderboardSnapshotTable).values({
-      tournamentId: leaderboard.id,
-      tourCode: "P",
-      snapshot: {
-        __typename: "LeaderboardSnapshotV1",
-        leaderboard: {
-          tournamentStatus: leaderboard.tournamentStatus,
-        },
-        tournament: {
-          roundDisplay: tournament.roundDisplay,
-          roundStatus: tournament.roundStatus,
-          roundStatusColor: tournament.roundStatusColor,
-          roundStatusDisplay: tournament.roundStatusDisplay,
-        },
+    const results = await db
+      .select()
+      .from(leaderboardSnapshotTable)
+      .orderBy(desc(leaderboardSnapshotTable.createdAt))
+      .limit(1);
+
+    const existingSnapshot = results[0]?.snapshot;
+
+    const newSnapshot = {
+      __typename: "LeaderboardSnapshotV1" as const,
+      leaderboard: {
+        tournamentStatus: leaderboard.tournamentStatus,
       },
-    });
+      tournament: {
+        roundDisplay: tournament.roundDisplay,
+        roundStatus: tournament.roundStatus,
+        roundStatusColor: tournament.roundStatusColor,
+        roundStatusDisplay: tournament.roundStatusDisplay,
+      },
+    };
+
+    if (existingSnapshot === undefined || existingSnapshot !== newSnapshot) {
+      await db.insert(leaderboardSnapshotTable).values({
+        tournamentId: leaderboard.id,
+        tourCode: "P",
+        snapshot: newSnapshot,
+      });
+    }
 
     // A Cron Trigger can make requests to other endpoints on the Internet,
     // publish to a Queue, query a D1 Database, and much more.

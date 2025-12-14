@@ -1,6 +1,7 @@
 import type {
   RoundStatus,
   RoundStatusColor,
+  TournamentStatus,
 } from "@putting-pals/pga-tour-schema/types";
 import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
@@ -34,9 +35,7 @@ export const leaderboardFeedTable = sqliteTable("leaderboard_feed", {
 type LeaderboardSnapshotV1 = {
   __typename: "LeaderboardSnapshotV1";
   leaderboard: {
-    winners?: {
-      displayName: string;
-    };
+    tournamentStatus: TournamentStatus;
   };
   tournament: {
     roundDisplay: string;
