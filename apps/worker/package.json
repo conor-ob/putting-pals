@@ -5,14 +5,25 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "codegen": "wrangler types",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
     "typecheck": "tsc --noEmit true",
     "deploy": "wrangler deploy",
     "dev": "wrangler dev --test-scheduled",
     "start": "wrangler dev --test-scheduled",
     "test": "vitest"
   },
+  "dependencies": {
+    "dotenv": "catalog:",
+    "drizzle-orm": "^0.45.1",
+    "zod": "catalog:"
+  },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.8.19",
+    "@types/node": "catalog:",
+    "drizzle-kit": "^0.31.8",
+    "tsx": "^4.21.0",
     "typescript": "catalog:",
     "vitest": "~3.2.0",
     "wrangler": "^4.54.0"
