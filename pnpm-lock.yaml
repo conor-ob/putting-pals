@@ -231,6 +231,9 @@ importers:
 
   apps/worker:
     dependencies:
+      '@putting-pals/putting-pals-core':
+        specifier: workspace:*
+        version: link:../../packages/putting-pals-core
       dotenv:
         specifier: 'catalog:'
         version: 17.2.3
@@ -244,6 +247,9 @@ importers:
       '@cloudflare/vitest-pool-workers':
         specifier: ^0.8.19
         version: 0.8.71(@vitest/runner@4.0.15)(@vitest/snapshot@4.0.15)(vitest@3.2.4(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
+      '@putting-pals/pga-tour-schema':
+        specifier: workspace:*
+        version: link:../../packages/pga-tour-schema
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.4
