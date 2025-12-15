@@ -20,6 +20,7 @@
     "@putting-pals/putting-pals-core": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "^0.45.1",
+    "fast-json-patch": "^3.1.1",
     "zod": "catalog:"
   },
   "devDependencies": {
