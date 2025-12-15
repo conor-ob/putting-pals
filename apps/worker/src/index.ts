@@ -85,18 +85,6 @@ export default {
 
     const baseSnapshot = base[0]?.snapshot;
 
-    const patches = await db
-      .select()
-      .from(leaderboardSnapshotPatchTable)
-      .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
-      .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
-
-    const materialized = applyPatch(
-      structuredClone(baseSnapshot),
-      patches.flatMap((patch) => patch.patch.operations),
-      false,
-    ).newDocument;
-
     const [tournament, leaderboard] = await Promise.all([
       new TournamentService().getTournament("R", tournamentId),
       new LeaderboardService().getLeaderboard("R", tournamentId),
@@ -114,6 +102,27 @@ export default {
         roundStatusDisplay: tournament.roundStatusDisplay,
       },
     };
+
+    if (baseSnapshot === undefined || baseSnapshot === null) {
+      await db.insert(leaderboardSnapshotBaseTable).values({
+        tournamentId: tournamentId,
+        tourCode: tourCode,
+        snapshot: newSnapshot,
+      });
+      return;
+    }
+
+    const patches = await db
+      .select()
+      .from(leaderboardSnapshotPatchTable)
+      .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
+      .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
+
+    const materialized = applyPatch(
+      structuredClone(baseSnapshot),
+      patches.flatMap((patch) => patch.patch.operations),
+      false,
+    ).newDocument;
 
     const diff = compare(materialized, newSnapshot);
     if (diff.length > 0) {
