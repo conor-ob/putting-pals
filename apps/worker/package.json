@@ -13,8 +13,7 @@
     "dev": "wrangler dev",
     "dev:remote": "wrangler dev --remote",
     "dev:scheduled": "wrangler dev --test-scheduled --remote",
-    "start": "wrangler dev",
-    "test": "vitest"
+    "start": "wrangler dev"
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
@@ -30,7 +29,6 @@
     "drizzle-kit": "^0.31.8",
     "tsx": "^4.21.0",
     "typescript": "catalog:",
-    "vitest": "~3.2.0",
     "wrangler": "^4.54.0"
   }
 }
