@@ -18,58 +18,89 @@
 
 import { LeaderboardService } from "@putting-pals/putting-pals-core/leaderboard";
 import { TournamentService } from "@putting-pals/putting-pals-core/tournament";
-import { desc } from "drizzle-orm";
+import { asc, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/d1";
-import { leaderboardFeedTable, leaderboardSnapshotTable } from "./db/schema";
+import { applyPatch, compare } from "fast-json-patch";
+import {
+  leaderboardSnapshotBaseTable,
+  leaderboardSnapshotPatchTable,
+} from "./db/schema";
+
+const tourCode = "S";
+const tournamentId = "S2025600";
 
 export default {
-  // biome-ignore lint/correctness/noUnusedFunctionParameters: dev
-  async fetch(request, env, ctx): Promise<Response> {
+  async fetch(request, env, _ctx): Promise<Response> {
     const { pathname } = new URL(request.url);
-    if (pathname === "/leaderboard-feed") {
+    if (pathname === "/patch") {
       const db = drizzle(env.DB);
-      const results = await db
+
+      const base = await db
         .select()
-        .from(leaderboardFeedTable)
-        .orderBy(desc(leaderboardFeedTable.createdAt));
-      return Response.json(results);
+        .from(leaderboardSnapshotBaseTable)
+        .where(eq(leaderboardSnapshotBaseTable.tournamentId, tournamentId))
+        .orderBy(desc(leaderboardSnapshotBaseTable.createdAt))
+        .limit(1);
+
+      const baseSnapshot = base[0]?.snapshot;
+
+      const patches = await db
+        .select()
+        .from(leaderboardSnapshotPatchTable)
+        .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
+        .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
+
+      const materialized = applyPatch(
+        structuredClone(baseSnapshot),
+        patches.flatMap((patch) => patch.patch.operations),
+        false,
+      ).newDocument;
+
+      return Response.json(
+        {
+          baseSnapshot,
+          patches,
+          materialized,
+        },
+        {
+          status: 200,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
     }
-    const url = new URL(request.url);
-    url.pathname = "/__scheduled";
-    url.searchParams.append("cron", "* * * * *");
-    return new Response(
-      `To test the scheduled handler, ensure you have used the "--test-scheduled" then try running "curl ${url.href}".`,
-    );
+    return Response.json({ message: "OK" }, { status: 200 });
   },
 
-  // The scheduled handler is invoked at the interval set in our wrangler.jsonc's
-  // [[triggers]] configuration.
-  async scheduled(event, env, _ctx): Promise<void> {
+  async scheduled(_controller, env, _ctx): Promise<void> {
     const db = drizzle(env.DB);
-    const tourCode = "R";
 
-    // const leaderboardSnapshot = await db
-    //   .select({
-    //     snapshot: leaderboardSnapshotTable.snapshot,
-    //   })
-    //   .from(leaderboardSnapshotTable)
-    //   .orderBy(desc(leaderboardSnapshotTable.createdAt))
-    //   .limit(1);
-    // console.log("leaderboardSnapshot", leaderboardSnapshot);
-    const [tournament, leaderboard] = await Promise.all([
-      new TournamentService().getTournament(tourCode, "R2025088"),
-      new LeaderboardService().getLeaderboard(tourCode, "R2025088"),
-    ]);
-    // biome-ignore lint/suspicious/noConsole: dev
-    console.log("leaderboard", leaderboard);
-
-    const results = await db
+    const base = await db
       .select()
-      .from(leaderboardSnapshotTable)
-      .orderBy(desc(leaderboardSnapshotTable.createdAt))
+      .from(leaderboardSnapshotBaseTable)
+      .where(eq(leaderboardSnapshotBaseTable.tournamentId, tournamentId))
+      .orderBy(desc(leaderboardSnapshotBaseTable.createdAt))
       .limit(1);
 
-    const existingSnapshot = results[0]?.snapshot;
+    const baseSnapshot = base[0]?.snapshot;
+
+    const patches = await db
+      .select()
+      .from(leaderboardSnapshotPatchTable)
+      .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
+      .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
+
+    const materialized = applyPatch(
+      structuredClone(baseSnapshot),
+      patches.flatMap((patch) => patch.patch.operations),
+      false,
+    ).newDocument;
+
+    const [tournament, leaderboard] = await Promise.all([
+      new TournamentService().getTournament("R", tournamentId),
+      new LeaderboardService().getLeaderboard("R", tournamentId),
+    ]);
 
     const newSnapshot = {
       __typename: "PgaTourLeaderboardSnapshotV1" as const,
@@ -84,37 +115,196 @@ export default {
       },
     };
 
-    if (
-      existingSnapshot === undefined ||
-      existingSnapshot.__typename !== newSnapshot.__typename ||
-      existingSnapshot.leaderboard.tournamentStatus !==
-        newSnapshot.leaderboard.tournamentStatus ||
-      existingSnapshot.tournament.roundDisplay !==
-        newSnapshot.tournament.roundDisplay ||
-      existingSnapshot.tournament.roundStatus !==
-        newSnapshot.tournament.roundStatus ||
-      existingSnapshot.tournament.roundStatusColor !==
-        newSnapshot.tournament.roundStatusColor ||
-      existingSnapshot.tournament.roundStatusDisplay !==
-        newSnapshot.tournament.roundStatusDisplay
-    ) {
-      await db.insert(leaderboardSnapshotTable).values({
-        tournamentId: leaderboard.id,
+    const diff = compare(materialized, newSnapshot);
+    if (diff.length > 0) {
+      const db = drizzle(env.DB);
+
+      await db.insert(leaderboardSnapshotPatchTable).values({
+        tournamentId: tournamentId,
         tourCode: tourCode,
-        snapshot: newSnapshot,
+        patch: {
+          __typename: "JsonPatchV1" as const,
+          operations: diff,
+        },
       });
     }
-
-    // A Cron Trigger can make requests to other endpoints on the Internet,
-    // publish to a Queue, query a D1 Database, and much more.
-    //
-    // We'll keep it simple and make an API call to a Cloudflare API:
-    const resp = await fetch("https://api.cloudflare.com/client/v4/ips");
-    const wasSuccessful = resp.ok ? "success" : "fail";
-
-    // You could store this result in KV, write to a D1 Database, or publish to a Queue.
-    // In this template, we'll just log the result:
-    // biome-ignore lint/suspicious/noConsole: dev
-    console.log(`trigger fired at ${event.cron}: ${wasSuccessful}`);
   },
 } satisfies ExportedHandler<Env>;
+
+// /**
+//  * Welcome to Cloudflare Workers! This is your first worker.
+//  *
+//  * This is a template for a Scheduled Worker: a Worker that can run on a
+//  * configurable interval:
+//  * https://developers.cloudflare.com/workers/platform/triggers/cron-triggers/
+//  *
+//  * - Run `npm run dev` in your terminal to start a development server
+//  * - Open a browser tab at http://localhost:8787/ to see your worker in action
+//  * - Run `curl "http://localhost:8787/__scheduled?cron=*+*+*+*+*"` to see your Worker in action
+//  * - Run `npm run deploy` to publish your worker
+//  *
+//  * Bind resources to your worker in `wrangler.jsonc`. After adding bindings, a type definition for the
+//  * `Env` object can be regenerated with `npm run cf-typegen`.
+//  *
+//  * Learn more at https://developers.cloudflare.com/workers/
+//  */
+
+// import { LeaderboardService } from "@putting-pals/putting-pals-core/leaderboard";
+// import { TournamentService } from "@putting-pals/putting-pals-core/tournament";
+// import { desc, lt } from "drizzle-orm";
+// import { drizzle } from "drizzle-orm/d1";
+// import { applyPatch, compare, Operation } from "fast-json-patch";
+// import {
+//   leaderboardFeedTable,
+//   leaderboardSnapshotPatchTable,
+//   leaderboardSnapshotTable,
+// } from "./db/schema";
+
+// export default {
+//   async fetch(request, env, _ctx): Promise<Response> {
+//     const { pathname, searchParams } = new URL(request.url);
+//     if (pathname === "/leaderboard-feed") {
+//       const limit = searchParams.get("limit");
+//       const cursor = searchParams.get("cursor");
+
+//       const feed = await getLeaderboardFeed(env, {
+//         limit: limit ? parseInt(limit, 10) : undefined,
+//         cursor: cursor ?? undefined,
+//       });
+
+//       return Response.json(feed, {
+//         status: 200,
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       });
+//     }
+//     return Response.json({ message: "OK" }, { status: 200 });
+//   },
+
+//   async scheduled(_controller, env, _ctx): Promise<void> {
+//     const existingSnapshot = {
+//       __typename: "PgaTourLeaderboardSnapshotV1" as const,
+//       leaderboard: {
+//         tournamentStatus: "IN_PROGRESS",
+//       },
+//       tournament: {
+//         roundDisplay: "R2",
+//         roundStatus: "IN_PROGRESS",
+//         roundStatusColor: "RED",
+//         roundStatusDisplay: "In Progress",
+//       },
+//     };
+
+//     const newSnapshot = {
+//       __typename: "PgaTourLeaderboardSnapshotV1" as const,
+//       leaderboard: {
+//         tournamentStatus: "IN_PROGRESS",
+//       },
+//       tournament: {
+//         roundDisplay: "R2",
+//         roundStatus: "SUSPENDED",
+//         roundStatusColor: "YELLOW",
+//         roundStatusDisplay: "Suspended",
+//       },
+//     };
+
+//     const diff = compare(existingSnapshot, newSnapshot);
+//     console.log("diff", diff);
+//   },
+
+//   // async scheduled(_controller, env, _ctx): Promise<void> {
+//   //   const db = drizzle(env.DB);
+//   //   const tourCode = "R";
+
+//   //   const [tournament, leaderboard] = await Promise.all([
+//   //     new TournamentService().getTournament(tourCode, "R2025088"),
+//   //     new LeaderboardService().getLeaderboard(tourCode, "R2025088"),
+//   //   ]);
+
+//   //   const results = await db
+//   //     .select()
+//   //     .from(leaderboardSnapshotTable)
+//   //     .orderBy(desc(leaderboardSnapshotTable.createdAt))
+//   //     .limit(1);
+
+//   //   const existingSnapshot = results[0]?.snapshot;
+
+//   //   const newSnapshot = {
+//   //     __typename: "PgaTourLeaderboardSnapshotV1" as const,
+//   //     leaderboard: {
+//   //       tournamentStatus: leaderboard.tournamentStatus,
+//   //     },
+//   //     tournament: {
+//   //       roundDisplay: tournament.roundDisplay,
+//   //       roundStatus: tournament.roundStatus,
+//   //       roundStatusColor: tournament.roundStatusColor,
+//   //       roundStatusDisplay: tournament.roundStatusDisplay,
+//   //     },
+//   //   };
+
+//   //   if (
+//   //     existingSnapshot !== undefined &&
+//   //     existingSnapshot.__typename === newSnapshot.__typename
+//   //   ) {
+//   //     const diff = compare(existingSnapshot, newSnapshot);
+//   //     if (diff.length > 0) {
+//   //       await db.insert(leaderboardSnapshotPatchTable).values({
+//   //         tournamentId: leaderboard.id,
+//   //         tourCode: tourCode,
+//   //         patch: {
+//   //           __typename: "JsonPatchV1" as const,
+//   //           operations: diff,
+//   //         },
+//   //       });
+//   //     }
+//   //   }
+
+//   //   if (
+//   //     existingSnapshot === undefined ||
+//   //     existingSnapshot.__typename !== newSnapshot.__typename ||
+//   //     existingSnapshot.leaderboard.tournamentStatus !==
+//   //       newSnapshot.leaderboard.tournamentStatus ||
+//   //     existingSnapshot.tournament.roundDisplay !==
+//   //       newSnapshot.tournament.roundDisplay ||
+//   //     existingSnapshot.tournament.roundStatus !==
+//   //       newSnapshot.tournament.roundStatus ||
+//   //     existingSnapshot.tournament.roundStatusColor !==
+//   //       newSnapshot.tournament.roundStatusColor ||
+//   //     existingSnapshot.tournament.roundStatusDisplay !==
+//   //       newSnapshot.tournament.roundStatusDisplay
+//   //   ) {
+//   //     await db.insert(leaderboardSnapshotTable).values({
+//   //       tournamentId: leaderboard.id,
+//   //       tourCode: tourCode,
+//   //       snapshot: newSnapshot,
+//   //     });
+//   //   }
+//   // },
+// } satisfies ExportedHandler<Env>;
+
+// export async function getLeaderboardFeed(
+//   env: Env,
+//   query: {
+//     limit?: number;
+//     cursor?: string;
+//   },
+// ) {
+//   const db = drizzle(env.DB);
+//   const limit = query.limit ?? 10;
+
+//   const items = await db
+//     .select()
+//     .from(leaderboardFeedTable)
+//     .where(
+//       query.cursor
+//         ? lt(leaderboardFeedTable.createdAt, query.cursor)
+//         : undefined,
+//     )
+//     .orderBy(desc(leaderboardFeedTable.createdAt))
+//     .limit(limit);
+
+//   const nextCursor = items.length ? items[items.length - 1].createdAt : null;
+
+//   return { items, nextCursor };
+// }
