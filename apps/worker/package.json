@@ -10,12 +10,11 @@
     "db:studio": "drizzle-kit studio",
     "typecheck": "tsc --noEmit true",
     "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "dev:remote": "wrangler dev --remote",
-    "dev:scheduled": "wrangler dev --test-scheduled --remote",
+    "dev": "wrangler dev --test-scheduled --remote",
     "start": "wrangler dev"
   },
   "dependencies": {
+    "@paralleldrive/cuid2": "^3.0.4",
     "@putting-pals/putting-pals-core": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "^0.45.1",
@@ -23,12 +22,9 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.8.19",
     "@putting-pals/pga-tour-schema": "workspace:*",
-    "@types/node": "catalog:",
     "drizzle-kit": "^0.31.8",
-    "tsx": "^4.21.0",
     "typescript": "catalog:",
-    "wrangler": "^4.54.0"
+    "wrangler": "^4.55.0"
   }
 }

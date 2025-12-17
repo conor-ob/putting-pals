@@ -1,1 +1,0 @@
-ALTER TABLE `leaderboard_feed` ADD `feed_item` text NOT NULL;
