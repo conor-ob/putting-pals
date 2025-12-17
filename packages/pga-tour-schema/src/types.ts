@@ -722,6 +722,7 @@ export type CourseOverviewInfo = {
   __typename?: 'CourseOverviewInfo';
   cutsMade: Scalars['String']['output'];
   cutsMissed: Scalars['String']['output'];
+  disqualified: Scalars['String']['output'];
   events: Scalars['String']['output'];
   money: Scalars['String']['output'];
   runnerUp: Scalars['String']['output'];
@@ -5308,6 +5309,7 @@ export type PlayerResults = {
   cupRank?: Maybe<Scalars['String']['output']>;
   cutsMade?: Maybe<Scalars['String']['output']>;
   displayYear: Scalars['String']['output'];
+  disqualified?: Maybe<Scalars['String']['output']>;
   events?: Maybe<Scalars['String']['output']>;
   missedCuts?: Maybe<Scalars['String']['output']>;
   officialMoney?: Maybe<Scalars['String']['output']>;
@@ -10266,11 +10268,13 @@ export type TournamentOverviewInfo = {
   __typename?: 'TournamentOverviewInfo';
   cutsMade: Scalars['Int']['output'];
   cutsMissed: Scalars['Int']['output'];
+  disqualified: Scalars['Int']['output'];
   events: Scalars['Int']['output'];
   money: Scalars['Int']['output'];
   runnerUp: Scalars['Int']['output'];
   second: Scalars['Int']['output'];
   third: Scalars['Int']['output'];
+  top5: Scalars['Int']['output'];
   top10: Scalars['Int']['output'];
   top25: Scalars['Int']['output'];
   wins: Scalars['Int']['output'];

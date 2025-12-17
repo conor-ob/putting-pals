@@ -1,93 +1,95 @@
+import { createId } from "@paralleldrive/cuid2";
 import type {
   RoundStatus,
   RoundStatusColor,
   TournamentStatus,
 } from "@putting-pals/pga-tour-schema/types";
-import { sqliteTable, text } from "drizzle-orm/sqlite-core";
+import {
+  integer,
+  sqliteTable,
+  text,
+  uniqueIndex,
+} from "drizzle-orm/sqlite-core";
 import type { Operation } from "fast-json-patch";
 
-type RoundStatusChangedV1 = {
-  __typename: "RoundStatusChangedV1";
+// type RoundStatusChangedV1 = {
+//   __typename: "RoundStatusChangedV1";
+//   roundDisplay: string;
+//   roundStatus: RoundStatus;
+//   roundStatusColor: RoundStatusColor;
+//   roundStatusDisplay: string;
+// };
+
+// type TournamentWinnerV1 = {
+//   __typename: "TournamentWinnerV1";
+//   winner: string;
+// };
+
+// export const leaderboardFeedTable = sqliteTable("leaderboard_feed", {
+//   id: text("id")
+//     .primaryKey()
+//     .$defaultFn(() => createId()),
+//   tournamentId: text("tournament_id").notNull(),
+//   tourCode: text("tour_code", { enum: ["P", "R", "S"] }).notNull(),
+//   feed_item: text("feed_item", { mode: "json" })
+//     .notNull()
+//     .$type<RoundStatusChangedV1 | TournamentWinnerV1>(),
+//   createdAt: integer("created_at")
+//     .notNull()
+//     .$defaultFn(() => Date.now()),
+// });
+
+export type LeaderboardSnapshotV1 = {
+  __typename: "LeaderboardSnapshotV1";
+  tournamentStatus: TournamentStatus;
   roundDisplay: string;
   roundStatus: RoundStatus;
   roundStatusColor: RoundStatusColor;
   roundStatusDisplay: string;
 };
 
-type TournamentWinnerV1 = {
-  __typename: "TournamentWinnerV1";
-  winner: string;
-};
+// type PuttingPalsLeaderboardSnapshotV1 = {
+//   __typename: "PuttingPalsLeaderboardSnapshotV1";
+//   leaderboard: {
+//     tournamentStatus: TournamentStatus;
+//   };
+//   tournament: {
+//     roundDisplay: string;
+//     roundStatus: RoundStatus;
+//     roundStatusColor: RoundStatusColor;
+//     roundStatusDisplay: string;
+//   };
+// };
 
-export const leaderboardFeedTable = sqliteTable("leaderboard_feed", {
-  id: text("id")
-    .primaryKey()
-    .$defaultFn(() => crypto.randomUUID()),
-  tournamentId: text("tournament_id").notNull(),
-  tourCode: text("tour_code", { enum: ["P", "R", "S"] }).notNull(),
-  feed_item: text("feed_item", { mode: "json" })
-    .notNull()
-    .$type<RoundStatusChangedV1 | TournamentWinnerV1>(),
-  createdAt: text("created_at")
-    .notNull()
-    .$defaultFn(() => new Date().toISOString()),
-});
+// export const leaderboardSnapshotTable = sqliteTable("leaderboard_snapshot", {
+//   id: text("id")
+//     .primaryKey()
+//     .$defaultFn(() => createId()),
+//   tournamentId: text("tournament_id").notNull(),
+//   tourCode: text("tour_code", { enum: ["P", "R", "S"] }).notNull(),
+//   snapshot: text("snapshot", { mode: "json" })
+//     .notNull()
+//     .$type<LeaderboardSnapshotV1>(),
+//   createdAt: integer("created_at")
+//     .notNull()
+//     .$defaultFn(() => Date.now()),
+// });
 
-type PgaTourLeaderboardSnapshotV1 = {
-  __typename: "PgaTourLeaderboardSnapshotV1";
-  leaderboard: {
-    tournamentStatus: TournamentStatus;
-  };
-  tournament: {
-    roundDisplay: string;
-    roundStatus: RoundStatus;
-    roundStatusColor: RoundStatusColor;
-    roundStatusDisplay: string;
-  };
-};
-
-type PuttingPalsLeaderboardSnapshotV1 = {
-  __typename: "PuttingPalsLeaderboardSnapshotV1";
-  leaderboard: {
-    tournamentStatus: TournamentStatus;
-  };
-  tournament: {
-    roundDisplay: string;
-    roundStatus: RoundStatus;
-    roundStatusColor: RoundStatusColor;
-    roundStatusDisplay: string;
-  };
-};
-
-export const leaderboardSnapshotTable = sqliteTable("leaderboard_snapshot", {
-  id: text("id")
-    .primaryKey()
-    .$defaultFn(() => crypto.randomUUID()),
-  tournamentId: text("tournament_id").notNull(),
-  tourCode: text("tour_code", { enum: ["P", "R", "S"] }).notNull(),
-  snapshot: text("snapshot", { mode: "json" })
-    .notNull()
-    .$type<PgaTourLeaderboardSnapshotV1 | PuttingPalsLeaderboardSnapshotV1>(),
-  createdAt: text("created_at")
-    .notNull()
-    .$defaultFn(() => new Date().toISOString()),
-});
-
-// TODO: should the primary key be the tournamentId? Only one snapshot per tournament?
+// TODO: should the primary key be the tournamentId? Only one snapshot per tournament? ans: no because we could have a new snapshot type in the same tournament
 export const leaderboardSnapshotBaseTable = sqliteTable(
   "leaderboard_snapshot_base",
   {
     id: text("id")
       .primaryKey()
-      .$defaultFn(() => crypto.randomUUID()),
+      .$defaultFn(() => createId()),
     tournamentId: text("tournament_id").notNull(),
     tourCode: text("tour_code", { enum: ["P", "R", "S"] }).notNull(),
     snapshot: text("snapshot", { mode: "json" })
       .notNull()
-      .$type<PgaTourLeaderboardSnapshotV1 | PuttingPalsLeaderboardSnapshotV1>(),
-    createdAt: text("created_at")
+      .$type<LeaderboardSnapshotV1>(),
+    createdAt: integer("created_at")
       .notNull()
-      .$defaultFn(() => new Date().toISOString()),
+      .$defaultFn(() => Date.now()),
   },
 );
 
@@ -101,14 +103,22 @@ export const leaderboardSnapshotPatchTable = sqliteTable(
   {
     id: text("id")
       .primaryKey()
-      .$defaultFn(() => crypto.randomUUID()),
+      .$defaultFn(() => createId()),
     tournamentId: text("tournament_id").notNull(),
     tourCode: text("tour_code", { enum: ["P", "R", "S"] }).notNull(),
     patch: text("patch", { mode: "json" }).notNull().$type<JsonPatchV1>(),
-    createdAt: text("created_at")
+    // type: // e.g: | "TOURNAMENT_STARTED" | "SCORE_RECORDED"
+    streamVersion: integer("stream_version").notNull(),
+    createdAt: integer("created_at")
       .notNull()
-      .$defaultFn(() => new Date().toISOString()),
+      .$defaultFn(() => Date.now()),
   },
+  (t) => [
+    uniqueIndex("unique_tournament_stream_version").on(
+      t.tournamentId,
+      t.streamVersion,
+    ),
+  ],
 );
 
 export const leaderboardSnapshotMaterializedTable = sqliteTable(
@@ -116,15 +126,15 @@ export const leaderboardSnapshotMaterializedTable = sqliteTable(
   {
     id: text("id")
       .primaryKey()
-      .$defaultFn(() => crypto.randomUUID()),
+      .$defaultFn(() => createId()),
     tournamentId: text("tournament_id").notNull(),
     tourCode: text("tour_code", { enum: ["P", "R", "S"] }).notNull(),
     snapshot: text("snapshot", { mode: "json" })
       .notNull()
-      .$type<PgaTourLeaderboardSnapshotV1 | PuttingPalsLeaderboardSnapshotV1>(),
-    upToPatchCreatedAt: text("up_to_patch_created_at").notNull(),
-    createdAt: text("created_at")
+      .$type<LeaderboardSnapshotV1>(),
+    patchStreamVersion: integer("patch_stream_version").notNull(),
+    createdAt: integer("created_at")
       .notNull()
-      .$defaultFn(() => new Date().toISOString()),
+      .$defaultFn(() => Date.now()),
   },
 );

@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1765730537488,
-      "tag": "0000_nasty_zodiak",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1765740612545,
-      "tag": "0001_powerful_the_hand",
+      "when": 1766013412219,
+      "tag": "0000_mushy_omega_red",
       "breakpoints": true
     }
   ]
