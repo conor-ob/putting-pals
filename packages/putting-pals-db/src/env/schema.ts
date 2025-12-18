@@ -8,7 +8,9 @@ dotenv({
 });
 
 const envSchema = z.object({
-  DATABASE_URL: z.url(),
+  DATABASE_URL: z
+    .url()
+    .default("postgresql://postgres:postgres@localhost:5432/putting-pals"), // TODO: change to use .env file
 });
 
 export const env = envSchema.parse(process.env);
