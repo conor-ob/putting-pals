@@ -20,22 +20,25 @@ import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import superjson from "superjson";
 
 export default {
-  async fetch(_request, _env, _ctx): Promise<Response> {
-    return new Response("Hello, world!");
+  async fetch(_request, env, _ctx): Promise<Response> {
+    return Response.json({ env });
   },
 
-  async scheduled(_controller, _env, _ctx): Promise<void> {
+  async scheduled(controller, env, _ctx): Promise<void> {
     const client = createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
-          url: "https://puttingpals.conorob.me/api/trpc",
+          url: env.TRPC_API_URL,
           transformer: superjson,
         }),
       ],
     });
 
-    const response = await client.tournament.getById.query({ tourCode: "P" });
+    const response = await client.event.processEvent.mutate({
+      cron: controller.cron,
+      scheduledTime: controller.scheduledTime,
+    });
     // biome-ignore lint/suspicious/noConsole: testing
-    console.log("response", response);
+    console.log("processed event", response);
   },
 } satisfies ExportedHandler<Env>;

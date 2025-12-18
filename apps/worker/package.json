@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "clean": "git clean -xdf .cache .turbo .wrangler dist node_modules",
     "codegen": "wrangler types",
     "typecheck": "tsc --noEmit true",
-    "dev": "wrangler dev --test-scheduled"
+    "dev": "wrangler dev --test-scheduled --env development"
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
@@ -18,6 +18,6 @@
     "@putting-pals/putting-pals-api": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
-    "wrangler": "^4.55.0"
+    "wrangler": "^4.56.0"
   }
 }
