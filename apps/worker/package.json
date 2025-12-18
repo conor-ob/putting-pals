@@ -5,8 +5,10 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "codegen": "wrangler types",
+    "build": "vite build",
     "typecheck": "tsc --noEmit true",
-    "dev": "wrangler dev --test-scheduled"
+    "dev": "vite dev",
+    "dev:scheduled": "wrangler dev --test-scheduled"
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
@@ -17,9 +19,11 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.19.0",
     "@putting-pals/putting-pals-api": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
-    "wrangler": "^4.55.0"
+    "vite": "^7.1.5",
+    "wrangler": "^4.56.0"
   }
 }

@@ -16,6 +16,21 @@
   },
   "triggers": {
     "crons": ["* * * * *"]
+  },
+  "vars": {
+    "MY_VAR": "Top-level var"
+  },
+  "env": {
+    "staging": {
+      "vars": {
+        "MY_VAR": "Staging var"
+      }
+    },
+    "production": {
+      "vars": {
+        "MY_VAR": "Production var"
+      }
+    }
   }
   /**
    * Smart Placement
