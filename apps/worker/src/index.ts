@@ -34,7 +34,7 @@ export default {
       ],
     });
 
-    const response = await client.feed.processFeed.mutate({ tourCode: "R" });
+    const response = await client.tournament.getById.query({ tourCode: "P" });
     // biome-ignore lint/suspicious/noConsole: testing
     console.log("response", response);
   },
