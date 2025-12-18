@@ -6,8 +6,7 @@
     "clean": "git clean -xdf .cache .turbo .wrangler dist node_modules",
     "codegen": "wrangler types",
     "typecheck": "tsc --noEmit true",
-    "dev": "wrangler dev --test-scheduled --env development",
-    "deploy": "wrangler deploy --env production"
+    "dev": "wrangler dev --test-scheduled --env development"
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
