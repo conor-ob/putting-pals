@@ -15,130 +15,28 @@
  *
  * Learn more at https://developers.cloudflare.com/workers/
  */
-import { LeaderboardService } from "@putting-pals/putting-pals-core/leaderboard";
-import { TournamentService } from "@putting-pals/putting-pals-core/tournament";
-import { asc, desc, eq } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/d1";
-import { applyPatch, compare } from "fast-json-patch";
-import {
-  type LeaderboardSnapshotV1,
-  leaderboardSnapshotBaseTable,
-  leaderboardSnapshotPatchTable,
-} from "./db/schema";
-
-const tourCode = "S";
-const tournamentId = "S2025600";
+import type { AppRouter } from "@putting-pals/putting-pals-api/router";
+import { createTRPCClient, httpBatchLink } from "@trpc/client";
+import superjson from "superjson";
+import { env } from "./env/schema";
 
 export default {
-  async fetch(request, env, _ctx): Promise<Response> {
-    const { pathname } = new URL(request.url);
-    if (pathname === "/patch") {
-      const db = drizzle(env.DB);
-
-      const base = await db
-        .select()
-        .from(leaderboardSnapshotBaseTable)
-        .where(eq(leaderboardSnapshotBaseTable.tournamentId, tournamentId))
-        .orderBy(desc(leaderboardSnapshotBaseTable.createdAt))
-        .limit(1);
-
-      const baseSnapshot = base[0]?.snapshot;
-
-      const patches = await db
-        .select()
-        .from(leaderboardSnapshotPatchTable)
-        .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
-        .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
-
-      const materialized = applyPatch(
-        structuredClone(baseSnapshot),
-        patches.flatMap((patch) => patch.patch.operations),
-        false,
-      ).newDocument;
-
-      return Response.json(
-        {
-          baseSnapshot,
-          patches,
-          materialized,
-        },
-        {
-          status: 200,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
-    }
-    return Response.json({ message: "OK" }, { status: 200 });
+  async fetch(_request, _env, _ctx): Promise<Response> {
+    return new Response("Hello, world!");
   },
 
-  async scheduled(_controller, env, _ctx): Promise<void> {
-    const [tournament, leaderboard] = await Promise.all([
-      new TournamentService().getTournament("R", tournamentId),
-      new LeaderboardService().getLeaderboard("R", tournamentId),
-    ]);
+  async scheduled(_controller, _env, _ctx): Promise<void> {
+    const client = createTRPCClient<AppRouter>({
+      links: [
+        httpBatchLink({
+          url: env.API_URL,
+          transformer: superjson,
+        }),
+      ],
+    });
 
-    const newSnapshot = {
-      __typename: "LeaderboardSnapshotV1" as const,
-      ...tournament,
-      ...leaderboard,
-    } satisfies LeaderboardSnapshotV1; // required for stricter type checking
-
-    const db = drizzle(env.DB);
-
-    const base = await db
-      .select()
-      .from(leaderboardSnapshotBaseTable)
-      .where(eq(leaderboardSnapshotBaseTable.tournamentId, tournamentId))
-      .orderBy(desc(leaderboardSnapshotBaseTable.createdAt))
-      .limit(1);
-
-    const baseSnapshot = base[0]?.snapshot;
-
-    if (baseSnapshot === undefined || baseSnapshot === null) {
-      await db.insert(leaderboardSnapshotBaseTable).values({
-        tournamentId: tournamentId,
-        tourCode: tourCode,
-        snapshot: newSnapshot,
-      });
-      return;
-    }
-
-    const patches = await db
-      .select()
-      .from(leaderboardSnapshotPatchTable)
-      .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
-      .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
-
-    const materialized = applyPatch(
-      structuredClone(baseSnapshot),
-      patches.flatMap((patch) => patch.patch.operations),
-      false,
-    ).newDocument;
-
-    const diff = compare(materialized, newSnapshot);
-    if (diff.length > 0) {
-      const db = drizzle(env.DB);
-
-      const lastStreamVersion = await db
-        .select()
-        .from(leaderboardSnapshotPatchTable)
-        .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
-        .orderBy(desc(leaderboardSnapshotPatchTable.streamVersion))
-        .limit(1);
-
-      const streamVersion = lastStreamVersion[0]?.streamVersion ?? 0;
-
-      await db.insert(leaderboardSnapshotPatchTable).values({
-        tournamentId: tournamentId,
-        tourCode: tourCode,
-        patch: {
-          __typename: "JsonPatchV1" as const,
-          operations: diff,
-        },
-        streamVersion: streamVersion + 1,
-      });
-    }
+    const response = await client.feed.processFeed.mutate({ tourCode: "R" });
+    // biome-ignore lint/suspicious/noConsole: testing
+    console.log("response", response);
   },
 } satisfies ExportedHandler<Env>;

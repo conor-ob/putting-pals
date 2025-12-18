@@ -1,11 +1,6 @@
 {
   "extends": "//",
   "files": {
-    "includes": [
-      "**",
-      "!drizzle/**/*",
-      "!worker-configuration.d.ts",
-      "!test/env.d.ts"
-    ]
+    "includes": ["**", "!worker-configuration.d.ts"]
   }
 }

@@ -5,25 +5,20 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "codegen": "wrangler types",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio",
     "typecheck": "tsc --noEmit true",
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev --test-scheduled --remote",
-    "start": "wrangler dev"
+    "dev": "wrangler dev --test-scheduled"
   },
   "dependencies": {
-    "@paralleldrive/cuid2": "^3.0.4",
     "@putting-pals/putting-pals-core": "workspace:*",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
     "dotenv": "catalog:",
-    "drizzle-orm": "^0.45.1",
-    "fast-json-patch": "^3.1.1",
+    "superjson": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@putting-pals/pga-tour-schema": "workspace:*",
-    "drizzle-kit": "^0.31.8",
+    "@putting-pals/putting-pals-api": "workspace:*",
+    "@types/node": "catalog:",
     "typescript": "catalog:",
     "wrangler": "^4.55.0"
   }

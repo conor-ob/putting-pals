@@ -11,9 +11,7 @@ const envSchema = z.object({
   NODE_ENV: z
     .enum(["production", "development", "test"])
     .default("development"),
-  CLOUDFLARE_ACCOUNT_ID: z.string().min(1),
-  CLOUDFLARE_DATABASE_ID: z.string().min(1),
-  CLOUDFLARE_D1_TOKEN: z.string().min(1),
+  API_URL: z.url(),
 });
 
 export const env = envSchema.parse(process.env);
