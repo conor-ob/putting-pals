@@ -26,6 +26,8 @@ export default {
   },
 
   async scheduled(controller, _env, _ctx): Promise<void> {
+    // biome-ignore lint/suspicious/noConsole: testing
+    console.log("env", env);
     const client = createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
