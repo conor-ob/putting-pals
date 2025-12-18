@@ -23,7 +23,7 @@ import { validateEnv } from "./env/schema";
 export default {
   async fetch(_request, _env, _ctx): Promise<Response> {
     const validatedEnv = validateEnv(_env);
-    return Response.json({ _env, validatedEnv });
+    return Response.json({ _env, validatedEnv, "process.env": process.env });
   },
 
   async scheduled(controller, env, _ctx): Promise<void> {
