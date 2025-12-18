@@ -14,7 +14,10 @@
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
+    "@putting-pals/putting-pals-db": "workspace:*",
     "@trpc/server": "catalog:",
+    "drizzle-orm": "catalog:",
+    "fast-json-patch": "^3.1.1",
     "superjson": "catalog:",
     "zod": "catalog:"
   },

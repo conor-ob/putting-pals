@@ -7,6 +7,7 @@
  * need to use are documented accordingly near the end.
  */
 
+import { db } from "@putting-pals/putting-pals-db/client";
 import { initTRPC } from "@trpc/server";
 import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
 import superjson from "superjson";
@@ -30,7 +31,9 @@ export function createTrpcContext({
 }: {
   opts: CreateFastifyContextOptions;
 }) {
-  return { opts };
+  // biome-ignore lint/suspicious/noConsole: debugging
+  console.log("opts", opts);
+  return { db };
 }
 
 /**

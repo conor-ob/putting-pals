@@ -22,6 +22,7 @@ FROM base AS builder
 
 ARG PORT
 ARG ORIGIN
+ARG DATABASE_URL
 
 WORKDIR /app
 
@@ -52,10 +53,15 @@ WORKDIR /app
 COPY --from=builder --chown=nodejs:nodejs /app .
 WORKDIR /app/apps/server
 
-ARG NODE_ENV
 ARG PORT
-ENV PORT=${PORT}
+ARG ORIGIN
+ARG DATABASE_URL
+
 ENV NODE_ENV=production
+ENV PORT=${PORT}
+ENV ORIGIN=${ORIGIN}
+ENV DATABASE_URL=${DATABASE_URL}
+
 EXPOSE ${PORT}
 
 CMD ["node", "dist/index.js"]
