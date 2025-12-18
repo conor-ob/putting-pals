@@ -2,7 +2,7 @@ import type { IncomingMessage, Server, ServerResponse } from "node:http";
 import type { FastifyInstance, FastifyServerOptions } from "fastify";
 import Fastify from "fastify";
 
-// import registerCorsPlugin from "~/plugins/cors";
+import registerCorsPlugin from "~/plugins/cors";
 import registerLoggerPlugin from "~/plugins/logger";
 import registerRateLimitPlugin from "~/plugins/ratelimit";
 import registerTrpcPlugin from "~/plugins/trpc";
@@ -13,7 +13,7 @@ export function createServer(opts?: FastifyServerOptions) {
     Fastify(opts);
 
   registerLoggerPlugin(fastify);
-  // registerCorsPlugin(fastify);
+  registerCorsPlugin(fastify);
   registerRateLimitPlugin(fastify);
   registerTrpcPlugin(fastify);
   registerHealthCheckRoute(fastify);
