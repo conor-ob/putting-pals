@@ -24,17 +24,20 @@ export default {
     return new Response("Hello, world!");
   },
 
-  async scheduled(_controller, _env, _ctx): Promise<void> {
+  async scheduled(controller, _env, _ctx): Promise<void> {
     const client = createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
-          url: "https://puttingpals.conorob.me/api/trpc",
+          url: "https://proxy-putting-pals-pr-54.up.railway.app/api/trpc",
           transformer: superjson,
         }),
       ],
     });
 
-    const response = await client.tournament.getById.query({ tourCode: "P" });
+    const response = await client.event.processEvent.mutate({
+      cron: controller.cron,
+      scheduledTime: controller.scheduledTime,
+    });
     // biome-ignore lint/suspicious/noConsole: testing
     console.log("response", response);
   },
