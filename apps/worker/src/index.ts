@@ -18,7 +18,6 @@
 import type { AppRouter } from "@putting-pals/putting-pals-api/router";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import superjson from "superjson";
-import { env } from "./env/schema";
 
 export default {
   async fetch(_request, _env, _ctx): Promise<Response> {
@@ -29,7 +28,7 @@ export default {
     const client = createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
-          url: env.API_URL,
+          url: "https://puttingpals.conorob.me/putting-pals",
           transformer: superjson,
         }),
       ],
