@@ -28,7 +28,7 @@ export default {
     const client = createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
-          url: "https://puttingpals.conorob.me/putting-pals",
+          url: "https://puttingpals.conorob.me/api/trpc",
           transformer: superjson,
         }),
       ],
