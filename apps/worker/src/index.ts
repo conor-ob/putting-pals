@@ -39,6 +39,6 @@ export default {
       scheduledTime: controller.scheduledTime,
     });
     // biome-ignore lint/suspicious/noConsole: testing
-    console.log("response", response);
+    console.log("processed event", response);
   },
 } satisfies ExportedHandler<Env>;
