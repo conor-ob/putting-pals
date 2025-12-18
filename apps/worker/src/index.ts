@@ -18,20 +18,17 @@
 import type { AppRouter } from "@putting-pals/putting-pals-api/router";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import superjson from "superjson";
-import { validateEnv } from "./env/schema";
 
 export default {
-  async fetch(_request, _env, _ctx): Promise<Response> {
-    const validatedEnv = validateEnv(_env);
-    return Response.json({ _env, validatedEnv, MY_VAR: validatedEnv.MY_VAR });
+  async fetch(_request, env, _ctx): Promise<Response> {
+    return Response.json({ env });
   },
 
   async scheduled(controller, env, _ctx): Promise<void> {
-    const validatedEnv = validateEnv(env);
     const client = createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
-          url: validatedEnv.TRPC_API_URL,
+          url: env.TRPC_API_URL,
           transformer: superjson,
         }),
       ],

@@ -7,28 +7,22 @@
   "name": "putting-pals-worker",
   "main": "src/index.ts",
   "compatibility_date": "2025-12-13",
-  "compatibility_flags": [
-    "nodejs_compat",
-    "nodejs_compat_populate_process_env"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "observability": {
     "enabled": true
   },
   "triggers": {
     "crons": ["* * * * *"]
   },
-  "vars": {
-    "MY_VAR": "Top-level var"
-  },
   "env": {
-    "staging": {
+    "development": {
       "vars": {
-        "MY_VAR": "Staging var"
+        "TRPC_API_URL": "http://localhost:4000/trpc"
       }
     },
     "production": {
       "vars": {
-        "MY_VAR": "Production var"
+        "TRPC_API_URL": "https://proxy-putting-pals-pr-54.up.railway.app/api/trpc"
       }
     }
   }
