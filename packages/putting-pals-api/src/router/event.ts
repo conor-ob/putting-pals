@@ -13,7 +13,7 @@ export const eventRouter = router({
       // biome-ignore lint/suspicious/noConsole: testing
       console.log("processing event", input.cron, input.scheduledTime);
       return {
-        message: "test 3",
+        message: "test 4",
         cron: input.cron,
         scheduledTime: input.scheduledTime,
         timestamp: Date.now(),
