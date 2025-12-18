@@ -4,7 +4,7 @@ import { env } from "~/env/schema";
 
 export default function (fastify: FastifyInstance) {
   fastify.register(FastifyCors, {
-    origin: env.ORIGIN,
+    origin: [env.ORIGIN, "https://putting-pals-worker.conorob.workers.dev"],
     credentials: true,
   });
 }
