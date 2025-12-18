@@ -15,7 +15,10 @@ const envSchema = z.object({
     .string()
     .transform((s) => parseInt(s, 10))
     .pipe(z.number()),
-  ORIGIN: z.string().url(),
+  ALLOWED_ORIGINS: z
+    .string()
+    .transform((s) => s.split(",").map((urls) => urls.trim()))
+    .pipe(z.array(z.url())),
   CI: z
     .string()
     .default("false")
