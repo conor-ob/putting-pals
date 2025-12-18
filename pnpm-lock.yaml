@@ -246,13 +246,22 @@ importers:
       '@trpc/server':
         specifier: 'catalog:'
         version: 11.8.0(typescript@5.9.3)
+      dotenv:
+        specifier: 'catalog:'
+        version: 17.2.3
       superjson:
         specifier: 'catalog:'
         version: 2.2.6
+      zod:
+        specifier: 'catalog:'
+        version: 4.1.13
     devDependencies:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*
         version: link:../../packages/putting-pals-api
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.10.4
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
