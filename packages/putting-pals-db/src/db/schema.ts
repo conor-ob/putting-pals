@@ -84,6 +84,7 @@ export const leaderboardSnapshotBaseTable = pgTable(
     id: uuid("id").primaryKey().defaultRandom(),
     tournamentId: varchar("tournament_id").notNull(),
     tourCode: varchar("tour_code", { enum: ["P", "R", "S"] }).notNull(),
+    // type: varchar("type", { enum: ["LeaderboardSnapshotV1"] }).notNull(), TODO: type column to filter by type. e.g: get all leaderboards of the current type
     snapshot: json("snapshot").notNull().$type<LeaderboardSnapshotV1>(),
     createdAt: timestamp("created_at").notNull().defaultNow(),
   },

@@ -88,14 +88,21 @@ async function processEvent(ctx: Ctx) {
 
     const streamVersion = lastStreamVersion[0]?.streamVersion ?? 0;
 
-    await db.insert(leaderboardSnapshotPatchTable).values({
-      tournamentId: tournamentId,
-      tourCode: tourCode,
-      patch: {
-        __typename: "JsonPatchV1" as const,
-        operations: diff,
-      },
-      streamVersion: streamVersion + 1,
-    });
+    return await db
+      .insert(leaderboardSnapshotPatchTable)
+      .values({
+        tournamentId: tournamentId,
+        tourCode: tourCode,
+        patch: {
+          __typename: "JsonPatchV1" as const,
+          operations: diff,
+        },
+        streamVersion: streamVersion + 1,
+      })
+      .returning();
+  } else {
+    return {
+      message: "No changes detected",
+    };
   }
 }
