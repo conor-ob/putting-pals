@@ -25,13 +25,11 @@ export default {
     return Response.json({ _env, env });
   },
 
-  async scheduled(controller, _env, _ctx): Promise<void> {
-    // biome-ignore lint/suspicious/noConsole: testing
-    console.log("env", env);
+  async scheduled(controller, env, _ctx): Promise<void> {
     const client = createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
-          url: env.TRPC_API_URL, // https://proxy-putting-pals-pr-54.up.railway.app/api/trpc
+          url: env.TRPC_API_URL,
           transformer: superjson,
         }),
       ],
