@@ -22,7 +22,7 @@
     },
     "production": {
       "vars": {
-        "TRPC_API_URL": "https://proxy-putting-pals-pr-54.up.railway.app/api/trpc"
+        "TRPC_API_URL": "https://puttingpals.up.railway.app/api/trpc"
       }
     }
   }
