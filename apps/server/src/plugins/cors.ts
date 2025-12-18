@@ -4,7 +4,7 @@ import { env } from "~/env/schema";
 
 export default function (fastify: FastifyInstance) {
   fastify.register(FastifyCors, {
-    origin: env.ALLOWED_ORIGINS,
+    origin: env.ORIGIN,
     credentials: true,
   });
 }
