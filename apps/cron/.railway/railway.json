@@ -1,7 +1,9 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "builder": "RAILPACK"
+    "builder": "RAILPACK",
+    "buildCommand": "pnpm build --filter @putting-pals/cron",
+    "startCommand": "pnpm start --filter @putting-pals/cron"
   },
   "deploy": {
     "region": "europe-west4-drams3a",
