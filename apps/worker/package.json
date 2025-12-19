@@ -9,7 +9,6 @@
     "dev": "wrangler dev --test-scheduled --env development"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-core": "workspace:*",
     "@trpc/client": "catalog:",
     "@trpc/server": "catalog:",
     "superjson": "catalog:"
