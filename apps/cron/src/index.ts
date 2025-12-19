@@ -1,12 +1,15 @@
 import type { AppRouter } from "@putting-pals/putting-pals-api/router";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import superjson from "superjson";
+import { env } from "./env/schema";
 
 async function sendEvent() {
+  // biome-ignore lint/suspicious/noConsole: debugging
+  console.log("TRPC_API_URL", env.TRPC_API_URL);
   const client = createTRPCClient<AppRouter>({
     links: [
       httpBatchLink({
-        url: "https://puttingpals.up.railway.app/api/trpc",
+        url: env.TRPC_API_URL,
         transformer: superjson,
       }),
     ],
