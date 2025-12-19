@@ -10,6 +10,7 @@ dotenv({
 const getDatabaseUrlSchema = () => {
   const nodeEnv = z
     .enum(["production", "test", "development"])
+    .default("development")
     .parse(process.env.NODE_ENV);
 
   switch (nodeEnv) {
