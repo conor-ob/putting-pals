@@ -5,7 +5,7 @@ import { env } from "./env/schema";
 
 async function sendEvent() {
   // biome-ignore lint/suspicious/noConsole: debugging
-  console.log("TRPC_API_URL", env.TRPC_API_URL);
+  console.log("env.TRPC_API_URL", env.TRPC_API_URL);
   const client = createTRPCClient<AppRouter>({
     links: [
       httpBatchLink({
