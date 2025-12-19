@@ -7,7 +7,7 @@
     "clean": "git clean -xdf .cache .turbo node_modules",
     "build": "vite build",
     "dev": "tsx watch src/index.ts",
-    "start": "node dist/cron.js",
+    "start": "node dist/index.js",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
