@@ -4,12 +4,10 @@ import superjson from "superjson";
 import { env } from "./env/schema";
 
 async function sendEvent() {
-  // biome-ignore lint/suspicious/noConsole: debugging
-  console.log("env.TRPC_API_URL", env.TRPC_API_URL);
   const client = createTRPCClient<AppRouter>({
     links: [
       httpBatchLink({
-        url: env.TRPC_API_URL,
+        url: `${env.SERVER_URL}/trpc`,
         transformer: superjson,
       }),
     ],

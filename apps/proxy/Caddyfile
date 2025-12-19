@@ -21,13 +21,13 @@
 	}
 
 	# proxy requests at / to the web server
-	reverse_proxy {$WEB_DOMAIN}:{$WEB_PORT} {
+	reverse_proxy {$EXPO_URL} {
 		header_up Host {upstream_hostport}
 	}
 
 	# proxy requests at /api/* to the server and rewrite the path to /
 	handle_path /api/* {
-		reverse_proxy {$SERVER_DOMAIN}:{$SERVER_PORT} {
+		reverse_proxy {$SERVER_URL} {
 			header_up Host {upstream_hostport}
 		}
 	}

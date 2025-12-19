@@ -28,7 +28,7 @@ export default {
     const client = createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
-          url: env.TRPC_API_URL,
+          url: `${env.SERVER_URL}/trpc`,
           transformer: superjson,
         }),
       ],
