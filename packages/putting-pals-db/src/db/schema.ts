@@ -48,6 +48,29 @@ export type LeaderboardSnapshotV1 = {
   roundStatus: RoundStatus;
   roundStatusColor: RoundStatusColor;
   roundStatusDisplay: string;
+  leaderboardRoundHeader: string;
+  rows: {
+    __typename: "PlayerRowV3";
+    leaderboardSortOrder: number;
+    player: {
+      abbreviations: string;
+      amateur: boolean;
+      countryFlag: string;
+      displayName: string;
+      id: string;
+      shortName: string;
+    };
+    scoringData: {
+      position: string;
+      score: string;
+      scoreSort: number;
+      teeTime: string | undefined;
+      thru: string;
+      thruSort: number;
+      total: string;
+      totalSort: number;
+    };
+  }[];
 };
 
 // type PuttingPalsLeaderboardSnapshotV1 = {
