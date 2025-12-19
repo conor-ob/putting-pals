@@ -35,15 +35,11 @@ async function processEvent(ctx: Ctx) {
   const tournamentId = "S2025600";
 
   const [tournament, leaderboard] = await Promise.all([
-    new TournamentService().getTournament("R", tournamentId),
-    new LeaderboardService().getLeaderboard("R", tournamentId),
+    getTournament(tournamentId),
+    getLeaderboard(tournamentId),
   ]);
 
-  const newSnapshot = {
-    __typename: "LeaderboardSnapshotV1" as const,
-    ...tournament,
-    ...leaderboard,
-  } satisfies LeaderboardSnapshotV1; // required for stricter type checking
+  const newSnapshot = normalizeNewSnapshot(tournament, leaderboard);
 
   const db = ctx.db;
 
@@ -71,11 +67,13 @@ async function processEvent(ctx: Ctx) {
     .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
     .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
 
-  const materialized = patch.applyPatch(
-    structuredClone(baseSnapshot),
-    patches.flatMap((patch) => patch.patch.operations),
-    false,
-  ).newDocument;
+  const materialized = normalizeExistingSnapshot(
+    patch.applyPatch(
+      structuredClone(baseSnapshot),
+      patches.flatMap((patch) => patch.patch.operations),
+      false,
+    ).newDocument,
+  );
 
   const diff = patch.compare(materialized, newSnapshot);
   if (diff.length > 0) {
@@ -105,4 +103,78 @@ async function processEvent(ctx: Ctx) {
       message: "No changes detected",
     };
   }
+}
+
+function normalizeNewSnapshot(
+  tournament: Tournament,
+  leaderboard: Leaderboard,
+) {
+  return {
+    __typename: "LeaderboardSnapshotV1" as const,
+    tournamentStatus: tournament.tournamentStatus,
+    roundDisplay: tournament.roundDisplay,
+    roundStatus: tournament.roundStatus,
+    roundStatusColor: tournament.roundStatusColor,
+    roundStatusDisplay: tournament.roundStatusDisplay,
+    leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
+    rows: leaderboard.rows
+      .flatMap((row) => {
+        if (row.__typename === "PlayerRowV3") {
+          return {
+            __typename: "PlayerRowV3" as const,
+            leaderboardSortOrder: row.leaderboardSortOrder,
+            player: {
+              abbreviations: row.player.abbreviations,
+              amateur: row.player.amateur,
+              countryFlag: row.player.countryFlag,
+              displayName: row.player.displayName,
+              id: row.player.id,
+              shortName: row.player.shortName,
+            },
+            scoringData: {
+              position: row.scoringData.position,
+              score: row.scoringData.score,
+              scoreSort: row.scoringData.scoreSort,
+              teeTime: row.scoringData.teeTime
+                ? row.scoringData.teeTime.toISOString()
+                : undefined,
+              thru: row.scoringData.thru,
+              thruSort: row.scoringData.thruSort,
+              total: row.scoringData.total,
+              totalSort: row.scoringData.totalSort,
+            },
+          } satisfies LeaderboardSnapshotV1["rows"][number];
+        } else {
+          return [];
+        }
+      })
+      .sort((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder),
+  } satisfies LeaderboardSnapshotV1; // required for stricter type checking
+}
+
+function normalizeExistingSnapshot(snapshot: LeaderboardSnapshotV1) {
+  return {
+    __typename: "LeaderboardSnapshotV1" as const,
+    tournamentStatus: snapshot.tournamentStatus,
+    roundDisplay: snapshot.roundDisplay,
+    roundStatus: snapshot.roundStatus,
+    roundStatusColor: snapshot.roundStatusColor,
+    roundStatusDisplay: snapshot.roundStatusDisplay,
+    leaderboardRoundHeader: snapshot.leaderboardRoundHeader,
+    rows: snapshot.rows.sort(
+      (a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder,
+    ),
+  } satisfies LeaderboardSnapshotV1; // required for stricter type checking
+}
+
+type Leaderboard = Awaited<ReturnType<typeof getLeaderboard>>;
+
+function getLeaderboard(id: string) {
+  return new LeaderboardService().getLeaderboard("R", id);
+}
+
+type Tournament = Awaited<ReturnType<typeof getTournament>>;
+
+function getTournament(id: string) {
+  return new TournamentService().getTournament("R", id);
 }
