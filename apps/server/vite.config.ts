@@ -15,7 +15,7 @@ export default defineConfig({
   },
   server: {
     // vite server configs, for details see [vite doc](https://vitejs.dev/config/#server-host)
-    port: env.PORT,
+    port: env().PORT,
   },
   plugins: [
     tsconfigPaths(),
