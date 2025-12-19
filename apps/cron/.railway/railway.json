@@ -6,6 +6,7 @@
   },
   "deploy": {
     "startCommand": "pnpm start --filter @putting-pals/cron",
+    "cronSchedule": "*/5 * * * *",
     "region": "europe-west4-drams3a",
     "limitOverride": {
       "containers": {
