@@ -70,8 +70,8 @@ async function processEvent(ctx: Ctx) {
     .from(leaderboardSnapshotPatchTable)
     .where(
       and(
-        eq(leaderboardSnapshotBaseTable.tournamentId, tournament.id),
-        eq(leaderboardSnapshotBaseTable.tourCode, tourCode),
+        eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id),
+        eq(leaderboardSnapshotPatchTable.tourCode, tourCode),
       ),
     )
     .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
@@ -91,8 +91,8 @@ async function processEvent(ctx: Ctx) {
       .from(leaderboardSnapshotPatchTable)
       .where(
         and(
-          eq(leaderboardSnapshotBaseTable.tournamentId, tournament.id),
-          eq(leaderboardSnapshotBaseTable.tourCode, tourCode),
+          eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id),
+          eq(leaderboardSnapshotPatchTable.tourCode, tourCode),
         ),
       )
       .orderBy(desc(leaderboardSnapshotPatchTable.streamVersion))
