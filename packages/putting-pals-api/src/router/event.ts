@@ -6,7 +6,7 @@ import {
   leaderboardSnapshotBaseTable,
   leaderboardSnapshotPatchTable,
 } from "@putting-pals/putting-pals-db/schema";
-import { asc, desc, eq } from "drizzle-orm";
+import { and, asc, desc, eq } from "drizzle-orm";
 import patch from "fast-json-patch";
 import z from "zod";
 import { publicProcedure, router } from "../trpc";
@@ -45,7 +45,12 @@ async function processEvent(ctx: Ctx) {
   const base = await db
     .select()
     .from(leaderboardSnapshotBaseTable)
-    .where(eq(leaderboardSnapshotBaseTable.tournamentId, tournament.id))
+    .where(
+      and(
+        eq(leaderboardSnapshotBaseTable.tournamentId, tournament.id),
+        eq(leaderboardSnapshotBaseTable.tourCode, tourCode),
+      ),
+    )
     .orderBy(desc(leaderboardSnapshotBaseTable.createdAt))
     .limit(1);
 
@@ -63,7 +68,12 @@ async function processEvent(ctx: Ctx) {
   const patches = await db
     .select()
     .from(leaderboardSnapshotPatchTable)
-    .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id))
+    .where(
+      and(
+        eq(leaderboardSnapshotBaseTable.tournamentId, tournament.id),
+        eq(leaderboardSnapshotBaseTable.tourCode, tourCode),
+      ),
+    )
     .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
 
   const materialized = normalizeExistingSnapshot(
@@ -79,7 +89,12 @@ async function processEvent(ctx: Ctx) {
     const lastStreamVersion = await db
       .select()
       .from(leaderboardSnapshotPatchTable)
-      .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id))
+      .where(
+        and(
+          eq(leaderboardSnapshotBaseTable.tournamentId, tournament.id),
+          eq(leaderboardSnapshotBaseTable.tourCode, tourCode),
+        ),
+      )
       .orderBy(desc(leaderboardSnapshotPatchTable.streamVersion))
       .limit(1);
 
