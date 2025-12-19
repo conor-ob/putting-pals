@@ -6,7 +6,7 @@ async function sendEvent() {
   const client = createTRPCClient<AppRouter>({
     links: [
       httpBatchLink({
-        url: process.env.TRPC_API_URL ?? "http://localhost:4000/trpc",
+        url: "https://puttingpals.up.railway.app/api/trpc",
         transformer: superjson,
       }),
     ],
