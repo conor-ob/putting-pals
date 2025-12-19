@@ -15,6 +15,7 @@
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
     "@putting-pals/putting-pals-db": "workspace:*",
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "@trpc/server": "catalog:",
     "drizzle-orm": "catalog:",
     "fast-json-patch": "^3.1.1",
@@ -22,7 +23,6 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@putting-pals/putting-pals-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:",

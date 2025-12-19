@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/bottom-tabs": "^7.7.3",
     "@react-navigation/elements": "^2.8.1",
@@ -52,7 +53,6 @@
   },
   "devDependencies": {
     "@putting-pals/putting-pals-api": "workspace:*",
-    "@putting-pals/putting-pals-schema": "workspace:*",
     "@types/react": "~19.1.1",
     "typescript": "catalog:",
     "workbox-cli": "^7.4.0"

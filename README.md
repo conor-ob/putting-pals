@@ -50,4 +50,5 @@ This will start the Fastify server and Expo app
 
 ## Docs
 
-- https://orm.drizzle.team/docs/guides/postgresql-local-setup
+- [PostgreSQL local development](https://orm.drizzle.team/docs/guides/postgresql-local-setup)
+- [Turborepo environment variables configuration](https://github.com/vercel/turborepo/discussions/9458#discussioncomment-11443969)

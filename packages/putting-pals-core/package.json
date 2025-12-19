@@ -19,12 +19,12 @@
   "dependencies": {
     "@putting-pals/pga-tour-api": "workspace:*",
     "@putting-pals/pga-tour-scaper": "workspace:*",
+    "@putting-pals/pga-tour-schema": "workspace:*",
     "@putting-pals/putting-pals-data": "workspace:*",
     "@putting-pals/putting-pals-schema": "workspace:*",
     "date-fns": "^4.1.0"
   },
   "devDependencies": {
-    "@putting-pals/pga-tour-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:",
