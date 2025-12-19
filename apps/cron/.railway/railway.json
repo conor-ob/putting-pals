@@ -8,11 +8,18 @@
     "startCommand": "pnpm start --filter @putting-pals/cron",
     "cronSchedule": "*/5 * * * *",
     "region": "europe-west4-drams3a",
+    "multiRegionConfig": {
+      "europe-west4-drams3a": {
+        "numReplicas": 1
+      }
+    },
     "limitOverride": {
       "containers": {
         "cpu": 1,
         "memoryBytes": 1000000000
       }
-    }
+    },
+    "overlapSeconds": 30,
+    "drainingSeconds": 10
   }
 }
