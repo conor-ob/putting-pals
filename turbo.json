@@ -26,5 +26,5 @@
       "persistent": true
     }
   },
-  "globalEnv": ["NODE_ENV", "PORT", "ORIGIN", "DATABASE_URL", "TRPC_API_URL"]
+  "globalEnv": ["NODE_ENV", "PORT", "ORIGIN", "DATABASE_URL", "SERVER_URL"]
 }
