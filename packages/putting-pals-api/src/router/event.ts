@@ -31,12 +31,11 @@ export const eventRouter = router({
 });
 
 async function processEvent(ctx: Ctx) {
-  const tourCode = "S";
-  const tournamentId = "S2025600";
+  const tourCode = "R";
 
   const [tournament, leaderboard] = await Promise.all([
-    getTournament(tournamentId),
-    getLeaderboard(tournamentId),
+    getTournament(),
+    getLeaderboard(),
   ]);
 
   const newSnapshot = normalizeNewSnapshot(tournament, leaderboard);
@@ -46,7 +45,7 @@ async function processEvent(ctx: Ctx) {
   const base = await db
     .select()
     .from(leaderboardSnapshotBaseTable)
-    .where(eq(leaderboardSnapshotBaseTable.tournamentId, tournamentId))
+    .where(eq(leaderboardSnapshotBaseTable.tournamentId, tournament.id))
     .orderBy(desc(leaderboardSnapshotBaseTable.createdAt))
     .limit(1);
 
@@ -54,7 +53,7 @@ async function processEvent(ctx: Ctx) {
 
   if (baseSnapshot === undefined || baseSnapshot === null) {
     await db.insert(leaderboardSnapshotBaseTable).values({
-      tournamentId: tournamentId,
+      tournamentId: tournament.id,
       tourCode: tourCode,
       snapshot: newSnapshot,
     });
@@ -64,7 +63,7 @@ async function processEvent(ctx: Ctx) {
   const patches = await db
     .select()
     .from(leaderboardSnapshotPatchTable)
-    .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
+    .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id))
     .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
 
   const materialized = normalizeExistingSnapshot(
@@ -80,7 +79,7 @@ async function processEvent(ctx: Ctx) {
     const lastStreamVersion = await db
       .select()
       .from(leaderboardSnapshotPatchTable)
-      .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournamentId))
+      .where(eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id))
       .orderBy(desc(leaderboardSnapshotPatchTable.streamVersion))
       .limit(1);
 
@@ -89,7 +88,7 @@ async function processEvent(ctx: Ctx) {
     return await db
       .insert(leaderboardSnapshotPatchTable)
       .values({
-        tournamentId: tournamentId,
+        tournamentId: tournament.id,
         tourCode: tourCode,
         patch: {
           __typename: "JsonPatchV1" as const,
@@ -169,12 +168,12 @@ function normalizeExistingSnapshot(snapshot: LeaderboardSnapshotV1) {
 
 type Leaderboard = Awaited<ReturnType<typeof getLeaderboard>>;
 
-function getLeaderboard(id: string) {
-  return new LeaderboardService().getLeaderboard("R", id);
+function getLeaderboard() {
+  return new LeaderboardService().getLeaderboard("R");
 }
 
 type Tournament = Awaited<ReturnType<typeof getTournament>>;
 
-function getTournament(id: string) {
-  return new TournamentService().getTournament("R", id);
+function getTournament() {
+  return new TournamentService().getTournament("R");
 }
