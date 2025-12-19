@@ -7,6 +7,36 @@ dotenv({
   debug: process.env.NODE_ENV !== "production",
 });
 
+const getDatabaseUrlSchema = () => {
+  const nodeEnv = z
+    .enum(["production", "test", "development"])
+    .parse(process.env.NODE_ENV);
+
+  switch (nodeEnv) {
+    case "production":
+      return z.url();
+    case "development":
+      return z.url().refine((val) => val.includes("localhost"), {
+        message:
+          "DATABASE_URL must contain 'localhost' in development environment",
+      });
+    case "test":
+      return z
+        .preprocess(
+          (val) => (val === "" || val === undefined ? undefined : val),
+          z.string().optional(),
+        )
+        .default(
+          "postgresql://postgres:postgres@localhost:5432/putting-pals-test-db",
+        )
+        .refine((val) => val.includes("localhost"), {
+          message: "DATABASE_URL must contain 'localhost' in test environment",
+        });
+    default:
+      assertNever(nodeEnv);
+  }
+};
+
 const envSchema = z.object({
   NODE_ENV: z
     .enum(["production", "development", "test"])
@@ -16,7 +46,7 @@ const envSchema = z.object({
     .transform((s) => parseInt(s, 10))
     .pipe(z.number()),
   ORIGIN: z.url(),
-  DATABASE_URL: z.url(),
+  DATABASE_URL: getDatabaseUrlSchema(),
   CI: z
     .string()
     .default("false")
@@ -24,6 +54,8 @@ const envSchema = z.object({
     .pipe(z.boolean()),
 });
 
-export function env() {
-  return envSchema.parse(process.env);
+export const env = envSchema.parse(process.env);
+
+function assertNever(x: never): never {
+  throw new Error(`Unexpected object: ${x}`);
 }

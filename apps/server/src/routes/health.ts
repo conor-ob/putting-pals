@@ -6,7 +6,7 @@ export default function (fastify: FastifyInstance) {
   fastify.get("/health", (_req, res) => {
     try {
       const healthCheck = {
-        env: env().NODE_ENV,
+        env: env.NODE_ENV,
         message: "OK",
         uptime: process.uptime(),
         timestamp: Date.now(),
