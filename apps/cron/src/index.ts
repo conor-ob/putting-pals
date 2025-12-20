@@ -14,7 +14,7 @@ async function sendEvent() {
   });
 
   const response = await client.event.processEvent.mutate({
-    cron: "5 * * * *",
+    cron: "*/5 * * * *",
     scheduledTime: Date.now(),
   });
 
