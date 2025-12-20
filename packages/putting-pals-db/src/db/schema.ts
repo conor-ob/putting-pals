@@ -132,6 +132,7 @@ export const leaderboardSnapshotPatchTable = pgTable(
   (t) => [
     uniqueIndex("unique_tournament_stream_version").on(
       t.tournamentId,
+      t.tourCode,
       t.streamVersion,
     ),
   ],

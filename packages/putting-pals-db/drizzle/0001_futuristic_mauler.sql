@@ -1,0 +1,2 @@
+DROP INDEX "unique_tournament_stream_version";--> statement-breakpoint
+CREATE UNIQUE INDEX "unique_tournament_stream_version" ON "leaderboard_snapshot_patch" USING btree ("tournament_id","tour_code","stream_version");
