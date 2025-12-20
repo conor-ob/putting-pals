@@ -252,6 +252,7 @@ function normalizeNewSnapshot(
         if (row.__typename === "PlayerRowV3") {
           return {
             __typename: "PlayerRowV3" as const,
+            id: row.id,
             leaderboardSortOrder: row.leaderboardSortOrder,
             player: {
               abbreviations: row.player.abbreviations,
@@ -278,7 +279,7 @@ function normalizeNewSnapshot(
           return [];
         }
       })
-      .sort((a, b) => a.player.id.localeCompare(b.player.id)), // sort by player id to ensure consistent order
+      .sort((a, b) => a.id.localeCompare(b.id)), // sort by player id to ensure consistent order
   } satisfies LeaderboardSnapshotV1; // required for stricter type checking
 }
 
@@ -291,7 +292,7 @@ function normalizeExistingSnapshot(snapshot: LeaderboardSnapshotV1) {
     roundStatusColor: snapshot.roundStatusColor,
     roundStatusDisplay: snapshot.roundStatusDisplay,
     leaderboardRoundHeader: snapshot.leaderboardRoundHeader,
-    rows: snapshot.rows.sort((a, b) => a.player.id.localeCompare(b.player.id)), // sort by player id to ensure consistent order
+    rows: snapshot.rows.sort((a, b) => a.id.localeCompare(b.id)), // sort by player id to ensure consistent order
   } satisfies LeaderboardSnapshotV1; // required for stricter type checking
 }
 

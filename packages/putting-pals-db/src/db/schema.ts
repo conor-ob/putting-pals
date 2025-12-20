@@ -51,6 +51,7 @@ export type LeaderboardSnapshotV1 = {
   leaderboardRoundHeader: string;
   rows: {
     __typename: "PlayerRowV3";
+    id: string;
     leaderboardSortOrder: number;
     player: {
       abbreviations: string;
