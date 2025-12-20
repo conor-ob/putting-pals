@@ -278,7 +278,7 @@ function normalizeNewSnapshot(
           return [];
         }
       })
-      .sort((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder),
+      .sort((a, b) => a.player.id.localeCompare(b.player.id)), // sort by player id to ensure consistent order
   } satisfies LeaderboardSnapshotV1; // required for stricter type checking
 }
 
@@ -291,9 +291,7 @@ function normalizeExistingSnapshot(snapshot: LeaderboardSnapshotV1) {
     roundStatusColor: snapshot.roundStatusColor,
     roundStatusDisplay: snapshot.roundStatusDisplay,
     leaderboardRoundHeader: snapshot.leaderboardRoundHeader,
-    rows: snapshot.rows.sort(
-      (a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder,
-    ),
+    rows: snapshot.rows.sort((a, b) => a.player.id.localeCompare(b.player.id)), // sort by player id to ensure consistent order
   } satisfies LeaderboardSnapshotV1; // required for stricter type checking
 }
 
