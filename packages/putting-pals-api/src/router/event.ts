@@ -86,32 +86,148 @@ async function processEvent(ctx: Ctx) {
 
   const diff = patch.compare(materialized, newSnapshot);
   if (diff.length > 0) {
-    const lastStreamVersion = await db
-      .select()
-      .from(leaderboardSnapshotPatchTable)
-      .where(
-        and(
-          eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id),
-          eq(leaderboardSnapshotPatchTable.tourCode, tourCode),
-        ),
-      )
-      .orderBy(desc(leaderboardSnapshotPatchTable.streamVersion))
-      .limit(1);
+    // Use a transaction to atomically read and insert to avoid race conditions
+    return await db.transaction(async (tx) => {
+      const lastStreamVersion = await tx
+        .select()
+        .from(leaderboardSnapshotPatchTable)
+        .where(
+          and(
+            eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id),
+            eq(leaderboardSnapshotPatchTable.tourCode, tourCode),
+          ),
+        )
+        .orderBy(desc(leaderboardSnapshotPatchTable.streamVersion))
+        .limit(1);
 
-    const streamVersion = lastStreamVersion[0]?.streamVersion ?? 0;
+      const streamVersion = lastStreamVersion[0]?.streamVersion ?? 0;
 
-    return await db
-      .insert(leaderboardSnapshotPatchTable)
-      .values({
-        tournamentId: tournament.id,
-        tourCode: tourCode,
-        patch: {
-          __typename: "JsonPatchV1" as const,
-          operations: diff,
-        },
-        streamVersion: streamVersion + 1,
-      })
-      .returning();
+      try {
+        return await tx
+          .insert(leaderboardSnapshotPatchTable)
+          .values({
+            tournamentId: tournament.id,
+            tourCode: tourCode,
+            patch: {
+              __typename: "JsonPatchV1" as const,
+              operations: diff,
+            },
+            streamVersion: streamVersion + 1,
+          })
+          .returning();
+      } catch (error) {
+        // Log the full error structure for debugging
+        // biome-ignore lint/suspicious/noConsole: error logging
+        console.error("Database insert error:", {
+          error,
+          errorType: error?.constructor?.name,
+          errorCode:
+            error && typeof error === "object" && "code" in error
+              ? error.code
+              : undefined,
+          causeCode:
+            error &&
+            typeof error === "object" &&
+            "cause" in error &&
+            error.cause &&
+            typeof error.cause === "object" &&
+            "code" in error.cause
+              ? error.cause.code
+              : undefined,
+          message:
+            error && typeof error === "object" && "message" in error
+              ? error.message
+              : String(error),
+        });
+
+        // Check for unique constraint violation in multiple places
+        // PostgreSQL error code 23505 = unique_violation
+        // The error code might be in error.code, error.cause?.code, or nested deeper
+        const getErrorCode = (err: unknown): string | undefined => {
+          if (!err || typeof err !== "object") return undefined;
+          if ("code" in err && typeof err.code === "string") return err.code;
+          if ("cause" in err) return getErrorCode(err.cause);
+          return undefined;
+        };
+
+        const errorCode = getErrorCode(error);
+        const isUniqueViolation =
+          errorCode === "23505" ||
+          (error &&
+            typeof error === "object" &&
+            "message" in error &&
+            typeof error.message === "string" &&
+            error.message.includes("unique") &&
+            error.message.includes("constraint"));
+
+        if (isUniqueViolation) {
+          // biome-ignore lint/suspicious/noConsole: error logging
+          console.log(
+            "Unique constraint violation detected, retrying with fresh stream version",
+          );
+
+          // Retry: get the latest stream version again (this will see committed changes from other transactions)
+          const retryStreamVersion = await tx
+            .select()
+            .from(leaderboardSnapshotPatchTable)
+            .where(
+              and(
+                eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id),
+                eq(leaderboardSnapshotPatchTable.tourCode, tourCode),
+              ),
+            )
+            .orderBy(desc(leaderboardSnapshotPatchTable.streamVersion))
+            .limit(1);
+
+          const newStreamVersion = retryStreamVersion[0]?.streamVersion ?? 0;
+
+          // biome-ignore lint/suspicious/noConsole: error logging
+          console.log(
+            `Retry: old streamVersion=${streamVersion}, new streamVersion=${newStreamVersion}`,
+          );
+
+          if (newStreamVersion === streamVersion) {
+            // If the stream version hasn't changed, the other transaction hasn't committed yet
+            // or there's still a conflict. Throw a more descriptive error.
+            throw new Error(
+              `Failed to insert patch: unique constraint violation. Tournament: ${tournament.id}, TourCode: ${tourCode}, Attempted streamVersion: ${streamVersion + 1}, Current max streamVersion: ${newStreamVersion}`,
+            );
+          }
+
+          try {
+            return await tx
+              .insert(leaderboardSnapshotPatchTable)
+              .values({
+                tournamentId: tournament.id,
+                tourCode: tourCode,
+                patch: {
+                  __typename: "JsonPatchV1" as const,
+                  operations: diff,
+                },
+                streamVersion: newStreamVersion + 1,
+              })
+              .returning();
+          } catch (retryError) {
+            // If retry also fails, log and throw
+            // biome-ignore lint/suspicious/noConsole: error logging
+            console.error("Retry insert also failed:", retryError);
+            const retryErrorCode = getErrorCode(retryError);
+            throw new Error(
+              `Failed to insert patch after retry. Tournament: ${tournament.id}, TourCode: ${tourCode}, Error code: ${retryErrorCode || "unknown"}`,
+            );
+          }
+        }
+
+        // Re-throw if it's not a unique constraint violation, with better error context
+        const errorMessage =
+          error && typeof error === "object" && "message" in error
+            ? String(error.message)
+            : "Unknown database error";
+        throw new Error(
+          `Database error inserting patch: ${errorMessage}. Tournament: ${tournament.id}, TourCode: ${tourCode}, Error code: ${errorCode || "unknown"}`,
+        );
+      }
+    });
   } else {
     return {
       message: "No changes detected",
