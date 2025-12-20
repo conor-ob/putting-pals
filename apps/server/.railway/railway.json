@@ -5,7 +5,7 @@
     "dockerfilePath": "apps/server/Dockerfile"
   },
   "deploy": {
-    "preDeployCommand": "pnpm --filter @putting-pals/putting-pals-db db:migrate",
+    "preDeployCommand": "echo 'preDeployCommand'",
     "numReplicas": 1,
     "healthcheckPath": "/health",
     "healthcheckTimeout": 300,
