@@ -5,7 +5,7 @@
     "dockerfilePath": "apps/server/Dockerfile"
   },
   "deploy": {
-    "preDeployCommand": "echo 'preDeployCommand'",
+    "preDeployCommand": "pnpm typecheck",
     "numReplicas": 1,
     "healthcheckPath": "/health",
     "healthcheckTimeout": 300,
