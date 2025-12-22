@@ -12,8 +12,7 @@
     "strings": "on"
   },
   "files.associations": {
-    "*.css": "tailwindcss",
-    "wrangler.json": "jsonc"
+    "*.css": "tailwindcss"
   },
   "tailwindCSS.classAttributes": [
     "class",
