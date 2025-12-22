@@ -20,12 +20,12 @@
       }
     },
     "overlapSeconds": 30,
-    "drainingSeconds": 10,
-    "environments": {
-      "pr": {
-        "deploy": {
-          "cronSchedule": "0 0 * * *"
-        }
+    "drainingSeconds": 10
+  },
+  "environments": {
+    "pr": {
+      "deploy": {
+        "cronSchedule": "0 0 * * *"
       }
     }
   }
