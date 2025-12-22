@@ -5,7 +5,6 @@
     "dockerfilePath": "apps/server/Dockerfile"
   },
   "deploy": {
-    "preDeployCommand": ["turbo run db:migrate"],
     "numReplicas": 1,
     "healthcheckPath": "/health",
     "healthcheckTimeout": 300,
