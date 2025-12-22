@@ -8,6 +8,9 @@
   "scripts": {
     "clean": "turbo clean && git clean -xdf node_modules",
     "codegen": "turbo codegen",
+    "db:generate": "turbo db:generate",
+    "db:migrate": "turbo db:migrate",
+    "db:studio": "turbo db:studio",
     "build": "turbo build",
     "format": "biome format .",
     "format:fix": "biome format --write .",
