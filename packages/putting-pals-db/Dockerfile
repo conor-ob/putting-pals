@@ -36,12 +36,10 @@ RUN --mount=type=cache,id=s/1fe9194c-b1e4-422b-955b-b0abd7cf6ecf-/root/.local/sh
 # Copy source code of isolated subworkspace
 COPY --from=pruner /app/out/full/ .
 
-RUN turbo build --filter=@putting-pals/putting-pals-db
 RUN --mount=type=cache,id=s/1fe9194c-b1e4-422b-955b-b0abd7cf6ecf-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm prune --prod --no-optional
 # Install drizzle-kit as it's needed for migrations (even though it's a dev dependency)
 # Use install with filter to respect the lockfile
 RUN --mount=type=cache,id=s/1fe9194c-b1e4-422b-955b-b0abd7cf6ecf-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --filter=@putting-pals/putting-pals-db --frozen-lockfile
-RUN rm -rf ./**/*/src
 
 # Final image
 FROM base AS runner
