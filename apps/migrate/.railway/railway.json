@@ -1,11 +1,11 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "builder": "RAILPACK",
-    "buildCommand": ":"
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "packages/putting-pals-db/Dockerfile"
   },
   "deploy": {
-    "startCommand": "pnpm db:migrate --filter @putting-pals/putting-pals-db",
+    "numReplicas": 1,
     "region": "europe-west4-drams3a",
     "multiRegionConfig": {
       "europe-west4-drams3a": {
