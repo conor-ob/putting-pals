@@ -40,7 +40,7 @@ RUN --mount=type=cache,id=s/1fe9194c-b1e4-422b-955b-b0abd7cf6ecf-/root/.local/sh
 RUN --mount=type=cache,id=s/1fe9194c-b1e4-422b-955b-b0abd7cf6ecf-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --filter=@putting-pals/putting-pals-db --frozen-lockfile
 
 # Final image
-FROM base AS runner
+FROM alpine AS runner
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nodejs
@@ -55,4 +55,4 @@ ARG DATABASE_URL
 ENV NODE_ENV=production
 ENV DATABASE_URL=${DATABASE_URL}
 
-CMD ["pnpm", "db:migrate"]
+CMD ["drizzle-kit", "migrate"]
