@@ -5,6 +5,18 @@
     "buildCommand": ":"
   },
   "deploy": {
-    "startCommand": "pnpm db:migrate --filter @putting-pals/putting-pals-db"
+    "startCommand": "pnpm db:migrate --filter @putting-pals/putting-pals-db",
+    "region": "europe-west4-drams3a",
+    "multiRegionConfig": {
+      "europe-west4-drams3a": {
+        "numReplicas": 1
+      }
+    },
+    "limitOverride": {
+      "containers": {
+        "cpu": 1,
+        "memoryBytes": 1000000000
+      }
+    }
   }
 }
