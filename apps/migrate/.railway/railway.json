@@ -2,11 +2,10 @@
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
     "builder": "RAILPACK",
-    "buildCommand": "pnpm build --filter @putting-pals/cron"
+    "buildCommand": ":"
   },
   "deploy": {
-    "startCommand": "pnpm start --filter @putting-pals/cron",
-    "cronSchedule": "*/5 * * * *",
+    "startCommand": "pnpm db:migrate --filter @putting-pals/putting-pals-db",
     "region": "europe-west4-drams3a",
     "multiRegionConfig": {
       "europe-west4-drams3a": {
@@ -17,15 +16,6 @@
       "containers": {
         "cpu": 1,
         "memoryBytes": 1000000000
-      }
-    },
-    "overlapSeconds": 30,
-    "drainingSeconds": 10
-  },
-  "environments": {
-    "pr": {
-      "deploy": {
-        "cronSchedule": "0 0 * * *"
       }
     }
   }

@@ -8,6 +8,16 @@
     "codegen": {
       "cache": false
     },
+    "db:generate": {
+      "outputs": ["drizzle/**"]
+    },
+    "db:migrate": {
+      "cache": false
+    },
+    "db:studio": {
+      "cache": false,
+      "persistent": true
+    },
     "build": {
       "outputs": ["dist/**"]
     },
