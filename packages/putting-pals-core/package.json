@@ -24,6 +24,7 @@
     "@putting-pals/putting-pals-data": "workspace:*",
     "@putting-pals/putting-pals-db": "workspace:*",
     "@putting-pals/putting-pals-schema": "workspace:*",
+    "@putting-pals/putting-pals-utils": "workspace:*",
     "date-fns": "^4.1.0",
     "drizzle-orm": "catalog:",
     "fast-json-patch": "catalog:"

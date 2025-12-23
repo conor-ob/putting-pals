@@ -3,9 +3,9 @@ import type {
   ScheduleMonth,
   ScheduleTournament,
 } from "@putting-pals/pga-tour-schema/types";
+import type { RecursivePartial } from "@putting-pals/putting-pals-utils/type-utils";
 import { getImageUrl } from "../utils/image-utils";
 import { stripParenthesizedYear } from "../utils/string-utils";
-import type { RecursivePartial } from "../utils/type-utils";
 
 export function transformSchedule(schedule: Schedule) {
   return {

@@ -5,8 +5,11 @@ import {
   type ScheduleTournament,
 } from "@putting-pals/pga-tour-schema/types";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import {
+  assertNever,
+  type RecursivePartial,
+} from "@putting-pals/putting-pals-utils/type-utils";
 import { CompetitionService } from "../competition/competition-service";
-import { assertNever, type RecursivePartial } from "../utils/type-utils";
 import {
   transformSchedule,
   transformScheduleTournament,

@@ -1,9 +1,9 @@
 import { ScheduleClient } from "@putting-pals/pga-tour-api/schedule";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { parseISO } from "date-fns";
 import { CompetitionService } from "../competition/competition-service";
 import { TournamentService } from "../tournament/tournament-service";
-import { assertNever } from "../utils/type-utils";
 import { transformScheduleYears } from "./schedule-years-transformer";
 
 export class ScheduleYearsService {

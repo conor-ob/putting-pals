@@ -239,6 +239,9 @@ importers:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*
         version: link:../../packages/putting-pals-api
+      '@putting-pals/putting-pals-utils':
+        specifier: workspace:*
+        version: link:../../packages/putting-pals-utils
       '@trpc/server':
         specifier: 'catalog:'
         version: 11.8.1(typescript@5.9.3)
@@ -390,6 +393,9 @@ importers:
       '@putting-pals/putting-pals-schema':
         specifier: workspace:*
         version: link:../putting-pals-schema
+      '@putting-pals/putting-pals-utils':
+        specifier: workspace:*
+        version: link:../putting-pals-utils
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -430,6 +436,9 @@ importers:
       '@putting-pals/pga-tour-schema':
         specifier: workspace:*
         version: link:../pga-tour-schema
+      '@putting-pals/putting-pals-utils':
+        specifier: workspace:*
+        version: link:../putting-pals-utils
       dotenv:
         specifier: 'catalog:'
         version: 17.2.3
@@ -463,6 +472,22 @@ importers:
         version: 5.9.3
 
   packages/putting-pals-schema:
+    dependencies:
+      zod:
+        specifier: 'catalog:'
+        version: 4.2.1
+    devDependencies:
+      '@total-typescript/tsconfig':
+        specifier: 'catalog:'
+        version: 1.0.4
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.10.4
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
+  packages/putting-pals-utils:
     dependencies:
       zod:
         specifier: 'catalog:'
@@ -10264,7 +10289,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 24.10.4
+      '@types/node': 25.0.3
 
   '@types/yargs-parser@21.0.3': {}
 
