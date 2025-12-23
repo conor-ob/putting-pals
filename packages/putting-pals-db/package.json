@@ -18,6 +18,7 @@
     "@putting-pals/pga-tour-schema": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "catalog:",
+    "fast-json-patch": "catalog:",
     "pg": "^8.16.3",
     "zod": "catalog:"
   },
