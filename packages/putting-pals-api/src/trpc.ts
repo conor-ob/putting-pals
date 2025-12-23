@@ -7,9 +7,10 @@
  * need to use are documented accordingly near the end.
  */
 
+import type { IncomingHttpHeaders } from "node:http";
+import type { IncomingHttpHeaders as IncomingHttp2Headers } from "node:http2";
 import { db } from "@putting-pals/putting-pals-db/client";
 import { initTRPC } from "@trpc/server";
-import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
 import superjson from "superjson";
 import z, { ZodError } from "zod";
 import { onError } from "./error/error-handler";
@@ -27,13 +28,11 @@ import { onError } from "./error/error-handler";
  * @see https://trpc.io/docs/server/context
  */
 export function createTrpcContext({
-  opts,
+  headers,
 }: {
-  opts: CreateFastifyContextOptions;
+  headers: IncomingHttpHeaders | IncomingHttp2Headers;
 }) {
-  // biome-ignore lint/suspicious/noConsole: debugging
-  console.log("opts", opts);
-  return { db };
+  return { headers, db };
 }
 
 /**
