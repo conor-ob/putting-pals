@@ -7,6 +7,7 @@
     "./competition": "./src/competition/competition-service.ts",
     "./service-error": "./src/utils/service-error.ts",
     "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
+    "./leaderboard-event": "./src/leaderboard-event/leaderboard-event-processor.ts",
     "./schedule": "./src/schedule/schedule-service.ts",
     "./stats": "./src/stats/stats-service.ts",
     "./tournament": "./src/tournament/tournament-service.ts"
@@ -21,8 +22,12 @@
     "@putting-pals/pga-tour-scaper": "workspace:*",
     "@putting-pals/pga-tour-schema": "workspace:*",
     "@putting-pals/putting-pals-data": "workspace:*",
+    "@putting-pals/putting-pals-db": "workspace:*",
     "@putting-pals/putting-pals-schema": "workspace:*",
-    "date-fns": "^4.1.0"
+    "@putting-pals/putting-pals-utils": "workspace:*",
+    "date-fns": "^4.1.0",
+    "drizzle-orm": "catalog:",
+    "fast-json-patch": "catalog:"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",

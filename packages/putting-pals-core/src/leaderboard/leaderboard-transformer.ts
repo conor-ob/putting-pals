@@ -2,7 +2,10 @@ import type {
   LeaderboardRowV3,
   LeaderboardV3,
 } from "@putting-pals/pga-tour-schema/types";
-import { assertNever, type RecursivePartial } from "../utils/type-utils";
+import {
+  assertNever,
+  type RecursivePartial,
+} from "@putting-pals/putting-pals-utils/type-utils";
 import { getCountryFlag } from "./leaderboard-flag-utils";
 
 export type TransformedLeaderboard = ReturnType<typeof transformLeaderboard>;

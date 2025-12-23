@@ -1,8 +1,8 @@
 import { LeaderboardClient } from "@putting-pals/pga-tour-api/leaderboard";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { CompetitionService } from "../competition/competition-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";
-import { assertNever } from "../utils/type-utils";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 import { transformLeaderboard } from "./leaderboard-transformer";
 

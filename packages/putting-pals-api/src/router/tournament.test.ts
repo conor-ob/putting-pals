@@ -1,3 +1,5 @@
+import type { IncomingHttpHeaders } from "node:http";
+import type { IncomingHttpHeaders as IncomingHttp2Headers } from "node:http2";
 import { TRPCError } from "@trpc/server";
 import { expect, suite, test } from "vitest";
 import { ZodError } from "zod";
@@ -9,8 +11,7 @@ suite("tournamentRouter", () => {
     const createCaller = createCallerFactory(appRouter);
     const caller = createCaller(
       createTrpcContext({
-        // biome-ignore lint/suspicious/noExplicitAny: mocking request context
-        opts: { req: {} as any, res: {} as any, info: {} as any },
+        headers: {} as IncomingHttpHeaders | IncomingHttp2Headers,
       }),
     );
 

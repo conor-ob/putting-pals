@@ -1,8 +1,8 @@
 import type { Tournament } from "@putting-pals/pga-tour-schema/types";
+import type { RecursivePartial } from "@putting-pals/putting-pals-utils/type-utils";
 import { formatISO, parse } from "date-fns";
 import { getImageUrl } from "../utils/image-utils";
 import { stripParenthesizedYear } from "../utils/string-utils";
-import type { RecursivePartial } from "../utils/type-utils";
 
 export function transformTournament(tournament: Tournament) {
   return {

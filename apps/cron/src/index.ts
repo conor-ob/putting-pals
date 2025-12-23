@@ -13,13 +13,16 @@ async function sendEvent() {
     ],
   });
 
-  const response = await client.event.processEvent.mutate({
-    cron: "*/5 * * * *",
-    scheduledTime: Date.now(),
+  await client.event.processEvent.mutate({
+    tourCode: "R",
+    type: "leaderboard-event",
   });
-
-  // biome-ignore lint/suspicious/noConsole: testing
-  console.log("processed event", response);
 }
 
-sendEvent();
+sendEvent()
+  .then(() => process.exit(0))
+  .catch((err) => {
+    // biome-ignore lint/suspicious/noConsole: error logging
+    console.error(err);
+    process.exit(1);
+  });
