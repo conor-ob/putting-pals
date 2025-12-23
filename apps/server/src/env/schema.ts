@@ -19,4 +19,4 @@ const envSchema = z.object({
     .pipe(z.boolean()),
 });
 
-export const env = envSchema.parse(process.env);
+export const env = () => envSchema.parse(process.env);

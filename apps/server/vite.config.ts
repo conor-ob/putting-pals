@@ -4,8 +4,6 @@ import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-import { env } from "./src/env/schema";
-
 export default defineConfig({
   build: {
     lib: {
@@ -15,7 +13,7 @@ export default defineConfig({
   },
   server: {
     // vite server configs, for details see [vite doc](https://vitejs.dev/config/#server-host)
-    port: env.PORT,
+    port: parseInt(process.env.PORT ?? "4000", 10),
   },
   plugins: [
     tsconfigPaths(),
