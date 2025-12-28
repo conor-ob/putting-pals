@@ -9,12 +9,12 @@ export const eventRouter = router({
     .input(
       z.object({
         tourCode: TourCodeSchema,
-        type: z.enum(["leaderboard-event"]),
+        type: z.enum(["leaderboard/update"]),
       }),
     )
     .mutation(async ({ ctx, input }) => {
       switch (input.type) {
-        case "leaderboard-event":
+        case "leaderboard/update":
           return await new LeaderboardEventProcessor(ctx.db).processEvent(
             input.tourCode,
           );

@@ -14,8 +14,8 @@ async function sendEvent() {
   });
 
   await client.event.processEvent.mutate({
-    tourCode: "R",
-    type: "leaderboard-event",
+    tourCode: "P",
+    type: "leaderboard/update",
   });
 }
 

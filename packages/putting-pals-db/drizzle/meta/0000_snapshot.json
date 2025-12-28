@@ -1,11 +1,11 @@
 {
-  "id": "cac58306-bcd8-4543-9fa3-40b3dd7cc375",
+  "id": "2d8be9f6-c6ee-4c04-a490-a6db758573ef",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.leaderboard_snapshot_base": {
-      "name": "leaderboard_snapshot_base",
+    "public.leaderboard_feed": {
+      "name": "leaderboard_feed",
       "schema": "",
       "columns": {
         "id": {
@@ -15,21 +15,15 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "tournament_id": {
-          "name": "tournament_id",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
         "tour_code": {
           "name": "tour_code",
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
         },
-        "snapshot": {
-          "name": "snapshot",
-          "type": "json",
+        "tournament_id": {
+          "name": "tournament_id",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": true
         },
@@ -39,128 +33,140 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.leaderboard_snapshot_materialized": {
-      "name": "leaderboard_snapshot_materialized",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
         },
-        "tournament_id": {
-          "name": "tournament_id",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "tour_code": {
-          "name": "tour_code",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "snapshot": {
-          "name": "snapshot",
-          "type": "json",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "patch_stream_version": {
-          "name": "patch_stream_version",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
+        "updated_at": {
+          "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.leaderboard_snapshot_patch": {
-      "name": "leaderboard_snapshot_patch",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
         },
-        "tournament_id": {
-          "name": "tournament_id",
-          "type": "varchar",
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
-        "tour_code": {
-          "name": "tour_code",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "patch": {
-          "name": "patch",
+        "feed_item": {
+          "name": "feed_item",
           "type": "json",
           "primaryKey": false,
           "notNull": true
-        },
-        "stream_version": {
-          "name": "stream_version",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
         }
       },
       "indexes": {
-        "unique_tournament_stream_version": {
-          "name": "unique_tournament_stream_version",
+        "leaderboard_feed_tournament_idx": {
+          "name": "leaderboard_feed_tournament_idx",
           "columns": [
             {
-              "expression": "tournament_id",
+              "expression": "tour_code",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
             },
             {
-              "expression": "stream_version",
+              "expression": "tournament_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
             }
           ],
-          "isUnique": true,
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "leaderboard_feed_created_at_idx": {
+          "name": "leaderboard_feed_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.leaderboard_snapshot": {
+      "name": "leaderboard_snapshot",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "tour_code": {
+          "name": "tour_code",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tournament_id": {
+          "name": "tournament_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "snapshot": {
+          "name": "snapshot",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "leaderboard_snapshot_tournament_idx": {
+          "name": "leaderboard_snapshot_tournament_idx",
+          "columns": [
+            {
+              "expression": "tour_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "tournament_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
           "concurrently": false,
           "method": "btree",
           "with": {}
