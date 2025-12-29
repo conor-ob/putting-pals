@@ -1,5 +1,5 @@
 {
-  "id": "2d8be9f6-c6ee-4c04-a490-a6db758573ef",
+  "id": "a76cd339-70c7-4f44-b80d-a47ac03043d5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -47,6 +47,18 @@
           "primaryKey": false,
           "notNull": false
         },
+        "seq": {
+          "name": "seq",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
         "feed_item": {
           "name": "feed_item",
           "type": "json",
@@ -76,11 +88,11 @@
           "method": "btree",
           "with": {}
         },
-        "leaderboard_feed_created_at_idx": {
-          "name": "leaderboard_feed_created_at_idx",
+        "leaderboard_feed_seq_idx": {
+          "name": "leaderboard_feed_seq_idx",
           "columns": [
             {
-              "expression": "created_at",
+              "expression": "seq",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -141,6 +153,12 @@
           "type": "timestamp",
           "primaryKey": false,
           "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
         },
         "snapshot": {
           "name": "snapshot",

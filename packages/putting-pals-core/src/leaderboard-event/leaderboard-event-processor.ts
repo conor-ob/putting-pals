@@ -1,3 +1,7 @@
+import {
+  RoundStatus,
+  RoundStatusColor,
+} from "@putting-pals/pga-tour-schema/types";
 import type { Database } from "@putting-pals/putting-pals-db/client";
 import {
   type LeaderboardSnapshotV1,
@@ -31,6 +35,33 @@ export class LeaderboardEventProcessor {
       new TournamentService().getTournament(tourCode, tournamentId),
       new LeaderboardService().getLeaderboard(tourCode, tournamentId),
     ]);
+
+    // await this.db.insert(leaderboardFeedTable).values({
+    //   tourCode: tourCode,
+    //   tournamentId: tournamentId,
+    //   type: "RoundStatusChangedV1",
+    //   feedItem: {
+    //     __typename: "RoundStatusChangedV1",
+    //     roundDisplay: "R4",
+    //     roundStatus: RoundStatus.Official,
+    //     roundStatusColor: RoundStatusColor.Green,
+    //     roundStatusDisplay: "Official",
+    //   },
+    // });
+
+    // Array.from(Array(207)).forEach(async () => {
+    //   await this.db.insert(leaderboardFeedTable).values({
+    //     tourCode: tourCode,
+    //     tournamentId: tournamentId,
+    //     type: "TournamentStatusChangedV1",
+    //     feedItem: {
+    //       __typename: "TournamentStatusChangedV1",
+    //       tournamentName: tournament.tournamentName,
+    //       tournamentStatus: tournament.tournamentStatus,
+    //       customText: "hello world",
+    //     },
+    //   });
+    // });
 
     const newLeaderboardSnapshot = {
       __typename: "LeaderboardSnapshotV1",
@@ -90,6 +121,7 @@ export class LeaderboardEventProcessor {
       await this.db.insert(leaderboardSnapshotTable).values({
         tourCode: tourCode,
         tournamentId: tournamentId,
+        type: newLeaderboardSnapshot.__typename,
         snapshot: newLeaderboardSnapshot,
       });
 
@@ -119,6 +151,7 @@ export class LeaderboardEventProcessor {
           events.map((event) => ({
             tourCode: tourCode,
             tournamentId: tournamentId,
+            type: event.__typename,
             feedItem: event,
           })),
         );
@@ -126,6 +159,7 @@ export class LeaderboardEventProcessor {
         await tx
           .update(leaderboardSnapshotTable)
           .set({
+            type: newLeaderboardSnapshot.__typename,
             snapshot: newLeaderboardSnapshot,
           })
           .where(

@@ -6,6 +6,7 @@
   "exports": {
     "./competition": "./src/competition/competition-service.ts",
     "./service-error": "./src/utils/service-error.ts",
+    "./feed": "./src/feed/feed-service.ts",
     "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
     "./leaderboard-event": "./src/leaderboard-event/leaderboard-event-processor.ts",
     "./schedule": "./src/schedule/schedule-service.ts",

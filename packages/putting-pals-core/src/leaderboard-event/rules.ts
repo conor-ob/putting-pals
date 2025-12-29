@@ -48,6 +48,15 @@ export const TournamentStatusChangedRule: Rule = {
   ],
 };
 
+export const NewPuttingPalsLeaderRule: Rule = {
+  matches: (before, after) => {
+    return false;
+  },
+  emit: (before, after) => {
+    return [];
+  },
+};
+
 export const PuttingPalsPlayerPositionIncreasedRule: Rule = {
   matches: (before, after) => {
     return false; // before !== "-"

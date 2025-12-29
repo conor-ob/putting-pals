@@ -1,4 +1,5 @@
 import { eventRouter } from "./router/event";
+import { feedRouter } from "./router/feed";
 import { leaderboardRouter } from "./router/leaderboard";
 import { scheduleRouter } from "./router/schedule";
 import { statsRouter } from "./router/stats";
@@ -12,6 +13,7 @@ import { createCallerFactory, router } from "./trpc";
  */
 export const appRouter = router({
   event: eventRouter,
+  feed: feedRouter,
   leaderboard: leaderboardRouter,
   schedule: scheduleRouter,
   stats: statsRouter,

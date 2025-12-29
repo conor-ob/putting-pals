@@ -7,6 +7,7 @@ import {
   index,
   json,
   pgTable,
+  serial,
   timestamp,
   uuid,
   varchar,
@@ -24,6 +25,7 @@ export const leaderboardSnapshotTable = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date()),
     deletedAt: timestamp("deleted_at"),
+    type: varchar("type").notNull(),
     snapshot: json("snapshot").notNull().$type<LeaderboardSnapshotV1>(),
   },
   (table) => [
@@ -46,6 +48,8 @@ export const leaderboardFeedTable = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date()),
     deletedAt: timestamp("deleted_at"),
+    seq: serial("seq").notNull(),
+    type: varchar("type").notNull(),
     feedItem: json("feed_item")
       .notNull()
       .$type<RoundStatusChangedV1 | TournamentStatusChangedV1>(),
@@ -55,7 +59,7 @@ export const leaderboardFeedTable = pgTable(
       table.tourCode,
       table.tournamentId,
     ),
-    index("leaderboard_feed_created_at_idx").on(table.createdAt),
+    index("leaderboard_feed_seq_idx").on(table.seq),
   ],
 );
 
