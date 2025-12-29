@@ -3,13 +3,20 @@ import {
   type LeaderboardSnapshotV1,
   leaderboardFeedTable,
   leaderboardSnapshotTable,
-  type RoundStatusChangedV1,
 } from "@putting-pals/putting-pals-db/schema";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 import { and, desc, eq } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";
 import { TournamentService } from "../tournament/tournament-service";
+import {
+  PlayerPositionDecreasedRule,
+  PlayerPositionIncreasedRule,
+  PuttingPalsPlayerPositionDecreasedRule,
+  PuttingPalsPlayerPositionIncreasedRule,
+  RoundStatusChangedRule,
+  TournamentStatusChangedRule,
+} from "./rules";
 
 export class LeaderboardEventProcessor {
   constructor(private readonly db: Database) {
@@ -27,6 +34,7 @@ export class LeaderboardEventProcessor {
 
     const newLeaderboardSnapshot = {
       __typename: "LeaderboardSnapshotV1",
+      tournamentName: tournament.tournamentName,
       tournamentStatus: tournament.tournamentStatus,
       roundDisplay: tournament.roundDisplay,
       roundStatus: tournament.roundStatus,
@@ -45,7 +53,7 @@ export class LeaderboardEventProcessor {
               displayName: row.player.displayName,
               id: row.player.id,
               shortName: row.player.shortName,
-            },
+            } satisfies LeaderboardSnapshotV1["rows"][number]["player"],
             scoringData: {
               position: row.scoringData.position,
               score: row.scoringData.score,
@@ -55,7 +63,7 @@ export class LeaderboardEventProcessor {
               thruSort: row.scoringData.thruSort,
               total: row.scoringData.total,
               totalSort: row.scoringData.totalSort,
-            },
+            } satisfies LeaderboardSnapshotV1["rows"][number]["scoringData"],
           } satisfies LeaderboardSnapshotV1["rows"][number];
         } else {
           return [];
@@ -70,11 +78,11 @@ export class LeaderboardEventProcessor {
       .from(leaderboardSnapshotTable)
       .where(
         and(
-          eq(leaderboardSnapshotTable.tournamentId, tournamentId),
           eq(leaderboardSnapshotTable.tourCode, tourCode),
+          eq(leaderboardSnapshotTable.tournamentId, tournamentId),
         ),
       )
-      .orderBy(desc(leaderboardSnapshotTable.createdAt))
+      .orderBy(desc(leaderboardSnapshotTable.updatedAt))
       .limit(1)
       .then(([result]) => result?.snapshot);
 
@@ -88,20 +96,44 @@ export class LeaderboardEventProcessor {
       return;
     }
 
-    if (
-      existingLeaderboardSnapshot.roundStatus !==
-      newLeaderboardSnapshot.roundStatus
-    ) {
-      await this.db.insert(leaderboardFeedTable).values({
-        tourCode: tourCode,
-        tournamentId: tournamentId,
-        feedItem: {
-          __typename: "RoundStatusChangedV1",
-          roundDisplay: newLeaderboardSnapshot.roundDisplay,
-          roundStatus: newLeaderboardSnapshot.roundStatus,
-          roundStatusColor: newLeaderboardSnapshot.roundStatusColor,
-          roundStatusDisplay: newLeaderboardSnapshot.roundStatusDisplay,
-        } satisfies RoundStatusChangedV1,
+    const rules = [
+      RoundStatusChangedRule,
+      TournamentStatusChangedRule,
+      tourCode === "P"
+        ? PuttingPalsPlayerPositionIncreasedRule
+        : PlayerPositionIncreasedRule,
+      tourCode === "P"
+        ? PuttingPalsPlayerPositionDecreasedRule
+        : PlayerPositionDecreasedRule,
+    ];
+
+    const events = rules.flatMap((rule) =>
+      rule.matches(existingLeaderboardSnapshot, newLeaderboardSnapshot)
+        ? rule.emit(existingLeaderboardSnapshot, newLeaderboardSnapshot)
+        : [],
+    );
+
+    if (events.length > 0) {
+      this.db.transaction(async (tx) => {
+        await tx.insert(leaderboardFeedTable).values(
+          events.map((event) => ({
+            tourCode: tourCode,
+            tournamentId: tournamentId,
+            feedItem: event,
+          })),
+        );
+
+        await tx
+          .update(leaderboardSnapshotTable)
+          .set({
+            snapshot: newLeaderboardSnapshot,
+          })
+          .where(
+            and(
+              eq(leaderboardSnapshotTable.tourCode, tourCode),
+              eq(leaderboardSnapshotTable.tournamentId, tournamentId),
+            ),
+          );
       });
     }
   }

@@ -46,7 +46,9 @@ export const leaderboardFeedTable = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date()),
     deletedAt: timestamp("deleted_at"),
-    feedItem: json("feed_item").notNull().$type<RoundStatusChangedV1>(),
+    feedItem: json("feed_item")
+      .notNull()
+      .$type<RoundStatusChangedV1 | TournamentStatusChangedV1>(),
   },
   (table) => [
     index("leaderboard_feed_tournament_idx").on(
@@ -59,6 +61,7 @@ export const leaderboardFeedTable = pgTable(
 
 export type LeaderboardSnapshotV1 = {
   __typename: "LeaderboardSnapshotV1";
+  tournamentName: string;
   tournamentStatus: TournamentStatus;
   roundDisplay: string;
   roundStatus: RoundStatus;
@@ -95,4 +98,11 @@ export type RoundStatusChangedV1 = {
   roundStatus: RoundStatus;
   roundStatusColor: RoundStatusColor;
   roundStatusDisplay: string;
+};
+
+export type TournamentStatusChangedV1 = {
+  __typename: "TournamentStatusChangedV1";
+  tournamentName: string;
+  tournamentStatus: TournamentStatus;
+  customText: string;
 };
