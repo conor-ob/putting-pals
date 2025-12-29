@@ -15,7 +15,7 @@ async function sendEvent() {
 
   await client.event.processEvent.mutate({
     tourCode: "P",
-    type: "leaderboard/update",
+    type: "leaderboard/detect-change",
   });
 }
 

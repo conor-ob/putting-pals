@@ -350,6 +350,9 @@ importers:
       '@putting-pals/putting-pals-schema':
         specifier: workspace:*
         version: link:../putting-pals-schema
+      '@putting-pals/putting-pals-utils':
+        specifier: workspace:*
+        version: link:../putting-pals-utils
       '@trpc/server':
         specifier: 'catalog:'
         version: 11.8.1(typescript@5.9.3)

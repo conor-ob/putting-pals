@@ -1,7 +1,3 @@
-import {
-  RoundStatus,
-  RoundStatusColor,
-} from "@putting-pals/pga-tour-schema/types";
 import type { Database } from "@putting-pals/putting-pals-db/client";
 import {
   type LeaderboardSnapshotV1,
@@ -27,7 +23,7 @@ export class LeaderboardEventProcessor {
     this.db = db;
   }
 
-  async processEvent(tourCode: TourCode) {
+  async detectChange(tourCode: TourCode) {
     const tournamentId = await new TournamentResolver().getCurrentTournamentId(
       tourCode,
     );

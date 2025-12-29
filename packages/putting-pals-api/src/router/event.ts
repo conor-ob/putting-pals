@@ -1,6 +1,6 @@
 import { LeaderboardEventProcessor } from "@putting-pals/putting-pals-core/leaderboard-event";
 import { TourCodeSchema } from "@putting-pals/putting-pals-schema/schemas";
-import { TRPCError } from "@trpc/server";
+import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import z from "zod";
 import { publicProcedure, router } from "../trpc";
 
@@ -9,20 +9,17 @@ export const eventRouter = router({
     .input(
       z.object({
         tourCode: TourCodeSchema,
-        type: z.enum(["leaderboard/update"]),
+        type: z.enum(["leaderboard/detect-change"]),
       }),
     )
     .mutation(async ({ ctx, input }) => {
       switch (input.type) {
-        case "leaderboard/update":
-          return await new LeaderboardEventProcessor(ctx.db).processEvent(
+        case "leaderboard/detect-change":
+          return await new LeaderboardEventProcessor(ctx.db).detectChange(
             input.tourCode,
           );
         default:
-          throw new TRPCError({
-            code: "BAD_REQUEST",
-            message: `Invalid event type: ${input.type}`,
-          });
+          assertNever(input.type);
       }
     }),
 });

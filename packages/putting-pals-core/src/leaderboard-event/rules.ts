@@ -20,7 +20,7 @@ type Rule = {
 
 export const RoundStatusChangedRule: Rule = {
   matches: (before, after) => before.roundStatus !== after.roundStatus,
-  emit: (_, after) => [
+  emit: (_before, after) => [
     {
       __typename: "RoundStatusChangedV1" as const,
       roundDisplay: after.roundDisplay,
@@ -35,7 +35,7 @@ export const TournamentStatusChangedRule: Rule = {
   matches: (before, after) =>
     after.tournamentStatus !== TournamentStatus.NotStarted &&
     before.tournamentStatus !== after.tournamentStatus,
-  emit: (_, after) => [
+  emit: (_before, after) => [
     {
       __typename: "TournamentStatusChangedV1",
       tournamentName: after.tournamentName,
@@ -49,46 +49,46 @@ export const TournamentStatusChangedRule: Rule = {
 };
 
 export const NewPuttingPalsLeaderRule: Rule = {
-  matches: (before, after) => {
+  matches: (_before, _after) => {
     return false;
   },
-  emit: (before, after) => {
+  emit: (_before, _after) => {
     return [];
   },
 };
 
 export const PuttingPalsPlayerPositionIncreasedRule: Rule = {
-  matches: (before, after) => {
+  matches: (_before, _after) => {
     return false; // before !== "-"
   },
-  emit: (before, after) => {
+  emit: (_before, _after) => {
     return [];
   },
 };
 
 export const PlayerPositionIncreasedRule: Rule = {
-  matches: (before, after) => {
+  matches: (_before, _after) => {
     return false;
   },
-  emit: (before, after) => {
+  emit: (_before, _after) => {
     return [];
   },
 };
 
 export const PuttingPalsPlayerPositionDecreasedRule: Rule = {
-  matches: (before, after) => {
+  matches: (_before, _after) => {
     return false;
   },
-  emit: (before, after) => {
+  emit: (_before, _after) => {
     return [];
   },
 };
 
 export const PlayerPositionDecreasedRule: Rule = {
-  matches: (before, after) => {
+  matches: (_before, _after) => {
     return false;
   },
-  emit: (before, after) => {
+  emit: (_before, _after) => {
     return [];
   },
 };
