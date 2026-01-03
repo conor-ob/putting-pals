@@ -5,18 +5,18 @@ import {
   leaderboardSnapshotTable,
 } from "@putting-pals/putting-pals-db/schema";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { and, desc, eq } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";
 import { TournamentService } from "../tournament/tournament-service";
-import {
-  PlayerPositionDecreasedRule,
-  PlayerPositionIncreasedRule,
-  PuttingPalsPlayerPositionDecreasedRule,
-  PuttingPalsPlayerPositionIncreasedRule,
-  RoundStatusChangedRule,
-  TournamentStatusChangedRule,
-} from "./rules";
+import { NewPuttingPalsLeader } from "./events/new-putting-pals-leader";
+import { PlayerPositionDecreased } from "./events/player-position-decreased";
+import { PlayerPositionIncreased } from "./events/player-position-increased";
+import { PuttingPalsPlayerPositionDecreased } from "./events/putting-pals-player-position-decreased";
+import { PuttingPalsPlayerPositionIncreased } from "./events/putting-pals-player-position-increased";
+import { RoundStatusChanged } from "./events/round-status-changed";
+import { TournamentStatusChanged } from "./events/tournament-status-changed";
 
 export class LeaderboardEventProcessor {
   constructor(private readonly db: Database) {
@@ -124,22 +124,16 @@ export class LeaderboardEventProcessor {
       return;
     }
 
-    const rules = [
-      RoundStatusChangedRule,
-      TournamentStatusChangedRule,
-      tourCode === "P"
-        ? PuttingPalsPlayerPositionIncreasedRule
-        : PlayerPositionIncreasedRule,
-      tourCode === "P"
-        ? PuttingPalsPlayerPositionDecreasedRule
-        : PlayerPositionDecreasedRule,
-    ];
-
-    const events = rules.flatMap((rule) =>
-      rule.matches(existingLeaderboardSnapshot, newLeaderboardSnapshot)
-        ? rule.emit(existingLeaderboardSnapshot, newLeaderboardSnapshot)
-        : [],
-    );
+    const events = this.getEventEmitters(tourCode)
+      .filter((eventEmitter) =>
+        eventEmitter.filter(
+          existingLeaderboardSnapshot,
+          newLeaderboardSnapshot,
+        ),
+      )
+      .flatMap((eventEmitter) =>
+        eventEmitter.emit(existingLeaderboardSnapshot, newLeaderboardSnapshot),
+      );
 
     if (events.length > 0) {
       this.db.transaction(async (tx) => {
@@ -165,6 +159,28 @@ export class LeaderboardEventProcessor {
             ),
           );
       });
+    }
+  }
+
+  private getEventEmitters(tourCode: TourCode) {
+    switch (tourCode) {
+      case "P":
+        return [
+          RoundStatusChanged,
+          TournamentStatusChanged,
+          NewPuttingPalsLeader,
+          PuttingPalsPlayerPositionIncreased,
+          PuttingPalsPlayerPositionDecreased,
+        ];
+      case "R":
+        return [
+          RoundStatusChanged,
+          TournamentStatusChanged,
+          PlayerPositionIncreased,
+          PlayerPositionDecreased,
+        ];
+      default:
+        assertNever(tourCode);
     }
   }
 }
