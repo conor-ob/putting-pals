@@ -3,22 +3,23 @@ import type { TournamentStatusChangedV1 } from "@putting-pals/putting-pals-db/sc
 import type { EventEmitter } from "../event-emitter";
 
 export const TournamentStatusChanged: EventEmitter = {
-  filter(before, after) {
+  filter(_tourCode, before, after) {
     return (
       after.tournamentStatus !== TournamentStatus.NotStarted &&
       before.tournamentStatus !== after.tournamentStatus
     );
   },
-  emit(_before, after) {
+  emit(_tourCode, before, after) {
     return [
       {
         __typename: "TournamentStatusChangedV1",
         tournamentName: after.tournamentName,
-        tournamentStatus: after.tournamentStatus,
-        customText:
-          after.tournamentStatus === TournamentStatus.Completed
-            ? `${after.tournamentName} has completed`
-            : `${after.tournamentName} has started`,
+        before: {
+          tournamentStatus: before.tournamentStatus,
+        },
+        after: {
+          tournamentStatus: after.tournamentStatus,
+        },
       } satisfies TournamentStatusChangedV1,
     ];
   },

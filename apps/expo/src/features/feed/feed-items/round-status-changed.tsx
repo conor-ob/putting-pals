@@ -13,18 +13,21 @@ export function RoundStatusChanged({
   return (
     <View className="flex flex-col gap-2 p-4">
       <View className="flex flex-row items-center gap-1.5">
-        <RoundStatusBadge color={item.roundStatusColor}>
-          {item.roundDisplay}
+        <RoundStatusBadge color={item.after.roundStatusColor}>
+          {item.after.roundDisplay}
         </RoundStatusBadge>
         <RoundStatusLabel
           className="line-clamp-1"
-          color={item.roundStatusColor}
+          color={item.after.roundStatusColor}
         >
-          {item.roundStatusDisplay}
+          {item.after.roundStatusDisplay}
         </RoundStatusLabel>
       </View>
       <Text className="text-foreground">
-        {getRoundStatusChangedText(item.roundDisplay, item.roundStatus)}
+        {getRoundStatusChangedText(
+          item.after.roundDisplay,
+          item.after.roundStatus,
+        )}
       </Text>
     </View>
   );

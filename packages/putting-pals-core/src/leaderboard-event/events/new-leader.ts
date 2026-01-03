@@ -1,7 +1,7 @@
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import type { EventEmitter } from "../event-emitter";
 
-export const PlayerPositionDecreased: EventEmitter = {
+export const NewLeader: EventEmitter = {
   filter(_tourCode, _before, _after) {
     return true;
   },

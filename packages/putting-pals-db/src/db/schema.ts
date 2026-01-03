@@ -110,15 +110,27 @@ export type LeaderboardSnapshotV1 = {
 
 export type RoundStatusChangedV1 = {
   __typename: "RoundStatusChangedV1";
-  roundDisplay: string;
-  roundStatus: RoundStatus;
-  roundStatusColor: RoundStatusColor;
-  roundStatusDisplay: string;
+  before: {
+    roundDisplay: string;
+    roundStatus: RoundStatus;
+    roundStatusColor: RoundStatusColor;
+    roundStatusDisplay: string;
+  };
+  after: {
+    roundDisplay: string;
+    roundStatus: RoundStatus;
+    roundStatusColor: RoundStatusColor;
+    roundStatusDisplay: string;
+  };
 };
 
 export type TournamentStatusChangedV1 = {
   __typename: "TournamentStatusChangedV1";
   tournamentName: string;
-  tournamentStatus: TournamentStatus;
-  customText: string;
+  before: {
+    tournamentStatus: TournamentStatus;
+  };
+  after: {
+    tournamentStatus: TournamentStatus;
+  };
 };
