@@ -1,5 +1,5 @@
 import { TournamentStatus } from "@putting-pals/pga-tour-schema/types";
-import type { TournamentStatusChangedV1 } from "@putting-pals/putting-pals-db/schema";
+import type { TournamentStatusChangedV1 } from "@putting-pals/putting-pals-schema/types";
 import { AbstractEventEmitter, type LeaderboardEvent } from "../event-emitter";
 
 export class TournamentStatusChanged extends AbstractEventEmitter {

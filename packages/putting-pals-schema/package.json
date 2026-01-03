@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
+    "@putting-pals/pga-tour-schema": "workspace:*",
     "zod": "catalog:"
   },
   "devDependencies": {

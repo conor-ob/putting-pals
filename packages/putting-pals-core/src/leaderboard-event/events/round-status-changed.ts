@@ -1,5 +1,5 @@
 import { RoundStatus } from "@putting-pals/pga-tour-schema/types";
-import type { RoundStatusChangedV1 } from "@putting-pals/putting-pals-db/schema";
+import type { RoundStatusChangedV1 } from "@putting-pals/putting-pals-schema/types";
 import { AbstractEventEmitter, type LeaderboardEvent } from "../event-emitter";
 
 export class RoundStatusChanged extends AbstractEventEmitter {

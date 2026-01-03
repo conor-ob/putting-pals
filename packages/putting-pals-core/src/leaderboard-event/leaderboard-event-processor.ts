@@ -1,15 +1,17 @@
 import type { Database } from "@putting-pals/putting-pals-db/client";
 import {
-  type LeaderboardSnapshotV1,
   leaderboardFeedTable,
   leaderboardSnapshotTable,
 } from "@putting-pals/putting-pals-db/schema";
-import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import type {
+  LeaderboardEventTypes,
+  LeaderboardSnapshotV1,
+  TourCode,
+} from "@putting-pals/putting-pals-schema/types";
 import { and, desc, eq } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";
 import { TournamentService } from "../tournament/tournament-service";
-import type { Event } from "./event-emitter";
 import { NewLeader } from "./events/new-leader";
 import { PlayerPositionDecreased } from "./events/player-position-decreased";
 import { PlayerPositionIncreased } from "./events/player-position-increased";
@@ -51,7 +53,7 @@ export class LeaderboardEventProcessor {
     const events = eventEmitters
       .filter((eventEmitter) => eventEmitter.filter())
       .flatMap((eventEmitter) => eventEmitter.emit())
-      .sort((a, b) => a.priority - b.priority);
+      .sort((a, b) => a.order - b.order);
 
     if (events.length > 0) {
       await this.insertLeaderboardFeedEvents(
@@ -147,7 +149,7 @@ export class LeaderboardEventProcessor {
   private async insertLeaderboardFeedEvents(
     tourCode: TourCode,
     tournamentId: string,
-    events: Event[],
+    events: LeaderboardEventTypes[],
     snapshot: LeaderboardSnapshotV1,
   ) {
     await this.db.transaction(async (tx) => {

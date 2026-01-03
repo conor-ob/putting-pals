@@ -1,14 +1,11 @@
 import type {
+  LeaderboardEventTypes,
   LeaderboardSnapshotV1,
-  RoundStatusChangedV1,
-  TournamentStatusChangedV1,
-} from "@putting-pals/putting-pals-db/schema";
-import type { TourCode } from "@putting-pals/putting-pals-schema/types";
-
-export type Event = RoundStatusChangedV1 | TournamentStatusChangedV1;
+  TourCode,
+} from "@putting-pals/putting-pals-schema/types";
 
 export type LeaderboardEvent = {
-  event: Event;
+  event: LeaderboardEventTypes;
   order: number;
 };
 

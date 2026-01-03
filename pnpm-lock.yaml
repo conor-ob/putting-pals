@@ -439,6 +439,9 @@ importers:
       '@putting-pals/pga-tour-schema':
         specifier: workspace:*
         version: link:../pga-tour-schema
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
@@ -476,6 +479,9 @@ importers:
 
   packages/putting-pals-schema:
     dependencies:
+      '@putting-pals/pga-tour-schema':
+        specifier: workspace:*
+        version: link:../pga-tour-schema
       zod:
         specifier: 'catalog:'
         version: 4.2.1
