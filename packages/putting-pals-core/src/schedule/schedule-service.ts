@@ -1,9 +1,5 @@
 import { ScheduleClient } from "@putting-pals/pga-tour-api/schedule";
-import {
-  RoundStatus,
-  RoundStatusColor,
-  type ScheduleTournament,
-} from "@putting-pals/pga-tour-schema/types";
+import type { ScheduleTournament } from "@putting-pals/pga-tour-schema/types";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 import {
   assertNever,
@@ -113,8 +109,8 @@ export class ScheduleService {
                 status: {
                   leaderboardTakeover: false, // TODO: remove
                   roundDisplay: "",
-                  roundStatus: RoundStatus.Upcoming,
-                  roundStatusColor: RoundStatusColor.Gray,
+                  roundStatus: "UPCOMING",
+                  roundStatusColor: "GRAY",
                   roundStatusDisplay: "Upcoming",
                 },
               } satisfies RecursivePartial<ScheduleTournament>;

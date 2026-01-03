@@ -1,11 +1,10 @@
-import { TournamentStatus } from "@putting-pals/pga-tour-schema/types";
 import type { TournamentStatusChangedV1 } from "@putting-pals/putting-pals-schema/types";
 import { AbstractEventEmitter, type LeaderboardEvent } from "../event-emitter";
 
 export class TournamentStatusChanged extends AbstractEventEmitter {
   override filter(): boolean {
     return (
-      this.after.tournamentStatus !== TournamentStatus.NotStarted &&
+      this.after.tournamentStatus !== "NOT_STARTED" &&
       this.before.tournamentStatus !== this.after.tournamentStatus
     );
   }

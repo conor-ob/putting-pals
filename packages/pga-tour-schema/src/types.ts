@@ -230,10 +230,9 @@ export type AonPlayer = {
   score: Scalars['String']['output'];
 };
 
-export enum ArticleFormType {
-  External = 'External',
-  Standard = 'Standard'
-}
+export type ArticleFormType =
+  | 'External'
+  | 'Standard';
 
 export type ArticleOddsMarkets = {
   __typename?: 'ArticleOddsMarkets';
@@ -272,9 +271,8 @@ export type ArticlePlayer = {
   name: Scalars['String']['output'];
 };
 
-export enum ArticleSponsor {
-  Golfwrx = 'GOLFWRX'
-}
+export type ArticleSponsor =
+  | 'GOLFWRX';
 
 export type Audio = {
   __typename?: 'Audio';
@@ -490,10 +488,9 @@ export type BubblePill = {
   pillText: Scalars['String']['output'];
 };
 
-export enum BubbleType {
-  Playoffs = 'PLAYOFFS',
-  SignatureEvents = 'SIGNATURE_EVENTS'
-}
+export type BubbleType =
+  | 'PLAYOFFS'
+  | 'SIGNATURE_EVENTS';
 
 export type BubbleWatch = {
   __typename?: 'BubbleWatch';
@@ -555,10 +552,9 @@ export type CategoryStatPlayer = {
   stats: Array<CategoryPlayerStat>;
 };
 
-export enum CategoryStatType {
-  Event = 'EVENT',
-  Ytd = 'YTD'
-}
+export type CategoryStatType =
+  | 'EVENT'
+  | 'YTD';
 
 export type CerosEmbedPlugin = {
   __typename?: 'CerosEmbedPlugin';
@@ -634,16 +630,15 @@ export type ContentTopics = {
   value?: Maybe<Scalars['String']['output']>;
 };
 
-export enum ContentType {
-  ContentFragments = 'CONTENT_FRAGMENTS',
-  ContentTabs = 'CONTENT_TABS',
-  GenericContent = 'GENERIC_CONTENT',
-  NewsArticle = 'NEWS_ARTICLE',
-  RyderCupContentFragments = 'RYDER_CUP_CONTENT_FRAGMENTS',
-  RyderCupContentTabs = 'RYDER_CUP_CONTENT_TABS',
-  RyderCupGenericContent = 'RYDER_CUP_GENERIC_CONTENT',
-  RyderCupNewsArticle = 'RYDER_CUP_NEWS_ARTICLE'
-}
+export type ContentType =
+  | 'CONTENT_FRAGMENTS'
+  | 'CONTENT_TABS'
+  | 'GENERIC_CONTENT'
+  | 'NEWS_ARTICLE'
+  | 'RYDER_CUP_CONTENT_FRAGMENTS'
+  | 'RYDER_CUP_CONTENT_TABS'
+  | 'RYDER_CUP_GENERIC_CONTENT'
+  | 'RYDER_CUP_NEWS_ARTICLE';
 
 export type ContentVideoCarousel = {
   __typename?: 'ContentVideoCarousel';
@@ -832,10 +827,9 @@ export type CourseStatsDetailsRow = {
   values: Array<CourseDetailRowValue>;
 };
 
-export enum CourseStatsId {
-  ToughestCourse = 'TOUGHEST_COURSE',
-  ToughestHoles = 'TOUGHEST_HOLES'
-}
+export type CourseStatsId =
+  | 'TOUGHEST_COURSE'
+  | 'TOUGHEST_HOLES';
 
 export type CourseStatsOverview = {
   __typename?: 'CourseStatsOverview';
@@ -912,13 +906,12 @@ export type CupLeaderboardMatchTeam = {
   textColor?: Maybe<Scalars['String']['output']>;
 };
 
-export enum CupLeaderboardTeamStatus {
-  Behind = 'BEHIND',
-  Leads = 'LEADS',
-  Tied = 'TIED',
-  Unknown = 'UNKNOWN',
-  Wins = 'WINS'
-}
+export type CupLeaderboardTeamStatus =
+  | 'BEHIND'
+  | 'LEADS'
+  | 'TIED'
+  | 'UNKNOWN'
+  | 'WINS';
 
 export type CupLiveActivitySponsor = {
   __typename?: 'CupLiveActivitySponsor';
@@ -932,10 +925,9 @@ export type CupMatchesCompleteData = {
   totalMatches: Scalars['Int']['output'];
 };
 
-export enum CupOverviewDisplayType {
-  PointsOnly = 'POINTS_ONLY',
-  Progress = 'PROGRESS'
-}
+export type CupOverviewDisplayType =
+  | 'POINTS_ONLY'
+  | 'PROGRESS';
 
 export type CupPastResults = {
   __typename?: 'CupPastResults';
@@ -960,12 +952,11 @@ export type CupPastResultsYear = {
   year: Scalars['Int']['output'];
 };
 
-export enum CupRankMovementDirection {
-  Constant = 'CONSTANT',
-  Down = 'DOWN',
-  Unknown = 'UNKNOWN',
-  Up = 'UP'
-}
+export type CupRankMovementDirection =
+  | 'CONSTANT'
+  | 'DOWN'
+  | 'UNKNOWN'
+  | 'UP';
 
 export type CupRankingPlayer = {
   __typename?: 'CupRankingPlayer';
@@ -1004,11 +995,10 @@ export type CupRound = {
   roundNum: Scalars['Int']['output'];
 };
 
-export enum CupRoundFormat {
-  AlternateShot = 'ALTERNATE_SHOT',
-  BestBall = 'BEST_BALL',
-  Singles = 'SINGLES'
-}
+export type CupRoundFormat =
+  | 'ALTERNATE_SHOT'
+  | 'BEST_BALL'
+  | 'SINGLES';
 
 export type CupScorecard = {
   __typename?: 'CupScorecard';
@@ -1246,12 +1236,11 @@ export type DeleteAccountResponse = {
   ok: Scalars['Boolean']['output'];
 };
 
-export enum DrawerDisplayState {
-  HoleOnly = 'HOLE_ONLY',
-  PlayByPlay = 'PLAY_BY_PLAY',
-  RoundComplete = 'ROUND_COMPLETE',
-  TeeTime = 'TEE_TIME'
-}
+export type DrawerDisplayState =
+  | 'HOLE_ONLY'
+  | 'PLAY_BY_PLAY'
+  | 'ROUND_COMPLETE'
+  | 'TEE_TIME';
 
 export type DropdownFragment = {
   __typename?: 'DropdownFragment';
@@ -1383,11 +1372,10 @@ export type EventHubTable = {
   sectionTitle?: Maybe<Scalars['String']['output']>;
 };
 
-export enum EventRegion {
-  Europe = 'EUROPE',
-  International = 'INTERNATIONAL',
-  Us = 'US'
-}
+export type EventRegion =
+  | 'EUROPE'
+  | 'INTERNATIONAL'
+  | 'US';
 
 export type ExpertPicks = {
   __typename?: 'ExpertPicks';
@@ -1520,11 +1508,10 @@ export type FieldStatTournamentResult = {
   tournamentId: Scalars['String']['output'];
 };
 
-export enum FieldStatType {
-  CourseFit = 'COURSE_FIT',
-  CurrentForm = 'CURRENT_FORM',
-  TournamentHistory = 'TOURNAMENT_HISTORY'
-}
+export type FieldStatType =
+  | 'COURSE_FIT'
+  | 'CURRENT_FORM'
+  | 'TOURNAMENT_HISTORY';
 
 export type FieldStats = {
   __typename?: 'FieldStats';
@@ -1544,13 +1531,12 @@ export type FinishStatValue = {
   value: Scalars['Float']['output'];
 };
 
-export enum FormatType {
-  MatchPlay = 'MATCH_PLAY',
-  Stableford = 'STABLEFORD',
-  StrokePlay = 'STROKE_PLAY',
-  TeamCup = 'TEAM_CUP',
-  TeamStroke = 'TEAM_STROKE'
-}
+export type FormatType =
+  | 'MATCH_PLAY'
+  | 'STABLEFORD'
+  | 'STROKE_PLAY'
+  | 'TEAM_CUP'
+  | 'TEAM_STROKE';
 
 export type Franchise = {
   __typename?: 'Franchise';
@@ -1659,14 +1645,13 @@ export type Group = {
   tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export enum GroupHoleLocation {
-  Complete = 'COMPLETE',
-  Fairway = 'FAIRWAY',
-  Green = 'GREEN',
-  NotStarted = 'NOT_STARTED',
-  Tee = 'TEE',
-  Unknown = 'UNKNOWN'
-}
+export type GroupHoleLocation =
+  | 'COMPLETE'
+  | 'FAIRWAY'
+  | 'GREEN'
+  | 'NOT_STARTED'
+  | 'TEE'
+  | 'UNKNOWN';
 
 export type GroupLocation = {
   __typename?: 'GroupLocation';
@@ -1938,10 +1923,9 @@ export type GroupedField = {
   tournamentName: Scalars['String']['output'];
 };
 
-export enum HeaderType {
-  Long = 'LONG',
-  Short = 'SHORT'
-}
+export type HeaderType =
+  | 'LONG'
+  | 'SHORT';
 
 export type HeroCarousel = {
   __typename?: 'HeroCarousel';
@@ -1997,13 +1981,12 @@ export type HistoricalLeaderboardTeamRow = {
   total: Scalars['String']['output'];
 };
 
-export enum HistoricalOddsId {
-  TopRanked_3 = 'TOP_RANKED_3',
-  TopRanked_5 = 'TOP_RANKED_5',
-  TopRanked_10 = 'TOP_RANKED_10',
-  TopRanked_20 = 'TOP_RANKED_20',
-  Winner = 'WINNER'
-}
+export type HistoricalOddsId =
+  | 'TOP_RANKED_3'
+  | 'TOP_RANKED_5'
+  | 'TOP_RANKED_10'
+  | 'TOP_RANKED_20'
+  | 'WINNER';
 
 export type HistoricalPlayerOdds = {
   __typename?: 'HistoricalPlayerOdds';
@@ -2140,11 +2123,10 @@ export type HoleDetailRound = {
   teamGroups?: Maybe<Array<TeamHoleGroups>>;
 };
 
-export enum HoleDetailsAvailability {
-  None = 'NONE',
-  ShotDetails = 'SHOT_DETAILS',
-  Stats = 'STATS'
-}
+export type HoleDetailsAvailability =
+  | 'NONE'
+  | 'SHOT_DETAILS'
+  | 'STATS';
 
 export type HoleGroup = {
   __typename?: 'HoleGroup';
@@ -2218,15 +2200,13 @@ export type HolePickle = {
   leftToRightAsset: ImageAsset;
 };
 
-export enum HolePickleType {
-  Standard = 'STANDARD',
-  Tourcast_2D = 'TOURCAST_2D'
-}
+export type HolePickleType =
+  | 'STANDARD'
+  | 'TOURCAST_2D';
 
-export enum HolePlayedStatus {
-  Played = 'PLAYED',
-  Unplayed = 'UNPLAYED'
-}
+export type HolePlayedStatus =
+  | 'PLAYED'
+  | 'UNPLAYED';
 
 export type HoleScore = {
   __typename?: 'HoleScore';
@@ -2239,15 +2219,14 @@ export type HoleScore = {
   yardage: Scalars['Int']['output'];
 };
 
-export enum HoleScoreStatus {
-  Birdie = 'BIRDIE',
-  Bogey = 'BOGEY',
-  Conceded = 'CONCEDED',
-  DoubleBogey = 'DOUBLE_BOGEY',
-  Eagle = 'EAGLE',
-  None = 'NONE',
-  Par = 'PAR'
-}
+export type HoleScoreStatus =
+  | 'BIRDIE'
+  | 'BOGEY'
+  | 'CONCEDED'
+  | 'DOUBLE_BOGEY'
+  | 'EAGLE'
+  | 'NONE'
+  | 'PAR';
 
 export type HoleStat = CourseHoleStats | SummaryRow;
 
@@ -2293,36 +2272,32 @@ export type HoleStroke = {
   videoId?: Maybe<Scalars['String']['output']>;
 };
 
-export enum HoleStrokeType {
-  Drop = 'DROP',
-  Penalty = 'PENALTY',
-  Provisional = 'PROVISIONAL',
-  Stroke = 'STROKE'
-}
+export type HoleStrokeType =
+  | 'DROP'
+  | 'PENALTY'
+  | 'PROVISIONAL'
+  | 'STROKE';
 
-export enum HomePageLeadLayout {
-  HalfHero = 'HALF_HERO',
-  HalfHeroStack = 'HALF_HERO_STACK',
-  HeroStatus = 'HERO_STATUS',
-  HeroStory = 'HERO_STORY',
-  PlayerStories = 'PLAYER_STORIES',
-  TopicStories = 'TOPIC_STORIES'
-}
+export type HomePageLeadLayout =
+  | 'HALF_HERO'
+  | 'HALF_HERO_STACK'
+  | 'HERO_STATUS'
+  | 'HERO_STORY'
+  | 'PLAYER_STORIES'
+  | 'TOPIC_STORIES';
 
-export enum HomePageNewsLayout {
-  ThreeUpAsset = 'THREE_UP_ASSET',
-  TwoUpLarge = 'TWO_UP_LARGE',
-  TwoUpSmall = 'TWO_UP_SMALL',
-  TwoUpTextOnly = 'TWO_UP_TEXT_ONLY'
-}
+export type HomePageNewsLayout =
+  | 'THREE_UP_ASSET'
+  | 'TWO_UP_LARGE'
+  | 'TWO_UP_SMALL'
+  | 'TWO_UP_TEXT_ONLY';
 
-export enum HomePageProgramStandingLayout {
-  FieldPromoSection = 'FIELD_PROMO_SECTION',
-  Normal = 'NORMAL',
-  Short = 'SHORT',
-  SignatureEventStandings = 'SIGNATURE_EVENT_STANDINGS',
-  TwoStandings = 'TWO_STANDINGS'
-}
+export type HomePageProgramStandingLayout =
+  | 'FIELD_PROMO_SECTION'
+  | 'NORMAL'
+  | 'SHORT'
+  | 'SIGNATURE_EVENT_STANDINGS'
+  | 'TWO_STANDINGS';
 
 export type HomePageStanding = {
   __typename?: 'HomePageStanding';
@@ -2431,25 +2406,24 @@ export type HospitalityCard = {
   photoSubtitle?: Maybe<Scalars['String']['output']>;
 };
 
-export enum Icon {
-  Amateur = 'AMATEUR',
-  Backnine = 'BACKNINE',
-  CustomIcon = 'CUSTOM_ICON',
-  Disqualified = 'DISQUALIFIED',
-  Favorites = 'FAVORITES',
-  HotStreak = 'HOT_STREAK',
-  Live = 'LIVE',
-  OddsImproved = 'ODDS_IMPROVED',
-  OddsWorsened = 'ODDS_WORSENED',
-  PlayoffWin = 'PLAYOFF_WIN',
-  Previousround = 'PREVIOUSROUND',
-  Sponsor = 'SPONSOR',
-  SuddenDeath = 'SUDDEN_DEATH',
-  TopFedexFallPlayer = 'TOP_FEDEX_FALL_PLAYER',
-  TourBound = 'TOUR_BOUND',
-  Upcoming = 'UPCOMING',
-  Withdraw = 'WITHDRAW'
-}
+export type Icon =
+  | 'AMATEUR'
+  | 'BACKNINE'
+  | 'CUSTOM_ICON'
+  | 'DISQUALIFIED'
+  | 'FAVORITES'
+  | 'HOT_STREAK'
+  | 'LIVE'
+  | 'ODDS_IMPROVED'
+  | 'ODDS_WORSENED'
+  | 'PLAYOFF_WIN'
+  | 'PREVIOUSROUND'
+  | 'SPONSOR'
+  | 'SUDDEN_DEATH'
+  | 'TOP_FEDEX_FALL_PLAYER'
+  | 'TOUR_BOUND'
+  | 'UPCOMING'
+  | 'WITHDRAW';
 
 export type Image = {
   __typename?: 'Image';
@@ -2512,9 +2486,8 @@ export type IntegratedComponent = {
   partner: IntegrationPartner;
 };
 
-export enum IntegrationPartner {
-  Golfwrx = 'GOLFWRX'
-}
+export type IntegrationPartner =
+  | 'GOLFWRX';
 
 export type JumpToSection = {
   __typename?: 'JumpToSection';
@@ -2645,13 +2618,12 @@ export type LeaderboardDrawerV2 = {
   tournamentName: Scalars['String']['output'];
 };
 
-export enum LeaderboardFeature {
-  HoleByHole = 'HOLE_BY_HOLE',
-  Odds = 'ODDS',
-  Probabilities = 'PROBABILITIES',
-  ShotDetails = 'SHOT_DETAILS',
-  StrokesGained = 'STROKES_GAINED'
-}
+export type LeaderboardFeature =
+  | 'HOLE_BY_HOLE'
+  | 'ODDS'
+  | 'PROBABILITIES'
+  | 'SHOT_DETAILS'
+  | 'STROKES_GAINED';
 
 export type LeaderboardHoleByHole = {
   __typename?: 'LeaderboardHoleByHole';
@@ -2686,17 +2658,15 @@ export type LeaderboardMessage = {
   webViewLink?: Maybe<Scalars['String']['output']>;
 };
 
-export enum LeaderboardMessageIcon {
-  Delay = 'DELAY',
-  None = 'NONE',
-  Weather = 'WEATHER'
-}
+export type LeaderboardMessageIcon =
+  | 'DELAY'
+  | 'NONE'
+  | 'WEATHER';
 
-export enum LeaderboardMovement {
-  Constant = 'CONSTANT',
-  Down = 'DOWN',
-  Up = 'UP'
-}
+export type LeaderboardMovement =
+  | 'CONSTANT'
+  | 'DOWN'
+  | 'UP';
 
 export type LeaderboardOddsSwing = {
   __typename?: 'LeaderboardOddsSwing';
@@ -2704,9 +2674,8 @@ export type LeaderboardOddsSwing = {
 };
 
 /**   new enum of possible player icon values, limited to hot streak at first creation */
-export enum LeaderboardPlayerIcon {
-  HotStreak = 'HOT_STREAK'
-}
+export type LeaderboardPlayerIcon =
+  | 'HOT_STREAK';
 
 export type LeaderboardRoundStats = {
   __typename?: 'LeaderboardRoundStats';
@@ -2802,11 +2771,10 @@ export type LeaderboardStatsPlayer = {
   stats: Array<LeaderboardStatItem>;
 };
 
-export enum LeaderboardStatsType {
-  Odds = 'ODDS',
-  Probability = 'PROBABILITY',
-  StrokesGained = 'STROKES_GAINED'
-}
+export type LeaderboardStatsType =
+  | 'ODDS'
+  | 'PROBABILITY'
+  | 'STROKES_GAINED';
 
 export type LeaderboardStroke = {
   __typename?: 'LeaderboardStroke';
@@ -2971,17 +2939,15 @@ export type ListItem = {
 
 export type ListNodeItems = NewsArticleContentSegment | NewsArticleParagraph | NewsArticlePlayerTournamentOdds | UnorderedListNode;
 
-export enum LiveOverride {
-  ForceOff = 'FORCE_OFF',
-  ForceOn = 'FORCE_ON',
-  Normal = 'NORMAL'
-}
+export type LiveOverride =
+  | 'FORCE_OFF'
+  | 'FORCE_ON'
+  | 'NORMAL';
 
-export enum LiveStatus {
-  Live = 'LIVE',
-  None = 'NONE',
-  Upcoming = 'UPCOMING'
-}
+export type LiveStatus =
+  | 'LIVE'
+  | 'NONE'
+  | 'UPCOMING';
 
 export type LiveVideoOverride = {
   __typename?: 'LiveVideoOverride';
@@ -3241,11 +3207,10 @@ export type MatchHoleScore = {
   playerId: Scalars['ID']['output'];
 };
 
-export enum MatchStatus {
-  Complete = 'COMPLETE',
-  InProgress = 'IN_PROGRESS',
-  Upcoming = 'UPCOMING'
-}
+export type MatchStatus =
+  | 'COMPLETE'
+  | 'IN_PROGRESS'
+  | 'UPCOMING';
 
 export type MatchupOptionV2 = BaseOddsOption & {
   __typename?: 'MatchupOptionV2';
@@ -4051,11 +4016,10 @@ export type NewsArticleSponsor = {
   websiteUrl?: Maybe<Scalars['String']['output']>;
 };
 
-export enum NewsArticleStatType {
-  ByNumbers = 'BY_NUMBERS',
-  DotChart = 'DOT_CHART',
-  LineChart = 'LINE_CHART'
-}
+export type NewsArticleStatType =
+  | 'BY_NUMBERS'
+  | 'DOT_CHART'
+  | 'LINE_CHART';
 
 export type NewsArticleStats = {
   __typename?: 'NewsArticleStats';
@@ -4109,10 +4073,9 @@ export type NewsFranchise = {
   franchiseLabel: Scalars['String']['output'];
 };
 
-export enum NewsLetterType {
-  Global = 'GLOBAL',
-  Tournament = 'TOURNAMENT'
-}
+export type NewsLetterType =
+  | 'GLOBAL'
+  | 'TOURNAMENT';
 
 export type NewsSponsor = {
   __typename?: 'NewsSponsor';
@@ -4226,11 +4189,10 @@ export type OddsFinishesOption = BaseOddsOption & {
   odds: OddsValues;
 };
 
-export enum OddsFormat {
-  Decimal = 'DECIMAL',
-  Fractional = 'FRACTIONAL',
-  Moneyline = 'MONEYLINE'
-}
+export type OddsFormat =
+  | 'DECIMAL'
+  | 'FRACTIONAL'
+  | 'MONEYLINE';
 
 export type OddsGroup = {
   __typename?: 'OddsGroup';
@@ -4267,14 +4229,13 @@ export type OddsLeadersPlayers = {
 };
 
 /**   End Market Abstractions */
-export enum OddsMarketType {
-  Finishes = 'FINISHES',
-  GroupWinner = 'GROUP_WINNER',
-  Matchup = 'MATCHUP',
-  Nationality = 'NATIONALITY',
-  PlayerProps = 'PLAYER_PROPS',
-  Winner = 'WINNER'
-}
+export type OddsMarketType =
+  | 'FINISHES'
+  | 'GROUP_WINNER'
+  | 'MATCHUP'
+  | 'NATIONALITY'
+  | 'PLAYER_PROPS'
+  | 'WINNER';
 
 export type OddsMatchupOptionGroup = {
   __typename?: 'OddsMatchupOptionGroup';
@@ -4333,19 +4294,17 @@ export type OddsPlayer = {
   shortName: Scalars['String']['output'];
 };
 
-export enum OddsProvider {
-  Bet365 = 'BET365',
-  Draftkings = 'DRAFTKINGS',
-  Espnbet = 'ESPNBET',
-  Fanduel = 'FANDUEL',
-  Mgm = 'MGM'
-}
+export type OddsProvider =
+  | 'BET365'
+  | 'DRAFTKINGS'
+  | 'ESPNBET'
+  | 'FANDUEL'
+  | 'MGM';
 
-export enum OddsSwing {
-  Constant = 'CONSTANT',
-  Down = 'DOWN',
-  Up = 'UP'
-}
+export type OddsSwing =
+  | 'CONSTANT'
+  | 'DOWN'
+  | 'UP';
 
 /**   Odds Table */
 export type OddsTable = {
@@ -4358,9 +4317,8 @@ export type OddsTable = {
 };
 
 /**  Odds Graph */
-export enum OddsTimeType {
-  Hole = 'HOLE'
-}
+export type OddsTimeType =
+  | 'HOLE';
 
 export type OddsTimeline = {
   __typename?: 'OddsTimeline';
@@ -4459,10 +4417,9 @@ export type OddsValues = {
   optionId: Scalars['ID']['output'];
 };
 
-export enum Orientation {
-  Landscape = 'Landscape',
-  Portrait = 'Portrait'
-}
+export type Orientation =
+  | 'Landscape'
+  | 'Portrait';
 
 export type OutComeIqHole = {
   __typename?: 'OutComeIQHole';
@@ -4505,11 +4462,10 @@ export type PaginationDetails = {
   offset?: Maybe<Scalars['Int']['output']>;
 };
 
-export enum Platform {
-  Android = 'ANDROID',
-  Ios = 'IOS',
-  Web = 'WEB'
-}
+export type Platform =
+  | 'ANDROID'
+  | 'IOS'
+  | 'WEB';
 
 export type Player = {
   __typename?: 'Player';
@@ -4615,14 +4571,13 @@ export type PlayerComparison = {
   year: Scalars['Int']['output'];
 };
 
-export enum PlayerComparisonCategory {
-  ApproachGreen = 'APPROACH_GREEN',
-  AroundGreen = 'AROUND_GREEN',
-  OffTee = 'OFF_TEE',
-  Putting = 'PUTTING',
-  Scoring = 'SCORING',
-  StrokesGained = 'STROKES_GAINED'
-}
+export type PlayerComparisonCategory =
+  | 'APPROACH_GREEN'
+  | 'AROUND_GREEN'
+  | 'OFF_TEE'
+  | 'PUTTING'
+  | 'SCORING'
+  | 'STROKES_GAINED';
 
 export type PlayerComparisonCategoryPill = {
   __typename?: 'PlayerComparisonCategoryPill';
@@ -4630,10 +4585,9 @@ export type PlayerComparisonCategoryPill = {
   displayText: Scalars['String']['output'];
 };
 
-export enum PlayerComparisonDisplay {
-  Graph = 'GRAPH',
-  Table = 'TABLE'
-}
+export type PlayerComparisonDisplay =
+  | 'GRAPH'
+  | 'TABLE';
 
 export type PlayerComparisonHeader = {
   __typename?: 'PlayerComparisonHeader';
@@ -4881,19 +4835,17 @@ export type PlayerHubLeaderboardWidget = {
   widgetDisplay: PlayerHubLeaderboardWidgetDisplay;
 };
 
-export enum PlayerHubLeaderboardWidgetDisplay {
-  Inactive = 'INACTIVE',
-  InProgress = 'IN_PROGRESS',
-  TournamentOfficial = 'TOURNAMENT_OFFICIAL'
-}
+export type PlayerHubLeaderboardWidgetDisplay =
+  | 'INACTIVE'
+  | 'IN_PROGRESS'
+  | 'TOURNAMENT_OFFICIAL';
 
 /**   Possible message banner targets */
-export enum PlayerHubMessageBannerAction {
-  Leaderboard = 'LEADERBOARD',
-  None = 'NONE',
-  Profile = 'PROFILE',
-  Scorecard = 'SCORECARD'
-}
+export type PlayerHubMessageBannerAction =
+  | 'LEADERBOARD'
+  | 'NONE'
+  | 'PROFILE'
+  | 'SCORECARD';
 
 export type PlayerHubMessageBannerWidget = {
   __typename?: 'PlayerHubMessageBannerWidget';
@@ -4988,17 +4940,16 @@ export type PlayerHubTournamentWidget = {
 
 export type PlayerHubWidget = PlayerHubArticlesWidget | PlayerHubHoleDetailWidget | PlayerHubLeaderboardWidget | PlayerHubMessageBannerWidget | PlayerHubRecapWidget | PlayerHubShotCommentaryWidget | PlayerHubStatisticsWidget | PlayerHubTeeTimesWidget | PlayerHubTournamentWidget | PlayerStoriesWidget;
 
-export enum PlayerHubWidgetIcon {
-  Ai = 'AI',
-  Calendar = 'CALENDAR',
-  Clock = 'CLOCK',
-  News = 'NEWS',
-  None = 'NONE',
-  PieChart = 'PIE_CHART',
-  Profile = 'PROFILE',
-  Scorecard = 'SCORECARD',
-  Tourcast = 'TOURCAST'
-}
+export type PlayerHubWidgetIcon =
+  | 'AI'
+  | 'CALENDAR'
+  | 'CLOCK'
+  | 'NEWS'
+  | 'NONE'
+  | 'PIE_CHART'
+  | 'PROFILE'
+  | 'SCORECARD'
+  | 'TOURCAST';
 
 export type PlayerHubWidgetSponsor = {
   __typename?: 'PlayerHubWidgetSponsor';
@@ -5157,19 +5108,18 @@ export type PlayerProfileStatCategory = {
   displayTitle: Scalars['String']['output'];
 };
 
-export enum PlayerProfileStatCategoryItem {
-  All = 'ALL',
-  Approach = 'APPROACH',
-  AroundGreen = 'AROUND_GREEN',
-  Driving = 'DRIVING',
-  MoneyFinishes = 'MONEY_FINISHES',
-  PaceOfPlay = 'PACE_OF_PLAY',
-  PointsRankings = 'POINTS_RANKINGS',
-  Putting = 'PUTTING',
-  Scoring = 'SCORING',
-  Streaks = 'STREAKS',
-  StrokesGained = 'STROKES_GAINED'
-}
+export type PlayerProfileStatCategoryItem =
+  | 'ALL'
+  | 'APPROACH'
+  | 'AROUND_GREEN'
+  | 'DRIVING'
+  | 'MONEY_FINISHES'
+  | 'PACE_OF_PLAY'
+  | 'POINTS_RANKINGS'
+  | 'PUTTING'
+  | 'SCORING'
+  | 'STREAKS'
+  | 'STROKES_GAINED';
 
 export type PlayerProfileStatFull = {
   __typename?: 'PlayerProfileStatFull';
@@ -5430,84 +5380,83 @@ export type PlayerScorecardStatsCompressed = {
   payload: Scalars['String']['output'];
 };
 
-export enum PlayerSponsorBrand {
-  Ace = 'ACE',
-  AdamScott = 'ADAM_SCOTT',
-  Adidas = 'ADIDAS',
-  Adp = 'ADP',
-  Amazon = 'AMAZON',
-  Aon = 'AON',
-  Bonobos = 'BONOBOS',
-  BrandtSnedeker = 'BRANDT_SNEDEKER',
-  BridgestoneGolf = 'BRIDGESTONE_GOLF',
-  Callaway = 'CALLAWAY',
-  CallawayFeed = 'CALLAWAY_FEED',
-  CameronPercy = 'CAMERON_PERCY',
-  Clevelandgolf = 'CLEVELANDGOLF',
-  ClevelandgolfFeed = 'CLEVELANDGOLF_FEED',
-  Cobra = 'COBRA',
-  Cobrapuma = 'COBRAPUMA',
-  Concur = 'CONCUR',
-  Countryinns = 'COUNTRYINNS',
-  EmpowerRetirement = 'EMPOWER_RETIREMENT',
-  Fedex = 'FEDEX',
-  GoldmanSachs = 'GOLDMAN_SACHS',
-  Golfforever = 'GOLFFOREVER',
-  Greygoose = 'GREYGOOSE',
-  Honma = 'HONMA',
-  IanPoulter = 'IAN_POULTER',
-  JordanSpieth = 'JORDAN_SPIETH',
-  Levelwear = 'LEVELWEAR',
-  MassageEnvy = 'MASSAGE_ENVY',
-  Mastercard = 'MASTERCARD',
-  MattKuchar = 'MATT_KUCHAR',
-  Mercedes = 'MERCEDES',
-  Metlife = 'METLIFE',
-  Mizuno = 'MIZUNO',
-  Nike = 'NIKE',
-  NikeFeed = 'NIKE_FEED',
-  Oakley = 'OAKLEY',
-  OsteoBiflex = 'OSTEO_BIFLEX',
-  Pacificlife = 'PACIFICLIFE',
-  PerryEllis = 'PERRY_ELLIS',
-  Pgatourlivefri = 'PGATOURLIVEFRI',
-  Pgatourlivethurs = 'PGATOURLIVETHURS',
-  PhilMickelson = 'PHIL_MICKELSON',
-  Ping = 'PING',
-  Puma = 'PUMA',
-  Putnam = 'PUTNAM',
-  PutnamBradley = 'PUTNAM_BRADLEY',
-  PutnamCurran = 'PUTNAM_CURRAN',
-  PutnamSteele = 'PUTNAM_STEELE',
-  Quickenloans = 'QUICKENLOANS',
-  RickieFowler = 'RICKIE_FOWLER',
-  RoryMcilroy = 'RORY_MCILROY',
-  SergioGarcia = 'SERGIO_GARCIA',
-  Sikgolf = 'SIKGOLF',
-  Skechers = 'SKECHERS',
-  StrykerFred = 'STRYKER_FRED',
-  StrykerHal = 'STRYKER_HAL',
-  Superstroke = 'SUPERSTROKE',
-  Taylormade = 'TAYLORMADE',
-  Test1 = 'TEST1',
-  Test2 = 'TEST2',
-  Tglteamatl = 'TGLTEAMATL',
-  Tglteambos = 'TGLTEAMBOS',
-  Tglteamjup = 'TGLTEAMJUP',
-  Tglteamla = 'TGLTEAMLA',
-  Tglteamny = 'TGLTEAMNY',
-  Tglteamsf = 'TGLTEAMSF',
-  TigerWoods = 'TIGER_WOODS',
-  Titleist = 'TITLEIST',
-  TitleistBall = 'TITLEIST_BALL',
-  TitleistFull = 'TITLEIST_FULL',
-  Tmag = 'TMAG',
-  Tp5 = 'TP5',
-  UnitedRentals = 'UNITED_RENTALS',
-  Veritex = 'VERITEX',
-  ZachJohnson = 'ZACH_JOHNSON',
-  Zurich = 'ZURICH'
-}
+export type PlayerSponsorBrand =
+  | 'ACE'
+  | 'ADAM_SCOTT'
+  | 'ADIDAS'
+  | 'ADP'
+  | 'AMAZON'
+  | 'AON'
+  | 'BONOBOS'
+  | 'BRANDT_SNEDEKER'
+  | 'BRIDGESTONE_GOLF'
+  | 'CALLAWAY'
+  | 'CALLAWAY_FEED'
+  | 'CAMERON_PERCY'
+  | 'CLEVELANDGOLF'
+  | 'CLEVELANDGOLF_FEED'
+  | 'COBRA'
+  | 'COBRAPUMA'
+  | 'CONCUR'
+  | 'COUNTRYINNS'
+  | 'EMPOWER_RETIREMENT'
+  | 'FEDEX'
+  | 'GOLDMAN_SACHS'
+  | 'GOLFFOREVER'
+  | 'GREYGOOSE'
+  | 'HONMA'
+  | 'IAN_POULTER'
+  | 'JORDAN_SPIETH'
+  | 'LEVELWEAR'
+  | 'MASSAGE_ENVY'
+  | 'MASTERCARD'
+  | 'MATT_KUCHAR'
+  | 'MERCEDES'
+  | 'METLIFE'
+  | 'MIZUNO'
+  | 'NIKE'
+  | 'NIKE_FEED'
+  | 'OAKLEY'
+  | 'OSTEO_BIFLEX'
+  | 'PACIFICLIFE'
+  | 'PERRY_ELLIS'
+  | 'PGATOURLIVEFRI'
+  | 'PGATOURLIVETHURS'
+  | 'PHIL_MICKELSON'
+  | 'PING'
+  | 'PUMA'
+  | 'PUTNAM'
+  | 'PUTNAM_BRADLEY'
+  | 'PUTNAM_CURRAN'
+  | 'PUTNAM_STEELE'
+  | 'QUICKENLOANS'
+  | 'RICKIE_FOWLER'
+  | 'RORY_MCILROY'
+  | 'SERGIO_GARCIA'
+  | 'SIKGOLF'
+  | 'SKECHERS'
+  | 'STRYKER_FRED'
+  | 'STRYKER_HAL'
+  | 'SUPERSTROKE'
+  | 'TAYLORMADE'
+  | 'TEST1'
+  | 'TEST2'
+  | 'TGLTEAMATL'
+  | 'TGLTEAMBOS'
+  | 'TGLTEAMJUP'
+  | 'TGLTEAMLA'
+  | 'TGLTEAMNY'
+  | 'TGLTEAMSF'
+  | 'TIGER_WOODS'
+  | 'TITLEIST'
+  | 'TITLEIST_BALL'
+  | 'TITLEIST_FULL'
+  | 'TMAG'
+  | 'TP5'
+  | 'UNITED_RENTALS'
+  | 'VERITEX'
+  | 'ZACH_JOHNSON'
+  | 'ZURICH';
 
 export type PlayerSponsors = {
   __typename?: 'PlayerSponsors';
@@ -5522,15 +5471,14 @@ export type PlayerSponsorship = {
   sponsor?: Maybe<PlayerSponsorBrand>;
 };
 
-export enum PlayerState {
-  Active = 'ACTIVE',
-  BetweenRounds = 'BETWEEN_ROUNDS',
-  Complete = 'COMPLETE',
-  Cut = 'CUT',
-  Disqualified = 'DISQUALIFIED',
-  NotStarted = 'NOT_STARTED',
-  Withdrawn = 'WITHDRAWN'
-}
+export type PlayerState =
+  | 'ACTIVE'
+  | 'BETWEEN_ROUNDS'
+  | 'COMPLETE'
+  | 'CUT'
+  | 'DISQUALIFIED'
+  | 'NOT_STARTED'
+  | 'WITHDRAWN';
 
 export type PlayerStoriesWidget = {
   __typename?: 'PlayerStoriesWidget';
@@ -5566,11 +5514,10 @@ export type PlayerTournamentStatus = {
   tournamentName: Scalars['String']['output'];
 };
 
-export enum PlayerTournamentStatusDisplayMode {
-  InProgress = 'IN_PROGRESS',
-  Official = 'OFFICIAL',
-  TeeTimes = 'TEE_TIMES'
-}
+export type PlayerTournamentStatusDisplayMode =
+  | 'IN_PROGRESS'
+  | 'OFFICIAL'
+  | 'TEE_TIMES';
 
 export type PlayerVideo = {
   __typename?: 'PlayerVideo';
@@ -5588,12 +5535,11 @@ export type Playoff = {
   thru?: Maybe<Scalars['String']['output']>;
 };
 
-export enum PlayoffDisplayType {
-  All = 'ALL',
-  None = 'NONE',
-  PlayByPlay = 'PLAY_BY_PLAY',
-  Scorecard = 'SCORECARD'
-}
+export type PlayoffDisplayType =
+  | 'ALL'
+  | 'NONE'
+  | 'PLAY_BY_PLAY'
+  | 'SCORECARD';
 
 export type PlayoffHole = {
   __typename?: 'PlayoffHole';
@@ -5632,10 +5578,9 @@ export type PlayoffScorecard = {
   tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export enum PlayoffScoredType {
-  Aggregate = 'AGGREGATE',
-  SuddenDeath = 'SUDDEN_DEATH'
-}
+export type PlayoffScoredType =
+  | 'AGGREGATE'
+  | 'SUDDEN_DEATH';
 
 export type PlayoffTeams = {
   __typename?: 'PlayoffTeams';
@@ -5881,11 +5826,10 @@ export type PromoSectionNewsSection = {
   title: Scalars['String']['output'];
 };
 
-export enum PromoSectionType {
-  Gaming = 'GAMING',
-  More = 'MORE',
-  Webgolfbet = 'WEBGOLFBET'
-}
+export type PromoSectionType =
+  | 'GAMING'
+  | 'MORE'
+  | 'WEBGOLFBET';
 
 export type Query = {
   __typename?: 'Query';
@@ -7386,12 +7330,11 @@ export type RsmStandings = {
   weeklyWinners: Array<RsmEventWinner>;
 };
 
-export enum Ryder_Cup_Ranking_Tooltip {
-  CaptainPick = 'CAPTAIN_PICK',
-  OutcomeIq = 'OUTCOME_IQ',
-  QualificationInfo = 'QUALIFICATION_INFO',
-  QualifiedLogo = 'QUALIFIED_LOGO'
-}
+export type Ryder_Cup_Ranking_Tooltip =
+  | 'CAPTAIN_PICK'
+  | 'OUTCOME_IQ'
+  | 'QUALIFICATION_INFO'
+  | 'QUALIFIED_LOGO';
 
 export type RadarBallTracjectory = {
   __typename?: 'RadarBallTracjectory';
@@ -7477,10 +7420,9 @@ export type RankingsPastWinner = {
   season: Scalars['String']['output'];
 };
 
-export enum RankingsTeams {
-  Europe = 'EUROPE',
-  Usa = 'USA'
-}
+export type RankingsTeams =
+  | 'EUROPE'
+  | 'USA';
 
 export type RcBroadcastPrograms = {
   __typename?: 'RcBroadcastPrograms';
@@ -7488,10 +7430,9 @@ export type RcBroadcastPrograms = {
   programs: Array<RcProgram>;
 };
 
-export enum RcBroadcastType {
-  Audio = 'AUDIO',
-  Video = 'VIDEO'
-}
+export type RcBroadcastType =
+  | 'AUDIO'
+  | 'VIDEO';
 
 export type RcProducts = {
   __typename?: 'RcProducts';
@@ -7589,10 +7530,9 @@ export type RoundFilter = {
   roundNumbers: Array<Scalars['Int']['output']>;
 };
 
-export enum RoundFormat {
-  AlternateShot = 'ALTERNATE_SHOT',
-  BestBall = 'BEST_BALL'
-}
+export type RoundFormat =
+  | 'ALTERNATE_SHOT'
+  | 'BEST_BALL';
 
 export type RoundScore = {
   __typename?: 'RoundScore';
@@ -7623,22 +7563,20 @@ export type RoundScoreItem = {
   roundScore: Scalars['String']['output'];
 };
 
-export enum RoundStatus {
-  Complete = 'COMPLETE',
-  GroupingsOfficial = 'GROUPINGS_OFFICIAL',
-  InProgress = 'IN_PROGRESS',
-  Official = 'OFFICIAL',
-  Suspended = 'SUSPENDED',
-  Upcoming = 'UPCOMING'
-}
+export type RoundStatus =
+  | 'COMPLETE'
+  | 'GROUPINGS_OFFICIAL'
+  | 'IN_PROGRESS'
+  | 'OFFICIAL'
+  | 'SUSPENDED'
+  | 'UPCOMING';
 
-export enum RoundStatusColor {
-  Blue = 'BLUE',
-  Gray = 'GRAY',
-  Green = 'GREEN',
-  Red = 'RED',
-  Yellow = 'YELLOW'
-}
+export type RoundStatusColor =
+  | 'BLUE'
+  | 'GRAY'
+  | 'GREEN'
+  | 'RED'
+  | 'YELLOW';
 
 export type RyderCupBio = {
   __typename?: 'RyderCupBio';
@@ -7694,13 +7632,12 @@ export type RyderCupContentTags = {
   name: Scalars['String']['output'];
 };
 
-export enum RyderCupContentType {
-  All = 'ALL',
-  Articles = 'ARTICLES',
-  PhotoGallery = 'PHOTO_GALLERY',
-  Videos = 'VIDEOS',
-  VideoArticles = 'VIDEO_ARTICLES'
-}
+export type RyderCupContentType =
+  | 'ALL'
+  | 'ARTICLES'
+  | 'PHOTO_GALLERY'
+  | 'VIDEOS'
+  | 'VIDEO_ARTICLES';
 
 export type RyderCupCourse = {
   __typename?: 'RyderCupCourse';
@@ -7736,14 +7673,13 @@ export type RyderCupCourseModelHole = {
 };
 
 /**  ## Ryder Cup */
-export enum RyderCupEventState {
-  LiveWeek = 'LIVE_WEEK',
-  LiveWeekend = 'LIVE_WEEKEND',
-  OffSeason = 'OFF_SEASON',
-  PointsRace = 'POINTS_RACE',
-  PostEvent = 'POST_EVENT',
-  PreEvent = 'PRE_EVENT'
-}
+export type RyderCupEventState =
+  | 'LIVE_WEEK'
+  | 'LIVE_WEEKEND'
+  | 'OFF_SEASON'
+  | 'POINTS_RACE'
+  | 'POST_EVENT'
+  | 'PRE_EVENT';
 
 export type RyderCupLatestNewsSection = {
   __typename?: 'RyderCupLatestNewsSection';
@@ -7908,11 +7844,10 @@ export type RyderCupTeamRankingsCompressed = {
   payload: Scalars['String']['output'];
 };
 
-export enum RyderCupTeamType {
-  Both = 'BOTH',
-  Europe = 'EUROPE',
-  Usa = 'USA'
-}
+export type RyderCupTeamType =
+  | 'BOTH'
+  | 'EUROPE'
+  | 'USA';
 
 export type RyderCupTopicOption = {
   __typename?: 'RyderCupTopicOption';
@@ -7949,11 +7884,10 @@ export type RyderCupTournamentOverview = {
   year: Scalars['Int']['output'];
 };
 
-export enum Story_Type {
-  Moments = 'MOMENTS',
-  PlayerStories = 'PLAYER_STORIES',
-  TopicStories = 'TOPIC_STORIES'
-}
+export type Story_Type =
+  | 'MOMENTS'
+  | 'PLAYER_STORIES'
+  | 'TOPIC_STORIES';
 
 export type ScatterCoord = {
   __typename?: 'ScatterCoord';
@@ -8040,10 +7974,9 @@ export type ScheduleChampion = {
   playerId: Scalars['String']['output'];
 };
 
-export enum ScheduleDisplay {
-  Show = 'SHOW',
-  ShowNoLink = 'SHOW_NO_LINK'
-}
+export type ScheduleDisplay =
+  | 'SHOW'
+  | 'SHOW_NO_LINK';
 
 export type ScheduleMonth = {
   __typename?: 'ScheduleMonth';
@@ -8183,13 +8116,12 @@ export type ScorecardStatsItem = {
   yearToDate: Scalars['String']['output'];
 };
 
-export enum ScorecardTabFeature {
-  Equipment = 'EQUIPMENT',
-  Highlights = 'HIGHLIGHTS',
-  Odds = 'ODDS',
-  Scorecard = 'SCORECARD',
-  Stats = 'STATS'
-}
+export type ScorecardTabFeature =
+  | 'EQUIPMENT'
+  | 'HIGHLIGHTS'
+  | 'ODDS'
+  | 'SCORECARD'
+  | 'STATS';
 
 export type ScorecardUpdateCompressedV3 = {
   __typename?: 'ScorecardUpdateCompressedV3';
@@ -8239,17 +8171,15 @@ export type ScorecardV3 = {
   tournamentName: Scalars['String']['output'];
 };
 
-export enum ScoringLevel {
-  Basic = 'BASIC',
-  Stats = 'STATS',
-  Tourcast = 'TOURCAST'
-}
+export type ScoringLevel =
+  | 'BASIC'
+  | 'STATS'
+  | 'TOURCAST';
 
-export enum ScoringTendency {
-  Above = 'ABOVE',
-  Below = 'BELOW',
-  Even = 'EVEN'
-}
+export type ScoringTendency =
+  | 'ABOVE'
+  | 'BELOW'
+  | 'EVEN';
 
 export type SearchBarFeatures = {
   __typename?: 'SearchBarFeatures';
@@ -8433,11 +8363,10 @@ export type ShotDetailsCompressedV3 = {
   payload: Scalars['String']['output'];
 };
 
-export enum ShotDetailsDisplayType {
-  All = 'ALL',
-  None = 'NONE',
-  PlayByPlay = 'PLAY_BY_PLAY'
-}
+export type ShotDetailsDisplayType =
+  | 'ALL'
+  | 'NONE'
+  | 'PLAY_BY_PLAY';
 
 export type ShotLinkCoordWrapper = {
   __typename?: 'ShotLinkCoordWrapper';
@@ -8535,12 +8464,11 @@ export type SimpleScore = {
   status: HoleScoreStatus;
 };
 
-export enum SocialType {
-  Facebook = 'facebook',
-  Instagram = 'instagram',
-  Twitter = 'twitter',
-  Youtube = 'youtube'
-}
+export type SocialType =
+  | 'facebook'
+  | 'instagram'
+  | 'twitter'
+  | 'youtube';
 
 export type Sponsor = {
   __typename?: 'Sponsor';
@@ -8597,18 +8525,17 @@ export type StandingStat = {
   statValue: Scalars['String']['output'];
 };
 
-export enum StatCategory {
-  ApproachGreen = 'APPROACH_GREEN',
-  AroundGreen = 'AROUND_GREEN',
-  FactsAndFigures = 'FACTS_AND_FIGURES',
-  MoneyFinishes = 'MONEY_FINISHES',
-  OffTee = 'OFF_TEE',
-  PointsRankings = 'POINTS_RANKINGS',
-  Putting = 'PUTTING',
-  Scoring = 'SCORING',
-  Streaks = 'STREAKS',
-  StrokesGained = 'STROKES_GAINED'
-}
+export type StatCategory =
+  | 'APPROACH_GREEN'
+  | 'AROUND_GREEN'
+  | 'FACTS_AND_FIGURES'
+  | 'MONEY_FINISHES'
+  | 'OFF_TEE'
+  | 'POINTS_RANKINGS'
+  | 'PUTTING'
+  | 'SCORING'
+  | 'STREAKS'
+  | 'STROKES_GAINED';
 
 export type StatCategoryConfig = {
   __typename?: 'StatCategoryConfig';
@@ -8618,10 +8545,9 @@ export type StatCategoryConfig = {
   subCategories: Array<StatSubCategory>;
 };
 
-export enum StatCategoryConfigType {
-  AllTimeRecords = 'ALL_TIME_RECORDS',
-  TraditionalStat = 'TRADITIONAL_STAT'
-}
+export type StatCategoryConfigType =
+  | 'ALL_TIME_RECORDS'
+  | 'TRADITIONAL_STAT';
 
 export type StatCategoryStat = {
   __typename?: 'StatCategoryStat';
@@ -8629,22 +8555,20 @@ export type StatCategoryStat = {
   statTitle: Scalars['String']['output'];
 };
 
-export enum StatColor {
-  Black = 'BLACK',
-  Gray = 'GRAY',
-  Green = 'GREEN',
-  Red = 'RED'
-}
+export type StatColor =
+  | 'BLACK'
+  | 'GRAY'
+  | 'GREEN'
+  | 'RED';
 
 export type StatDetailEventQuery = {
   queryType: StatDetailQueryType;
   tournamentId: Scalars['String']['input'];
 };
 
-export enum StatDetailQueryType {
-  EventOnly = 'EVENT_ONLY',
-  ThroughEvent = 'THROUGH_EVENT'
-}
+export type StatDetailQueryType =
+  | 'EVENT_ONLY'
+  | 'THROUGH_EVENT';
 
 export type StatDetailTourAvg = {
   __typename?: 'StatDetailTourAvg';
@@ -8717,11 +8641,10 @@ export type StatLeaderSubCategoryPromo = {
   title: Scalars['String']['output'];
 };
 
-export enum StatRankMovement {
-  Constant = 'CONSTANT',
-  Down = 'DOWN',
-  Up = 'UP'
-}
+export type StatRankMovement =
+  | 'CONSTANT'
+  | 'DOWN'
+  | 'UP';
 
 export type StatSubCategory = {
   __typename?: 'StatSubCategory';
@@ -9169,11 +9092,10 @@ export type SummaryRow = {
   yardage: Scalars['Int']['output'];
 };
 
-export enum SummaryRowType {
-  In = 'IN',
-  Out = 'OUT',
-  Total = 'TOTAL'
-}
+export type SummaryRowType =
+  | 'IN'
+  | 'OUT'
+  | 'TOTAL';
 
 export type TcWinner = MpLeaderboardPlayer | TspWinner | Winner;
 
@@ -9208,12 +9130,11 @@ export type TglMatch = {
 };
 
 /**  ## TGL Types */
-export enum TglMatchStatus {
-  Complete = 'COMPLETE',
-  InProgress = 'IN_PROGRESS',
-  Unknown = 'UNKNOWN',
-  Upcoming = 'UPCOMING'
-}
+export type TglMatchStatus =
+  | 'COMPLETE'
+  | 'IN_PROGRESS'
+  | 'UNKNOWN'
+  | 'UPCOMING';
 
 export type TglPlayer = {
   __typename?: 'TGLPlayer';
@@ -9562,10 +9483,9 @@ export type TeeTimesCompressed = {
   payload: Scalars['String']['output'];
 };
 
-export enum TeeTimesFeature {
-  Groupings = 'GROUPINGS',
-  GroupTracker = 'GROUP_TRACKER'
-}
+export type TeeTimesFeature =
+  | 'GROUPINGS'
+  | 'GROUP_TRACKER';
 
 export type TeeTimesV2 = {
   __typename?: 'TeeTimesV2';
@@ -9651,13 +9571,12 @@ export type ToughestCourseRoundPills = {
   queryVal: ToughestRound;
 };
 
-export enum ToughestRound {
-  All = 'ALL',
-  Four = 'FOUR',
-  One = 'ONE',
-  Three = 'THREE',
-  Two = 'TWO'
-}
+export type ToughestRound =
+  | 'ALL'
+  | 'FOUR'
+  | 'ONE'
+  | 'THREE'
+  | 'TWO';
 
 export type TourBoundAsset = {
   __typename?: 'TourBoundAsset';
@@ -9671,17 +9590,16 @@ export type TourCategories = {
   tourCode: TourCode;
 };
 
-export enum TourCode {
-  C = 'C',
-  E = 'E',
-  H = 'H',
-  I = 'I',
-  M = 'M',
-  R = 'R',
-  S = 'S',
-  U = 'U',
-  Y = 'Y'
-}
+export type TourCode =
+  | 'C'
+  | 'E'
+  | 'H'
+  | 'I'
+  | 'M'
+  | 'R'
+  | 'S'
+  | 'U'
+  | 'Y';
 
 export type TourCupCombined = {
   __typename?: 'TourCupCombined';
@@ -9847,11 +9765,10 @@ export type TourCupSplit = {
   yearPills: Array<StatYearPills>;
 };
 
-export enum TourCupType {
-  Official = 'OFFICIAL',
-  OfficialAndProjected = 'OFFICIAL_AND_PROJECTED',
-  Projected = 'PROJECTED'
-}
+export type TourCupType =
+  | 'OFFICIAL'
+  | 'OFFICIAL_AND_PROJECTED'
+  | 'PROJECTED';
 
 export type TourCupWinner = {
   __typename?: 'TourCupWinner';
@@ -10053,10 +9970,9 @@ export type TournamentActivation = {
   title: Scalars['String']['output'];
 };
 
-export enum TournamentCategory {
-  Playoff = 'PLAYOFF',
-  Signature = 'SIGNATURE'
-}
+export type TournamentCategory =
+  | 'PLAYOFF'
+  | 'SIGNATURE';
 
 export type TournamentCategoryInfo = {
   __typename?: 'TournamentCategoryInfo';
@@ -10095,22 +10011,21 @@ export type TournamentCourse = {
   state?: Maybe<Scalars['String']['output']>;
 };
 
-export enum TournamentFeature {
-  CourseStats = 'COURSE_STATS',
-  CupTeams = 'CUP_TEAMS',
-  FedexfallStandings = 'FEDEXFALL_STANDINGS',
-  Field = 'FIELD',
-  GroupStage = 'GROUP_STAGE',
-  Leaderboard = 'LEADERBOARD',
-  Odds = 'ODDS',
-  Overview = 'OVERVIEW',
-  PastResults = 'PAST_RESULTS',
-  Recap = 'RECAP',
-  SignatureStandings = 'SIGNATURE_STANDINGS',
-  Standings = 'STANDINGS',
-  TeeTimes = 'TEE_TIMES',
-  Tourcast = 'TOURCAST'
-}
+export type TournamentFeature =
+  | 'COURSE_STATS'
+  | 'CUP_TEAMS'
+  | 'FEDEXFALL_STANDINGS'
+  | 'FIELD'
+  | 'GROUP_STAGE'
+  | 'LEADERBOARD'
+  | 'ODDS'
+  | 'OVERVIEW'
+  | 'PAST_RESULTS'
+  | 'RECAP'
+  | 'SIGNATURE_STANDINGS'
+  | 'STANDINGS'
+  | 'TEE_TIMES'
+  | 'TOURCAST';
 
 export type TournamentGroupLocation = {
   __typename?: 'TournamentGroupLocation';
@@ -10350,11 +10265,10 @@ export type TournamentRightRailConfig = {
   imageUrl: Scalars['String']['output'];
 };
 
-export enum TournamentStatus {
-  Completed = 'COMPLETED',
-  InProgress = 'IN_PROGRESS',
-  NotStarted = 'NOT_STARTED'
-}
+export type TournamentStatus =
+  | 'COMPLETED'
+  | 'IN_PROGRESS'
+  | 'NOT_STARTED';
 
 export type TournamentTeamChampion = {
   __typename?: 'TournamentTeamChampion';
@@ -10528,12 +10442,11 @@ export type TwoColumn = {
   sectionTwoTitle?: Maybe<Scalars['String']['output']>;
 };
 
-export enum UniversityRankColor {
-  Black = 'BLACK',
-  Blue = 'BLUE',
-  Gold = 'GOLD',
-  Gray = 'GRAY'
-}
+export type UniversityRankColor =
+  | 'BLACK'
+  | 'BLUE'
+  | 'GOLD'
+  | 'GRAY';
 
 export type UniversityRankingPlayer = {
   __typename?: 'UniversityRankingPlayer';
@@ -10719,10 +10632,9 @@ export type VideoHero = {
   videos: Array<Video>;
 };
 
-export enum VideoLanguage {
-  English = 'ENGLISH',
-  French = 'FRENCH'
-}
+export type VideoLanguage =
+  | 'ENGLISH'
+  | 'FRENCH';
 
 export type VideoNavigation = {
   __typename?: 'VideoNavigation';
@@ -10742,19 +10654,18 @@ export type VideoPill = {
 
 export type VideoPillConfig = FranchisePillConfig | TopicStoriesPillConfig | TournamentsPillConfig | VideoFilterPillConfig;
 
-export enum VideoPillType {
-  All = 'ALL',
-  Favorites = 'FAVORITES',
-  Features = 'FEATURES',
-  Filter = 'FILTER',
-  Interviews = 'INTERVIEWS',
-  PlayerSearch = 'PLAYER_SEARCH',
-  PlayerStories = 'PLAYER_STORIES',
-  TopicStories = 'TOPIC_STORIES',
-  TopShots = 'TOP_SHOTS',
-  Tournaments = 'TOURNAMENTS',
-  Trending = 'TRENDING'
-}
+export type VideoPillType =
+  | 'ALL'
+  | 'FAVORITES'
+  | 'FEATURES'
+  | 'FILTER'
+  | 'INTERVIEWS'
+  | 'PLAYER_SEARCH'
+  | 'PLAYER_STORIES'
+  | 'TOPIC_STORIES'
+  | 'TOP_SHOTS'
+  | 'TOURNAMENTS'
+  | 'TRENDING';
 
 export type VideoSponsor = {
   __typename?: 'VideoSponsor';
@@ -10791,22 +10702,21 @@ export type WatchLandingSection = {
   videos: Array<Video>;
 };
 
-export enum WeatherCondition {
-  DayCloudy = 'DAY_CLOUDY',
-  DayFogMist = 'DAY_FOG_MIST',
-  DayMostlyCloudy = 'DAY_MOSTLY_CLOUDY',
-  DayMostlySunny = 'DAY_MOSTLY_SUNNY',
-  DayPartlyCloudy = 'DAY_PARTLY_CLOUDY',
-  DayRainy = 'DAY_RAINY',
-  DayScatteredShowers = 'DAY_SCATTERED_SHOWERS',
-  DaySnow = 'DAY_SNOW',
-  DaySunny = 'DAY_SUNNY',
-  DayThunderstorms = 'DAY_THUNDERSTORMS',
-  NightClear = 'NIGHT_CLEAR',
-  NightIsolatedClouds = 'NIGHT_ISOLATED_CLOUDS',
-  NightMostlyCloudy = 'NIGHT_MOSTLY_CLOUDY',
-  NightPartlyCloudy = 'NIGHT_PARTLY_CLOUDY'
-}
+export type WeatherCondition =
+  | 'DAY_CLOUDY'
+  | 'DAY_FOG_MIST'
+  | 'DAY_MOSTLY_CLOUDY'
+  | 'DAY_MOSTLY_SUNNY'
+  | 'DAY_PARTLY_CLOUDY'
+  | 'DAY_RAINY'
+  | 'DAY_SCATTERED_SHOWERS'
+  | 'DAY_SNOW'
+  | 'DAY_SUNNY'
+  | 'DAY_THUNDERSTORMS'
+  | 'NIGHT_CLEAR'
+  | 'NIGHT_ISOLATED_CLOUDS'
+  | 'NIGHT_MOSTLY_CLOUDY'
+  | 'NIGHT_PARTLY_CLOUDY';
 
 export type WeatherDetails = {
   __typename?: 'WeatherDetails';
@@ -10850,16 +10760,15 @@ export type WeatherSummary = {
 
 export type WeatherTemp = RangeWeatherTemp | StandardWeatherTemp;
 
-export enum WindDirection {
-  East = 'EAST',
-  North = 'NORTH',
-  NorthEast = 'NORTH_EAST',
-  NorthWest = 'NORTH_WEST',
-  South = 'SOUTH',
-  SouthEast = 'SOUTH_EAST',
-  SouthWest = 'SOUTH_WEST',
-  West = 'WEST'
-}
+export type WindDirection =
+  | 'EAST'
+  | 'NORTH'
+  | 'NORTH_EAST'
+  | 'NORTH_WEST'
+  | 'SOUTH'
+  | 'SOUTH_EAST'
+  | 'SOUTH_WEST'
+  | 'WEST';
 
 export type Winner = {
   __typename?: 'Winner';
@@ -10888,11 +10797,10 @@ export type WinnerIcon = {
   type: WinnerIconType;
 };
 
-export enum WinnerIconType {
-  Bronze = 'BRONZE',
-  Gold = 'GOLD',
-  Silver = 'SILVER'
-}
+export type WinnerIconType =
+  | 'BRONZE'
+  | 'GOLD'
+  | 'SILVER';
 
 export type WinnerRoundScore = {
   __typename?: 'WinnerRoundScore';
@@ -11026,10 +10934,9 @@ export type YtSponsorActivationCard = {
   title: Scalars['String']['output'];
 };
 
-export enum YtTextPosition {
-  Bottom = 'BOTTOM',
-  Top = 'TOP'
-}
+export type YtTextPosition =
+  | 'BOTTOM'
+  | 'TOP';
 
 export type YtTournament = {
   __typename?: 'YTTournament';
@@ -11063,7 +10970,6 @@ export type YtVideoStory = {
   type: YtVideoStoryType;
 };
 
-export enum YtVideoStoryType {
-  PlayerStories = 'PLAYER_STORIES',
-  TopicStories = 'TOPIC_STORIES'
-}
+export type YtVideoStoryType =
+  | 'PLAYER_STORIES'
+  | 'TOPIC_STORIES';

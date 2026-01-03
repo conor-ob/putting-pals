@@ -13,6 +13,9 @@ const config: CodegenConfig = {
   generates: {
     "src/types.ts": {
       plugins: ["typescript"],
+      config: {
+        enumsAsTypes: true,
+      },
     },
   },
 };
