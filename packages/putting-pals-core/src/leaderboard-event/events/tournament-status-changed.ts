@@ -1,26 +1,34 @@
 import { TournamentStatus } from "@putting-pals/pga-tour-schema/types";
 import type { TournamentStatusChangedV1 } from "@putting-pals/putting-pals-db/schema";
-import type { EventEmitter } from "../event-emitter";
+import { AbstractEventEmitter, type LeaderboardEvent } from "../event-emitter";
 
-export const TournamentStatusChanged: EventEmitter = {
-  filter(_tourCode, before, after) {
+export class TournamentStatusChanged extends AbstractEventEmitter {
+  override filter(): boolean {
     return (
-      after.tournamentStatus !== TournamentStatus.NotStarted &&
-      before.tournamentStatus !== after.tournamentStatus
+      this.after.tournamentStatus !== TournamentStatus.NotStarted &&
+      this.before.tournamentStatus !== this.after.tournamentStatus
     );
-  },
-  emit(_tourCode, before, after) {
+  }
+
+  override emit(): LeaderboardEvent[] {
     return [
       {
-        __typename: "TournamentStatusChangedV1",
-        tournamentName: after.tournamentName,
-        before: {
-          tournamentStatus: before.tournamentStatus,
-        },
-        after: {
-          tournamentStatus: after.tournamentStatus,
-        },
-      } satisfies TournamentStatusChangedV1,
+        order: this.getEventOrder(),
+        event: {
+          __typename: "TournamentStatusChangedV1" as const,
+          tournamentName: this.after.tournamentName,
+          before: {
+            tournamentStatus: this.before.tournamentStatus,
+          },
+          after: {
+            tournamentStatus: this.after.tournamentStatus,
+          },
+        } satisfies TournamentStatusChangedV1,
+      },
     ];
-  },
-};
+  }
+
+  private getEventOrder(): number {
+    return 1;
+  }
+}

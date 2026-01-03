@@ -40,21 +40,24 @@ export class LeaderboardEventProcessor {
       return;
     }
 
-    const events = [
-      RoundStatusChanged,
-      TournamentStatusChanged,
-      NewLeader,
-      PlayerPositionIncreased,
-      PlayerPositionDecreased,
-    ]
-      .filter((eventEmitter) => eventEmitter.filter(tourCode, before, after))
-      .flatMap((eventEmitter) => eventEmitter.emit(tourCode, before, after));
+    const eventEmitters = [
+      new RoundStatusChanged(tourCode, before, after),
+      new TournamentStatusChanged(tourCode, before, after),
+      new NewLeader(tourCode, before, after),
+      new PlayerPositionIncreased(tourCode, before, after),
+      new PlayerPositionDecreased(tourCode, before, after),
+    ];
+
+    const events = eventEmitters
+      .filter((eventEmitter) => eventEmitter.filter())
+      .flatMap((eventEmitter) => eventEmitter.emit())
+      .sort((a, b) => a.priority - b.priority);
 
     if (events.length > 0) {
       await this.insertLeaderboardFeedEvents(
         tourCode,
         tournamentId,
-        events,
+        events.map((it) => it.event),
         after,
       );
     }

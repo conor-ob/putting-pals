@@ -7,15 +7,30 @@ import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 
 export type Event = RoundStatusChangedV1 | TournamentStatusChangedV1;
 
-export type EventEmitter = {
-  filter(
-    tourCode: TourCode,
-    before: LeaderboardSnapshotV1,
-    after: LeaderboardSnapshotV1,
-  ): boolean;
-  emit(
-    tourCode: TourCode,
-    before: LeaderboardSnapshotV1,
-    after: LeaderboardSnapshotV1,
-  ): Event[];
+export type LeaderboardEvent = {
+  event: Event;
+  order: number;
 };
+
+export interface EventEmitter {
+  filter(): boolean;
+  emit(): LeaderboardEvent[];
+}
+
+export abstract class AbstractEventEmitter implements EventEmitter {
+  constructor(
+    protected readonly tourCode: TourCode,
+    protected readonly before: LeaderboardSnapshotV1,
+    protected readonly after: LeaderboardSnapshotV1,
+  ) {
+    this.tourCode = tourCode;
+    this.before = before;
+    this.after = after;
+  }
+
+  filter(): boolean {
+    return true;
+  }
+
+  abstract emit(): LeaderboardEvent[];
+}

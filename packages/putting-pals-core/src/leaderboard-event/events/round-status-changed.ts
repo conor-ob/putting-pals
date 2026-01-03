@@ -1,31 +1,39 @@
 import { RoundStatus } from "@putting-pals/pga-tour-schema/types";
 import type { RoundStatusChangedV1 } from "@putting-pals/putting-pals-db/schema";
-import type { EventEmitter } from "../event-emitter";
+import { AbstractEventEmitter, type LeaderboardEvent } from "../event-emitter";
 
-export const RoundStatusChanged: EventEmitter = {
-  filter(_tourCode, before, after) {
+export class RoundStatusChanged extends AbstractEventEmitter {
+  override filter(): boolean {
     return (
-      after.roundStatus !== RoundStatus.Upcoming &&
-      after.roundStatus !== before.roundStatus
+      this.after.roundStatus !== RoundStatus.Upcoming &&
+      this.after.roundStatus !== this.before.roundStatus
     );
-  },
-  emit(_tourCode, before, after) {
+  }
+
+  override emit(): LeaderboardEvent[] {
     return [
       {
-        __typename: "RoundStatusChangedV1" as const,
-        before: {
-          roundDisplay: before.roundDisplay,
-          roundStatus: before.roundStatus,
-          roundStatusColor: before.roundStatusColor,
-          roundStatusDisplay: before.roundStatusDisplay,
-        },
-        after: {
-          roundDisplay: after.roundDisplay,
-          roundStatus: after.roundStatus,
-          roundStatusColor: after.roundStatusColor,
-          roundStatusDisplay: after.roundStatusDisplay,
-        },
-      } satisfies RoundStatusChangedV1,
+        order: this.getEventOrder(),
+        event: {
+          __typename: "RoundStatusChangedV1" as const,
+          before: {
+            roundDisplay: this.before.roundDisplay,
+            roundStatus: this.before.roundStatus,
+            roundStatusColor: this.before.roundStatusColor,
+            roundStatusDisplay: this.before.roundStatusDisplay,
+          },
+          after: {
+            roundDisplay: this.after.roundDisplay,
+            roundStatus: this.after.roundStatus,
+            roundStatusColor: this.after.roundStatusColor,
+            roundStatusDisplay: this.after.roundStatusDisplay,
+          },
+        } satisfies RoundStatusChangedV1,
+      },
     ];
-  },
-};
+  }
+
+  private getEventOrder(): number {
+    return 1;
+  }
+}
