@@ -10976,6 +10976,59 @@ export type YtVideoStoryType =
   | 'PLAYER_STORIES'
   | 'TOPIC_STORIES';
 
+export type LeaderboardV3QueryVariables = Exact<{
+  leaderboardV3Id: Scalars['ID']['input'];
+}>;
+
+
+export type LeaderboardV3Query = { __typename?: 'Query', leaderboardV3: { __typename?: 'LeaderboardV3', id: string, tournamentId: string, leaderboardRoundHeader: string, formatType: FormatType, timezone: string, tourcastURL?: string | null, tourcastURLWeb?: string | null, tourcastURI?: string | null, tournamentStatus: TournamentStatus, isPlayoffActive: boolean, scorecardEnabled: boolean, profileEnabled: boolean, subEvent: boolean, standingsEnabled: boolean, standingsHeader: string, hideSov: boolean, disableOdds: boolean, disableBettingProfileColumn: boolean, disableLeaderboard: boolean, players: Array<
+      | { __typename?: 'InformationRow', id: string, leaderboardSortOrder: number, displayText: string, mobileDisplayText: string, sponsorName?: string | null }
+      | { __typename?: 'PlayerRowV3', id: string, leaderboardSortOrder: number, player: { __typename?: 'Player', id: string, firstName: string, lastName: string, shortName: string, displayName: string, abbreviations: string, abbreviationsAccessibilityText: string, amateur: boolean, country: string, countryFlag: string, lineColor: string, seed?: string | null, status?: string | null, tourBound?: boolean | null, bettingProfile?: string | null, playerBioOverrideLink?: string | null, assets?: Array<{ __typename?: 'TourBoundAsset', tourBoundLogo?: string | null, tourBoundLogoDark?: string | null }> | null }, scoringData: { __typename?: 'LeaderboardScoringDataV3', groupNumber: number, currentRound: number, backNine: boolean, playerState: PlayerState, teeTime?: any | null, totalStrokes: string, totalStrokesSort?: number | null, total: string, totalSort: number, thru: string, thruSort: number, score: string, scoreSort: number, movementDirection: LeaderboardMovement, movementAmount: string, movementSort?: number | null, position: string, rounds: Array<string>, roundDisplaySort?: Array<number | null> | null, roundHeader: string, roundStatus: string, courseId: string, official: string, officialSort: number, projected: string, projectedSort: number, rankingMovement: CupRankMovementDirection, rankingMovementAmount: string, rankingMovementAmountSort: number, rankLogoLight?: string | null, rankLogoDark?: string | null, tooltipText?: string | null, tooltipTitle?: string | null, oddsToWin?: string | null, oddsSwing?: OddsSwing | null, oddsOptionId?: string | null, oddsSort?: number | null, hasStoryContent: boolean, storyContentRound?: number | null, storyContentRounds: Array<number>, playerIcon?: LeaderboardPlayerIcon | null } }
+    >, winner?: { __typename?: 'Winner', id: string, firstName: string, lastName: string, totalStrokes: number, totalScore: string, countryFlag: string, countryName: string, purse?: string | null, displayPoints: boolean, displayPurse: boolean, points?: string | null, seed?: string | null, pointsLabel?: string | null, winnerIcon?: { __typename?: 'WinnerIcon', type: WinnerIconType, title: string, label: string, color: string } | null, roundScores?: Array<{ __typename?: 'WinnerRoundScore', label: string, total: string }> | null } | null, winners?: Array<{ __typename?: 'Winner', id: string, firstName: string, lastName: string, totalStrokes: number, totalScore: string, countryFlag: string, countryName: string, purse?: string | null, displayPoints: boolean, displayPurse: boolean, points?: string | null, seed?: string | null, pointsLabel?: string | null }> | null, courses: Array<{ __typename?: 'Course', id: string, courseName: string, courseCode: string, hostCourse: boolean, scoringLevel: ScoringLevel, enabled?: boolean | null, features?: Array<TeeTimesFeature> | null }>, messages: Array<{ __typename?: 'LeaderboardMessage', messageText: string, messageIcon: LeaderboardMessageIcon, messageLink?: string | null, webViewLink?: string | null, externalLink?: boolean | null, platforms: Array<Platform>, timing?: number | null }>, rounds: Array<{ __typename?: 'LBRound', roundNumber: number, displayText: string }>, leaderboardFeatures?: Array<{ __typename?: 'FeatureItem', name: string, new: boolean, tooltipText?: string | null, tooltipTitle?: string | null, fieldStatType?: FieldStatType | null, leaderboardFeatures?: LeaderboardFeature | null, sponsor?: { __typename?: 'FeatureSponsor', sponsorLogo: string, sponsorLogoDark: string, sponsorText: string, sponsorLogoAsset: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, sponsorLogoDarkAsset: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null }> | null, cutLineProbabilities?: { __typename?: 'CutLineInfo', projectedCutLine: string, probableCutLine: string, sponsorName?: string | null, lastUpdated: any, new?: boolean | null, sponsorLogo?: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } | null, possibleCutLines: Array<{ __typename?: 'CutLinePossibility', score: string, probability: number, displayProbability: string }> } | null, bubblePill?: { __typename?: 'BubblePill', pillText: string, iconLight: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, iconDark: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null } };
+
+export type LeaderboardHoleByHoleQueryVariables = Exact<{
+  tournamentId: Scalars['ID']['input'];
+  round?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type LeaderboardHoleByHoleQuery = { __typename?: 'Query', leaderboardHoleByHole: { __typename?: 'LeaderboardHoleByHole', tournamentId: string, currentRound: number, tournamentName: string, rounds: Array<{ __typename?: 'LBRound', roundNumber: number, displayText: string }>, holeHeaders: Array<{ __typename?: 'HoleHeader', holeNumber: number, hole: string, par: string }>, courseHoleHeaders: Array<{ __typename?: 'CourseHoleHeader', courseId: string, holeHeaders: Array<{ __typename?: 'HoleHeaderV2', holeNumber?: number | null, order: number, displayValue: string, par: string }> }>, courses: Array<{ __typename?: 'Course', id: string, courseName: string, courseCode: string, hostCourse: boolean, scoringLevel: ScoringLevel, enabled?: boolean | null, features?: Array<TeeTimesFeature> | null }>, playerData: Array<{ __typename?: 'PlayerRowHoleByHole', playerId: string, courseId: string, courseCode: string, out?: string | null, in?: string | null, total?: string | null, totalToPar: string, scores: Array<{ __typename?: 'HoleScore', holeNumber: number, par: number, yardage: number, sequenceNumber: number, score: string, status: HoleScoreStatus, roundScore: string }> }> } };
+
+export type ScheduleTournamentFieldsFragment = { __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } };
+
+export type ScheduleMonthFieldsFragment = { __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> };
+
+export type ScheduleFieldsFragment = { __typename?: 'Schedule', seasonYear: string, completed: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }>, upcoming: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }> };
+
+export type ScheduleYearsQueryVariables = Exact<{
+  tourCode: TourCode;
+}>;
+
+
+export type ScheduleYearsQuery = { __typename?: 'Query', scheduleYears: { __typename?: 'ScheduleYears', years: Array<{ __typename?: 'ScheduleYear', default: boolean, displayValue: string, queryValue: string }> } };
+
+export type ScheduleQueryVariables = Exact<{
+  tourCode: Scalars['String']['input'];
+  year?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type ScheduleQuery = { __typename?: 'Query', schedule: { __typename?: 'Schedule', seasonYear: string, completed: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }>, upcoming: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }> } };
+
+export type CompleteScheduleQueryVariables = Exact<{
+  tourCode: TourCode;
+}>;
+
+
+export type CompleteScheduleQuery = { __typename?: 'Query', completeSchedule: Array<{ __typename?: 'Schedule', seasonYear: string, completed: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }>, upcoming: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }> }> };
+
+export type UpcomingScheduleQueryVariables = Exact<{
+  tourCode: Scalars['String']['input'];
+}>;
+
+
+export type UpcomingScheduleQuery = { __typename?: 'Query', upcomingSchedule: { __typename?: 'ScheduleUpcoming', tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> } };
+
 export type TournamentsQueryVariables = Exact<{
   ids?: InputMaybe<Array<Scalars['ID']['input']> | Scalars['ID']['input']>;
 }>;
@@ -10983,9 +11036,380 @@ export type TournamentsQueryVariables = Exact<{
 
 export type TournamentsQuery = { __typename?: 'Query', tournaments: Array<{ __typename?: 'Tournament', displayDate: string, id: string, roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string }, tournamentLogoAsset: Array<{ __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string }> }> };
 
-
+export const ScheduleTournamentFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<ScheduleTournamentFieldsFragment, unknown>;
+export const ScheduleMonthFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<ScheduleMonthFieldsFragment, unknown>;
+export const ScheduleFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}}]} as unknown as DocumentNode<ScheduleFieldsFragment, unknown>;
+export const LeaderboardV3Document = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"LeaderboardV3"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"leaderboardV3Id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"leaderboardV3"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"leaderboardV3Id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentId"}},{"kind":"Field","name":{"kind":"Name","value":"players"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PlayerRowV3"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardSortOrder"}},{"kind":"Field","name":{"kind":"Name","value":"player"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"shortName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"abbreviations"}},{"kind":"Field","name":{"kind":"Name","value":"abbreviationsAccessibilityText"}},{"kind":"Field","name":{"kind":"Name","value":"amateur"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"lineColor"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"tourBound"}},{"kind":"Field","name":{"kind":"Name","value":"assets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TourBoundAsset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tourBoundLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tourBoundLogoDark"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bettingProfile"}},{"kind":"Field","name":{"kind":"Name","value":"playerBioOverrideLink"}}]}},{"kind":"Field","name":{"kind":"Name","value":"scoringData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"groupNumber"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"backNine"}},{"kind":"Field","name":{"kind":"Name","value":"playerState"}},{"kind":"Field","name":{"kind":"Name","value":"teeTime"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokesSort"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"totalSort"}},{"kind":"Field","name":{"kind":"Name","value":"thru"}},{"kind":"Field","name":{"kind":"Name","value":"thruSort"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"scoreSort"}},{"kind":"Field","name":{"kind":"Name","value":"movementDirection"}},{"kind":"Field","name":{"kind":"Name","value":"movementAmount"}},{"kind":"Field","name":{"kind":"Name","value":"movementSort"}},{"kind":"Field","name":{"kind":"Name","value":"position"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplaySort"}},{"kind":"Field","name":{"kind":"Name","value":"roundHeader"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"official"}},{"kind":"Field","name":{"kind":"Name","value":"officialSort"}},{"kind":"Field","name":{"kind":"Name","value":"projected"}},{"kind":"Field","name":{"kind":"Name","value":"projectedSort"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovement"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovementAmount"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovementAmountSort"}},{"kind":"Field","name":{"kind":"Name","value":"rankLogoLight"}},{"kind":"Field","name":{"kind":"Name","value":"rankLogoDark"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipText"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipTitle"}},{"kind":"Field","name":{"kind":"Name","value":"oddsToWin"}},{"kind":"Field","name":{"kind":"Name","value":"oddsSwing"}},{"kind":"Field","name":{"kind":"Name","value":"oddsOptionId"}},{"kind":"Field","name":{"kind":"Name","value":"oddsSort"}},{"kind":"Field","name":{"kind":"Name","value":"hasStoryContent"}},{"kind":"Field","name":{"kind":"Name","value":"storyContentRound"}},{"kind":"Field","name":{"kind":"Name","value":"storyContentRounds"}},{"kind":"Field","name":{"kind":"Name","value":"playerIcon"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"InformationRow"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardSortOrder"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}},{"kind":"Field","name":{"kind":"Name","value":"mobileDisplayText"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorName"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardRoundHeader"}},{"kind":"Field","name":{"kind":"Name","value":"formatType"}},{"kind":"Field","name":{"kind":"Name","value":"timezone"}},{"kind":"Field","name":{"kind":"Name","value":"winner"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalScore"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"countryName"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"displayPoints"}},{"kind":"Field","name":{"kind":"Name","value":"displayPurse"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"pointsLabel"}},{"kind":"Field","name":{"kind":"Name","value":"winnerIcon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"color"}}]}},{"kind":"Field","name":{"kind":"Name","value":"roundScores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"total"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"winners"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalScore"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"countryName"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"displayPoints"}},{"kind":"Field","name":{"kind":"Name","value":"displayPurse"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"pointsLabel"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"messages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"messageText"}},{"kind":"Field","name":{"kind":"Name","value":"messageIcon"}},{"kind":"Field","name":{"kind":"Name","value":"messageLink"}},{"kind":"Field","name":{"kind":"Name","value":"webViewLink"}},{"kind":"Field","name":{"kind":"Name","value":"externalLink"}},{"kind":"Field","name":{"kind":"Name","value":"platforms"}},{"kind":"Field","name":{"kind":"Name","value":"timing"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURL"}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURLWeb"}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURI"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundNumber"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"isPlayoffActive"}},{"kind":"Field","name":{"kind":"Name","value":"scorecardEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"profileEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"subEvent"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardFeatures"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"new"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipText"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipTitle"}},{"kind":"Field","name":{"kind":"Name","value":"fieldStatType"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardFeatures"}},{"kind":"Field","name":{"kind":"Name","value":"sponsor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sponsorLogo"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoDark"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"standingsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"standingsHeader"}},{"kind":"Field","name":{"kind":"Name","value":"hideSov"}},{"kind":"Field","name":{"kind":"Name","value":"disableOdds"}},{"kind":"Field","name":{"kind":"Name","value":"disableBettingProfileColumn"}},{"kind":"Field","name":{"kind":"Name","value":"cutLineProbabilities"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectedCutLine"}},{"kind":"Field","name":{"kind":"Name","value":"probableCutLine"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorName"}},{"kind":"Field","name":{"kind":"Name","value":"lastUpdated"}},{"kind":"Field","name":{"kind":"Name","value":"possibleCutLines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"probability"}},{"kind":"Field","name":{"kind":"Name","value":"displayProbability"}}]}},{"kind":"Field","name":{"kind":"Name","value":"new"}}]}},{"kind":"Field","name":{"kind":"Name","value":"disableLeaderboard"}},{"kind":"Field","name":{"kind":"Name","value":"bubblePill"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"iconLight"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"iconDark"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"pillText"}}]}}]}}]}}]} as unknown as DocumentNode<LeaderboardV3Query, LeaderboardV3QueryVariables>;
+export const LeaderboardHoleByHoleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"LeaderboardHoleByHole"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tournamentId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"round"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"leaderboardHoleByHole"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tournamentId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tournamentId"}}},{"kind":"Argument","name":{"kind":"Name","value":"round"},"value":{"kind":"Variable","name":{"kind":"Name","value":"round"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tournamentId"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundNumber"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"holeHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"hole"}},{"kind":"Field","name":{"kind":"Name","value":"par"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courseHoleHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"holeHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"order"}},{"kind":"Field","name":{"kind":"Name","value":"displayValue"}},{"kind":"Field","name":{"kind":"Name","value":"par"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"playerData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"playerId"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"scores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"par"}},{"kind":"Field","name":{"kind":"Name","value":"yardage"}},{"kind":"Field","name":{"kind":"Name","value":"sequenceNumber"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"roundScore"}}]}},{"kind":"Field","name":{"kind":"Name","value":"out"}},{"kind":"Field","name":{"kind":"Name","value":"in"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"totalToPar"}}]}}]}}]}}]} as unknown as DocumentNode<LeaderboardHoleByHoleQuery, LeaderboardHoleByHoleQueryVariables>;
+export const ScheduleYearsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ScheduleYears"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TourCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"scheduleYears"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"years"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"default"}},{"kind":"Field","name":{"kind":"Name","value":"displayValue"}},{"kind":"Field","name":{"kind":"Name","value":"queryValue"}}]}}]}}]}}]} as unknown as DocumentNode<ScheduleYearsQuery, ScheduleYearsQueryVariables>;
+export const ScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Schedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"year"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"schedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}},{"kind":"Argument","name":{"kind":"Name","value":"year"},"value":{"kind":"Variable","name":{"kind":"Name","value":"year"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}}]}}]} as unknown as DocumentNode<ScheduleQuery, ScheduleQueryVariables>;
+export const CompleteScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CompleteSchedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TourCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"completeSchedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}}]}}]} as unknown as DocumentNode<CompleteScheduleQuery, CompleteScheduleQueryVariables>;
+export const UpcomingScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"UpcomingSchedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"upcomingSchedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<UpcomingScheduleQuery, UpcomingScheduleQueryVariables>;
 export const TournamentsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Tournaments"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"ids"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"ids"},"value":{"kind":"Variable","name":{"kind":"Name","value":"ids"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"displayDate"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]}}]} as unknown as DocumentNode<TournamentsQuery, TournamentsQueryVariables>;
-
+export const ScheduleTournamentFields = gql`
+    fragment ScheduleTournamentFields on ScheduleTournament {
+  beautyImageAsset {
+    fallbackImage
+    imageOrg
+    imagePath
+  }
+  date
+  id
+  sortDate
+  status {
+    roundDisplay
+    roundStatus
+    roundStatusColor
+    roundStatusDisplay
+  }
+  tournamentLogoAsset {
+    fallbackImage
+    imageOrg
+    imagePath
+  }
+  tournamentName
+  tournamentStatus
+}
+    `;
+export const ScheduleMonthFields = gql`
+    fragment ScheduleMonthFields on ScheduleMonth {
+  year
+  month
+  monthSort
+  tournaments {
+    ...ScheduleTournamentFields
+  }
+}
+    ${ScheduleTournamentFields}`;
+export const ScheduleFields = gql`
+    fragment ScheduleFields on Schedule {
+  seasonYear
+  completed {
+    ...ScheduleMonthFields
+  }
+  upcoming {
+    ...ScheduleMonthFields
+  }
+}
+    ${ScheduleMonthFields}`;
+export const LeaderboardV3 = gql`
+    query LeaderboardV3($leaderboardV3Id: ID!) {
+  leaderboardV3(id: $leaderboardV3Id) {
+    id
+    tournamentId
+    players {
+      ... on PlayerRowV3 {
+        id
+        leaderboardSortOrder
+        player {
+          id
+          firstName
+          lastName
+          shortName
+          displayName
+          abbreviations
+          abbreviationsAccessibilityText
+          amateur
+          country
+          countryFlag
+          lineColor
+          seed
+          status
+          tourBound
+          assets {
+            ... on TourBoundAsset {
+              tourBoundLogo
+              tourBoundLogoDark
+            }
+          }
+          bettingProfile
+          playerBioOverrideLink
+        }
+        scoringData {
+          groupNumber
+          currentRound
+          backNine
+          playerState
+          teeTime
+          totalStrokes
+          totalStrokesSort
+          total
+          totalSort
+          thru
+          thruSort
+          score
+          scoreSort
+          movementDirection
+          movementAmount
+          movementSort
+          position
+          rounds
+          roundDisplaySort
+          roundHeader
+          roundStatus
+          courseId
+          official
+          officialSort
+          projected
+          projectedSort
+          rankingMovement
+          rankingMovementAmount
+          rankingMovementAmountSort
+          rankLogoLight
+          rankLogoDark
+          tooltipText
+          tooltipTitle
+          oddsToWin
+          oddsSwing
+          oddsOptionId
+          oddsSort
+          hasStoryContent
+          storyContentRound
+          storyContentRounds
+          playerIcon
+        }
+      }
+      ... on InformationRow {
+        id
+        leaderboardSortOrder
+        displayText
+        mobileDisplayText
+        sponsorName
+      }
+    }
+    leaderboardRoundHeader
+    formatType
+    timezone
+    winner {
+      id
+      firstName
+      lastName
+      totalStrokes
+      totalScore
+      countryFlag
+      countryName
+      purse
+      displayPoints
+      displayPurse
+      points
+      seed
+      pointsLabel
+      winnerIcon {
+        type
+        title
+        label
+        color
+      }
+      roundScores {
+        label
+        total
+      }
+    }
+    winners {
+      id
+      firstName
+      lastName
+      totalStrokes
+      totalScore
+      countryFlag
+      countryName
+      purse
+      displayPoints
+      displayPurse
+      points
+      seed
+      pointsLabel
+    }
+    courses {
+      id
+      courseName
+      courseCode
+      hostCourse
+      scoringLevel
+      enabled
+      features
+    }
+    messages {
+      messageText
+      messageIcon
+      messageLink
+      webViewLink
+      externalLink
+      platforms
+      timing
+    }
+    tourcastURL
+    tourcastURLWeb
+    tourcastURI
+    tournamentStatus
+    rounds {
+      roundNumber
+      displayText
+    }
+    isPlayoffActive
+    scorecardEnabled
+    profileEnabled
+    subEvent
+    leaderboardFeatures {
+      name
+      new
+      tooltipText
+      tooltipTitle
+      fieldStatType
+      leaderboardFeatures
+      sponsor {
+        sponsorLogo
+        sponsorLogoAsset {
+          imageOrg
+          imagePath
+          assetType
+          deliveryType
+          fallbackImage
+        }
+        sponsorLogoDark
+        sponsorLogoDarkAsset {
+          imageOrg
+          imagePath
+          assetType
+          deliveryType
+          fallbackImage
+        }
+        sponsorText
+      }
+    }
+    standingsEnabled
+    standingsHeader
+    hideSov
+    disableOdds
+    disableBettingProfileColumn
+    cutLineProbabilities {
+      projectedCutLine
+      probableCutLine
+      sponsorLogo {
+        imageOrg
+        imagePath
+        assetType
+        deliveryType
+        fallbackImage
+      }
+      sponsorName
+      lastUpdated
+      possibleCutLines {
+        score
+        probability
+        displayProbability
+      }
+      new
+    }
+    disableLeaderboard
+    bubblePill {
+      iconLight {
+        imageOrg
+        imagePath
+        assetType
+        deliveryType
+        fallbackImage
+      }
+      iconDark {
+        imageOrg
+        imagePath
+        assetType
+        deliveryType
+        fallbackImage
+      }
+      pillText
+    }
+  }
+}
+    `;
+export const LeaderboardHoleByHole = gql`
+    query LeaderboardHoleByHole($tournamentId: ID!, $round: Int) {
+  leaderboardHoleByHole(tournamentId: $tournamentId, round: $round) {
+    tournamentId
+    currentRound
+    rounds {
+      roundNumber
+      displayText
+    }
+    tournamentName
+    holeHeaders {
+      holeNumber
+      hole
+      par
+    }
+    courseHoleHeaders {
+      courseId
+      holeHeaders {
+        holeNumber
+        order
+        displayValue
+        par
+      }
+    }
+    courses {
+      id
+      courseName
+      courseCode
+      hostCourse
+      scoringLevel
+      enabled
+      features
+    }
+    playerData {
+      playerId
+      courseId
+      courseCode
+      scores {
+        holeNumber
+        par
+        yardage
+        sequenceNumber
+        score
+        status
+        roundScore
+      }
+      out
+      in
+      total
+      totalToPar
+    }
+  }
+}
+    `;
+export const ScheduleYears = gql`
+    query ScheduleYears($tourCode: TourCode!) {
+  scheduleYears(tourCode: $tourCode) {
+    years {
+      default
+      displayValue
+      queryValue
+    }
+  }
+}
+    `;
+export const Schedule = gql`
+    query Schedule($tourCode: String!, $year: String) {
+  schedule(tourCode: $tourCode, year: $year) {
+    ...ScheduleFields
+  }
+}
+    ${ScheduleFields}`;
+export const CompleteSchedule = gql`
+    query CompleteSchedule($tourCode: TourCode!) {
+  completeSchedule(tourCode: $tourCode) {
+    ...ScheduleFields
+  }
+}
+    ${ScheduleFields}`;
+export const UpcomingSchedule = gql`
+    query UpcomingSchedule($tourCode: String!) {
+  upcomingSchedule(tourCode: $tourCode) {
+    tournaments {
+      ...ScheduleTournamentFields
+    }
+  }
+}
+    ${ScheduleTournamentFields}`;
 export const Tournaments = gql`
     query Tournaments($ids: [ID!]) {
   tournaments(ids: $ids) {

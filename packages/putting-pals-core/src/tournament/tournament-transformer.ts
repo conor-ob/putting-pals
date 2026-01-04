@@ -1,10 +1,15 @@
-import type { Tournament } from "@putting-pals/pga-tour-schema/types";
+import type {
+  Tournament,
+  TournamentsQuery,
+} from "@putting-pals/pga-tour-schema/types";
 import type { RecursivePartial } from "@putting-pals/putting-pals-utils/type-utils";
 import { formatISO, parse } from "date-fns";
 import { getImageUrl } from "../utils/image-utils";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
-export function transformTournament(tournament: Tournament) {
+export function transformTournament(
+  tournament: TournamentsQuery["tournaments"][number],
+) {
   return {
     beautyImage: getImageUrl(
       tournament.beautyImageAsset,

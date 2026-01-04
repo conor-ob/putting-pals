@@ -1,13 +1,11 @@
+import type { TypedDocumentNode } from "@graphql-typed-document-node/core";
+import { print } from "graphql";
+
 export class GraphQlClient {
-  protected async query<TResult = unknown>({
-    operationName,
-    query,
-    variables,
-  }: {
-    operationName: string;
-    query: string;
-    variables: Record<string, unknown>;
-  }) {
+  protected async query<TResult, TVariables>(
+    document: TypedDocumentNode<TResult, TVariables>,
+    variables: TVariables,
+  ): Promise<TResult> {
     return fetch("https://orchestrator.pgatour.com/graphql", {
       method: "POST",
       headers: {
@@ -15,7 +13,22 @@ export class GraphQlClient {
         "x-api-key": "da2-gsrx5bibzbb4njvhl7t37wqyl4",
         "x-pgat-platform": "web",
       },
-      body: JSON.stringify({ operationName, query, variables }),
+      body: JSON.stringify({
+        operationName: this.getOperationName(document),
+        query: print(document),
+        variables,
+      }),
     }).then((res) => res.json()) as Promise<TResult>;
+  }
+
+  private getOperationName<TResult, TVariables>(
+    document: TypedDocumentNode<TResult, TVariables>,
+  ): string | undefined {
+    for (const def of document.definitions) {
+      if (def.kind === "OperationDefinition" && def.name) {
+        return def.name.value;
+      }
+    }
+    return undefined;
   }
 }
