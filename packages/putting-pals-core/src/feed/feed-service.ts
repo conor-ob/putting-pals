@@ -2,6 +2,7 @@ import type { Database } from "@putting-pals/putting-pals-db/client";
 import { leaderboardFeedTable } from "@putting-pals/putting-pals-db/schema";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 import { and, desc, eq, isNull, lt } from "drizzle-orm";
+import { TournamentResolver } from "../tournament/tournament-resolver";
 
 const PAGE_SIZE = 20;
 
@@ -10,13 +11,16 @@ export class FeedService {
     this.db = db;
   }
 
-  async getFeed(tourCode: TourCode, cursor?: number) {
+  async getFeed(tourCode: TourCode, id?: string, cursor?: number) {
+    const tournamentId = await this.resolveTournamentId(tourCode, id);
+
     const items = await this.db
       .select()
       .from(leaderboardFeedTable)
       .where(
         and(
           eq(leaderboardFeedTable.tourCode, tourCode),
+          eq(leaderboardFeedTable.tournamentId, tournamentId),
           isNull(leaderboardFeedTable.deletedAt),
           cursor ? lt(leaderboardFeedTable.seq, cursor) : undefined,
         ),
@@ -34,5 +38,12 @@ export class FeedService {
       items: feedItems,
       nextCursor,
     };
+  }
+
+  private async resolveTournamentId(tourCode: TourCode, id?: string) {
+    if (id === undefined) {
+      return await new TournamentResolver().getCurrentTournamentId(tourCode);
+    }
+    return id;
   }
 }
