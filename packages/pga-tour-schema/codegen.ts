@@ -10,11 +10,18 @@ const config: CodegenConfig = {
       },
     },
   ],
+  documents: ["src/graphql/**/*.graphql"],
   generates: {
-    "src/types.ts": {
-      plugins: ["typescript"],
+    "src/generated/graphql.ts": {
+      plugins: [
+        "typescript",
+        "typescript-operations",
+        "typed-document-node",
+        "typescript-document-nodes",
+      ],
       config: {
         enumsAsTypes: true,
+        useTypeImports: true,
       },
     },
   },

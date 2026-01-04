@@ -1,0 +1,22 @@
+query Tournaments($ids: [ID!]) {
+  tournaments(ids: $ids) {
+    beautyImageAsset {
+      fallbackImage
+      imageOrg
+      imagePath
+    }
+    displayDate
+    id
+    roundDisplay
+    roundStatus
+    roundStatusColor
+    roundStatusDisplay
+    tournamentLogoAsset {
+      fallbackImage
+      imageOrg
+      imagePath
+    }
+    tournamentName
+    tournamentStatus
+  }
+}
