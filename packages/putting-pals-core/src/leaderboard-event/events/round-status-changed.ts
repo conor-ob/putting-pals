@@ -8,8 +8,8 @@ import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 export class RoundStatusChanged extends AbstractEventEmitter {
   override filter(): boolean {
     return (
-      this.after.roundStatus !== "UPCOMING" &&
-      this.after.roundStatus !== this.before.roundStatus
+      this.after.tournament.roundStatus !== "UPCOMING" &&
+      this.after.tournament.roundStatus !== this.before.tournament.roundStatus
     );
   }
 
@@ -18,23 +18,23 @@ export class RoundStatusChanged extends AbstractEventEmitter {
       {
         __typename: "RoundStatusChangedV1" as const,
         before: {
-          roundDisplay: this.before.roundDisplay,
-          roundStatus: this.before.roundStatus,
-          roundStatusColor: this.before.roundStatusColor,
-          roundStatusDisplay: this.before.roundStatusDisplay,
+          roundDisplay: this.before.tournament.roundDisplay,
+          roundStatus: this.before.tournament.roundStatus,
+          roundStatusColor: this.before.tournament.roundStatusColor,
+          roundStatusDisplay: this.before.tournament.roundStatusDisplay,
         },
         after: {
-          roundDisplay: this.after.roundDisplay,
-          roundStatus: this.after.roundStatus,
-          roundStatusColor: this.after.roundStatusColor,
-          roundStatusDisplay: this.after.roundStatusDisplay,
+          roundDisplay: this.after.tournament.roundDisplay,
+          roundStatus: this.after.tournament.roundStatus,
+          roundStatusColor: this.after.tournament.roundStatusColor,
+          roundStatusDisplay: this.after.tournament.roundStatusDisplay,
         },
       } satisfies RoundStatusChangedV1,
     ];
   }
 
   override getPriority(): number {
-    switch (this.after.roundStatus) {
+    switch (this.after.tournament.roundStatus) {
       case "UPCOMING":
       case "GROUPINGS_OFFICIAL":
       case "IN_PROGRESS":
@@ -44,7 +44,7 @@ export class RoundStatusChanged extends AbstractEventEmitter {
       case "OFFICIAL":
         return EventPriority.ROUND_STOPPING_EVENT;
       default:
-        assertNever(this.after.roundStatus);
+        assertNever(this.after.tournament.roundStatus);
     }
   }
 }

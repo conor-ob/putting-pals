@@ -1,18 +1,13 @@
+import type { ApiLeaderboard } from "@putting-pals/pga-tour-schema/types";
 import type { Competition } from "@putting-pals/putting-pals-schema/types";
-import type { TransformedLeaderboard } from "./leaderboard-transformer";
-
-type TransformedPlayerRow = Extract<
-  TransformedLeaderboard["rows"][number],
-  { __typename: "PlayerRowV3" }
->;
 
 export function aggregateLeaderboard(
-  leaderboard: TransformedLeaderboard,
+  leaderboard: ApiLeaderboard,
   competition: Competition,
 ) {
   const competitors = competition.competitors
     .map((competitor) => {
-      const playerRows = leaderboard.rows.filter(
+      const playerRows = leaderboard.players.filter(
         (it) => it.__typename === "PlayerRowV3",
       );
       const picks = playerRows.filter((it) => competitor.picks.includes(it.id));
@@ -112,6 +107,7 @@ export function aggregateLeaderboard(
           total: competitor.total,
           totalSort: competitor.totalSort,
         },
+        picks: competitor.picks.map((pick) => pick.player.id),
       },
       ...competitor.picks.map((pick) => ({
         ...pick,
@@ -124,11 +120,8 @@ export function aggregateLeaderboard(
     }));
 
   return {
-    formatType: leaderboard.formatType,
-    id: leaderboard.id,
-    leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
-    rows,
-    tournamentStatus: leaderboard.tournamentStatus,
+    ...leaderboard,
+    players: rows,
   };
 }
 
@@ -152,10 +145,16 @@ function applyScoringRules({
   allPicks,
   scoringRules,
 }: {
-  picks: TransformedPlayerRow[];
-  allPicks: TransformedPlayerRow[];
+  picks: Extract<
+    ApiLeaderboard["players"][number],
+    { __typename: "PlayerRowV3" }
+  >[];
+  allPicks: Extract<
+    ApiLeaderboard["players"][number],
+    { __typename: "PlayerRowV3" }
+  >[];
   scoringRules?: string;
-}): TransformedPlayerRow[] {
+}) {
   if (scoringRules === "MISSED_CUT") {
     return picks.map((playerRow) => {
       if (

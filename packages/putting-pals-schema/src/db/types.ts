@@ -8,35 +8,60 @@ export type LeaderboardSnapshot = LeaderboardSnapshotV1;
 
 export type LeaderboardSnapshotV1 = {
   __typename: "LeaderboardSnapshotV1";
-  tournamentName: string;
-  tournamentStatus: TournamentStatus;
-  roundDisplay: string;
-  roundStatus: RoundStatus;
-  roundStatusColor: RoundStatusColor;
-  roundStatusDisplay: string;
-  rows: {
-    __typename: "PlayerRowV3";
-    id: string;
-    leaderboardSortOrder: number;
-    player: {
-      abbreviations: string;
-      amateur: boolean;
-      countryFlag: string;
-      displayName: string;
-      id: string;
-      shortName: string;
+  tournament: {
+    beautyImageAsset: {
+      assetType?: string | null;
+      deliveryType?: string | null;
+      fallbackImage?: string | null;
+      imageOrg: string;
+      imagePath: string;
     };
-    scoringData: {
-      position: string;
-      score: string;
-      scoreSort: number;
-      teeTime: Date | undefined;
-      thru: string;
-      thruSort: number;
-      total: string;
-      totalSort: number;
-    };
-  }[];
+    roundDisplay: string;
+    roundStatus: RoundStatus;
+    roundStatusColor: RoundStatusColor;
+    roundStatusDisplay: string;
+    tournamentLogoAsset: {
+      assetType?: string | null;
+      deliveryType?: string | null;
+      fallbackImage?: string | null;
+      imageOrg: string;
+      imagePath: string;
+    }[];
+    tournamentName: string;
+    tournamentStatus: TournamentStatus;
+  };
+  leaderboard: {
+    players: (
+      | {
+          __typename: "InformationRow";
+        }
+      | {
+          __typename: "PlayerRowV3";
+          player: {
+            id: string;
+            displayName: string;
+          };
+          scoringData: {
+            position: string;
+            total: string;
+          };
+        }
+      | {
+          __typename: "PuttingPalsPlayerRow";
+          player: {
+            id: string;
+            displayName: string;
+          };
+          scoringData: {
+            position: string;
+            total: string;
+          };
+        }
+    )[];
+  };
+  leaderboardHoleByHole: {
+    tournamentId: string;
+  };
 };
 
 export type RoundStatusChangedV1 = {

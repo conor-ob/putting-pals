@@ -32,7 +32,7 @@ export class NewLeader extends AbstractEventEmitter {
       {
         __typename: "NewLeaderV1" as const,
         before: {
-          leaders: this.before.rows
+          leaders: this.before.leaderboard.players
             .filter((row) => row.__typename === "PlayerRowV3")
             .filter(
               (row) =>
@@ -44,7 +44,7 @@ export class NewLeader extends AbstractEventEmitter {
             })),
         },
         after: {
-          leaders: this.after.rows
+          leaders: this.after.leaderboard.players
             .filter((row) => row.__typename === "PlayerRowV3")
             .filter(
               (row) =>

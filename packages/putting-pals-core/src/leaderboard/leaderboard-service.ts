@@ -4,7 +4,7 @@ import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { CompetitionService } from "../competition/competition-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
-import { transformLeaderboard } from "./leaderboard-transformer";
+import { transformLeaderboard } from "./leaderboard-utils";
 
 export class LeaderboardService {
   async getLeaderboard(tourCode: TourCode, id?: string) {
@@ -17,6 +17,10 @@ export class LeaderboardService {
       default:
         assertNever(tourCode);
     }
+  }
+
+  async getLeaderboardHoleByHole(id: string, round: number) {
+    return new LeaderboardClient().getLeaderboardHoleByHole(id, round);
   }
 
   private async resolveTournamentId(tourCode: TourCode, id?: string) {

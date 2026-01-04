@@ -102,43 +102,77 @@ export class LeaderboardEventProcessor {
       new TournamentService().getTournament(tourCode, tournamentId),
       new LeaderboardService().getLeaderboard(tourCode, tournamentId),
     ]);
+
+    const currentRound = tournament.currentRound;
+    const leaderboardHoleByHole =
+      await new LeaderboardService().getLeaderboardHoleByHole(
+        tournamentId,
+        currentRound,
+      );
+
     return {
       __typename: "LeaderboardSnapshotV1",
-      tournamentName: tournament.tournamentName,
-      tournamentStatus: "COMPLETED",
-      roundDisplay: "R4",
-      roundStatus: "OFFICIAL",
-      roundStatusColor: "GREEN",
-      roundStatusDisplay: "Official",
-      rows: leaderboard.rows.flatMap((row) => {
-        if (row.__typename === "PlayerRowV3") {
-          return {
-            __typename: row.__typename,
-            id: row.id,
-            leaderboardSortOrder: row.leaderboardSortOrder,
-            player: {
-              abbreviations: row.player.abbreviations,
-              amateur: row.player.amateur,
-              countryFlag: row.player.countryFlag,
-              displayName: row.player.displayName,
-              id: row.player.id,
-              shortName: row.player.shortName,
-            } satisfies LeaderboardSnapshotV1["rows"][number]["player"],
-            scoringData: {
-              position: row.scoringData.position,
-              score: row.scoringData.score,
-              scoreSort: row.scoringData.scoreSort,
-              teeTime: row.scoringData.teeTime,
-              thru: row.scoringData.thru,
-              thruSort: row.scoringData.thruSort,
-              total: row.scoringData.total,
-              totalSort: row.scoringData.totalSort,
-            } satisfies LeaderboardSnapshotV1["rows"][number]["scoringData"],
-          } satisfies LeaderboardSnapshotV1["rows"][number];
-        } else {
-          return [];
-        }
-      }),
+      tournament: {
+        beautyImageAsset: {
+          assetType: tournament.beautyImageAsset.assetType,
+          deliveryType: tournament.beautyImageAsset.deliveryType,
+          fallbackImage: tournament.beautyImageAsset.fallbackImage,
+          imageOrg: tournament.beautyImageAsset.imageOrg,
+          imagePath: tournament.beautyImageAsset.imagePath,
+        },
+        roundDisplay: tournament.roundDisplay,
+        roundStatus: tournament.roundStatus,
+        roundStatusColor: tournament.roundStatusColor,
+        roundStatusDisplay: tournament.roundStatusDisplay,
+        tournamentLogoAsset: tournament.tournamentLogoAsset.map((asset) => ({
+          assetType: asset.assetType,
+          deliveryType: asset.deliveryType,
+          fallbackImage: asset.fallbackImage,
+          imageOrg: asset.imageOrg,
+          imagePath: asset.imagePath,
+        })),
+        tournamentName: tournament.tournamentName,
+        tournamentStatus: tournament.tournamentStatus,
+      },
+      leaderboard: {
+        players: leaderboard.players.flatMap((row) => {
+          switch (row.__typename) {
+            case "InformationRow":
+              return {
+                __typename: "InformationRow" as const,
+              };
+            case "PlayerRowV3":
+              return {
+                __typename: "PlayerRowV3" as const,
+                player: {
+                  id: row.player.id,
+                  displayName: row.player.displayName,
+                },
+                scoringData: {
+                  position: row.scoringData.position,
+                  total: row.scoringData.total,
+                },
+              };
+            case "PuttingPalsPlayerRow":
+              return {
+                __typename: "PuttingPalsPlayerRow" as const,
+                player: {
+                  id: row.player.id,
+                  displayName: row.player.displayName,
+                },
+                scoringData: {
+                  position: row.scoringData.position,
+                  total: row.scoringData.total,
+                },
+              };
+            default:
+              return [];
+          }
+        }),
+      },
+      leaderboardHoleByHole: {
+        tournamentId: leaderboardHoleByHole.tournamentId,
+      },
     } satisfies LeaderboardSnapshotV1;
   }
 
