@@ -6,7 +6,7 @@
       "cache": false
     },
     "codegen": {
-      "cache": false
+      "outputs": ["src/generated/**"]
     },
     "db:generate": {
       "outputs": ["drizzle/**"]
