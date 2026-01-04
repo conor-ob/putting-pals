@@ -2,7 +2,7 @@ import type { LeaderboardEvent } from "@putting-pals/putting-pals-schema/types";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class PlayerPositionDecreased extends AbstractEventEmitter {
+export class BirdieStreak extends AbstractEventEmitter {
   override emit(): LeaderboardEvent[] {
     switch (this.tourCode) {
       case "P":
@@ -15,6 +15,6 @@ export class PlayerPositionDecreased extends AbstractEventEmitter {
   }
 
   override getPriority(): number {
-    return EventPriority.PLAYER_POSITION_DECREASED_EVENT;
+    return EventPriority.BIRDIE_STREAK_EVENT;
   }
 }

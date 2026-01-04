@@ -1,6 +1,6 @@
 import type {
-  LeaderboardEventTypes,
-  LeaderboardSnapshotTypes,
+  LeaderboardEvent,
+  LeaderboardSnapshot,
 } from "@putting-pals/putting-pals-schema/types";
 import {
   index,
@@ -48,7 +48,7 @@ export const leaderboardSnapshotTable = pgTable(
     ...timestampColumns,
     ...tournamentIdentifierColumns,
     type: text("type").notNull(),
-    snapshot: jsonb("snapshot").notNull().$type<LeaderboardSnapshotTypes>(),
+    snapshot: jsonb("snapshot").notNull().$type<LeaderboardSnapshot>(),
   },
   (table) => [
     index("leaderboard_snapshot_tournament_idx").on(
@@ -66,7 +66,7 @@ export const leaderboardFeedTable = pgTable(
     ...tournamentIdentifierColumns,
     seq: serial("seq").notNull(),
     type: text("type").notNull(),
-    feedItem: jsonb("feed_item").notNull().$type<LeaderboardEventTypes>(),
+    feedItem: jsonb("feed_item").notNull().$type<LeaderboardEvent>(),
   },
   (table) => [
     index("leaderboard_feed_tournament_idx").on(

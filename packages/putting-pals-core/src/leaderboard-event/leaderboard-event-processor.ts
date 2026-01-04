@@ -4,7 +4,7 @@ import {
   leaderboardSnapshotTable,
 } from "@putting-pals/putting-pals-db/schema";
 import type {
-  LeaderboardEventTypes,
+  LeaderboardEvent,
   LeaderboardSnapshotV1,
   TourCode,
 } from "@putting-pals/putting-pals-schema/types";
@@ -12,11 +12,16 @@ import { and, desc, eq } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";
 import { TournamentService } from "../tournament/tournament-service";
+import type { EventEmitter } from "./event-emitter";
+import { BirdieStreak } from "./events/birdie-streak";
 import { NewLeader } from "./events/new-leader";
+import { PlayerDisqualified } from "./events/player-disqualified";
 import { PlayerPositionDecreased } from "./events/player-position-decreased";
 import { PlayerPositionIncreased } from "./events/player-position-increased";
+import { PlayerWithdrawn } from "./events/player-withdrawn";
 import { RoundStatusChanged } from "./events/round-status-changed";
 import { TournamentStatusChanged } from "./events/tournament-status-changed";
+import { TournamentWinner } from "./events/tournament-winner";
 
 export class LeaderboardEventProcessor {
   constructor(private readonly db: Database) {
@@ -42,24 +47,28 @@ export class LeaderboardEventProcessor {
       return;
     }
 
-    const eventEmitters = [
+    const eventEmitters: EventEmitter[] = [
+      new BirdieStreak(tourCode, before, after),
+      new NewLeader(tourCode, before, after),
+      new PlayerDisqualified(tourCode, before, after),
+      new PlayerPositionDecreased(tourCode, before, after),
+      new PlayerPositionIncreased(tourCode, before, after),
+      new PlayerWithdrawn(tourCode, before, after),
       new RoundStatusChanged(tourCode, before, after),
       new TournamentStatusChanged(tourCode, before, after),
-      new NewLeader(tourCode, before, after),
-      new PlayerPositionIncreased(tourCode, before, after),
-      new PlayerPositionDecreased(tourCode, before, after),
+      new TournamentWinner(tourCode, before, after),
     ];
 
     const events = eventEmitters
       .filter((eventEmitter) => eventEmitter.filter())
-      .flatMap((eventEmitter) => eventEmitter.emit())
-      .sort((a, b) => a.order - b.order);
+      .sort((a, b) => a.getPriority() - b.getPriority())
+      .flatMap((eventEmitter) => eventEmitter.emit());
 
     if (events.length > 0) {
       await this.insertLeaderboardFeedEvents(
         tourCode,
         tournamentId,
-        events.map((it) => it.event),
+        events,
         after,
       );
     }
@@ -96,11 +105,11 @@ export class LeaderboardEventProcessor {
     return {
       __typename: "LeaderboardSnapshotV1",
       tournamentName: tournament.tournamentName,
-      tournamentStatus: tournament.tournamentStatus,
-      roundDisplay: tournament.roundDisplay,
-      roundStatus: tournament.roundStatus,
-      roundStatusColor: tournament.roundStatusColor,
-      roundStatusDisplay: tournament.roundStatusDisplay,
+      tournamentStatus: "COMPLETED",
+      roundDisplay: "R4",
+      roundStatus: "OFFICIAL",
+      roundStatusColor: "GREEN",
+      roundStatusDisplay: "Official",
       rows: leaderboard.rows.flatMap((row) => {
         if (row.__typename === "PlayerRowV3") {
           return {
@@ -149,7 +158,7 @@ export class LeaderboardEventProcessor {
   private async insertLeaderboardFeedEvents(
     tourCode: TourCode,
     tournamentId: string,
-    events: LeaderboardEventTypes[],
+    events: LeaderboardEvent[],
     snapshot: LeaderboardSnapshotV1,
   ) {
     await this.db.transaction(async (tx) => {

@@ -1,5 +1,6 @@
+import type { LeaderboardEvent } from "@putting-pals/putting-pals-schema/types";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
-import { AbstractEventEmitter, type LeaderboardEvent } from "../event-emitter";
+import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class PlayerPositionIncreased extends AbstractEventEmitter {
   override emit(): LeaderboardEvent[] {
@@ -11,5 +12,9 @@ export class PlayerPositionIncreased extends AbstractEventEmitter {
       default:
         assertNever(this.tourCode);
     }
+  }
+
+  override getPriority(): number {
+    return EventPriority.PLAYER_POSITION_INCREASED_EVENT;
   }
 }

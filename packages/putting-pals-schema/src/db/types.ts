@@ -4,7 +4,7 @@ import type {
   TournamentStatus,
 } from "@putting-pals/pga-tour-schema/types";
 
-export type LeaderboardSnapshotTypes = LeaderboardSnapshotV1;
+export type LeaderboardSnapshot = LeaderboardSnapshotV1;
 
 export type LeaderboardSnapshotV1 = {
   __typename: "LeaderboardSnapshotV1";
@@ -63,5 +63,19 @@ export type TournamentStatusChangedV1 = {
   };
   after: {
     tournamentStatus: TournamentStatus;
+  };
+};
+
+export type NewLeaderV1 = {
+  __typename: "NewLeaderV1";
+  before: {
+    leaders: {
+      displayName: string;
+    }[];
+  };
+  after: {
+    leaders: {
+      displayName: string;
+    }[];
   };
 };
