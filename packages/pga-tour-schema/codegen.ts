@@ -24,6 +24,7 @@ const config: CodegenConfig = {
       config: {
         addTypename: true,
         enumsAsTypes: true,
+        immutableTypes: true,
         nonOptionalTypename: true,
         useTypeImports: true,
       },
