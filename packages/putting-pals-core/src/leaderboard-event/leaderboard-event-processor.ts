@@ -42,7 +42,7 @@ export class LeaderboardEventProcessor {
       tournamentId,
     );
 
-    if (before === undefined) {
+    if (before === undefined || before.__typename !== after.__typename) {
       await this.insertBaseLeaderboardSnapshot(tourCode, tournamentId, after);
       return;
     }
