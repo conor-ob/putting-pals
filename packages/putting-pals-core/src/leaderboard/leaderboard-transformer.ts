@@ -2,10 +2,7 @@ import type {
   LeaderboardRowV3,
   LeaderboardV3,
 } from "@putting-pals/pga-tour-schema/types";
-import {
-  assertNever,
-  type RecursivePartial,
-} from "@putting-pals/putting-pals-utils/type-utils";
+import type { RecursivePartial } from "@putting-pals/putting-pals-utils/type-utils";
 import { getCountryFlag } from "./leaderboard-flag-utils";
 
 export type TransformedLeaderboard = ReturnType<typeof transformLeaderboard>;
@@ -15,7 +12,7 @@ export function transformLeaderboard(leaderboard: LeaderboardV3) {
     formatType: leaderboard.formatType,
     id: leaderboard.id,
     leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
-    rows: leaderboard.players.map((row) => {
+    rows: leaderboard.players.flatMap((row) => {
       switch (row.__typename) {
         case "PlayerRowV3":
           return {
@@ -55,7 +52,7 @@ export function transformLeaderboard(leaderboard: LeaderboardV3) {
             leaderboardSortOrder: row.leaderboardSortOrder,
           };
         default:
-          return assertNever(row.__typename);
+          return [];
       }
     }),
     tournamentStatus: leaderboard.tournamentStatus,

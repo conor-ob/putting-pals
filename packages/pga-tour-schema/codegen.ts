@@ -1,4 +1,5 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
+import { addTypenameSelectionDocumentTransform } from "@graphql-codegen/client-preset";
 
 const config: CodegenConfig = {
   schema: [
@@ -19,8 +20,11 @@ const config: CodegenConfig = {
         "typed-document-node",
         "typescript-document-nodes",
       ],
+      documentTransforms: [addTypenameSelectionDocumentTransform],
       config: {
+        addTypename: true,
         enumsAsTypes: true,
+        nonOptionalTypename: true,
         useTypeImports: true,
       },
     },

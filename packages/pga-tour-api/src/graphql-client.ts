@@ -5,8 +5,8 @@ export class GraphQlClient {
   protected async query<TResult, TVariables>(
     document: TypedDocumentNode<TResult, TVariables>,
     variables: TVariables,
-  ): Promise<TResult> {
-    return fetch("https://orchestrator.pgatour.com/graphql", {
+  ) {
+    const response = await fetch("https://orchestrator.pgatour.com/graphql", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -18,7 +18,12 @@ export class GraphQlClient {
         query: print(document),
         variables,
       }),
-    }).then((res) => res.json()) as Promise<TResult>;
+    });
+    const json = (await response.json()) as {
+      data: TResult;
+      errors?: { message: string }[];
+    };
+    return json.data;
   }
 
   private getOperationName<TResult, TVariables>(

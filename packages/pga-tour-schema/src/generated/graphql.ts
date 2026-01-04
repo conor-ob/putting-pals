@@ -19,19 +19,19 @@ export type Scalars = {
 };
 
 export type ArHole = {
-  __typename?: 'ARHole';
+  __typename: 'ARHole';
   holeNumber: Scalars['Int']['output'];
 };
 
 export type Abbreviations = {
-  __typename?: 'Abbreviations';
+  __typename: 'Abbreviations';
   description?: Maybe<Scalars['String']['output']>;
   key: Scalars['String']['output'];
   title: Scalars['String']['output'];
 };
 
 export type AdConfig = {
-  __typename?: 'AdConfig';
+  __typename: 'AdConfig';
   aon?: Maybe<AdTagConfig>;
   aonSection?: Maybe<AdTagConfig>;
   audio?: Maybe<AdTagConfig>;
@@ -121,13 +121,13 @@ export type AdConfig = {
 };
 
 export type AdSize = {
-  __typename?: 'AdSize';
+  __typename: 'AdSize';
   height: Scalars['Int']['output'];
   width: Scalars['Int']['output'];
 };
 
 export type AdTagConfig = {
-  __typename?: 'AdTagConfig';
+  __typename: 'AdTagConfig';
   actRefresh?: Maybe<Scalars['Boolean']['output']>;
   adTest?: Maybe<Scalars['String']['output']>;
   environment?: Maybe<Scalars['String']['output']>;
@@ -141,7 +141,7 @@ export type AdTagConfig = {
 };
 
 export type AdTagRowConfig = {
-  __typename?: 'AdTagRowConfig';
+  __typename: 'AdTagRowConfig';
   container?: Maybe<AdSize>;
   containerLarge?: Maybe<AdSize>;
   containerMedium?: Maybe<AdSize>;
@@ -154,20 +154,20 @@ export type AdTagRowConfig = {
 };
 
 export type AllTimeRecordCategories = {
-  __typename?: 'AllTimeRecordCategories';
+  __typename: 'AllTimeRecordCategories';
   categories: Array<AllTimeRecordCategory>;
   tourCode: TourCode;
 };
 
 export type AllTimeRecordCategory = {
-  __typename?: 'AllTimeRecordCategory';
+  __typename: 'AllTimeRecordCategory';
   categoryId: Scalars['String']['output'];
   displayText: Scalars['String']['output'];
   subCategories: Array<AllTimeRecordSubCategory>;
 };
 
 export type AllTimeRecordStat = {
-  __typename?: 'AllTimeRecordStat';
+  __typename: 'AllTimeRecordStat';
   categoryId: Scalars['String']['output'];
   categoryName: Scalars['String']['output'];
   isPlayerBased: Scalars['Boolean']['output'];
@@ -181,25 +181,25 @@ export type AllTimeRecordStat = {
 };
 
 export type AllTimeRecordStatRow = {
-  __typename?: 'AllTimeRecordStatRow';
+  __typename: 'AllTimeRecordStatRow';
   playerId?: Maybe<Scalars['String']['output']>;
   values: Array<Scalars['String']['output']>;
 };
 
 export type AllTimeRecordStatistic = {
-  __typename?: 'AllTimeRecordStatistic';
+  __typename: 'AllTimeRecordStatistic';
   displayText: Scalars['String']['output'];
   recordId: Scalars['String']['output'];
 };
 
 export type AllTimeRecordSubCategory = {
-  __typename?: 'AllTimeRecordSubCategory';
+  __typename: 'AllTimeRecordSubCategory';
   displayText: Scalars['String']['output'];
   statistics: Array<AllTimeRecordStatistic>;
 };
 
 export type Aon = {
-  __typename?: 'Aon';
+  __typename: 'Aon';
   description: Scalars['String']['output'];
   leaders: Array<AonPlayer>;
   logo: Scalars['String']['output'];
@@ -210,7 +210,7 @@ export type Aon = {
 };
 
 export type AonHole = {
-  __typename?: 'AonHole';
+  __typename: 'AonHole';
   courseName: Scalars['String']['output'];
   dateText: Scalars['String']['output'];
   holeImage: Scalars['String']['output'];
@@ -222,7 +222,7 @@ export type AonHole = {
 };
 
 export type AonPlayer = {
-  __typename?: 'AonPlayer';
+  __typename: 'AonPlayer';
   countryCode: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
   playerId: Scalars['ID']['output'];
@@ -237,7 +237,7 @@ export type ArticleFormType =
   | 'Standard';
 
 export type ArticleOddsMarkets = {
-  __typename?: 'ArticleOddsMarkets';
+  __typename: 'ArticleOddsMarkets';
   class: Scalars['String']['output'];
   market: HistoricalOddsId;
 };
@@ -248,7 +248,7 @@ export type ArticleOddsMarketsInput = {
 };
 
 export type ArticleOddsPlayer = {
-  __typename?: 'ArticleOddsPlayer';
+  __typename: 'ArticleOddsPlayer';
   playerId: Scalars['String']['output'];
   playerName?: Maybe<Scalars['String']['output']>;
 };
@@ -259,7 +259,7 @@ export type ArticleOddsPlayerInput = {
 };
 
 export type ArticleOddsTableQuery = {
-  __typename?: 'ArticleOddsTableQuery';
+  __typename: 'ArticleOddsTableQuery';
   markets?: Maybe<Array<ArticleOddsMarkets>>;
   players?: Maybe<Array<ArticleOddsPlayer>>;
   timeStamp?: Maybe<Scalars['String']['output']>;
@@ -268,7 +268,7 @@ export type ArticleOddsTableQuery = {
 };
 
 export type ArticlePlayer = {
-  __typename?: 'ArticlePlayer';
+  __typename: 'ArticlePlayer';
   id: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
@@ -277,7 +277,7 @@ export type ArticleSponsor =
   | 'GOLFWRX';
 
 export type Audio = {
-  __typename?: 'Audio';
+  __typename: 'Audio';
   id: Scalars['ID']['output'];
   imageUrl: Scalars['String']['output'];
   latestPubDate: Scalars['AWSTimestamp']['output'];
@@ -290,7 +290,7 @@ export type Audio = {
 };
 
 export type AudioStream = {
-  __typename?: 'AudioStream';
+  __typename: 'AudioStream';
   id: Scalars['ID']['output'];
   live: Scalars['Boolean']['output'];
   posterImage: Scalars['String']['output'];
@@ -300,24 +300,24 @@ export type AudioStream = {
 };
 
 export type AugmentedRealityConfig = {
-  __typename?: 'AugmentedRealityConfig';
+  __typename: 'AugmentedRealityConfig';
   holes: Array<ArHole>;
 };
 
 export type AvailableMarket = {
-  __typename?: 'AvailableMarket';
+  __typename: 'AvailableMarket';
   market: Scalars['String']['output'];
   oddsOptions: Array<OddsOption>;
   subMarket?: Maybe<Scalars['String']['output']>;
 };
 
 export type BallPath = {
-  __typename?: 'BallPath';
+  __typename: 'BallPath';
   path: Array<BallPathCoordinate>;
 };
 
 export type BallPathCoordinate = {
-  __typename?: 'BallPathCoordinate';
+  __typename: 'BallPathCoordinate';
   secondsSinceStart: Scalars['Float']['output'];
   x: Scalars['Float']['output'];
   y: Scalars['Float']['output'];
@@ -331,13 +331,13 @@ export type BaseOddsOption = {
 };
 
 export type BioRank = {
-  __typename?: 'BioRank';
+  __typename: 'BioRank';
   rank: Scalars['Int']['output'];
   statName: Scalars['String']['output'];
 };
 
 export type BroadcastAudioStream = {
-  __typename?: 'BroadcastAudioStream';
+  __typename: 'BroadcastAudioStream';
   channelTitle: Scalars['String']['output'];
   endTime: Scalars['AWSTimestamp']['output'];
   id: Scalars['String']['output'];
@@ -350,7 +350,7 @@ export type BroadcastAudioStream = {
 };
 
 export type BroadcastCoverage = {
-  __typename?: 'BroadcastCoverage';
+  __typename: 'BroadcastCoverage';
   countryCode: Scalars['String']['output'];
   coverageType: Array<BroadcastCoverageType>;
   id: Scalars['String']['output'];
@@ -359,7 +359,7 @@ export type BroadcastCoverage = {
 };
 
 export type BroadcastCoverageCarousel = {
-  __typename?: 'BroadcastCoverageCarousel';
+  __typename: 'BroadcastCoverageCarousel';
   carousel: Array<BroadcastCoverageVideo>;
 };
 
@@ -370,7 +370,7 @@ export type BroadcastCoverageType = BroadcastAudioStream | BroadcastCoverageCaro
 export type BroadcastCoverageVideo = BroadcastFeaturedGroup | BroadcastFeaturedHole | BroadcastFullTelecast;
 
 export type BroadcastFeaturedGroup = {
-  __typename?: 'BroadcastFeaturedGroup';
+  __typename: 'BroadcastFeaturedGroup';
   channelTitle: Scalars['String']['output'];
   courseId?: Maybe<Scalars['String']['output']>;
   endTime: Scalars['AWSTimestamp']['output'];
@@ -387,7 +387,7 @@ export type BroadcastFeaturedGroup = {
 };
 
 export type BroadcastFeaturedHole = {
-  __typename?: 'BroadcastFeaturedHole';
+  __typename: 'BroadcastFeaturedHole';
   channelTitle: Scalars['String']['output'];
   courseId?: Maybe<Scalars['String']['output']>;
   endTime: Scalars['AWSTimestamp']['output'];
@@ -404,7 +404,7 @@ export type BroadcastFeaturedHole = {
 };
 
 export type BroadcastFullTelecast = {
-  __typename?: 'BroadcastFullTelecast';
+  __typename: 'BroadcastFullTelecast';
   channelTitle: Scalars['String']['output'];
   endTime: Scalars['AWSTimestamp']['output'];
   id: Scalars['String']['output'];
@@ -419,7 +419,7 @@ export type BroadcastFullTelecast = {
 };
 
 export type BroadcastGroup = {
-  __typename?: 'BroadcastGroup';
+  __typename: 'BroadcastGroup';
   extendedCoverage?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['String']['output'];
   liveStatus: LiveStatus;
@@ -427,7 +427,7 @@ export type BroadcastGroup = {
 };
 
 export type BroadcastNetwork = {
-  __typename?: 'BroadcastNetwork';
+  __typename: 'BroadcastNetwork';
   androidLink: Scalars['String']['output'];
   androidStreamUrl?: Maybe<Scalars['String']['output']>;
   appleAppStore: Scalars['String']['output'];
@@ -473,18 +473,18 @@ export type BroadcastNetwork = {
 };
 
 export type BroadcastNetworks = {
-  __typename?: 'BroadcastNetworks';
+  __typename: 'BroadcastNetworks';
   networks: Array<BroadcastNetwork>;
 };
 
 export type BroadcastTableFragment = {
-  __typename?: 'BroadcastTableFragment';
+  __typename: 'BroadcastTableFragment';
   path: Scalars['String']['output'];
   webviewUrl: Scalars['String']['output'];
 };
 
 export type BubblePill = {
-  __typename?: 'BubblePill';
+  __typename: 'BubblePill';
   iconDark: ImageAsset;
   iconLight: ImageAsset;
   pillText: Scalars['String']['output'];
@@ -495,21 +495,21 @@ export type BubbleType =
   | 'SIGNATURE_EVENTS';
 
 export type BubbleWatch = {
-  __typename?: 'BubbleWatch';
+  __typename: 'BubbleWatch';
   bubbleId: Scalars['ID']['output'];
   bubbleType: BubbleType;
   items: Array<BubbleWatchItem>;
 };
 
 export type BubbleWatchItem = {
-  __typename?: 'BubbleWatchItem';
+  __typename: 'BubbleWatchItem';
   info?: Maybe<Scalars['String']['output']>;
   infoDesc?: Maybe<Scalars['String']['output']>;
   standings: TourCupRankingEvent;
 };
 
 export type CallToAction = {
-  __typename?: 'CallToAction';
+  __typename: 'CallToAction';
   color?: Maybe<Scalars['String']['output']>;
   fontColor?: Maybe<Scalars['String']['output']>;
   link: Scalars['String']['output'];
@@ -519,21 +519,21 @@ export type CallToAction = {
 };
 
 export type Category = {
-  __typename?: 'Category';
+  __typename: 'Category';
   displayName: Scalars['String']['output'];
   franchises: Array<Franchise>;
   queryValue: Scalars['String']['output'];
 };
 
 export type CategoryPlayerStat = {
-  __typename?: 'CategoryPlayerStat';
+  __typename: 'CategoryPlayerStat';
   color: StatColor;
   statName: Scalars['String']['output'];
   statValue: Scalars['String']['output'];
 };
 
 export type CategoryStat = {
-  __typename?: 'CategoryStat';
+  __typename: 'CategoryStat';
   displaySeason: Scalars['String']['output'];
   lastProcessed: Scalars['String']['output'];
   players: Array<CategoryStatPlayer>;
@@ -545,7 +545,7 @@ export type CategoryStat = {
 };
 
 export type CategoryStatPlayer = {
-  __typename?: 'CategoryStatPlayer';
+  __typename: 'CategoryStatPlayer';
   playerId: Scalars['String']['output'];
   playerName: Scalars['String']['output'];
   rank: Scalars['Int']['output'];
@@ -559,7 +559,7 @@ export type CategoryStatType =
   | 'YTD';
 
 export type CerosEmbedPlugin = {
-  __typename?: 'CerosEmbedPlugin';
+  __typename: 'CerosEmbedPlugin';
   aspectRatio: Scalars['Float']['output'];
   id: Scalars['ID']['output'];
   mobileAspectRatio: Scalars['Float']['output'];
@@ -571,14 +571,14 @@ export type CerosEmbedPlugin = {
 export type ContentCarousel = Image | Video;
 
 export type ContentFragment = {
-  __typename?: 'ContentFragment';
+  __typename: 'ContentFragment';
   fragments: Array<ContentFragments>;
   pageMetadata: PageMetadata;
   totalLength: Scalars['Int']['output'];
 };
 
 export type ContentFragmentTab = {
-  __typename?: 'ContentFragmentTab';
+  __typename: 'ContentFragmentTab';
   contentType: ContentType;
   label?: Maybe<Scalars['String']['output']>;
   path: Scalars['String']['output'];
@@ -586,7 +586,7 @@ export type ContentFragmentTab = {
 };
 
 export type ContentFragmentTabs = {
-  __typename?: 'ContentFragmentTabs';
+  __typename: 'ContentFragmentTabs';
   pageHeader: Scalars['String']['output'];
   partnerShipAssets?: Maybe<Array<Scalars['String']['output']>>;
   path: Scalars['String']['output'];
@@ -594,7 +594,7 @@ export type ContentFragmentTabs = {
 };
 
 export type ContentFragmentType = {
-  __typename?: 'ContentFragmentType';
+  __typename: 'ContentFragmentType';
   contentType: ContentType;
   path: Scalars['String']['output'];
 };
@@ -602,7 +602,7 @@ export type ContentFragmentType = {
 export type ContentFragments = DropdownFragment | HomepageLead | HomepageNews | HomepageProgramStanding | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopZigZag | MediaGallery | OddsToWinTracker | TglBoxScoreFragment | ThreeUpPhoto | ThreeUpStats | TwoColumn | VideoHero;
 
 export type ContentFragmentsCompressed = {
-  __typename?: 'ContentFragmentsCompressed';
+  __typename: 'ContentFragmentsCompressed';
   limit?: Maybe<Scalars['Int']['output']>;
   offset?: Maybe<Scalars['Int']['output']>;
   path?: Maybe<Scalars['String']['output']>;
@@ -611,13 +611,13 @@ export type ContentFragmentsCompressed = {
 };
 
 export type ContentStat = {
-  __typename?: 'ContentStat';
+  __typename: 'ContentStat';
   statId: Scalars['String']['output'];
   statName: Scalars['String']['output'];
 };
 
 export type ContentStory = {
-  __typename?: 'ContentStory';
+  __typename: 'ContentStory';
   desktopLatestNewsIndex?: Maybe<Scalars['Int']['output']>;
   mobileLatestNewsIndex?: Maybe<Scalars['Int']['output']>;
   path: Scalars['String']['output'];
@@ -627,7 +627,7 @@ export type ContentStory = {
 };
 
 export type ContentTopics = {
-  __typename?: 'ContentTopics';
+  __typename: 'ContentTopics';
   displayValue?: Maybe<Scalars['String']['output']>;
   value?: Maybe<Scalars['String']['output']>;
 };
@@ -643,7 +643,7 @@ export type ContentType =
   | 'RYDER_CUP_NEWS_ARTICLE';
 
 export type ContentVideoCarousel = {
-  __typename?: 'ContentVideoCarousel';
+  __typename: 'ContentVideoCarousel';
   bottomCta?: Maybe<CallToAction>;
   sectionTitle?: Maybe<Scalars['String']['output']>;
   topCta?: Maybe<CallToAction>;
@@ -651,7 +651,7 @@ export type ContentVideoCarousel = {
 };
 
 export type Course = {
-  __typename?: 'Course';
+  __typename: 'Course';
   courseCode: Scalars['String']['output'];
   courseName: Scalars['String']['output'];
   enabled?: Maybe<Scalars['Boolean']['output']>;
@@ -662,25 +662,25 @@ export type Course = {
 };
 
 export type CourseDetailRowValue = {
-  __typename?: 'CourseDetailRowValue';
+  __typename: 'CourseDetailRowValue';
   tendency?: Maybe<ScoringTendency>;
   value: Scalars['String']['output'];
 };
 
 export type CourseFilter = {
-  __typename?: 'CourseFilter';
+  __typename: 'CourseFilter';
   courseId: Scalars['Int']['output'];
   courseName: Scalars['String']['output'];
 };
 
 export type CourseHoleHeader = {
-  __typename?: 'CourseHoleHeader';
+  __typename: 'CourseHoleHeader';
   courseId: Scalars['ID']['output'];
   holeHeaders: Array<HoleHeaderV2>;
 };
 
 export type CourseHoleStats = {
-  __typename?: 'CourseHoleStats';
+  __typename: 'CourseHoleStats';
   averagePaceOfPlay?: Maybe<Scalars['String']['output']>;
   birdies?: Maybe<Scalars['Int']['output']>;
   bogeys?: Maybe<Scalars['Int']['output']>;
@@ -705,7 +705,7 @@ export type CourseHoleStats = {
 };
 
 export type CourseInfo = {
-  __typename?: 'CourseInfo';
+  __typename: 'CourseInfo';
   bottomCta?: Maybe<CallToAction>;
   coursePhotos?: Maybe<Array<Scalars['String']['output']>>;
   cta1?: Maybe<CallToAction>;
@@ -716,7 +716,7 @@ export type CourseInfo = {
 };
 
 export type CourseOverviewInfo = {
-  __typename?: 'CourseOverviewInfo';
+  __typename: 'CourseOverviewInfo';
   cutsMade: Scalars['String']['output'];
   cutsMissed: Scalars['String']['output'];
   disqualified: Scalars['String']['output'];
@@ -732,7 +732,7 @@ export type CourseOverviewInfo = {
 };
 
 export type CourseOverviewItem = {
-  __typename?: 'CourseOverviewItem';
+  __typename: 'CourseOverviewItem';
   details: Array<CourseOverviewItemDetails>;
   displayName: Scalars['String']['output'];
   image: Scalars['String']['output'];
@@ -740,19 +740,19 @@ export type CourseOverviewItem = {
 };
 
 export type CourseOverviewItemDetails = {
-  __typename?: 'CourseOverviewItemDetails';
+  __typename: 'CourseOverviewItemDetails';
   label: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type CoursePills = {
-  __typename?: 'CoursePills';
+  __typename: 'CoursePills';
   courseId: Scalars['String']['output'];
   courseName: Scalars['String']['output'];
 };
 
 export type CourseResultsTournament = {
-  __typename?: 'CourseResultsTournament';
+  __typename: 'CourseResultsTournament';
   points: Scalars['String']['output'];
   position: Scalars['String']['output'];
   roundScores: Array<RoundScoreItem>;
@@ -771,7 +771,7 @@ export type CourseResultsTournament = {
 };
 
 export type CourseRound = {
-  __typename?: 'CourseRound';
+  __typename: 'CourseRound';
   enablePaceOfPlay?: Maybe<Scalars['Boolean']['output']>;
   holeStats: Array<HoleStat>;
   live: Scalars['Boolean']['output'];
@@ -782,7 +782,7 @@ export type CourseRound = {
 };
 
 export type CourseStat = {
-  __typename?: 'CourseStat';
+  __typename: 'CourseStat';
   courseCode: Scalars['String']['output'];
   courseId: Scalars['String']['output'];
   courseImage: Scalars['String']['output'];
@@ -799,14 +799,14 @@ export type CourseStat = {
 };
 
 export type CourseStatsCategory = {
-  __typename?: 'CourseStatsCategory';
+  __typename: 'CourseStatsCategory';
   detailId: CourseStatsId;
   header: Scalars['String']['output'];
   items: Array<CourseOverviewItem>;
 };
 
 export type CourseStatsDetails = {
-  __typename?: 'CourseStatsDetails';
+  __typename: 'CourseStatsDetails';
   displayName: Scalars['String']['output'];
   displayYear: Scalars['String']['output'];
   headers: Array<Scalars['String']['output']>;
@@ -821,7 +821,7 @@ export type CourseStatsDetails = {
 };
 
 export type CourseStatsDetailsRow = {
-  __typename?: 'CourseStatsDetailsRow';
+  __typename: 'CourseStatsDetailsRow';
   displayName: Scalars['String']['output'];
   rank: Scalars['Int']['output'];
   tournamentId: Scalars['String']['output'];
@@ -834,14 +834,14 @@ export type CourseStatsId =
   | 'TOUGHEST_HOLES';
 
 export type CourseStatsOverview = {
-  __typename?: 'CourseStatsOverview';
+  __typename: 'CourseStatsOverview';
   categories: Array<CourseStatsCategory>;
   tourCode: TourCode;
   year: Scalars['Int']['output'];
 };
 
 export type CupLeaderboardMatch = {
-  __typename?: 'CupLeaderboardMatch';
+  __typename: 'CupLeaderboardMatch';
   displayScore: Scalars['String']['output'];
   euMatchWin?: Maybe<Scalars['Float']['output']>;
   holeScores?: Maybe<Array<CupLeaderboardMatchHoles>>;
@@ -866,7 +866,7 @@ export type CupLeaderboardMatch = {
 };
 
 export type CupLeaderboardMatchHoles = {
-  __typename?: 'CupLeaderboardMatchHoles';
+  __typename: 'CupLeaderboardMatchHoles';
   holeNumber: Scalars['String']['output'];
   holeNumberColor: Scalars['String']['output'];
   holeOutlineColor?: Maybe<Scalars['String']['output']>;
@@ -874,7 +874,7 @@ export type CupLeaderboardMatchHoles = {
 };
 
 export type CupLeaderboardMatchPlayer = {
-  __typename?: 'CupLeaderboardMatchPlayer';
+  __typename: 'CupLeaderboardMatchPlayer';
   color?: Maybe<Scalars['String']['output']>;
   displayName: Scalars['String']['output'];
   firstName?: Maybe<Scalars['String']['output']>;
@@ -886,7 +886,7 @@ export type CupLeaderboardMatchPlayer = {
 };
 
 export type CupLeaderboardMatchPlayerResults = {
-  __typename?: 'CupLeaderboardMatchPlayerResults';
+  __typename: 'CupLeaderboardMatchPlayerResults';
   losses: Scalars['String']['output'];
   ties: Scalars['String']['output'];
   total: Scalars['String']['output'];
@@ -894,7 +894,7 @@ export type CupLeaderboardMatchPlayerResults = {
 };
 
 export type CupLeaderboardMatchTeam = {
-  __typename?: 'CupLeaderboardMatchTeam';
+  __typename: 'CupLeaderboardMatchTeam';
   flagSurroundColor?: Maybe<Scalars['String']['output']>;
   flagSurroundColorDark?: Maybe<Scalars['String']['output']>;
   players: Array<CupLeaderboardMatchPlayer>;
@@ -916,13 +916,13 @@ export type CupLeaderboardTeamStatus =
   | 'WINS';
 
 export type CupLiveActivitySponsor = {
-  __typename?: 'CupLiveActivitySponsor';
+  __typename: 'CupLiveActivitySponsor';
   sponsorLogo?: Maybe<Scalars['String']['output']>;
   sponsorText?: Maybe<Scalars['String']['output']>;
 };
 
 export type CupMatchesCompleteData = {
-  __typename?: 'CupMatchesCompleteData';
+  __typename: 'CupMatchesCompleteData';
   completedMatches: Scalars['Int']['output'];
   totalMatches: Scalars['Int']['output'];
 };
@@ -932,13 +932,13 @@ export type CupOverviewDisplayType =
   | 'PROGRESS';
 
 export type CupPastResults = {
-  __typename?: 'CupPastResults';
+  __typename: 'CupPastResults';
   permId: Scalars['ID']['output'];
   years: Array<CupPastResultsYear>;
 };
 
 export type CupPastResultsTeam = {
-  __typename?: 'CupPastResultsTeam';
+  __typename: 'CupPastResultsTeam';
   badgeText?: Maybe<Scalars['String']['output']>;
   color: Scalars['String']['output'];
   score: Scalars['String']['output'];
@@ -948,7 +948,7 @@ export type CupPastResultsTeam = {
 };
 
 export type CupPastResultsYear = {
-  __typename?: 'CupPastResultsYear';
+  __typename: 'CupPastResultsYear';
   displayYear: Scalars['String']['output'];
   teams: Array<CupPastResultsTeam>;
   year: Scalars['Int']['output'];
@@ -961,7 +961,7 @@ export type CupRankMovementDirection =
   | 'UP';
 
 export type CupRankingPlayer = {
-  __typename?: 'CupRankingPlayer';
+  __typename: 'CupRankingPlayer';
   id: Scalars['String']['output'];
   movement: Scalars['String']['output'];
   movementDirection: CupRankMovementDirection;
@@ -977,7 +977,7 @@ export type CupRankingPlayer = {
 };
 
 export type CupRankingPlayerInfoRow = {
-  __typename?: 'CupRankingPlayerInfoRow';
+  __typename: 'CupRankingPlayerInfoRow';
   image?: Maybe<Scalars['String']['output']>;
   imageDark?: Maybe<Scalars['String']['output']>;
   text: Scalars['String']['output'];
@@ -986,13 +986,13 @@ export type CupRankingPlayerInfoRow = {
 export type CupRankingPlayerWrapper = CupRankingPlayer | CupRankingPlayerInfoRow;
 
 export type CupRankingTotal = {
-  __typename?: 'CupRankingTotal';
+  __typename: 'CupRankingTotal';
   display: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type CupRound = {
-  __typename?: 'CupRound';
+  __typename: 'CupRound';
   roundDisplayName: Scalars['String']['output'];
   roundNum: Scalars['Int']['output'];
 };
@@ -1003,7 +1003,7 @@ export type CupRoundFormat =
   | 'SINGLES';
 
 export type CupScorecard = {
-  __typename?: 'CupScorecard';
+  __typename: 'CupScorecard';
   currentHole?: Maybe<Scalars['Int']['output']>;
   displayScore: Scalars['String']['output'];
   format: CupRoundFormat;
@@ -1026,7 +1026,7 @@ export type CupScorecard = {
 };
 
 export type CupTeam = {
-  __typename?: 'CupTeam';
+  __typename: 'CupTeam';
   flagSurroundColor?: Maybe<Scalars['String']['output']>;
   flagSurroundColorDark?: Maybe<Scalars['String']['output']>;
   players?: Maybe<Array<MpScorecardPlayer>>;
@@ -1041,7 +1041,7 @@ export type CupTeam = {
 };
 
 export type CupTeamRoster = {
-  __typename?: 'CupTeamRoster';
+  __typename: 'CupTeamRoster';
   flagSurroundColor?: Maybe<Scalars['String']['output']>;
   flagSurroundColorDark?: Maybe<Scalars['String']['output']>;
   sections: Array<CupTeamRosterSection>;
@@ -1053,20 +1053,20 @@ export type CupTeamRoster = {
 };
 
 export type CupTeamRosterSection = {
-  __typename?: 'CupTeamRosterSection';
+  __typename: 'CupTeamRosterSection';
   players: Array<CupLeaderboardMatchPlayer>;
   sectionTitle: Scalars['String']['output'];
   showResults: Scalars['Boolean']['output'];
 };
 
 export type CupTeamRosters = {
-  __typename?: 'CupTeamRosters';
+  __typename: 'CupTeamRosters';
   teams: Array<CupTeamRoster>;
   tournamentId: Scalars['ID']['output'];
 };
 
 export type CupTeeTimes = {
-  __typename?: 'CupTeeTimes';
+  __typename: 'CupTeeTimes';
   currentRound: Scalars['Int']['output'];
   drawersEnabled: Scalars['Boolean']['output'];
   id: Scalars['ID']['output'];
@@ -1074,7 +1074,7 @@ export type CupTeeTimes = {
 };
 
 export type CupTeeTimesRound = {
-  __typename?: 'CupTeeTimesRound';
+  __typename: 'CupTeeTimesRound';
   adConfig: Scalars['String']['output'];
   completedMatches: Scalars['Int']['output'];
   matches: Array<CupLeaderboardMatch>;
@@ -1084,7 +1084,7 @@ export type CupTeeTimesRound = {
 };
 
 export type CupTournamentLeaderboard = {
-  __typename?: 'CupTournamentLeaderboard';
+  __typename: 'CupTournamentLeaderboard';
   allRounds: Array<CupRound>;
   completedMatches: Scalars['Int']['output'];
   currentId: Scalars['String']['output'];
@@ -1106,14 +1106,14 @@ export type CupTournamentLeaderboard = {
 };
 
 export type CupTournamentLeaderboardCompressed = {
-  __typename?: 'CupTournamentLeaderboardCompressed';
+  __typename: 'CupTournamentLeaderboardCompressed';
   currentId: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type CupTournamentRound = {
-  __typename?: 'CupTournamentRound';
+  __typename: 'CupTournamentRound';
   adConfig: Scalars['String']['output'];
   description: Scalars['String']['output'];
   format: CupRoundFormat;
@@ -1121,7 +1121,7 @@ export type CupTournamentRound = {
 };
 
 export type CupTournamentStatus = {
-  __typename?: 'CupTournamentStatus';
+  __typename: 'CupTournamentStatus';
   heroImage?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   infoPath?: Maybe<Scalars['String']['output']>;
@@ -1136,7 +1136,7 @@ export type CupTournamentStatus = {
 };
 
 export type CupTournamentTeam = {
-  __typename?: 'CupTournamentTeam';
+  __typename: 'CupTournamentTeam';
   badgeText?: Maybe<Scalars['String']['output']>;
   color: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
@@ -1159,7 +1159,7 @@ export type CupTournamentTeam = {
 };
 
 export type CurrentLeaderPlayer = {
-  __typename?: 'CurrentLeaderPlayer';
+  __typename: 'CurrentLeaderPlayer';
   backNine: Scalars['Boolean']['output'];
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
@@ -1181,13 +1181,13 @@ export type CurrentLeaderPlayer = {
 };
 
 export type CurrentLeaderSponsors = {
-  __typename?: 'CurrentLeaderSponsors';
+  __typename: 'CurrentLeaderSponsors';
   images: Array<SponsorImage>;
   text: Scalars['String']['output'];
 };
 
 export type CurrentLeaders = {
-  __typename?: 'CurrentLeaders';
+  __typename: 'CurrentLeaders';
   hideRolexClock: Scalars['Boolean']['output'];
   hideSov: Scalars['Boolean']['output'];
   id: Scalars['ID']['output'];
@@ -1204,13 +1204,13 @@ export type CurrentLeaders = {
 };
 
 export type CurrentLeadersCompressed = {
-  __typename?: 'CurrentLeadersCompressed';
+  __typename: 'CurrentLeadersCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type CutLineInfo = {
-  __typename?: 'CutLineInfo';
+  __typename: 'CutLineInfo';
   lastUpdated: Scalars['AWSTimestamp']['output'];
   new?: Maybe<Scalars['Boolean']['output']>;
   possibleCutLines: Array<CutLinePossibility>;
@@ -1221,20 +1221,20 @@ export type CutLineInfo = {
 };
 
 export type CutLinePossibility = {
-  __typename?: 'CutLinePossibility';
+  __typename: 'CutLinePossibility';
   displayProbability: Scalars['String']['output'];
   probability: Scalars['Float']['output'];
   score: Scalars['String']['output'];
 };
 
 export type DayWeather = {
-  __typename?: 'DayWeather';
+  __typename: 'DayWeather';
   day: Scalars['String']['output'];
   text: Scalars['String']['output'];
 };
 
 export type DeleteAccountResponse = {
-  __typename?: 'DeleteAccountResponse';
+  __typename: 'DeleteAccountResponse';
   ok: Scalars['Boolean']['output'];
 };
 
@@ -1245,7 +1245,7 @@ export type DrawerDisplayState =
   | 'TEE_TIME';
 
 export type DropdownFragment = {
-  __typename?: 'DropdownFragment';
+  __typename: 'DropdownFragment';
   bottomCta?: Maybe<CallToAction>;
   header: Scalars['String']['output'];
   rows: Array<DropdownRow>;
@@ -1254,20 +1254,20 @@ export type DropdownFragment = {
 };
 
 export type DropdownRow = {
-  __typename?: 'DropdownRow';
+  __typename: 'DropdownRow';
   content?: Maybe<Array<Maybe<NewsArticleNode>>>;
   cta?: Maybe<CallToAction>;
   header: Scalars['String']['output'];
 };
 
 export type EfiHole = {
-  __typename?: 'EFIHole';
+  __typename: 'EFIHole';
   count: Scalars['String']['output'];
   hole: Scalars['String']['output'];
 };
 
 export type EfiPlayer = {
-  __typename?: 'EFIPlayer';
+  __typename: 'EFIPlayer';
   displayName: Scalars['String']['output'];
   history: Array<EfiPlayerEagle>;
   playerId: Scalars['ID']['output'];
@@ -1275,14 +1275,14 @@ export type EfiPlayer = {
 };
 
 export type EfiPlayerEagle = {
-  __typename?: 'EFIPlayerEagle';
+  __typename: 'EFIPlayerEagle';
   hole: Scalars['Int']['output'];
   round: Scalars['Int']['output'];
   videoId?: Maybe<Scalars['String']['output']>;
 };
 
 export type EaglesForImpact = {
-  __typename?: 'EaglesForImpact';
+  __typename: 'EaglesForImpact';
   charity: Scalars['String']['output'];
   donation: Scalars['String']['output'];
   eaglesTitle: Scalars['String']['output'];
@@ -1301,7 +1301,7 @@ export type EaglesForImpact = {
 
 /**   Player Odds V2 */
 export type EntityOdds = {
-  __typename?: 'EntityOdds';
+  __typename: 'EntityOdds';
   bettingProfile?: Maybe<Scalars['String']['output']>;
   entityId: Scalars['ID']['output'];
   marketPills: Array<MarketPill>;
@@ -1314,7 +1314,7 @@ export type EntityOdds = {
 };
 
 export type Episode = {
-  __typename?: 'Episode';
+  __typename: 'Episode';
   date: Scalars['AWSTimestamp']['output'];
   description: Scalars['String']['output'];
   duration: Scalars['Int']['output'];
@@ -1324,14 +1324,14 @@ export type Episode = {
 };
 
 export type Event = {
-  __typename?: 'Event';
+  __typename: 'Event';
   eventName: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   leaderboardId: Scalars['String']['output'];
 };
 
 export type EventGuideConfig = {
-  __typename?: 'EventGuideConfig';
+  __typename: 'EventGuideConfig';
   augmentedReality?: Maybe<AugmentedRealityConfig>;
   eventGuideMap?: Maybe<Scalars['String']['output']>;
   eventGuideURL?: Maybe<Scalars['String']['output']>;
@@ -1339,7 +1339,7 @@ export type EventGuideConfig = {
 };
 
 export type EventHub = {
-  __typename?: 'EventHub';
+  __typename: 'EventHub';
   bottomSectionTitle?: Maybe<Scalars['String']['output']>;
   notSharingLocationFallbackDescriptionText?: Maybe<Scalars['String']['output']>;
   notSharingLocationFallbackTitle?: Maybe<Scalars['String']['output']>;
@@ -1354,7 +1354,7 @@ export type EventHub = {
 };
 
 export type EventHubTable = {
-  __typename?: 'EventHubTable';
+  __typename: 'EventHubTable';
   cta?: Maybe<CallToAction>;
   mapCtaText?: Maybe<Scalars['String']['output']>;
   mapIframe?: Maybe<Scalars['String']['output']>;
@@ -1380,19 +1380,19 @@ export type EventRegion =
   | 'US';
 
 export type ExpertPicks = {
-  __typename?: 'ExpertPicks';
+  __typename: 'ExpertPicks';
   expertPicksTableRows: Array<ExpertPicksTableRow>;
   tournamentName: Scalars['String']['output'];
 };
 
 export type ExpertPicksNode = {
-  __typename?: 'ExpertPicksNode';
+  __typename: 'ExpertPicksNode';
   isPowerRankings: Scalars['Boolean']['output'];
   path: Scalars['String']['output'];
 };
 
 export type ExpertPicksTableRow = {
-  __typename?: 'ExpertPicksTableRow';
+  __typename: 'ExpertPicksTableRow';
   comment: Array<TourSponsorDescription>;
   expertName?: Maybe<Scalars['String']['output']>;
   expertTitle?: Maybe<Scalars['String']['output']>;
@@ -1403,7 +1403,7 @@ export type ExpertPicksTableRow = {
 };
 
 export type FavoritePlayer = {
-  __typename?: 'FavoritePlayer';
+  __typename: 'FavoritePlayer';
   id: Scalars['ID']['output'];
 };
 
@@ -1412,13 +1412,13 @@ export type FavoritePlayerInput = {
 };
 
 export type FavoriteTourResponse = {
-  __typename?: 'FavoriteTourResponse';
+  __typename: 'FavoriteTourResponse';
   ok: Scalars['Boolean']['output'];
   tourCode?: Maybe<TourCode>;
 };
 
 export type FeatureItem = {
-  __typename?: 'FeatureItem';
+  __typename: 'FeatureItem';
   fieldStatType?: Maybe<FieldStatType>;
   leaderboardFeatures?: Maybe<LeaderboardFeature>;
   name: Scalars['String']['output'];
@@ -1429,7 +1429,7 @@ export type FeatureItem = {
 };
 
 export type FeatureSponsor = {
-  __typename?: 'FeatureSponsor';
+  __typename: 'FeatureSponsor';
   /** @deprecated use sponsorLogoAsset */
   sponsorLogo: Scalars['String']['output'];
   sponsorLogoAsset: ImageAsset;
@@ -1440,7 +1440,7 @@ export type FeatureSponsor = {
 };
 
 export type Field = {
-  __typename?: 'Field';
+  __typename: 'Field';
   alternates: Array<PlayerField>;
   features: Array<FeatureItem>;
   hideSov: Scalars['Boolean']['output'];
@@ -1453,20 +1453,20 @@ export type Field = {
 };
 
 export type FieldGroup = {
-  __typename?: 'FieldGroup';
+  __typename: 'FieldGroup';
   groupId?: Maybe<Scalars['String']['output']>;
   groupTitle: Scalars['String']['output'];
   players: Array<PlayerField>;
 };
 
 export type FieldPromoSection = {
-  __typename?: 'FieldPromoSection';
+  __typename: 'FieldPromoSection';
   title: Scalars['String']['output'];
   tournamentIds: Array<Scalars['String']['output']>;
 };
 
 export type FieldStatCourseFit = {
-  __typename?: 'FieldStatCourseFit';
+  __typename: 'FieldStatCourseFit';
   playerId: Scalars['String']['output'];
   score: Scalars['String']['output'];
   stats: Array<FieldStatCourseFitStat>;
@@ -1474,14 +1474,14 @@ export type FieldStatCourseFit = {
 };
 
 export type FieldStatCourseFitStat = {
-  __typename?: 'FieldStatCourseFitStat';
+  __typename: 'FieldStatCourseFitStat';
   statColor: StatColor;
   statRank: Scalars['String']['output'];
   statValue: Scalars['String']['output'];
 };
 
 export type FieldStatCurrentForm = {
-  __typename?: 'FieldStatCurrentForm';
+  __typename: 'FieldStatCurrentForm';
   playerId: Scalars['String']['output'];
   strokesGained: Array<FieldStatStrokesGained>;
   strokesGainedHeader: Array<Scalars['String']['output']>;
@@ -1492,14 +1492,14 @@ export type FieldStatCurrentForm = {
 export type FieldStatPlayer = FieldStatCourseFit | FieldStatCurrentForm;
 
 export type FieldStatStrokesGained = {
-  __typename?: 'FieldStatStrokesGained';
+  __typename: 'FieldStatStrokesGained';
   statColor: StatColor;
   statId: Scalars['String']['output'];
   statValue: Scalars['String']['output'];
 };
 
 export type FieldStatTournamentResult = {
-  __typename?: 'FieldStatTournamentResult';
+  __typename: 'FieldStatTournamentResult';
   columnIndex: Scalars['Int']['output'];
   endDate: Scalars['String']['output'];
   name: Scalars['String']['output'];
@@ -1516,7 +1516,7 @@ export type FieldStatType =
   | 'TOURNAMENT_HISTORY';
 
 export type FieldStats = {
-  __typename?: 'FieldStats';
+  __typename: 'FieldStats';
   fieldStatType: FieldStatType;
   players: Array<FieldStatPlayer>;
   statHeaders?: Maybe<Array<Scalars['String']['output']>>;
@@ -1525,7 +1525,7 @@ export type FieldStats = {
 };
 
 export type FinishStatValue = {
-  __typename?: 'FinishStatValue';
+  __typename: 'FinishStatValue';
   date: Scalars['Int']['output'];
   displayDate: Scalars['String']['output'];
   displayValue: Scalars['String']['output'];
@@ -1541,20 +1541,20 @@ export type FormatType =
   | 'TEAM_STROKE';
 
 export type Franchise = {
-  __typename?: 'Franchise';
+  __typename: 'Franchise';
   displayName: Scalars['String']['output'];
   queryValue: Scalars['String']['output'];
 };
 
 export type FranchisePillConfig = {
-  __typename?: 'FranchisePillConfig';
+  __typename: 'FranchisePillConfig';
   category?: Maybe<Scalars['String']['output']>;
   franchises: Array<Franchise>;
   rating?: Maybe<Scalars['Int']['output']>;
 };
 
 export type FutureVenuesCard = {
-  __typename?: 'FutureVenuesCard';
+  __typename: 'FutureVenuesCard';
   course?: Maybe<Scalars['String']['output']>;
   coursePhoto?: Maybe<Scalars['String']['output']>;
   cta?: Maybe<CallToAction>;
@@ -1564,7 +1564,7 @@ export type FutureVenuesCard = {
 };
 
 export type FutureVenuesFragment = {
-  __typename?: 'FutureVenuesFragment';
+  __typename: 'FutureVenuesFragment';
   bottomCta?: Maybe<CallToAction>;
   cards?: Maybe<Array<FutureVenuesCard>>;
   sectionTitle?: Maybe<Scalars['String']['output']>;
@@ -1572,7 +1572,7 @@ export type FutureVenuesFragment = {
 };
 
 export type FutureVenuesRow = {
-  __typename?: 'FutureVenuesRow';
+  __typename: 'FutureVenuesRow';
   /** @deprecated Use beautyImageAsset */
   beautyImage?: Maybe<Scalars['String']['output']>;
   beautyImageAsset?: Maybe<ImageAsset>;
@@ -1590,12 +1590,12 @@ export type FutureVenuesRow = {
 };
 
 export type FutureVenuesTableFragment = {
-  __typename?: 'FutureVenuesTableFragment';
+  __typename: 'FutureVenuesTableFragment';
   rows: Array<FutureVenuesRow>;
 };
 
 export type GenericContent = {
-  __typename?: 'GenericContent';
+  __typename: 'GenericContent';
   adConfigNode?: Maybe<Scalars['String']['output']>;
   authorReference?: Maybe<NewsArticleAuthor>;
   datePublished: Scalars['AWSTimestamp']['output'];
@@ -1606,13 +1606,13 @@ export type GenericContent = {
 };
 
 export type GenericContentCompressed = {
-  __typename?: 'GenericContentCompressed';
+  __typename: 'GenericContentCompressed';
   path: Scalars['String']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type GlobalAdConfig = {
-  __typename?: 'GlobalAdConfig';
+  __typename: 'GlobalAdConfig';
   actRefresh: Scalars['Boolean']['output'];
   adUnitId: Scalars['String']['output'];
   environment: Scalars['String']['output'];
@@ -1625,7 +1625,7 @@ export type GlobalAdConfig = {
 };
 
 export type Group = {
-  __typename?: 'Group';
+  __typename: 'Group';
   backNine: Scalars['Boolean']['output'];
   courseId?: Maybe<Scalars['String']['output']>;
   courseName?: Maybe<Scalars['String']['output']>;
@@ -1656,13 +1656,13 @@ export type GroupHoleLocation =
   | 'UNKNOWN';
 
 export type GroupLocation = {
-  __typename?: 'GroupLocation';
+  __typename: 'GroupLocation';
   courses: Array<GroupLocationCourse>;
   tournamentId: Scalars['ID']['output'];
 };
 
 export type GroupLocationCourse = {
-  __typename?: 'GroupLocationCourse';
+  __typename: 'GroupLocationCourse';
   courseId: Scalars['String']['output'];
   courseName: Scalars['String']['output'];
   holes: Array<GroupLocationHole>;
@@ -1672,7 +1672,7 @@ export type GroupLocationCourse = {
 };
 
 export type GroupLocationData = {
-  __typename?: 'GroupLocationData';
+  __typename: 'GroupLocationData';
   backNinePaceOfPlayTime?: Maybe<Scalars['String']['output']>;
   courseId: Scalars['String']['output'];
   currentHole?: Maybe<Scalars['String']['output']>;
@@ -1685,7 +1685,7 @@ export type GroupLocationData = {
 };
 
 export type GroupLocationGroup = {
-  __typename?: 'GroupLocationGroup';
+  __typename: 'GroupLocationGroup';
   color?: Maybe<Scalars['String']['output']>;
   groupNum: Scalars['Int']['output'];
   groupSort: Scalars['String']['output'];
@@ -1695,7 +1695,7 @@ export type GroupLocationGroup = {
 };
 
 export type GroupLocationHole = {
-  __typename?: 'GroupLocationHole';
+  __typename: 'GroupLocationHole';
   groups: Array<GroupLocationGroup>;
   holeNumber: Scalars['Int']['output'];
   par: Scalars['Int']['output'];
@@ -1703,13 +1703,13 @@ export type GroupLocationHole = {
 };
 
 export type GroupLocationPlayerData = {
-  __typename?: 'GroupLocationPlayerData';
+  __typename: 'GroupLocationPlayerData';
   addressingBall?: Maybe<Scalars['String']['output']>;
   nextToHit?: Maybe<Scalars['String']['output']>;
 };
 
 export type GroupRoundScore = {
-  __typename?: 'GroupRoundScore';
+  __typename: 'GroupRoundScore';
   holes: Array<GroupScoreHeader>;
   parTotal: Scalars['Int']['output'];
   players: Array<GroupScorePlayer>;
@@ -1717,13 +1717,13 @@ export type GroupRoundScore = {
 };
 
 export type GroupScoreHeader = {
-  __typename?: 'GroupScoreHeader';
+  __typename: 'GroupScoreHeader';
   holeNumber: Scalars['Int']['output'];
   par: Scalars['Int']['output'];
 };
 
 export type GroupScorePlayer = {
-  __typename?: 'GroupScorePlayer';
+  __typename: 'GroupScorePlayer';
   active: Scalars['Boolean']['output'];
   player: Player;
   roundTotal: Scalars['String']['output'];
@@ -1733,7 +1733,7 @@ export type GroupScorePlayer = {
 };
 
 export type GroupScorecard = {
-  __typename?: 'GroupScorecard';
+  __typename: 'GroupScorecard';
   backNine: Scalars['Boolean']['output'];
   courseId?: Maybe<Scalars['String']['output']>;
   courseName: Scalars['String']['output'];
@@ -1750,7 +1750,7 @@ export type GroupScorecard = {
 };
 
 export type GroupShotDetails = {
-  __typename?: 'GroupShotDetails';
+  __typename: 'GroupShotDetails';
   defaultHolePickle: HolePickleType;
   displayType: ShotDetailsDisplayType;
   groupNumber: Scalars['Int']['output'];
@@ -1765,13 +1765,13 @@ export type GroupShotDetails = {
 };
 
 export type GroupShotDetailsCompressed = {
-  __typename?: 'GroupShotDetailsCompressed';
+  __typename: 'GroupShotDetailsCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type GroupShotDetailsHole = {
-  __typename?: 'GroupShotDetailsHole';
+  __typename: 'GroupShotDetailsHole';
   activePlayers: Array<Scalars['String']['output']>;
   displayHoleNumber: Scalars['String']['output'];
   enhancedPickle?: Maybe<HolePickle>;
@@ -1801,7 +1801,7 @@ export type GroupShotDetailsHole = {
 };
 
 export type GroupShotDetailsPlayer = {
-  __typename?: 'GroupShotDetailsPlayer';
+  __typename: 'GroupShotDetailsPlayer';
   displayName: Scalars['String']['output'];
   firstName: Scalars['String']['output'];
   id: Scalars['ID']['output'];
@@ -1811,14 +1811,14 @@ export type GroupShotDetailsPlayer = {
 };
 
 export type GroupShotDetailsStroke = {
-  __typename?: 'GroupShotDetailsStroke';
+  __typename: 'GroupShotDetailsStroke';
   playByPlayLabel: Scalars['String']['output'];
   players: Array<GroupShotDetailsStrokePlayer>;
   strokeNumber: Scalars['Int']['output'];
 };
 
 export type GroupShotDetailsStrokePlayer = {
-  __typename?: 'GroupShotDetailsStrokePlayer';
+  __typename: 'GroupShotDetailsStrokePlayer';
   ballPath?: Maybe<BallPath>;
   displayName: Scalars['String']['output'];
   distance: Scalars['String']['output'];
@@ -1843,20 +1843,20 @@ export type GroupShotDetailsStrokePlayer = {
 };
 
 export type GroupShotDetailsTeam = {
-  __typename?: 'GroupShotDetailsTeam';
+  __typename: 'GroupShotDetailsTeam';
   players?: Maybe<Array<GroupShotDetailsPlayer>>;
   teamId: Scalars['String']['output'];
   teamName: Scalars['String']['output'];
 };
 
 export type GroupStageGroup = {
-  __typename?: 'GroupStageGroup';
+  __typename: 'GroupStageGroup';
   groupHeader: Scalars['String']['output'];
   groupPlayers: Array<GroupStagePlayer>;
 };
 
 export type GroupStageHeader = {
-  __typename?: 'GroupStageHeader';
+  __typename: 'GroupStageHeader';
   lost: Scalars['String']['output'];
   player: Scalars['String']['output'];
   points: Scalars['String']['output'];
@@ -1866,7 +1866,7 @@ export type GroupStageHeader = {
 };
 
 export type GroupStagePlayer = {
-  __typename?: 'GroupStagePlayer';
+  __typename: 'GroupStagePlayer';
   bracketSeed: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   countryName: Scalars['String']['output'];
@@ -1888,7 +1888,7 @@ export type GroupStagePlayer = {
 };
 
 export type GroupStageRankings = {
-  __typename?: 'GroupStageRankings';
+  __typename: 'GroupStageRankings';
   groupStageHeaders: Array<GroupStageHeader>;
   groups: Array<GroupStageGroup>;
   informationSections: Array<InformationSection>;
@@ -1897,7 +1897,7 @@ export type GroupStageRankings = {
 };
 
 export type GroupV2 = {
-  __typename?: 'GroupV2';
+  __typename: 'GroupV2';
   backNine: Scalars['Boolean']['output'];
   courseId?: Maybe<Scalars['String']['output']>;
   courseName?: Maybe<Scalars['String']['output']>;
@@ -1914,7 +1914,7 @@ export type GroupV2 = {
 };
 
 export type GroupedField = {
-  __typename?: 'GroupedField';
+  __typename: 'GroupedField';
   alternates: PlayerGroup;
   features: Array<FeatureItem>;
   id: Scalars['ID']['output'];
@@ -1930,13 +1930,13 @@ export type HeaderType =
   | 'SHORT';
 
 export type HeroCarousel = {
-  __typename?: 'HeroCarousel';
+  __typename: 'HeroCarousel';
   displayInline: Scalars['Boolean']['output'];
   slides: Array<HeroCarouselItem>;
 };
 
 export type HeroCarouselItem = {
-  __typename?: 'HeroCarouselItem';
+  __typename: 'HeroCarouselItem';
   articleContent?: Maybe<NewsArticle>;
   autoplay?: Maybe<Scalars['Boolean']['output']>;
   cta1?: Maybe<CallToAction>;
@@ -1948,7 +1948,7 @@ export type HeroCarouselItem = {
 };
 
 export type HistoricalLeaderboard = {
-  __typename?: 'HistoricalLeaderboard';
+  __typename: 'HistoricalLeaderboard';
   additionalDataHeaders: Array<Scalars['String']['output']>;
   availableSeasons: Array<StatYearPills>;
   id: Scalars['ID']['output'];
@@ -1962,7 +1962,7 @@ export type HistoricalLeaderboard = {
 };
 
 export type HistoricalLeaderboardRow = {
-  __typename?: 'HistoricalLeaderboardRow';
+  __typename: 'HistoricalLeaderboardRow';
   additionalData: Array<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   parRelativeScore: Scalars['String']['output'];
@@ -1973,7 +1973,7 @@ export type HistoricalLeaderboardRow = {
 };
 
 export type HistoricalLeaderboardTeamRow = {
-  __typename?: 'HistoricalLeaderboardTeamRow';
+  __typename: 'HistoricalLeaderboardTeamRow';
   additionalData: Array<Scalars['String']['output']>;
   parRelativeScore: Scalars['String']['output'];
   players: Array<Player>;
@@ -1991,7 +1991,7 @@ export type HistoricalOddsId =
   | 'WINNER';
 
 export type HistoricalPlayerOdds = {
-  __typename?: 'HistoricalPlayerOdds';
+  __typename: 'HistoricalPlayerOdds';
   marketName: Scalars['String']['output'];
   message?: Maybe<OddsMessage>;
   odds: Scalars['String']['output'];
@@ -2004,25 +2004,25 @@ export type HistoricalPlayerOdds = {
 };
 
 export type HistoricalPlayerScorecards = {
-  __typename?: 'HistoricalPlayerScorecards';
+  __typename: 'HistoricalPlayerScorecards';
   playerId: Scalars['ID']['output'];
   tours: Array<HistoricalScorecardTour>;
 };
 
 export type HistoricalRoundScore = {
-  __typename?: 'HistoricalRoundScore';
+  __typename: 'HistoricalRoundScore';
   parRelativeScore: Scalars['String']['output'];
   score: Scalars['String']['output'];
 };
 
 export type HistoricalScorecardTour = {
-  __typename?: 'HistoricalScorecardTour';
+  __typename: 'HistoricalScorecardTour';
   tourCode: TourCode;
   years: Array<HistoricalScorecardYear>;
 };
 
 export type HistoricalScorecardYear = {
-  __typename?: 'HistoricalScorecardYear';
+  __typename: 'HistoricalScorecardYear';
   displayYear: Scalars['String']['output'];
   tournamentPills: Array<StatTournamentPill>;
   year: Scalars['Int']['output'];
@@ -2033,7 +2033,7 @@ export type HistoricalScorecardYear = {
  *  Market Abstractions
  */
 export type HistoricalTournamentOdds = {
-  __typename?: 'HistoricalTournamentOdds';
+  __typename: 'HistoricalTournamentOdds';
   id: Scalars['ID']['output'];
   market?: Maybe<Market>;
   message?: Maybe<OddsMessage>;
@@ -2043,14 +2043,14 @@ export type HistoricalTournamentOdds = {
 };
 
 export type HistoricalTournamentOddsArgs = {
-  __typename?: 'HistoricalTournamentOddsArgs';
+  __typename: 'HistoricalTournamentOddsArgs';
   marketId: OddsMarketType;
   timeStamp?: Maybe<Scalars['AWSDateTime']['output']>;
   tournamentId: Scalars['String']['output'];
 };
 
 export type HistoryInfo = {
-  __typename?: 'HistoryInfo';
+  __typename: 'HistoryInfo';
   contentCarousel: Array<Maybe<ContentCarousel>>;
   cta?: Maybe<CallToAction>;
   displayCta?: Maybe<Scalars['Boolean']['output']>;
@@ -2060,7 +2060,7 @@ export type HistoryInfo = {
 };
 
 export type HistoryScore = {
-  __typename?: 'HistoryScore';
+  __typename: 'HistoryScore';
   bottomCta?: Maybe<CallToAction>;
   leftFlagIcon?: Maybe<Scalars['String']['output']>;
   leftScore?: Maybe<Scalars['String']['output']>;
@@ -2075,7 +2075,7 @@ export type HistoryScore = {
 };
 
 export type HoleDetail = {
-  __typename?: 'HoleDetail';
+  __typename: 'HoleDetail';
   courseId: Scalars['String']['output'];
   holeImage: Scalars['String']['output'];
   holeImageLandscape: Scalars['String']['output'];
@@ -2094,7 +2094,7 @@ export type HoleDetail = {
 };
 
 export type HoleDetailInfo = {
-  __typename?: 'HoleDetailInfo';
+  __typename: 'HoleDetailInfo';
   aboutThisHole: Scalars['String']['output'];
   /** @deprecated Use holePickleGreenLeftToRightAsset */
   greenPickle: Scalars['String']['output'];
@@ -2118,7 +2118,7 @@ export type HoleDetailInfo = {
 };
 
 export type HoleDetailRound = {
-  __typename?: 'HoleDetailRound';
+  __typename: 'HoleDetailRound';
   groups: Array<HoleGroup>;
   matches?: Maybe<Array<HoleMatch>>;
   roundNum: Scalars['Int']['output'];
@@ -2131,7 +2131,7 @@ export type HoleDetailsAvailability =
   | 'STATS';
 
 export type HoleGroup = {
-  __typename?: 'HoleGroup';
+  __typename: 'HoleGroup';
   groupLocation: Scalars['String']['output'];
   groupLocationCode: Scalars['String']['output'];
   groupNumber: Scalars['Int']['output'];
@@ -2144,7 +2144,7 @@ export type HoleGroup = {
 };
 
 export type HoleGroupPlayer = {
-  __typename?: 'HoleGroupPlayer';
+  __typename: 'HoleGroupPlayer';
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   firstName: Scalars['String']['output'];
@@ -2158,19 +2158,19 @@ export type HoleGroupPlayer = {
 };
 
 export type HoleGroupTeam = {
-  __typename?: 'HoleGroupTeam';
+  __typename: 'HoleGroupTeam';
   players: Array<HoleGroupPlayer>;
 };
 
 export type HoleHeader = {
-  __typename?: 'HoleHeader';
+  __typename: 'HoleHeader';
   hole: Scalars['String']['output'];
   holeNumber: Scalars['Int']['output'];
   par: Scalars['String']['output'];
 };
 
 export type HoleHeaderV2 = {
-  __typename?: 'HoleHeaderV2';
+  __typename: 'HoleHeaderV2';
   displayValue: Scalars['String']['output'];
   holeNumber?: Maybe<Scalars['Int']['output']>;
   order: Scalars['Int']['output'];
@@ -2178,7 +2178,7 @@ export type HoleHeaderV2 = {
 };
 
 export type HoleMatch = {
-  __typename?: 'HoleMatch';
+  __typename: 'HoleMatch';
   groupName?: Maybe<Scalars['String']['output']>;
   match?: Maybe<MpLeaderboardMatch>;
   matchLocation: Scalars['String']['output'];
@@ -2191,7 +2191,7 @@ export type HoleMatch = {
 };
 
 export type HolePickle = {
-  __typename?: 'HolePickle';
+  __typename: 'HolePickle';
   bottomToTop: Scalars['String']['output'];
   bottomToTopAsset: ImageAsset;
   greenBottomToTop: Scalars['String']['output'];
@@ -2211,7 +2211,7 @@ export type HolePlayedStatus =
   | 'UNPLAYED';
 
 export type HoleScore = {
-  __typename?: 'HoleScore';
+  __typename: 'HoleScore';
   holeNumber: Scalars['Int']['output'];
   par: Scalars['Int']['output'];
   roundScore: Scalars['String']['output'];
@@ -2233,7 +2233,7 @@ export type HoleScoreStatus =
 export type HoleStat = CourseHoleStats | SummaryRow;
 
 export type HoleStatSummary = {
-  __typename?: 'HoleStatSummary';
+  __typename: 'HoleStatSummary';
   birdies?: Maybe<Scalars['Int']['output']>;
   birdiesPercent: Scalars['String']['output'];
   bogeys?: Maybe<Scalars['Int']['output']>;
@@ -2251,7 +2251,7 @@ export type HoleStatSummary = {
 };
 
 export type HoleStroke = {
-  __typename?: 'HoleStroke';
+  __typename: 'HoleStroke';
   ballPath?: Maybe<BallPath>;
   distance: Scalars['String']['output'];
   distanceRemaining: Scalars['String']['output'];
@@ -2302,7 +2302,7 @@ export type HomePageProgramStandingLayout =
   | 'TWO_STANDINGS';
 
 export type HomePageStanding = {
-  __typename?: 'HomePageStanding';
+  __typename: 'HomePageStanding';
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   firstName: Scalars['String']['output'];
@@ -2314,14 +2314,14 @@ export type HomePageStanding = {
 };
 
 export type Homepage = {
-  __typename?: 'Homepage';
+  __typename: 'Homepage';
   fragments: Array<HomepageFragment>;
 };
 
 export type HomepageAssets = NewsArticle | Video;
 
 export type HomepageCta = {
-  __typename?: 'HomepageCta';
+  __typename: 'HomepageCta';
   link: Scalars['String']['output'];
   text: Scalars['String']['output'];
   topText: Scalars['String']['output'];
@@ -2330,7 +2330,7 @@ export type HomepageCta = {
 export type HomepageFragment = HomepageLead | HomepageNews | HomepageProgramStanding | MediaGallery | OddsToWinTracker | ThreeUpPhoto;
 
 export type HomepageLead = {
-  __typename?: 'HomepageLead';
+  __typename: 'HomepageLead';
   ambientVideo?: Maybe<Video>;
   content: Array<HomepageAssets>;
   cta?: Maybe<HomepageCta>;
@@ -2352,7 +2352,7 @@ export type HomepageLead = {
 };
 
 export type HomepageNews = {
-  __typename?: 'HomepageNews';
+  __typename: 'HomepageNews';
   content: Array<HomepageAssets>;
   cta?: Maybe<HomepageCta>;
   displayDateTime?: Maybe<Scalars['Boolean']['output']>;
@@ -2363,7 +2363,7 @@ export type HomepageNews = {
 };
 
 export type HomepagePlayerScore = {
-  __typename?: 'HomepagePlayerScore';
+  __typename: 'HomepagePlayerScore';
   playerId: Scalars['ID']['output'];
   round: Scalars['String']['output'];
   roundScore: Scalars['String']['output'];
@@ -2372,7 +2372,7 @@ export type HomepagePlayerScore = {
 };
 
 export type HomepageProgramStanding = {
-  __typename?: 'HomepageProgramStanding';
+  __typename: 'HomepageProgramStanding';
   backgroundImg?: Maybe<Scalars['String']['output']>;
   cta?: Maybe<HomepageCta>;
   lastProcessed?: Maybe<Scalars['String']['output']>;
@@ -2389,7 +2389,7 @@ export type HomepageProgramStanding = {
 };
 
 export type HomepageScoring = {
-  __typename?: 'HomepageScoring';
+  __typename: 'HomepageScoring';
   desktopCta?: Maybe<CallToAction>;
   path: Scalars['String']['output'];
   pillCta?: Maybe<CallToAction>;
@@ -2398,7 +2398,7 @@ export type HomepageScoring = {
 };
 
 export type HospitalityCard = {
-  __typename?: 'HospitalityCard';
+  __typename: 'HospitalityCard';
   blueBackground: Scalars['Boolean']['output'];
   cardDescription?: Maybe<Array<Maybe<NewsArticleNode>>>;
   cardPhoto?: Maybe<Scalars['String']['output']>;
@@ -2428,7 +2428,7 @@ export type Icon =
   | 'WITHDRAW';
 
 export type Image = {
-  __typename?: 'Image';
+  __typename: 'Image';
   imageCreator?: Maybe<Scalars['String']['output']>;
   imageDescription?: Maybe<Scalars['String']['output']>;
   imageOrientation?: Maybe<Orientation>;
@@ -2436,7 +2436,7 @@ export type Image = {
 };
 
 export type ImageAsset = {
-  __typename?: 'ImageAsset';
+  __typename: 'ImageAsset';
   assetType?: Maybe<Scalars['String']['output']>;
   /**   will always be image */
   deliveryType?: Maybe<Scalars['String']['output']>;
@@ -2447,14 +2447,14 @@ export type ImageAsset = {
 };
 
 export type ImageBlock = {
-  __typename?: 'ImageBlock';
+  __typename: 'ImageBlock';
   backgroundImage?: Maybe<Scalars['String']['output']>;
   cta?: Maybe<CallToAction>;
   textNodes?: Maybe<Array<Maybe<NewsArticleNode>>>;
 };
 
 export type InformationData = {
-  __typename?: 'InformationData';
+  __typename: 'InformationData';
   detail?: Maybe<Scalars['String']['output']>;
   label: Scalars['String']['output'];
   secondaryDetail?: Maybe<Scalars['String']['output']>;
@@ -2464,7 +2464,7 @@ export type InformationData = {
 };
 
 export type InformationRow = {
-  __typename?: 'InformationRow';
+  __typename: 'InformationRow';
   displayText: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   leaderboardSortOrder: Scalars['Int']['output'];
@@ -2474,7 +2474,7 @@ export type InformationRow = {
 };
 
 export type InformationSection = {
-  __typename?: 'InformationSection';
+  __typename: 'InformationSection';
   items: Array<InformationSectionItem>;
   sponsorImages?: Maybe<Array<SponsorImage>>;
   title: Scalars['String']['output'];
@@ -2483,7 +2483,7 @@ export type InformationSection = {
 export type InformationSectionItem = Abbreviations | Legend;
 
 export type IntegratedComponent = {
-  __typename?: 'IntegratedComponent';
+  __typename: 'IntegratedComponent';
   index: Scalars['Int']['output'];
   partner: IntegrationPartner;
 };
@@ -2492,7 +2492,7 @@ export type IntegrationPartner =
   | 'GOLFWRX';
 
 export type JumpToSection = {
-  __typename?: 'JumpToSection';
+  __typename: 'JumpToSection';
   anchorHtmlId?: Maybe<Array<Scalars['String']['output']>>;
   dropdownText?: Maybe<Array<Scalars['String']['output']>>;
 };
@@ -2500,14 +2500,14 @@ export type JumpToSection = {
 export type KopContentType = NewsArticleHeader | NewsArticleImage | NewsArticleLineBreak | NewsArticleLink | NewsArticleParagraph | NewsArticleText | TableFragment | UnorderedListNode;
 
 export type KitOfParts = {
-  __typename?: 'KitOfParts';
+  __typename: 'KitOfParts';
   fragments: Array<KopFragment>;
 };
 
 export type KopFragment = HomepageNews | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopZigZag | ThreeUpPhoto | ThreeUpStats | TwoColumn | VideoHero;
 
 export type KopHeader = {
-  __typename?: 'KopHeader';
+  __typename: 'KopHeader';
   cta?: Maybe<CallToAction>;
   headerTitle: Scalars['String']['output'];
   headlineColor?: Maybe<Scalars['String']['output']>;
@@ -2518,7 +2518,7 @@ export type KopHeader = {
 };
 
 export type KopSignUp = {
-  __typename?: 'KopSignUp';
+  __typename: 'KopSignUp';
   backgroundColor?: Maybe<Scalars['String']['output']>;
   backgroundImage?: Maybe<Scalars['String']['output']>;
   cta?: Maybe<CallToAction>;
@@ -2530,7 +2530,7 @@ export type KopSignUp = {
 };
 
 export type KopStandingsList = {
-  __typename?: 'KopStandingsList';
+  __typename: 'KopStandingsList';
   cta?: Maybe<CallToAction>;
   sectionTitle: Scalars['String']['output'];
   standings?: Maybe<Array<Maybe<HomePageStanding>>>;
@@ -2538,7 +2538,7 @@ export type KopStandingsList = {
 };
 
 export type KopSubheader = {
-  __typename?: 'KopSubheader';
+  __typename: 'KopSubheader';
   cta?: Maybe<CallToAction>;
   displayCta?: Maybe<Scalars['Boolean']['output']>;
   logo?: Maybe<Scalars['String']['output']>;
@@ -2547,12 +2547,12 @@ export type KopSubheader = {
 };
 
 export type KopUpcomingTournament = {
-  __typename?: 'KopUpcomingTournament';
+  __typename: 'KopUpcomingTournament';
   title: Scalars['String']['output'];
 };
 
 export type KopZigZag = {
-  __typename?: 'KopZigZag';
+  __typename: 'KopZigZag';
   backgroundColorOne?: Maybe<Scalars['String']['output']>;
   backgroundColorTwo?: Maybe<Scalars['String']['output']>;
   ctaOne?: Maybe<CallToAction>;
@@ -2568,13 +2568,13 @@ export type KopZigZag = {
 };
 
 export type LbRound = {
-  __typename?: 'LBRound';
+  __typename: 'LBRound';
   displayText: Scalars['String']['output'];
   roundNumber: Scalars['Int']['output'];
 };
 
 export type LeaderStat = {
-  __typename?: 'LeaderStat';
+  __typename: 'LeaderStat';
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   playerId: Scalars['String']['output'];
@@ -2586,20 +2586,20 @@ export type LeaderStat = {
 };
 
 export type LeaderboardCompressed = {
-  __typename?: 'LeaderboardCompressed';
+  __typename: 'LeaderboardCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type LeaderboardCompressedV2 = {
-  __typename?: 'LeaderboardCompressedV2';
+  __typename: 'LeaderboardCompressedV2';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 /**   Returns the leaderboard for a tournament where payload contains the leaderboard data in Base64 encoding. */
 export type LeaderboardCompressedV3 = {
-  __typename?: 'LeaderboardCompressedV3';
+  __typename: 'LeaderboardCompressedV3';
   /**   The tournament ID */
   id: Scalars['ID']['output'];
   /**   The full leaderboard payload/response. Will need to be Base64 decoded by clients */
@@ -2607,7 +2607,7 @@ export type LeaderboardCompressedV3 = {
 };
 
 export type LeaderboardDrawerV2 = {
-  __typename?: 'LeaderboardDrawerV2';
+  __typename: 'LeaderboardDrawerV2';
   backNine: Scalars['Boolean']['output'];
   currentHole?: Maybe<Scalars['Int']['output']>;
   currentRound: Scalars['Int']['output'];
@@ -2628,7 +2628,7 @@ export type LeaderboardFeature =
   | 'STROKES_GAINED';
 
 export type LeaderboardHoleByHole = {
-  __typename?: 'LeaderboardHoleByHole';
+  __typename: 'LeaderboardHoleByHole';
   courseHoleHeaders: Array<CourseHoleHeader>;
   courses: Array<Course>;
   currentRound: Scalars['Int']['output'];
@@ -2641,7 +2641,7 @@ export type LeaderboardHoleByHole = {
 };
 
 export type LeaderboardInfo = {
-  __typename?: 'LeaderboardInfo';
+  __typename: 'LeaderboardInfo';
   /** @deprecated can ignore, we remove sponship in MW */
   disableCdw: Scalars['Boolean']['output'];
   informationSections: Array<InformationSection>;
@@ -2650,7 +2650,7 @@ export type LeaderboardInfo = {
 };
 
 export type LeaderboardMessage = {
-  __typename?: 'LeaderboardMessage';
+  __typename: 'LeaderboardMessage';
   externalLink?: Maybe<Scalars['Boolean']['output']>;
   messageIcon: LeaderboardMessageIcon;
   messageLink?: Maybe<Scalars['String']['output']>;
@@ -2671,7 +2671,7 @@ export type LeaderboardMovement =
   | 'UP';
 
 export type LeaderboardOddsSwing = {
-  __typename?: 'LeaderboardOddsSwing';
+  __typename: 'LeaderboardOddsSwing';
   swing: OddsSwing;
 };
 
@@ -2680,7 +2680,7 @@ export type LeaderboardPlayerIcon =
   | 'HOT_STREAK';
 
 export type LeaderboardRoundStats = {
-  __typename?: 'LeaderboardRoundStats';
+  __typename: 'LeaderboardRoundStats';
   players: Array<LeaderboardStatsPlayer>;
   roundDisplayText: Scalars['String']['output'];
   roundNumber: Scalars['Int']['output'];
@@ -2691,7 +2691,7 @@ export type LeaderboardRowV2 = InformationRow | PlayerRowV2;
 export type LeaderboardRowV3 = InformationRow | PlayerRowV3;
 
 export type LeaderboardScoringDataV3 = {
-  __typename?: 'LeaderboardScoringDataV3';
+  __typename: 'LeaderboardScoringDataV3';
   backNine: Scalars['Boolean']['output'];
   /**   COURSE */
   courseId: Scalars['String']['output'];
@@ -2746,7 +2746,7 @@ export type LeaderboardScoringDataV3 = {
 };
 
 export type LeaderboardStatItem = {
-  __typename?: 'LeaderboardStatItem';
+  __typename: 'LeaderboardStatItem';
   color: Scalars['String']['output'];
   rank: Scalars['String']['output'];
   sortValue: Scalars['Float']['output'];
@@ -2758,7 +2758,7 @@ export type LeaderboardStatItem = {
 export type LeaderboardStatSupportValues = LeaderboardOddsSwing | LeaderboardSupportingString;
 
 export type LeaderboardStats = {
-  __typename?: 'LeaderboardStats';
+  __typename: 'LeaderboardStats';
   id: Scalars['String']['output'];
   players: Array<LeaderboardStatsPlayer>;
   rounds?: Maybe<Array<LeaderboardRoundStats>>;
@@ -2768,7 +2768,7 @@ export type LeaderboardStats = {
 };
 
 export type LeaderboardStatsPlayer = {
-  __typename?: 'LeaderboardStatsPlayer';
+  __typename: 'LeaderboardStatsPlayer';
   playerId: Scalars['String']['output'];
   stats: Array<LeaderboardStatItem>;
 };
@@ -2779,7 +2779,7 @@ export type LeaderboardStatsType =
   | 'STROKES_GAINED';
 
 export type LeaderboardStroke = {
-  __typename?: 'LeaderboardStroke';
+  __typename: 'LeaderboardStroke';
   currentHole: Scalars['Int']['output'];
   currentHoleDisplay: Scalars['String']['output'];
   currentHoleValueDisplay: Scalars['String']['output'];
@@ -2801,37 +2801,37 @@ export type LeaderboardStroke = {
 };
 
 export type LeaderboardStrokes = {
-  __typename?: 'LeaderboardStrokes';
+  __typename: 'LeaderboardStrokes';
   id: Scalars['ID']['output'];
   playoffs?: Maybe<Array<LeaderboardStroke>>;
   strokes: Array<LeaderboardStroke>;
 };
 
 export type LeaderboardStrokesCompressed = {
-  __typename?: 'LeaderboardStrokesCompressed';
+  __typename: 'LeaderboardStrokesCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type LeaderboardSupportingString = {
-  __typename?: 'LeaderboardSupportingString';
+  __typename: 'LeaderboardSupportingString';
   data: Scalars['String']['output'];
 };
 
 export type LeaderboardUpdateCompressed = {
-  __typename?: 'LeaderboardUpdateCompressed';
+  __typename: 'LeaderboardUpdateCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type LeaderboardUpdateCompressedV3 = {
-  __typename?: 'LeaderboardUpdateCompressedV3';
+  __typename: 'LeaderboardUpdateCompressedV3';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type LeaderboardUpdatePlayerV3 = {
-  __typename?: 'LeaderboardUpdatePlayerV3';
+  __typename: 'LeaderboardUpdatePlayerV3';
   id: Scalars['ID']['output'];
   leaderboardSortOrder: Scalars['Int']['output'];
   scoringData: LeaderboardScoringDataV3;
@@ -2840,7 +2840,7 @@ export type LeaderboardUpdatePlayerV3 = {
 export type LeaderboardUpdateRowV3 = InformationRow | LeaderboardUpdatePlayerV3;
 
 export type LeaderboardUpdateV3 = {
-  __typename?: 'LeaderboardUpdateV3';
+  __typename: 'LeaderboardUpdateV3';
   cutLineProbabilities?: Maybe<CutLineInfo>;
   id: Scalars['ID']['output'];
   isPlayoffActive: Scalars['Boolean']['output'];
@@ -2855,7 +2855,7 @@ export type LeaderboardUpdateV3 = {
 };
 
 export type LeaderboardV2 = {
-  __typename?: 'LeaderboardV2';
+  __typename: 'LeaderboardV2';
   courses: Array<Course>;
   disableLeaderboard: Scalars['Boolean']['output'];
   /** @deprecated use leaderboardFeatures */
@@ -2890,7 +2890,7 @@ export type LeaderboardV2 = {
 };
 
 export type LeaderboardV3 = {
-  __typename?: 'LeaderboardV3';
+  __typename: 'LeaderboardV3';
   bubblePill?: Maybe<BubblePill>;
   courses: Array<Course>;
   cutLineProbabilities?: Maybe<CutLineInfo>;
@@ -2925,7 +2925,7 @@ export type LeaderboardV3 = {
 };
 
 export type Legend = {
-  __typename?: 'Legend';
+  __typename: 'Legend';
   accessibilityText?: Maybe<Scalars['String']['output']>;
   icon: Icon;
   iconUrl?: Maybe<Scalars['String']['output']>;
@@ -2935,7 +2935,7 @@ export type Legend = {
 };
 
 export type ListItem = {
-  __typename?: 'ListItem';
+  __typename: 'ListItem';
   segments: Array<Maybe<ListNodeItems>>;
 };
 
@@ -2952,14 +2952,14 @@ export type LiveStatus =
   | 'UPCOMING';
 
 export type LiveVideoOverride = {
-  __typename?: 'LiveVideoOverride';
+  __typename: 'LiveVideoOverride';
   simulcast?: Maybe<BroadcastFullTelecast>;
   tourCode: TourCode;
   videos: Array<Video>;
 };
 
 export type MpHolePlayer = {
-  __typename?: 'MPHolePlayer';
+  __typename: 'MPHolePlayer';
   holePoints?: Maybe<Scalars['String']['output']>;
   holeScore?: Maybe<Scalars['String']['output']>;
   /**   used for four ball type scoring */
@@ -2969,7 +2969,7 @@ export type MpHolePlayer = {
 };
 
 export type MpLeaderboard = {
-  __typename?: 'MPLeaderboard';
+  __typename: 'MPLeaderboard';
   courses: Array<Course>;
   currentRound: Scalars['Int']['output'];
   drawersEnabled: Scalars['Boolean']['output'];
@@ -2991,7 +2991,7 @@ export type MpLeaderboard = {
 };
 
 export type MpLeaderboardBracket = {
-  __typename?: 'MPLeaderboardBracket';
+  __typename: 'MPLeaderboardBracket';
   bracketHeader: Scalars['String']['output'];
   bracketNum?: Maybe<Scalars['Int']['output']>;
   matches: Array<MpLeaderboardMatch>;
@@ -2999,7 +2999,7 @@ export type MpLeaderboardBracket = {
 };
 
 export type MpLeaderboardMatch = {
-  __typename?: 'MPLeaderboardMatch';
+  __typename: 'MPLeaderboardMatch';
   bracketPlayerSwap?: Maybe<Scalars['Boolean']['output']>;
   matchId: Scalars['ID']['output'];
   matchScore?: Maybe<Scalars['String']['output']>;
@@ -3013,7 +3013,7 @@ export type MpLeaderboardMatch = {
 };
 
 export type MpLeaderboardPlayer = {
-  __typename?: 'MPLeaderboardPlayer';
+  __typename: 'MPLeaderboardPlayer';
   activeInPlayoff?: Maybe<Scalars['Boolean']['output']>;
   bracketSeed: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
@@ -3033,7 +3033,7 @@ export type MpLeaderboardPlayer = {
 };
 
 export type MpLeaderboardRound = {
-  __typename?: 'MPLeaderboardRound';
+  __typename: 'MPLeaderboardRound';
   brackets: Array<MpLeaderboardBracket>;
   round: Scalars['Int']['output'];
   roundHeader: Scalars['String']['output'];
@@ -3042,7 +3042,7 @@ export type MpLeaderboardRound = {
 };
 
 export type MpMatchTeeTimes = {
-  __typename?: 'MPMatchTeeTimes';
+  __typename: 'MPMatchTeeTimes';
   matchId: Scalars['ID']['output'];
   players: Array<MpTeeTimePlayer>;
   status: Scalars['String']['output'];
@@ -3052,7 +3052,7 @@ export type MpMatchTeeTimes = {
 };
 
 export type MpPlayoffScorecard = {
-  __typename?: 'MPPlayoffScorecard';
+  __typename: 'MPPlayoffScorecard';
   currentHole?: Maybe<Scalars['Int']['output']>;
   id: Scalars['ID']['output'];
   infoWebUrl?: Maybe<Scalars['String']['output']>;
@@ -3066,13 +3066,13 @@ export type MpPlayoffScorecard = {
 };
 
 export type MpRoundTeeTimes = {
-  __typename?: 'MPRoundTeeTimes';
+  __typename: 'MPRoundTeeTimes';
   matchTeeTimes: Array<MpMatchTeeTimes>;
   roundNumber: Scalars['Int']['output'];
 };
 
 export type MpScorecard = {
-  __typename?: 'MPScorecard';
+  __typename: 'MPScorecard';
   currentHole?: Maybe<Scalars['Int']['output']>;
   id: Scalars['ID']['output'];
   infoWebUrl?: Maybe<Scalars['String']['output']>;
@@ -3089,7 +3089,7 @@ export type MpScorecard = {
 };
 
 export type MpScorecardPlayer = {
-  __typename?: 'MPScorecardPlayer';
+  __typename: 'MPScorecardPlayer';
   countryFlag: Scalars['String']['output'];
   displayColor: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
@@ -3102,7 +3102,7 @@ export type MpScorecardPlayer = {
 };
 
 export type MpScorecardResults = {
-  __typename?: 'MPScorecardResults';
+  __typename: 'MPScorecardResults';
   matchId: Scalars['String']['output'];
   messages?: Maybe<Array<Message>>;
   players: Array<MpScorecardResultsPlayer>;
@@ -3111,14 +3111,14 @@ export type MpScorecardResults = {
 };
 
 export type MpScorecardResultsPlayer = {
-  __typename?: 'MPScorecardResultsPlayer';
+  __typename: 'MPScorecardResultsPlayer';
   displayName: Scalars['String']['output'];
   playerId: Scalars['ID']['output'];
   previousRounds: Array<PreviousRounds>;
 };
 
 export type MpTeeTimePlayer = {
-  __typename?: 'MPTeeTimePlayer';
+  __typename: 'MPTeeTimePlayer';
   countryFlag: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
   /** @deprecated URL should be built using player ID */
@@ -3128,7 +3128,7 @@ export type MpTeeTimePlayer = {
 };
 
 export type MpTeeTimes = {
-  __typename?: 'MPTeeTimes';
+  __typename: 'MPTeeTimes';
   defaultRound: Scalars['Int']['output'];
   drawersEnabled: Scalars['Boolean']['output'];
   id: Scalars['ID']['output'];
@@ -3139,7 +3139,7 @@ export type MpTeeTimes = {
 };
 
 export type MajorResultsTournament = {
-  __typename?: 'MajorResultsTournament';
+  __typename: 'MajorResultsTournament';
   courseName: Scalars['String']['output'];
   date: Scalars['String']['output'];
   money: Scalars['String']['output'];
@@ -3158,14 +3158,14 @@ export type MajorResultsTournament = {
 };
 
 export type MajorTimeline = {
-  __typename?: 'MajorTimeline';
+  __typename: 'MajorTimeline';
   finishes: Array<Scalars['String']['output']>;
   tournamentName: Scalars['String']['output'];
   tournamentNum: Scalars['String']['output'];
 };
 
 export type Market = {
-  __typename?: 'Market';
+  __typename: 'Market';
   header: Scalars['String']['output'];
   /**   used for switching between submarkets like "Group A" */
   marketType: OddsMarketType;
@@ -3175,13 +3175,13 @@ export type Market = {
 };
 
 export type MarketPill = {
-  __typename?: 'MarketPill';
+  __typename: 'MarketPill';
   displayText: Scalars['String']['output'];
   marketType: OddsMarketType;
 };
 
 export type MatchCard = {
-  __typename?: 'MatchCard';
+  __typename: 'MatchCard';
   matchId?: Maybe<Scalars['String']['output']>;
   path: Scalars['String']['output'];
   round?: Maybe<Scalars['String']['output']>;
@@ -3190,7 +3190,7 @@ export type MatchCard = {
 };
 
 export type MatchHole = {
-  __typename?: 'MatchHole';
+  __typename: 'MatchHole';
   courseHoleNumber: Scalars['String']['output'];
   holeNumber: Scalars['String']['output'];
   holeNumberColor: Scalars['String']['output'];
@@ -3203,7 +3203,7 @@ export type MatchHole = {
 };
 
 export type MatchHoleScore = {
-  __typename?: 'MatchHoleScore';
+  __typename: 'MatchHoleScore';
   holeScore?: Maybe<Scalars['String']['output']>;
   holeScoreStatus?: Maybe<HoleScoreStatus>;
   playerId: Scalars['ID']['output'];
@@ -3215,14 +3215,14 @@ export type MatchStatus =
   | 'UPCOMING';
 
 export type MatchupOptionV2 = BaseOddsOption & {
-  __typename?: 'MatchupOptionV2';
+  __typename: 'MatchupOptionV2';
   entity: OddsEntity;
   isTie: Scalars['Boolean']['output'];
   odds: OddsValues;
 };
 
 export type MatchupsPlayer = {
-  __typename?: 'MatchupsPlayer';
+  __typename: 'MatchupsPlayer';
   countryFlag?: Maybe<Scalars['String']['output']>;
   currentRound?: Maybe<Scalars['Int']['output']>;
   displayName: Scalars['String']['output'];
@@ -3237,7 +3237,7 @@ export type MatchupsPlayer = {
 };
 
 export type MediaGallery = {
-  __typename?: 'MediaGallery';
+  __typename: 'MediaGallery';
   contentDescription?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   cta?: Maybe<HomepageCta>;
   mediaGallery?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -3246,7 +3246,7 @@ export type MediaGallery = {
 };
 
 export type MediaGalleryItem = {
-  __typename?: 'MediaGalleryItem';
+  __typename: 'MediaGalleryItem';
   orientation?: Maybe<Orientation>;
   path?: Maybe<Scalars['String']['output']>;
 };
@@ -3254,32 +3254,32 @@ export type MediaGalleryItem = {
 export type MediaGalleryItems = MediaGalleryItem | Video;
 
 export type Message = {
-  __typename?: 'Message';
+  __typename: 'Message';
   body: Array<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
 export type MessageBanner = {
-  __typename?: 'MessageBanner';
+  __typename: 'MessageBanner';
   messageLink?: Maybe<Scalars['String']['output']>;
   messageText?: Maybe<Scalars['String']['output']>;
   path: Scalars['String']['output'];
 };
 
 export type MobileCategoryPill = {
-  __typename?: 'MobileCategoryPill';
+  __typename: 'MobileCategoryPill';
   category?: Maybe<StatCategory>;
   displayName: Scalars['String']['output'];
 };
 
 export type MobileStat = {
-  __typename?: 'MobileStat';
+  __typename: 'MobileStat';
   statId: Scalars['String']['output'];
   statTitle: Scalars['String']['output'];
 };
 
 export type MobileStatCategoryLeaders = {
-  __typename?: 'MobileStatCategoryLeaders';
+  __typename: 'MobileStatCategoryLeaders';
   category: StatCategory;
   categoryHeader: Scalars['String']['output'];
   leaders: Array<LeaderStat>;
@@ -3287,7 +3287,7 @@ export type MobileStatCategoryLeaders = {
 };
 
 export type MobileStatLeaders = {
-  __typename?: 'MobileStatLeaders';
+  __typename: 'MobileStatLeaders';
   categories: Array<MobileStatCategoryLeaders>;
   categoryPills: Array<MobileCategoryPill>;
   tourCode: TourCode;
@@ -3295,7 +3295,7 @@ export type MobileStatLeaders = {
 };
 
 export type Mutation = {
-  __typename?: 'Mutation';
+  __typename: 'Mutation';
   addFavoriteTour: FavoriteTourResponse;
   addFavorites: Array<FavoritePlayer>;
   addNotificationTags: NotificationTagResponse;
@@ -3710,7 +3710,7 @@ export type MutationUpdateUpcomingScheduleArgs = {
 };
 
 export type NewsArticle = {
-  __typename?: 'NewsArticle';
+  __typename: 'NewsArticle';
   aiGenerated?: Maybe<Scalars['Boolean']['output']>;
   analyticsTags?: Maybe<Array<Scalars['String']['output']>>;
   articleFormType?: Maybe<ArticleFormType>;
@@ -3751,7 +3751,7 @@ export type NewsArticle = {
 };
 
 export type NewsArticleAuthor = {
-  __typename?: 'NewsArticleAuthor';
+  __typename: 'NewsArticleAuthor';
   byLine?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use byLineIconAsset */
   byLineIcon?: Maybe<Scalars['String']['output']>;
@@ -3767,7 +3767,7 @@ export type NewsArticleAuthor = {
 };
 
 export type NewsArticleBlockQuote = {
-  __typename?: 'NewsArticleBlockQuote';
+  __typename: 'NewsArticleBlockQuote';
   class?: Maybe<Scalars['String']['output']>;
   otherAttribute?: Maybe<Scalars['String']['output']>;
   playerId?: Maybe<Scalars['String']['output']>;
@@ -3776,7 +3776,7 @@ export type NewsArticleBlockQuote = {
 };
 
 export type NewsArticleContentSegment = {
-  __typename?: 'NewsArticleContentSegment';
+  __typename: 'NewsArticleContentSegment';
   data?: Maybe<Scalars['String']['output']>;
   format?: Maybe<NewsArticleFormat>;
   id?: Maybe<Scalars['String']['output']>;
@@ -3789,7 +3789,7 @@ export type NewsArticleContentSegment = {
 };
 
 export type NewsArticleDetails = {
-  __typename?: 'NewsArticleDetails';
+  __typename: 'NewsArticleDetails';
   aiGenerated?: Maybe<Scalars['Boolean']['output']>;
   analyticsTags?: Maybe<Array<Scalars['String']['output']>>;
   articleImageAlt: Scalars['String']['output'];
@@ -3839,25 +3839,25 @@ export type NewsArticleDetails = {
 };
 
 export type NewsArticleDetailsCompressed = {
-  __typename?: 'NewsArticleDetailsCompressed';
+  __typename: 'NewsArticleDetailsCompressed';
   path: Scalars['String']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type NewsArticleDetailsTournament = {
-  __typename?: 'NewsArticleDetailsTournament';
+  __typename: 'NewsArticleDetailsTournament';
   contentTournamentId: Scalars['String']['output'];
   tourName: Scalars['String']['output'];
   tournamentName: Scalars['String']['output'];
 };
 
 export type NewsArticleDivider = {
-  __typename?: 'NewsArticleDivider';
+  __typename: 'NewsArticleDivider';
   value?: Maybe<Scalars['String']['output']>;
 };
 
 export type NewsArticleEmbedded = {
-  __typename?: 'NewsArticleEmbedded';
+  __typename: 'NewsArticleEmbedded';
   class?: Maybe<Scalars['String']['output']>;
   frameborder?: Maybe<Scalars['Boolean']['output']>;
   height?: Maybe<Scalars['String']['output']>;
@@ -3867,27 +3867,27 @@ export type NewsArticleEmbedded = {
 };
 
 export type NewsArticleFormat = {
-  __typename?: 'NewsArticleFormat';
+  __typename: 'NewsArticleFormat';
   styles?: Maybe<Array<Style>>;
   variants?: Maybe<Array<Scalars['String']['output']>>;
 };
 
 export type NewsArticleHeader = {
-  __typename?: 'NewsArticleHeader';
+  __typename: 'NewsArticleHeader';
   headerSegments?: Maybe<Array<NewsArticleHeaderSegment>>;
   id?: Maybe<Scalars['String']['output']>;
   style?: Maybe<Scalars['String']['output']>;
 };
 
 export type NewsArticleHeaderSegment = {
-  __typename?: 'NewsArticleHeaderSegment';
+  __typename: 'NewsArticleHeaderSegment';
   class?: Maybe<Scalars['String']['output']>;
   headerType: Scalars['String']['output'];
   segments?: Maybe<Array<NewsArticleContentSegment>>;
 };
 
 export type NewsArticleHero = {
-  __typename?: 'NewsArticleHero';
+  __typename: 'NewsArticleHero';
   /** @deprecated Use imageAsset */
   image?: Maybe<Scalars['String']['output']>;
   imageAsset?: Maybe<ImageAsset>;
@@ -3896,7 +3896,7 @@ export type NewsArticleHero = {
 };
 
 export type NewsArticleHowToWatch = {
-  __typename?: 'NewsArticleHowToWatch';
+  __typename: 'NewsArticleHowToWatch';
   class?: Maybe<Scalars['String']['output']>;
   round?: Maybe<Scalars['Int']['output']>;
   season?: Maybe<Scalars['String']['output']>;
@@ -3904,12 +3904,12 @@ export type NewsArticleHowToWatch = {
 };
 
 export type NewsArticleImage = {
-  __typename?: 'NewsArticleImage';
+  __typename: 'NewsArticleImage';
   segments: Array<NewsArticleContentSegment>;
 };
 
 export type NewsArticleInlineOdds = {
-  __typename?: 'NewsArticleInlineOdds';
+  __typename: 'NewsArticleInlineOdds';
   marketId: HistoricalOddsId;
   playerId: Scalars['String']['output'];
   playerName: Scalars['String']['output'];
@@ -3918,28 +3918,28 @@ export type NewsArticleInlineOdds = {
 };
 
 export type NewsArticleInstagram = {
-  __typename?: 'NewsArticleInstagram';
+  __typename: 'NewsArticleInstagram';
   class?: Maybe<Scalars['String']['output']>;
   url?: Maybe<Scalars['String']['output']>;
 };
 
 export type NewsArticleLineBreak = {
-  __typename?: 'NewsArticleLineBreak';
+  __typename: 'NewsArticleLineBreak';
   breakValue?: Maybe<Scalars['String']['output']>;
 };
 
 export type NewsArticleLink = {
-  __typename?: 'NewsArticleLink';
+  __typename: 'NewsArticleLink';
   segments: Array<NewsArticleContentSegment>;
 };
 
 export type NewsArticleMetadata = {
-  __typename?: 'NewsArticleMetadata';
+  __typename: 'NewsArticleMetadata';
   metadata?: Maybe<Array<NewsArticleMetadataSegment>>;
 };
 
 export type NewsArticleMetadataSegment = {
-  __typename?: 'NewsArticleMetadataSegment';
+  __typename: 'NewsArticleMetadataSegment';
   name: Scalars['String']['output'];
   value?: Maybe<Scalars['String']['output']>;
 };
@@ -3947,7 +3947,7 @@ export type NewsArticleMetadataSegment = {
 export type NewsArticleNode = ArticleOddsTableQuery | CerosEmbedPlugin | ExpertPicksNode | NewsArticleBlockQuote | NewsArticleDivider | NewsArticleEmbedded | NewsArticleHeader | NewsArticleHowToWatch | NewsArticleImage | NewsArticleInstagram | NewsArticleLineBreak | NewsArticleLink | NewsArticleOddsGraph | NewsArticleOddsParagraph | NewsArticleParagraph | NewsArticlePhotoGallery | NewsArticlePlayerComparison | NewsArticleScoreCard | NewsArticleStats | NewsArticleText | NewsArticleTweetNode | NewsArticleVideo | NewsArticleWeather | RelatedFactsNode | TglBoxScore | TableFragment | UnorderedListNode;
 
 export type NewsArticleOddsGraph = {
-  __typename?: 'NewsArticleOddsGraph';
+  __typename: 'NewsArticleOddsGraph';
   marketId?: Maybe<HistoricalOddsId>;
   oddsTimeType?: Maybe<OddsTimeType>;
   playerIds?: Maybe<Array<Scalars['String']['output']>>;
@@ -3956,23 +3956,23 @@ export type NewsArticleOddsGraph = {
 };
 
 export type NewsArticleOddsParagraph = {
-  __typename?: 'NewsArticleOddsParagraph';
+  __typename: 'NewsArticleOddsParagraph';
   content: Array<OddsParagraphContent>;
 };
 
 export type NewsArticleParagraph = {
-  __typename?: 'NewsArticleParagraph';
+  __typename: 'NewsArticleParagraph';
   id?: Maybe<Scalars['String']['output']>;
   segments: Array<NewsArticleContentSegment>;
 };
 
 export type NewsArticlePhotoGallery = {
-  __typename?: 'NewsArticlePhotoGallery';
+  __typename: 'NewsArticlePhotoGallery';
   images: Array<NewsArticleImage>;
 };
 
 export type NewsArticlePlayerComparison = {
-  __typename?: 'NewsArticlePlayerComparison';
+  __typename: 'NewsArticlePlayerComparison';
   class?: Maybe<Scalars['String']['output']>;
   playerIds?: Maybe<Array<Scalars['String']['output']>>;
   playerNames?: Maybe<Array<Scalars['String']['output']>>;
@@ -3983,7 +3983,7 @@ export type NewsArticlePlayerComparison = {
 };
 
 export type NewsArticlePlayerTournamentOdds = {
-  __typename?: 'NewsArticlePlayerTournamentOdds';
+  __typename: 'NewsArticlePlayerTournamentOdds';
   playerId: Scalars['String']['output'];
   timeStamp?: Maybe<Scalars['AWSDateTime']['output']>;
   tournamentId: Scalars['String']['output'];
@@ -3991,7 +3991,7 @@ export type NewsArticlePlayerTournamentOdds = {
 };
 
 export type NewsArticleScoreCard = {
-  __typename?: 'NewsArticleScoreCard';
+  __typename: 'NewsArticleScoreCard';
   class?: Maybe<Scalars['String']['output']>;
   playerId?: Maybe<Scalars['String']['output']>;
   playerName?: Maybe<Scalars['String']['output']>;
@@ -4001,7 +4001,7 @@ export type NewsArticleScoreCard = {
 };
 
 export type NewsArticleSponsor = {
-  __typename?: 'NewsArticleSponsor';
+  __typename: 'NewsArticleSponsor';
   description?: Maybe<Scalars['String']['output']>;
   gam?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use imageAsset */
@@ -4024,7 +4024,7 @@ export type NewsArticleStatType =
   | 'LINE_CHART';
 
 export type NewsArticleStats = {
-  __typename?: 'NewsArticleStats';
+  __typename: 'NewsArticleStats';
   playerId?: Maybe<Scalars['String']['output']>;
   playerName?: Maybe<Scalars['String']['output']>;
   season?: Maybe<Scalars['String']['output']>;
@@ -4034,27 +4034,27 @@ export type NewsArticleStats = {
 };
 
 export type NewsArticleTeaserAsset = {
-  __typename?: 'NewsArticleTeaserAsset';
+  __typename: 'NewsArticleTeaserAsset';
   value?: Maybe<Scalars['String']['output']>;
 };
 
 export type NewsArticleText = {
-  __typename?: 'NewsArticleText';
+  __typename: 'NewsArticleText';
   value?: Maybe<Scalars['String']['output']>;
 };
 
 export type NewsArticleTweetNode = {
-  __typename?: 'NewsArticleTweetNode';
+  __typename: 'NewsArticleTweetNode';
   tweetId: Scalars['String']['output'];
 };
 
 export type NewsArticleVideo = {
-  __typename?: 'NewsArticleVideo';
+  __typename: 'NewsArticleVideo';
   video?: Maybe<Video>;
 };
 
 export type NewsArticleWeather = {
-  __typename?: 'NewsArticleWeather';
+  __typename: 'NewsArticleWeather';
   class?: Maybe<Scalars['String']['output']>;
   season?: Maybe<Scalars['String']['output']>;
   tour?: Maybe<Scalars['String']['output']>;
@@ -4062,7 +4062,7 @@ export type NewsArticleWeather = {
 };
 
 export type NewsArticles = {
-  __typename?: 'NewsArticles';
+  __typename: 'NewsArticles';
   articles: Array<NewsArticle>;
   franchiseSponsors?: Maybe<Array<NewsSponsor>>;
   /** @deprecated not needed */
@@ -4070,7 +4070,7 @@ export type NewsArticles = {
 };
 
 export type NewsFranchise = {
-  __typename?: 'NewsFranchise';
+  __typename: 'NewsFranchise';
   franchise: Scalars['String']['output'];
   franchiseLabel: Scalars['String']['output'];
 };
@@ -4080,7 +4080,7 @@ export type NewsLetterType =
   | 'TOURNAMENT';
 
 export type NewsSponsor = {
-  __typename?: 'NewsSponsor';
+  __typename: 'NewsSponsor';
   accessibilityText: Scalars['String']['output'];
   backgroundColor: Scalars['String']['output'];
   franchise: Scalars['String']['output'];
@@ -4091,7 +4091,7 @@ export type NewsSponsor = {
 };
 
 export type Newsletter = {
-  __typename?: 'Newsletter';
+  __typename: 'Newsletter';
   ctaText: Scalars['String']['output'];
   description?: Maybe<Scalars['String']['output']>;
   gigyaSubscriptionId: Scalars['String']['output'];
@@ -4102,7 +4102,7 @@ export type Newsletter = {
 };
 
 export type NotificationTag = {
-  __typename?: 'NotificationTag';
+  __typename: 'NotificationTag';
   tag: Scalars['String']['output'];
 };
 
@@ -4111,13 +4111,13 @@ export type NotificationTagInput = {
 };
 
 export type NotificationTagResponse = {
-  __typename?: 'NotificationTagResponse';
+  __typename: 'NotificationTagResponse';
   ok: Scalars['Boolean']['output'];
   tags: Array<Maybe<NotificationTag>>;
 };
 
 export type OddsBanner = {
-  __typename?: 'OddsBanner';
+  __typename: 'OddsBanner';
   cta?: Maybe<CallToAction>;
   disclaimer: Scalars['String']['output'];
   image: Scalars['String']['output'];
@@ -4125,14 +4125,14 @@ export type OddsBanner = {
 };
 
 export type OddsCutsOption = {
-  __typename?: 'OddsCutsOption';
+  __typename: 'OddsCutsOption';
   entity: OddsEntity;
   noOdds: OddsValues;
   yesOdds: OddsValues;
 };
 
 export type OddsCutsPlayers = {
-  __typename?: 'OddsCutsPlayers';
+  __typename: 'OddsCutsPlayers';
   countryFlag?: Maybe<Scalars['String']['output']>;
   currentRound?: Maybe<Scalars['Int']['output']>;
   displayName: Scalars['String']['output'];
@@ -4153,7 +4153,7 @@ export type OddsCutsPlayers = {
 
 /**   Odds Primitives */
 export type OddsEntity = {
-  __typename?: 'OddsEntity';
+  __typename: 'OddsEntity';
   color?: Maybe<Scalars['String']['output']>;
   entityFlagUrl?: Maybe<Scalars['String']['output']>;
   entityId: Scalars['ID']['output'];
@@ -4171,7 +4171,7 @@ export type OddsEntity = {
 };
 
 export type OddsFinishes = {
-  __typename?: 'OddsFinishes';
+  __typename: 'OddsFinishes';
   countryFlag?: Maybe<Scalars['String']['output']>;
   currentRound?: Maybe<Scalars['Int']['output']>;
   displayName: Scalars['String']['output'];
@@ -4186,7 +4186,7 @@ export type OddsFinishes = {
 };
 
 export type OddsFinishesOption = BaseOddsOption & {
-  __typename?: 'OddsFinishesOption';
+  __typename: 'OddsFinishesOption';
   entity: OddsEntity;
   odds: OddsValues;
 };
@@ -4197,26 +4197,26 @@ export type OddsFormat =
   | 'MONEYLINE';
 
 export type OddsGroup = {
-  __typename?: 'OddsGroup';
+  __typename: 'OddsGroup';
   id: Scalars['ID']['output'];
   matchupPlayers: Array<MatchupsPlayer>;
   subMarket: Scalars['String']['output'];
 };
 
 export type OddsGroupOptionV2 = BaseOddsOption & {
-  __typename?: 'OddsGroupOptionV2';
+  __typename: 'OddsGroupOptionV2';
   entity: OddsEntity;
   odds: OddsValues;
 };
 
 export type OddsLeadersOption = BaseOddsOption & {
-  __typename?: 'OddsLeadersOption';
+  __typename: 'OddsLeadersOption';
   entity: OddsEntity;
   odds: OddsValues;
 };
 
 export type OddsLeadersPlayers = {
-  __typename?: 'OddsLeadersPlayers';
+  __typename: 'OddsLeadersPlayers';
   countryFlag?: Maybe<Scalars['String']['output']>;
   currentRound?: Maybe<Scalars['Int']['output']>;
   displayName: Scalars['String']['output'];
@@ -4240,25 +4240,25 @@ export type OddsMarketType =
   | 'WINNER';
 
 export type OddsMatchupOptionGroup = {
-  __typename?: 'OddsMatchupOptionGroup';
+  __typename: 'OddsMatchupOptionGroup';
   options: Array<MatchupOptionV2>;
 };
 
 export type OddsMatchups = {
-  __typename?: 'OddsMatchups';
+  __typename: 'OddsMatchups';
   id: Scalars['ID']['output'];
   matchupPlayers: Array<MatchupsPlayer>;
   subMarket: Scalars['String']['output'];
 };
 
 export type OddsMessage = {
-  __typename?: 'OddsMessage';
+  __typename: 'OddsMessage';
   body: Scalars['String']['output'];
   header: Scalars['String']['output'];
 };
 
 export type OddsNationality = {
-  __typename?: 'OddsNationality';
+  __typename: 'OddsNationality';
   countryFlag?: Maybe<Scalars['String']['output']>;
   currentRound?: Maybe<Scalars['Int']['output']>;
   displayName: Scalars['String']['output'];
@@ -4273,7 +4273,7 @@ export type OddsNationality = {
 };
 
 export type OddsNationalityOption = BaseOddsOption & {
-  __typename?: 'OddsNationalityOption';
+  __typename: 'OddsNationalityOption';
   entity: OddsEntity;
   odds: OddsValues;
 };
@@ -4285,7 +4285,7 @@ export type OddsOptionV2 = OddsCutsOption | OddsFinishesOption | OddsGroupOption
 export type OddsParagraphContent = NewsArticleInlineOdds | NewsArticleText;
 
 export type OddsPlayer = {
-  __typename?: 'OddsPlayer';
+  __typename: 'OddsPlayer';
   color?: Maybe<Scalars['String']['output']>;
   countryFlag: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
@@ -4310,7 +4310,7 @@ export type OddsSwing =
 
 /**   Odds Table */
 export type OddsTable = {
-  __typename?: 'OddsTable';
+  __typename: 'OddsTable';
   markets: Array<ArticleOddsMarkets>;
   players: Array<PlayerMarketsRow>;
   provider?: Maybe<OddsProvider>;
@@ -4323,7 +4323,7 @@ export type OddsTimeType =
   | 'HOLE';
 
 export type OddsTimeline = {
-  __typename?: 'OddsTimeline';
+  __typename: 'OddsTimeline';
   countryCode: Scalars['String']['output'];
   oddsProvider: OddsProvider;
   players: Array<OddsTimelinePlayer>;
@@ -4332,7 +4332,7 @@ export type OddsTimeline = {
 };
 
 export type OddsTimelinePlayer = {
-  __typename?: 'OddsTimelinePlayer';
+  __typename: 'OddsTimelinePlayer';
   data: Array<OddsTimelinePoint>;
   playerColor: Scalars['String']['output'];
   playerId: Scalars['String']['output'];
@@ -4340,7 +4340,7 @@ export type OddsTimelinePlayer = {
 };
 
 export type OddsTimelinePoint = {
-  __typename?: 'OddsTimelinePoint';
+  __typename: 'OddsTimelinePoint';
   holeNumber?: Maybe<Scalars['Int']['output']>;
   holeSequence?: Maybe<Scalars['Int']['output']>;
   odds: Scalars['String']['output'];
@@ -4350,7 +4350,7 @@ export type OddsTimelinePoint = {
 };
 
 export type OddsToWin = {
-  __typename?: 'OddsToWin';
+  __typename: 'OddsToWin';
   countryFlag?: Maybe<Scalars['String']['output']>;
   currentRound?: Maybe<Scalars['Int']['output']>;
   displayName: Scalars['String']['output'];
@@ -4369,7 +4369,7 @@ export type OddsToWin = {
 };
 
 export type OddsToWinMarket = {
-  __typename?: 'OddsToWinMarket';
+  __typename: 'OddsToWinMarket';
   message?: Maybe<OddsMessage>;
   oddsEnabled: Scalars['Boolean']['output'];
   oddsToWinId: Scalars['ID']['output'];
@@ -4378,13 +4378,13 @@ export type OddsToWinMarket = {
 
 /**  Odds V3 */
 export type OddsToWinMarketCompressed = {
-  __typename?: 'OddsToWinMarketCompressed';
+  __typename: 'OddsToWinMarketCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type OddsToWinPlayer = {
-  __typename?: 'OddsToWinPlayer';
+  __typename: 'OddsToWinPlayer';
   odds: Scalars['String']['output'];
   oddsDirection: OddsSwing;
   oddsSort: Scalars['Float']['output'];
@@ -4394,7 +4394,7 @@ export type OddsToWinPlayer = {
 };
 
 export type OddsToWinTracker = {
-  __typename?: 'OddsToWinTracker';
+  __typename: 'OddsToWinTracker';
   title: Scalars['String']['output'];
   /** @deprecated use new tournamentIds array */
   tournamentId?: Maybe<Scalars['String']['output']>;
@@ -4402,7 +4402,7 @@ export type OddsToWinTracker = {
 };
 
 export type OddsToWinV2 = BaseOddsOption & {
-  __typename?: 'OddsToWinV2';
+  __typename: 'OddsToWinV2';
   entity: OddsEntity;
   odds: OddsValues;
 };
@@ -4413,7 +4413,7 @@ export type OddsUpdateInput = {
 };
 
 export type OddsValues = {
-  __typename?: 'OddsValues';
+  __typename: 'OddsValues';
   odds: Scalars['String']['output'];
   oddsSwing: OddsSwing;
   optionId: Scalars['ID']['output'];
@@ -4424,7 +4424,7 @@ export type Orientation =
   | 'Portrait';
 
 export type OutComeIqHole = {
-  __typename?: 'OutComeIQHole';
+  __typename: 'OutComeIQHole';
   euMatchWin: Scalars['Float']['output'];
   holeNum: Scalars['Int']['output'];
   matchDraw: Scalars['Float']['output'];
@@ -4432,7 +4432,7 @@ export type OutComeIqHole = {
 };
 
 export type OverviewStat = {
-  __typename?: 'OverviewStat';
+  __typename: 'OverviewStat';
   players: Array<LeaderStat>;
   statId: Scalars['String']['output'];
   statName: Scalars['String']['output'];
@@ -4440,7 +4440,7 @@ export type OverviewStat = {
 };
 
 export type OverviewStats = {
-  __typename?: 'OverviewStats';
+  __typename: 'OverviewStats';
   categories: Array<StatCategoryConfig>;
   stats: Array<OverviewStat>;
   tourCode: TourCode;
@@ -4448,18 +4448,18 @@ export type OverviewStats = {
 };
 
 export type PageMetadata = {
-  __typename?: 'PageMetadata';
+  __typename: 'PageMetadata';
   metadata: Array<PageMetadataSegment>;
 };
 
 export type PageMetadataSegment = {
-  __typename?: 'PageMetadataSegment';
+  __typename: 'PageMetadataSegment';
   name: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type PaginationDetails = {
-  __typename?: 'PaginationDetails';
+  __typename: 'PaginationDetails';
   limit?: Maybe<Scalars['Int']['output']>;
   offset?: Maybe<Scalars['Int']['output']>;
 };
@@ -4470,7 +4470,7 @@ export type Platform =
   | 'WEB';
 
 export type Player = {
-  __typename?: 'Player';
+  __typename: 'Player';
   abbreviations: Scalars['String']['output'];
   abbreviationsAccessibilityText: Scalars['String']['output'];
   amateur: Scalars['Boolean']['output'];
@@ -4493,7 +4493,7 @@ export type Player = {
 export type PlayerAsset = TourBoundAsset;
 
 export type PlayerBio = {
-  __typename?: 'PlayerBio';
+  __typename: 'PlayerBio';
   age?: Maybe<Scalars['String']['output']>;
   birthplace: PlayerBioLocation;
   born?: Maybe<Scalars['String']['output']>;
@@ -4525,14 +4525,14 @@ export type PlayerBio = {
 };
 
 export type PlayerBioExemption = {
-  __typename?: 'PlayerBioExemption';
+  __typename: 'PlayerBioExemption';
   description?: Maybe<Scalars['String']['output']>;
   expirationDate?: Maybe<Scalars['String']['output']>;
   tour?: Maybe<TourCode>;
 };
 
 export type PlayerBioLocation = {
-  __typename?: 'PlayerBioLocation';
+  __typename: 'PlayerBioLocation';
   city?: Maybe<Scalars['String']['output']>;
   country?: Maybe<Scalars['String']['output']>;
   countryCode?: Maybe<Scalars['String']['output']>;
@@ -4541,13 +4541,13 @@ export type PlayerBioLocation = {
 };
 
 export type PlayerBioSocial = {
-  __typename?: 'PlayerBioSocial';
+  __typename: 'PlayerBioSocial';
   type: SocialType;
   url: Scalars['String']['output'];
 };
 
 export type PlayerBioWrapper = {
-  __typename?: 'PlayerBioWrapper';
+  __typename: 'PlayerBioWrapper';
   bioLink: Scalars['String']['output'];
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
@@ -4561,7 +4561,7 @@ export type PlayerBioWrapper = {
 };
 
 export type PlayerComparison = {
-  __typename?: 'PlayerComparison';
+  __typename: 'PlayerComparison';
   category: PlayerComparisonCategory;
   categoryPills: Array<PlayerComparisonCategoryPill>;
   displaySeason: Scalars['String']['output'];
@@ -4582,7 +4582,7 @@ export type PlayerComparisonCategory =
   | 'STROKES_GAINED';
 
 export type PlayerComparisonCategoryPill = {
-  __typename?: 'PlayerComparisonCategoryPill';
+  __typename: 'PlayerComparisonCategoryPill';
   category: PlayerComparisonCategory;
   displayText: Scalars['String']['output'];
 };
@@ -4592,7 +4592,7 @@ export type PlayerComparisonDisplay =
   | 'TABLE';
 
 export type PlayerComparisonHeader = {
-  __typename?: 'PlayerComparisonHeader';
+  __typename: 'PlayerComparisonHeader';
   country?: Maybe<Scalars['String']['output']>;
   displayText: Scalars['String']['output'];
   playerId: Scalars['ID']['output'];
@@ -4600,7 +4600,7 @@ export type PlayerComparisonHeader = {
 };
 
 export type PlayerComparisonOdds = {
-  __typename?: 'PlayerComparisonOdds';
+  __typename: 'PlayerComparisonOdds';
   color: Scalars['String']['output'];
   country: Scalars['String']['output'];
   countryName: Scalars['String']['output'];
@@ -4612,21 +4612,21 @@ export type PlayerComparisonOdds = {
 };
 
 export type PlayerComparisonRow = {
-  __typename?: 'PlayerComparisonRow';
+  __typename: 'PlayerComparisonRow';
   statId: Scalars['String']['output'];
   statName: Scalars['String']['output'];
   values: Array<PlayerComparisonValue>;
 };
 
 export type PlayerComparisonTable = {
-  __typename?: 'PlayerComparisonTable';
+  __typename: 'PlayerComparisonTable';
   header: Scalars['String']['output'];
   headerRow: Array<PlayerComparisonHeader>;
   rows: Array<PlayerComparisonRow>;
 };
 
 export type PlayerComparisonValue = {
-  __typename?: 'PlayerComparisonValue';
+  __typename: 'PlayerComparisonValue';
   bold: Scalars['Boolean']['output'];
   displayValue: Scalars['String']['output'];
   rank: Scalars['String']['output'];
@@ -4634,7 +4634,7 @@ export type PlayerComparisonValue = {
 };
 
 export type PlayerCourse = {
-  __typename?: 'PlayerCourse';
+  __typename: 'PlayerCourse';
   courseCity: Scalars['String']['output'];
   courseCountry: Scalars['String']['output'];
   courseCountryCode: Scalars['String']['output'];
@@ -4649,13 +4649,13 @@ export type PlayerCourse = {
 };
 
 export type PlayerDirectory = {
-  __typename?: 'PlayerDirectory';
+  __typename: 'PlayerDirectory';
   players: Array<PlayerDirectoryPlayer>;
   tourCode: TourCode;
 };
 
 export type PlayerDirectoryBio = {
-  __typename?: 'PlayerDirectoryBio';
+  __typename: 'PlayerDirectoryBio';
   age?: Maybe<Scalars['String']['output']>;
   education?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
@@ -4663,7 +4663,7 @@ export type PlayerDirectoryBio = {
 };
 
 export type PlayerDirectoryPlayer = {
-  __typename?: 'PlayerDirectoryPlayer';
+  __typename: 'PlayerDirectoryPlayer';
   alphaSort: Scalars['String']['output'];
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
@@ -4679,7 +4679,7 @@ export type PlayerDirectoryPlayer = {
 };
 
 export type PlayerField = {
-  __typename?: 'PlayerField';
+  __typename: 'PlayerField';
   alphaSort: Scalars['String']['output'];
   alternate: Scalars['Boolean']['output'];
   amateur: Scalars['Boolean']['output'];
@@ -4704,7 +4704,7 @@ export type PlayerField = {
 };
 
 export type PlayerFieldTeammate = {
-  __typename?: 'PlayerFieldTeammate';
+  __typename: 'PlayerFieldTeammate';
   alphaSort: Scalars['String']['output'];
   alternate: Scalars['Boolean']['output'];
   amateur: Scalars['Boolean']['output'];
@@ -4727,7 +4727,7 @@ export type PlayerFieldTeammate = {
 };
 
 export type PlayerFinishStats = {
-  __typename?: 'PlayerFinishStats';
+  __typename: 'PlayerFinishStats';
   countryCode: Scalars['String']['output'];
   countryName: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
@@ -4742,13 +4742,13 @@ export type PlayerFinishStats = {
 };
 
 export type PlayerGroup = {
-  __typename?: 'PlayerGroup';
+  __typename: 'PlayerGroup';
   fieldGroups: Array<FieldGroup>;
   title: Scalars['String']['output'];
 };
 
 export type PlayerHubArticleLink = {
-  __typename?: 'PlayerHubArticleLink';
+  __typename: 'PlayerHubArticleLink';
   /**   AEM ID */
   contentId: Scalars['String']['output'];
   franchiseDisplayName: Scalars['String']['output'];
@@ -4760,7 +4760,7 @@ export type PlayerHubArticleLink = {
 };
 
 export type PlayerHubArticlesWidget = {
-  __typename?: 'PlayerHubArticlesWidget';
+  __typename: 'PlayerHubArticlesWidget';
   articles: Array<PlayerHubArticleLink>;
   icon: PlayerHubWidgetIcon;
   /**   Optional widget sponsor */
@@ -4770,13 +4770,13 @@ export type PlayerHubArticlesWidget = {
 };
 
 export type PlayerHubDetailData = {
-  __typename?: 'PlayerHubDetailData';
+  __typename: 'PlayerHubDetailData';
   data: Scalars['String']['output'];
   title: Scalars['String']['output'];
 };
 
 export type PlayerHubHoleDetailShotTrail = {
-  __typename?: 'PlayerHubHoleDetailShotTrail';
+  __typename: 'PlayerHubHoleDetailShotTrail';
   color: Scalars['String']['output'];
   finalShot: Scalars['Boolean']['output'];
   from: PlayerHubHoleDetailShotTrailCoordinates;
@@ -4786,13 +4786,13 @@ export type PlayerHubHoleDetailShotTrail = {
 };
 
 export type PlayerHubHoleDetailShotTrailCoordinates = {
-  __typename?: 'PlayerHubHoleDetailShotTrailCoordinates';
+  __typename: 'PlayerHubHoleDetailShotTrailCoordinates';
   x: Scalars['Float']['output'];
   y: Scalars['Float']['output'];
 };
 
 export type PlayerHubHoleDetailWidget = {
-  __typename?: 'PlayerHubHoleDetailWidget';
+  __typename: 'PlayerHubHoleDetailWidget';
   dataElements: Array<PlayerHubDetailData>;
   flagCoords?: Maybe<PlayerHubHoleDetailShotTrailCoordinates>;
   holePickleAsset: ImageAsset;
@@ -4805,7 +4805,7 @@ export type PlayerHubHoleDetailWidget = {
 };
 
 export type PlayerHubLeaderboardWidget = {
-  __typename?: 'PlayerHubLeaderboardWidget';
+  __typename: 'PlayerHubLeaderboardWidget';
   action: PlayerHubMessageBannerAction;
   earnings?: Maybe<Scalars['String']['output']>;
   /**   Used to show if there are player stories available for this player or not */
@@ -4850,7 +4850,7 @@ export type PlayerHubMessageBannerAction =
   | 'SCORECARD';
 
 export type PlayerHubMessageBannerWidget = {
-  __typename?: 'PlayerHubMessageBannerWidget';
+  __typename: 'PlayerHubMessageBannerWidget';
   /**   optional action should the message have a click target */
   action: PlayerHubMessageBannerAction;
   /**   optional background color override */
@@ -4862,7 +4862,7 @@ export type PlayerHubMessageBannerWidget = {
 };
 
 export type PlayerHubPlayer = {
-  __typename?: 'PlayerHubPlayer';
+  __typename: 'PlayerHubPlayer';
   country: Scalars['String']['output'];
   countryCode: Scalars['String']['output'];
   playerId: Scalars['ID']['output'];
@@ -4873,13 +4873,13 @@ export type PlayerHubPlayer = {
 
 /**  PLAYER HUB */
 export type PlayerHubPlayerCompressed = {
-  __typename?: 'PlayerHubPlayerCompressed';
+  __typename: 'PlayerHubPlayerCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type PlayerHubRecapWidget = {
-  __typename?: 'PlayerHubRecapWidget';
+  __typename: 'PlayerHubRecapWidget';
   icon: PlayerHubWidgetIcon;
   recap: Scalars['String']['output'];
   roundDisplay: Scalars['String']['output'];
@@ -4893,7 +4893,7 @@ export type PlayerHubRecapWidget = {
 };
 
 export type PlayerHubShotCommentaryWidget = {
-  __typename?: 'PlayerHubShotCommentaryWidget';
+  __typename: 'PlayerHubShotCommentaryWidget';
   commentary: Scalars['String']['output'];
   icon: PlayerHubWidgetIcon;
   shotTitle: Scalars['String']['output'];
@@ -4905,7 +4905,7 @@ export type PlayerHubShotCommentaryWidget = {
 };
 
 export type PlayerHubStatisticsWidget = {
-  __typename?: 'PlayerHubStatisticsWidget';
+  __typename: 'PlayerHubStatisticsWidget';
   icon: PlayerHubWidgetIcon;
   /**   Optional widget sponsor */
   sponsor?: Maybe<PlayerHubWidgetSponsor>;
@@ -4915,7 +4915,7 @@ export type PlayerHubStatisticsWidget = {
 };
 
 export type PlayerHubTeeTimesWidget = {
-  __typename?: 'PlayerHubTeeTimesWidget';
+  __typename: 'PlayerHubTeeTimesWidget';
   currentLocation?: Maybe<Scalars['String']['output']>;
   icon: PlayerHubWidgetIcon;
   /**   Players and the group tee time */
@@ -4932,7 +4932,7 @@ export type PlayerHubTeeTimesWidget = {
 };
 
 export type PlayerHubTournamentWidget = {
-  __typename?: 'PlayerHubTournamentWidget';
+  __typename: 'PlayerHubTournamentWidget';
   course: Scalars['String']['output'];
   icon: PlayerHubWidgetIcon;
   logoAsset?: Maybe<ImageAsset>;
@@ -4954,7 +4954,7 @@ export type PlayerHubWidgetIcon =
   | 'TOURCAST';
 
 export type PlayerHubWidgetSponsor = {
-  __typename?: 'PlayerHubWidgetSponsor';
+  __typename: 'PlayerHubWidgetSponsor';
   logoAsset: ImageAsset;
   logoAssetDark: ImageAsset;
   name: Scalars['String']['output'];
@@ -4962,7 +4962,7 @@ export type PlayerHubWidgetSponsor = {
 };
 
 export type PlayerInfo = {
-  __typename?: 'PlayerInfo';
+  __typename: 'PlayerInfo';
   countryFlag: Scalars['String']['output'];
   countryName: Scalars['String']['output'];
   firstName: Scalars['String']['output'];
@@ -4973,7 +4973,7 @@ export type PlayerInfo = {
 };
 
 export type PlayerMarketsRow = {
-  __typename?: 'PlayerMarketsRow';
+  __typename: 'PlayerMarketsRow';
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   markets: Array<HistoricalPlayerOdds>;
@@ -4982,7 +4982,7 @@ export type PlayerMarketsRow = {
 };
 
 export type PlayerOddsMarket = {
-  __typename?: 'PlayerOddsMarket';
+  __typename: 'PlayerOddsMarket';
   id: Scalars['ID']['output'];
   market: Scalars['String']['output'];
   playerOddsOptions: Array<OddsOption>;
@@ -4990,20 +4990,20 @@ export type PlayerOddsMarket = {
 };
 
 export type PlayerOverviewStandings = {
-  __typename?: 'PlayerOverviewStandings';
+  __typename: 'PlayerOverviewStandings';
   displaySeason: Scalars['String']['output'];
   standings: Array<ProfileStandings>;
   tour: TourCode;
 };
 
 export type PlayerProfileAchievement = {
-  __typename?: 'PlayerProfileAchievement';
+  __typename: 'PlayerProfileAchievement';
   title: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type PlayerProfileCareer = {
-  __typename?: 'PlayerProfileCareer';
+  __typename: 'PlayerProfileCareer';
   achievements: Array<PlayerProfileAchievement>;
   cutsMade?: Maybe<Scalars['String']['output']>;
   events?: Maybe<Scalars['String']['output']>;
@@ -5026,14 +5026,14 @@ export type PlayerProfileCareer = {
 };
 
 export type PlayerProfileCareerResults = {
-  __typename?: 'PlayerProfileCareerResults';
+  __typename: 'PlayerProfileCareerResults';
   playerId: Scalars['ID']['output'];
   tourPills: Array<TourPills>;
   yearResults: Array<PlayerProfileCareerYear>;
 };
 
 export type PlayerProfileCareerYear = {
-  __typename?: 'PlayerProfileCareerYear';
+  __typename: 'PlayerProfileCareerYear';
   cutsMade?: Maybe<Scalars['String']['output']>;
   cutsMissed?: Maybe<Scalars['String']['output']>;
   displaySeason: Scalars['String']['output'];
@@ -5053,7 +5053,7 @@ export type PlayerProfileCareerYear = {
 };
 
 export type PlayerProfileCourseResults = {
-  __typename?: 'PlayerProfileCourseResults';
+  __typename: 'PlayerProfileCourseResults';
   coursePills: Array<CoursePills>;
   courses: Array<PlayerCourse>;
   playerId: Scalars['String']['output'];
@@ -5063,7 +5063,7 @@ export type PlayerProfileCourseResults = {
 
 /**   Player Profile Tournament Results */
 export type PlayerProfileInfoItem = {
-  __typename?: 'PlayerProfileInfoItem';
+  __typename: 'PlayerProfileInfoItem';
   logo?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
   value: Scalars['String']['output'];
@@ -5071,7 +5071,7 @@ export type PlayerProfileInfoItem = {
 };
 
 export type PlayerProfileMajors = {
-  __typename?: 'PlayerProfileMajors';
+  __typename: 'PlayerProfileMajors';
   playerId: Scalars['String']['output'];
   timelineHeaders: Array<Scalars['String']['output']>;
   timelineTournaments: Array<MajorTimeline>;
@@ -5079,18 +5079,18 @@ export type PlayerProfileMajors = {
 };
 
 export type PlayerProfileMessage = {
-  __typename?: 'PlayerProfileMessage';
+  __typename: 'PlayerProfileMessage';
   message?: Maybe<Scalars['String']['output']>;
 };
 
 export type PlayerProfileOverviewItem = {
-  __typename?: 'PlayerProfileOverviewItem';
+  __typename: 'PlayerProfileOverviewItem';
   title: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type PlayerProfileRows = {
-  __typename?: 'PlayerProfileRows';
+  __typename: 'PlayerProfileRows';
   rowContent: Array<Scalars['String']['output']>;
   rowTitle: Scalars['String']['output'];
   rowTitleDetail?: Maybe<Scalars['String']['output']>;
@@ -5098,14 +5098,14 @@ export type PlayerProfileRows = {
 };
 
 export type PlayerProfileStat = {
-  __typename?: 'PlayerProfileStat';
+  __typename: 'PlayerProfileStat';
   categories: Array<PlayerProfileStatCategory>;
   stats: Array<PlayerProfileStatItem>;
   tour: TourCode;
 };
 
 export type PlayerProfileStatCategory = {
-  __typename?: 'PlayerProfileStatCategory';
+  __typename: 'PlayerProfileStatCategory';
   category: PlayerProfileStatCategoryItem;
   displayTitle: Scalars['String']['output'];
 };
@@ -5124,7 +5124,7 @@ export type PlayerProfileStatCategoryItem =
   | 'STROKES_GAINED';
 
 export type PlayerProfileStatFull = {
-  __typename?: 'PlayerProfileStatFull';
+  __typename: 'PlayerProfileStatFull';
   categories: Array<PlayerProfileStatCategory>;
   displaySeason: Scalars['String']['output'];
   overview: Array<PlayerProfileStatItem>;
@@ -5135,7 +5135,7 @@ export type PlayerProfileStatFull = {
 };
 
 export type PlayerProfileStatItem = {
-  __typename?: 'PlayerProfileStatItem';
+  __typename: 'PlayerProfileStatItem';
   aboveOrBelow: ScoringTendency;
   category: Array<PlayerProfileStatCategoryItem>;
   fieldAverage: Scalars['String']['output'];
@@ -5150,33 +5150,33 @@ export type PlayerProfileStatItem = {
 };
 
 export type PlayerProfileStatItemDetail = {
-  __typename?: 'PlayerProfileStatItemDetail';
+  __typename: 'PlayerProfileStatItemDetail';
   description: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type PlayerProfileStatYear = {
-  __typename?: 'PlayerProfileStatYear';
+  __typename: 'PlayerProfileStatYear';
   season: Scalars['String']['output'];
   tours: Array<TourCode>;
   year: Scalars['Int']['output'];
 };
 
 export type PlayerProfileStatsFullV2 = {
-  __typename?: 'PlayerProfileStatsFullV2';
+  __typename: 'PlayerProfileStatsFullV2';
   messages?: Maybe<Array<PlayerProfileMessage>>;
   playerProfileStatsFull: Array<PlayerProfileStatFull>;
 };
 
 export type PlayerProfileTable = {
-  __typename?: 'PlayerProfileTable';
+  __typename: 'PlayerProfileTable';
   rows: Array<PlayerProfileRows>;
   tableDetail?: Maybe<Scalars['String']['output']>;
   tableName: Scalars['String']['output'];
 };
 
 export type PlayerProfileTournamentResults = {
-  __typename?: 'PlayerProfileTournamentResults';
+  __typename: 'PlayerProfileTournamentResults';
   playerId: Scalars['ID']['output'];
   tourPills: Array<TourPills>;
   tournamentPills: Array<TournamentResultPill>;
@@ -5184,7 +5184,7 @@ export type PlayerProfileTournamentResults = {
 };
 
 export type PlayerProfileTournamentRow = {
-  __typename?: 'PlayerProfileTournamentRow';
+  __typename: 'PlayerProfileTournamentRow';
   courseName: Scalars['String']['output'];
   date: Scalars['String']['output'];
   fedexFallPoints: Scalars['String']['output'];
@@ -5208,7 +5208,7 @@ export type PlayerProfileTournamentRow = {
 };
 
 export type PlayerRecord = {
-  __typename?: 'PlayerRecord';
+  __typename: 'PlayerRecord';
   losses: Scalars['String']['output'];
   points: Scalars['String']['output'];
   ties: Scalars['String']['output'];
@@ -5216,7 +5216,7 @@ export type PlayerRecord = {
 };
 
 export type PlayerResultTournament = {
-  __typename?: 'PlayerResultTournament';
+  __typename: 'PlayerResultTournament';
   courseId: Scalars['String']['output'];
   courseName: Scalars['String']['output'];
   fedexFallPoints?: Maybe<Scalars['String']['output']>;
@@ -5245,7 +5245,7 @@ export type PlayerResultTournament = {
 };
 
 export type PlayerResults = {
-  __typename?: 'PlayerResults';
+  __typename: 'PlayerResults';
   amateurHighlights?: Maybe<Array<Scalars['String']['output']>>;
   /** @deprecated use standingsDetails */
   cupLogo?: Maybe<Scalars['String']['output']>;
@@ -5291,13 +5291,13 @@ export type PlayerResults = {
 };
 
 export type PlayerResultsSeasonPills = {
-  __typename?: 'PlayerResultsSeasonPills';
+  __typename: 'PlayerResultsSeasonPills';
   tourCode: TourCode;
   years: Array<StatYearPills>;
 };
 
 export type PlayerRowHoleByHole = {
-  __typename?: 'PlayerRowHoleByHole';
+  __typename: 'PlayerRowHoleByHole';
   courseCode: Scalars['String']['output'];
   courseId: Scalars['String']['output'];
   in?: Maybe<Scalars['String']['output']>;
@@ -5309,7 +5309,7 @@ export type PlayerRowHoleByHole = {
 };
 
 export type PlayerRowV2 = {
-  __typename?: 'PlayerRowV2';
+  __typename: 'PlayerRowV2';
   backNine: Scalars['Boolean']['output'];
   courseId: Scalars['String']['output'];
   currentRound: Scalars['Int']['output'];
@@ -5352,7 +5352,7 @@ export type PlayerRowV2 = {
 };
 
 export type PlayerRowV3 = {
-  __typename?: 'PlayerRowV3';
+  __typename: 'PlayerRowV3';
   id: Scalars['ID']['output'];
   leaderboardSortOrder: Scalars['Int']['output'];
   /**   PLAYER INFO */
@@ -5361,7 +5361,7 @@ export type PlayerRowV3 = {
 };
 
 export type PlayerScorecardRoundStats = {
-  __typename?: 'PlayerScorecardRoundStats';
+  __typename: 'PlayerScorecardRoundStats';
   displayName: Scalars['String']['output'];
   performance: Array<ScorecardStatsItem>;
   round: Scalars['String']['output'];
@@ -5371,13 +5371,13 @@ export type PlayerScorecardRoundStats = {
 };
 
 export type PlayerScorecardStats = {
-  __typename?: 'PlayerScorecardStats';
+  __typename: 'PlayerScorecardStats';
   id: Scalars['ID']['output'];
   rounds: Array<PlayerScorecardRoundStats>;
 };
 
 export type PlayerScorecardStatsCompressed = {
-  __typename?: 'PlayerScorecardStatsCompressed';
+  __typename: 'PlayerScorecardStatsCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
@@ -5461,14 +5461,14 @@ export type PlayerSponsorBrand =
   | 'ZURICH';
 
 export type PlayerSponsors = {
-  __typename?: 'PlayerSponsors';
+  __typename: 'PlayerSponsors';
   defaultSponsor?: Maybe<Sponsor>;
   playerId: Scalars['String']['output'];
   sponsors: Array<Sponsor>;
 };
 
 export type PlayerSponsorship = {
-  __typename?: 'PlayerSponsorship';
+  __typename: 'PlayerSponsorship';
   playerId: Scalars['String']['output'];
   sponsor?: Maybe<PlayerSponsorBrand>;
 };
@@ -5483,7 +5483,7 @@ export type PlayerState =
   | 'WITHDRAWN';
 
 export type PlayerStoriesWidget = {
-  __typename?: 'PlayerStoriesWidget';
+  __typename: 'PlayerStoriesWidget';
   playerSponsorships?: Maybe<Array<PlayerStorySponsorship>>;
   storyRounds: Array<Scalars['String']['output']>;
   subTitle: Scalars['String']['output'];
@@ -5492,7 +5492,7 @@ export type PlayerStoriesWidget = {
 };
 
 export type PlayerStorySponsorship = {
-  __typename?: 'PlayerStorySponsorship';
+  __typename: 'PlayerStorySponsorship';
   logoDarkUrl: Scalars['String']['output'];
   logoUrl: Scalars['String']['output'];
   sponsor: Scalars['String']['output'];
@@ -5500,7 +5500,7 @@ export type PlayerStorySponsorship = {
 };
 
 export type PlayerTournamentStatus = {
-  __typename?: 'PlayerTournamentStatus';
+  __typename: 'PlayerTournamentStatus';
   displayMode: PlayerTournamentStatusDisplayMode;
   playerId: Scalars['ID']['output'];
   position: Scalars['String']['output'];
@@ -5522,7 +5522,7 @@ export type PlayerTournamentStatusDisplayMode =
   | 'TEE_TIMES';
 
 export type PlayerVideo = {
-  __typename?: 'PlayerVideo';
+  __typename: 'PlayerVideo';
   firstName?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   lastName?: Maybe<Scalars['String']['output']>;
@@ -5530,7 +5530,7 @@ export type PlayerVideo = {
 };
 
 export type Playoff = {
-  __typename?: 'Playoff';
+  __typename: 'Playoff';
   currentHole: Scalars['Int']['output'];
   holes: Array<PlayoffHole>;
   players: Array<PlayoffPlayer>;
@@ -5544,7 +5544,7 @@ export type PlayoffDisplayType =
   | 'SCORECARD';
 
 export type PlayoffHole = {
-  __typename?: 'PlayoffHole';
+  __typename: 'PlayoffHole';
   courseHole: Scalars['String']['output'];
   format?: Maybe<Scalars['String']['output']>;
   isTotal?: Maybe<Scalars['Boolean']['output']>;
@@ -5553,7 +5553,7 @@ export type PlayoffHole = {
 };
 
 export type PlayoffPlayer = {
-  __typename?: 'PlayoffPlayer';
+  __typename: 'PlayoffPlayer';
   active: Scalars['Boolean']['output'];
   player: Player;
   position: Scalars['String']['output'];
@@ -5561,7 +5561,7 @@ export type PlayoffPlayer = {
 };
 
 export type PlayoffScorecard = {
-  __typename?: 'PlayoffScorecard';
+  __typename: 'PlayoffScorecard';
   courseId: Scalars['String']['output'];
   courseName: Scalars['String']['output'];
   detailViewEnabled: Scalars['Boolean']['output'];
@@ -5585,7 +5585,7 @@ export type PlayoffScoredType =
   | 'SUDDEN_DEATH';
 
 export type PlayoffTeams = {
-  __typename?: 'PlayoffTeams';
+  __typename: 'PlayoffTeams';
   active: Scalars['Boolean']['output'];
   players: Array<TspScPlayer>;
   position: Scalars['String']['output'];
@@ -5594,13 +5594,13 @@ export type PlayoffTeams = {
 };
 
 export type PointOfInterestCoords = {
-  __typename?: 'PointOfInterestCoords';
+  __typename: 'PointOfInterestCoords';
   bottomToTopCoords: StrokeCoordinates;
   leftToRightCoords: StrokeCoordinates;
 };
 
 export type PowerRankings = {
-  __typename?: 'PowerRankings';
+  __typename: 'PowerRankings';
   ascendingOrder: Scalars['Boolean']['output'];
   powerRankingsTableRow: Array<PowerRankingsTableRow>;
   tableTitle: Scalars['String']['output'];
@@ -5609,7 +5609,7 @@ export type PowerRankings = {
 };
 
 export type PowerRankingsTableRow = {
-  __typename?: 'PowerRankingsTableRow';
+  __typename: 'PowerRankingsTableRow';
   comment: Scalars['String']['output'];
   commentNodes?: Maybe<Array<TourSponsorDescription>>;
   player?: Maybe<PlayerInfo>;
@@ -5617,13 +5617,13 @@ export type PowerRankingsTableRow = {
 };
 
 export type PresentedByConfig = {
-  __typename?: 'PresentedByConfig';
+  __typename: 'PresentedByConfig';
   presentedBy: Sponsor;
   splashScreen: Sponsor;
 };
 
 export type PreviousMatch = {
-  __typename?: 'PreviousMatch';
+  __typename: 'PreviousMatch';
   matchId: Scalars['ID']['output'];
   matchResult: Scalars['String']['output'];
   matchScore: Scalars['String']['output'];
@@ -5634,7 +5634,7 @@ export type PreviousMatch = {
 };
 
 export type PreviousMatchOpponent = {
-  __typename?: 'PreviousMatchOpponent';
+  __typename: 'PreviousMatchOpponent';
   bracketSeed: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
@@ -5647,34 +5647,34 @@ export type PreviousMatchOpponent = {
 };
 
 export type PreviousMatches = {
-  __typename?: 'PreviousMatches';
+  __typename: 'PreviousMatches';
   header: Scalars['String']['output'];
   matches?: Maybe<Array<PreviousMatch>>;
   messages?: Maybe<Array<Message>>;
 };
 
 export type PreviousRounds = {
-  __typename?: 'PreviousRounds';
+  __typename: 'PreviousRounds';
   matches?: Maybe<Array<PreviousMatch>>;
   roundHeader: Scalars['String']['output'];
   roundNumber: Scalars['Int']['output'];
 };
 
 export type PriorityCategory = {
-  __typename?: 'PriorityCategory';
+  __typename: 'PriorityCategory';
   detail?: Maybe<Scalars['String']['output']>;
   displayName: Scalars['String']['output'];
   players: Array<PriorityPlayer>;
 };
 
 export type PriorityPlayer = {
-  __typename?: 'PriorityPlayer';
+  __typename: 'PriorityPlayer';
   displayName: Scalars['String']['output'];
   playerId: Scalars['String']['output'];
 };
 
 export type PriorityRankings = {
-  __typename?: 'PriorityRankings';
+  __typename: 'PriorityRankings';
   categories: Array<PriorityCategory>;
   displayYear: Scalars['String']['output'];
   throughText: Scalars['String']['output'];
@@ -5684,7 +5684,7 @@ export type PriorityRankings = {
 };
 
 export type ProfileFedExFallStandings = {
-  __typename?: 'ProfileFedExFallStandings';
+  __typename: 'ProfileFedExFallStandings';
   description: Scalars['String']['output'];
   detailCopy?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
@@ -5710,7 +5710,7 @@ export type ProfileFedExFallStandings = {
 };
 
 export type ProfileHeadshot = {
-  __typename?: 'ProfileHeadshot';
+  __typename: 'ProfileHeadshot';
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   firstName: Scalars['String']['output'];
@@ -5719,7 +5719,7 @@ export type ProfileHeadshot = {
 };
 
 export type ProfileOverview = {
-  __typename?: 'ProfileOverview';
+  __typename: 'ProfileOverview';
   /** @deprecated use profileStandings */
   fedexFallStandings?: Maybe<ProfileFedExFallStandings>;
   headshot: ProfileHeadshot;
@@ -5734,7 +5734,7 @@ export type ProfileOverview = {
 };
 
 export type ProfilePerformance = {
-  __typename?: 'ProfilePerformance';
+  __typename: 'ProfilePerformance';
   displaySeason: Scalars['String']['output'];
   season: Scalars['String']['output'];
   stats: Array<ProfilePerformanceStat>;
@@ -5742,7 +5742,7 @@ export type ProfilePerformance = {
 };
 
 export type ProfilePerformanceStat = {
-  __typename?: 'ProfilePerformanceStat';
+  __typename: 'ProfilePerformanceStat';
   career?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
   value: Scalars['String']['output'];
@@ -5750,14 +5750,14 @@ export type ProfilePerformanceStat = {
 };
 
 export type ProfileSnapshotItem = {
-  __typename?: 'ProfileSnapshotItem';
+  __typename: 'ProfileSnapshotItem';
   description?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type ProfileStandings = {
-  __typename?: 'ProfileStandings';
+  __typename: 'ProfileStandings';
   description: Scalars['String']['output'];
   detailCopy?: Maybe<Scalars['String']['output']>;
   detailUrl?: Maybe<Scalars['String']['output']>;
@@ -5785,13 +5785,13 @@ export type ProfileStandings = {
 };
 
 export type ProfileStandingsTotal = {
-  __typename?: 'ProfileStandingsTotal';
+  __typename: 'ProfileStandingsTotal';
   total: Scalars['String']['output'];
   totalLabel: Scalars['String']['output'];
 };
 
 export type ProgramStat = {
-  __typename?: 'ProgramStat';
+  __typename: 'ProgramStat';
   statName?: Maybe<Scalars['String']['output']>;
   value?: Maybe<Scalars['String']['output']>;
 };
@@ -5799,18 +5799,18 @@ export type ProgramStat = {
 export type PromoItem = FieldPromoSection | PromoSection | PromoSectionNewsSection;
 
 export type PromoSection = {
-  __typename?: 'PromoSection';
+  __typename: 'PromoSection';
   items: Array<PromoSectionItem>;
   title: Scalars['String']['output'];
 };
 
 export type PromoSectionContainer = {
-  __typename?: 'PromoSectionContainer';
+  __typename: 'PromoSectionContainer';
   sections: Array<PromoItem>;
 };
 
 export type PromoSectionItem = {
-  __typename?: 'PromoSectionItem';
+  __typename: 'PromoSectionItem';
   accessibilityText: Scalars['String']['output'];
   backgroundColor: Scalars['String']['output'];
   externalLaunch: Scalars['Boolean']['output'];
@@ -5823,7 +5823,7 @@ export type PromoSectionItem = {
 };
 
 export type PromoSectionNewsSection = {
-  __typename?: 'PromoSectionNewsSection';
+  __typename: 'PromoSectionNewsSection';
   franchises: Array<Scalars['String']['output']>;
   title: Scalars['String']['output'];
 };
@@ -5834,7 +5834,7 @@ export type PromoSectionType =
   | 'WEBGOLFBET';
 
 export type Query = {
-  __typename?: 'Query';
+  __typename: 'Query';
   /**
    *   Returns the AdConfig for the given optionally supplied tour and/or tournament
    * @deprecated use REST API
@@ -7213,7 +7213,7 @@ export type QueryYourTourNewsArgs = {
 };
 
 export type RcContentTypeParent = {
-  __typename?: 'RCContentTypeParent';
+  __typename: 'RCContentTypeParent';
   displayValue: Scalars['String']['output'];
   queryValue: RyderCupContentType;
 };
@@ -7221,7 +7221,7 @@ export type RcContentTypeParent = {
 export type RcHomepageAssets = NewsArticle | RcPhotoGallery | Video;
 
 export type RcPhotoGallery = {
-  __typename?: 'RCPhotoGallery';
+  __typename: 'RCPhotoGallery';
   authorReference?: Maybe<NewsArticleAuthor>;
   cta?: Maybe<CallToAction>;
   date?: Maybe<Scalars['AWSTimestamp']['output']>;
@@ -7246,7 +7246,7 @@ export type RcPhotoGallery = {
  *  }
  */
 export type RcPlayerTournamentRecord = {
-  __typename?: 'RCPlayerTournamentRecord';
+  __typename: 'RCPlayerTournamentRecord';
   fourBallPoints: Scalars['Int']['output'];
   foursomesPoints: Scalars['Int']['output'];
   matchesPlayed: Scalars['Int']['output'];
@@ -7256,19 +7256,19 @@ export type RcPlayerTournamentRecord = {
 };
 
 export type RcTeamTypeParent = {
-  __typename?: 'RCTeamTypeParent';
+  __typename: 'RCTeamTypeParent';
   displayValue: Scalars['String']['output'];
   queryValue: RyderCupTeamType;
 };
 
 export type RcVideoPage = {
-  __typename?: 'RCVideoPage';
+  __typename: 'RCVideoPage';
   upNextVideos?: Maybe<Array<Video>>;
   video?: Maybe<Video>;
 };
 
 export type RsmEventWinner = {
-  __typename?: 'RSMEventWinner';
+  __typename: 'RSMEventWinner';
   birdies: Scalars['String']['output'];
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
@@ -7280,14 +7280,14 @@ export type RsmEventWinner = {
 };
 
 export type RsmHistoricalWinner = {
-  __typename?: 'RSMHistoricalWinner';
+  __typename: 'RSMHistoricalWinner';
   displaySeason: Scalars['String']['output'];
   winners: Array<RsmEventWinner>;
   year: Scalars['Int']['output'];
 };
 
 export type RsmLeaderboard = {
-  __typename?: 'RSMLeaderboard';
+  __typename: 'RSMLeaderboard';
   dateText?: Maybe<Scalars['String']['output']>;
   isLive?: Maybe<Scalars['Boolean']['output']>;
   livePlayers: Array<RsmLeaderboardPlayer>;
@@ -7298,7 +7298,7 @@ export type RsmLeaderboard = {
 };
 
 export type RsmLeaderboardPlayer = {
-  __typename?: 'RSMLeaderboardPlayer';
+  __typename: 'RSMLeaderboardPlayer';
   countryFlag: Scalars['String']['output'];
   countryName: Scalars['String']['output'];
   eventRank?: Maybe<Scalars['Int']['output']>;
@@ -7314,7 +7314,7 @@ export type RsmLeaderboardPlayer = {
 };
 
 export type RsmPlayer = {
-  __typename?: 'RSMPlayer';
+  __typename: 'RSMPlayer';
   birdies: Scalars['String']['output'];
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
@@ -7326,7 +7326,7 @@ export type RsmPlayer = {
 };
 
 export type RsmStandings = {
-  __typename?: 'RSMStandings';
+  __typename: 'RSMStandings';
   currentLeaderboard: Array<RsmPlayer>;
   previousWinners: Array<RsmHistoricalWinner>;
   weeklyWinners: Array<RsmEventWinner>;
@@ -7339,7 +7339,7 @@ export type Ryder_Cup_Ranking_Tooltip =
   | 'QUALIFIED_LOGO';
 
 export type RadarBallTracjectory = {
-  __typename?: 'RadarBallTracjectory';
+  __typename: 'RadarBallTracjectory';
   kind: Scalars['String']['output'];
   measuredTimeInterval: Array<Scalars['Float']['output']>;
   spinRateFit: Array<Scalars['Float']['output']>;
@@ -7352,7 +7352,7 @@ export type RadarBallTracjectory = {
 };
 
 export type RadarData = {
-  __typename?: 'RadarData';
+  __typename: 'RadarData';
   actualFlightTime: Scalars['Int']['output'];
   apexHeight: Scalars['Float']['output'];
   apexRange: Scalars['Float']['output'];
@@ -7372,7 +7372,7 @@ export type RadarData = {
 };
 
 export type RadarNormalizedTrajectory = {
-  __typename?: 'RadarNormalizedTrajectory';
+  __typename: 'RadarNormalizedTrajectory';
   carry?: Maybe<Scalars['Int']['output']>;
   carrySide?: Maybe<Scalars['Int']['output']>;
   curve?: Maybe<Scalars['Int']['output']>;
@@ -7388,7 +7388,7 @@ export type RadarNormalizedTrajectory = {
 };
 
 export type RadarNormalizedTrajectoryV2 = {
-  __typename?: 'RadarNormalizedTrajectoryV2';
+  __typename: 'RadarNormalizedTrajectoryV2';
   carry?: Maybe<Scalars['Float']['output']>;
   carrySide?: Maybe<Scalars['Float']['output']>;
   curve?: Maybe<Scalars['Float']['output']>;
@@ -7404,7 +7404,7 @@ export type RadarNormalizedTrajectoryV2 = {
 };
 
 export type RangeWeatherTemp = {
-  __typename?: 'RangeWeatherTemp';
+  __typename: 'RangeWeatherTemp';
   maxTempC: Scalars['String']['output'];
   maxTempF: Scalars['String']['output'];
   minTempC: Scalars['String']['output'];
@@ -7412,7 +7412,7 @@ export type RangeWeatherTemp = {
 };
 
 export type RankingsPastWinner = {
-  __typename?: 'RankingsPastWinner';
+  __typename: 'RankingsPastWinner';
   description: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
   /** @deprecated Use imageAsset */
@@ -7427,7 +7427,7 @@ export type RankingsTeams =
   | 'USA';
 
 export type RcBroadcastPrograms = {
-  __typename?: 'RcBroadcastPrograms';
+  __typename: 'RcBroadcastPrograms';
   broadcastDate: Scalars['String']['output'];
   programs: Array<RcProgram>;
 };
@@ -7437,7 +7437,7 @@ export type RcBroadcastType =
   | 'VIDEO';
 
 export type RcProducts = {
-  __typename?: 'RcProducts';
+  __typename: 'RcProducts';
   cta?: Maybe<CallToAction>;
   header?: Maybe<Scalars['String']['output']>;
   imageGallery?: Maybe<Array<Scalars['String']['output']>>;
@@ -7446,7 +7446,7 @@ export type RcProducts = {
 };
 
 export type RcProgram = {
-  __typename?: 'RcProgram';
+  __typename: 'RcProgram';
   androidLink?: Maybe<Scalars['String']['output']>;
   appleAppStore?: Maybe<Scalars['String']['output']>;
   brightcoveId?: Maybe<Scalars['String']['output']>;
@@ -7483,18 +7483,18 @@ export type RcProgram = {
 };
 
 export type RelatedFact = {
-  __typename?: 'RelatedFact';
+  __typename: 'RelatedFact';
   factText?: Maybe<Array<TourSponsorDescription>>;
   photo?: Maybe<Scalars['String']['output']>;
 };
 
 export type RelatedFactsNode = {
-  __typename?: 'RelatedFactsNode';
+  __typename: 'RelatedFactsNode';
   path: Scalars['String']['output'];
 };
 
 export type ResultsStandingsDetail = {
-  __typename?: 'ResultsStandingsDetail';
+  __typename: 'ResultsStandingsDetail';
   /** @deprecated Use cupLogoAsset */
   cupLogo?: Maybe<Scalars['String']['output']>;
   cupLogoAccessibilityText?: Maybe<Scalars['String']['output']>;
@@ -7515,19 +7515,19 @@ export type ResultsStandingsDetail = {
 };
 
 export type ResultsYears = {
-  __typename?: 'ResultsYears';
+  __typename: 'ResultsYears';
   tour: TourCode;
   years: Array<Scalars['String']['output']>;
 };
 
 export type RolexClock = {
-  __typename?: 'RolexClock';
+  __typename: 'RolexClock';
   height?: Maybe<Scalars['Float']['output']>;
   width?: Maybe<Scalars['Float']['output']>;
 };
 
 export type RoundFilter = {
-  __typename?: 'RoundFilter';
+  __typename: 'RoundFilter';
   displayText: Scalars['String']['output'];
   roundNumbers: Array<Scalars['Int']['output']>;
 };
@@ -7537,7 +7537,7 @@ export type RoundFormat =
   | 'BEST_BALL';
 
 export type RoundScore = {
-  __typename?: 'RoundScore';
+  __typename: 'RoundScore';
   complete: Scalars['Boolean']['output'];
   courseAbbreviation?: Maybe<Scalars['String']['output']>;
   courseId?: Maybe<Scalars['String']['output']>;
@@ -7559,7 +7559,7 @@ export type RoundScore = {
 };
 
 export type RoundScoreItem = {
-  __typename?: 'RoundScoreItem';
+  __typename: 'RoundScoreItem';
   roundDisplay: Scalars['String']['output'];
   roundNum: Scalars['Int']['output'];
   roundScore: Scalars['String']['output'];
@@ -7581,17 +7581,17 @@ export type RoundStatusColor =
   | 'YELLOW';
 
 export type RyderCupBio = {
-  __typename?: 'RyderCupBio';
+  __typename: 'RyderCupBio';
   bio?: Maybe<Array<Maybe<NewsArticleNode>>>;
 };
 
 export type RyderCupBroadcastCoverage = {
-  __typename?: 'RyderCupBroadcastCoverage';
+  __typename: 'RyderCupBroadcastCoverage';
   broadcastPrograms: Array<RcBroadcastPrograms>;
 };
 
 export type RyderCupCaptain = {
-  __typename?: 'RyderCupCaptain';
+  __typename: 'RyderCupCaptain';
   displayName: Scalars['String']['output'];
   firstName: Scalars['String']['output'];
   lastName: Scalars['String']['output'];
@@ -7601,19 +7601,19 @@ export type RyderCupCaptain = {
 export type RyderCupContent = NewsArticle | RcPhotoGallery | Video;
 
 export type RyderCupContentCategories = {
-  __typename?: 'RyderCupContentCategories';
+  __typename: 'RyderCupContentCategories';
   id: Scalars['Int']['output'];
   name: Scalars['String']['output'];
 };
 
 export type RyderCupContentCompressed = {
-  __typename?: 'RyderCupContentCompressed';
+  __typename: 'RyderCupContentCompressed';
   input?: Maybe<PaginationDetails>;
   payload: Scalars['String']['output'];
 };
 
 export type RyderCupContentFragment = {
-  __typename?: 'RyderCupContentFragment';
+  __typename: 'RyderCupContentFragment';
   fragments: Array<RyderCupContentFragments>;
   pageMetadata: PageMetadata;
   totalLength: Scalars['Int']['output'];
@@ -7622,14 +7622,14 @@ export type RyderCupContentFragment = {
 export type RyderCupContentFragments = BroadcastTableFragment | ContentFragmentTabs | ContentStory | ContentVideoCarousel | CourseInfo | DropdownFragment | EventHub | EventHubTable | FutureVenuesFragment | FutureVenuesTableFragment | GenericContent | HeroCarousel | HistoryInfo | HistoryScore | HomepageLead | HomepageNews | HomepageProgramStanding | HomepageScoring | HospitalityCard | ImageBlock | JumpToSection | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopZigZag | MatchCard | MediaGallery | MessageBanner | OddsToWinTracker | RcProducts | RolexClock | RyderCupCourseModel | RyderCupLatestNewsSection | RyderCupPlayerBios | SecondaryHero | TeamRankings | ThreeUpPhoto | ThreeUpStats | TicketSectionContainer | TwoColumn | VideoHero;
 
 export type RyderCupContentPlayer = {
-  __typename?: 'RyderCupContentPlayer';
+  __typename: 'RyderCupContentPlayer';
   displayName: Scalars['String']['output'];
   id: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
 
 export type RyderCupContentTags = {
-  __typename?: 'RyderCupContentTags';
+  __typename: 'RyderCupContentTags';
   id: Scalars['Int']['output'];
   name: Scalars['String']['output'];
 };
@@ -7642,7 +7642,7 @@ export type RyderCupContentType =
   | 'VIDEO_ARTICLES';
 
 export type RyderCupCourse = {
-  __typename?: 'RyderCupCourse';
+  __typename: 'RyderCupCourse';
   countryCode?: Maybe<Scalars['String']['output']>;
   courseCity?: Maybe<Scalars['String']['output']>;
   courseCountry?: Maybe<Scalars['String']['output']>;
@@ -7651,7 +7651,7 @@ export type RyderCupCourse = {
 };
 
 export type RyderCupCourseModel = {
-  __typename?: 'RyderCupCourseModel';
+  __typename: 'RyderCupCourseModel';
   city?: Maybe<Scalars['String']['output']>;
   country?: Maybe<Scalars['String']['output']>;
   courseDescription?: Maybe<Array<Maybe<NewsArticleNode>>>;
@@ -7664,7 +7664,7 @@ export type RyderCupCourseModel = {
 };
 
 export type RyderCupCourseModelHole = {
-  __typename?: 'RyderCupCourseModelHole';
+  __typename: 'RyderCupCourseModelHole';
   holeBeautyImage?: Maybe<Scalars['String']['output']>;
   holeDescription?: Maybe<Array<Maybe<NewsArticleNode>>>;
   holeFlyoverVideo?: Maybe<Video>;
@@ -7684,7 +7684,7 @@ export type RyderCupEventState =
   | 'PRE_EVENT';
 
 export type RyderCupLatestNewsSection = {
-  __typename?: 'RyderCupLatestNewsSection';
+  __typename: 'RyderCupLatestNewsSection';
   bottomCta?: Maybe<CallToAction>;
   content?: Maybe<Array<RcHomepageAssets>>;
   franchiseTags?: Maybe<Array<Scalars['String']['output']>>;
@@ -7694,7 +7694,7 @@ export type RyderCupLatestNewsSection = {
 };
 
 export type RyderCupMatchOutcomeIq = {
-  __typename?: 'RyderCupMatchOutcomeIQ';
+  __typename: 'RyderCupMatchOutcomeIQ';
   euMatchWin: Scalars['Float']['output'];
   holes: Array<OutComeIqHole>;
   id: Scalars['String']['output'];
@@ -7707,7 +7707,7 @@ export type RyderCupMatchOutcomeIq = {
 };
 
 export type RyderCupMediaSearchOptions = {
-  __typename?: 'RyderCupMediaSearchOptions';
+  __typename: 'RyderCupMediaSearchOptions';
   contentTypes: Array<RcContentTypeParent>;
   playerOptions: Array<RyderCupPlayerOption>;
   teamOptions: Array<RcTeamTypeParent>;
@@ -7716,7 +7716,7 @@ export type RyderCupMediaSearchOptions = {
 };
 
 export type RyderCupPlayer = {
-  __typename?: 'RyderCupPlayer';
+  __typename: 'RyderCupPlayer';
   countryCode?: Maybe<Scalars['String']['output']>;
   countryName?: Maybe<Scalars['String']['output']>;
   displayName: Scalars['String']['output'];
@@ -7726,20 +7726,20 @@ export type RyderCupPlayer = {
 };
 
 export type RyderCupPlayerBios = {
-  __typename?: 'RyderCupPlayerBios';
+  __typename: 'RyderCupPlayerBios';
   bios?: Maybe<Array<Maybe<RyderCupBio>>>;
   headshots?: Maybe<Array<Scalars['String']['output']>>;
 };
 
 export type RyderCupPlayerOption = {
-  __typename?: 'RyderCupPlayerOption';
+  __typename: 'RyderCupPlayerOption';
   displayName: Scalars['String']['output'];
   id: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
 
 export type RyderCupPlayerProfile = {
-  __typename?: 'RyderCupPlayerProfile';
+  __typename: 'RyderCupPlayerProfile';
   playerId: Scalars['String']['output'];
   playerProfileHeader: RyderCupPlayerProfileHeader;
   profileContentSections: Array<RyderCupPlayerProfileSection>;
@@ -7747,13 +7747,13 @@ export type RyderCupPlayerProfile = {
 };
 
 export type RyderCupPlayerProfileCompressed = {
-  __typename?: 'RyderCupPlayerProfileCompressed';
+  __typename: 'RyderCupPlayerProfileCompressed';
   payload: Scalars['String']['output'];
   playerId: Scalars['String']['output'];
 };
 
 export type RyderCupPlayerProfileHeader = {
-  __typename?: 'RyderCupPlayerProfileHeader';
+  __typename: 'RyderCupPlayerProfileHeader';
   age?: Maybe<Scalars['String']['output']>;
   appearances?: Maybe<Scalars['Int']['output']>;
   headshot: ProfileHeadshot;
@@ -7770,7 +7770,7 @@ export type RyderCupRankingsQueryInput = {
 export type RyderCupRankingsRow = InformationRow | StatDetailsPlayer;
 
 export type RyderCupRankingsTeam = {
-  __typename?: 'RyderCupRankingsTeam';
+  __typename: 'RyderCupRankingsTeam';
   banner?: Maybe<Scalars['String']['output']>;
   captain?: Maybe<Scalars['String']['output']>;
   captainLabel?: Maybe<Scalars['String']['output']>;
@@ -7793,13 +7793,13 @@ export type RyderCupRankingsTeam = {
 };
 
 export type RyderCupRankingsV2 = {
-  __typename?: 'RyderCupRankingsV2';
+  __typename: 'RyderCupRankingsV2';
   defaultUS: Scalars['Boolean']['output'];
   teams: Array<RyderCupRankingsTeam>;
 };
 
 export type RyderCupTeam = {
-  __typename?: 'RyderCupTeam';
+  __typename: 'RyderCupTeam';
   captain: RyderCupCaptain;
   players: Array<RyderCupPlayer>;
   teamLogo: Scalars['String']['output'];
@@ -7807,7 +7807,7 @@ export type RyderCupTeam = {
 };
 
 export type RyderCupTeamRankings = {
-  __typename?: 'RyderCupTeamRankings';
+  __typename: 'RyderCupTeamRankings';
   defaultUS: Scalars['Boolean']['output'];
   euroBanner: Scalars['String']['output'];
   euroCaptainLabel?: Maybe<Scalars['String']['output']>;
@@ -7842,7 +7842,7 @@ export type RyderCupTeamRankings = {
 };
 
 export type RyderCupTeamRankingsCompressed = {
-  __typename?: 'RyderCupTeamRankingsCompressed';
+  __typename: 'RyderCupTeamRankingsCompressed';
   payload: Scalars['String']['output'];
 };
 
@@ -7852,13 +7852,13 @@ export type RyderCupTeamType =
   | 'USA';
 
 export type RyderCupTopicOption = {
-  __typename?: 'RyderCupTopicOption';
+  __typename: 'RyderCupTopicOption';
   displayValue: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type RyderCupTournament = {
-  __typename?: 'RyderCupTournament';
+  __typename: 'RyderCupTournament';
   course?: Maybe<RyderCupCourse>;
   euroScore: Scalars['String']['output'];
   euroTeam: RyderCupTeam;
@@ -7870,7 +7870,7 @@ export type RyderCupTournament = {
 };
 
 export type RyderCupTournamentOverview = {
-  __typename?: 'RyderCupTournamentOverview';
+  __typename: 'RyderCupTournamentOverview';
   course?: Maybe<RyderCupCourse>;
   endDate?: Maybe<Scalars['String']['output']>;
   euroScore: Scalars['String']['output'];
@@ -7892,14 +7892,14 @@ export type Story_Type =
   | 'TOPIC_STORIES';
 
 export type ScatterCoord = {
-  __typename?: 'ScatterCoord';
+  __typename: 'ScatterCoord';
   player: ScatterPlayer;
   result: HoleScoreStatus;
   shotCoords: ScatterShotData;
 };
 
 export type ScatterData = {
-  __typename?: 'ScatterData';
+  __typename: 'ScatterData';
   courseId: Scalars['Int']['output'];
   hole: Scalars['Int']['output'];
   holePickle?: Maybe<HolePickle>;
@@ -7910,7 +7910,7 @@ export type ScatterData = {
 };
 
 export type ScatterDataCompressed = {
-  __typename?: 'ScatterDataCompressed';
+  __typename: 'ScatterDataCompressed';
   courseId: Scalars['Int']['output'];
   hole: Scalars['Int']['output'];
   payload: Scalars['String']['output'];
@@ -7918,13 +7918,13 @@ export type ScatterDataCompressed = {
 };
 
 export type ScatterPlayer = {
-  __typename?: 'ScatterPlayer';
+  __typename: 'ScatterPlayer';
   id: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
 
 export type ScatterRound = {
-  __typename?: 'ScatterRound';
+  __typename: 'ScatterRound';
   display?: Maybe<Scalars['String']['output']>;
   num: Scalars['Int']['output'];
   pinCoords: ScatterShotData;
@@ -7932,25 +7932,25 @@ export type ScatterRound = {
 };
 
 export type ScatterShotCoordData = {
-  __typename?: 'ScatterShotCoordData';
+  __typename: 'ScatterShotCoordData';
   landscapeCoords?: Maybe<ScattterXyData>;
   portraitCoords?: Maybe<ScattterXyData>;
 };
 
 export type ScatterShotData = {
-  __typename?: 'ScatterShotData';
+  __typename: 'ScatterShotData';
   green: ScatterShotCoordData;
   overview: ScatterShotCoordData;
 };
 
 export type ScatterStroke = {
-  __typename?: 'ScatterStroke';
+  __typename: 'ScatterStroke';
   playerShots: Array<ScatterCoord>;
   strokeNumber: Scalars['Int']['output'];
 };
 
 export type ScattterXyData = {
-  __typename?: 'ScattterXYData';
+  __typename: 'ScattterXYData';
   enhancedX: Scalars['Float']['output'];
   /**   New field, -1 if no data */
   enhancedY: Scalars['Float']['output'];
@@ -7962,7 +7962,7 @@ export type ScattterXyData = {
 };
 
 export type Schedule = {
-  __typename?: 'Schedule';
+  __typename: 'Schedule';
   completed: Array<ScheduleMonth>;
   filters?: Maybe<Array<ScheduleTournamentFilter>>;
   seasonYear: Scalars['String']['output'];
@@ -7971,7 +7971,7 @@ export type Schedule = {
 };
 
 export type ScheduleChampion = {
-  __typename?: 'ScheduleChampion';
+  __typename: 'ScheduleChampion';
   displayName: Scalars['String']['output'];
   playerId: Scalars['String']['output'];
 };
@@ -7981,7 +7981,7 @@ export type ScheduleDisplay =
   | 'SHOW_NO_LINK';
 
 export type ScheduleMonth = {
-  __typename?: 'ScheduleMonth';
+  __typename: 'ScheduleMonth';
   month: Scalars['String']['output'];
   monthSort?: Maybe<Scalars['Int']['output']>;
   tournaments: Array<ScheduleTournament>;
@@ -7989,7 +7989,7 @@ export type ScheduleMonth = {
 };
 
 export type ScheduleTournament = {
-  __typename?: 'ScheduleTournament';
+  __typename: 'ScheduleTournament';
   androidTicketmasterApiKey?: Maybe<Scalars['String']['output']>;
   androidTicketmasterScheme?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use beautyImageAsset */
@@ -8033,13 +8033,13 @@ export type ScheduleTournament = {
 };
 
 export type ScheduleTournamentFilter = {
-  __typename?: 'ScheduleTournamentFilter';
+  __typename: 'ScheduleTournamentFilter';
   name: Scalars['String']['output'];
   type: TournamentCategory;
 };
 
 export type ScheduleTournamentStatus = {
-  __typename?: 'ScheduleTournamentStatus';
+  __typename: 'ScheduleTournamentStatus';
   leaderboardTakeover: Scalars['Boolean']['output'];
   roundDisplay: Scalars['String']['output'];
   roundStatus: RoundStatus;
@@ -8048,32 +8048,32 @@ export type ScheduleTournamentStatus = {
 };
 
 export type ScheduleUpcoming = {
-  __typename?: 'ScheduleUpcoming';
+  __typename: 'ScheduleUpcoming';
   filters?: Maybe<Array<ScheduleTournamentFilter>>;
   id: Scalars['ID']['output'];
   tournaments: Array<ScheduleTournament>;
 };
 
 export type ScheduleYear = {
-  __typename?: 'ScheduleYear';
+  __typename: 'ScheduleYear';
   default: Scalars['Boolean']['output'];
   displayValue: Scalars['String']['output'];
   queryValue: Scalars['String']['output'];
 };
 
 export type ScheduleYears = {
-  __typename?: 'ScheduleYears';
+  __typename: 'ScheduleYears';
   years: Array<ScheduleYear>;
 };
 
 export type ScorecardCompressedV3 = {
-  __typename?: 'ScorecardCompressedV3';
+  __typename: 'ScorecardCompressedV3';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type ScorecardHeaderPlayer = {
-  __typename?: 'ScorecardHeaderPlayer';
+  __typename: 'ScorecardHeaderPlayer';
   active: Scalars['Boolean']['output'];
   finalRoundTotal: Scalars['String']['output'];
   player: Player;
@@ -8083,7 +8083,7 @@ export type ScorecardHeaderPlayer = {
 };
 
 export type ScorecardRow = {
-  __typename?: 'ScorecardRow';
+  __typename: 'ScorecardRow';
   holes: Array<HoleScore>;
   parTotal: Scalars['Int']['output'];
   total: Scalars['String']['output'];
@@ -8091,14 +8091,14 @@ export type ScorecardRow = {
 };
 
 export type ScorecardStandings = {
-  __typename?: 'ScorecardStandings';
+  __typename: 'ScorecardStandings';
   logo?: Maybe<ImageAsset>;
   logoDark?: Maybe<ImageAsset>;
   points: Scalars['String']['output'];
 };
 
 export type ScorecardStatsComparison = {
-  __typename?: 'ScorecardStatsComparison';
+  __typename: 'ScorecardStatsComparison';
   category: PlayerComparisonCategory;
   categoryPills: Array<PlayerComparisonCategoryPill>;
   disabled?: Maybe<Scalars['Boolean']['output']>;
@@ -8110,7 +8110,7 @@ export type ScorecardStatsComparison = {
 };
 
 export type ScorecardStatsItem = {
-  __typename?: 'ScorecardStatsItem';
+  __typename: 'ScorecardStatsItem';
   label: Scalars['String']['output'];
   rank: Scalars['String']['output'];
   statId: Scalars['String']['output'];
@@ -8126,13 +8126,13 @@ export type ScorecardTabFeature =
   | 'STATS';
 
 export type ScorecardUpdateCompressedV3 = {
-  __typename?: 'ScorecardUpdateCompressedV3';
+  __typename: 'ScorecardUpdateCompressedV3';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type ScorecardUpdateV3 = {
-  __typename?: 'ScorecardUpdateV3';
+  __typename: 'ScorecardUpdateV3';
   backNine: Scalars['Boolean']['output'];
   currentHole?: Maybe<Scalars['Int']['output']>;
   currentHoleDisplay: Scalars['String']['output'];
@@ -8152,7 +8152,7 @@ export type ScorecardUpdateV3 = {
 };
 
 export type ScorecardV3 = {
-  __typename?: 'ScorecardV3';
+  __typename: 'ScorecardV3';
   backNine: Scalars['Boolean']['output'];
   currentHole?: Maybe<Scalars['Int']['output']>;
   currentHoleDisplay: Scalars['String']['output'];
@@ -8184,30 +8184,30 @@ export type ScoringTendency =
   | 'EVEN';
 
 export type SearchBarFeatures = {
-  __typename?: 'SearchBarFeatures';
+  __typename: 'SearchBarFeatures';
   playerFeatures: SearchBarPlayerFeatures;
 };
 
 export type SearchBarPlayer = {
-  __typename?: 'SearchBarPlayer';
+  __typename: 'SearchBarPlayer';
   displayName: Scalars['String']['output'];
   playerId: Scalars['ID']['output'];
 };
 
 export type SearchBarPlayerFeatures = {
-  __typename?: 'SearchBarPlayerFeatures';
+  __typename: 'SearchBarPlayerFeatures';
   playerHeader: Scalars['String']['output'];
   players: Array<SearchBarPlayer>;
 };
 
 export type SeasonDisplayHeader = {
-  __typename?: 'SeasonDisplayHeader';
+  __typename: 'SeasonDisplayHeader';
   endYear?: Maybe<Scalars['Int']['output']>;
   startYear: Scalars['Int']['output'];
 };
 
 export type SeasonRecap = {
-  __typename?: 'SeasonRecap';
+  __typename: 'SeasonRecap';
   displayMostRecentSeason?: Maybe<Scalars['String']['output']>;
   items?: Maybe<Array<SeasonRecapSeason>>;
   mostRecentRecapYear?: Maybe<Scalars['Int']['output']>;
@@ -8215,7 +8215,7 @@ export type SeasonRecap = {
 };
 
 export type SeasonRecapItems = {
-  __typename?: 'SeasonRecapItems';
+  __typename: 'SeasonRecapItems';
   body: Scalars['String']['output'];
   title: Scalars['String']['output'];
   tournamentId: Scalars['String']['output'];
@@ -8223,14 +8223,14 @@ export type SeasonRecapItems = {
 };
 
 export type SeasonRecapSeason = {
-  __typename?: 'SeasonRecapSeason';
+  __typename: 'SeasonRecapSeason';
   displaySeason: Scalars['String']['output'];
   items: Array<SeasonRecapItems>;
   year: Scalars['Int']['output'];
 };
 
 export type SecondaryCupDetails = {
-  __typename?: 'SecondaryCupDetails';
+  __typename: 'SecondaryCupDetails';
   cupLogo?: Maybe<Scalars['String']['output']>;
   cupLogoAccessibilityText?: Maybe<Scalars['String']['output']>;
   cupLogoDark?: Maybe<Scalars['String']['output']>;
@@ -8243,7 +8243,7 @@ export type SecondaryCupDetails = {
 };
 
 export type SecondaryHero = {
-  __typename?: 'SecondaryHero';
+  __typename: 'SecondaryHero';
   backgroundPhoto?: Maybe<Scalars['String']['output']>;
   photoPosition?: Maybe<Scalars['String']['output']>;
   /** @deprecated use sponsorLogoAsset */
@@ -8254,19 +8254,19 @@ export type SecondaryHero = {
 };
 
 export type SegmentedCupRanking = {
-  __typename?: 'SegmentedCupRanking';
+  __typename: 'SegmentedCupRanking';
   defaultSelection: Scalars['Boolean']['output'];
   rankings: Array<CupRankingPlayer>;
   title: Scalars['String']['output'];
 };
 
 export type SegmentedCupRankingWrapper = {
-  __typename?: 'SegmentedCupRankingWrapper';
+  __typename: 'SegmentedCupRankingWrapper';
   segments?: Maybe<Array<Maybe<SegmentedCupRanking>>>;
 };
 
 export type ShotCommentary = {
-  __typename?: 'ShotCommentary';
+  __typename: 'ShotCommentary';
   commentary: Array<ShotCommentaryItem>;
   playerId: Scalars['String']['output'];
   round: Scalars['Int']['output'];
@@ -8274,7 +8274,7 @@ export type ShotCommentary = {
 };
 
 export type ShotCommentaryItem = {
-  __typename?: 'ShotCommentaryItem';
+  __typename: 'ShotCommentaryItem';
   active: Scalars['Boolean']['output'];
   commentary: Scalars['String']['output'];
   hole: Scalars['Int']['output'];
@@ -8291,7 +8291,7 @@ export type ShotCommentaryItemInput = {
 };
 
 export type ShotDetailHole = {
-  __typename?: 'ShotDetailHole';
+  __typename: 'ShotDetailHole';
   displayHoleNumber: Scalars['String']['output'];
   enhancedPickle?: Maybe<HolePickle>;
   fairwayCenter: StrokeCoordinates;
@@ -8322,7 +8322,7 @@ export type ShotDetailHole = {
 };
 
 export type ShotDetailVideo = {
-  __typename?: 'ShotDetailVideo';
+  __typename: 'ShotDetailVideo';
   duration: Scalars['Int']['output'];
   holeNumber: Scalars['String']['output'];
   id: Scalars['ID']['output'];
@@ -8335,7 +8335,7 @@ export type ShotDetailVideo = {
 };
 
 export type ShotDetails = {
-  __typename?: 'ShotDetails';
+  __typename: 'ShotDetails';
   defaultHolePickle: HolePickleType;
   displayType: ShotDetailsDisplayType;
   groupPlayers: Array<Scalars['String']['output']>;
@@ -8354,13 +8354,13 @@ export type ShotDetails = {
 };
 
 export type ShotDetailsCompressed = {
-  __typename?: 'ShotDetailsCompressed';
+  __typename: 'ShotDetailsCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type ShotDetailsCompressedV3 = {
-  __typename?: 'ShotDetailsCompressedV3';
+  __typename: 'ShotDetailsCompressedV3';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
@@ -8371,19 +8371,19 @@ export type ShotDetailsDisplayType =
   | 'PLAY_BY_PLAY';
 
 export type ShotLinkCoordWrapper = {
-  __typename?: 'ShotLinkCoordWrapper';
+  __typename: 'ShotLinkCoordWrapper';
   bottomToTopCoords: ShotLinkCoordinates;
   leftToRightCoords: ShotLinkCoordinates;
 };
 
 export type ShotLinkCoordinates = {
-  __typename?: 'ShotLinkCoordinates';
+  __typename: 'ShotLinkCoordinates';
   fromCoords: StrokeCoordinates;
   toCoords: StrokeCoordinates;
 };
 
 export type SignatureEventsRankLogos = {
-  __typename?: 'SignatureEventsRankLogos';
+  __typename: 'SignatureEventsRankLogos';
   dark: Scalars['String']['output'];
   darkAsset: ImageAsset;
   light: Scalars['String']['output'];
@@ -8393,12 +8393,12 @@ export type SignatureEventsRankLogos = {
 };
 
 export type SignatureInfoLine = {
-  __typename?: 'SignatureInfoLine';
+  __typename: 'SignatureInfoLine';
   text: Scalars['String']['output'];
 };
 
 export type SignaturePlayer = {
-  __typename?: 'SignaturePlayer';
+  __typename: 'SignaturePlayer';
   countryFlag: Scalars['String']['output'];
   countryName: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
@@ -8414,7 +8414,7 @@ export type SignaturePlayer = {
 export type SignaturePlayerRow = SignatureInfoLine | SignaturePlayer;
 
 export type SignatureStandings = {
-  __typename?: 'SignatureStandings';
+  __typename: 'SignatureStandings';
   infoDescription: Scalars['String']['output'];
   infoTitle: Scalars['String']['output'];
   interim: SignatureStandingsData;
@@ -8431,7 +8431,7 @@ export type SignatureStandings = {
 };
 
 export type SignatureStandingsData = {
-  __typename?: 'SignatureStandingsData';
+  __typename: 'SignatureStandingsData';
   description?: Maybe<Scalars['String']['output']>;
   emptyTableDescription?: Maybe<Scalars['String']['output']>;
   emptyTableTitle?: Maybe<Scalars['String']['output']>;
@@ -8446,7 +8446,7 @@ export type SignatureStandingsData = {
 };
 
 export type SignatureStandingsTournamentInfo = {
-  __typename?: 'SignatureStandingsTournamentInfo';
+  __typename: 'SignatureStandingsTournamentInfo';
   displayDate: Scalars['String']['output'];
   roundStatus: RoundStatus;
   roundStatusColor: RoundStatusColor;
@@ -8459,7 +8459,7 @@ export type SignatureStandingsTournamentInfo = {
 };
 
 export type SimpleScore = {
-  __typename?: 'SimpleScore';
+  __typename: 'SimpleScore';
   holeNumber: Scalars['Int']['output'];
   isTotal?: Maybe<Scalars['Boolean']['output']>;
   score: Scalars['String']['output'];
@@ -8473,7 +8473,7 @@ export type SocialType =
   | 'youtube';
 
 export type Sponsor = {
-  __typename?: 'Sponsor';
+  __typename: 'Sponsor';
   accessibilityText: Scalars['String']['output'];
   /** @deprecated use logoAsset */
   logo?: Maybe<Scalars['String']['output']>;
@@ -8491,7 +8491,7 @@ export type Sponsor = {
 };
 
 export type SponsorImage = {
-  __typename?: 'SponsorImage';
+  __typename: 'SponsorImage';
   accessibilityText: Scalars['String']['output'];
   link?: Maybe<Scalars['String']['output']>;
   /** @deprecated use logoAsset */
@@ -8503,7 +8503,7 @@ export type SponsorImage = {
 };
 
 export type SponsoredArticles = {
-  __typename?: 'SponsoredArticles';
+  __typename: 'SponsoredArticles';
   articleSponsor: ArticleSponsor;
   articles: Array<NewsArticle>;
   cta?: Maybe<CallToAction>;
@@ -8511,18 +8511,18 @@ export type SponsoredArticles = {
 };
 
 export type StandardCupRanking = {
-  __typename?: 'StandardCupRanking';
+  __typename: 'StandardCupRanking';
   rankings: Array<CupRankingPlayer>;
 };
 
 export type StandardWeatherTemp = {
-  __typename?: 'StandardWeatherTemp';
+  __typename: 'StandardWeatherTemp';
   tempC: Scalars['String']['output'];
   tempF: Scalars['String']['output'];
 };
 
 export type StandingStat = {
-  __typename?: 'StandingStat';
+  __typename: 'StandingStat';
   statName: Scalars['String']['output'];
   statValue: Scalars['String']['output'];
 };
@@ -8540,7 +8540,7 @@ export type StatCategory =
   | 'STROKES_GAINED';
 
 export type StatCategoryConfig = {
-  __typename?: 'StatCategoryConfig';
+  __typename: 'StatCategoryConfig';
   category: Scalars['String']['output'];
   categoryType?: Maybe<StatCategoryConfigType>;
   displayName: Scalars['String']['output'];
@@ -8552,7 +8552,7 @@ export type StatCategoryConfigType =
   | 'TRADITIONAL_STAT';
 
 export type StatCategoryStat = {
-  __typename?: 'StatCategoryStat';
+  __typename: 'StatCategoryStat';
   statId: Scalars['String']['output'];
   statTitle: Scalars['String']['output'];
 };
@@ -8573,13 +8573,13 @@ export type StatDetailQueryType =
   | 'THROUGH_EVENT';
 
 export type StatDetailTourAvg = {
-  __typename?: 'StatDetailTourAvg';
+  __typename: 'StatDetailTourAvg';
   displayName: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type StatDetails = {
-  __typename?: 'StatDetails';
+  __typename: 'StatDetails';
   cutOffButtonText?: Maybe<Scalars['String']['output']>;
   cutOffNumber?: Maybe<Scalars['Int']['output']>;
   displaySeason: Scalars['String']['output'];
@@ -8602,7 +8602,7 @@ export type StatDetails = {
 };
 
 export type StatDetailsPlayer = {
-  __typename?: 'StatDetailsPlayer';
+  __typename: 'StatDetailsPlayer';
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   filter?: Maybe<Scalars['String']['output']>;
@@ -8619,7 +8619,7 @@ export type StatDetailsPlayer = {
 export type StatDetailsRow = StatDetailTourAvg | StatDetailsPlayer;
 
 export type StatLeaderCategory = {
-  __typename?: 'StatLeaderCategory';
+  __typename: 'StatLeaderCategory';
   categoryHeader: Scalars['String']['output'];
   displayYear: Scalars['String']['output'];
   otherCategories: Array<StatCategoryConfig>;
@@ -8630,14 +8630,14 @@ export type StatLeaderCategory = {
 };
 
 export type StatLeaderSubCategory = {
-  __typename?: 'StatLeaderSubCategory';
+  __typename: 'StatLeaderSubCategory';
   stats: Array<LeaderStat>;
   subCatPromo?: Maybe<StatLeaderSubCategoryPromo>;
   subCategoryName: Scalars['String']['output'];
 };
 
 export type StatLeaderSubCategoryPromo = {
-  __typename?: 'StatLeaderSubCategoryPromo';
+  __typename: 'StatLeaderSubCategoryPromo';
   image: Scalars['String']['output'];
   link: Scalars['String']['output'];
   title: Scalars['String']['output'];
@@ -8649,32 +8649,32 @@ export type StatRankMovement =
   | 'UP';
 
 export type StatSubCategory = {
-  __typename?: 'StatSubCategory';
+  __typename: 'StatSubCategory';
   displayName?: Maybe<Scalars['String']['output']>;
   stats: Array<StatCategoryStat>;
 };
 
 export type StatTournamentPill = {
-  __typename?: 'StatTournamentPill';
+  __typename: 'StatTournamentPill';
   displayName: Scalars['String']['output'];
   endDateDisplay?: Maybe<Scalars['String']['output']>;
   tournamentId: Scalars['String']['output'];
 };
 
 export type StatWeekPill = {
-  __typename?: 'StatWeekPill';
+  __typename: 'StatWeekPill';
   displayWeek: Scalars['String']['output'];
   week: Scalars['Int']['output'];
 };
 
 export type StatYearPills = {
-  __typename?: 'StatYearPills';
+  __typename: 'StatYearPills';
   displaySeason: Scalars['String']['output'];
   year: Scalars['Int']['output'];
 };
 
 export type Stats = {
-  __typename?: 'Stats';
+  __typename: 'Stats';
   id: Scalars['ID']['output'];
   statAvg?: Maybe<Scalars['String']['output']>;
   statName: Scalars['String']['output'];
@@ -8683,7 +8683,7 @@ export type Stats = {
 };
 
 export type StreamUrls = {
-  __typename?: 'StreamUrls';
+  __typename: 'StreamUrls';
   applePodcast: Scalars['String']['output'];
   googlePodcast: Scalars['String']['output'];
   spotify: Scalars['String']['output'];
@@ -8692,7 +8692,7 @@ export type StreamUrls = {
 };
 
 export type StrokeCoordinates = {
-  __typename?: 'StrokeCoordinates';
+  __typename: 'StrokeCoordinates';
   enhancedX: Scalars['Float']['output'];
   enhancedY: Scalars['Float']['output'];
   tourcastX: Scalars['Float']['output'];
@@ -8704,7 +8704,7 @@ export type StrokeCoordinates = {
 };
 
 export type StrokesGainedStats = {
-  __typename?: 'StrokesGainedStats';
+  __typename: 'StrokesGainedStats';
   graph: Scalars['Boolean']['output'];
   label: Scalars['String']['output'];
   rank: Scalars['String']['output'];
@@ -8717,20 +8717,20 @@ export type StrokesGainedStats = {
 };
 
 export type Style = {
-  __typename?: 'Style';
+  __typename: 'Style';
   key: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type SubMarket = {
-  __typename?: 'SubMarket';
+  __typename: 'SubMarket';
   header: Scalars['String']['output'];
   id: Scalars['String']['output'];
   options: Array<OddsOptionV2>;
 };
 
 export type Subscription = {
-  __typename?: 'Subscription';
+  __typename: 'Subscription';
   onUpdateBubble?: Maybe<BubbleWatch>;
   onUpdateBubbleWatch?: Maybe<TourCupRankingEvent>;
   onUpdateCourseStats?: Maybe<TournamentHoleStats>;
@@ -9079,7 +9079,7 @@ export type SubscriptionOnUpdateUpcomingScheduleArgs = {
 };
 
 export type SummaryRow = {
-  __typename?: 'SummaryRow';
+  __typename: 'SummaryRow';
   averagePaceOfPlay?: Maybe<Scalars['String']['output']>;
   birdies?: Maybe<Scalars['Int']['output']>;
   bogeys?: Maybe<Scalars['Int']['output']>;
@@ -9102,17 +9102,17 @@ export type SummaryRowType =
 export type TcWinner = MpLeaderboardPlayer | TspWinner | Winner;
 
 export type TglBoxScore = {
-  __typename?: 'TGLBoxScore';
+  __typename: 'TGLBoxScore';
   matchId: Scalars['String']['output'];
 };
 
 export type TglBoxScoreFragment = {
-  __typename?: 'TGLBoxScoreFragment';
+  __typename: 'TGLBoxScoreFragment';
   matchIds?: Maybe<Array<Scalars['String']['output']>>;
 };
 
 export type TglMatch = {
-  __typename?: 'TGLMatch';
+  __typename: 'TGLMatch';
   currentHole?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   isOvertime: Scalars['Boolean']['output'];
@@ -9139,20 +9139,20 @@ export type TglMatchStatus =
   | 'UPCOMING';
 
 export type TglPlayer = {
-  __typename?: 'TGLPlayer';
+  __typename: 'TGLPlayer';
   displayName: Scalars['String']['output'];
   playerHeadshot: Scalars['String']['output'];
   playerId: Scalars['ID']['output'];
 };
 
 export type TglSchedule = {
-  __typename?: 'TGLSchedule';
+  __typename: 'TGLSchedule';
   matches: Array<TglMatch>;
   season: Scalars['Int']['output'];
 };
 
 export type TglTeam = {
-  __typename?: 'TGLTeam';
+  __typename: 'TGLTeam';
   losses: Scalars['Int']['output'];
   matchWinner?: Maybe<Scalars['Boolean']['output']>;
   players: Array<TglPlayer>;
@@ -9163,7 +9163,7 @@ export type TglTeam = {
 };
 
 export type TspLeaderboard = {
-  __typename?: 'TSPLeaderboard';
+  __typename: 'TSPLeaderboard';
   currentRound: Scalars['Int']['output'];
   currentRoundScoringFormat?: Maybe<Scalars['String']['output']>;
   disableOdds: Scalars['Boolean']['output'];
@@ -9188,7 +9188,7 @@ export type TspLeaderboard = {
 };
 
 export type TspLeaderboardRound = {
-  __typename?: 'TSPLeaderboardRound';
+  __typename: 'TSPLeaderboardRound';
   round: Scalars['Int']['output'];
   roundHeader: Scalars['String']['output'];
   roundHeaderShort: Scalars['String']['output'];
@@ -9199,7 +9199,7 @@ export type TspLeaderboardRound = {
 export type TspLeaderboardRow = InformationRow | TspTeamRow;
 
 export type TspScorecard = {
-  __typename?: 'TSPScorecard';
+  __typename: 'TSPScorecard';
   backNine: Scalars['Boolean']['output'];
   courseId?: Maybe<Scalars['Int']['output']>;
   currentHole?: Maybe<Scalars['Int']['output']>;
@@ -9230,13 +9230,13 @@ export type TspScorecard = {
 };
 
 export type TspScorecardRounds = {
-  __typename?: 'TSPScorecardRounds';
+  __typename: 'TSPScorecardRounds';
   id: Scalars['ID']['output'];
   scorecards: Array<TspScorecard>;
 };
 
 export type TspTeeTimeGroup = {
-  __typename?: 'TSPTeeTimeGroup';
+  __typename: 'TSPTeeTimeGroup';
   courseId?: Maybe<Scalars['String']['output']>;
   groupNumber: Scalars['Int']['output'];
   groupState: PlayerState;
@@ -9248,7 +9248,7 @@ export type TspTeeTimeGroup = {
 };
 
 export type TspTeeTimeHeaders = {
-  __typename?: 'TSPTeeTimeHeaders';
+  __typename: 'TSPTeeTimeHeaders';
   status: Scalars['String']['output'];
   team: Scalars['String']['output'];
   tee: Scalars['String']['output'];
@@ -9256,7 +9256,7 @@ export type TspTeeTimeHeaders = {
 };
 
 export type TspTeeTimePlayer = {
-  __typename?: 'TSPTeeTimePlayer';
+  __typename: 'TSPTeeTimePlayer';
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
@@ -9270,20 +9270,20 @@ export type TspTeeTimePlayer = {
 };
 
 export type TspTeeTimeRound = {
-  __typename?: 'TSPTeeTimeRound';
+  __typename: 'TSPTeeTimeRound';
   groups: Array<TspTeeTimeGroup>;
   roundFormat: Scalars['String']['output'];
   roundNumber: Scalars['Int']['output'];
 };
 
 export type TspTeeTimeTeam = {
-  __typename?: 'TSPTeeTimeTeam';
+  __typename: 'TSPTeeTimeTeam';
   players: Array<TspTeeTimePlayer>;
   teamId: Scalars['ID']['output'];
 };
 
 export type TspTeeTimes = {
-  __typename?: 'TSPTeeTimes';
+  __typename: 'TSPTeeTimes';
   courseFilters: Array<CourseFilter>;
   courses: Array<Course>;
   defaultRound: Scalars['Int']['output'];
@@ -9297,12 +9297,12 @@ export type TspTeeTimes = {
 };
 
 export type TableBody = {
-  __typename?: 'TableBody';
+  __typename: 'TableBody';
   rows: Array<TableRows>;
 };
 
 export type TableColumn = {
-  __typename?: 'TableColumn';
+  __typename: 'TableColumn';
   class?: Maybe<Scalars['String']['output']>;
   colspan?: Maybe<Scalars['String']['output']>;
   height?: Maybe<Scalars['String']['output']>;
@@ -9313,7 +9313,7 @@ export type TableColumn = {
 };
 
 export type TableColumnSegment = {
-  __typename?: 'TableColumnSegment';
+  __typename: 'TableColumnSegment';
   data?: Maybe<Scalars['String']['output']>;
   format?: Maybe<NewsArticleFormat>;
   oddsSwing?: Maybe<OddsSwing>;
@@ -9324,13 +9324,13 @@ export type TableColumnSegment = {
 export type TableColumnValue = TableColumnSegment | UnorderedListNode;
 
 export type TableDataRow = {
-  __typename?: 'TableDataRow';
+  __typename: 'TableDataRow';
   class?: Maybe<Scalars['String']['output']>;
   columns?: Maybe<Array<Maybe<TableColumn>>>;
 };
 
 export type TableFragment = {
-  __typename?: 'TableFragment';
+  __typename: 'TableFragment';
   border?: Maybe<Scalars['String']['output']>;
   cellpadding?: Maybe<Scalars['String']['output']>;
   cellspacing?: Maybe<Scalars['String']['output']>;
@@ -9341,7 +9341,7 @@ export type TableFragment = {
 };
 
 export type TableHeaderRow = {
-  __typename?: 'TableHeaderRow';
+  __typename: 'TableHeaderRow';
   class?: Maybe<Scalars['String']['output']>;
   columns?: Maybe<Array<Maybe<TableColumn>>>;
 };
@@ -9349,7 +9349,7 @@ export type TableHeaderRow = {
 export type TableRows = TableDataRow | TableHeaderRow;
 
 export type TeamHoleGroups = {
-  __typename?: 'TeamHoleGroups';
+  __typename: 'TeamHoleGroups';
   groupLocation: Scalars['String']['output'];
   groupLocationCode: Scalars['String']['output'];
   groupNumber: Scalars['Int']['output'];
@@ -9362,7 +9362,7 @@ export type TeamHoleGroups = {
 };
 
 export type TeamPlayHole = {
-  __typename?: 'TeamPlayHole';
+  __typename: 'TeamPlayHole';
   holeNumber: Scalars['String']['output'];
   parValue: Scalars['String']['output'];
   playerScores: Array<TspPlayerHole>;
@@ -9372,7 +9372,7 @@ export type TeamPlayHole = {
 };
 
 export type TeamPlayScoreCardRow = {
-  __typename?: 'TeamPlayScoreCardRow';
+  __typename: 'TeamPlayScoreCardRow';
   holes: Array<TeamPlayHole>;
   parTotal: Scalars['Int']['output'];
   total: Scalars['String']['output'];
@@ -9380,7 +9380,7 @@ export type TeamPlayScoreCardRow = {
 };
 
 export type TeamRankings = {
-  __typename?: 'TeamRankings';
+  __typename: 'TeamRankings';
   defaultEuropeRankings: Scalars['Boolean']['output'];
   defaultUsRankings: Scalars['Boolean']['output'];
   displayRoster: Scalars['Boolean']['output'];
@@ -9402,7 +9402,7 @@ export type TeamRankings = {
 };
 
 export type TeamShotDetails = {
-  __typename?: 'TeamShotDetails';
+  __typename: 'TeamShotDetails';
   defaultHolePickle: HolePickleType;
   displayType: ShotDetailsDisplayType;
   groupNumber: Scalars['Int']['output'];
@@ -9417,13 +9417,13 @@ export type TeamShotDetails = {
 };
 
 export type TeamShotDetailsCompressed = {
-  __typename?: 'TeamShotDetailsCompressed';
+  __typename: 'TeamShotDetailsCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
 
 export type TeamStoryContentInfo = {
-  __typename?: 'TeamStoryContentInfo';
+  __typename: 'TeamStoryContentInfo';
   hasStoryContent: Scalars['Boolean']['output'];
   playerId: Scalars['String']['output'];
   storyContentRound?: Maybe<Scalars['Int']['output']>;
@@ -9431,14 +9431,14 @@ export type TeamStoryContentInfo = {
 };
 
 export type TeamplayHolePlayer = {
-  __typename?: 'TeamplayHolePlayer';
+  __typename: 'TeamplayHolePlayer';
   holeScore?: Maybe<Scalars['String']['output']>;
   holeScoreStatus?: Maybe<HoleScoreStatus>;
   playerId: Scalars['ID']['output'];
 };
 
 export type TeeTimeHeader = {
-  __typename?: 'TeeTimeHeader';
+  __typename: 'TeeTimeHeader';
   players: Scalars['String']['output'];
   status: Scalars['String']['output'];
   tee: Scalars['String']['output'];
@@ -9446,7 +9446,7 @@ export type TeeTimeHeader = {
 };
 
 export type TeeTimeRound = {
-  __typename?: 'TeeTimeRound';
+  __typename: 'TeeTimeRound';
   groups: Array<Group>;
   id: Scalars['ID']['output'];
   roundDisplay: Scalars['String']['output'];
@@ -9457,7 +9457,7 @@ export type TeeTimeRound = {
 };
 
 export type TeeTimeRoundV2 = {
-  __typename?: 'TeeTimeRoundV2';
+  __typename: 'TeeTimeRoundV2';
   groups: Array<GroupV2>;
   id: Scalars['ID']['output'];
   roundDisplay: Scalars['String']['output'];
@@ -9468,7 +9468,7 @@ export type TeeTimeRoundV2 = {
 };
 
 export type TeeTimes = {
-  __typename?: 'TeeTimes';
+  __typename: 'TeeTimes';
   courses: Array<Course>;
   defaultRound: Scalars['Int']['output'];
   drawersEnabled: Scalars['Boolean']['output'];
@@ -9480,7 +9480,7 @@ export type TeeTimes = {
 };
 
 export type TeeTimesCompressed = {
-  __typename?: 'TeeTimesCompressed';
+  __typename: 'TeeTimesCompressed';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
 };
@@ -9490,7 +9490,7 @@ export type TeeTimesFeature =
   | 'GROUP_TRACKER';
 
 export type TeeTimesV2 = {
-  __typename?: 'TeeTimesV2';
+  __typename: 'TeeTimesV2';
   courses: Array<Course>;
   defaultRound: Scalars['Int']['output'];
   drawersEnabled: Scalars['Boolean']['output'];
@@ -9503,7 +9503,7 @@ export type TeeTimesV2 = {
 };
 
 export type ThreeUpPhoto = {
-  __typename?: 'ThreeUpPhoto';
+  __typename: 'ThreeUpPhoto';
   photoOne?: Maybe<Scalars['String']['output']>;
   photoOneAccessibilityText?: Maybe<Scalars['String']['output']>;
   photoOneCtaTarget?: Maybe<Scalars['String']['output']>;
@@ -9520,7 +9520,7 @@ export type ThreeUpPhoto = {
 };
 
 export type ThreeUpStats = {
-  __typename?: 'ThreeUpStats';
+  __typename: 'ThreeUpStats';
   header?: Maybe<Scalars['String']['output']>;
   statsDescriptionOne?: Maybe<Scalars['String']['output']>;
   statsDescriptionThree?: Maybe<Scalars['String']['output']>;
@@ -9531,7 +9531,7 @@ export type ThreeUpStats = {
 };
 
 export type TicketCards = {
-  __typename?: 'TicketCards';
+  __typename: 'TicketCards';
   blueBackground: Scalars['Boolean']['output'];
   cardLabel?: Maybe<Scalars['String']['output']>;
   cardPhoto?: Maybe<Scalars['String']['output']>;
@@ -9545,7 +9545,7 @@ export type TicketCards = {
 };
 
 export type TicketSectionContainer = {
-  __typename?: 'TicketSectionContainer';
+  __typename: 'TicketSectionContainer';
   bottomCta?: Maybe<CallToAction>;
   cards?: Maybe<Array<TicketCards>>;
   layout?: Maybe<Scalars['String']['output']>;
@@ -9554,7 +9554,7 @@ export type TicketSectionContainer = {
 };
 
 export type ToolTipComponent = {
-  __typename?: 'ToolTipComponent';
+  __typename: 'ToolTipComponent';
   detailCopy?: Maybe<Scalars['String']['output']>;
   detailCopyRichText?: Maybe<Array<Maybe<NewsArticleNode>>>;
   header: Scalars['String']['output'];
@@ -9563,12 +9563,12 @@ export type ToolTipComponent = {
 };
 
 export type TopicStoriesPillConfig = {
-  __typename?: 'TopicStoriesPillConfig';
+  __typename: 'TopicStoriesPillConfig';
   label: Scalars['String']['output'];
 };
 
 export type ToughestCourseRoundPills = {
-  __typename?: 'ToughestCourseRoundPills';
+  __typename: 'ToughestCourseRoundPills';
   display: Scalars['String']['output'];
   queryVal: ToughestRound;
 };
@@ -9581,13 +9581,13 @@ export type ToughestRound =
   | 'TWO';
 
 export type TourBoundAsset = {
-  __typename?: 'TourBoundAsset';
+  __typename: 'TourBoundAsset';
   tourBoundLogo?: Maybe<Scalars['String']['output']>;
   tourBoundLogoDark?: Maybe<Scalars['String']['output']>;
 };
 
 export type TourCategories = {
-  __typename?: 'TourCategories';
+  __typename: 'TourCategories';
   categories: Array<Category>;
   tourCode: TourCode;
 };
@@ -9604,7 +9604,7 @@ export type TourCode =
   | 'Y';
 
 export type TourCupCombined = {
-  __typename?: 'TourCupCombined';
+  __typename: 'TourCupCombined';
   bannerMessage?: Maybe<LeaderboardMessage>;
   columnHeaders: Array<Scalars['String']['output']>;
   cutOffButtonText?: Maybe<Scalars['String']['output']>;
@@ -9634,7 +9634,7 @@ export type TourCupCombined = {
 };
 
 export type TourCupCombinedData = {
-  __typename?: 'TourCupCombinedData';
+  __typename: 'TourCupCombinedData';
   event: Scalars['String']['output'];
   /** @deprecated Use logoAsset */
   logo?: Maybe<Scalars['String']['output']>;
@@ -9649,7 +9649,7 @@ export type TourCupCombinedData = {
 };
 
 export type TourCupCombinedInfo = {
-  __typename?: 'TourCupCombinedInfo';
+  __typename: 'TourCupCombinedInfo';
   /** @deprecated Use logoAsset */
   logo?: Maybe<Scalars['String']['output']>;
   logoAsset?: Maybe<ImageAsset>;
@@ -9662,7 +9662,7 @@ export type TourCupCombinedInfo = {
 };
 
 export type TourCupCombinedPlayer = {
-  __typename?: 'TourCupCombinedPlayer';
+  __typename: 'TourCupCombinedPlayer';
   columnData: Array<Scalars['String']['output']>;
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
@@ -9689,13 +9689,13 @@ export type TourCupCombinedPlayer = {
 export type TourCupCombinedRow = TourCupCombinedInfo | TourCupCombinedPlayer;
 
 export type TourCupCombinedTotal = {
-  __typename?: 'TourCupCombinedTotal';
+  __typename: 'TourCupCombinedTotal';
   label: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
 export type TourCupCombinedWinner = {
-  __typename?: 'TourCupCombinedWinner';
+  __typename: 'TourCupCombinedWinner';
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
@@ -9711,7 +9711,7 @@ export type TourCupCombinedWinner = {
 export type TourCupRankingData = SegmentedCupRankingWrapper | StandardCupRanking;
 
 export type TourCupRankingEvent = {
-  __typename?: 'TourCupRankingEvent';
+  __typename: 'TourCupRankingEvent';
   bannerMessage?: Maybe<LeaderboardMessage>;
   description: Scalars['String']['output'];
   detailCopy?: Maybe<Scalars['String']['output']>;
@@ -9737,7 +9737,7 @@ export type TourCupRankingEvent = {
 };
 
 export type TourCupSplit = {
-  __typename?: 'TourCupSplit';
+  __typename: 'TourCupSplit';
   bannerMessage?: Maybe<LeaderboardMessage>;
   columnHeaders: Array<Scalars['String']['output']>;
   cutOffButtonText?: Maybe<Scalars['String']['output']>;
@@ -9773,7 +9773,7 @@ export type TourCupType =
   | 'PROJECTED';
 
 export type TourCupWinner = {
-  __typename?: 'TourCupWinner';
+  __typename: 'TourCupWinner';
   id: Scalars['String']['output'];
   name: Scalars['String']['output'];
   playerCountry: Scalars['String']['output'];
@@ -9782,13 +9782,13 @@ export type TourCupWinner = {
 };
 
 export type TourPills = {
-  __typename?: 'TourPills';
+  __typename: 'TourPills';
   displayName: Scalars['String']['output'];
   tourCode?: Maybe<TourCode>;
 };
 
 export type TourSponsor = {
-  __typename?: 'TourSponsor';
+  __typename: 'TourSponsor';
   _path?: Maybe<Scalars['String']['output']>;
   sponsorDescription: Array<TourSponsorDescription>;
   sponsorImage?: Maybe<Scalars['String']['output']>;
@@ -9802,14 +9802,14 @@ export type TourSponsor = {
 export type TourSponsorDescription = NewsArticleImage | NewsArticleLineBreak | NewsArticleLink | NewsArticleParagraph | NewsArticleText;
 
 export type TourcastCourse = {
-  __typename?: 'TourcastCourse';
+  __typename: 'TourcastCourse';
   courseId: Scalars['String']['output'];
   holes: Array<TourcastHole>;
   playoff?: Maybe<TourcastPlayoff>;
 };
 
 export type TourcastGroup = {
-  __typename?: 'TourcastGroup';
+  __typename: 'TourcastGroup';
   groupName: Scalars['String']['output'];
   groupNum: Scalars['Int']['output'];
   location: Scalars['String']['output'];
@@ -9824,7 +9824,7 @@ export type TourcastGroup = {
 };
 
 export type TourcastHole = {
-  __typename?: 'TourcastHole';
+  __typename: 'TourcastHole';
   cupMatches?: Maybe<Array<CupLeaderboardMatch>>;
   displayRank: Scalars['String']['output'];
   groups: Array<TourcastGroup>;
@@ -9839,7 +9839,7 @@ export type TourcastHole = {
 };
 
 export type TourcastPlayer = {
-  __typename?: 'TourcastPlayer';
+  __typename: 'TourcastPlayer';
   amateur: Scalars['Boolean']['output'];
   backNine: Scalars['Boolean']['output'];
   country: Scalars['String']['output'];
@@ -9853,7 +9853,7 @@ export type TourcastPlayer = {
 };
 
 export type TourcastPlayoff = {
-  __typename?: 'TourcastPlayoff';
+  __typename: 'TourcastPlayoff';
   holeNum: Scalars['Int']['output'];
   playOffHole: Scalars['Int']['output'];
   players: Array<TourcastPlayoffPlayer>;
@@ -9865,7 +9865,7 @@ export type TourcastPlayoff = {
 };
 
 export type TourcastPlayoffPlayer = {
-  __typename?: 'TourcastPlayoffPlayer';
+  __typename: 'TourcastPlayoffPlayer';
   countryCode: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
   playerId: Scalars['ID']['output'];
@@ -9873,7 +9873,7 @@ export type TourcastPlayoffPlayer = {
 };
 
 export type TourcastTable = {
-  __typename?: 'TourcastTable';
+  __typename: 'TourcastTable';
   courses: Array<TourcastCourse>;
   informationSections: Array<InformationSection>;
   tournamentId: Scalars['ID']['output'];
@@ -9881,7 +9881,7 @@ export type TourcastTable = {
 };
 
 export type TourcastTeam = {
-  __typename?: 'TourcastTeam';
+  __typename: 'TourcastTeam';
   backNine: Scalars['Boolean']['output'];
   players: Array<TourcastPlayer>;
   roundScore: Scalars['String']['output'];
@@ -9891,7 +9891,7 @@ export type TourcastTeam = {
 };
 
 export type TourcastTeamGroup = {
-  __typename?: 'TourcastTeamGroup';
+  __typename: 'TourcastTeamGroup';
   groupName: Scalars['String']['output'];
   groupNum: Scalars['Int']['output'];
   location: Scalars['String']['output'];
@@ -9906,7 +9906,7 @@ export type TourcastTeamGroup = {
 };
 
 export type Tournament = {
-  __typename?: 'Tournament';
+  __typename: 'Tournament';
   /** @deprecated Use beautyImageAsset */
   beautyImage: Scalars['String']['output'];
   beautyImageAsset: ImageAsset;
@@ -9959,7 +9959,7 @@ export type Tournament = {
 };
 
 export type TournamentActivation = {
-  __typename?: 'TournamentActivation';
+  __typename: 'TournamentActivation';
   data: Scalars['String']['output'];
   description: Scalars['String']['output'];
   detail?: Maybe<Scalars['String']['output']>;
@@ -9977,7 +9977,7 @@ export type TournamentCategory =
   | 'SIGNATURE';
 
 export type TournamentCategoryInfo = {
-  __typename?: 'TournamentCategoryInfo';
+  __typename: 'TournamentCategoryInfo';
   label: Scalars['String']['output'];
   /** @deprecated use logoDarkAsset */
   logoDark: Scalars['String']['output'];
@@ -9989,7 +9989,7 @@ export type TournamentCategoryInfo = {
 };
 
 export type TournamentChampion = {
-  __typename?: 'TournamentChampion';
+  __typename: 'TournamentChampion';
   countryCode: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
   displaySeason: Scalars['String']['output'];
@@ -10003,7 +10003,7 @@ export type TournamentChampion = {
 };
 
 export type TournamentCourse = {
-  __typename?: 'TournamentCourse';
+  __typename: 'TournamentCourse';
   city?: Maybe<Scalars['String']['output']>;
   country?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
@@ -10030,14 +10030,14 @@ export type TournamentFeature =
   | 'TOURCAST';
 
 export type TournamentGroupLocation = {
-  __typename?: 'TournamentGroupLocation';
+  __typename: 'TournamentGroupLocation';
   groupLocations: Array<GroupLocationData>;
   round: Scalars['Int']['output'];
   tournamentId: Scalars['String']['output'];
 };
 
 export type TournamentHistory = {
-  __typename?: 'TournamentHistory';
+  __typename: 'TournamentHistory';
   courses: TournamentHistoryCourseTable;
   defendingChampion: TournamentHistoryPlayerTable;
   pastChampions: TournamentHistoryPlayerTable;
@@ -10047,7 +10047,7 @@ export type TournamentHistory = {
 };
 
 export type TournamentHistoryCourse = {
-  __typename?: 'TournamentHistoryCourse';
+  __typename: 'TournamentHistoryCourse';
   courseId: Scalars['String']['output'];
   courseImage: Scalars['String']['output'];
   courseName: Scalars['String']['output'];
@@ -10058,13 +10058,13 @@ export type TournamentHistoryCourse = {
 };
 
 export type TournamentHistoryCourseTable = {
-  __typename?: 'TournamentHistoryCourseTable';
+  __typename: 'TournamentHistoryCourseTable';
   courses: Array<TournamentHistoryCourse>;
   header: Scalars['String']['output'];
 };
 
 export type TournamentHistoryPlayer = {
-  __typename?: 'TournamentHistoryPlayer';
+  __typename: 'TournamentHistoryPlayer';
   countryFlag: Scalars['String']['output'];
   displaySeason: Scalars['String']['output'];
   playerId: Scalars['String']['output'];
@@ -10075,26 +10075,26 @@ export type TournamentHistoryPlayer = {
 };
 
 export type TournamentHistoryPlayerTable = {
-  __typename?: 'TournamentHistoryPlayerTable';
+  __typename: 'TournamentHistoryPlayerTable';
   header: Scalars['String']['output'];
   players: Array<TournamentHistoryPlayer>;
 };
 
 export type TournamentHoleStats = {
-  __typename?: 'TournamentHoleStats';
+  __typename: 'TournamentHoleStats';
   courses: Array<CourseStat>;
   tournamentId: Scalars['ID']['output'];
 };
 
 export type TournamentLocation = {
-  __typename?: 'TournamentLocation';
+  __typename: 'TournamentLocation';
   city?: Maybe<Scalars['String']['output']>;
   country?: Maybe<Scalars['String']['output']>;
   state?: Maybe<Scalars['String']['output']>;
 };
 
 export type TournamentOdds = {
-  __typename?: 'TournamentOdds';
+  __typename: 'TournamentOdds';
   availableMarkets: Array<AvailableMarket>;
   country: Scalars['String']['output'];
   drawersEnabled: Scalars['Boolean']['output'];
@@ -10106,19 +10106,19 @@ export type TournamentOdds = {
 };
 
 export type TournamentOddsCompressed = {
-  __typename?: 'TournamentOddsCompressed';
+  __typename: 'TournamentOddsCompressed';
   id: Scalars['ID']['output'];
   tournamentOddsPayload: Scalars['String']['output'];
 };
 
 export type TournamentOddsCompressedV2 = {
-  __typename?: 'TournamentOddsCompressedV2';
+  __typename: 'TournamentOddsCompressedV2';
   id: Scalars['ID']['output'];
   oddsPayload: Scalars['String']['output'];
 };
 
 export type TournamentOddsPlayer = {
-  __typename?: 'TournamentOddsPlayer';
+  __typename: 'TournamentOddsPlayer';
   oddsOptionId?: Maybe<Scalars['String']['output']>;
   oddsSort: Scalars['Float']['output'];
   oddsSwing?: Maybe<OddsSwing>;
@@ -10127,7 +10127,7 @@ export type TournamentOddsPlayer = {
 };
 
 export type TournamentOddsToWin = {
-  __typename?: 'TournamentOddsToWin';
+  __typename: 'TournamentOddsToWin';
   players: Array<TournamentOddsPlayer>;
   tournamentId: Scalars['ID']['output'];
   /** @deprecated use tournamentLogoAsset */
@@ -10137,7 +10137,7 @@ export type TournamentOddsToWin = {
 };
 
 export type TournamentOddsV2 = {
-  __typename?: 'TournamentOddsV2';
+  __typename: 'TournamentOddsV2';
   drawersEnabled: Scalars['Boolean']['output'];
   id: Scalars['ID']['output'];
   marketPills: Array<MarketPill>;
@@ -10151,7 +10151,7 @@ export type TournamentOddsV2 = {
 };
 
 export type TournamentOverview = {
-  __typename?: 'TournamentOverview';
+  __typename: 'TournamentOverview';
   activation?: Maybe<TournamentActivation>;
   androidTicketmasterApiKey?: Maybe<Scalars['String']['output']>;
   androidTicketmasterScheme?: Maybe<Scalars['String']['output']>;
@@ -10182,7 +10182,7 @@ export type TournamentOverview = {
 };
 
 export type TournamentOverviewInfo = {
-  __typename?: 'TournamentOverviewInfo';
+  __typename: 'TournamentOverviewInfo';
   cutsMade: Scalars['Int']['output'];
   cutsMissed: Scalars['Int']['output'];
   disqualified: Scalars['Int']['output'];
@@ -10199,13 +10199,13 @@ export type TournamentOverviewInfo = {
 };
 
 export type TournamentPlayoffScorecards = {
-  __typename?: 'TournamentPlayoffScorecards';
+  __typename: 'TournamentPlayoffScorecards';
   playoffs: Array<PlayoffScorecard>;
   tournamentId: Scalars['ID']['output'];
 };
 
 export type TournamentRecap = {
-  __typename?: 'TournamentRecap';
+  __typename: 'TournamentRecap';
   courses: Array<TournamentRecapCourse>;
   durationDate: Scalars['String']['output'];
   newsArticles: Array<NewsArticle>;
@@ -10214,7 +10214,7 @@ export type TournamentRecap = {
 };
 
 export type TournamentRecapCourse = {
-  __typename?: 'TournamentRecapCourse';
+  __typename: 'TournamentRecapCourse';
   city: Scalars['String']['output'];
   country?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
@@ -10226,7 +10226,7 @@ export type TournamentRecapCourse = {
 };
 
 export type TournamentResultOverview = {
-  __typename?: 'TournamentResultOverview';
+  __typename: 'TournamentResultOverview';
   courseCity: Scalars['String']['output'];
   courseCountry: Scalars['String']['output'];
   courseName: Scalars['String']['output'];
@@ -10239,13 +10239,13 @@ export type TournamentResultOverview = {
 };
 
 export type TournamentResultPill = {
-  __typename?: 'TournamentResultPill';
+  __typename: 'TournamentResultPill';
   tournamentName: Scalars['String']['output'];
   tournamentNum: Scalars['ID']['output'];
 };
 
 export type TournamentResults = {
-  __typename?: 'TournamentResults';
+  __typename: 'TournamentResults';
   cupEyebrowText: Scalars['String']['output'];
   overview: Array<PlayerProfileInfoItem>;
   overviewInfo?: Maybe<TournamentOverviewInfo>;
@@ -10255,12 +10255,12 @@ export type TournamentResults = {
 };
 
 export type TournamentResultsMessage = {
-  __typename?: 'TournamentResultsMessage';
+  __typename: 'TournamentResultsMessage';
   message?: Maybe<Scalars['String']['output']>;
 };
 
 export type TournamentRightRailConfig = {
-  __typename?: 'TournamentRightRailConfig';
+  __typename: 'TournamentRightRailConfig';
   buttonLink?: Maybe<Scalars['String']['output']>;
   buttonText?: Maybe<Scalars['String']['output']>;
   imageAltText: Scalars['String']['output'];
@@ -10273,12 +10273,12 @@ export type TournamentStatus =
   | 'NOT_STARTED';
 
 export type TournamentTeamChampion = {
-  __typename?: 'TournamentTeamChampion';
+  __typename: 'TournamentTeamChampion';
   players: Array<TournamentChampion>;
 };
 
 export type TournamentWeather = {
-  __typename?: 'TournamentWeather';
+  __typename: 'TournamentWeather';
   condition: WeatherCondition;
   humidity: Scalars['String']['output'];
   /** @deprecated use logoAsset */
@@ -10297,12 +10297,12 @@ export type TournamentWeather = {
 };
 
 export type TournamentsPillConfig = {
-  __typename?: 'TournamentsPillConfig';
+  __typename: 'TournamentsPillConfig';
   currentSeason: Scalars['Int']['output'];
 };
 
 export type TspPlayer = {
-  __typename?: 'TspPlayer';
+  __typename: 'TspPlayer';
   abbreviations: Scalars['String']['output'];
   abbreviationsAccessibilityText: Scalars['String']['output'];
   amateur: Scalars['Boolean']['output'];
@@ -10323,7 +10323,7 @@ export type TspPlayer = {
 };
 
 export type TspPlayerHole = {
-  __typename?: 'TspPlayerHole';
+  __typename: 'TspPlayerHole';
   inTheHoleTimestamp?: Maybe<Scalars['AWSTimestamp']['output']>;
   playComplete?: Maybe<Scalars['Boolean']['output']>;
   playerId: Scalars['ID']['output'];
@@ -10335,7 +10335,7 @@ export type TspPlayerHole = {
 };
 
 export type TspPlayoff = {
-  __typename?: 'TspPlayoff';
+  __typename: 'TspPlayoff';
   currentHole: Scalars['Int']['output'];
   holes: Array<PlayoffHole>;
   location?: Maybe<Scalars['String']['output']>;
@@ -10344,7 +10344,7 @@ export type TspPlayoff = {
 };
 
 export type TspScPlayer = {
-  __typename?: 'TspSCPlayer';
+  __typename: 'TspSCPlayer';
   abbreviations: Scalars['String']['output'];
   abbreviationsAccessibilityText: Scalars['String']['output'];
   amateur: Scalars['Boolean']['output'];
@@ -10362,7 +10362,7 @@ export type TspScPlayer = {
 };
 
 export type TspStrokePlayer = {
-  __typename?: 'TspStrokePlayer';
+  __typename: 'TspStrokePlayer';
   color?: Maybe<Scalars['String']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
   firstName?: Maybe<Scalars['String']['output']>;
@@ -10373,7 +10373,7 @@ export type TspStrokePlayer = {
 };
 
 export type TspTeamHole = {
-  __typename?: 'TspTeamHole';
+  __typename: 'TspTeamHole';
   inTheHoleTimestamp?: Maybe<Scalars['AWSTimestamp']['output']>;
   playComplete?: Maybe<Scalars['Boolean']['output']>;
   statsScoreId?: Maybe<Scalars['String']['output']>;
@@ -10385,7 +10385,7 @@ export type TspTeamHole = {
 };
 
 export type TspTeamRow = {
-  __typename?: 'TspTeamRow';
+  __typename: 'TspTeamRow';
   backNine: Scalars['Boolean']['output'];
   courseId: Scalars['String']['output'];
   currentRound: Scalars['Int']['output'];
@@ -10416,7 +10416,7 @@ export type TspTeamRow = {
 };
 
 export type TspWinner = {
-  __typename?: 'TspWinner';
+  __typename: 'TspWinner';
   points?: Maybe<Scalars['String']['output']>;
   purse?: Maybe<Scalars['String']['output']>;
   teamId: Scalars['ID']['output'];
@@ -10426,7 +10426,7 @@ export type TspWinner = {
 };
 
 export type TspWinningPlayer = {
-  __typename?: 'TspWinningPlayer';
+  __typename: 'TspWinningPlayer';
   countryFlag: Scalars['String']['output'];
   countryName: Scalars['String']['output'];
   firstName: Scalars['String']['output'];
@@ -10437,7 +10437,7 @@ export type TspWinningPlayer = {
 };
 
 export type TwoColumn = {
-  __typename?: 'TwoColumn';
+  __typename: 'TwoColumn';
   sectionOne?: Maybe<Array<Maybe<NewsArticleNode>>>;
   sectionOneTitle?: Maybe<Scalars['String']['output']>;
   sectionTwo?: Maybe<Array<Maybe<NewsArticleNode>>>;
@@ -10451,7 +10451,7 @@ export type UniversityRankColor =
   | 'GRAY';
 
 export type UniversityRankingPlayer = {
-  __typename?: 'UniversityRankingPlayer';
+  __typename: 'UniversityRankingPlayer';
   avg: Scalars['String']['output'];
   country: Scalars['String']['output'];
   displayName: Scalars['String']['output'];
@@ -10469,7 +10469,7 @@ export type UniversityRankingPlayer = {
 };
 
 export type UniversityRankings = {
-  __typename?: 'UniversityRankings';
+  __typename: 'UniversityRankings';
   description: Scalars['String']['output'];
   disclaimer?: Maybe<Scalars['String']['output']>;
   displayYear: Scalars['String']['output'];
@@ -10485,7 +10485,7 @@ export type UniversityRankings = {
 };
 
 export type UniversityRankingsTournament = {
-  __typename?: 'UniversityRankingsTournament';
+  __typename: 'UniversityRankingsTournament';
   finishPosition: Scalars['String']['output'];
   name: Scalars['String']['output'];
   playedYear: Scalars['Int']['output'];
@@ -10494,7 +10494,7 @@ export type UniversityRankingsTournament = {
 };
 
 export type UniversityTotalPoints = {
-  __typename?: 'UniversityTotalPoints';
+  __typename: 'UniversityTotalPoints';
   description: Scalars['String']['output'];
   footerInfo?: Maybe<NewsArticleParagraph>;
   headerInfo?: Maybe<NewsArticleParagraph>;
@@ -10512,13 +10512,13 @@ export type UniversityTotalPoints = {
 };
 
 export type UniversityTotalPointsPill = {
-  __typename?: 'UniversityTotalPointsPill';
+  __typename: 'UniversityTotalPointsPill';
   displayText: Scalars['String']['output'];
   value: Scalars['Int']['output'];
 };
 
 export type UniversityTotalPointsPlayer = {
-  __typename?: 'UniversityTotalPointsPlayer';
+  __typename: 'UniversityTotalPointsPlayer';
   data: Array<Scalars['String']['output']>;
   playerId: Scalars['ID']['output'];
   playerName: Scalars['String']['output'];
@@ -10531,37 +10531,37 @@ export type UniversityTotalPointsPlayer = {
 };
 
 export type UnorderedListNode = {
-  __typename?: 'UnorderedListNode';
+  __typename: 'UnorderedListNode';
   historicalTournamentOddsArgs?: Maybe<HistoricalTournamentOddsArgs>;
   items: Array<ListItem>;
   ordered?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type UnsubscribeResponse = {
-  __typename?: 'UnsubscribeResponse';
+  __typename: 'UnsubscribeResponse';
   ok: Scalars['Boolean']['output'];
 };
 
 export type UpcomingBroadcastNetwork = {
-  __typename?: 'UpcomingBroadcastNetwork';
+  __typename: 'UpcomingBroadcastNetwork';
   networks: Array<BroadcastNetwork>;
   tournamentId: Scalars['String']['output'];
 };
 
 export type UpcomingBroadcastNetworks = {
-  __typename?: 'UpcomingBroadcastNetworks';
+  __typename: 'UpcomingBroadcastNetworks';
   upcomingNetworks: Array<UpcomingBroadcastNetwork>;
 };
 
 export type UpcomingMatch = {
-  __typename?: 'UpcomingMatch';
+  __typename: 'UpcomingMatch';
   isConsolationMatch: Scalars['Boolean']['output'];
   matchId: Scalars['String']['output'];
   potentialPlayers: Array<UpcomingMatchPotentialPlayer>;
 };
 
 export type UpcomingMatchPotentialPlayer = {
-  __typename?: 'UpcomingMatchPotentialPlayer';
+  __typename: 'UpcomingMatchPotentialPlayer';
   isKnown: Scalars['Boolean']['output'];
   nameLabel: Scalars['String']['output'];
   players: Array<MpLeaderboardPlayer>;
@@ -10569,7 +10569,7 @@ export type UpcomingMatchPotentialPlayer = {
 };
 
 export type Video = {
-  __typename?: 'Video';
+  __typename: 'Video';
   /** @deprecated No longer supported */
   accountId?: Maybe<Scalars['String']['output']>;
   categories?: Maybe<Array<RyderCupContentCategories>>;
@@ -10618,13 +10618,13 @@ export type Video = {
 export type VideoDescription = NewsArticleLink | NewsArticleText;
 
 export type VideoFilterPillConfig = {
-  __typename?: 'VideoFilterPillConfig';
+  __typename: 'VideoFilterPillConfig';
   franchises: Array<Franchise>;
   pinnedFranchises: Array<Franchise>;
 };
 
 export type VideoHero = {
-  __typename?: 'VideoHero';
+  __typename: 'VideoHero';
   gtmAssetKey?: Maybe<Scalars['String']['output']>;
   partnershipAsset?: Maybe<Scalars['String']['output']>;
   partnershipText?: Maybe<Scalars['String']['output']>;
@@ -10639,14 +10639,14 @@ export type VideoLanguage =
   | 'FRENCH';
 
 export type VideoNavigation = {
-  __typename?: 'VideoNavigation';
+  __typename: 'VideoNavigation';
   items: Array<VideoPill>;
   liveOverride: LiveOverride;
   tourCode: TourCode;
 };
 
 export type VideoPill = {
-  __typename?: 'VideoPill';
+  __typename: 'VideoPill';
   defaultView: Scalars['Boolean']['output'];
   displayText: Scalars['String']['output'];
   enabledCompanionPills?: Maybe<Array<VideoPillType>>;
@@ -10670,7 +10670,7 @@ export type VideoPillType =
   | 'TRENDING';
 
 export type VideoSponsor = {
-  __typename?: 'VideoSponsor';
+  __typename: 'VideoSponsor';
   description?: Maybe<Scalars['String']['output']>;
   gam?: Maybe<Scalars['String']['output']>;
   image?: Maybe<Scalars['String']['output']>;
@@ -10686,7 +10686,7 @@ export type VideoSponsor = {
 };
 
 export type WatchLanding = {
-  __typename?: 'WatchLanding';
+  __typename: 'WatchLanding';
   /** @deprecated Use featuredVideos array */
   featuredVideo?: Maybe<Video>;
   featuredVideos?: Maybe<Array<Video>>;
@@ -10697,7 +10697,7 @@ export type WatchLanding = {
 };
 
 export type WatchLandingSection = {
-  __typename?: 'WatchLandingSection';
+  __typename: 'WatchLandingSection';
   pillConfig?: Maybe<VideoPillConfig>;
   title: Scalars['String']['output'];
   videoPillType: VideoPillType;
@@ -10721,7 +10721,7 @@ export type WeatherCondition =
   | 'NIGHT_PARTLY_CLOUDY';
 
 export type WeatherDetails = {
-  __typename?: 'WeatherDetails';
+  __typename: 'WeatherDetails';
   condition: WeatherCondition;
   humidity: Scalars['String']['output'];
   precipitation: Scalars['String']['output'];
@@ -10733,13 +10733,13 @@ export type WeatherDetails = {
 };
 
 export type WeatherNotes = {
-  __typename?: 'WeatherNotes';
+  __typename: 'WeatherNotes';
   notes: Array<Scalars['String']['output']>;
   weather: Array<DayWeather>;
 };
 
 export type WeatherSummary = {
-  __typename?: 'WeatherSummary';
+  __typename: 'WeatherSummary';
   accessibilityText?: Maybe<Scalars['String']['output']>;
   daily: Array<WeatherDetails>;
   hourly: Array<WeatherDetails>;
@@ -10773,7 +10773,7 @@ export type WindDirection =
   | 'WEST';
 
 export type Winner = {
-  __typename?: 'Winner';
+  __typename: 'Winner';
   countryFlag: Scalars['String']['output'];
   countryName: Scalars['String']['output'];
   displayPoints: Scalars['Boolean']['output'];
@@ -10792,7 +10792,7 @@ export type Winner = {
 };
 
 export type WinnerIcon = {
-  __typename?: 'WinnerIcon';
+  __typename: 'WinnerIcon';
   color: Scalars['String']['output'];
   label: Scalars['String']['output'];
   title: Scalars['String']['output'];
@@ -10805,32 +10805,32 @@ export type WinnerIconType =
   | 'SILVER';
 
 export type WinnerRoundScore = {
-  __typename?: 'WinnerRoundScore';
+  __typename: 'WinnerRoundScore';
   label: Scalars['String']['output'];
   total: Scalars['String']['output'];
 };
 
 export type YtActivationData = {
-  __typename?: 'YTActivationData';
+  __typename: 'YTActivationData';
   data: Scalars['String']['output'];
   description?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
 export type YtAdInterstitialCard = {
-  __typename?: 'YTAdInterstitialCard';
+  __typename: 'YTAdInterstitialCard';
   adUrl: Scalars['String']['output'];
   props: YtCardProps;
 };
 
 export type YtArticleCard = {
-  __typename?: 'YTArticleCard';
+  __typename: 'YTArticleCard';
   props: YtCardProps;
   title: Scalars['String']['output'];
 };
 
 export type YtCardCtaProps = {
-  __typename?: 'YTCardCtaProps';
+  __typename: 'YTCardCtaProps';
   color?: Maybe<Scalars['String']['output']>;
   isTourCastCta: Scalars['Boolean']['output'];
   link: Scalars['String']['output'];
@@ -10838,7 +10838,7 @@ export type YtCardCtaProps = {
 };
 
 export type YtCardProps = {
-  __typename?: 'YTCardProps';
+  __typename: 'YTCardProps';
   backgroundColor?: Maybe<Scalars['String']['output']>;
   cardFranchise?: Maybe<Array<Scalars['String']['output']>>;
   cardHeading?: Maybe<Scalars['String']['output']>;
@@ -10866,7 +10866,7 @@ export type YtCardProps = {
 };
 
 export type YtCardSponsorProps = {
-  __typename?: 'YTCardSponsorProps';
+  __typename: 'YTCardSponsorProps';
   activationData: Array<YtActivationData>;
   activationSubtitle: Scalars['String']['output'];
   activationTitle: Scalars['String']['output'];
@@ -10880,21 +10880,21 @@ export type YtCardSponsorProps = {
 };
 
 export type YtCoverCard = {
-  __typename?: 'YTCoverCard';
+  __typename: 'YTCoverCard';
   props: YtCardProps;
   subTitle?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
 };
 
 export type YtHighlightCard = {
-  __typename?: 'YTHighlightCard';
+  __typename: 'YTHighlightCard';
   hole?: Maybe<Scalars['String']['output']>;
   props: YtCardProps;
   title: Scalars['String']['output'];
 };
 
 export type YtLeaderboardCard = {
-  __typename?: 'YTLeaderboardCard';
+  __typename: 'YTLeaderboardCard';
   players: Array<YtPlayer>;
   props: YtCardProps;
   title: Scalars['String']['output'];
@@ -10902,26 +10902,26 @@ export type YtLeaderboardCard = {
 };
 
 export type YtNuggetCard = {
-  __typename?: 'YTNuggetCard';
+  __typename: 'YTNuggetCard';
   props: YtCardProps;
   subText: Scalars['String']['output'];
   title: Scalars['String']['output'];
 };
 
 export type YtPlayer = {
-  __typename?: 'YTPlayer';
+  __typename: 'YTPlayer';
   id: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
 
 export type YtRound = {
-  __typename?: 'YTRound';
+  __typename: 'YTRound';
   roundDisplay: Scalars['String']['output'];
   roundNumber: Scalars['Int']['output'];
 };
 
 export type YtScorecardCard = {
-  __typename?: 'YTScorecardCard';
+  __typename: 'YTScorecardCard';
   player: YtPlayer;
   props: YtCardProps;
   title: Scalars['String']['output'];
@@ -10929,7 +10929,7 @@ export type YtScorecardCard = {
 };
 
 export type YtSponsorActivationCard = {
-  __typename?: 'YTSponsorActivationCard';
+  __typename: 'YTSponsorActivationCard';
   props: YtCardProps;
   sponsorProps: YtCardSponsorProps;
   subTitle?: Maybe<Scalars['String']['output']>;
@@ -10941,13 +10941,13 @@ export type YtTextPosition =
   | 'TOP';
 
 export type YtTournament = {
-  __typename?: 'YTTournament';
+  __typename: 'YTTournament';
   id: Scalars['String']['output'];
   round: YtRound;
 };
 
 export type YtTournamentUpdateCard = {
-  __typename?: 'YTTournamentUpdateCard';
+  __typename: 'YTTournamentUpdateCard';
   props: YtCardProps;
   title: Scalars['String']['output'];
 };
@@ -10957,7 +10957,7 @@ export type YourTourCard = YtAdInterstitialCard | YtArticleCard | YtCoverCard | 
 export type YourTourNews = NewsArticle | Video;
 
 export type YourTourStory = {
-  __typename?: 'YourTourStory';
+  __typename: 'YourTourStory';
   cardTopic?: Maybe<Scalars['String']['output']>;
   cards: Array<YourTourCard>;
   homeCard?: Maybe<YourTourCard>;
@@ -10967,7 +10967,7 @@ export type YourTourStory = {
 };
 
 export type YtVideoStory = {
-  __typename?: 'YtVideoStory';
+  __typename: 'YtVideoStory';
   topicLabel?: Maybe<Scalars['String']['output']>;
   type: YtVideoStoryType;
 };
@@ -10981,10 +10981,10 @@ export type LeaderboardV3QueryVariables = Exact<{
 }>;
 
 
-export type LeaderboardV3Query = { __typename?: 'Query', leaderboardV3: { __typename?: 'LeaderboardV3', id: string, tournamentId: string, leaderboardRoundHeader: string, formatType: FormatType, timezone: string, tourcastURL?: string | null, tourcastURLWeb?: string | null, tourcastURI?: string | null, tournamentStatus: TournamentStatus, isPlayoffActive: boolean, scorecardEnabled: boolean, profileEnabled: boolean, subEvent: boolean, standingsEnabled: boolean, standingsHeader: string, hideSov: boolean, disableOdds: boolean, disableBettingProfileColumn: boolean, disableLeaderboard: boolean, players: Array<
-      | { __typename?: 'InformationRow', id: string, leaderboardSortOrder: number, displayText: string, mobileDisplayText: string, sponsorName?: string | null }
-      | { __typename?: 'PlayerRowV3', id: string, leaderboardSortOrder: number, player: { __typename?: 'Player', id: string, firstName: string, lastName: string, shortName: string, displayName: string, abbreviations: string, abbreviationsAccessibilityText: string, amateur: boolean, country: string, countryFlag: string, lineColor: string, seed?: string | null, status?: string | null, tourBound?: boolean | null, bettingProfile?: string | null, playerBioOverrideLink?: string | null, assets?: Array<{ __typename?: 'TourBoundAsset', tourBoundLogo?: string | null, tourBoundLogoDark?: string | null }> | null }, scoringData: { __typename?: 'LeaderboardScoringDataV3', groupNumber: number, currentRound: number, backNine: boolean, playerState: PlayerState, teeTime?: any | null, totalStrokes: string, totalStrokesSort?: number | null, total: string, totalSort: number, thru: string, thruSort: number, score: string, scoreSort: number, movementDirection: LeaderboardMovement, movementAmount: string, movementSort?: number | null, position: string, rounds: Array<string>, roundDisplaySort?: Array<number | null> | null, roundHeader: string, roundStatus: string, courseId: string, official: string, officialSort: number, projected: string, projectedSort: number, rankingMovement: CupRankMovementDirection, rankingMovementAmount: string, rankingMovementAmountSort: number, rankLogoLight?: string | null, rankLogoDark?: string | null, tooltipText?: string | null, tooltipTitle?: string | null, oddsToWin?: string | null, oddsSwing?: OddsSwing | null, oddsOptionId?: string | null, oddsSort?: number | null, hasStoryContent: boolean, storyContentRound?: number | null, storyContentRounds: Array<number>, playerIcon?: LeaderboardPlayerIcon | null } }
-    >, winner?: { __typename?: 'Winner', id: string, firstName: string, lastName: string, totalStrokes: number, totalScore: string, countryFlag: string, countryName: string, purse?: string | null, displayPoints: boolean, displayPurse: boolean, points?: string | null, seed?: string | null, pointsLabel?: string | null, winnerIcon?: { __typename?: 'WinnerIcon', type: WinnerIconType, title: string, label: string, color: string } | null, roundScores?: Array<{ __typename?: 'WinnerRoundScore', label: string, total: string }> | null } | null, winners?: Array<{ __typename?: 'Winner', id: string, firstName: string, lastName: string, totalStrokes: number, totalScore: string, countryFlag: string, countryName: string, purse?: string | null, displayPoints: boolean, displayPurse: boolean, points?: string | null, seed?: string | null, pointsLabel?: string | null }> | null, courses: Array<{ __typename?: 'Course', id: string, courseName: string, courseCode: string, hostCourse: boolean, scoringLevel: ScoringLevel, enabled?: boolean | null, features?: Array<TeeTimesFeature> | null }>, messages: Array<{ __typename?: 'LeaderboardMessage', messageText: string, messageIcon: LeaderboardMessageIcon, messageLink?: string | null, webViewLink?: string | null, externalLink?: boolean | null, platforms: Array<Platform>, timing?: number | null }>, rounds: Array<{ __typename?: 'LBRound', roundNumber: number, displayText: string }>, leaderboardFeatures?: Array<{ __typename?: 'FeatureItem', name: string, new: boolean, tooltipText?: string | null, tooltipTitle?: string | null, fieldStatType?: FieldStatType | null, leaderboardFeatures?: LeaderboardFeature | null, sponsor?: { __typename?: 'FeatureSponsor', sponsorLogo: string, sponsorLogoDark: string, sponsorText: string, sponsorLogoAsset: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, sponsorLogoDarkAsset: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null }> | null, cutLineProbabilities?: { __typename?: 'CutLineInfo', projectedCutLine: string, probableCutLine: string, sponsorName?: string | null, lastUpdated: any, new?: boolean | null, sponsorLogo?: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } | null, possibleCutLines: Array<{ __typename?: 'CutLinePossibility', score: string, probability: number, displayProbability: string }> } | null, bubblePill?: { __typename?: 'BubblePill', pillText: string, iconLight: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, iconDark: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null } };
+export type LeaderboardV3Query = { __typename: 'Query', leaderboardV3: { __typename: 'LeaderboardV3', id: string, tournamentId: string, leaderboardRoundHeader: string, formatType: FormatType, timezone: string, tourcastURL?: string | null, tourcastURLWeb?: string | null, tourcastURI?: string | null, tournamentStatus: TournamentStatus, isPlayoffActive: boolean, scorecardEnabled: boolean, profileEnabled: boolean, subEvent: boolean, standingsEnabled: boolean, standingsHeader: string, hideSov: boolean, disableOdds: boolean, disableBettingProfileColumn: boolean, disableLeaderboard: boolean, players: Array<
+      | { __typename: 'InformationRow', id: string, leaderboardSortOrder: number, displayText: string, mobileDisplayText: string, sponsorName?: string | null }
+      | { __typename: 'PlayerRowV3', id: string, leaderboardSortOrder: number, player: { __typename: 'Player', id: string, firstName: string, lastName: string, shortName: string, displayName: string, abbreviations: string, abbreviationsAccessibilityText: string, amateur: boolean, country: string, countryFlag: string, lineColor: string, seed?: string | null, status?: string | null, tourBound?: boolean | null, bettingProfile?: string | null, playerBioOverrideLink?: string | null, assets?: Array<{ __typename: 'TourBoundAsset', tourBoundLogo?: string | null, tourBoundLogoDark?: string | null }> | null }, scoringData: { __typename: 'LeaderboardScoringDataV3', groupNumber: number, currentRound: number, backNine: boolean, playerState: PlayerState, teeTime?: any | null, totalStrokes: string, totalStrokesSort?: number | null, total: string, totalSort: number, thru: string, thruSort: number, score: string, scoreSort: number, movementDirection: LeaderboardMovement, movementAmount: string, movementSort?: number | null, position: string, rounds: Array<string>, roundDisplaySort?: Array<number | null> | null, roundHeader: string, roundStatus: string, courseId: string, official: string, officialSort: number, projected: string, projectedSort: number, rankingMovement: CupRankMovementDirection, rankingMovementAmount: string, rankingMovementAmountSort: number, rankLogoLight?: string | null, rankLogoDark?: string | null, tooltipText?: string | null, tooltipTitle?: string | null, oddsToWin?: string | null, oddsSwing?: OddsSwing | null, oddsOptionId?: string | null, oddsSort?: number | null, hasStoryContent: boolean, storyContentRound?: number | null, storyContentRounds: Array<number>, playerIcon?: LeaderboardPlayerIcon | null } }
+    >, winner?: { __typename: 'Winner', id: string, firstName: string, lastName: string, totalStrokes: number, totalScore: string, countryFlag: string, countryName: string, purse?: string | null, displayPoints: boolean, displayPurse: boolean, points?: string | null, seed?: string | null, pointsLabel?: string | null, winnerIcon?: { __typename: 'WinnerIcon', type: WinnerIconType, title: string, label: string, color: string } | null, roundScores?: Array<{ __typename: 'WinnerRoundScore', label: string, total: string }> | null } | null, winners?: Array<{ __typename: 'Winner', id: string, firstName: string, lastName: string, totalStrokes: number, totalScore: string, countryFlag: string, countryName: string, purse?: string | null, displayPoints: boolean, displayPurse: boolean, points?: string | null, seed?: string | null, pointsLabel?: string | null }> | null, courses: Array<{ __typename: 'Course', id: string, courseName: string, courseCode: string, hostCourse: boolean, scoringLevel: ScoringLevel, enabled?: boolean | null, features?: Array<TeeTimesFeature> | null }>, messages: Array<{ __typename: 'LeaderboardMessage', messageText: string, messageIcon: LeaderboardMessageIcon, messageLink?: string | null, webViewLink?: string | null, externalLink?: boolean | null, platforms: Array<Platform>, timing?: number | null }>, rounds: Array<{ __typename: 'LBRound', roundNumber: number, displayText: string }>, leaderboardFeatures?: Array<{ __typename: 'FeatureItem', name: string, new: boolean, tooltipText?: string | null, tooltipTitle?: string | null, fieldStatType?: FieldStatType | null, leaderboardFeatures?: LeaderboardFeature | null, sponsor?: { __typename: 'FeatureSponsor', sponsorLogo: string, sponsorLogoDark: string, sponsorText: string, sponsorLogoAsset: { __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, sponsorLogoDarkAsset: { __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null }> | null, cutLineProbabilities?: { __typename: 'CutLineInfo', projectedCutLine: string, probableCutLine: string, sponsorName?: string | null, lastUpdated: any, new?: boolean | null, sponsorLogo?: { __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } | null, possibleCutLines: Array<{ __typename: 'CutLinePossibility', score: string, probability: number, displayProbability: string }> } | null, bubblePill?: { __typename: 'BubblePill', pillText: string, iconLight: { __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, iconDark: { __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null } };
 
 export type LeaderboardHoleByHoleQueryVariables = Exact<{
   tournamentId: Scalars['ID']['input'];
@@ -10992,20 +10992,20 @@ export type LeaderboardHoleByHoleQueryVariables = Exact<{
 }>;
 
 
-export type LeaderboardHoleByHoleQuery = { __typename?: 'Query', leaderboardHoleByHole: { __typename?: 'LeaderboardHoleByHole', tournamentId: string, currentRound: number, tournamentName: string, rounds: Array<{ __typename?: 'LBRound', roundNumber: number, displayText: string }>, holeHeaders: Array<{ __typename?: 'HoleHeader', holeNumber: number, hole: string, par: string }>, courseHoleHeaders: Array<{ __typename?: 'CourseHoleHeader', courseId: string, holeHeaders: Array<{ __typename?: 'HoleHeaderV2', holeNumber?: number | null, order: number, displayValue: string, par: string }> }>, courses: Array<{ __typename?: 'Course', id: string, courseName: string, courseCode: string, hostCourse: boolean, scoringLevel: ScoringLevel, enabled?: boolean | null, features?: Array<TeeTimesFeature> | null }>, playerData: Array<{ __typename?: 'PlayerRowHoleByHole', playerId: string, courseId: string, courseCode: string, out?: string | null, in?: string | null, total?: string | null, totalToPar: string, scores: Array<{ __typename?: 'HoleScore', holeNumber: number, par: number, yardage: number, sequenceNumber: number, score: string, status: HoleScoreStatus, roundScore: string }> }> } };
+export type LeaderboardHoleByHoleQuery = { __typename: 'Query', leaderboardHoleByHole: { __typename: 'LeaderboardHoleByHole', tournamentId: string, currentRound: number, tournamentName: string, rounds: Array<{ __typename: 'LBRound', roundNumber: number, displayText: string }>, holeHeaders: Array<{ __typename: 'HoleHeader', holeNumber: number, hole: string, par: string }>, courseHoleHeaders: Array<{ __typename: 'CourseHoleHeader', courseId: string, holeHeaders: Array<{ __typename: 'HoleHeaderV2', holeNumber?: number | null, order: number, displayValue: string, par: string }> }>, courses: Array<{ __typename: 'Course', id: string, courseName: string, courseCode: string, hostCourse: boolean, scoringLevel: ScoringLevel, enabled?: boolean | null, features?: Array<TeeTimesFeature> | null }>, playerData: Array<{ __typename: 'PlayerRowHoleByHole', playerId: string, courseId: string, courseCode: string, out?: string | null, in?: string | null, total?: string | null, totalToPar: string, scores: Array<{ __typename: 'HoleScore', holeNumber: number, par: number, yardage: number, sequenceNumber: number, score: string, status: HoleScoreStatus, roundScore: string }> }> } };
 
-export type ScheduleTournamentFieldsFragment = { __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } };
+export type ScheduleTournamentFieldsFragment = { __typename: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } };
 
-export type ScheduleMonthFieldsFragment = { __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> };
+export type ScheduleMonthFieldsFragment = { __typename: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> };
 
-export type ScheduleFieldsFragment = { __typename?: 'Schedule', seasonYear: string, completed: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }>, upcoming: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }> };
+export type ScheduleFieldsFragment = { __typename: 'Schedule', seasonYear: string, completed: Array<{ __typename: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }>, upcoming: Array<{ __typename: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }> };
 
 export type ScheduleYearsQueryVariables = Exact<{
   tourCode: TourCode;
 }>;
 
 
-export type ScheduleYearsQuery = { __typename?: 'Query', scheduleYears: { __typename?: 'ScheduleYears', years: Array<{ __typename?: 'ScheduleYear', default: boolean, displayValue: string, queryValue: string }> } };
+export type ScheduleYearsQuery = { __typename: 'Query', scheduleYears: { __typename: 'ScheduleYears', years: Array<{ __typename: 'ScheduleYear', default: boolean, displayValue: string, queryValue: string }> } };
 
 export type ScheduleQueryVariables = Exact<{
   tourCode: Scalars['String']['input'];
@@ -11013,42 +11013,44 @@ export type ScheduleQueryVariables = Exact<{
 }>;
 
 
-export type ScheduleQuery = { __typename?: 'Query', schedule: { __typename?: 'Schedule', seasonYear: string, completed: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }>, upcoming: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }> } };
+export type ScheduleQuery = { __typename: 'Query', schedule: { __typename: 'Schedule', seasonYear: string, completed: Array<{ __typename: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }>, upcoming: Array<{ __typename: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }> } };
 
 export type CompleteScheduleQueryVariables = Exact<{
   tourCode: TourCode;
 }>;
 
 
-export type CompleteScheduleQuery = { __typename?: 'Query', completeSchedule: Array<{ __typename?: 'Schedule', seasonYear: string, completed: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }>, upcoming: Array<{ __typename?: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }> }> };
+export type CompleteScheduleQuery = { __typename: 'Query', completeSchedule: Array<{ __typename: 'Schedule', seasonYear: string, completed: Array<{ __typename: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }>, upcoming: Array<{ __typename: 'ScheduleMonth', year: string, month: string, monthSort?: number | null, tournaments: Array<{ __typename: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> }> }> };
 
 export type UpcomingScheduleQueryVariables = Exact<{
   tourCode: Scalars['String']['input'];
 }>;
 
 
-export type UpcomingScheduleQuery = { __typename?: 'Query', upcomingSchedule: { __typename?: 'ScheduleUpcoming', tournaments: Array<{ __typename?: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename?: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename?: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> } };
+export type UpcomingScheduleQuery = { __typename: 'Query', upcomingSchedule: { __typename: 'ScheduleUpcoming', tournaments: Array<{ __typename: 'ScheduleTournament', date: string, id: string, sortDate?: string | null, tournamentName: string, tournamentStatus: TournamentStatus, beautyImageAsset?: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } | null, status?: { __typename: 'ScheduleTournamentStatus', roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, roundStatusDisplay: string } | null, tournamentLogoAsset: { __typename: 'ImageAsset', fallbackImage?: string | null, imageOrg: string, imagePath: string } }> } };
 
 export type TournamentsQueryVariables = Exact<{
   ids?: InputMaybe<Array<Scalars['ID']['input']> | Scalars['ID']['input']>;
 }>;
 
 
-export type TournamentsQuery = { __typename?: 'Query', tournaments: Array<{ __typename?: 'Tournament', id: string, tournamentName: string, tournamentLogo: Array<string>, tournamentLocation: string, tournamentStatus: TournamentStatus, features?: Array<TournamentFeature> | null, formatType: FormatType, roundStatusDisplay: string, roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, leaderboardTakeover: boolean, currentRound: number, timezone: string, seasonYear: string, displayDate: string, country: string, state: string, city: string, scoredLevel: ScoringLevel, ticketsURL?: string | null, tournamentSiteURL?: string | null, useTournamentSiteURL: boolean, pdfUrl?: string | null, conductedByLabel?: string | null, conductedByLink?: string | null, beautyImage: string, shouldSubscribe?: boolean | null, infoPath?: string | null, infoPathWebview?: string | null, howItWorks?: string | null, howItWorksPill?: string | null, howItWorksWebview?: string | null, hideRolexClock: boolean, hideSov: boolean, ticketsEnabled: boolean, headshotBaseUrl?: string | null, disabledScorecardTabs: Array<ScorecardTabFeature>, tournamentLogoAsset: Array<{ __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }>, events: Array<{ __typename?: 'Event', id: string, eventName: string, leaderboardId: string }>, courses: Array<{ __typename?: 'Course', id: string, courseName: string, courseCode: string, hostCourse: boolean, scoringLevel: ScoringLevel, enabled?: boolean | null, features?: Array<TeeTimesFeature> | null }>, weather?: { __typename?: 'TournamentWeather', logo?: string | null, logoDark?: string | null, logoAccessibility: string, tempF: string, tempC: string, condition: WeatherCondition, windDirection: WindDirection, windSpeedMPH: string, windSpeedKPH: string, precipitation: string, humidity: string, logoAsset: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, logoDarkAsset: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null, beautyImageAsset: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, rightRailConfig?: { __typename?: 'TournamentRightRailConfig', imageUrl: string, imageAltText: string, buttonLink?: string | null, buttonText?: string | null } | null, tournamentCategoryInfo?: { __typename?: 'TournamentCategoryInfo', type: TournamentCategory, logoLight: string, logoDark: string, label: string, logoLightAsset: { __typename?: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null }> };
+export type TournamentsQuery = { __typename: 'Query', tournaments: Array<{ __typename: 'Tournament', id: string, tournamentName: string, tournamentLogo: Array<string>, tournamentLocation: string, tournamentStatus: TournamentStatus, features?: Array<TournamentFeature> | null, formatType: FormatType, roundStatusDisplay: string, roundDisplay: string, roundStatus: RoundStatus, roundStatusColor: RoundStatusColor, leaderboardTakeover: boolean, currentRound: number, timezone: string, seasonYear: string, displayDate: string, country: string, state: string, city: string, scoredLevel: ScoringLevel, ticketsURL?: string | null, tournamentSiteURL?: string | null, useTournamentSiteURL: boolean, pdfUrl?: string | null, conductedByLabel?: string | null, conductedByLink?: string | null, beautyImage: string, shouldSubscribe?: boolean | null, infoPath?: string | null, infoPathWebview?: string | null, howItWorks?: string | null, howItWorksPill?: string | null, howItWorksWebview?: string | null, hideRolexClock: boolean, hideSov: boolean, ticketsEnabled: boolean, headshotBaseUrl?: string | null, disabledScorecardTabs: Array<ScorecardTabFeature>, tournamentLogoAsset: Array<{ __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }>, events: Array<{ __typename: 'Event', id: string, eventName: string, leaderboardId: string }>, courses: Array<{ __typename: 'Course', id: string, courseName: string, courseCode: string, hostCourse: boolean, scoringLevel: ScoringLevel, enabled?: boolean | null, features?: Array<TeeTimesFeature> | null }>, weather?: { __typename: 'TournamentWeather', logo?: string | null, logoDark?: string | null, logoAccessibility: string, tempF: string, tempC: string, condition: WeatherCondition, windDirection: WindDirection, windSpeedMPH: string, windSpeedKPH: string, precipitation: string, humidity: string, logoAsset: { __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, logoDarkAsset: { __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null, beautyImageAsset: { __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null }, rightRailConfig?: { __typename: 'TournamentRightRailConfig', imageUrl: string, imageAltText: string, buttonLink?: string | null, buttonText?: string | null } | null, tournamentCategoryInfo?: { __typename: 'TournamentCategoryInfo', type: TournamentCategory, logoLight: string, logoDark: string, label: string, logoLightAsset: { __typename: 'ImageAsset', imageOrg: string, imagePath: string, assetType?: string | null, deliveryType?: string | null, fallbackImage?: string | null } } | null }> };
 
-export const ScheduleTournamentFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<ScheduleTournamentFieldsFragment, unknown>;
-export const ScheduleMonthFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<ScheduleMonthFieldsFragment, unknown>;
-export const ScheduleFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}}]} as unknown as DocumentNode<ScheduleFieldsFragment, unknown>;
-export const LeaderboardV3Document = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"LeaderboardV3"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"leaderboardV3Id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"leaderboardV3"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"leaderboardV3Id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentId"}},{"kind":"Field","name":{"kind":"Name","value":"players"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PlayerRowV3"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardSortOrder"}},{"kind":"Field","name":{"kind":"Name","value":"player"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"shortName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"abbreviations"}},{"kind":"Field","name":{"kind":"Name","value":"abbreviationsAccessibilityText"}},{"kind":"Field","name":{"kind":"Name","value":"amateur"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"lineColor"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"tourBound"}},{"kind":"Field","name":{"kind":"Name","value":"assets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TourBoundAsset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tourBoundLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tourBoundLogoDark"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bettingProfile"}},{"kind":"Field","name":{"kind":"Name","value":"playerBioOverrideLink"}}]}},{"kind":"Field","name":{"kind":"Name","value":"scoringData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"groupNumber"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"backNine"}},{"kind":"Field","name":{"kind":"Name","value":"playerState"}},{"kind":"Field","name":{"kind":"Name","value":"teeTime"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokesSort"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"totalSort"}},{"kind":"Field","name":{"kind":"Name","value":"thru"}},{"kind":"Field","name":{"kind":"Name","value":"thruSort"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"scoreSort"}},{"kind":"Field","name":{"kind":"Name","value":"movementDirection"}},{"kind":"Field","name":{"kind":"Name","value":"movementAmount"}},{"kind":"Field","name":{"kind":"Name","value":"movementSort"}},{"kind":"Field","name":{"kind":"Name","value":"position"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplaySort"}},{"kind":"Field","name":{"kind":"Name","value":"roundHeader"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"official"}},{"kind":"Field","name":{"kind":"Name","value":"officialSort"}},{"kind":"Field","name":{"kind":"Name","value":"projected"}},{"kind":"Field","name":{"kind":"Name","value":"projectedSort"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovement"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovementAmount"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovementAmountSort"}},{"kind":"Field","name":{"kind":"Name","value":"rankLogoLight"}},{"kind":"Field","name":{"kind":"Name","value":"rankLogoDark"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipText"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipTitle"}},{"kind":"Field","name":{"kind":"Name","value":"oddsToWin"}},{"kind":"Field","name":{"kind":"Name","value":"oddsSwing"}},{"kind":"Field","name":{"kind":"Name","value":"oddsOptionId"}},{"kind":"Field","name":{"kind":"Name","value":"oddsSort"}},{"kind":"Field","name":{"kind":"Name","value":"hasStoryContent"}},{"kind":"Field","name":{"kind":"Name","value":"storyContentRound"}},{"kind":"Field","name":{"kind":"Name","value":"storyContentRounds"}},{"kind":"Field","name":{"kind":"Name","value":"playerIcon"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"InformationRow"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardSortOrder"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}},{"kind":"Field","name":{"kind":"Name","value":"mobileDisplayText"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorName"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardRoundHeader"}},{"kind":"Field","name":{"kind":"Name","value":"formatType"}},{"kind":"Field","name":{"kind":"Name","value":"timezone"}},{"kind":"Field","name":{"kind":"Name","value":"winner"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalScore"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"countryName"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"displayPoints"}},{"kind":"Field","name":{"kind":"Name","value":"displayPurse"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"pointsLabel"}},{"kind":"Field","name":{"kind":"Name","value":"winnerIcon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"color"}}]}},{"kind":"Field","name":{"kind":"Name","value":"roundScores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"total"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"winners"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalScore"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"countryName"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"displayPoints"}},{"kind":"Field","name":{"kind":"Name","value":"displayPurse"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"pointsLabel"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"messages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"messageText"}},{"kind":"Field","name":{"kind":"Name","value":"messageIcon"}},{"kind":"Field","name":{"kind":"Name","value":"messageLink"}},{"kind":"Field","name":{"kind":"Name","value":"webViewLink"}},{"kind":"Field","name":{"kind":"Name","value":"externalLink"}},{"kind":"Field","name":{"kind":"Name","value":"platforms"}},{"kind":"Field","name":{"kind":"Name","value":"timing"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURL"}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURLWeb"}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURI"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundNumber"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"isPlayoffActive"}},{"kind":"Field","name":{"kind":"Name","value":"scorecardEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"profileEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"subEvent"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardFeatures"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"new"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipText"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipTitle"}},{"kind":"Field","name":{"kind":"Name","value":"fieldStatType"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardFeatures"}},{"kind":"Field","name":{"kind":"Name","value":"sponsor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sponsorLogo"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoDark"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"standingsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"standingsHeader"}},{"kind":"Field","name":{"kind":"Name","value":"hideSov"}},{"kind":"Field","name":{"kind":"Name","value":"disableOdds"}},{"kind":"Field","name":{"kind":"Name","value":"disableBettingProfileColumn"}},{"kind":"Field","name":{"kind":"Name","value":"cutLineProbabilities"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectedCutLine"}},{"kind":"Field","name":{"kind":"Name","value":"probableCutLine"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorName"}},{"kind":"Field","name":{"kind":"Name","value":"lastUpdated"}},{"kind":"Field","name":{"kind":"Name","value":"possibleCutLines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"probability"}},{"kind":"Field","name":{"kind":"Name","value":"displayProbability"}}]}},{"kind":"Field","name":{"kind":"Name","value":"new"}}]}},{"kind":"Field","name":{"kind":"Name","value":"disableLeaderboard"}},{"kind":"Field","name":{"kind":"Name","value":"bubblePill"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"iconLight"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"iconDark"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"pillText"}}]}}]}}]}}]} as unknown as DocumentNode<LeaderboardV3Query, LeaderboardV3QueryVariables>;
-export const LeaderboardHoleByHoleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"LeaderboardHoleByHole"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tournamentId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"round"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"leaderboardHoleByHole"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tournamentId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tournamentId"}}},{"kind":"Argument","name":{"kind":"Name","value":"round"},"value":{"kind":"Variable","name":{"kind":"Name","value":"round"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tournamentId"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundNumber"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"holeHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"hole"}},{"kind":"Field","name":{"kind":"Name","value":"par"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courseHoleHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"holeHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"order"}},{"kind":"Field","name":{"kind":"Name","value":"displayValue"}},{"kind":"Field","name":{"kind":"Name","value":"par"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"playerData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"playerId"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"scores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"par"}},{"kind":"Field","name":{"kind":"Name","value":"yardage"}},{"kind":"Field","name":{"kind":"Name","value":"sequenceNumber"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"roundScore"}}]}},{"kind":"Field","name":{"kind":"Name","value":"out"}},{"kind":"Field","name":{"kind":"Name","value":"in"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"totalToPar"}}]}}]}}]}}]} as unknown as DocumentNode<LeaderboardHoleByHoleQuery, LeaderboardHoleByHoleQueryVariables>;
-export const ScheduleYearsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ScheduleYears"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TourCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"scheduleYears"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"years"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"default"}},{"kind":"Field","name":{"kind":"Name","value":"displayValue"}},{"kind":"Field","name":{"kind":"Name","value":"queryValue"}}]}}]}}]}}]} as unknown as DocumentNode<ScheduleYearsQuery, ScheduleYearsQueryVariables>;
-export const ScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Schedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"year"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"schedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}},{"kind":"Argument","name":{"kind":"Name","value":"year"},"value":{"kind":"Variable","name":{"kind":"Name","value":"year"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}}]}}]} as unknown as DocumentNode<ScheduleQuery, ScheduleQueryVariables>;
-export const CompleteScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CompleteSchedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TourCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"completeSchedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}}]}}]} as unknown as DocumentNode<CompleteScheduleQuery, CompleteScheduleQueryVariables>;
-export const UpcomingScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"UpcomingSchedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"upcomingSchedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<UpcomingScheduleQuery, UpcomingScheduleQueryVariables>;
-export const TournamentsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Tournaments"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"ids"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"ids"},"value":{"kind":"Variable","name":{"kind":"Name","value":"ids"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLocation"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"features"}},{"kind":"Field","name":{"kind":"Name","value":"formatType"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardTakeover"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"timezone"}},{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"displayDate"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"state"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"scoredLevel"}},{"kind":"Field","name":{"kind":"Name","value":"events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"eventName"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"weather"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"logoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"logoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoAccessibility"}},{"kind":"Field","name":{"kind":"Name","value":"tempF"}},{"kind":"Field","name":{"kind":"Name","value":"tempC"}},{"kind":"Field","name":{"kind":"Name","value":"condition"}},{"kind":"Field","name":{"kind":"Name","value":"windDirection"}},{"kind":"Field","name":{"kind":"Name","value":"windSpeedMPH"}},{"kind":"Field","name":{"kind":"Name","value":"windSpeedKPH"}},{"kind":"Field","name":{"kind":"Name","value":"precipitation"}},{"kind":"Field","name":{"kind":"Name","value":"humidity"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ticketsURL"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"useTournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"pdfUrl"}},{"kind":"Field","name":{"kind":"Name","value":"conductedByLabel"}},{"kind":"Field","name":{"kind":"Name","value":"conductedByLink"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImage"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"shouldSubscribe"}},{"kind":"Field","name":{"kind":"Name","value":"infoPath"}},{"kind":"Field","name":{"kind":"Name","value":"infoPathWebview"}},{"kind":"Field","name":{"kind":"Name","value":"howItWorks"}},{"kind":"Field","name":{"kind":"Name","value":"howItWorksPill"}},{"kind":"Field","name":{"kind":"Name","value":"howItWorksWebview"}},{"kind":"Field","name":{"kind":"Name","value":"hideRolexClock"}},{"kind":"Field","name":{"kind":"Name","value":"hideSov"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"headshotBaseUrl"}},{"kind":"Field","name":{"kind":"Name","value":"rightRailConfig"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"imageAltText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonLink"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentCategoryInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"logoLight"}},{"kind":"Field","name":{"kind":"Name","value":"logoLightAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"disabledScorecardTabs"}}]}}]}}]} as unknown as DocumentNode<TournamentsQuery, TournamentsQueryVariables>;
+export const ScheduleTournamentFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<ScheduleTournamentFieldsFragment, unknown>;
+export const ScheduleMonthFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<ScheduleMonthFieldsFragment, unknown>;
+export const ScheduleFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}}]} as unknown as DocumentNode<ScheduleFieldsFragment, unknown>;
+export const LeaderboardV3Document = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"LeaderboardV3"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"leaderboardV3Id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardV3"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"leaderboardV3Id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentId"}},{"kind":"Field","name":{"kind":"Name","value":"players"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PlayerRowV3"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardSortOrder"}},{"kind":"Field","name":{"kind":"Name","value":"player"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"shortName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"abbreviations"}},{"kind":"Field","name":{"kind":"Name","value":"abbreviationsAccessibilityText"}},{"kind":"Field","name":{"kind":"Name","value":"amateur"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"lineColor"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"tourBound"}},{"kind":"Field","name":{"kind":"Name","value":"assets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TourBoundAsset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"tourBoundLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tourBoundLogoDark"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bettingProfile"}},{"kind":"Field","name":{"kind":"Name","value":"playerBioOverrideLink"}}]}},{"kind":"Field","name":{"kind":"Name","value":"scoringData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"groupNumber"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"backNine"}},{"kind":"Field","name":{"kind":"Name","value":"playerState"}},{"kind":"Field","name":{"kind":"Name","value":"teeTime"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokesSort"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"totalSort"}},{"kind":"Field","name":{"kind":"Name","value":"thru"}},{"kind":"Field","name":{"kind":"Name","value":"thruSort"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"scoreSort"}},{"kind":"Field","name":{"kind":"Name","value":"movementDirection"}},{"kind":"Field","name":{"kind":"Name","value":"movementAmount"}},{"kind":"Field","name":{"kind":"Name","value":"movementSort"}},{"kind":"Field","name":{"kind":"Name","value":"position"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplaySort"}},{"kind":"Field","name":{"kind":"Name","value":"roundHeader"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"official"}},{"kind":"Field","name":{"kind":"Name","value":"officialSort"}},{"kind":"Field","name":{"kind":"Name","value":"projected"}},{"kind":"Field","name":{"kind":"Name","value":"projectedSort"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovement"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovementAmount"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovementAmountSort"}},{"kind":"Field","name":{"kind":"Name","value":"rankLogoLight"}},{"kind":"Field","name":{"kind":"Name","value":"rankLogoDark"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipText"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipTitle"}},{"kind":"Field","name":{"kind":"Name","value":"oddsToWin"}},{"kind":"Field","name":{"kind":"Name","value":"oddsSwing"}},{"kind":"Field","name":{"kind":"Name","value":"oddsOptionId"}},{"kind":"Field","name":{"kind":"Name","value":"oddsSort"}},{"kind":"Field","name":{"kind":"Name","value":"hasStoryContent"}},{"kind":"Field","name":{"kind":"Name","value":"storyContentRound"}},{"kind":"Field","name":{"kind":"Name","value":"storyContentRounds"}},{"kind":"Field","name":{"kind":"Name","value":"playerIcon"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"InformationRow"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardSortOrder"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}},{"kind":"Field","name":{"kind":"Name","value":"mobileDisplayText"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorName"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardRoundHeader"}},{"kind":"Field","name":{"kind":"Name","value":"formatType"}},{"kind":"Field","name":{"kind":"Name","value":"timezone"}},{"kind":"Field","name":{"kind":"Name","value":"winner"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalScore"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"countryName"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"displayPoints"}},{"kind":"Field","name":{"kind":"Name","value":"displayPurse"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"pointsLabel"}},{"kind":"Field","name":{"kind":"Name","value":"winnerIcon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"color"}}]}},{"kind":"Field","name":{"kind":"Name","value":"roundScores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"total"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"winners"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalScore"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"countryName"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"displayPoints"}},{"kind":"Field","name":{"kind":"Name","value":"displayPurse"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"pointsLabel"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"messages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"messageText"}},{"kind":"Field","name":{"kind":"Name","value":"messageIcon"}},{"kind":"Field","name":{"kind":"Name","value":"messageLink"}},{"kind":"Field","name":{"kind":"Name","value":"webViewLink"}},{"kind":"Field","name":{"kind":"Name","value":"externalLink"}},{"kind":"Field","name":{"kind":"Name","value":"platforms"}},{"kind":"Field","name":{"kind":"Name","value":"timing"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURL"}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURLWeb"}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURI"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundNumber"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"isPlayoffActive"}},{"kind":"Field","name":{"kind":"Name","value":"scorecardEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"profileEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"subEvent"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardFeatures"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"new"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipText"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipTitle"}},{"kind":"Field","name":{"kind":"Name","value":"fieldStatType"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardFeatures"}},{"kind":"Field","name":{"kind":"Name","value":"sponsor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogo"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoDark"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"standingsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"standingsHeader"}},{"kind":"Field","name":{"kind":"Name","value":"hideSov"}},{"kind":"Field","name":{"kind":"Name","value":"disableOdds"}},{"kind":"Field","name":{"kind":"Name","value":"disableBettingProfileColumn"}},{"kind":"Field","name":{"kind":"Name","value":"cutLineProbabilities"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"projectedCutLine"}},{"kind":"Field","name":{"kind":"Name","value":"probableCutLine"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorName"}},{"kind":"Field","name":{"kind":"Name","value":"lastUpdated"}},{"kind":"Field","name":{"kind":"Name","value":"possibleCutLines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"probability"}},{"kind":"Field","name":{"kind":"Name","value":"displayProbability"}}]}},{"kind":"Field","name":{"kind":"Name","value":"new"}}]}},{"kind":"Field","name":{"kind":"Name","value":"disableLeaderboard"}},{"kind":"Field","name":{"kind":"Name","value":"bubblePill"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"iconLight"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"iconDark"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"pillText"}}]}}]}}]}}]} as unknown as DocumentNode<LeaderboardV3Query, LeaderboardV3QueryVariables>;
+export const LeaderboardHoleByHoleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"LeaderboardHoleByHole"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tournamentId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"round"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardHoleByHole"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tournamentId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tournamentId"}}},{"kind":"Argument","name":{"kind":"Name","value":"round"},"value":{"kind":"Variable","name":{"kind":"Name","value":"round"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentId"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundNumber"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"holeHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"hole"}},{"kind":"Field","name":{"kind":"Name","value":"par"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courseHoleHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"holeHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"order"}},{"kind":"Field","name":{"kind":"Name","value":"displayValue"}},{"kind":"Field","name":{"kind":"Name","value":"par"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"playerData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"playerId"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"scores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"par"}},{"kind":"Field","name":{"kind":"Name","value":"yardage"}},{"kind":"Field","name":{"kind":"Name","value":"sequenceNumber"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"roundScore"}}]}},{"kind":"Field","name":{"kind":"Name","value":"out"}},{"kind":"Field","name":{"kind":"Name","value":"in"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"totalToPar"}}]}}]}}]}}]} as unknown as DocumentNode<LeaderboardHoleByHoleQuery, LeaderboardHoleByHoleQueryVariables>;
+export const ScheduleYearsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ScheduleYears"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TourCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"scheduleYears"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"years"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"default"}},{"kind":"Field","name":{"kind":"Name","value":"displayValue"}},{"kind":"Field","name":{"kind":"Name","value":"queryValue"}}]}}]}}]}}]} as unknown as DocumentNode<ScheduleYearsQuery, ScheduleYearsQueryVariables>;
+export const ScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Schedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"year"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"schedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}},{"kind":"Argument","name":{"kind":"Name","value":"year"},"value":{"kind":"Variable","name":{"kind":"Name","value":"year"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}}]}}]} as unknown as DocumentNode<ScheduleQuery, ScheduleQueryVariables>;
+export const CompleteScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CompleteSchedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TourCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"completeSchedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}}]}}]} as unknown as DocumentNode<CompleteScheduleQuery, CompleteScheduleQueryVariables>;
+export const UpcomingScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"UpcomingSchedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"upcomingSchedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<UpcomingScheduleQuery, UpcomingScheduleQueryVariables>;
+export const TournamentsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Tournaments"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"ids"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"ids"},"value":{"kind":"Variable","name":{"kind":"Name","value":"ids"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLocation"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"features"}},{"kind":"Field","name":{"kind":"Name","value":"formatType"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardTakeover"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"timezone"}},{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"displayDate"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"state"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"scoredLevel"}},{"kind":"Field","name":{"kind":"Name","value":"events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"eventName"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"weather"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"logoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"logoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoAccessibility"}},{"kind":"Field","name":{"kind":"Name","value":"tempF"}},{"kind":"Field","name":{"kind":"Name","value":"tempC"}},{"kind":"Field","name":{"kind":"Name","value":"condition"}},{"kind":"Field","name":{"kind":"Name","value":"windDirection"}},{"kind":"Field","name":{"kind":"Name","value":"windSpeedMPH"}},{"kind":"Field","name":{"kind":"Name","value":"windSpeedKPH"}},{"kind":"Field","name":{"kind":"Name","value":"precipitation"}},{"kind":"Field","name":{"kind":"Name","value":"humidity"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ticketsURL"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"useTournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"pdfUrl"}},{"kind":"Field","name":{"kind":"Name","value":"conductedByLabel"}},{"kind":"Field","name":{"kind":"Name","value":"conductedByLink"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImage"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"shouldSubscribe"}},{"kind":"Field","name":{"kind":"Name","value":"infoPath"}},{"kind":"Field","name":{"kind":"Name","value":"infoPathWebview"}},{"kind":"Field","name":{"kind":"Name","value":"howItWorks"}},{"kind":"Field","name":{"kind":"Name","value":"howItWorksPill"}},{"kind":"Field","name":{"kind":"Name","value":"howItWorksWebview"}},{"kind":"Field","name":{"kind":"Name","value":"hideRolexClock"}},{"kind":"Field","name":{"kind":"Name","value":"hideSov"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"headshotBaseUrl"}},{"kind":"Field","name":{"kind":"Name","value":"rightRailConfig"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"imageAltText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonLink"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentCategoryInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"logoLight"}},{"kind":"Field","name":{"kind":"Name","value":"logoLightAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"disabledScorecardTabs"}}]}}]}}]} as unknown as DocumentNode<TournamentsQuery, TournamentsQueryVariables>;
 export const ScheduleTournamentFields = gql`
     fragment ScheduleTournamentFields on ScheduleTournament {
+  __typename
   beautyImageAsset {
+    __typename
     fallbackImage
     imageOrg
     imagePath
@@ -11057,12 +11059,14 @@ export const ScheduleTournamentFields = gql`
   id
   sortDate
   status {
+    __typename
     roundDisplay
     roundStatus
     roundStatusColor
     roundStatusDisplay
   }
   tournamentLogoAsset {
+    __typename
     fallbackImage
     imageOrg
     imagePath
@@ -11073,35 +11077,45 @@ export const ScheduleTournamentFields = gql`
     `;
 export const ScheduleMonthFields = gql`
     fragment ScheduleMonthFields on ScheduleMonth {
+  __typename
   year
   month
   monthSort
   tournaments {
+    __typename
     ...ScheduleTournamentFields
   }
 }
     ${ScheduleTournamentFields}`;
 export const ScheduleFields = gql`
     fragment ScheduleFields on Schedule {
+  __typename
   seasonYear
   completed {
+    __typename
     ...ScheduleMonthFields
   }
   upcoming {
+    __typename
     ...ScheduleMonthFields
   }
 }
     ${ScheduleMonthFields}`;
 export const LeaderboardV3 = gql`
     query LeaderboardV3($leaderboardV3Id: ID!) {
+  __typename
   leaderboardV3(id: $leaderboardV3Id) {
+    __typename
     id
     tournamentId
     players {
+      __typename
       ... on PlayerRowV3 {
+        __typename
         id
         leaderboardSortOrder
         player {
+          __typename
           id
           firstName
           lastName
@@ -11117,7 +11131,9 @@ export const LeaderboardV3 = gql`
           status
           tourBound
           assets {
+            __typename
             ... on TourBoundAsset {
+              __typename
               tourBoundLogo
               tourBoundLogoDark
             }
@@ -11126,6 +11142,7 @@ export const LeaderboardV3 = gql`
           playerBioOverrideLink
         }
         scoringData {
+          __typename
           groupNumber
           currentRound
           backNine
@@ -11170,6 +11187,7 @@ export const LeaderboardV3 = gql`
         }
       }
       ... on InformationRow {
+        __typename
         id
         leaderboardSortOrder
         displayText
@@ -11181,6 +11199,7 @@ export const LeaderboardV3 = gql`
     formatType
     timezone
     winner {
+      __typename
       id
       firstName
       lastName
@@ -11195,17 +11214,20 @@ export const LeaderboardV3 = gql`
       seed
       pointsLabel
       winnerIcon {
+        __typename
         type
         title
         label
         color
       }
       roundScores {
+        __typename
         label
         total
       }
     }
     winners {
+      __typename
       id
       firstName
       lastName
@@ -11221,6 +11243,7 @@ export const LeaderboardV3 = gql`
       pointsLabel
     }
     courses {
+      __typename
       id
       courseName
       courseCode
@@ -11230,6 +11253,7 @@ export const LeaderboardV3 = gql`
       features
     }
     messages {
+      __typename
       messageText
       messageIcon
       messageLink
@@ -11243,6 +11267,7 @@ export const LeaderboardV3 = gql`
     tourcastURI
     tournamentStatus
     rounds {
+      __typename
       roundNumber
       displayText
     }
@@ -11251,6 +11276,7 @@ export const LeaderboardV3 = gql`
     profileEnabled
     subEvent
     leaderboardFeatures {
+      __typename
       name
       new
       tooltipText
@@ -11258,8 +11284,10 @@ export const LeaderboardV3 = gql`
       fieldStatType
       leaderboardFeatures
       sponsor {
+        __typename
         sponsorLogo
         sponsorLogoAsset {
+          __typename
           imageOrg
           imagePath
           assetType
@@ -11268,6 +11296,7 @@ export const LeaderboardV3 = gql`
         }
         sponsorLogoDark
         sponsorLogoDarkAsset {
+          __typename
           imageOrg
           imagePath
           assetType
@@ -11283,9 +11312,11 @@ export const LeaderboardV3 = gql`
     disableOdds
     disableBettingProfileColumn
     cutLineProbabilities {
+      __typename
       projectedCutLine
       probableCutLine
       sponsorLogo {
+        __typename
         imageOrg
         imagePath
         assetType
@@ -11295,6 +11326,7 @@ export const LeaderboardV3 = gql`
       sponsorName
       lastUpdated
       possibleCutLines {
+        __typename
         score
         probability
         displayProbability
@@ -11303,7 +11335,9 @@ export const LeaderboardV3 = gql`
     }
     disableLeaderboard
     bubblePill {
+      __typename
       iconLight {
+        __typename
         imageOrg
         imagePath
         assetType
@@ -11311,6 +11345,7 @@ export const LeaderboardV3 = gql`
         fallbackImage
       }
       iconDark {
+        __typename
         imageOrg
         imagePath
         assetType
@@ -11324,22 +11359,28 @@ export const LeaderboardV3 = gql`
     `;
 export const LeaderboardHoleByHole = gql`
     query LeaderboardHoleByHole($tournamentId: ID!, $round: Int) {
+  __typename
   leaderboardHoleByHole(tournamentId: $tournamentId, round: $round) {
+    __typename
     tournamentId
     currentRound
     rounds {
+      __typename
       roundNumber
       displayText
     }
     tournamentName
     holeHeaders {
+      __typename
       holeNumber
       hole
       par
     }
     courseHoleHeaders {
+      __typename
       courseId
       holeHeaders {
+        __typename
         holeNumber
         order
         displayValue
@@ -11347,6 +11388,7 @@ export const LeaderboardHoleByHole = gql`
       }
     }
     courses {
+      __typename
       id
       courseName
       courseCode
@@ -11356,10 +11398,12 @@ export const LeaderboardHoleByHole = gql`
       features
     }
     playerData {
+      __typename
       playerId
       courseId
       courseCode
       scores {
+        __typename
         holeNumber
         par
         yardage
@@ -11378,8 +11422,11 @@ export const LeaderboardHoleByHole = gql`
     `;
 export const ScheduleYears = gql`
     query ScheduleYears($tourCode: TourCode!) {
+  __typename
   scheduleYears(tourCode: $tourCode) {
+    __typename
     years {
+      __typename
       default
       displayValue
       queryValue
@@ -11389,22 +11436,29 @@ export const ScheduleYears = gql`
     `;
 export const Schedule = gql`
     query Schedule($tourCode: String!, $year: String) {
+  __typename
   schedule(tourCode: $tourCode, year: $year) {
+    __typename
     ...ScheduleFields
   }
 }
     ${ScheduleFields}`;
 export const CompleteSchedule = gql`
     query CompleteSchedule($tourCode: TourCode!) {
+  __typename
   completeSchedule(tourCode: $tourCode) {
+    __typename
     ...ScheduleFields
   }
 }
     ${ScheduleFields}`;
 export const UpcomingSchedule = gql`
     query UpcomingSchedule($tourCode: String!) {
+  __typename
   upcomingSchedule(tourCode: $tourCode) {
+    __typename
     tournaments {
+      __typename
       ...ScheduleTournamentFields
     }
   }
@@ -11412,11 +11466,14 @@ export const UpcomingSchedule = gql`
     ${ScheduleTournamentFields}`;
 export const Tournaments = gql`
     query Tournaments($ids: [ID!]) {
+  __typename
   tournaments(ids: $ids) {
+    __typename
     id
     tournamentName
     tournamentLogo
     tournamentLogoAsset {
+      __typename
       imageOrg
       imagePath
       assetType
@@ -11441,11 +11498,13 @@ export const Tournaments = gql`
     city
     scoredLevel
     events {
+      __typename
       id
       eventName
       leaderboardId
     }
     courses {
+      __typename
       id
       courseName
       courseCode
@@ -11455,8 +11514,10 @@ export const Tournaments = gql`
       features
     }
     weather {
+      __typename
       logo
       logoAsset {
+        __typename
         imageOrg
         imagePath
         assetType
@@ -11465,6 +11526,7 @@ export const Tournaments = gql`
       }
       logoDark
       logoDarkAsset {
+        __typename
         imageOrg
         imagePath
         assetType
@@ -11489,6 +11551,7 @@ export const Tournaments = gql`
     conductedByLink
     beautyImage
     beautyImageAsset {
+      __typename
       imageOrg
       imagePath
       assetType
@@ -11506,15 +11569,18 @@ export const Tournaments = gql`
     ticketsEnabled
     headshotBaseUrl
     rightRailConfig {
+      __typename
       imageUrl
       imageAltText
       buttonLink
       buttonText
     }
     tournamentCategoryInfo {
+      __typename
       type
       logoLight
       logoLightAsset {
+        __typename
         imageOrg
         imagePath
         assetType
