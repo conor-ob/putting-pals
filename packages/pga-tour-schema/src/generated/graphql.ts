@@ -10981,10 +10981,256 @@ export type LeaderboardV3QueryVariables = Exact<{
 }>;
 
 
-export type LeaderboardV3Query = { readonly __typename: 'Query', readonly leaderboardV3: { readonly __typename: 'LeaderboardV3', readonly id: string, readonly tournamentId: string, readonly leaderboardRoundHeader: string, readonly formatType: FormatType, readonly timezone: string, readonly tourcastURL?: string | null, readonly tourcastURLWeb?: string | null, readonly tourcastURI?: string | null, readonly tournamentStatus: TournamentStatus, readonly isPlayoffActive: boolean, readonly scorecardEnabled: boolean, readonly profileEnabled: boolean, readonly subEvent: boolean, readonly standingsEnabled: boolean, readonly standingsHeader: string, readonly hideSov: boolean, readonly disableOdds: boolean, readonly disableBettingProfileColumn: boolean, readonly disableLeaderboard: boolean, readonly players: ReadonlyArray<
-      | { readonly __typename: 'InformationRow', readonly id: string, readonly leaderboardSortOrder: number, readonly displayText: string, readonly mobileDisplayText: string, readonly sponsorName?: string | null }
-      | { readonly __typename: 'PlayerRowV3', readonly id: string, readonly leaderboardSortOrder: number, readonly player: { readonly __typename: 'Player', readonly id: string, readonly firstName: string, readonly lastName: string, readonly shortName: string, readonly displayName: string, readonly abbreviations: string, readonly abbreviationsAccessibilityText: string, readonly amateur: boolean, readonly country: string, readonly countryFlag: string, readonly lineColor: string, readonly seed?: string | null, readonly status?: string | null, readonly tourBound?: boolean | null, readonly bettingProfile?: string | null, readonly playerBioOverrideLink?: string | null, readonly assets?: ReadonlyArray<{ readonly __typename: 'TourBoundAsset', readonly tourBoundLogo?: string | null, readonly tourBoundLogoDark?: string | null }> | null }, readonly scoringData: { readonly __typename: 'LeaderboardScoringDataV3', readonly groupNumber: number, readonly currentRound: number, readonly backNine: boolean, readonly playerState: PlayerState, readonly teeTime?: any | null, readonly totalStrokes: string, readonly totalStrokesSort?: number | null, readonly total: string, readonly totalSort: number, readonly thru: string, readonly thruSort: number, readonly score: string, readonly scoreSort: number, readonly movementDirection: LeaderboardMovement, readonly movementAmount: string, readonly movementSort?: number | null, readonly position: string, readonly rounds: ReadonlyArray<string>, readonly roundDisplaySort?: ReadonlyArray<number | null> | null, readonly roundHeader: string, readonly roundStatus: string, readonly courseId: string, readonly official: string, readonly officialSort: number, readonly projected: string, readonly projectedSort: number, readonly rankingMovement: CupRankMovementDirection, readonly rankingMovementAmount: string, readonly rankingMovementAmountSort: number, readonly rankLogoLight?: string | null, readonly rankLogoDark?: string | null, readonly tooltipText?: string | null, readonly tooltipTitle?: string | null, readonly oddsToWin?: string | null, readonly oddsSwing?: OddsSwing | null, readonly oddsOptionId?: string | null, readonly oddsSort?: number | null, readonly hasStoryContent: boolean, readonly storyContentRound?: number | null, readonly storyContentRounds: ReadonlyArray<number>, readonly playerIcon?: LeaderboardPlayerIcon | null } }
-    >, readonly winner?: { readonly __typename: 'Winner', readonly id: string, readonly firstName: string, readonly lastName: string, readonly totalStrokes: number, readonly totalScore: string, readonly countryFlag: string, readonly countryName: string, readonly purse?: string | null, readonly displayPoints: boolean, readonly displayPurse: boolean, readonly points?: string | null, readonly seed?: string | null, readonly pointsLabel?: string | null, readonly winnerIcon?: { readonly __typename: 'WinnerIcon', readonly type: WinnerIconType, readonly title: string, readonly label: string, readonly color: string } | null, readonly roundScores?: ReadonlyArray<{ readonly __typename: 'WinnerRoundScore', readonly label: string, readonly total: string }> | null } | null, readonly winners?: ReadonlyArray<{ readonly __typename: 'Winner', readonly id: string, readonly firstName: string, readonly lastName: string, readonly totalStrokes: number, readonly totalScore: string, readonly countryFlag: string, readonly countryName: string, readonly purse?: string | null, readonly displayPoints: boolean, readonly displayPurse: boolean, readonly points?: string | null, readonly seed?: string | null, readonly pointsLabel?: string | null }> | null, readonly courses: ReadonlyArray<{ readonly __typename: 'Course', readonly id: string, readonly courseName: string, readonly courseCode: string, readonly hostCourse: boolean, readonly scoringLevel: ScoringLevel, readonly enabled?: boolean | null, readonly features?: ReadonlyArray<TeeTimesFeature> | null }>, readonly messages: ReadonlyArray<{ readonly __typename: 'LeaderboardMessage', readonly messageText: string, readonly messageIcon: LeaderboardMessageIcon, readonly messageLink?: string | null, readonly webViewLink?: string | null, readonly externalLink?: boolean | null, readonly platforms: ReadonlyArray<Platform>, readonly timing?: number | null }>, readonly rounds: ReadonlyArray<{ readonly __typename: 'LBRound', readonly roundNumber: number, readonly displayText: string }>, readonly leaderboardFeatures?: ReadonlyArray<{ readonly __typename: 'FeatureItem', readonly name: string, readonly new: boolean, readonly tooltipText?: string | null, readonly tooltipTitle?: string | null, readonly fieldStatType?: FieldStatType | null, readonly leaderboardFeatures?: LeaderboardFeature | null, readonly sponsor?: { readonly __typename: 'FeatureSponsor', readonly sponsorLogo: string, readonly sponsorLogoDark: string, readonly sponsorText: string, readonly sponsorLogoAsset: { readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null }, readonly sponsorLogoDarkAsset: { readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null } } | null }> | null, readonly cutLineProbabilities?: { readonly __typename: 'CutLineInfo', readonly projectedCutLine: string, readonly probableCutLine: string, readonly sponsorName?: string | null, readonly lastUpdated: any, readonly new?: boolean | null, readonly sponsorLogo?: { readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null } | null, readonly possibleCutLines: ReadonlyArray<{ readonly __typename: 'CutLinePossibility', readonly score: string, readonly probability: number, readonly displayProbability: string }> } | null, readonly bubblePill?: { readonly __typename: 'BubblePill', readonly pillText: string, readonly iconLight: { readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null }, readonly iconDark: { readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null } } | null } };
+export type LeaderboardV3Query = {
+  readonly __typename: 'Query',
+  readonly leaderboardV3: {
+    readonly __typename: 'LeaderboardV3',
+    readonly id: string,
+    readonly tournamentId: string,
+    readonly leaderboardRoundHeader: string,
+    readonly formatType: FormatType,
+    readonly timezone: string,
+    readonly tourcastURL?: string | null,
+    readonly tourcastURLWeb?: string | null,
+    readonly tourcastURI?: string | null,
+    readonly tournamentStatus: TournamentStatus,
+    readonly isPlayoffActive: boolean,
+    readonly scorecardEnabled: boolean,
+    readonly profileEnabled: boolean,
+    readonly subEvent: boolean,
+    readonly standingsEnabled: boolean,
+    readonly standingsHeader: string,
+    readonly hideSov: boolean,
+    readonly disableOdds: boolean,
+    readonly disableBettingProfileColumn: boolean,
+    readonly disableLeaderboard: boolean,
+    readonly players: ReadonlyArray<
+      | {
+        readonly __typename: 'InformationRow',
+        readonly id: string,
+        readonly leaderboardSortOrder: number,
+        readonly displayText: string,
+        readonly mobileDisplayText: string,
+        readonly sponsorName?: string | null
+      }
+      | {
+        readonly __typename: 'PlayerRowV3',
+        readonly id: string,
+        readonly leaderboardSortOrder: number,
+        readonly player: {
+          readonly __typename: 'Player',
+          readonly id: string,
+          readonly firstName: string,
+          readonly lastName: string,
+          readonly shortName: string,
+          readonly displayName: string,
+          readonly abbreviations: string,
+          readonly abbreviationsAccessibilityText: string,
+          readonly amateur: boolean,
+          readonly country: string,
+          readonly countryFlag: string,
+          readonly lineColor: string,
+          readonly seed?: string | null,
+          readonly status?: string | null,
+          readonly tourBound?: boolean | null,
+          readonly bettingProfile?: string | null,
+          readonly playerBioOverrideLink?: string | null,
+          readonly assets?: ReadonlyArray<{
+            readonly __typename: 'TourBoundAsset',
+            readonly tourBoundLogo?: string | null,
+            readonly tourBoundLogoDark?: string | null
+          }> | null
+        },
+        readonly scoringData: {
+          readonly __typename: 'LeaderboardScoringDataV3',
+          readonly groupNumber: number,
+          readonly currentRound: number,
+          readonly backNine: boolean,
+          readonly playerState: PlayerState,
+          readonly teeTime?: any | null,
+          readonly totalStrokes: string,
+          readonly totalStrokesSort?: number | null,
+          readonly total: string,
+          readonly totalSort: number,
+          readonly thru: string,
+          readonly thruSort: number,
+          readonly score: string,
+          readonly scoreSort: number,
+          readonly movementDirection: LeaderboardMovement,
+          readonly movementAmount: string,
+          readonly movementSort?: number | null,
+          readonly position: string,
+          readonly rounds: ReadonlyArray<string>,
+          readonly roundDisplaySort?: ReadonlyArray<number | null> | null,
+          readonly roundHeader: string,
+          readonly roundStatus: string,
+          readonly courseId: string,
+          readonly official: string,
+          readonly officialSort: number,
+          readonly projected: string,
+          readonly projectedSort: number,
+          readonly rankingMovement: CupRankMovementDirection,
+          readonly rankingMovementAmount: string,
+          readonly rankingMovementAmountSort: number,
+          readonly rankLogoLight?: string | null,
+          readonly rankLogoDark?: string | null,
+          readonly tooltipText?: string | null,
+          readonly tooltipTitle?: string | null,
+          readonly oddsToWin?: string | null,
+          readonly oddsSwing?: OddsSwing | null,
+          readonly oddsOptionId?: string | null,
+          readonly oddsSort?: number | null,
+          readonly hasStoryContent: boolean,
+          readonly storyContentRound?: number | null,
+          readonly storyContentRounds: ReadonlyArray<number>,
+          readonly playerIcon?: LeaderboardPlayerIcon | null
+        }
+      }
+    >,
+    readonly winner?: {
+      readonly __typename: 'Winner',
+      readonly id: string,
+      readonly firstName: string,
+      readonly lastName: string,
+      readonly totalStrokes: number,
+      readonly totalScore: string,
+      readonly countryFlag: string,
+      readonly countryName: string,
+      readonly purse?: string | null,
+      readonly displayPoints: boolean,
+      readonly displayPurse: boolean,
+      readonly points?: string | null,
+      readonly seed?: string | null,
+      readonly pointsLabel?: string | null,
+      readonly winnerIcon?: {
+        readonly __typename: 'WinnerIcon',
+        readonly type: WinnerIconType,
+        readonly title: string,
+        readonly label: string,
+        readonly color: string
+      } | null,
+      readonly roundScores?: ReadonlyArray<{
+        readonly __typename: 'WinnerRoundScore',
+        readonly label: string,
+        readonly total: string
+      }> | null
+    } | null,
+    readonly winners?: ReadonlyArray<{
+      readonly __typename: 'Winner',
+      readonly id: string,
+      readonly firstName: string,
+      readonly lastName: string,
+      readonly totalStrokes: number,
+      readonly totalScore: string,
+      readonly countryFlag: string,
+      readonly countryName: string,
+      readonly purse?: string | null,
+      readonly displayPoints: boolean,
+      readonly displayPurse: boolean,
+      readonly points?: string | null,
+      readonly seed?: string | null,
+      readonly pointsLabel?: string | null
+    }> | null,
+    readonly courses: ReadonlyArray<{
+      readonly __typename: 'Course',
+      readonly id: string,
+      readonly courseName: string,
+      readonly courseCode: string,
+      readonly hostCourse: boolean,
+      readonly scoringLevel: ScoringLevel,
+      readonly enabled?: boolean | null,
+      readonly features?: ReadonlyArray<TeeTimesFeature> | null
+    }>,
+    readonly messages: ReadonlyArray<{
+      readonly __typename: 'LeaderboardMessage',
+      readonly messageText: string,
+      readonly messageIcon: LeaderboardMessageIcon,
+      readonly messageLink?: string | null,
+      readonly webViewLink?: string | null,
+      readonly externalLink?: boolean | null,
+      readonly platforms: ReadonlyArray<Platform>,
+      readonly timing?: number | null
+    }>,
+    readonly rounds: ReadonlyArray<{
+      readonly __typename: 'LBRound',
+      readonly roundNumber: number,
+      readonly displayText: string
+    }>,
+    readonly leaderboardFeatures?: ReadonlyArray<{
+      readonly __typename: 'FeatureItem',
+      readonly name: string,
+      readonly new: boolean,
+      readonly tooltipText?: string | null,
+      readonly tooltipTitle?: string | null,
+      readonly fieldStatType?: FieldStatType | null,
+      readonly leaderboardFeatures?: LeaderboardFeature | null,
+      readonly sponsor?: {
+        readonly __typename: 'FeatureSponsor',
+        readonly sponsorLogo: string,
+        readonly sponsorLogoDark: string,
+        readonly sponsorText: string,
+        readonly sponsorLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        },
+        readonly sponsorLogoDarkAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        }
+      } | null
+    }> | null,
+    readonly cutLineProbabilities?: {
+      readonly __typename: 'CutLineInfo',
+      readonly projectedCutLine: string,
+      readonly probableCutLine: string,
+      readonly sponsorName?: string | null,
+      readonly lastUpdated: any,
+      readonly new?: boolean | null,
+      readonly sponsorLogo?: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      } | null,
+      readonly possibleCutLines: ReadonlyArray<{
+        readonly __typename: 'CutLinePossibility',
+        readonly score: string,
+        readonly probability: number,
+        readonly displayProbability: string
+      }>
+    } | null,
+    readonly bubblePill?: {
+      readonly __typename: 'BubblePill',
+      readonly pillText: string,
+      readonly iconLight: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      },
+      readonly iconDark: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      }
+    } | null
+  }
+};
 
 export type LeaderboardHoleByHoleQueryVariables = Exact<{
   tournamentId: Scalars['ID']['input'];
@@ -10992,20 +11238,218 @@ export type LeaderboardHoleByHoleQueryVariables = Exact<{
 }>;
 
 
-export type LeaderboardHoleByHoleQuery = { readonly __typename: 'Query', readonly leaderboardHoleByHole: { readonly __typename: 'LeaderboardHoleByHole', readonly tournamentId: string, readonly currentRound: number, readonly tournamentName: string, readonly rounds: ReadonlyArray<{ readonly __typename: 'LBRound', readonly roundNumber: number, readonly displayText: string }>, readonly holeHeaders: ReadonlyArray<{ readonly __typename: 'HoleHeader', readonly holeNumber: number, readonly hole: string, readonly par: string }>, readonly courseHoleHeaders: ReadonlyArray<{ readonly __typename: 'CourseHoleHeader', readonly courseId: string, readonly holeHeaders: ReadonlyArray<{ readonly __typename: 'HoleHeaderV2', readonly holeNumber?: number | null, readonly order: number, readonly displayValue: string, readonly par: string }> }>, readonly courses: ReadonlyArray<{ readonly __typename: 'Course', readonly id: string, readonly courseName: string, readonly courseCode: string, readonly hostCourse: boolean, readonly scoringLevel: ScoringLevel, readonly enabled?: boolean | null, readonly features?: ReadonlyArray<TeeTimesFeature> | null }>, readonly playerData: ReadonlyArray<{ readonly __typename: 'PlayerRowHoleByHole', readonly playerId: string, readonly courseId: string, readonly courseCode: string, readonly out?: string | null, readonly in?: string | null, readonly total?: string | null, readonly totalToPar: string, readonly scores: ReadonlyArray<{ readonly __typename: 'HoleScore', readonly holeNumber: number, readonly par: number, readonly yardage: number, readonly sequenceNumber: number, readonly score: string, readonly status: HoleScoreStatus, readonly roundScore: string }> }> } };
+export type LeaderboardHoleByHoleQuery = {
+  readonly __typename: 'Query',
+  readonly leaderboardHoleByHole: {
+    readonly __typename: 'LeaderboardHoleByHole',
+    readonly tournamentId: string,
+    readonly currentRound: number,
+    readonly tournamentName: string,
+    readonly rounds: ReadonlyArray<{
+      readonly __typename: 'LBRound',
+      readonly roundNumber: number,
+      readonly displayText: string
+    }>,
+    readonly holeHeaders: ReadonlyArray<{
+      readonly __typename: 'HoleHeader',
+      readonly holeNumber: number,
+      readonly hole: string,
+      readonly par: string
+    }>,
+    readonly courseHoleHeaders: ReadonlyArray<{
+      readonly __typename: 'CourseHoleHeader',
+      readonly courseId: string,
+      readonly holeHeaders: ReadonlyArray<{
+        readonly __typename: 'HoleHeaderV2',
+        readonly holeNumber?: number | null,
+        readonly order: number,
+        readonly displayValue: string,
+        readonly par: string
+      }>
+    }>,
+    readonly courses: ReadonlyArray<{
+      readonly __typename: 'Course',
+      readonly id: string,
+      readonly courseName: string,
+      readonly courseCode: string,
+      readonly hostCourse: boolean,
+      readonly scoringLevel: ScoringLevel,
+      readonly enabled?: boolean | null,
+      readonly features?: ReadonlyArray<TeeTimesFeature> | null
+    }>,
+    readonly playerData: ReadonlyArray<{
+      readonly __typename: 'PlayerRowHoleByHole',
+      readonly playerId: string,
+      readonly courseId: string,
+      readonly courseCode: string,
+      readonly out?: string | null,
+      readonly in?: string | null,
+      readonly total?: string | null,
+      readonly totalToPar: string,
+      readonly scores: ReadonlyArray<{
+        readonly __typename: 'HoleScore',
+        readonly holeNumber: number,
+        readonly par: number,
+        readonly yardage: number,
+        readonly sequenceNumber: number,
+        readonly score: string,
+        readonly status: HoleScoreStatus,
+        readonly roundScore: string
+      }>
+    }>
+  }
+};
 
-export type ScheduleTournamentFieldsFragment = { readonly __typename: 'ScheduleTournament', readonly date: string, readonly id: string, readonly sortDate?: string | null, readonly tournamentName: string, readonly tournamentStatus: TournamentStatus, readonly beautyImageAsset?: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } | null, readonly status?: { readonly __typename: 'ScheduleTournamentStatus', readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly roundStatusDisplay: string } | null, readonly tournamentLogoAsset: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } };
+export type ScheduleTournamentFieldsFragment = {
+  readonly __typename: 'ScheduleTournament',
+  readonly date: string,
+  readonly id: string,
+  readonly sortDate?: string | null,
+  readonly tournamentName: string,
+  readonly tournamentStatus: TournamentStatus,
+  readonly beautyImageAsset?: {
+    readonly __typename: 'ImageAsset',
+    readonly fallbackImage?: string | null,
+    readonly imageOrg: string,
+    readonly imagePath: string
+  } | null,
+  readonly status?: {
+    readonly __typename: 'ScheduleTournamentStatus',
+    readonly roundDisplay: string,
+    readonly roundStatus: RoundStatus,
+    readonly roundStatusColor: RoundStatusColor,
+    readonly roundStatusDisplay: string
+  } | null,
+  readonly tournamentLogoAsset: {
+    readonly __typename: 'ImageAsset',
+    readonly fallbackImage?: string | null,
+    readonly imageOrg: string,
+    readonly imagePath: string
+  }
+};
 
-export type ScheduleMonthFieldsFragment = { readonly __typename: 'ScheduleMonth', readonly year: string, readonly month: string, readonly monthSort?: number | null, readonly tournaments: ReadonlyArray<{ readonly __typename: 'ScheduleTournament', readonly date: string, readonly id: string, readonly sortDate?: string | null, readonly tournamentName: string, readonly tournamentStatus: TournamentStatus, readonly beautyImageAsset?: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } | null, readonly status?: { readonly __typename: 'ScheduleTournamentStatus', readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly roundStatusDisplay: string } | null, readonly tournamentLogoAsset: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } }> };
+export type ScheduleMonthFieldsFragment = {
+  readonly __typename: 'ScheduleMonth',
+  readonly year: string,
+  readonly month: string,
+  readonly monthSort?: number | null,
+  readonly tournaments: ReadonlyArray<{
+    readonly __typename: 'ScheduleTournament',
+    readonly date: string,
+    readonly id: string,
+    readonly sortDate?: string | null,
+    readonly tournamentName: string,
+    readonly tournamentStatus: TournamentStatus,
+    readonly beautyImageAsset?: {
+      readonly __typename: 'ImageAsset',
+      readonly fallbackImage?: string | null,
+      readonly imageOrg: string,
+      readonly imagePath: string
+    } | null,
+    readonly status?: {
+      readonly __typename: 'ScheduleTournamentStatus',
+      readonly roundDisplay: string,
+      readonly roundStatus: RoundStatus,
+      readonly roundStatusColor: RoundStatusColor,
+      readonly roundStatusDisplay: string
+    } | null,
+    readonly tournamentLogoAsset: {
+      readonly __typename: 'ImageAsset',
+      readonly fallbackImage?: string | null,
+      readonly imageOrg: string,
+      readonly imagePath: string
+    }
+  }>
+};
 
-export type ScheduleFieldsFragment = { readonly __typename: 'Schedule', readonly seasonYear: string, readonly completed: ReadonlyArray<{ readonly __typename: 'ScheduleMonth', readonly year: string, readonly month: string, readonly monthSort?: number | null, readonly tournaments: ReadonlyArray<{ readonly __typename: 'ScheduleTournament', readonly date: string, readonly id: string, readonly sortDate?: string | null, readonly tournamentName: string, readonly tournamentStatus: TournamentStatus, readonly beautyImageAsset?: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } | null, readonly status?: { readonly __typename: 'ScheduleTournamentStatus', readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly roundStatusDisplay: string } | null, readonly tournamentLogoAsset: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } }> }>, readonly upcoming: ReadonlyArray<{ readonly __typename: 'ScheduleMonth', readonly year: string, readonly month: string, readonly monthSort?: number | null, readonly tournaments: ReadonlyArray<{ readonly __typename: 'ScheduleTournament', readonly date: string, readonly id: string, readonly sortDate?: string | null, readonly tournamentName: string, readonly tournamentStatus: TournamentStatus, readonly beautyImageAsset?: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } | null, readonly status?: { readonly __typename: 'ScheduleTournamentStatus', readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly roundStatusDisplay: string } | null, readonly tournamentLogoAsset: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } }> }> };
+export type ScheduleFieldsFragment = {
+  readonly __typename: 'Schedule',
+  readonly seasonYear: string,
+  readonly completed: ReadonlyArray<{
+    readonly __typename: 'ScheduleMonth',
+    readonly year: string,
+    readonly month: string,
+    readonly monthSort?: number | null,
+    readonly tournaments: ReadonlyArray<{
+      readonly __typename: 'ScheduleTournament',
+      readonly date: string,
+      readonly id: string,
+      readonly sortDate?: string | null,
+      readonly tournamentName: string,
+      readonly tournamentStatus: TournamentStatus,
+      readonly beautyImageAsset?: {
+        readonly __typename: 'ImageAsset',
+        readonly fallbackImage?: string | null,
+        readonly imageOrg: string,
+        readonly imagePath: string
+      } | null,
+      readonly status?: {
+        readonly __typename: 'ScheduleTournamentStatus',
+        readonly roundDisplay: string,
+        readonly roundStatus: RoundStatus,
+        readonly roundStatusColor: RoundStatusColor,
+        readonly roundStatusDisplay: string
+      } | null,
+      readonly tournamentLogoAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly fallbackImage?: string | null,
+        readonly imageOrg: string,
+        readonly imagePath: string
+      }
+    }>
+  }>,
+  readonly upcoming: ReadonlyArray<{
+    readonly __typename: 'ScheduleMonth',
+    readonly year: string,
+    readonly month: string,
+    readonly monthSort?: number | null,
+    readonly tournaments: ReadonlyArray<{
+      readonly __typename: 'ScheduleTournament',
+      readonly date: string,
+      readonly id: string,
+      readonly sortDate?: string | null,
+      readonly tournamentName: string,
+      readonly tournamentStatus: TournamentStatus,
+      readonly beautyImageAsset?: {
+        readonly __typename: 'ImageAsset',
+        readonly fallbackImage?: string | null,
+        readonly imageOrg: string,
+        readonly imagePath: string
+      } | null,
+      readonly status?: {
+        readonly __typename: 'ScheduleTournamentStatus',
+        readonly roundDisplay: string,
+        readonly roundStatus: RoundStatus,
+        readonly roundStatusColor: RoundStatusColor,
+        readonly roundStatusDisplay: string
+      } | null,
+      readonly tournamentLogoAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly fallbackImage?: string | null,
+        readonly imageOrg: string,
+        readonly imagePath: string
+      }
+    }>
+  }>
+};
 
 export type ScheduleYearsQueryVariables = Exact<{
   tourCode: TourCode;
 }>;
 
 
-export type ScheduleYearsQuery = { readonly __typename: 'Query', readonly scheduleYears: { readonly __typename: 'ScheduleYears', readonly years: ReadonlyArray<{ readonly __typename: 'ScheduleYear', readonly default: boolean, readonly displayValue: string, readonly queryValue: string }> } };
+export type ScheduleYearsQuery = {
+  readonly __typename: 'Query',
+  readonly scheduleYears: {
+    readonly __typename: 'ScheduleYears',
+    readonly years: ReadonlyArray<{
+      readonly __typename: 'ScheduleYear',
+      readonly default: boolean,
+      readonly displayValue: string,
+      readonly queryValue: string
+    }>
+  }
+};
 
 export type ScheduleQueryVariables = Exact<{
   tourCode: Scalars['String']['input'];
@@ -11013,28 +11457,331 @@ export type ScheduleQueryVariables = Exact<{
 }>;
 
 
-export type ScheduleQuery = { readonly __typename: 'Query', readonly schedule: { readonly __typename: 'Schedule', readonly seasonYear: string, readonly completed: ReadonlyArray<{ readonly __typename: 'ScheduleMonth', readonly year: string, readonly month: string, readonly monthSort?: number | null, readonly tournaments: ReadonlyArray<{ readonly __typename: 'ScheduleTournament', readonly date: string, readonly id: string, readonly sortDate?: string | null, readonly tournamentName: string, readonly tournamentStatus: TournamentStatus, readonly beautyImageAsset?: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } | null, readonly status?: { readonly __typename: 'ScheduleTournamentStatus', readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly roundStatusDisplay: string } | null, readonly tournamentLogoAsset: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } }> }>, readonly upcoming: ReadonlyArray<{ readonly __typename: 'ScheduleMonth', readonly year: string, readonly month: string, readonly monthSort?: number | null, readonly tournaments: ReadonlyArray<{ readonly __typename: 'ScheduleTournament', readonly date: string, readonly id: string, readonly sortDate?: string | null, readonly tournamentName: string, readonly tournamentStatus: TournamentStatus, readonly beautyImageAsset?: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } | null, readonly status?: { readonly __typename: 'ScheduleTournamentStatus', readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly roundStatusDisplay: string } | null, readonly tournamentLogoAsset: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } }> }> } };
+export type ScheduleQuery = {
+  readonly __typename: 'Query',
+  readonly schedule: {
+    readonly __typename: 'Schedule',
+    readonly seasonYear: string,
+    readonly completed: ReadonlyArray<{
+      readonly __typename: 'ScheduleMonth',
+      readonly year: string,
+      readonly month: string,
+      readonly monthSort?: number | null,
+      readonly tournaments: ReadonlyArray<{
+        readonly __typename: 'ScheduleTournament',
+        readonly date: string,
+        readonly id: string,
+        readonly sortDate?: string | null,
+        readonly tournamentName: string,
+        readonly tournamentStatus: TournamentStatus,
+        readonly beautyImageAsset?: {
+          readonly __typename: 'ImageAsset',
+          readonly fallbackImage?: string | null,
+          readonly imageOrg: string,
+          readonly imagePath: string
+        } | null,
+        readonly status?: {
+          readonly __typename: 'ScheduleTournamentStatus',
+          readonly roundDisplay: string,
+          readonly roundStatus: RoundStatus,
+          readonly roundStatusColor: RoundStatusColor,
+          readonly roundStatusDisplay: string
+        } | null,
+        readonly tournamentLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly fallbackImage?: string | null,
+          readonly imageOrg: string,
+          readonly imagePath: string
+        }
+      }>
+    }>,
+    readonly upcoming: ReadonlyArray<{
+      readonly __typename: 'ScheduleMonth',
+      readonly year: string,
+      readonly month: string,
+      readonly monthSort?: number | null,
+      readonly tournaments: ReadonlyArray<{
+        readonly __typename: 'ScheduleTournament',
+        readonly date: string,
+        readonly id: string,
+        readonly sortDate?: string | null,
+        readonly tournamentName: string,
+        readonly tournamentStatus: TournamentStatus,
+        readonly beautyImageAsset?: {
+          readonly __typename: 'ImageAsset',
+          readonly fallbackImage?: string | null,
+          readonly imageOrg: string,
+          readonly imagePath: string
+        } | null,
+        readonly status?: {
+          readonly __typename: 'ScheduleTournamentStatus',
+          readonly roundDisplay: string,
+          readonly roundStatus: RoundStatus,
+          readonly roundStatusColor: RoundStatusColor,
+          readonly roundStatusDisplay: string
+        } | null,
+        readonly tournamentLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly fallbackImage?: string | null,
+          readonly imageOrg: string,
+          readonly imagePath: string
+        }
+      }>
+    }>
+  }
+};
 
 export type CompleteScheduleQueryVariables = Exact<{
   tourCode: TourCode;
 }>;
 
 
-export type CompleteScheduleQuery = { readonly __typename: 'Query', readonly completeSchedule: ReadonlyArray<{ readonly __typename: 'Schedule', readonly seasonYear: string, readonly completed: ReadonlyArray<{ readonly __typename: 'ScheduleMonth', readonly year: string, readonly month: string, readonly monthSort?: number | null, readonly tournaments: ReadonlyArray<{ readonly __typename: 'ScheduleTournament', readonly date: string, readonly id: string, readonly sortDate?: string | null, readonly tournamentName: string, readonly tournamentStatus: TournamentStatus, readonly beautyImageAsset?: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } | null, readonly status?: { readonly __typename: 'ScheduleTournamentStatus', readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly roundStatusDisplay: string } | null, readonly tournamentLogoAsset: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } }> }>, readonly upcoming: ReadonlyArray<{ readonly __typename: 'ScheduleMonth', readonly year: string, readonly month: string, readonly monthSort?: number | null, readonly tournaments: ReadonlyArray<{ readonly __typename: 'ScheduleTournament', readonly date: string, readonly id: string, readonly sortDate?: string | null, readonly tournamentName: string, readonly tournamentStatus: TournamentStatus, readonly beautyImageAsset?: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } | null, readonly status?: { readonly __typename: 'ScheduleTournamentStatus', readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly roundStatusDisplay: string } | null, readonly tournamentLogoAsset: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } }> }> }> };
+export type CompleteScheduleQuery = {
+  readonly __typename: 'Query',
+  readonly completeSchedule: ReadonlyArray<{
+    readonly __typename: 'Schedule',
+    readonly seasonYear: string,
+    readonly completed: ReadonlyArray<{
+      readonly __typename: 'ScheduleMonth',
+      readonly year: string,
+      readonly month: string,
+      readonly monthSort?: number | null,
+      readonly tournaments: ReadonlyArray<{
+        readonly __typename: 'ScheduleTournament',
+        readonly date: string,
+        readonly id: string,
+        readonly sortDate?: string | null,
+        readonly tournamentName: string,
+        readonly tournamentStatus: TournamentStatus,
+        readonly beautyImageAsset?: {
+          readonly __typename: 'ImageAsset',
+          readonly fallbackImage?: string | null,
+          readonly imageOrg: string,
+          readonly imagePath: string
+        } | null,
+        readonly status?: {
+          readonly __typename: 'ScheduleTournamentStatus',
+          readonly roundDisplay: string,
+          readonly roundStatus: RoundStatus,
+          readonly roundStatusColor: RoundStatusColor,
+          readonly roundStatusDisplay: string
+        } | null,
+        readonly tournamentLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly fallbackImage?: string | null,
+          readonly imageOrg: string,
+          readonly imagePath: string
+        }
+      }>
+    }>,
+    readonly upcoming: ReadonlyArray<{
+      readonly __typename: 'ScheduleMonth',
+      readonly year: string,
+      readonly month: string,
+      readonly monthSort?: number | null,
+      readonly tournaments: ReadonlyArray<{
+        readonly __typename: 'ScheduleTournament',
+        readonly date: string,
+        readonly id: string,
+        readonly sortDate?: string | null,
+        readonly tournamentName: string,
+        readonly tournamentStatus: TournamentStatus,
+        readonly beautyImageAsset?: {
+          readonly __typename: 'ImageAsset',
+          readonly fallbackImage?: string | null,
+          readonly imageOrg: string,
+          readonly imagePath: string
+        } | null,
+        readonly status?: {
+          readonly __typename: 'ScheduleTournamentStatus',
+          readonly roundDisplay: string,
+          readonly roundStatus: RoundStatus,
+          readonly roundStatusColor: RoundStatusColor,
+          readonly roundStatusDisplay: string
+        } | null,
+        readonly tournamentLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly fallbackImage?: string | null,
+          readonly imageOrg: string,
+          readonly imagePath: string
+        }
+      }>
+    }>
+  }>
+};
 
 export type UpcomingScheduleQueryVariables = Exact<{
   tourCode: Scalars['String']['input'];
 }>;
 
 
-export type UpcomingScheduleQuery = { readonly __typename: 'Query', readonly upcomingSchedule: { readonly __typename: 'ScheduleUpcoming', readonly tournaments: ReadonlyArray<{ readonly __typename: 'ScheduleTournament', readonly date: string, readonly id: string, readonly sortDate?: string | null, readonly tournamentName: string, readonly tournamentStatus: TournamentStatus, readonly beautyImageAsset?: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } | null, readonly status?: { readonly __typename: 'ScheduleTournamentStatus', readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly roundStatusDisplay: string } | null, readonly tournamentLogoAsset: { readonly __typename: 'ImageAsset', readonly fallbackImage?: string | null, readonly imageOrg: string, readonly imagePath: string } }> } };
+export type UpcomingScheduleQuery = {
+  readonly __typename: 'Query',
+  readonly upcomingSchedule: {
+    readonly __typename: 'ScheduleUpcoming',
+    readonly tournaments: ReadonlyArray<{
+      readonly __typename: 'ScheduleTournament',
+      readonly date: string,
+      readonly id: string,
+      readonly sortDate?: string | null,
+      readonly tournamentName: string,
+      readonly tournamentStatus: TournamentStatus,
+      readonly beautyImageAsset?: {
+        readonly __typename: 'ImageAsset',
+        readonly fallbackImage?: string | null,
+        readonly imageOrg: string,
+        readonly imagePath: string
+      } | null,
+      readonly status?: {
+        readonly __typename: 'ScheduleTournamentStatus',
+        readonly roundDisplay: string,
+        readonly roundStatus: RoundStatus,
+        readonly roundStatusColor: RoundStatusColor,
+        readonly roundStatusDisplay: string
+      } | null,
+      readonly tournamentLogoAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly fallbackImage?: string | null,
+        readonly imageOrg: string,
+        readonly imagePath: string
+      }
+    }>
+  }
+};
 
 export type TournamentsQueryVariables = Exact<{
   ids?: InputMaybe<ReadonlyArray<Scalars['ID']['input']> | Scalars['ID']['input']>;
 }>;
 
 
-export type TournamentsQuery = { readonly __typename: 'Query', readonly tournaments: ReadonlyArray<{ readonly __typename: 'Tournament', readonly id: string, readonly tournamentName: string, readonly tournamentLogo: ReadonlyArray<string>, readonly tournamentLocation: string, readonly tournamentStatus: TournamentStatus, readonly features?: ReadonlyArray<TournamentFeature> | null, readonly formatType: FormatType, readonly roundStatusDisplay: string, readonly roundDisplay: string, readonly roundStatus: RoundStatus, readonly roundStatusColor: RoundStatusColor, readonly leaderboardTakeover: boolean, readonly currentRound: number, readonly timezone: string, readonly seasonYear: string, readonly displayDate: string, readonly country: string, readonly state: string, readonly city: string, readonly scoredLevel: ScoringLevel, readonly ticketsURL?: string | null, readonly tournamentSiteURL?: string | null, readonly useTournamentSiteURL: boolean, readonly pdfUrl?: string | null, readonly conductedByLabel?: string | null, readonly conductedByLink?: string | null, readonly beautyImage: string, readonly shouldSubscribe?: boolean | null, readonly infoPath?: string | null, readonly infoPathWebview?: string | null, readonly howItWorks?: string | null, readonly howItWorksPill?: string | null, readonly howItWorksWebview?: string | null, readonly hideRolexClock: boolean, readonly hideSov: boolean, readonly ticketsEnabled: boolean, readonly headshotBaseUrl?: string | null, readonly disabledScorecardTabs: ReadonlyArray<ScorecardTabFeature>, readonly tournamentLogoAsset: ReadonlyArray<{ readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null }>, readonly events: ReadonlyArray<{ readonly __typename: 'Event', readonly id: string, readonly eventName: string, readonly leaderboardId: string }>, readonly courses: ReadonlyArray<{ readonly __typename: 'Course', readonly id: string, readonly courseName: string, readonly courseCode: string, readonly hostCourse: boolean, readonly scoringLevel: ScoringLevel, readonly enabled?: boolean | null, readonly features?: ReadonlyArray<TeeTimesFeature> | null }>, readonly weather?: { readonly __typename: 'TournamentWeather', readonly logo?: string | null, readonly logoDark?: string | null, readonly logoAccessibility: string, readonly tempF: string, readonly tempC: string, readonly condition: WeatherCondition, readonly windDirection: WindDirection, readonly windSpeedMPH: string, readonly windSpeedKPH: string, readonly precipitation: string, readonly humidity: string, readonly logoAsset: { readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null }, readonly logoDarkAsset: { readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null } } | null, readonly beautyImageAsset: { readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null }, readonly rightRailConfig?: { readonly __typename: 'TournamentRightRailConfig', readonly imageUrl: string, readonly imageAltText: string, readonly buttonLink?: string | null, readonly buttonText?: string | null } | null, readonly tournamentCategoryInfo?: { readonly __typename: 'TournamentCategoryInfo', readonly type: TournamentCategory, readonly logoLight: string, readonly logoDark: string, readonly label: string, readonly logoLightAsset: { readonly __typename: 'ImageAsset', readonly imageOrg: string, readonly imagePath: string, readonly assetType?: string | null, readonly deliveryType?: string | null, readonly fallbackImage?: string | null } } | null }> };
+export type TournamentsQuery = {
+  readonly __typename: 'Query',
+  readonly tournaments: ReadonlyArray<{
+    readonly __typename: 'Tournament',
+    readonly id: string,
+    readonly tournamentName: string,
+    readonly tournamentLogo: ReadonlyArray<string>,
+    readonly tournamentLocation: string,
+    readonly tournamentStatus: TournamentStatus,
+    readonly features?: ReadonlyArray<TournamentFeature> | null,
+    readonly formatType: FormatType,
+    readonly roundStatusDisplay: string,
+    readonly roundDisplay: string,
+    readonly roundStatus: RoundStatus,
+    readonly roundStatusColor: RoundStatusColor,
+    readonly leaderboardTakeover: boolean,
+    readonly currentRound: number,
+    readonly timezone: string,
+    readonly seasonYear: string,
+    readonly displayDate: string,
+    readonly country: string,
+    readonly state: string,
+    readonly city: string,
+    readonly scoredLevel: ScoringLevel,
+    readonly ticketsURL?: string | null,
+    readonly tournamentSiteURL?: string | null,
+    readonly useTournamentSiteURL: boolean,
+    readonly pdfUrl?: string | null,
+    readonly conductedByLabel?: string | null,
+    readonly conductedByLink?: string | null,
+    readonly beautyImage: string,
+    readonly shouldSubscribe?: boolean | null,
+    readonly infoPath?: string | null,
+    readonly infoPathWebview?: string | null,
+    readonly howItWorks?: string | null,
+    readonly howItWorksPill?: string | null,
+    readonly howItWorksWebview?: string | null,
+    readonly hideRolexClock: boolean,
+    readonly hideSov: boolean,
+    readonly ticketsEnabled: boolean,
+    readonly headshotBaseUrl?: string | null,
+    readonly disabledScorecardTabs: ReadonlyArray<ScorecardTabFeature>,
+    readonly tournamentLogoAsset: ReadonlyArray<{
+      readonly __typename: 'ImageAsset',
+      readonly imageOrg: string,
+      readonly imagePath: string,
+      readonly assetType?: string | null,
+      readonly deliveryType?: string | null,
+      readonly fallbackImage?: string | null
+    }>,
+    readonly events: ReadonlyArray<{
+      readonly __typename: 'Event',
+      readonly id: string,
+      readonly eventName: string,
+      readonly leaderboardId: string
+    }>,
+    readonly courses: ReadonlyArray<{
+      readonly __typename: 'Course',
+      readonly id: string,
+      readonly courseName: string,
+      readonly courseCode: string,
+      readonly hostCourse: boolean,
+      readonly scoringLevel: ScoringLevel,
+      readonly enabled?: boolean | null,
+      readonly features?: ReadonlyArray<TeeTimesFeature> | null
+    }>,
+    readonly weather?: {
+      readonly __typename: 'TournamentWeather',
+      readonly logo?: string | null,
+      readonly logoDark?: string | null,
+      readonly logoAccessibility: string,
+      readonly tempF: string,
+      readonly tempC: string,
+      readonly condition: WeatherCondition,
+      readonly windDirection: WindDirection,
+      readonly windSpeedMPH: string,
+      readonly windSpeedKPH: string,
+      readonly precipitation: string,
+      readonly humidity: string,
+      readonly logoAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      },
+      readonly logoDarkAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      }
+    } | null,
+    readonly beautyImageAsset: {
+      readonly __typename: 'ImageAsset',
+      readonly imageOrg: string,
+      readonly imagePath: string,
+      readonly assetType?: string | null,
+      readonly deliveryType?: string | null,
+      readonly fallbackImage?: string | null
+    },
+    readonly rightRailConfig?: {
+      readonly __typename: 'TournamentRightRailConfig',
+      readonly imageUrl: string,
+      readonly imageAltText: string,
+      readonly buttonLink?: string | null,
+      readonly buttonText?: string | null
+    } | null,
+    readonly tournamentCategoryInfo?: {
+      readonly __typename: 'TournamentCategoryInfo',
+      readonly type: TournamentCategory,
+      readonly logoLight: string,
+      readonly logoDark: string,
+      readonly label: string,
+      readonly logoLightAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      }
+    } | null
+  }>
+};
 
 export const ScheduleTournamentFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<ScheduleTournamentFieldsFragment, unknown>;
 export const ScheduleMonthFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}}]}}]} as unknown as DocumentNode<ScheduleMonthFieldsFragment, unknown>;

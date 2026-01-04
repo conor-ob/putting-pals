@@ -26,6 +26,7 @@ const config: CodegenConfig = {
         enumsAsTypes: true,
         immutableTypes: true,
         nonOptionalTypename: true,
+        printFieldsOnNewLines: true,
         useTypeImports: true,
       },
     },
