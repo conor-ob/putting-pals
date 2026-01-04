@@ -1,67 +1,41 @@
 import type {
+  ApiLeaderboard,
+  ApiLeaderboardHoleByHole,
+  ApiTournament,
   RoundStatus,
   RoundStatusColor,
   TournamentStatus,
 } from "@putting-pals/pga-tour-schema/types";
 
-export type LeaderboardSnapshot = LeaderboardSnapshotV1;
+// Auto-generated hash - run `pnpm update:snapshot` after changing LeaderboardSnapshot
+export const LeaderboardSnapshotTypename = "cc3a9b4e" as const;
 
-export type LeaderboardSnapshotV1 = {
-  __typename: "LeaderboardSnapshotV1";
-  tournament: {
-    beautyImageAsset: {
-      assetType?: string | null;
-      deliveryType?: string | null;
-      fallbackImage?: string | null;
-      imageOrg: string;
-      imagePath: string;
-    };
-    roundDisplay: string;
-    roundStatus: RoundStatus;
-    roundStatusColor: RoundStatusColor;
-    roundStatusDisplay: string;
-    tournamentLogoAsset: {
-      assetType?: string | null;
-      deliveryType?: string | null;
-      fallbackImage?: string | null;
-      imageOrg: string;
-      imagePath: string;
-    }[];
-    tournamentName: string;
-    tournamentStatus: TournamentStatus;
-  };
-  leaderboard: {
-    players: (
-      | {
-          __typename: "InformationRow";
-        }
-      | {
-          __typename: "PlayerRowV3";
-          player: {
-            id: string;
-            displayName: string;
-          };
-          scoringData: {
-            position: string;
-            total: string;
-          };
-        }
+export type LeaderboardSnapshot = {
+  __typename: typeof LeaderboardSnapshotTypename;
+  tournament: ApiTournament;
+  leaderboard: Omit<ApiLeaderboard, "players"> & {
+    players: ReadonlyArray<
+      | ApiLeaderboard["players"][number]
       | {
           __typename: "PuttingPalsPlayerRow";
+          id: string;
+          leaderboardSortOrder: number;
+          picks: string[];
           player: {
-            id: string;
+            countryFlag: string;
             displayName: string;
+            id: string;
+            shortName: string;
           };
           scoringData: {
             position: string;
             total: string;
+            totalSort: number;
           };
         }
-    )[];
+    >;
   };
-  leaderboardHoleByHole: {
-    tournamentId: string;
-  };
+  leaderboardHoleByHole: ApiLeaderboardHoleByHole;
 };
 
 export type RoundStatusChangedV1 = {

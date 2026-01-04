@@ -9,6 +9,7 @@ import {
   serial,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
 
@@ -47,11 +48,10 @@ export const leaderboardSnapshotTable = pgTable(
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
-    type: text("type").notNull(),
     snapshot: jsonb("snapshot").notNull().$type<LeaderboardSnapshot>(),
   },
   (table) => [
-    index("leaderboard_snapshot_tournament_idx").on(
+    uniqueIndex("leaderboard_snapshot_tournament_idx").on(
       table.tourCode,
       table.tournamentId,
     ),

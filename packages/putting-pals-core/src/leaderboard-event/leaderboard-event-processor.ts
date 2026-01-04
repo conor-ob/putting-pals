@@ -3,10 +3,11 @@ import {
   leaderboardFeedTable,
   leaderboardSnapshotTable,
 } from "@putting-pals/putting-pals-db/schema";
-import type {
-  LeaderboardEvent,
-  LeaderboardSnapshotV1,
-  TourCode,
+import {
+  type LeaderboardEvent,
+  type LeaderboardSnapshot,
+  LeaderboardSnapshotTypename,
+  type TourCode,
 } from "@putting-pals/putting-pals-schema/types";
 import { and, desc, eq } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
@@ -42,8 +43,11 @@ export class LeaderboardEventProcessor {
       tournamentId,
     );
 
-    if (before === undefined || before.__typename !== after.__typename) {
+    if (before === undefined) {
       await this.insertBaseLeaderboardSnapshot(tourCode, tournamentId, after);
+      return;
+    } else if (before.__typename !== LeaderboardSnapshotTypename) {
+      await this.updateLeaderboardSnapshot(tourCode, tournamentId, after);
       return;
     }
 
@@ -111,89 +115,48 @@ export class LeaderboardEventProcessor {
       );
 
     return {
-      __typename: "LeaderboardSnapshotV1",
-      tournament: {
-        beautyImageAsset: {
-          assetType: tournament.beautyImageAsset.assetType,
-          deliveryType: tournament.beautyImageAsset.deliveryType,
-          fallbackImage: tournament.beautyImageAsset.fallbackImage,
-          imageOrg: tournament.beautyImageAsset.imageOrg,
-          imagePath: tournament.beautyImageAsset.imagePath,
-        },
-        roundDisplay: tournament.roundDisplay,
-        roundStatus: tournament.roundStatus,
-        roundStatusColor: tournament.roundStatusColor,
-        roundStatusDisplay: tournament.roundStatusDisplay,
-        tournamentLogoAsset: tournament.tournamentLogoAsset.map((asset) => ({
-          assetType: asset.assetType,
-          deliveryType: asset.deliveryType,
-          fallbackImage: asset.fallbackImage,
-          imageOrg: asset.imageOrg,
-          imagePath: asset.imagePath,
-        })),
-        tournamentName: tournament.tournamentName,
-        tournamentStatus: tournament.tournamentStatus,
-      },
-      leaderboard: {
-        players: leaderboard.players.flatMap((row) => {
-          switch (row.__typename) {
-            case "InformationRow":
-              return {
-                __typename: "InformationRow" as const,
-              };
-            case "PlayerRowV3":
-              return {
-                __typename: "PlayerRowV3" as const,
-                player: {
-                  id: row.player.id,
-                  displayName: row.player.displayName,
-                },
-                scoringData: {
-                  position: row.scoringData.position,
-                  total: row.scoringData.total,
-                },
-              };
-            case "PuttingPalsPlayerRow":
-              return {
-                __typename: "PuttingPalsPlayerRow" as const,
-                player: {
-                  id: row.player.id,
-                  displayName: row.player.displayName,
-                },
-                scoringData: {
-                  position: row.scoringData.position,
-                  total: row.scoringData.total,
-                },
-              };
-            default:
-              return [];
-          }
-        }),
-      },
-      leaderboardHoleByHole: {
-        tournamentId: leaderboardHoleByHole.tournamentId,
-      },
-    } satisfies LeaderboardSnapshotV1;
+      __typename: LeaderboardSnapshotTypename,
+      tournament: tournament,
+      leaderboard: leaderboard,
+      leaderboardHoleByHole: leaderboardHoleByHole,
+    } satisfies LeaderboardSnapshot;
   }
 
   private async insertBaseLeaderboardSnapshot(
     tourCode: TourCode,
     tournamentId: string,
-    snapshot: LeaderboardSnapshotV1,
+    snapshot: LeaderboardSnapshot,
   ) {
     return this.db.insert(leaderboardSnapshotTable).values({
       tourCode: tourCode,
       tournamentId: tournamentId,
-      type: snapshot.__typename,
       snapshot: snapshot,
     });
+  }
+
+  private async updateLeaderboardSnapshot(
+    tourCode: TourCode,
+    tournamentId: string,
+    snapshot: LeaderboardSnapshot,
+  ) {
+    return this.db
+      .update(leaderboardSnapshotTable)
+      .set({
+        snapshot: snapshot,
+      })
+      .where(
+        and(
+          eq(leaderboardSnapshotTable.tourCode, tourCode),
+          eq(leaderboardSnapshotTable.tournamentId, tournamentId),
+        ),
+      );
   }
 
   private async insertLeaderboardFeedEvents(
     tourCode: TourCode,
     tournamentId: string,
     events: LeaderboardEvent[],
-    snapshot: LeaderboardSnapshotV1,
+    snapshot: LeaderboardSnapshot,
   ) {
     await this.db.transaction(async (tx) => {
       await tx.insert(leaderboardFeedTable).values(
@@ -208,7 +171,6 @@ export class LeaderboardEventProcessor {
       await tx
         .update(leaderboardSnapshotTable)
         .set({
-          type: snapshot.__typename,
           snapshot: snapshot,
         })
         .where(

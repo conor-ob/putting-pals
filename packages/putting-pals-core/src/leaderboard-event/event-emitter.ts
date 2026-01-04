@@ -1,6 +1,6 @@
 import type {
   LeaderboardEvent,
-  LeaderboardSnapshotV1,
+  LeaderboardSnapshot,
   TourCode,
 } from "@putting-pals/putting-pals-schema/types";
 
@@ -15,8 +15,8 @@ export interface EventEmitter {
 export abstract class AbstractEventEmitter implements EventEmitter {
   constructor(
     protected readonly tourCode: TourCode,
-    protected readonly before: LeaderboardSnapshotV1,
-    protected readonly after: LeaderboardSnapshotV1,
+    protected readonly before: LeaderboardSnapshot,
+    protected readonly after: LeaderboardSnapshot,
   ) {
     this.tourCode = tourCode;
     this.before = before;
