@@ -4,6 +4,7 @@ import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { parseISO } from "date-fns";
 import { CompetitionService } from "../competition/competition-service";
 import { TournamentService } from "../tournament/tournament-service";
+import { parseStartDate } from "../tournament/tournament-utils";
 import { transformScheduleYears } from "./schedule-years-transformer";
 
 export class ScheduleYearsService {
@@ -26,8 +27,8 @@ export class ScheduleYearsService {
       ]);
     return pgaTourScheduleYears.filter((year) =>
       puttingPalsHistoricalSchedule.some(
-        (schedule) =>
-          parseISO(schedule.startDate).getFullYear() ===
+        (tournament) =>
+          parseISO(parseStartDate(tournament)).getFullYear() ===
           Number(year.queryValue),
       ),
     );

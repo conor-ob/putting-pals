@@ -4,6 +4,7 @@ import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { CompetitionService } from "../competition/competition-service";
 import { NotFoundError } from "../utils/service-error";
 import { TournamentService } from "./tournament-service";
+import { parseStartDate } from "./tournament-utils";
 
 export class TournamentResolver {
   getCurrentTournamentId(tourCode: TourCode) {
@@ -57,7 +58,7 @@ export class TournamentResolver {
       competitionIds,
     );
     const currentTournament = tournaments.sort((a, b) =>
-      b.startDate.localeCompare(a.startDate),
+      parseStartDate(b).localeCompare(parseStartDate(a)),
     )[0];
 
     if (currentTournament === undefined) {
