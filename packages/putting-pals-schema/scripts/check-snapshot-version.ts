@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noConsole: script */
 import * as crypto from "node:crypto";
 import * as fs from "node:fs";
 

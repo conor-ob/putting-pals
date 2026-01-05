@@ -6,7 +6,7 @@ import {
 import {
   type LeaderboardEvent,
   type LeaderboardSnapshot,
-  LeaderboardSnapshotTypename,
+  LeaderboardSnapshotVersion,
   type TourCode,
 } from "@putting-pals/putting-pals-schema/types";
 import { and, desc, eq } from "drizzle-orm";
@@ -46,21 +46,21 @@ export class LeaderboardEventProcessor {
     if (before === undefined) {
       await this.insertBaseLeaderboardSnapshot(tourCode, tournamentId, after);
       return;
-    } else if (before.__typename !== LeaderboardSnapshotTypename) {
+    } else if (before.version !== LeaderboardSnapshotVersion) {
       await this.updateLeaderboardSnapshot(tourCode, tournamentId, after);
       return;
     }
 
     const eventEmitters: EventEmitter[] = [
-      new BirdieStreak(tourCode, before, after),
-      new NewLeader(tourCode, before, after),
-      new PlayerDisqualified(tourCode, before, after),
-      new PlayerPositionDecreased(tourCode, before, after),
-      new PlayerPositionIncreased(tourCode, before, after),
-      new PlayerWithdrawn(tourCode, before, after),
-      new RoundStatusChanged(tourCode, before, after),
-      new TournamentStatusChanged(tourCode, before, after),
-      new TournamentWinner(tourCode, before, after),
+      new BirdieStreak(tourCode, before.snapshot, after),
+      new NewLeader(tourCode, before.snapshot, after),
+      new PlayerDisqualified(tourCode, before.snapshot, after),
+      new PlayerPositionDecreased(tourCode, before.snapshot, after),
+      new PlayerPositionIncreased(tourCode, before.snapshot, after),
+      new PlayerWithdrawn(tourCode, before.snapshot, after),
+      new RoundStatusChanged(tourCode, before.snapshot, after),
+      new TournamentStatusChanged(tourCode, before.snapshot, after),
+      new TournamentWinner(tourCode, before.snapshot, after),
     ];
 
     const events = eventEmitters
@@ -84,6 +84,7 @@ export class LeaderboardEventProcessor {
   ) {
     return this.db
       .select({
+        version: leaderboardSnapshotTable.version,
         snapshot: leaderboardSnapshotTable.snapshot,
       })
       .from(leaderboardSnapshotTable)
@@ -95,7 +96,7 @@ export class LeaderboardEventProcessor {
       )
       .orderBy(desc(leaderboardSnapshotTable.updatedAt))
       .limit(1)
-      .then(([result]) => result?.snapshot);
+      .then(([result]) => result);
   }
 
   private async getLeaderboardSnapshotAfter(
@@ -115,7 +116,6 @@ export class LeaderboardEventProcessor {
       );
 
     return {
-      __typename: LeaderboardSnapshotTypename,
       tournament: tournament,
       leaderboard: leaderboard,
       leaderboardHoleByHole: leaderboardHoleByHole,
@@ -130,6 +130,7 @@ export class LeaderboardEventProcessor {
     return this.db.insert(leaderboardSnapshotTable).values({
       tourCode: tourCode,
       tournamentId: tournamentId,
+      version: LeaderboardSnapshotVersion,
       snapshot: snapshot,
     });
   }
@@ -143,6 +144,7 @@ export class LeaderboardEventProcessor {
       .update(leaderboardSnapshotTable)
       .set({
         snapshot: snapshot,
+        version: LeaderboardSnapshotVersion,
       })
       .where(
         and(

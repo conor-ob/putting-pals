@@ -17,6 +17,7 @@ CREATE TABLE "leaderboard_snapshot" (
 	"deleted_at" timestamp (3) with time zone,
 	"tour_code" text NOT NULL,
 	"tournament_id" text NOT NULL,
+	"version" integer NOT NULL,
 	"snapshot" jsonb NOT NULL
 );
 --> statement-breakpoint

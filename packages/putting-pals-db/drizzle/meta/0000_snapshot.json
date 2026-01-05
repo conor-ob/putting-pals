@@ -1,5 +1,5 @@
 {
-  "id": "5b03a36f-8664-4076-82c1-15e58b8ab57e",
+  "id": "f900e6ba-ca47-4422-8be1-11cdaf3dc443",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -151,6 +151,12 @@
         "tournament_id": {
           "name": "tournament_id",
           "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "version": {
+          "name": "version",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },

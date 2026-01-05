@@ -8,10 +8,10 @@ import type {
 } from "@putting-pals/pga-tour-schema/types";
 
 // Auto-generated hash - run `pnpm update:snapshot` after changing LeaderboardSnapshot
-export const LeaderboardSnapshotTypename = "cc3a9b4e" as const;
+export const LeaderboardSnapshotHash = "465419f4" as const;
+export const LeaderboardSnapshotVersion = 1 as const;
 
 export type LeaderboardSnapshot = {
-  __typename: typeof LeaderboardSnapshotTypename;
   tournament: ApiTournament;
   leaderboard: Omit<ApiLeaderboard, "players"> & {
     players: ReadonlyArray<

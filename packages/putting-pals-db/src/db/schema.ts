@@ -4,6 +4,7 @@ import type {
 } from "@putting-pals/putting-pals-schema/types";
 import {
   index,
+  integer,
   jsonb,
   pgTable,
   serial,
@@ -48,6 +49,7 @@ export const leaderboardSnapshotTable = pgTable(
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
+    version: integer("version").notNull(),
     snapshot: jsonb("snapshot").notNull().$type<LeaderboardSnapshot>(),
   },
   (table) => [
