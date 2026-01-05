@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
 
-export function TournamentStatusChanged({
+export function TournamentStatusChangedV1({
   item,
 }: {
   item: RouterOutputs["feed"]["get"]["items"][number]["feedItem"] & {

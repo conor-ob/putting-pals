@@ -3,8 +3,8 @@ import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { trpc } from "~/providers/trpc/utils/trpc";
 import { useInfiniteQuery } from "~/providers/trpc/utils/use-infinite-query";
-import { RoundStatusChanged } from "./feed-items/round-status-changed";
-import { TournamentStatusChanged } from "./feed-items/tournament-status-changed";
+import { RoundStatusChangedV1 } from "./feed-items/round-status-changed-v1";
+import { TournamentStatusChangedV1 } from "./feed-items/tournament-status-changed-v1";
 
 export function FeedPage() {
   const { tourCode } = useTourCode();
@@ -56,9 +56,9 @@ export function FeedPage() {
       renderItem={({ item }) => {
         switch (item.feedItem.__typename) {
           case "RoundStatusChangedV1":
-            return <RoundStatusChanged item={item.feedItem} />;
+            return <RoundStatusChangedV1 item={item.feedItem} />;
           case "TournamentStatusChangedV1":
-            return <TournamentStatusChanged item={item.feedItem} />;
+            return <TournamentStatusChangedV1 item={item.feedItem} />;
           default:
             return (
               <View className="p-4">

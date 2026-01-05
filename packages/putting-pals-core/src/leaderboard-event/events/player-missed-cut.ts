@@ -1,24 +1,24 @@
 import type {
   LeaderboardEvent,
-  PlayerWithdrawnV1,
+  PlayerMissedCutV1,
 } from "@putting-pals/putting-pals-schema/types";
 import { EventPriority } from "../event-emitter";
 import { PlayerStateChanged } from "./player-state-changed";
 
-export class PlayerWithdrawn extends PlayerStateChanged {
+export class PlayerMissedCut extends PlayerStateChanged {
   override emit(): LeaderboardEvent[] {
-    const players = this.getPlayersStateChanged("WITHDRAWN");
+    const players = this.getPlayersStateChanged("CUT");
     if (players.length === 0) {
       return [];
     }
 
     return [
       {
-        __typename: "PlayerWithdrawnV1" as const,
+        __typename: "PlayerMissedCutV1" as const,
         players: players.map((player) => ({
           displayName: player.player.displayName,
         })),
-      } satisfies PlayerWithdrawnV1,
+      } satisfies PlayerMissedCutV1,
     ];
   }
 

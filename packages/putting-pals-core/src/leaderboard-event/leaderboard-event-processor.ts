@@ -17,6 +17,7 @@ import type { EventEmitter } from "./event-emitter";
 import { BirdieStreak } from "./events/birdie-streak";
 import { NewLeader } from "./events/new-leader";
 import { PlayerDisqualified } from "./events/player-disqualified";
+import { PlayerMissedCut } from "./events/player-missed-cut";
 import { PlayerPositionDecreased } from "./events/player-position-decreased";
 import { PlayerPositionIncreased } from "./events/player-position-increased";
 import { PlayerWithdrawn } from "./events/player-withdrawn";
@@ -34,7 +35,7 @@ export class LeaderboardEventProcessor {
       tourCode,
     );
 
-    const before = await this.getLeaderboardSnapshotBefore(
+    const queryResult = await this.getLeaderboardSnapshotBefore(
       tourCode,
       tournamentId,
     );
@@ -43,28 +44,29 @@ export class LeaderboardEventProcessor {
       tournamentId,
     );
 
-    if (before === undefined) {
+    if (queryResult === undefined) {
       await this.insertBaseLeaderboardSnapshot(tourCode, tournamentId, after);
       return;
-    } else if (before.version !== LeaderboardSnapshotVersion) {
+    } else if (queryResult.version !== LeaderboardSnapshotVersion) {
       await this.updateLeaderboardSnapshot(tourCode, tournamentId, after);
       return;
     }
 
+    const before = queryResult.snapshot;
     const eventEmitters: EventEmitter[] = [
-      new BirdieStreak(tourCode, before.snapshot, after),
-      new NewLeader(tourCode, before.snapshot, after),
-      new PlayerDisqualified(tourCode, before.snapshot, after),
-      new PlayerPositionDecreased(tourCode, before.snapshot, after),
-      new PlayerPositionIncreased(tourCode, before.snapshot, after),
-      new PlayerWithdrawn(tourCode, before.snapshot, after),
-      new RoundStatusChanged(tourCode, before.snapshot, after),
-      new TournamentStatusChanged(tourCode, before.snapshot, after),
-      new TournamentWinner(tourCode, before.snapshot, after),
+      new BirdieStreak(tourCode, before, after),
+      new NewLeader(tourCode, before, after),
+      new PlayerDisqualified(tourCode, before, after),
+      new PlayerMissedCut(tourCode, before, after),
+      new PlayerPositionDecreased(tourCode, before, after),
+      new PlayerPositionIncreased(tourCode, before, after),
+      new PlayerWithdrawn(tourCode, before, after),
+      new RoundStatusChanged(tourCode, before, after),
+      new TournamentStatusChanged(tourCode, before, after),
+      new TournamentWinner(tourCode, before, after),
     ];
 
     const events = eventEmitters
-      .filter((eventEmitter) => eventEmitter.filter())
       .sort((a, b) => a.getPriority() - b.getPriority())
       .flatMap((eventEmitter) => eventEmitter.emit());
 

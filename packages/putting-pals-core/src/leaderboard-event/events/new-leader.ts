@@ -1,5 +1,6 @@
 import type {
   LeaderboardEvent,
+  LeaderboardSnapshot,
   NewLeaderV1,
 } from "@putting-pals/putting-pals-schema/types";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
@@ -22,9 +23,20 @@ export class NewLeader extends AbstractEventEmitter {
   }
 
   private getPgaTourNewLeader(): LeaderboardEvent[] {
-    const test = false;
+    const leadersBefore = this.getLeaders(this.before);
+    const leadersAfter = this.getLeaders(this.after);
 
-    if (!test) {
+    const leaderIdsBefore = leadersBefore
+      .map((leader) => leader.player.id)
+      .sort((a, b) => a.localeCompare(b));
+    const leaderIdsAfter = leadersAfter
+      .map((leader) => leader.player.id)
+      .sort((a, b) => a.localeCompare(b));
+
+    if (
+      leaderIdsBefore.length === leaderIdsAfter.length &&
+      leaderIdsBefore.every((id, i) => id === leaderIdsAfter[i])
+    ) {
       return [];
     }
 
@@ -32,30 +44,25 @@ export class NewLeader extends AbstractEventEmitter {
       {
         __typename: "NewLeaderV1" as const,
         before: {
-          leaders: this.before.leaderboard.players
-            .filter((row) => row.__typename === "PlayerRowV3")
-            .filter(
-              (row) =>
-                row.scoringData.position === "1" ||
-                row.scoringData.position === "T1",
-            )
-            .map((row) => ({
-              displayName: row.player.displayName,
-            })),
+          leaders: leadersBefore.map((row) => ({
+            displayName: row.player.displayName,
+          })),
         },
         after: {
-          leaders: this.after.leaderboard.players
-            .filter((row) => row.__typename === "PlayerRowV3")
-            .filter(
-              (row) =>
-                row.scoringData.position === "1" ||
-                row.scoringData.position === "T1",
-            )
-            .map((row) => ({
-              displayName: row.player.displayName,
-            })),
+          leaders: leadersAfter.map((row) => ({
+            displayName: row.player.displayName,
+          })),
         },
       } satisfies NewLeaderV1,
     ];
+  }
+
+  private getLeaders(snapshot: LeaderboardSnapshot) {
+    return snapshot.leaderboard.players
+      .filter((row) => row.__typename === "PlayerRowV3")
+      .filter(
+        (row) =>
+          row.scoringData.position === "1" || row.scoringData.position === "T1",
+      );
   }
 }

@@ -5,8 +5,6 @@ import type {
 } from "@putting-pals/putting-pals-schema/types";
 
 export interface EventEmitter {
-  filter(): boolean;
-
   emit(): LeaderboardEvent[];
 
   getPriority(): number;
@@ -23,10 +21,6 @@ export abstract class AbstractEventEmitter implements EventEmitter {
     this.after = after;
   }
 
-  filter(): boolean {
-    return true;
-  }
-
   abstract emit(): LeaderboardEvent[];
 
   abstract getPriority(): number;
@@ -39,9 +33,10 @@ export const EventPriority = {
   PLAYER_DISQUALIFIED_EVENT: 3,
   PLAYER_POSITION_DECREASED_EVENT: 4,
   PLAYER_POSITION_INCREASED_EVENT: 5,
-  BIRDIE_STREAK_EVENT: 6,
-  NEW_LEADER_EVENT: 7,
-  TOURNAMENT_WINNER_EVENT: 8,
-  ROUND_STOPPING_EVENT: 9,
-  TOURNAMENT_STOPPING_EVENT: 10,
+  PLAYER_MISSED_CUT_EVENT: 6,
+  BIRDIE_STREAK_EVENT: 7,
+  NEW_LEADER_EVENT: 8,
+  TOURNAMENT_WINNER_EVENT: 9,
+  ROUND_STOPPING_EVENT: 10,
+  TOURNAMENT_STOPPING_EVENT: 11,
 } as const;

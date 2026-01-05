@@ -81,3 +81,24 @@ export type NewLeaderV1 = {
     }[];
   };
 };
+
+export type PlayerDisqualifiedV1 = {
+  __typename: "PlayerDisqualifiedV1";
+  players: {
+    displayName: string;
+  }[];
+};
+
+export type PlayerMissedCutV1 = {
+  __typename: "PlayerMissedCutV1";
+  players: {
+    displayName: string;
+  }[];
+};
+
+export type PlayerWithdrawnV1 = {
+  __typename: "PlayerWithdrawnV1";
+  players: {
+    displayName: string;
+  }[];
+};

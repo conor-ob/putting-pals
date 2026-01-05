@@ -6,14 +6,14 @@ import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class RoundStatusChanged extends AbstractEventEmitter {
-  override filter(): boolean {
-    return (
-      this.after.tournament.roundStatus !== "UPCOMING" &&
-      this.after.tournament.roundStatus !== this.before.tournament.roundStatus
-    );
-  }
-
   override emit(): LeaderboardEvent[] {
+    if (
+      this.after.tournament.roundStatus === "UPCOMING" ||
+      this.after.tournament.roundStatus === this.before.tournament.roundStatus
+    ) {
+      return [];
+    }
+
     return [
       {
         __typename: "RoundStatusChangedV1" as const,

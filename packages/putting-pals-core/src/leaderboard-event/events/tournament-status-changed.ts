@@ -6,15 +6,15 @@ import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class TournamentStatusChanged extends AbstractEventEmitter {
-  override filter(): boolean {
-    return (
-      this.after.tournament.tournamentStatus !== "NOT_STARTED" &&
-      this.before.tournament.tournamentStatus !==
-        this.after.tournament.tournamentStatus
-    );
-  }
-
   override emit(): LeaderboardEvent[] {
+    if (
+      this.after.tournament.tournamentStatus === "NOT_STARTED" ||
+      this.after.tournament.tournamentStatus ===
+        this.before.tournament.tournamentStatus
+    ) {
+      return [];
+    }
+
     return [
       {
         __typename: "TournamentStatusChangedV1" as const,

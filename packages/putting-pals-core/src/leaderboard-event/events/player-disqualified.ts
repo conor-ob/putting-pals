@@ -1,17 +1,25 @@
-import type { LeaderboardEvent } from "@putting-pals/putting-pals-schema/types";
-import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
-import { AbstractEventEmitter, EventPriority } from "../event-emitter";
+import type {
+  LeaderboardEvent,
+  PlayerDisqualifiedV1,
+} from "@putting-pals/putting-pals-schema/types";
+import { EventPriority } from "../event-emitter";
+import { PlayerStateChanged } from "./player-state-changed";
 
-export class PlayerDisqualified extends AbstractEventEmitter {
+export class PlayerDisqualified extends PlayerStateChanged {
   override emit(): LeaderboardEvent[] {
-    switch (this.tourCode) {
-      case "P":
-        return [];
-      case "R":
-        return [];
-      default:
-        assertNever(this.tourCode);
+    const players = this.getPlayersStateChanged("DISQUALIFIED");
+    if (players.length === 0) {
+      return [];
     }
+
+    return [
+      {
+        __typename: "PlayerDisqualifiedV1" as const,
+        players: players.map((player) => ({
+          displayName: player.player.displayName,
+        })),
+      } satisfies PlayerDisqualifiedV1,
+    ];
   }
 
   override getPriority(): number {

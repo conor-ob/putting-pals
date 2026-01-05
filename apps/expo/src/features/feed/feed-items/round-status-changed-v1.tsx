@@ -3,7 +3,7 @@ import { RoundStatusBadge } from "~/components/round-status-badge";
 import { RoundStatusLabel } from "~/components/round-status-label";
 import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
 
-export function RoundStatusChanged({
+export function RoundStatusChangedV1({
   item,
 }: {
   item: RouterOutputs["feed"]["get"]["items"][number]["feedItem"] & {
