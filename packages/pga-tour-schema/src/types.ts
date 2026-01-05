@@ -1,33 +1,29 @@
-import type {
-  CompleteScheduleQuery,
-  LeaderboardHoleByHoleQuery,
-  LeaderboardV3Query,
-  ScheduleQuery,
-  ScheduleYearsQuery,
-  TournamentsQuery,
-  UpcomingScheduleQuery,
-} from "./generated/graphql";
+import type { Sdk } from "./generated/graphql";
 
 export * from "./generated/graphql";
 
-export type ApiLeaderboard = NonNullable<LeaderboardV3Query["leaderboardV3"]>;
+export type ApiLeaderboard = Awaited<
+  ReturnType<Sdk["LeaderboardV3"]>
+>["leaderboardV3"];
 
 export type ApiLeaderboardHoleByHole = NonNullable<
-  LeaderboardHoleByHoleQuery["leaderboardHoleByHole"]
+  Awaited<ReturnType<Sdk["LeaderboardHoleByHole"]>>["leaderboardHoleByHole"]
 >;
 
-export type ApiSchedule = NonNullable<ScheduleQuery["schedule"]>;
+export type ApiSchedule = Awaited<ReturnType<Sdk["Schedule"]>>["schedule"];
 
-export type ApiScheduleYears = NonNullable<ScheduleYearsQuery["scheduleYears"]>;
+export type ApiScheduleYears = Awaited<
+  ReturnType<Sdk["ScheduleYears"]>
+>["scheduleYears"];
 
-export type ApiCompleteSchedule = NonNullable<
-  CompleteScheduleQuery["completeSchedule"]
->;
+export type ApiCompleteSchedule = Awaited<
+  ReturnType<Sdk["CompleteSchedule"]>
+>["completeSchedule"];
 
-export type ApiUpcomingSchedule = NonNullable<
-  UpcomingScheduleQuery["upcomingSchedule"]
->;
+export type ApiUpcomingSchedule = Awaited<
+  ReturnType<Sdk["UpcomingSchedule"]>
+>["upcomingSchedule"];
 
-export type ApiTournament = NonNullable<
-  TournamentsQuery["tournaments"]
->[number];
+export type ApiTournament = Awaited<
+  ReturnType<Sdk["Tournaments"]>
+>["tournaments"][number];

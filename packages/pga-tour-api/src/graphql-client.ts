@@ -1,39 +1,21 @@
-import type { TypedDocumentNode } from "@graphql-typed-document-node/core";
-import { print } from "graphql";
+import type { Sdk } from "@putting-pals/pga-tour-schema/types";
+import { getSdk } from "@putting-pals/pga-tour-schema/types";
+import { GraphQLClient } from "graphql-request";
 
 export class GraphQlClient {
-  protected async query<TResult, TVariables>(
-    document: TypedDocumentNode<TResult, TVariables>,
-    variables: TVariables,
-  ) {
-    const response = await fetch("https://orchestrator.pgatour.com/graphql", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": "da2-gsrx5bibzbb4njvhl7t37wqyl4",
-        "x-pgat-platform": "web",
-      },
-      body: JSON.stringify({
-        operationName: this.getOperationName(document),
-        query: print(document),
-        variables,
-      }),
-    });
-    const json = (await response.json()) as {
-      data: TResult;
-      errors?: { message: string }[];
-    };
-    return json.data;
-  }
+  protected readonly sdk: Sdk;
 
-  private getOperationName<TResult, TVariables>(
-    document: TypedDocumentNode<TResult, TVariables>,
-  ): string | undefined {
-    for (const def of document.definitions) {
-      if (def.kind === "OperationDefinition" && def.name) {
-        return def.name.value;
-      }
-    }
-    return undefined;
+  constructor() {
+    const client = new GraphQLClient(
+      "https://orchestrator.pgatour.com/graphql",
+      {
+        headers: {
+          "content-type": "application/json",
+          "x-api-key": "da2-gsrx5bibzbb4njvhl7t37wqyl4",
+          "x-pgat-platform": "web",
+        },
+      },
+    );
+    this.sdk = getSdk(client);
   }
 }

@@ -17,8 +17,7 @@ const config: CodegenConfig = {
       plugins: [
         "typescript",
         "typescript-operations",
-        "typed-document-node",
-        "typescript-document-nodes",
+        "typescript-graphql-request",
       ],
       documentTransforms: [addTypenameSelectionDocumentTransform],
       config: {

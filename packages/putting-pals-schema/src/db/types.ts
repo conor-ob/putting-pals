@@ -4,8 +4,11 @@ import type {
   ApiTournament,
   RoundStatus,
   RoundStatusColor,
+  Sdk,
   TournamentStatus,
 } from "@putting-pals/pga-tour-schema/types";
+
+export type Leader = Awaited<ReturnType<Sdk["LeaderboardV3"]>>["leaderboardV3"];
 
 // Auto-generated hash - run `pnpm update:snapshot` after changing LeaderboardSnapshot
 export const LeaderboardSnapshotHash = "465419f4" as const;
