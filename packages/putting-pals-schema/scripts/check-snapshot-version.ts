@@ -1,7 +1,8 @@
-import * as crypto from "node:crypto";
 import * as fs from "node:fs";
+import { computeTypeHash } from "./resolve-type";
 
-const typesFile = fs.readFileSync("src/db/types.ts", "utf-8");
+const typesFilePath = "src/db/types.ts";
+const typesFile = fs.readFileSync(typesFilePath, "utf-8");
 
 // Extract the stored hash from the file
 const storedHashMatch = typesFile.match(
@@ -15,21 +16,13 @@ if (!storedHashMatch) {
 
 const storedHash = storedHashMatch[1];
 
-// Extract the type definition and compute its hash
-const typeMatch = typesFile.match(
-  /export type LeaderboardSnapshot = \{[\s\S]*?\n\};/,
-);
+// Compute hash from the fully resolved type (including imported nested types)
+const currentHash = computeTypeHash("LeaderboardSnapshot", typesFilePath);
 
-if (!typeMatch) {
-  console.error("Could not find LeaderboardSnapshot type");
+if (!currentHash) {
+  console.error("Could not resolve LeaderboardSnapshot type");
   process.exit(1);
 }
-
-const currentHash = crypto
-  .createHash("sha256")
-  .update(typeMatch[0])
-  .digest("hex")
-  .slice(0, 8);
 
 if (currentHash !== storedHash) {
   console.error("❌ LeaderboardSnapshot type changed but hash not updated!");

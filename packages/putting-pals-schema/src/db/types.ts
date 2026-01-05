@@ -11,7 +11,7 @@ import type {
 export type Leader = Awaited<ReturnType<Sdk["LeaderboardV3"]>>["leaderboardV3"];
 
 // Auto-generated hash - run `pnpm update:snapshot` after changing LeaderboardSnapshot
-export const LeaderboardSnapshotHash = "465419f4" as const;
+export const LeaderboardSnapshotHash = "4b110f84" as const;
 export const LeaderboardSnapshotVersion = 1 as const;
 
 export type LeaderboardSnapshot = {
