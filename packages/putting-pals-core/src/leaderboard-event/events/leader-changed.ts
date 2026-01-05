@@ -1,28 +1,28 @@
 import type {
   LeaderboardEvent,
   LeaderboardSnapshot,
-  NewLeaderV1,
+  LeaderChangedV1,
 } from "@putting-pals/putting-pals-schema/types";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class NewLeader extends AbstractEventEmitter {
+export class LeaderChanged extends AbstractEventEmitter {
   override emit(): LeaderboardEvent[] {
     switch (this.tourCode) {
       case "P":
         return [];
       case "R":
-        return this.getPgaTourNewLeader();
+        return this.getPgaTourLeaderChanged();
       default:
         assertNever(this.tourCode);
     }
   }
 
   override getPriority(): number {
-    return EventPriority.NEW_LEADER_EVENT;
+    return EventPriority.LEADER_CHANGED_EVENT;
   }
 
-  private getPgaTourNewLeader(): LeaderboardEvent[] {
+  private getPgaTourLeaderChanged(): LeaderboardEvent[] {
     const leadersBefore = this.getLeaders(this.before);
     const leadersAfter = this.getLeaders(this.after);
 
@@ -42,18 +42,42 @@ export class NewLeader extends AbstractEventEmitter {
 
     return [
       {
-        __typename: "NewLeaderV1" as const,
+        __typename: "LeaderChangedV1" as const,
         before: {
-          leaders: leadersBefore.map((row) => ({
-            displayName: row.player.displayName,
+          players: leadersBefore.map((row) => ({
+            __typename: "PlayerRowV3" as const,
+            player: {
+              id: row.player.id,
+            },
+            scoringData: {
+              position: row.scoringData.position,
+              total: row.scoringData.total,
+              totalSort: row.scoringData.totalSort,
+              thru: row.scoringData.thru,
+              thruSort: row.scoringData.thruSort,
+              score: row.scoringData.score,
+              scoreSort: row.scoringData.scoreSort,
+            },
           })),
         },
         after: {
-          leaders: leadersAfter.map((row) => ({
-            displayName: row.player.displayName,
+          players: leadersAfter.map((row) => ({
+            __typename: "PlayerRowV3" as const,
+            player: {
+              id: row.player.id,
+            },
+            scoringData: {
+              position: row.scoringData.position,
+              total: row.scoringData.total,
+              totalSort: row.scoringData.totalSort,
+              thru: row.scoringData.thru,
+              thruSort: row.scoringData.thruSort,
+              score: row.scoringData.score,
+              scoreSort: row.scoringData.scoreSort,
+            },
           })),
         },
-      } satisfies NewLeaderV1,
+      } satisfies LeaderChangedV1,
     ];
   }
 

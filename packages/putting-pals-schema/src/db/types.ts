@@ -41,64 +41,89 @@ export type LeaderboardSnapshot = {
   leaderboardHoleByHole: ApiLeaderboardHoleByHole;
 };
 
-export type RoundStatusChangedV1 = {
-  __typename: "RoundStatusChangedV1";
-  before: {
+type Event<TName extends string, T> = {
+  __typename: TName;
+} & T;
+
+type ChangeEvent<TName extends string, T> = {
+  __typename: TName;
+  before: T;
+  after: T;
+};
+
+export type RoundStatusChangedV1 = ChangeEvent<
+  "RoundStatusChangedV1",
+  {
     roundDisplay: string;
     roundStatus: RoundStatus;
     roundStatusColor: RoundStatusColor;
     roundStatusDisplay: string;
-  };
-  after: {
-    roundDisplay: string;
-    roundStatus: RoundStatus;
-    roundStatusColor: RoundStatusColor;
-    roundStatusDisplay: string;
-  };
-};
+  }
+>;
 
-export type TournamentStatusChangedV1 = {
-  __typename: "TournamentStatusChangedV1";
-  tournamentName: string;
-  before: {
+export type TournamentStatusChangedV1 = ChangeEvent<
+  "TournamentStatusChangedV1",
+  {
     tournamentStatus: TournamentStatus;
-  };
-  after: {
-    tournamentStatus: TournamentStatus;
-  };
-};
+  }
+>;
 
-export type NewLeaderV1 = {
-  __typename: "NewLeaderV1";
-  before: {
-    leaders: {
-      displayName: string;
+export type LeaderChangedV1 = ChangeEvent<
+  "LeaderChangedV1",
+  {
+    players:
+      | {
+          __typename: "PlayerRowV3";
+          player: {
+            id: string;
+          };
+          scoringData: {
+            position: string;
+            total: string;
+            totalSort: number;
+            thru: string;
+            thruSort: number;
+            score: string;
+            scoreSort: number;
+          };
+        }[]
+      | {
+          __typename: "PuttingPalsPlayerRow";
+          player: {
+            id: string;
+          };
+          scoringData: {
+            position: string;
+            total: string;
+            totalSort: number;
+          };
+        }[];
+  }
+>;
+
+export type PlayerDisqualifiedV1 = Event<
+  "PlayerDisqualifiedV1",
+  {
+    players: {
+      id: string;
     }[];
-  };
-  after: {
-    leaders: {
-      displayName: string;
+  }
+>;
+
+export type PlayerMissedCutV1 = Event<
+  "PlayerMissedCutV1",
+  {
+    players: {
+      id: string;
     }[];
-  };
-};
+  }
+>;
 
-export type PlayerDisqualifiedV1 = {
-  __typename: "PlayerDisqualifiedV1";
-  players: {
-    displayName: string;
-  }[];
-};
-
-export type PlayerMissedCutV1 = {
-  __typename: "PlayerMissedCutV1";
-  players: {
-    displayName: string;
-  }[];
-};
-
-export type PlayerWithdrawnV1 = {
-  __typename: "PlayerWithdrawnV1";
-  players: {
-    displayName: string;
-  }[];
-};
+export type PlayerWithdrawnV1 = Event<
+  "PlayerWithdrawnV1",
+  {
+    players: {
+      id: string;
+    }[];
+  }
+>;

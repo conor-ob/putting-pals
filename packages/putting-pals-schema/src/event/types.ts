@@ -1,5 +1,5 @@
 import type {
-  NewLeaderV1,
+  LeaderChangedV1,
   PlayerDisqualifiedV1,
   PlayerMissedCutV1,
   PlayerWithdrawnV1,
@@ -8,7 +8,7 @@ import type {
 } from "../db/types";
 
 export type LeaderboardEvent =
-  | NewLeaderV1
+  | LeaderChangedV1
   | PlayerDisqualifiedV1
   | PlayerMissedCutV1
   | PlayerWithdrawnV1

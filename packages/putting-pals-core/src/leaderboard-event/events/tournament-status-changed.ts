@@ -18,7 +18,6 @@ export class TournamentStatusChanged extends AbstractEventEmitter {
     return [
       {
         __typename: "TournamentStatusChangedV1" as const,
-        tournamentName: this.after.tournament.tournamentName,
         before: {
           tournamentStatus: this.before.tournament.tournamentStatus,
         },

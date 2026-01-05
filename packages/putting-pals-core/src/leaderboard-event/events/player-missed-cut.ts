@@ -16,7 +16,7 @@ export class PlayerMissedCut extends PlayerStateChanged {
       {
         __typename: "PlayerMissedCutV1" as const,
         players: players.map((player) => ({
-          displayName: player.player.displayName,
+          id: player.player.id,
         })),
       } satisfies PlayerMissedCutV1,
     ];

@@ -15,7 +15,7 @@ import { TournamentResolver } from "../tournament/tournament-resolver";
 import { TournamentService } from "../tournament/tournament-service";
 import type { EventEmitter } from "./event-emitter";
 import { BirdieStreak } from "./events/birdie-streak";
-import { NewLeader } from "./events/new-leader";
+import { LeaderChanged } from "./events/leader-changed";
 import { PlayerDisqualified } from "./events/player-disqualified";
 import { PlayerMissedCut } from "./events/player-missed-cut";
 import { PlayerPositionDecreased } from "./events/player-position-decreased";
@@ -55,7 +55,7 @@ export class LeaderboardEventProcessor {
     const before = queryResult.snapshot;
     const eventEmitters: EventEmitter[] = [
       new BirdieStreak(tourCode, before, after),
-      new NewLeader(tourCode, before, after),
+      new LeaderChanged(tourCode, before, after),
       new PlayerDisqualified(tourCode, before, after),
       new PlayerMissedCut(tourCode, before, after),
       new PlayerPositionDecreased(tourCode, before, after),

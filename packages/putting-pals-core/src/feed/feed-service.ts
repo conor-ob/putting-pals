@@ -1,8 +1,13 @@
 import type { Database } from "@putting-pals/putting-pals-db/client";
 import { leaderboardFeedTable } from "@putting-pals/putting-pals-db/schema";
-import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import type {
+  LeaderboardEvent,
+  TourCode,
+} from "@putting-pals/putting-pals-schema/types";
 import { and, desc, eq, isNull, lt } from "drizzle-orm";
+import { LeaderboardService } from "../leaderboard/leaderboard-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";
+import { TournamentService } from "../tournament/tournament-service";
 
 const PAGE_SIZE = 20;
 
@@ -13,6 +18,10 @@ export class FeedService {
 
   async getFeed(tourCode: TourCode, id?: string, cursor?: number) {
     const tournamentId = await this.resolveTournamentId(tourCode, id);
+    const [tournament, leaderboard] = await Promise.all([
+      new TournamentService().getTournament(tourCode, tournamentId),
+      new LeaderboardService().getLeaderboard(tourCode, tournamentId),
+    ]);
 
     const items = await this.db
       .select()
@@ -35,9 +44,56 @@ export class FeedService {
       : undefined;
 
     return {
-      items: feedItems,
+      items: feedItems.map((item) => ({
+        ...item,
+        feedItem: this.hydrate(item.feedItem, tournament, leaderboard),
+      })),
       nextCursor,
     };
+  }
+
+  private hydrate(
+    feedItem: LeaderboardEvent,
+    tournament: Awaited<ReturnType<TournamentService["getTournament"]>>,
+    leaderboard: Awaited<ReturnType<LeaderboardService["getLeaderboard"]>>,
+  ) {
+    switch (feedItem.__typename) {
+      case "LeaderChangedV1":
+        return {
+          ...feedItem,
+          before: {
+            players: feedItem.before.players.flatMap((player) => {
+              const playerMatch = leaderboard.players
+                .filter((p) => p.__typename === "PlayerRowV3")
+                .find((p) => p.player.id === player.id)?.player;
+              if (playerMatch === undefined) {
+                return [];
+              } else {
+                return playerMatch;
+              }
+            }),
+          },
+          after: {
+            players: feedItem.before.players.flatMap((player) => {
+              const playerMatch = leaderboard.players
+                .filter((p) => p.__typename === "PlayerRowV3")
+                .find((p) => p.player.id === player.id)?.player;
+              if (playerMatch === undefined) {
+                return [];
+              } else {
+                return playerMatch;
+              }
+            }),
+          },
+        };
+      case "TournamentStatusChangedV1":
+        return {
+          ...feedItem,
+          tournamentName: tournament.tournamentName,
+        };
+      default:
+        return feedItem;
+    }
   }
 
   private async resolveTournamentId(tourCode: TourCode, id?: string) {
