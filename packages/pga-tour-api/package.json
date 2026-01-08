@@ -14,12 +14,12 @@
   },
   "dependencies": {
     "@putting-pals/pga-tour-schema": "workspace:*",
-    "pako": "^2.1.0"
+    "graphql": "catalog:",
+    "graphql-request": "catalog:"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
-    "@types/pako": "^2.0.4",
     "typescript": "catalog:"
   }
 }

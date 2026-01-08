@@ -1,22 +1,23 @@
 import type {
-  Schedule,
-  ScheduleMonth,
-  ScheduleTournament,
+  ScheduleMonthFieldsFragment,
+  ScheduleQuery,
+  ScheduleTournamentFieldsFragment,
 } from "@putting-pals/pga-tour-schema/types";
-import type { RecursivePartial } from "@putting-pals/putting-pals-utils/type-utils";
 import { getImageUrl } from "../utils/image-utils";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
-export function transformSchedule(schedule: Schedule) {
+export function transformSchedule(schedule: ScheduleQuery["schedule"]) {
   return {
     year: schedule.seasonYear,
     yearSort: Number(schedule.seasonYear),
     completed: schedule.completed.map(transformScheduleMonth),
     upcoming: schedule.upcoming.map(transformScheduleMonth),
-  } satisfies RecursivePartial<Schedule> & { year: string; yearSort: number };
+  };
 }
 
-export function transformScheduleTournament(tournament: ScheduleTournament) {
+export function transformScheduleTournament(
+  tournament: ScheduleTournamentFieldsFragment,
+) {
   return {
     beautyImage: tournament.beautyImageAsset
       ? getImageUrl(tournament.beautyImageAsset, "jpg", "ar_0.667,c_crop")
@@ -26,7 +27,6 @@ export function transformScheduleTournament(tournament: ScheduleTournament) {
     sortDate: tournament.sortDate,
     status: tournament.status
       ? {
-          leaderboardTakeover: tournament.status.leaderboardTakeover, // TODO: remove
           roundDisplay: tournament.status.roundDisplay,
           roundStatus: tournament.status.roundStatus,
           roundStatusColor: tournament.status.roundStatusColor,
@@ -36,10 +36,10 @@ export function transformScheduleTournament(tournament: ScheduleTournament) {
     tournamentLogo: getImageUrl(tournament.tournamentLogoAsset, "png"),
     tournamentName: stripParenthesizedYear(tournament.tournamentName),
     tournamentStatus: tournament.tournamentStatus,
-  } satisfies RecursivePartial<ScheduleTournament>;
+  };
 }
 
-function transformScheduleMonth(scheduleMonth: ScheduleMonth) {
+function transformScheduleMonth(scheduleMonth: ScheduleMonthFieldsFragment) {
   return {
     year: scheduleMonth.year,
     month: scheduleMonth.month,

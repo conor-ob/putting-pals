@@ -1,14 +1,6 @@
 import { ScheduleClient } from "@putting-pals/pga-tour-api/schedule";
-import {
-  RoundStatus,
-  RoundStatusColor,
-  type ScheduleTournament,
-} from "@putting-pals/pga-tour-schema/types";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
-import {
-  assertNever,
-  type RecursivePartial,
-} from "@putting-pals/putting-pals-utils/type-utils";
+import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { CompetitionService } from "../competition/competition-service";
 import {
   transformSchedule,
@@ -111,13 +103,12 @@ export class ScheduleService {
               return {
                 ...tournament,
                 status: {
-                  leaderboardTakeover: false, // TODO: remove
                   roundDisplay: "",
-                  roundStatus: RoundStatus.Upcoming,
-                  roundStatusColor: RoundStatusColor.Gray,
+                  roundStatus: "UPCOMING",
+                  roundStatusColor: "GRAY",
                   roundStatusDisplay: "Upcoming",
                 },
-              } satisfies RecursivePartial<ScheduleTournament>;
+              };
             }
             return tournament;
           }),

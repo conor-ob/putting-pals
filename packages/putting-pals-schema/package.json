@@ -9,14 +9,17 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "typecheck": "tsc --noEmit true"
+    "typecheck": "tsc --noEmit true && tsx scripts/check-snapshot-version.ts",
+    "update:snapshot": "tsx scripts/update-snapshot-version.ts"
   },
   "dependencies": {
+    "@putting-pals/pga-tour-schema": "workspace:*",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
+    "tsx": "^4.21.0",
     "typescript": "catalog:"
   }
 }

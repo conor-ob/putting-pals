@@ -14,6 +14,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="feed"
+        options={{
+          title: "Feed",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name="newspaper-o" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="schedule"
         options={{
           title: "Schedule",

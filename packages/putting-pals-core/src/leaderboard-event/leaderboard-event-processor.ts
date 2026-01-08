@@ -1,170 +1,188 @@
 import type { Database } from "@putting-pals/putting-pals-db/client";
 import {
-  type LeaderboardSnapshotV1,
-  leaderboardSnapshotBaseTable,
-  leaderboardSnapshotPatchTable,
+  leaderboardFeedTable,
+  leaderboardSnapshotTable,
 } from "@putting-pals/putting-pals-db/schema";
-import type { TourCode } from "@putting-pals/putting-pals-schema/types";
-import { and, asc, desc, eq } from "drizzle-orm";
-import patch from "fast-json-patch";
+import {
+  type LeaderboardEvent,
+  type LeaderboardSnapshot,
+  LeaderboardSnapshotVersion,
+  type TourCode,
+} from "@putting-pals/putting-pals-schema/types";
+import { and, desc, eq } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
+import { TournamentResolver } from "../tournament/tournament-resolver";
 import { TournamentService } from "../tournament/tournament-service";
+import type { EventEmitter } from "./event-emitter";
+import { BirdieStreak } from "./events/birdie-streak";
+import { LeaderChanged } from "./events/leader-changed";
+import { PlayerDisqualified } from "./events/player-disqualified";
+import { PlayerMissedCut } from "./events/player-missed-cut";
+import { PlayerPositionDecreased } from "./events/player-position-decreased";
+import { PlayerPositionIncreased } from "./events/player-position-increased";
+import { PlayerWithdrawn } from "./events/player-withdrawn";
+import { RoundStatusChanged } from "./events/round-status-changed";
+import { TournamentStatusChanged } from "./events/tournament-status-changed";
+import { TournamentWinner } from "./events/tournament-winner";
 
 export class LeaderboardEventProcessor {
   constructor(private readonly db: Database) {
     this.db = db;
   }
 
-  async processEvent(tourCode: TourCode) {
-    const [tournament, leaderboard] = await Promise.all([
-      getTournament(),
-      getLeaderboard(),
-    ]);
+  async detectChange(tourCode: TourCode) {
+    const tournamentId = await new TournamentResolver().getCurrentTournamentId(
+      tourCode,
+    );
 
-    const newSnapshot = normalizeNewSnapshot(tournament, leaderboard);
+    const queryResult = await this.getLeaderboardSnapshotBefore(
+      tourCode,
+      tournamentId,
+    );
+    const after = await this.getLeaderboardSnapshotAfter(
+      tourCode,
+      tournamentId,
+    );
 
-    const baseSnapshot = (
-      await this.db
-        .select()
-        .from(leaderboardSnapshotBaseTable)
-        .where(
-          and(
-            eq(leaderboardSnapshotBaseTable.tournamentId, tournament.id),
-            eq(leaderboardSnapshotBaseTable.tourCode, tourCode),
-          ),
-        )
-        .orderBy(desc(leaderboardSnapshotBaseTable.createdAt))
-        .limit(1)
-    )[0]?.snapshot;
-
-    if (baseSnapshot === undefined || baseSnapshot === null) {
-      await this.db.insert(leaderboardSnapshotBaseTable).values({
-        tournamentId: tournament.id,
-        tourCode: tourCode,
-        snapshot: newSnapshot,
-      });
-
+    if (queryResult === undefined) {
+      await this.insertBaseLeaderboardSnapshot(tourCode, tournamentId, after);
+      return;
+    } else if (queryResult.version !== LeaderboardSnapshotVersion) {
+      await this.updateLeaderboardSnapshot(tourCode, tournamentId, after);
       return;
     }
 
-    const patches = await this.db
-      .select()
-      .from(leaderboardSnapshotPatchTable)
-      .where(
-        and(
-          eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id),
-          eq(leaderboardSnapshotPatchTable.tourCode, tourCode),
-        ),
-      )
-      .orderBy(asc(leaderboardSnapshotPatchTable.createdAt));
+    const before = queryResult.snapshot;
+    const eventEmitters: EventEmitter[] = [
+      new BirdieStreak(tourCode, before, after),
+      new LeaderChanged(tourCode, before, after),
+      new PlayerDisqualified(tourCode, before, after),
+      new PlayerMissedCut(tourCode, before, after),
+      new PlayerPositionDecreased(tourCode, before, after),
+      new PlayerPositionIncreased(tourCode, before, after),
+      new PlayerWithdrawn(tourCode, before, after),
+      new RoundStatusChanged(tourCode, before, after),
+      new TournamentStatusChanged(tourCode, before, after),
+      new TournamentWinner(tourCode, before, after),
+    ];
 
-    const materialized = normalizeExistingSnapshot(
-      patch.applyPatch(
-        structuredClone(baseSnapshot),
-        patches.flatMap((patch) => patch.patch.operations),
-        false,
-      ).newDocument,
-    );
+    const events = eventEmitters
+      .sort((a, b) => a.getPriority() - b.getPriority())
+      .flatMap((eventEmitter) => eventEmitter.emit());
 
-    const diff = patch.compare(materialized, newSnapshot);
-    if (diff.length > 0) {
-      const lastStreamVersion =
-        (
-          await this.db
-            .select()
-            .from(leaderboardSnapshotPatchTable)
-            .where(
-              and(
-                eq(leaderboardSnapshotPatchTable.tournamentId, tournament.id),
-                eq(leaderboardSnapshotPatchTable.tourCode, tourCode),
-              ),
-            )
-            .orderBy(desc(leaderboardSnapshotPatchTable.streamVersion))
-            .limit(1)
-        )[0]?.streamVersion ?? 0;
-
-      await this.db.insert(leaderboardSnapshotPatchTable).values({
-        tournamentId: tournament.id,
-        tourCode: tourCode,
-        patch: {
-          __typename: "JsonPatchV1" as const,
-          operations: diff,
-        },
-        streamVersion: lastStreamVersion + 1,
-      });
+    if (events.length > 0) {
+      await this.insertLeaderboardFeedEvents(
+        tourCode,
+        tournamentId,
+        events,
+        after,
+      );
     }
   }
-}
 
-function normalizeNewSnapshot(
-  tournament: Tournament,
-  leaderboard: Leaderboard,
-) {
-  return {
-    __typename: "LeaderboardSnapshotV1" as const,
-    tournamentStatus: tournament.tournamentStatus,
-    roundDisplay: tournament.roundDisplay,
-    roundStatus: tournament.roundStatus,
-    roundStatusColor: tournament.roundStatusColor,
-    roundStatusDisplay: tournament.roundStatusDisplay,
-    leaderboardRoundHeader: leaderboard.leaderboardRoundHeader,
-    rows: leaderboard.rows
-      .flatMap((row) => {
-        if (row.__typename === "PlayerRowV3") {
-          return {
-            __typename: "PlayerRowV3" as const,
-            id: row.id,
-            leaderboardSortOrder: row.leaderboardSortOrder,
-            player: {
-              abbreviations: row.player.abbreviations,
-              amateur: row.player.amateur,
-              countryFlag: row.player.countryFlag,
-              displayName: row.player.displayName,
-              id: row.player.id,
-              shortName: row.player.shortName,
-            },
-            scoringData: {
-              position: row.scoringData.position,
-              score: row.scoringData.score,
-              scoreSort: row.scoringData.scoreSort,
-              teeTime: row.scoringData.teeTime
-                ? row.scoringData.teeTime.toISOString()
-                : undefined,
-              thru: row.scoringData.thru,
-              thruSort: row.scoringData.thruSort,
-              total: row.scoringData.total,
-              totalSort: row.scoringData.totalSort,
-            },
-          } satisfies LeaderboardSnapshotV1["rows"][number];
-        } else {
-          return [];
-        }
+  private async getLeaderboardSnapshotBefore(
+    tourCode: TourCode,
+    tournamentId: string,
+  ) {
+    return this.db
+      .select({
+        version: leaderboardSnapshotTable.version,
+        snapshot: leaderboardSnapshotTable.snapshot,
       })
-      .sort((a, b) => a.id.localeCompare(b.id)), // sort by player id to ensure consistent order
-  } satisfies LeaderboardSnapshotV1; // required for stricter type checking
-}
+      .from(leaderboardSnapshotTable)
+      .where(
+        and(
+          eq(leaderboardSnapshotTable.tourCode, tourCode),
+          eq(leaderboardSnapshotTable.tournamentId, tournamentId),
+        ),
+      )
+      .orderBy(desc(leaderboardSnapshotTable.updatedAt))
+      .limit(1)
+      .then(([result]) => result);
+  }
 
-function normalizeExistingSnapshot(snapshot: LeaderboardSnapshotV1) {
-  return {
-    __typename: "LeaderboardSnapshotV1" as const,
-    tournamentStatus: snapshot.tournamentStatus,
-    roundDisplay: snapshot.roundDisplay,
-    roundStatus: snapshot.roundStatus,
-    roundStatusColor: snapshot.roundStatusColor,
-    roundStatusDisplay: snapshot.roundStatusDisplay,
-    leaderboardRoundHeader: snapshot.leaderboardRoundHeader,
-    rows: snapshot.rows.sort((a, b) => a.id.localeCompare(b.id)), // sort by player id to ensure consistent order
-  } satisfies LeaderboardSnapshotV1; // required for stricter type checking
-}
+  private async getLeaderboardSnapshotAfter(
+    tourCode: TourCode,
+    tournamentId: string,
+  ) {
+    const [tournament, leaderboard] = await Promise.all([
+      new TournamentService().getTournament(tourCode, tournamentId),
+      new LeaderboardService().getLeaderboard(tourCode, tournamentId),
+    ]);
 
-type Leaderboard = Awaited<ReturnType<typeof getLeaderboard>>;
+    const currentRound = tournament.currentRound;
+    const leaderboardHoleByHole =
+      await new LeaderboardService().getLeaderboardHoleByHole(
+        tournamentId,
+        currentRound,
+      );
 
-function getLeaderboard() {
-  return new LeaderboardService().getLeaderboard("R");
-}
+    return {
+      tournament: tournament,
+      leaderboard: leaderboard,
+      leaderboardHoleByHole: leaderboardHoleByHole,
+    } satisfies LeaderboardSnapshot;
+  }
 
-type Tournament = Awaited<ReturnType<typeof getTournament>>;
+  private async insertBaseLeaderboardSnapshot(
+    tourCode: TourCode,
+    tournamentId: string,
+    snapshot: LeaderboardSnapshot,
+  ) {
+    return this.db.insert(leaderboardSnapshotTable).values({
+      tourCode: tourCode,
+      tournamentId: tournamentId,
+      version: LeaderboardSnapshotVersion,
+      snapshot: snapshot,
+    });
+  }
 
-function getTournament() {
-  return new TournamentService().getTournament("R");
+  private async updateLeaderboardSnapshot(
+    tourCode: TourCode,
+    tournamentId: string,
+    snapshot: LeaderboardSnapshot,
+  ) {
+    return this.db
+      .update(leaderboardSnapshotTable)
+      .set({
+        snapshot: snapshot,
+        version: LeaderboardSnapshotVersion,
+      })
+      .where(
+        and(
+          eq(leaderboardSnapshotTable.tourCode, tourCode),
+          eq(leaderboardSnapshotTable.tournamentId, tournamentId),
+        ),
+      );
+  }
+
+  private async insertLeaderboardFeedEvents(
+    tourCode: TourCode,
+    tournamentId: string,
+    events: LeaderboardEvent[],
+    snapshot: LeaderboardSnapshot,
+  ) {
+    await this.db.transaction(async (tx) => {
+      await tx.insert(leaderboardFeedTable).values(
+        events.map((event) => ({
+          tourCode: tourCode,
+          tournamentId: tournamentId,
+          type: event.__typename,
+          feedItem: event,
+        })),
+      );
+
+      await tx
+        .update(leaderboardSnapshotTable)
+        .set({
+          snapshot: snapshot,
+        })
+        .where(
+          and(
+            eq(leaderboardSnapshotTable.tourCode, tourCode),
+            eq(leaderboardSnapshotTable.tournamentId, tournamentId),
+          ),
+        );
+    });
+  }
 }

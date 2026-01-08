@@ -1,0 +1,72 @@
+fragment ScheduleTournamentFields on ScheduleTournament {
+  beautyImageAsset {
+    fallbackImage
+    imageOrg
+    imagePath
+  }
+  date
+  id
+  sortDate
+  status {
+    roundDisplay
+    roundStatus
+    roundStatusColor
+    roundStatusDisplay
+  }
+  tournamentLogoAsset {
+    fallbackImage
+    imageOrg
+    imagePath
+  }
+  tournamentName
+  tournamentStatus
+}
+
+fragment ScheduleMonthFields on ScheduleMonth {
+  year
+  month
+  monthSort
+  tournaments {
+    ...ScheduleTournamentFields
+  }
+}
+
+fragment ScheduleFields on Schedule {
+  seasonYear
+  completed {
+    ...ScheduleMonthFields
+  }
+  upcoming {
+    ...ScheduleMonthFields
+  }
+}
+
+query ScheduleYears($tourCode: TourCode!) {
+  scheduleYears(tourCode: $tourCode) {
+    years {
+      default
+      displayValue
+      queryValue
+    }
+  }
+}
+
+query Schedule($tourCode: String!, $year: String) {
+  schedule(tourCode: $tourCode, year: $year) {
+    ...ScheduleFields
+  }
+}
+
+query CompleteSchedule($tourCode: TourCode!) {
+  completeSchedule(tourCode: $tourCode) {
+    ...ScheduleFields
+  }
+}
+
+query UpcomingSchedule($tourCode: String!) {
+  upcomingSchedule(tourCode: $tourCode) {
+    tournaments {
+      ...ScheduleTournamentFields
+    }
+  }
+}

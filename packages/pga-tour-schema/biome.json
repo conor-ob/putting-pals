@@ -1,6 +1,6 @@
 {
   "extends": "//",
   "files": {
-    "includes": ["**", "!src/types.ts"]
+    "includes": ["**", "!src/generated/graphql.ts"]
   }
 }

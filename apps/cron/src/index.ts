@@ -13,10 +13,16 @@ async function sendEvent() {
     ],
   });
 
-  await client.event.processEvent.mutate({
-    tourCode: "R",
-    type: "leaderboard-event",
-  });
+  await Promise.all([
+    client.event.processEvent.mutate({
+      tourCode: "P",
+      type: "leaderboard/detect-change",
+    }),
+    client.event.processEvent.mutate({
+      tourCode: "R",
+      type: "leaderboard/detect-change",
+    }),
+  ]);
 }
 
 sendEvent()

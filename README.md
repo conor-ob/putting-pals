@@ -40,6 +40,7 @@ This will start the Fastify server and Expo app
 
 ## TODO
 
+- [ ] Reduce response payload sent to expo client. Maybe use tRPC output schema to remove redundant fields
 - [ ] remove warnings from prod deployment
   - [ ] [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
   - [ ] ExperimentalWarning: SQLite is an experimental feature and might change at any time (--experimental-sqlite ??)

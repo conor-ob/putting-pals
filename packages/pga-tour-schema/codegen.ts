@@ -1,4 +1,5 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
+import { addTypenameSelectionDocumentTransform } from "@graphql-codegen/client-preset";
 
 const config: CodegenConfig = {
   schema: [
@@ -10,9 +11,23 @@ const config: CodegenConfig = {
       },
     },
   ],
+  documents: ["src/graphql/**/*.graphql"],
   generates: {
-    "src/types.ts": {
-      plugins: ["typescript"],
+    "src/generated/graphql.ts": {
+      plugins: [
+        "typescript",
+        "typescript-operations",
+        "typescript-graphql-request",
+      ],
+      documentTransforms: [addTypenameSelectionDocumentTransform],
+      config: {
+        addTypename: true,
+        enumsAsTypes: true,
+        immutableTypes: true,
+        nonOptionalTypename: true,
+        printFieldsOnNewLines: true,
+        useTypeImports: true,
+      },
     },
   },
 };

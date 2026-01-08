@@ -12,10 +12,12 @@
     "typecheck": "tsc --noEmit true",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "dev": "drizzle-kit studio"
   },
   "dependencies": {
     "@putting-pals/pga-tour-schema": "workspace:*",
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "catalog:",
