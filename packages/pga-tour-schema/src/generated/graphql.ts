@@ -4776,12 +4776,27 @@ export type PlayerHubDetailData = {
   readonly title: Scalars['String']['output'];
 };
 
+export type PlayerHubFooter = {
+  readonly __typename: 'PlayerHubFooter';
+  readonly logoAsset: ImageAsset;
+  readonly logoAssetDark: ImageAsset;
+  readonly sponsor?: Maybe<PlayerHubWidgetSponsor>;
+};
+
+export type PlayerHubHeader = {
+  readonly __typename: 'PlayerHubHeader';
+  readonly sponsor?: Maybe<PlayerHubWidgetSponsor>;
+  readonly text: Scalars['String']['output'];
+};
+
 export type PlayerHubHoleDetailShotTrail = {
   readonly __typename: 'PlayerHubHoleDetailShotTrail';
   readonly color: Scalars['String']['output'];
   readonly finalShot: Scalars['Boolean']['output'];
   readonly from: PlayerHubHoleDetailShotTrailCoordinates;
+  readonly markerText: Scalars['String']['output'];
   readonly shotNumber: Scalars['Int']['output'];
+  readonly showMarker: Scalars['Boolean']['output'];
   readonly strokeType: HoleStrokeType;
   readonly to: PlayerHubHoleDetailShotTrailCoordinates;
 };
@@ -4866,6 +4881,8 @@ export type PlayerHubPlayer = {
   readonly __typename: 'PlayerHubPlayer';
   readonly country: Scalars['String']['output'];
   readonly countryCode: Scalars['String']['output'];
+  readonly footer?: Maybe<PlayerHubFooter>;
+  readonly header?: Maybe<PlayerHubHeader>;
   readonly playerId: Scalars['ID']['output'];
   readonly playerName: Scalars['String']['output'];
   readonly tournamentId: Scalars['String']['output'];
@@ -4918,6 +4935,7 @@ export type PlayerHubStatisticsWidget = {
 export type PlayerHubTeeTimesWidget = {
   readonly __typename: 'PlayerHubTeeTimesWidget';
   readonly currentLocation?: Maybe<Scalars['String']['output']>;
+  readonly displayTeeTime: Scalars['Boolean']['output'];
   readonly icon: PlayerHubWidgetIcon;
   /**   Players and the group tee time */
   readonly players: ReadonlyArray<Player>;
@@ -4947,6 +4965,7 @@ export type PlayerHubWidgetIcon =
   | 'AI'
   | 'CALENDAR'
   | 'CLOCK'
+  | 'LEADERBOARD'
   | 'NEWS'
   | 'NONE'
   | 'PIE_CHART'

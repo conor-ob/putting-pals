@@ -65,7 +65,7 @@ export class FeedService {
             players: feedItem.before.players.flatMap((player) => {
               const playerMatch = leaderboard.players
                 .filter((p) => p.__typename === "PlayerRowV3")
-                .find((p) => p.player.id === player.id)?.player;
+                .find((p) => p.player.id === player.player.id)?.player;
               if (playerMatch === undefined) {
                 return [];
               } else {
@@ -77,7 +77,7 @@ export class FeedService {
             players: feedItem.before.players.flatMap((player) => {
               const playerMatch = leaderboard.players
                 .filter((p) => p.__typename === "PlayerRowV3")
-                .find((p) => p.player.id === player.id)?.player;
+                .find((p) => p.player.id === player.player.id)?.player;
               if (playerMatch === undefined) {
                 return [];
               } else {
