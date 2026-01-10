@@ -40,7 +40,9 @@ const timestampColumns = {
 };
 
 const tournamentIdentifierColumns = {
-  tourCode: text("tour_code", { enum: ["P", "R"] }).notNull(),
+  tourCode: text("tour_code", {
+    enum: ["C", "E", "H", "I", "M", "P", "R", "S", "U", "Y"],
+  }).notNull(),
   tournamentId: text("tournament_id").notNull(),
 };
 

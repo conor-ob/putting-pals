@@ -7,9 +7,8 @@
  * need to use are documented accordingly near the end.
  */
 
-import type { IncomingHttpHeaders } from "node:http";
-import type { IncomingHttpHeaders as IncomingHttp2Headers } from "node:http2";
-import { db } from "@putting-pals/putting-pals-db/client";
+import type { LeaderboardEventProcessor } from "@putting-pals/putting-pals-core/leaderboard-event";
+import type { LeaderboardFeedRepository } from "@putting-pals/putting-pals-schema";
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import z, { ZodError } from "zod";
@@ -28,11 +27,13 @@ import { onError } from "./error/error-handler";
  * @see https://trpc.io/docs/server/context
  */
 export function createTrpcContext({
-  headers,
+  leaderboardEventProcessor,
+  leaderboardFeedRepository,
 }: {
-  headers: IncomingHttpHeaders | IncomingHttp2Headers;
+  leaderboardEventProcessor: LeaderboardEventProcessor;
+  leaderboardFeedRepository: LeaderboardFeedRepository;
 }) {
-  return { headers, db };
+  return { leaderboardEventProcessor, leaderboardFeedRepository };
 }
 
 /**

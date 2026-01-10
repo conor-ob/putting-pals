@@ -18,7 +18,6 @@
     "update:snapshot": "tsx scripts/update-snapshot-version.ts"
   },
   "dependencies": {
-    "@putting-pals/pga-tour-schema": "workspace:*",
     "zod": "catalog:"
   },
   "devDependencies": {

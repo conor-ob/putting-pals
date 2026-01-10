@@ -41,6 +41,6 @@ export type Competitor = z.infer<typeof CompetitorSchema>;
 
 export type Competition = z.infer<typeof CompetitionSchema>;
 
+export * from "./db/interfaces";
 export * from "./db/types";
-
 export * from "./event/types";

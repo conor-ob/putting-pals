@@ -14,7 +14,7 @@ export const feedRouter = router({
       }),
     )
     .query(async ({ ctx, input }) => {
-      return new FeedService(ctx.db).getFeed(
+      return new FeedService(ctx.leaderboardFeedRepository).getFeed(
         input.tourCode,
         input.id,
         input.cursor,

@@ -4,3 +4,5 @@ import { env } from "./env/schema";
 export const db = drizzle(env.DATABASE_URL);
 
 export type Database = typeof db;
+
+export * from "./repository/repository";

@@ -1,4 +1,3 @@
-import { LeaderboardEventProcessor } from "@putting-pals/putting-pals-core/leaderboard-event";
 import { TourCodeSchema } from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import z from "zod";
@@ -15,7 +14,7 @@ export const eventRouter = router({
     .mutation(async ({ ctx, input }) => {
       switch (input.type) {
         case "leaderboard/detect-change":
-          return await new LeaderboardEventProcessor(ctx.db).detectChange(
+          return await ctx.leaderboardEventProcessor.detectChange(
             input.tourCode,
           );
         default:

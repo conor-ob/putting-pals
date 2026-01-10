@@ -1,10 +1,8 @@
-import type { Database } from "@putting-pals/putting-pals-db/client";
-import { leaderboardFeedTable } from "@putting-pals/putting-pals-db/schema";
 import type {
   LeaderboardEvent,
+  LeaderboardFeedRepository,
   TourCode,
 } from "@putting-pals/putting-pals-schema";
-import { and, desc, eq, isNull, lt } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";
 import { TournamentService } from "../tournament/tournament-service";
@@ -12,8 +10,10 @@ import { TournamentService } from "../tournament/tournament-service";
 const PAGE_SIZE = 20;
 
 export class FeedService {
-  constructor(private readonly db: Database) {
-    this.db = db;
+  constructor(
+    private readonly leaderboardFeedRepository: LeaderboardFeedRepository,
+  ) {
+    this.leaderboardFeedRepository = leaderboardFeedRepository;
   }
 
   async getFeed(tourCode: TourCode, id?: string, cursor?: number) {
@@ -23,19 +23,12 @@ export class FeedService {
       new LeaderboardService().getLeaderboard(tourCode, tournamentId),
     ]);
 
-    const items = await this.db
-      .select()
-      .from(leaderboardFeedTable)
-      .where(
-        and(
-          eq(leaderboardFeedTable.tourCode, tourCode),
-          eq(leaderboardFeedTable.tournamentId, tournamentId),
-          isNull(leaderboardFeedTable.deletedAt),
-          cursor ? lt(leaderboardFeedTable.seq, cursor) : undefined,
-        ),
-      )
-      .orderBy(desc(leaderboardFeedTable.seq))
-      .limit(PAGE_SIZE + 1);
+    const items = await this.leaderboardFeedRepository.getLeaderboardFeed(
+      tourCode,
+      tournamentId,
+      PAGE_SIZE,
+      cursor,
+    );
 
     const hasMore = items.length > PAGE_SIZE;
     const feedItems = hasMore ? items.slice(0, -1) : items;

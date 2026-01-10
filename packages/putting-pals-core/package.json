@@ -23,12 +23,9 @@
     "@putting-pals/pga-tour-scaper": "workspace:*",
     "@putting-pals/pga-tour-schema": "workspace:*",
     "@putting-pals/putting-pals-data": "workspace:*",
-    "@putting-pals/putting-pals-db": "workspace:*",
     "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
-    "date-fns": "^4.1.0",
-    "drizzle-orm": "catalog:",
-    "fast-json-patch": "catalog:"
+    "date-fns": "^4.1.0"
   },
   "devDependencies": {
     "@total-typescript/shoehorn": "^0.1.2",

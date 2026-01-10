@@ -3,6 +3,12 @@ import {
   appRouter,
 } from "@putting-pals/putting-pals-api/router";
 import { createTrpcContext } from "@putting-pals/putting-pals-api/trpc";
+import { LeaderboardEventProcessor } from "@putting-pals/putting-pals-core/leaderboard-event";
+import {
+  db,
+  LeaderboardFeedPostgresRepository,
+  LeaderboardSnapshotPostgresRepository,
+} from "@putting-pals/putting-pals-db/client";
 import type {
   CreateFastifyContextOptions,
   FastifyTRPCPluginOptions,
@@ -15,8 +21,21 @@ export default function (fastify: FastifyInstance) {
     prefix: "/trpc",
     trpcOptions: {
       router: appRouter,
-      createContext: (opts: CreateFastifyContextOptions) =>
-        createTrpcContext({ headers: opts.req.headers }),
+      createContext(_: CreateFastifyContextOptions) {
+        const leaderboardSnapshotRepository =
+          new LeaderboardSnapshotPostgresRepository(db);
+        const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
+          db,
+        );
+        const leaderboardEventProcessor = new LeaderboardEventProcessor(
+          leaderboardSnapshotRepository,
+          leaderboardFeedRepository,
+        );
+        return createTrpcContext({
+          leaderboardEventProcessor,
+          leaderboardFeedRepository,
+        });
+      },
       onError({ path, type, error }) {
         fastify.log.error(
           error,

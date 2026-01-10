@@ -1,15 +1,10 @@
-import type { Database } from "@putting-pals/putting-pals-db/client";
-import {
-  leaderboardFeedTable,
-  leaderboardSnapshotTable,
-} from "@putting-pals/putting-pals-db/schema";
-import {
-  type LeaderboardEvent,
-  type LeaderboardSnapshot,
-  LeaderboardSnapshotVersion,
-  type TourCode,
+import type {
+  LeaderboardEvent,
+  LeaderboardFeedRepository,
+  LeaderboardSnapshot,
+  LeaderboardSnapshotRepository,
+  TourCode,
 } from "@putting-pals/putting-pals-schema";
-import { and, desc, eq } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";
 import { TournamentService } from "../tournament/tournament-service";
@@ -26,8 +21,12 @@ import { TournamentStatusChanged } from "./events/tournament-status-changed";
 import { TournamentWinner } from "./events/tournament-winner";
 
 export class LeaderboardEventProcessor {
-  constructor(private readonly db: Database) {
-    this.db = db;
+  constructor(
+    private readonly leaderboardSnapshotRepository: LeaderboardSnapshotRepository,
+    private readonly leaderboardFeedRepository: LeaderboardFeedRepository,
+  ) {
+    this.leaderboardSnapshotRepository = leaderboardSnapshotRepository;
+    this.leaderboardFeedRepository = leaderboardFeedRepository;
   }
 
   async detectChange(tourCode: TourCode) {
@@ -35,20 +34,20 @@ export class LeaderboardEventProcessor {
       tourCode,
     );
 
-    const [queryResult, after] = await Promise.all([
+    const [before, after] = await Promise.all([
       this.getLeaderboardSnapshotBefore(tourCode, tournamentId),
       this.getLeaderboardSnapshotAfter(tourCode, tournamentId),
     ]);
 
-    if (queryResult === undefined) {
+    if (before === undefined) {
       await this.insertBaseLeaderboardSnapshot(tourCode, tournamentId, after);
       return;
-    } else if (queryResult.version !== LeaderboardSnapshotVersion) {
-      await this.updateLeaderboardSnapshot(tourCode, tournamentId, after);
-      return;
     }
+    // } else if (queryResult.version !== LeaderboardSnapshotVersion) {
+    //   await this.updateLeaderboardSnapshot(tourCode, tournamentId, after);
+    //   return;
+    // }
 
-    const before = queryResult.snapshot;
     const eventEmitters: EventEmitter[] = [
       new BirdieStreak(tourCode, before, after),
       new LeaderChanged(tourCode, before, after),
@@ -80,21 +79,10 @@ export class LeaderboardEventProcessor {
     tourCode: TourCode,
     tournamentId: string,
   ) {
-    return this.db
-      .select({
-        version: leaderboardSnapshotTable.version,
-        snapshot: leaderboardSnapshotTable.snapshot,
-      })
-      .from(leaderboardSnapshotTable)
-      .where(
-        and(
-          eq(leaderboardSnapshotTable.tourCode, tourCode),
-          eq(leaderboardSnapshotTable.tournamentId, tournamentId),
-        ),
-      )
-      .orderBy(desc(leaderboardSnapshotTable.updatedAt))
-      .limit(1)
-      .then(([result]) => result);
+    return this.leaderboardSnapshotRepository.getLeaderboardSnapshot(
+      tourCode,
+      tournamentId,
+    );
   }
 
   private async getLeaderboardSnapshotAfter(
@@ -125,31 +113,11 @@ export class LeaderboardEventProcessor {
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
   ) {
-    return this.db.insert(leaderboardSnapshotTable).values({
-      tourCode: tourCode,
-      tournamentId: tournamentId,
-      version: LeaderboardSnapshotVersion,
-      snapshot: snapshot,
-    });
-  }
-
-  private async updateLeaderboardSnapshot(
-    tourCode: TourCode,
-    tournamentId: string,
-    snapshot: LeaderboardSnapshot,
-  ) {
-    return this.db
-      .update(leaderboardSnapshotTable)
-      .set({
-        snapshot: snapshot,
-        version: LeaderboardSnapshotVersion,
-      })
-      .where(
-        and(
-          eq(leaderboardSnapshotTable.tourCode, tourCode),
-          eq(leaderboardSnapshotTable.tournamentId, tournamentId),
-        ),
-      );
+    return this.leaderboardSnapshotRepository.createLeaderboardSnapshot(
+      tourCode,
+      tournamentId,
+      snapshot,
+    );
   }
 
   private async insertLeaderboardFeedEvents(
@@ -158,27 +126,16 @@ export class LeaderboardEventProcessor {
     events: LeaderboardEvent[],
     snapshot: LeaderboardSnapshot,
   ) {
-    await this.db.transaction(async (tx) => {
-      await tx.insert(leaderboardFeedTable).values(
-        events.map((event) => ({
-          tourCode: tourCode,
-          tournamentId: tournamentId,
-          type: event.__typename,
-          feedItem: event,
-        })),
-      );
+    await this.leaderboardFeedRepository.createLeaderboardFeedItems(
+      tourCode,
+      tournamentId,
+      events,
+    );
 
-      await tx
-        .update(leaderboardSnapshotTable)
-        .set({
-          snapshot: snapshot,
-        })
-        .where(
-          and(
-            eq(leaderboardSnapshotTable.tourCode, tourCode),
-            eq(leaderboardSnapshotTable.tournamentId, tournamentId),
-          ),
-        );
-    });
+    await this.leaderboardSnapshotRepository.updateLeaderboardSnapshot(
+      tourCode,
+      tournamentId,
+      snapshot,
+    );
   }
 }
