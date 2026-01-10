@@ -7,7 +7,8 @@ import type {
   DomainTournamentStatus,
 } from "../generated/graphql";
 
-// Auto-generated hash - run `pnpm update:snapshot` after changing LeaderboardSnapshot
+export type TournamentSnapshot = DomainTournament;
+
 export const LeaderboardSnapshotHash = "f048028d" as const;
 export const LeaderboardSnapshotVersion = 1 as const;
 

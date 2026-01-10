@@ -35,14 +35,10 @@ export class LeaderboardEventProcessor {
       tourCode,
     );
 
-    const queryResult = await this.getLeaderboardSnapshotBefore(
-      tourCode,
-      tournamentId,
-    );
-    const after = await this.getLeaderboardSnapshotAfter(
-      tourCode,
-      tournamentId,
-    );
+    const [queryResult, after] = await Promise.all([
+      this.getLeaderboardSnapshotBefore(tourCode, tournamentId),
+      this.getLeaderboardSnapshotAfter(tourCode, tournamentId),
+    ]);
 
     if (queryResult === undefined) {
       await this.insertBaseLeaderboardSnapshot(tourCode, tournamentId, after);

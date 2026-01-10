@@ -1,6 +1,7 @@
 import type {
   LeaderboardEvent,
   LeaderboardSnapshot,
+  TournamentSnapshot,
 } from "@putting-pals/putting-pals-schema/types";
 import {
   index,
@@ -42,6 +43,23 @@ const tournamentIdentifierColumns = {
   tourCode: text("tour_code", { enum: ["P", "R"] }).notNull(),
   tournamentId: text("tournament_id").notNull(),
 };
+
+export const tournamentSnapshotTable = pgTable(
+  "tournament_snapshot",
+  {
+    ...identifierColumns,
+    ...timestampColumns,
+    ...tournamentIdentifierColumns,
+    version: integer("version").notNull(),
+    snapshot: jsonb("snapshot").notNull().$type<TournamentSnapshot>(),
+  },
+  (table) => [
+    uniqueIndex("tournament_snapshot_tournament_idx").on(
+      table.tourCode,
+      table.tournamentId,
+    ),
+  ],
+);
 
 export const leaderboardSnapshotTable = pgTable(
   "leaderboard_snapshot",
