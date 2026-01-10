@@ -1,7 +1,7 @@
 import type {
+  DomainTourCode,
   LeaderboardEvent,
   LeaderboardSnapshot,
-  TourCode,
 } from "@putting-pals/putting-pals-schema";
 
 export interface EventEmitter {
@@ -12,7 +12,7 @@ export interface EventEmitter {
 
 export abstract class AbstractEventEmitter implements EventEmitter {
   constructor(
-    protected readonly tourCode: TourCode,
+    protected readonly tourCode: DomainTourCode,
     protected readonly before: LeaderboardSnapshot,
     protected readonly after: LeaderboardSnapshot,
   ) {

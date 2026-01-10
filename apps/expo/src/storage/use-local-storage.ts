@@ -1,12 +1,12 @@
-import type { TourCode } from "@putting-pals/putting-pals-schema";
+import type { DomainTourCode } from "@putting-pals/putting-pals-schema";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 
 type LocalStorageTypes = {
   [
-    key: `putting-pals:leaderboard:favourites:v1:${TourCode}:${string}`
+    key: `putting-pals:leaderboard:favourites:v1:${DomainTourCode}:${string}`
   ]: string[];
-  "putting-pals:app:tour-code:v1": TourCode;
+  "putting-pals:app:tour-code:v1": DomainTourCode;
 };
 
 type LocalStorageKey = keyof LocalStorageTypes;

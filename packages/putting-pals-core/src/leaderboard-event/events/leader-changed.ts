@@ -3,7 +3,6 @@ import type {
   LeaderboardSnapshot,
   LeaderChangedV1,
 } from "@putting-pals/putting-pals-schema";
-import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class LeaderChanged extends AbstractEventEmitter {
@@ -14,7 +13,7 @@ export class LeaderChanged extends AbstractEventEmitter {
       case "R":
         return this.getPgaTourLeaderChanged();
       default:
-        assertNever(this.tourCode);
+        throw new Error(`Unsupported tour code: ${this.tourCode}`);
     }
   }
 

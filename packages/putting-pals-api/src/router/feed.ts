@@ -1,5 +1,4 @@
-import { FeedService } from "@putting-pals/putting-pals-core/feed";
-import { TourCodeSchema } from "@putting-pals/putting-pals-schema";
+import { DomainTourCodeSchema } from "@putting-pals/putting-pals-schema";
 import z from "zod";
 import { publicProcedure, router } from "../trpc";
 import { TournamentIdSchema } from "../validation/input-schema";
@@ -8,17 +7,12 @@ export const feedRouter = router({
   get: publicProcedure
     .input(
       z.object({
-        tourCode: TourCodeSchema,
+        tourCode: DomainTourCodeSchema,
         id: TournamentIdSchema.optional(),
         cursor: z.int().positive().optional(),
       }),
     )
     .query(async ({ ctx, input }) => {
-      return new FeedService(
-        ctx.tournamentService,
-        ctx.leaderboardService,
-        ctx.tournamentResolver,
-        ctx.leaderboardFeedRepository,
-      ).getFeed(input.tourCode, input.id, input.cursor);
+      return ctx.feedService.getFeed(input.tourCode, input.id, input.cursor);
     }),
 });

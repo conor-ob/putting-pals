@@ -1,10 +1,11 @@
 import type {
+  DomainTourCode,
   LeaderboardEvent,
+  LeaderboardEventProcessor,
   LeaderboardFeedRepository,
   LeaderboardService,
   LeaderboardSnapshot,
   LeaderboardSnapshotRepository,
-  TourCode,
   TournamentResolver,
   TournamentService,
 } from "@putting-pals/putting-pals-schema";
@@ -20,7 +21,9 @@ import { RoundStatusChanged } from "./events/round-status-changed";
 import { TournamentStatusChanged } from "./events/tournament-status-changed";
 import { TournamentWinner } from "./events/tournament-winner";
 
-export class LeaderboardEventProcessor {
+export class LeaderboardEventProcessorImpl
+  implements LeaderboardEventProcessor
+{
   constructor(
     private readonly tournamentService: TournamentService,
     private readonly leaderboardService: LeaderboardService,
@@ -35,7 +38,7 @@ export class LeaderboardEventProcessor {
     this.leaderboardFeedRepository = leaderboardFeedRepository;
   }
 
-  async detectChange(tourCode: TourCode) {
+  async detectChange(tourCode: DomainTourCode): Promise<void> {
     const tournamentId =
       await this.tournamentResolver.getCurrentTournamentId(tourCode);
 
@@ -81,7 +84,7 @@ export class LeaderboardEventProcessor {
   }
 
   private async getLeaderboardSnapshotBefore(
-    tourCode: TourCode,
+    tourCode: DomainTourCode,
     tournamentId: string,
   ) {
     return this.leaderboardSnapshotRepository.getLeaderboardSnapshot(
@@ -91,7 +94,7 @@ export class LeaderboardEventProcessor {
   }
 
   private async getLeaderboardSnapshotAfter(
-    tourCode: TourCode,
+    tourCode: DomainTourCode,
     tournamentId: string,
   ) {
     const [tournament, leaderboard] = await Promise.all([
@@ -114,7 +117,7 @@ export class LeaderboardEventProcessor {
   }
 
   private async insertBaseLeaderboardSnapshot(
-    tourCode: TourCode,
+    tourCode: DomainTourCode,
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
   ) {
@@ -126,7 +129,7 @@ export class LeaderboardEventProcessor {
   }
 
   private async insertLeaderboardFeedEvents(
-    tourCode: TourCode,
+    tourCode: DomainTourCode,
     tournamentId: string,
     events: LeaderboardEvent[],
     snapshot: LeaderboardSnapshot,

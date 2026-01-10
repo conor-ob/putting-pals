@@ -1,4 +1,4 @@
-import { TourCodeSchema } from "@putting-pals/putting-pals-schema";
+import { DomainTourCodeSchema } from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import z from "zod";
 import { publicProcedure, router } from "../trpc";
@@ -7,7 +7,7 @@ export const eventRouter = router({
   processEvent: publicProcedure
     .input(
       z.object({
-        tourCode: TourCodeSchema,
+        tourCode: DomainTourCodeSchema,
         type: z.enum(["leaderboard/detect-change"]),
       }),
     )

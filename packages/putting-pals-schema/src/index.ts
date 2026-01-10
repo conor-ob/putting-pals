@@ -1,6 +1,17 @@
 import { z } from "zod";
 
-export const TourCodeSchema = z.enum(["P", "R"]);
+export const DomainTourCodeSchema = z.enum([
+  "C",
+  "E",
+  "H",
+  "I",
+  "M",
+  "P",
+  "R",
+  "S",
+  "U",
+  "Y",
+]);
 
 export const CompetitorSchema = z.object({
   id: z.string(),
@@ -35,8 +46,6 @@ export const CompetitionSchema = z
 
 export * from "./generated/graphql";
 
-export type TourCode = z.infer<typeof TourCodeSchema>;
-
 export type Competitor = z.infer<typeof CompetitorSchema>;
 
 export type Competition = z.infer<typeof CompetitionSchema>;
@@ -50,6 +59,8 @@ export * from "./repository/competition-repository";
 export * from "./repository/leaderboard-feed-repository";
 export * from "./repository/leaderboard-snapshot-repository";
 export * from "./service/competition-service";
+export * from "./service/feed-service";
+export * from "./service/leaderboard-event-processor";
 export * from "./service/leaderboard-service";
 export * from "./service/pga-tour-web-scraper";
 export * from "./service/schedule-service";

@@ -7,14 +7,13 @@
  * need to use are documented accordingly near the end.
  */
 
-import type { LeaderboardEventProcessor } from "@putting-pals/putting-pals-core/leaderboard-event";
 import type {
   CompetitionService,
-  LeaderboardFeedRepository,
+  FeedService,
+  LeaderboardEventProcessor,
   LeaderboardService,
   ScheduleService,
   ScheduleYearsService,
-  TournamentResolver,
   TournamentService,
 } from "@putting-pals/putting-pals-schema";
 import { initTRPC } from "@trpc/server";
@@ -36,30 +35,27 @@ import { onError } from "./error/error-handler";
  */
 export function createTrpcContext({
   tournamentService,
-  tournamentResolver,
   competitionService,
   leaderboardService,
   leaderboardEventProcessor,
-  leaderboardFeedRepository,
+  feedService,
   scheduleService,
   scheduleYearsService,
 }: {
   tournamentService: TournamentService;
-  tournamentResolver: TournamentResolver;
   competitionService: CompetitionService;
   leaderboardService: LeaderboardService;
   leaderboardEventProcessor: LeaderboardEventProcessor;
-  leaderboardFeedRepository: LeaderboardFeedRepository;
+  feedService: FeedService;
   scheduleService: ScheduleService;
   scheduleYearsService: ScheduleYearsService;
 }) {
   return {
     tournamentService,
-    tournamentResolver,
     competitionService,
     leaderboardService,
     leaderboardEventProcessor,
-    leaderboardFeedRepository,
+    feedService,
     scheduleService,
     scheduleYearsService,
   };

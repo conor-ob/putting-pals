@@ -1,5 +1,6 @@
 import type {
   DomainTourCode,
+  FeedService,
   LeaderboardEvent,
   LeaderboardFeedRepository,
   LeaderboardService,
@@ -9,7 +10,7 @@ import type {
 
 const PAGE_SIZE = 20;
 
-export class FeedService {
+export class FeedServiceImpl implements FeedService {
   constructor(
     private readonly tournamentService: TournamentService,
     private readonly leaderboardService: LeaderboardService,
@@ -24,7 +25,7 @@ export class FeedService {
 
   async getFeed(tourCode: DomainTourCode, id?: string, cursor?: number) {
     const tournamentId = await this.resolveTournamentId(tourCode, id);
-    const [tournament, leaderboard] = await Promise.all([
+    const [_tournament, _leaderboard] = await Promise.all([
       this.tournamentService.getTournament(tourCode, tournamentId),
       this.leaderboardService.getLeaderboard(tourCode, tournamentId),
     ]);
@@ -43,14 +44,16 @@ export class FeedService {
       : undefined;
 
     return {
-      items: feedItems.map((item) => ({
-        ...item,
-        feedItem: this.hydrate(item.feedItem, tournament, leaderboard),
-      })),
+      // items: feedItems.map((item) => ({
+      //   ...item,
+      //   feedItem: this.hydrate(item.feedItem, tournament, leaderboard),
+      // })),
+      items: feedItems,
       nextCursor,
     };
   }
 
+  // biome-ignore lint/correctness/noUnusedPrivateClassMembers: todo
   private hydrate(
     feedItem: LeaderboardEvent,
     tournament: Awaited<ReturnType<TournamentService["getTournament"]>>,

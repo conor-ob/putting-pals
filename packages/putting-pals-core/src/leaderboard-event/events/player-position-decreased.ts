@@ -1,5 +1,4 @@
 import type { LeaderboardEvent } from "@putting-pals/putting-pals-schema";
-import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class PlayerPositionDecreased extends AbstractEventEmitter {
@@ -10,7 +9,7 @@ export class PlayerPositionDecreased extends AbstractEventEmitter {
       case "R":
         return [];
       default:
-        assertNever(this.tourCode);
+        throw new Error(`Unsupported tour code: ${this.tourCode}`);
     }
   }
 

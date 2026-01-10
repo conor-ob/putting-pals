@@ -10,8 +10,9 @@ import {
 } from "@putting-pals/putting-pals-api/router";
 import { createTrpcContext } from "@putting-pals/putting-pals-api/trpc";
 import { CompetitionServiceImpl } from "@putting-pals/putting-pals-core/competition";
+import { FeedServiceImpl } from "@putting-pals/putting-pals-core/feed";
 import { LeaderboardServiceImpl } from "@putting-pals/putting-pals-core/leaderboard";
-import { LeaderboardEventProcessor } from "@putting-pals/putting-pals-core/leaderboard-event";
+import { LeaderboardEventProcessorImpl } from "@putting-pals/putting-pals-core/leaderboard-event";
 import { ScheduleServiceImpl } from "@putting-pals/putting-pals-core/schedule";
 import { ScheduleYearsServiceImpl } from "@putting-pals/putting-pals-core/schedule-years";
 import { TournamentServiceImpl } from "@putting-pals/putting-pals-core/tournament";
@@ -74,7 +75,14 @@ export default function (fastify: FastifyInstance) {
           db,
         );
 
-        const leaderboardEventProcessor = new LeaderboardEventProcessor(
+        const feedService = new FeedServiceImpl(
+          tournamentService,
+          leaderboardService,
+          tournamentResolver,
+          leaderboardFeedRepository,
+        );
+
+        const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
           tournamentService,
           leaderboardService,
           tournamentResolver,
@@ -84,11 +92,10 @@ export default function (fastify: FastifyInstance) {
 
         return createTrpcContext({
           tournamentService,
-          tournamentResolver,
           competitionService,
           leaderboardService,
           leaderboardEventProcessor,
-          leaderboardFeedRepository,
+          feedService,
           scheduleService,
           scheduleYearsService,
         });
