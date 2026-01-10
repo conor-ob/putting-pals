@@ -12,7 +12,7 @@ export interface LeaderboardFeedRepository {
       seq: number;
       type: string;
       feedItem: LeaderboardEvent;
-      tourCode: "P" | "R" | "C" | "E" | "H" | "I" | "M" | "S" | "U" | "Y";
+      tourCode: DomainTourCode;
       tournamentId: string;
       createdAt: Date;
       updatedAt: Date;

@@ -52,12 +52,24 @@ export class LeaderboardSnapshotPostgresRepository
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
   ): Promise<void> {
-    await this.db.insert(leaderboardSnapshotTable).values({
-      tourCode,
-      tournamentId,
-      version: LeaderboardSnapshotVersion,
-      snapshot,
-    });
+    await this.db
+      .insert(leaderboardSnapshotTable)
+      .values({
+        tourCode,
+        tournamentId,
+        version: LeaderboardSnapshotVersion,
+        snapshot,
+      })
+      .onConflictDoUpdate({
+        target: [
+          leaderboardSnapshotTable.tourCode,
+          leaderboardSnapshotTable.tournamentId,
+        ],
+        set: {
+          snapshot,
+          version: LeaderboardSnapshotVersion,
+        },
+      });
   }
 
   async updateLeaderboardSnapshot(
@@ -97,7 +109,7 @@ export class LeaderboardFeedPostgresRepository
       seq: number;
       type: string;
       feedItem: LeaderboardEvent;
-      tourCode: "P" | "R" | "C" | "E" | "H" | "I" | "M" | "S" | "U" | "Y";
+      tourCode: DomainTourCode;
       tournamentId: string;
       createdAt: Date;
       updatedAt: Date;
