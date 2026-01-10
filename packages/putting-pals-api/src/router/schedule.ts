@@ -1,12 +1,12 @@
-import { DomainTourCodeSchema } from "@putting-pals/putting-pals-schema";
 import z from "zod";
 import { publicProcedure, router } from "../trpc";
+import { TourCodeInputSchema } from "../validation/input-schema";
 
 export const scheduleRouter = router({
   getScheduleYears: publicProcedure
     .input(
       z.object({
-        tourCode: DomainTourCodeSchema,
+        tourCode: TourCodeInputSchema,
       }),
     )
     .query(async ({ ctx, input }) => {
@@ -16,7 +16,7 @@ export const scheduleRouter = router({
   getByYear: publicProcedure
     .input(
       z.object({
-        tourCode: DomainTourCodeSchema,
+        tourCode: TourCodeInputSchema,
         year: z.string().optional(),
       }),
     )
@@ -27,7 +27,7 @@ export const scheduleRouter = router({
   getUpcoming: publicProcedure
     .input(
       z.object({
-        tourCode: DomainTourCodeSchema,
+        tourCode: TourCodeInputSchema,
       }),
     )
     .query(async ({ ctx, input }) => {

@@ -1,14 +1,17 @@
-import { DomainTourCodeSchema } from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import z from "zod";
 import { publicProcedure, router } from "../trpc";
+import {
+  EventTypeInputSchema,
+  TourCodeInputSchema,
+} from "../validation/input-schema";
 
 export const eventRouter = router({
   processEvent: publicProcedure
     .input(
       z.object({
-        tourCode: DomainTourCodeSchema,
-        type: z.enum(["leaderboard/detect-change"]),
+        tourCode: TourCodeInputSchema,
+        type: EventTypeInputSchema,
       }),
     )
     .mutation(async ({ ctx, input }) => {

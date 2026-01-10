@@ -1,18 +1,5 @@
 import { z } from "zod";
 
-export const DomainTourCodeSchema = z.enum([
-  "C",
-  "E",
-  "H",
-  "I",
-  "M",
-  "P",
-  "R",
-  "S",
-  "U",
-  "Y",
-]);
-
 export const CompetitorSchema = z.object({
   id: z.string(),
   country: z.string(),
