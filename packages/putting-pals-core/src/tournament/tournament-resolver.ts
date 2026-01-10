@@ -1,25 +1,38 @@
-import { PgaTourWebScraper } from "@putting-pals/pga-tour-scaper/scraper";
-import type { TourCode } from "@putting-pals/putting-pals-schema";
-import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
-import { CompetitionService } from "../competition/competition-service";
+import type {
+  CompetitionService,
+  DomainTourCode,
+  PgaTourWebScraper,
+  TournamentClient,
+  TournamentResolver,
+} from "@putting-pals/putting-pals-schema";
 import { NotFoundError } from "../utils/service-error";
-import { TournamentService } from "./tournament-service";
 import { parseStartDate } from "./tournament-utils";
 
-export class TournamentResolver {
-  getCurrentTournamentId(tourCode: TourCode) {
+export class TournamentResolverImpl implements TournamentResolver {
+  constructor(
+    private readonly tournamentClient: TournamentClient,
+    private readonly pgaTourWebScraper: PgaTourWebScraper,
+    private readonly competitionService: CompetitionService,
+  ) {
+    this.tournamentClient = tournamentClient;
+    this.pgaTourWebScraper = pgaTourWebScraper;
+    this.competitionService = competitionService;
+  }
+
+  getCurrentTournamentId(tourCode: DomainTourCode): Promise<string> {
     switch (tourCode) {
       case "P":
         return this.getCurrentPuttingPalsTournamentId();
       case "R":
         return this.getCurrentPgaTourTournamentId();
       default:
-        assertNever(tourCode);
+        // assertNever(tourCode);
+        throw new Error(`Unsupported tour code: ${tourCode}`);
     }
   }
 
   private async getCurrentPgaTourTournamentId() {
-    const tournamentId = await new PgaTourWebScraper().getCurrentTournamentId();
+    const tournamentId = await this.pgaTourWebScraper.getCurrentTournamentId();
     if (tournamentId === undefined) {
       throw new NotFoundError("Failed to get current PGA TOUR tournament id");
     }
@@ -27,7 +40,7 @@ export class TournamentResolver {
   }
 
   private async getCurrentPuttingPalsTournamentId() {
-    const competitions = new CompetitionService().getCompetitions();
+    const competitions = this.competitionService.getCompetitions();
 
     const oddsAvailableCompetition = competitions.find(
       (competition) =>
@@ -54,10 +67,9 @@ export class TournamentResolver {
       .filter((competition) => competition.competitors.length > 0)
       .map((competition) => competition.tournamentId);
 
-    const tournaments = await new TournamentService().getTournaments(
-      competitionIds,
-    );
-    const currentTournament = tournaments.sort((a, b) =>
+    const tournaments =
+      await this.tournamentClient.getTournaments(competitionIds);
+    const currentTournament = [...tournaments].sort((a, b) =>
       parseStartDate(b).localeCompare(parseStartDate(a)),
     )[0];
 

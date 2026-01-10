@@ -14,10 +14,11 @@ export const feedRouter = router({
       }),
     )
     .query(async ({ ctx, input }) => {
-      return new FeedService(ctx.leaderboardFeedRepository).getFeed(
-        input.tourCode,
-        input.id,
-        input.cursor,
-      );
+      return new FeedService(
+        ctx.tournamentService,
+        ctx.leaderboardService,
+        ctx.tournamentResolver,
+        ctx.leaderboardFeedRepository,
+      ).getFeed(input.tourCode, input.id, input.cursor);
     }),
 });

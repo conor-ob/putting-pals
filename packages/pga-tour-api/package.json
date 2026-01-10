@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@putting-pals/pga-tour-schema": "workspace:*",
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "graphql": "catalog:",
     "graphql-request": "catalog:"
   },

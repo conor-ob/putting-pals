@@ -1,5 +1,5 @@
-export { LeaderboardClient } from "./client/leaderboard-client";
+export { LeaderboardGraphQlClient } from "./client/leaderboard-client";
 
-export { ScheduleClient } from "./client/schedule-client";
+export { ScheduleGraphQlClient } from "./client/schedule-client";
 
-export { TournamentClient } from "./client/tournament-client";
+export { TournamentGraphQlClient } from "./client/tournament-client";

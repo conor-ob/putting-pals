@@ -1,9 +1,13 @@
 import { FileReader } from "@putting-pals/putting-pals-data/file-reader";
-import { CompetitionSchema } from "@putting-pals/putting-pals-schema";
+import {
+  type Competition,
+  CompetitionSchema,
+  type CompetitionService,
+} from "@putting-pals/putting-pals-schema";
 import { NotFoundError } from "../utils/service-error";
 
-export class CompetitionService {
-  getCompetition(id: string) {
+export class CompetitionServiceImpl implements CompetitionService {
+  getCompetition(id: string): Competition {
     const competition = this.getCompetitions().find(
       (competition) => competition.tournamentId === id,
     );
@@ -13,7 +17,7 @@ export class CompetitionService {
     return competition;
   }
 
-  getCompetitions() {
+  getCompetitions(): Competition[] {
     return new FileReader()
       .readCompetitionFiles()
       .map((fileContent) => CompetitionSchema.parse(fileContent));

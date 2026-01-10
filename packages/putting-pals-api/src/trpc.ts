@@ -8,7 +8,15 @@
  */
 
 import type { LeaderboardEventProcessor } from "@putting-pals/putting-pals-core/leaderboard-event";
-import type { LeaderboardFeedRepository } from "@putting-pals/putting-pals-schema";
+import type {
+  CompetitionService,
+  LeaderboardFeedRepository,
+  LeaderboardService,
+  ScheduleService,
+  ScheduleYearsService,
+  TournamentResolver,
+  TournamentService,
+} from "@putting-pals/putting-pals-schema";
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import z, { ZodError } from "zod";
@@ -27,13 +35,34 @@ import { onError } from "./error/error-handler";
  * @see https://trpc.io/docs/server/context
  */
 export function createTrpcContext({
+  tournamentService,
+  tournamentResolver,
+  competitionService,
+  leaderboardService,
   leaderboardEventProcessor,
   leaderboardFeedRepository,
+  scheduleService,
+  scheduleYearsService,
 }: {
+  tournamentService: TournamentService;
+  tournamentResolver: TournamentResolver;
+  competitionService: CompetitionService;
+  leaderboardService: LeaderboardService;
   leaderboardEventProcessor: LeaderboardEventProcessor;
   leaderboardFeedRepository: LeaderboardFeedRepository;
+  scheduleService: ScheduleService;
+  scheduleYearsService: ScheduleYearsService;
 }) {
-  return { leaderboardEventProcessor, leaderboardFeedRepository };
+  return {
+    tournamentService,
+    tournamentResolver,
+    competitionService,
+    leaderboardService,
+    leaderboardEventProcessor,
+    leaderboardFeedRepository,
+    scheduleService,
+    scheduleYearsService,
+  };
 }
 
 /**

@@ -1,13 +1,13 @@
 import type {
   LeaderboardEvent,
   LeaderboardFeedRepository,
+  LeaderboardService,
   LeaderboardSnapshot,
   LeaderboardSnapshotRepository,
   TourCode,
+  TournamentResolver,
+  TournamentService,
 } from "@putting-pals/putting-pals-schema";
-import { LeaderboardService } from "../leaderboard/leaderboard-service";
-import { TournamentResolver } from "../tournament/tournament-resolver";
-import { TournamentService } from "../tournament/tournament-service";
 import type { EventEmitter } from "./event-emitter";
 import { BirdieStreak } from "./events/birdie-streak";
 import { LeaderChanged } from "./events/leader-changed";
@@ -22,17 +22,22 @@ import { TournamentWinner } from "./events/tournament-winner";
 
 export class LeaderboardEventProcessor {
   constructor(
+    private readonly tournamentService: TournamentService,
+    private readonly leaderboardService: LeaderboardService,
+    private readonly tournamentResolver: TournamentResolver,
     private readonly leaderboardSnapshotRepository: LeaderboardSnapshotRepository,
     private readonly leaderboardFeedRepository: LeaderboardFeedRepository,
   ) {
+    this.tournamentService = tournamentService;
+    this.leaderboardService = leaderboardService;
+    this.tournamentResolver = tournamentResolver;
     this.leaderboardSnapshotRepository = leaderboardSnapshotRepository;
     this.leaderboardFeedRepository = leaderboardFeedRepository;
   }
 
   async detectChange(tourCode: TourCode) {
-    const tournamentId = await new TournamentResolver().getCurrentTournamentId(
-      tourCode,
-    );
+    const tournamentId =
+      await this.tournamentResolver.getCurrentTournamentId(tourCode);
 
     const [before, after] = await Promise.all([
       this.getLeaderboardSnapshotBefore(tourCode, tournamentId),
@@ -90,13 +95,13 @@ export class LeaderboardEventProcessor {
     tournamentId: string,
   ) {
     const [tournament, leaderboard] = await Promise.all([
-      new TournamentService().getTournament(tourCode, tournamentId),
-      new LeaderboardService().getLeaderboard(tourCode, tournamentId),
+      this.tournamentService.getTournament(tourCode, tournamentId),
+      this.leaderboardService.getLeaderboard(tourCode, tournamentId),
     ]);
 
     const currentRound = tournament.currentRound;
     const leaderboardHoleByHole =
-      await new LeaderboardService().getLeaderboardHoleByHole(
+      await this.leaderboardService.getLeaderboardHoleByHole(
         tournamentId,
         currentRound,
       );

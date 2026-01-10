@@ -11327,30 +11327,90 @@ export type ApiLeaderboardHoleByHoleQuery = {
 
 export type ApiScheduleTournamentFieldsFragment = {
   readonly __typename: 'ScheduleTournament',
-  readonly date: string,
   readonly id: string,
-  readonly sortDate?: string | null,
+  readonly date: string,
+  readonly startDate: any,
+  readonly dateAccessibilityText: string,
   readonly tournamentName: string,
+  readonly tournamentLogo: string,
+  readonly city: string,
+  readonly state: string,
+  readonly stateCode: string,
+  readonly country: string,
+  readonly countryCode: string,
+  readonly courseName: string,
+  readonly champion: string,
+  readonly championId: string,
+  readonly championEarnings?: string | null,
+  readonly beautyImage?: string | null,
   readonly tournamentStatus: ApiTournamentStatus,
+  readonly sortDate?: string | null,
+  readonly sequenceNumber: number,
+  readonly purse?: string | null,
+  readonly ticketsURL?: string | null,
+  readonly tourStandingHeading?: string | null,
+  readonly tourStandingValue?: string | null,
+  readonly display: ApiScheduleDisplay,
+  readonly ticketmasterApiKey?: string | null,
+  readonly ticketmasterAttractionId?: string | null,
+  readonly androidTicketmasterApiKey?: string | null,
+  readonly androidTicketmasterScheme?: string | null,
+  readonly iosTicketmasterApiKey?: string | null,
+  readonly ticketsEnabled: boolean,
+  readonly tournamentSiteURL?: string | null,
+  readonly useTournamentSiteURL: boolean,
+  readonly tournamentLogoAsset: {
+    readonly __typename: 'ImageAsset',
+    readonly imageOrg: string,
+    readonly imagePath: string,
+    readonly assetType?: string | null,
+    readonly deliveryType?: string | null,
+    readonly fallbackImage?: string | null
+  },
+  readonly champions: ReadonlyArray<{
+    readonly __typename: 'ScheduleChampion',
+    readonly displayName: string,
+    readonly playerId: string
+  }>,
   readonly beautyImageAsset?: {
     readonly __typename: 'ImageAsset',
-    readonly fallbackImage?: string | null,
     readonly imageOrg: string,
-    readonly imagePath: string
+    readonly imagePath: string,
+    readonly assetType?: string | null,
+    readonly deliveryType?: string | null,
+    readonly fallbackImage?: string | null
   } | null,
   readonly status?: {
     readonly __typename: 'ScheduleTournamentStatus',
+    readonly roundStatusDisplay: string,
     readonly roundDisplay: string,
     readonly roundStatus: ApiRoundStatus,
     readonly roundStatusColor: ApiRoundStatusColor,
-    readonly roundStatusDisplay: string
+    readonly leaderboardTakeover: boolean
   } | null,
-  readonly tournamentLogoAsset: {
-    readonly __typename: 'ImageAsset',
-    readonly fallbackImage?: string | null,
-    readonly imageOrg: string,
-    readonly imagePath: string
-  }
+  readonly tournamentCategoryInfo?: {
+    readonly __typename: 'TournamentCategoryInfo',
+    readonly type: ApiTournamentCategory,
+    readonly logoLight: string,
+    readonly logoDark: string,
+    readonly label: string,
+    readonly logoLightAsset: {
+      readonly __typename: 'ImageAsset',
+      readonly imageOrg: string,
+      readonly imagePath: string,
+      readonly assetType?: string | null,
+      readonly deliveryType?: string | null,
+      readonly fallbackImage?: string | null
+    },
+    readonly logoDarkAsset: {
+      readonly __typename: 'ImageAsset',
+      readonly imageOrg: string,
+      readonly imagePath: string,
+      readonly assetType?: string | null,
+      readonly deliveryType?: string | null,
+      readonly fallbackImage?: string | null
+    }
+  } | null
 };
 
 export type ApiScheduleMonthFieldsFragment = {
@@ -11360,35 +11420,96 @@ export type ApiScheduleMonthFieldsFragment = {
   readonly monthSort?: number | null,
   readonly tournaments: ReadonlyArray<{
     readonly __typename: 'ScheduleTournament',
-    readonly date: string,
     readonly id: string,
-    readonly sortDate?: string | null,
+    readonly date: string,
+    readonly startDate: any,
+    readonly dateAccessibilityText: string,
     readonly tournamentName: string,
+    readonly tournamentLogo: string,
+    readonly city: string,
+    readonly state: string,
+    readonly stateCode: string,
+    readonly country: string,
+    readonly countryCode: string,
+    readonly courseName: string,
+    readonly champion: string,
+    readonly championId: string,
+    readonly championEarnings?: string | null,
+    readonly beautyImage?: string | null,
     readonly tournamentStatus: ApiTournamentStatus,
+    readonly sortDate?: string | null,
+    readonly sequenceNumber: number,
+    readonly purse?: string | null,
+    readonly ticketsURL?: string | null,
+    readonly tourStandingHeading?: string | null,
+    readonly tourStandingValue?: string | null,
+    readonly display: ApiScheduleDisplay,
+    readonly ticketmasterApiKey?: string | null,
+    readonly ticketmasterAttractionId?: string | null,
+    readonly androidTicketmasterApiKey?: string | null,
+    readonly androidTicketmasterScheme?: string | null,
+    readonly iosTicketmasterApiKey?: string | null,
+    readonly ticketsEnabled: boolean,
+    readonly tournamentSiteURL?: string | null,
+    readonly useTournamentSiteURL: boolean,
+    readonly tournamentLogoAsset: {
+      readonly __typename: 'ImageAsset',
+      readonly imageOrg: string,
+      readonly imagePath: string,
+      readonly assetType?: string | null,
+      readonly deliveryType?: string | null,
+      readonly fallbackImage?: string | null
+    },
+    readonly champions: ReadonlyArray<{
+      readonly __typename: 'ScheduleChampion',
+      readonly displayName: string,
+      readonly playerId: string
+    }>,
     readonly beautyImageAsset?: {
       readonly __typename: 'ImageAsset',
-      readonly fallbackImage?: string | null,
       readonly imageOrg: string,
-      readonly imagePath: string
+      readonly imagePath: string,
+      readonly assetType?: string | null,
+      readonly deliveryType?: string | null,
+      readonly fallbackImage?: string | null
     } | null,
     readonly status?: {
       readonly __typename: 'ScheduleTournamentStatus',
+      readonly roundStatusDisplay: string,
       readonly roundDisplay: string,
       readonly roundStatus: ApiRoundStatus,
       readonly roundStatusColor: ApiRoundStatusColor,
-      readonly roundStatusDisplay: string
+      readonly leaderboardTakeover: boolean
     } | null,
-    readonly tournamentLogoAsset: {
-      readonly __typename: 'ImageAsset',
-      readonly fallbackImage?: string | null,
-      readonly imageOrg: string,
-      readonly imagePath: string
-    }
+    readonly tournamentCategoryInfo?: {
+      readonly __typename: 'TournamentCategoryInfo',
+      readonly type: ApiTournamentCategory,
+      readonly logoLight: string,
+      readonly logoDark: string,
+      readonly label: string,
+      readonly logoLightAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      },
+      readonly logoDarkAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      }
+    } | null
   }>
 };
 
 export type ApiScheduleFieldsFragment = {
   readonly __typename: 'Schedule',
+  readonly tour: string,
   readonly seasonYear: string,
   readonly completed: ReadonlyArray<{
     readonly __typename: 'ScheduleMonth',
@@ -11397,30 +11518,90 @@ export type ApiScheduleFieldsFragment = {
     readonly monthSort?: number | null,
     readonly tournaments: ReadonlyArray<{
       readonly __typename: 'ScheduleTournament',
-      readonly date: string,
       readonly id: string,
-      readonly sortDate?: string | null,
+      readonly date: string,
+      readonly startDate: any,
+      readonly dateAccessibilityText: string,
       readonly tournamentName: string,
+      readonly tournamentLogo: string,
+      readonly city: string,
+      readonly state: string,
+      readonly stateCode: string,
+      readonly country: string,
+      readonly countryCode: string,
+      readonly courseName: string,
+      readonly champion: string,
+      readonly championId: string,
+      readonly championEarnings?: string | null,
+      readonly beautyImage?: string | null,
       readonly tournamentStatus: ApiTournamentStatus,
+      readonly sortDate?: string | null,
+      readonly sequenceNumber: number,
+      readonly purse?: string | null,
+      readonly ticketsURL?: string | null,
+      readonly tourStandingHeading?: string | null,
+      readonly tourStandingValue?: string | null,
+      readonly display: ApiScheduleDisplay,
+      readonly ticketmasterApiKey?: string | null,
+      readonly ticketmasterAttractionId?: string | null,
+      readonly androidTicketmasterApiKey?: string | null,
+      readonly androidTicketmasterScheme?: string | null,
+      readonly iosTicketmasterApiKey?: string | null,
+      readonly ticketsEnabled: boolean,
+      readonly tournamentSiteURL?: string | null,
+      readonly useTournamentSiteURL: boolean,
+      readonly tournamentLogoAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      },
+      readonly champions: ReadonlyArray<{
+        readonly __typename: 'ScheduleChampion',
+        readonly displayName: string,
+        readonly playerId: string
+      }>,
       readonly beautyImageAsset?: {
         readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
         readonly imageOrg: string,
-        readonly imagePath: string
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
       } | null,
       readonly status?: {
         readonly __typename: 'ScheduleTournamentStatus',
+        readonly roundStatusDisplay: string,
         readonly roundDisplay: string,
         readonly roundStatus: ApiRoundStatus,
         readonly roundStatusColor: ApiRoundStatusColor,
-        readonly roundStatusDisplay: string
+        readonly leaderboardTakeover: boolean
       } | null,
-      readonly tournamentLogoAsset: {
-        readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
-        readonly imageOrg: string,
-        readonly imagePath: string
-      }
+      readonly tournamentCategoryInfo?: {
+        readonly __typename: 'TournamentCategoryInfo',
+        readonly type: ApiTournamentCategory,
+        readonly logoLight: string,
+        readonly logoDark: string,
+        readonly label: string,
+        readonly logoLightAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        },
+        readonly logoDarkAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        }
+      } | null
     }>
   }>,
   readonly upcoming: ReadonlyArray<{
@@ -11430,32 +11611,97 @@ export type ApiScheduleFieldsFragment = {
     readonly monthSort?: number | null,
     readonly tournaments: ReadonlyArray<{
       readonly __typename: 'ScheduleTournament',
-      readonly date: string,
       readonly id: string,
-      readonly sortDate?: string | null,
+      readonly date: string,
+      readonly startDate: any,
+      readonly dateAccessibilityText: string,
       readonly tournamentName: string,
+      readonly tournamentLogo: string,
+      readonly city: string,
+      readonly state: string,
+      readonly stateCode: string,
+      readonly country: string,
+      readonly countryCode: string,
+      readonly courseName: string,
+      readonly champion: string,
+      readonly championId: string,
+      readonly championEarnings?: string | null,
+      readonly beautyImage?: string | null,
       readonly tournamentStatus: ApiTournamentStatus,
+      readonly sortDate?: string | null,
+      readonly sequenceNumber: number,
+      readonly purse?: string | null,
+      readonly ticketsURL?: string | null,
+      readonly tourStandingHeading?: string | null,
+      readonly tourStandingValue?: string | null,
+      readonly display: ApiScheduleDisplay,
+      readonly ticketmasterApiKey?: string | null,
+      readonly ticketmasterAttractionId?: string | null,
+      readonly androidTicketmasterApiKey?: string | null,
+      readonly androidTicketmasterScheme?: string | null,
+      readonly iosTicketmasterApiKey?: string | null,
+      readonly ticketsEnabled: boolean,
+      readonly tournamentSiteURL?: string | null,
+      readonly useTournamentSiteURL: boolean,
+      readonly tournamentLogoAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      },
+      readonly champions: ReadonlyArray<{
+        readonly __typename: 'ScheduleChampion',
+        readonly displayName: string,
+        readonly playerId: string
+      }>,
       readonly beautyImageAsset?: {
         readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
         readonly imageOrg: string,
-        readonly imagePath: string
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
       } | null,
       readonly status?: {
         readonly __typename: 'ScheduleTournamentStatus',
+        readonly roundStatusDisplay: string,
         readonly roundDisplay: string,
         readonly roundStatus: ApiRoundStatus,
         readonly roundStatusColor: ApiRoundStatusColor,
-        readonly roundStatusDisplay: string
+        readonly leaderboardTakeover: boolean
       } | null,
-      readonly tournamentLogoAsset: {
-        readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
-        readonly imageOrg: string,
-        readonly imagePath: string
-      }
+      readonly tournamentCategoryInfo?: {
+        readonly __typename: 'TournamentCategoryInfo',
+        readonly type: ApiTournamentCategory,
+        readonly logoLight: string,
+        readonly logoDark: string,
+        readonly label: string,
+        readonly logoLightAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        },
+        readonly logoDarkAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        }
+      } | null
     }>
-  }>
+  }>,
+  readonly filters?: ReadonlyArray<{
+    readonly __typename: 'ScheduleTournamentFilter',
+    readonly type: ApiTournamentCategory,
+    readonly name: string
+  }> | null
 };
 
 export type ApiScheduleYearsQueryVariables = Exact<{
@@ -11486,6 +11732,7 @@ export type ApiScheduleQuery = {
   readonly __typename: 'Query',
   readonly schedule: {
     readonly __typename: 'Schedule',
+    readonly tour: string,
     readonly seasonYear: string,
     readonly completed: ReadonlyArray<{
       readonly __typename: 'ScheduleMonth',
@@ -11494,30 +11741,90 @@ export type ApiScheduleQuery = {
       readonly monthSort?: number | null,
       readonly tournaments: ReadonlyArray<{
         readonly __typename: 'ScheduleTournament',
-        readonly date: string,
         readonly id: string,
-        readonly sortDate?: string | null,
+        readonly date: string,
+        readonly startDate: any,
+        readonly dateAccessibilityText: string,
         readonly tournamentName: string,
+        readonly tournamentLogo: string,
+        readonly city: string,
+        readonly state: string,
+        readonly stateCode: string,
+        readonly country: string,
+        readonly countryCode: string,
+        readonly courseName: string,
+        readonly champion: string,
+        readonly championId: string,
+        readonly championEarnings?: string | null,
+        readonly beautyImage?: string | null,
         readonly tournamentStatus: ApiTournamentStatus,
+        readonly sortDate?: string | null,
+        readonly sequenceNumber: number,
+        readonly purse?: string | null,
+        readonly ticketsURL?: string | null,
+        readonly tourStandingHeading?: string | null,
+        readonly tourStandingValue?: string | null,
+        readonly display: ApiScheduleDisplay,
+        readonly ticketmasterApiKey?: string | null,
+        readonly ticketmasterAttractionId?: string | null,
+        readonly androidTicketmasterApiKey?: string | null,
+        readonly androidTicketmasterScheme?: string | null,
+        readonly iosTicketmasterApiKey?: string | null,
+        readonly ticketsEnabled: boolean,
+        readonly tournamentSiteURL?: string | null,
+        readonly useTournamentSiteURL: boolean,
+        readonly tournamentLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        },
+        readonly champions: ReadonlyArray<{
+          readonly __typename: 'ScheduleChampion',
+          readonly displayName: string,
+          readonly playerId: string
+        }>,
         readonly beautyImageAsset?: {
           readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
           readonly imageOrg: string,
-          readonly imagePath: string
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
         } | null,
         readonly status?: {
           readonly __typename: 'ScheduleTournamentStatus',
+          readonly roundStatusDisplay: string,
           readonly roundDisplay: string,
           readonly roundStatus: ApiRoundStatus,
           readonly roundStatusColor: ApiRoundStatusColor,
-          readonly roundStatusDisplay: string
+          readonly leaderboardTakeover: boolean
         } | null,
-        readonly tournamentLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        }
+        readonly tournamentCategoryInfo?: {
+          readonly __typename: 'TournamentCategoryInfo',
+          readonly type: ApiTournamentCategory,
+          readonly logoLight: string,
+          readonly logoDark: string,
+          readonly label: string,
+          readonly logoLightAsset: {
+            readonly __typename: 'ImageAsset',
+            readonly imageOrg: string,
+            readonly imagePath: string,
+            readonly assetType?: string | null,
+            readonly deliveryType?: string | null,
+            readonly fallbackImage?: string | null
+          },
+          readonly logoDarkAsset: {
+            readonly __typename: 'ImageAsset',
+            readonly imageOrg: string,
+            readonly imagePath: string,
+            readonly assetType?: string | null,
+            readonly deliveryType?: string | null,
+            readonly fallbackImage?: string | null
+          }
+        } | null
       }>
     }>,
     readonly upcoming: ReadonlyArray<{
@@ -11527,32 +11834,97 @@ export type ApiScheduleQuery = {
       readonly monthSort?: number | null,
       readonly tournaments: ReadonlyArray<{
         readonly __typename: 'ScheduleTournament',
-        readonly date: string,
         readonly id: string,
-        readonly sortDate?: string | null,
+        readonly date: string,
+        readonly startDate: any,
+        readonly dateAccessibilityText: string,
         readonly tournamentName: string,
+        readonly tournamentLogo: string,
+        readonly city: string,
+        readonly state: string,
+        readonly stateCode: string,
+        readonly country: string,
+        readonly countryCode: string,
+        readonly courseName: string,
+        readonly champion: string,
+        readonly championId: string,
+        readonly championEarnings?: string | null,
+        readonly beautyImage?: string | null,
         readonly tournamentStatus: ApiTournamentStatus,
+        readonly sortDate?: string | null,
+        readonly sequenceNumber: number,
+        readonly purse?: string | null,
+        readonly ticketsURL?: string | null,
+        readonly tourStandingHeading?: string | null,
+        readonly tourStandingValue?: string | null,
+        readonly display: ApiScheduleDisplay,
+        readonly ticketmasterApiKey?: string | null,
+        readonly ticketmasterAttractionId?: string | null,
+        readonly androidTicketmasterApiKey?: string | null,
+        readonly androidTicketmasterScheme?: string | null,
+        readonly iosTicketmasterApiKey?: string | null,
+        readonly ticketsEnabled: boolean,
+        readonly tournamentSiteURL?: string | null,
+        readonly useTournamentSiteURL: boolean,
+        readonly tournamentLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        },
+        readonly champions: ReadonlyArray<{
+          readonly __typename: 'ScheduleChampion',
+          readonly displayName: string,
+          readonly playerId: string
+        }>,
         readonly beautyImageAsset?: {
           readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
           readonly imageOrg: string,
-          readonly imagePath: string
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
         } | null,
         readonly status?: {
           readonly __typename: 'ScheduleTournamentStatus',
+          readonly roundStatusDisplay: string,
           readonly roundDisplay: string,
           readonly roundStatus: ApiRoundStatus,
           readonly roundStatusColor: ApiRoundStatusColor,
-          readonly roundStatusDisplay: string
+          readonly leaderboardTakeover: boolean
         } | null,
-        readonly tournamentLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        }
+        readonly tournamentCategoryInfo?: {
+          readonly __typename: 'TournamentCategoryInfo',
+          readonly type: ApiTournamentCategory,
+          readonly logoLight: string,
+          readonly logoDark: string,
+          readonly label: string,
+          readonly logoLightAsset: {
+            readonly __typename: 'ImageAsset',
+            readonly imageOrg: string,
+            readonly imagePath: string,
+            readonly assetType?: string | null,
+            readonly deliveryType?: string | null,
+            readonly fallbackImage?: string | null
+          },
+          readonly logoDarkAsset: {
+            readonly __typename: 'ImageAsset',
+            readonly imageOrg: string,
+            readonly imagePath: string,
+            readonly assetType?: string | null,
+            readonly deliveryType?: string | null,
+            readonly fallbackImage?: string | null
+          }
+        } | null
       }>
-    }>
+    }>,
+    readonly filters?: ReadonlyArray<{
+      readonly __typename: 'ScheduleTournamentFilter',
+      readonly type: ApiTournamentCategory,
+      readonly name: string
+    }> | null
   }
 };
 
@@ -11565,6 +11937,7 @@ export type ApiCompleteScheduleQuery = {
   readonly __typename: 'Query',
   readonly completeSchedule: ReadonlyArray<{
     readonly __typename: 'Schedule',
+    readonly tour: string,
     readonly seasonYear: string,
     readonly completed: ReadonlyArray<{
       readonly __typename: 'ScheduleMonth',
@@ -11573,30 +11946,90 @@ export type ApiCompleteScheduleQuery = {
       readonly monthSort?: number | null,
       readonly tournaments: ReadonlyArray<{
         readonly __typename: 'ScheduleTournament',
-        readonly date: string,
         readonly id: string,
-        readonly sortDate?: string | null,
+        readonly date: string,
+        readonly startDate: any,
+        readonly dateAccessibilityText: string,
         readonly tournamentName: string,
+        readonly tournamentLogo: string,
+        readonly city: string,
+        readonly state: string,
+        readonly stateCode: string,
+        readonly country: string,
+        readonly countryCode: string,
+        readonly courseName: string,
+        readonly champion: string,
+        readonly championId: string,
+        readonly championEarnings?: string | null,
+        readonly beautyImage?: string | null,
         readonly tournamentStatus: ApiTournamentStatus,
+        readonly sortDate?: string | null,
+        readonly sequenceNumber: number,
+        readonly purse?: string | null,
+        readonly ticketsURL?: string | null,
+        readonly tourStandingHeading?: string | null,
+        readonly tourStandingValue?: string | null,
+        readonly display: ApiScheduleDisplay,
+        readonly ticketmasterApiKey?: string | null,
+        readonly ticketmasterAttractionId?: string | null,
+        readonly androidTicketmasterApiKey?: string | null,
+        readonly androidTicketmasterScheme?: string | null,
+        readonly iosTicketmasterApiKey?: string | null,
+        readonly ticketsEnabled: boolean,
+        readonly tournamentSiteURL?: string | null,
+        readonly useTournamentSiteURL: boolean,
+        readonly tournamentLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        },
+        readonly champions: ReadonlyArray<{
+          readonly __typename: 'ScheduleChampion',
+          readonly displayName: string,
+          readonly playerId: string
+        }>,
         readonly beautyImageAsset?: {
           readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
           readonly imageOrg: string,
-          readonly imagePath: string
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
         } | null,
         readonly status?: {
           readonly __typename: 'ScheduleTournamentStatus',
+          readonly roundStatusDisplay: string,
           readonly roundDisplay: string,
           readonly roundStatus: ApiRoundStatus,
           readonly roundStatusColor: ApiRoundStatusColor,
-          readonly roundStatusDisplay: string
+          readonly leaderboardTakeover: boolean
         } | null,
-        readonly tournamentLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        }
+        readonly tournamentCategoryInfo?: {
+          readonly __typename: 'TournamentCategoryInfo',
+          readonly type: ApiTournamentCategory,
+          readonly logoLight: string,
+          readonly logoDark: string,
+          readonly label: string,
+          readonly logoLightAsset: {
+            readonly __typename: 'ImageAsset',
+            readonly imageOrg: string,
+            readonly imagePath: string,
+            readonly assetType?: string | null,
+            readonly deliveryType?: string | null,
+            readonly fallbackImage?: string | null
+          },
+          readonly logoDarkAsset: {
+            readonly __typename: 'ImageAsset',
+            readonly imageOrg: string,
+            readonly imagePath: string,
+            readonly assetType?: string | null,
+            readonly deliveryType?: string | null,
+            readonly fallbackImage?: string | null
+          }
+        } | null
       }>
     }>,
     readonly upcoming: ReadonlyArray<{
@@ -11606,32 +12039,97 @@ export type ApiCompleteScheduleQuery = {
       readonly monthSort?: number | null,
       readonly tournaments: ReadonlyArray<{
         readonly __typename: 'ScheduleTournament',
-        readonly date: string,
         readonly id: string,
-        readonly sortDate?: string | null,
+        readonly date: string,
+        readonly startDate: any,
+        readonly dateAccessibilityText: string,
         readonly tournamentName: string,
+        readonly tournamentLogo: string,
+        readonly city: string,
+        readonly state: string,
+        readonly stateCode: string,
+        readonly country: string,
+        readonly countryCode: string,
+        readonly courseName: string,
+        readonly champion: string,
+        readonly championId: string,
+        readonly championEarnings?: string | null,
+        readonly beautyImage?: string | null,
         readonly tournamentStatus: ApiTournamentStatus,
+        readonly sortDate?: string | null,
+        readonly sequenceNumber: number,
+        readonly purse?: string | null,
+        readonly ticketsURL?: string | null,
+        readonly tourStandingHeading?: string | null,
+        readonly tourStandingValue?: string | null,
+        readonly display: ApiScheduleDisplay,
+        readonly ticketmasterApiKey?: string | null,
+        readonly ticketmasterAttractionId?: string | null,
+        readonly androidTicketmasterApiKey?: string | null,
+        readonly androidTicketmasterScheme?: string | null,
+        readonly iosTicketmasterApiKey?: string | null,
+        readonly ticketsEnabled: boolean,
+        readonly tournamentSiteURL?: string | null,
+        readonly useTournamentSiteURL: boolean,
+        readonly tournamentLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        },
+        readonly champions: ReadonlyArray<{
+          readonly __typename: 'ScheduleChampion',
+          readonly displayName: string,
+          readonly playerId: string
+        }>,
         readonly beautyImageAsset?: {
           readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
           readonly imageOrg: string,
-          readonly imagePath: string
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
         } | null,
         readonly status?: {
           readonly __typename: 'ScheduleTournamentStatus',
+          readonly roundStatusDisplay: string,
           readonly roundDisplay: string,
           readonly roundStatus: ApiRoundStatus,
           readonly roundStatusColor: ApiRoundStatusColor,
-          readonly roundStatusDisplay: string
+          readonly leaderboardTakeover: boolean
         } | null,
-        readonly tournamentLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        }
+        readonly tournamentCategoryInfo?: {
+          readonly __typename: 'TournamentCategoryInfo',
+          readonly type: ApiTournamentCategory,
+          readonly logoLight: string,
+          readonly logoDark: string,
+          readonly label: string,
+          readonly logoLightAsset: {
+            readonly __typename: 'ImageAsset',
+            readonly imageOrg: string,
+            readonly imagePath: string,
+            readonly assetType?: string | null,
+            readonly deliveryType?: string | null,
+            readonly fallbackImage?: string | null
+          },
+          readonly logoDarkAsset: {
+            readonly __typename: 'ImageAsset',
+            readonly imageOrg: string,
+            readonly imagePath: string,
+            readonly assetType?: string | null,
+            readonly deliveryType?: string | null,
+            readonly fallbackImage?: string | null
+          }
+        } | null
       }>
-    }>
+    }>,
+    readonly filters?: ReadonlyArray<{
+      readonly __typename: 'ScheduleTournamentFilter',
+      readonly type: ApiTournamentCategory,
+      readonly name: string
+    }> | null
   }>
 };
 
@@ -11644,32 +12142,98 @@ export type ApiUpcomingScheduleQuery = {
   readonly __typename: 'Query',
   readonly upcomingSchedule: {
     readonly __typename: 'ScheduleUpcoming',
+    readonly id: string,
+    readonly filters?: ReadonlyArray<{
+      readonly __typename: 'ScheduleTournamentFilter',
+      readonly type: ApiTournamentCategory,
+      readonly name: string
+    }> | null,
     readonly tournaments: ReadonlyArray<{
       readonly __typename: 'ScheduleTournament',
-      readonly date: string,
       readonly id: string,
-      readonly sortDate?: string | null,
+      readonly date: string,
+      readonly startDate: any,
+      readonly dateAccessibilityText: string,
       readonly tournamentName: string,
+      readonly tournamentLogo: string,
+      readonly city: string,
+      readonly state: string,
+      readonly stateCode: string,
+      readonly country: string,
+      readonly countryCode: string,
+      readonly courseName: string,
+      readonly champion: string,
+      readonly championId: string,
+      readonly championEarnings?: string | null,
+      readonly beautyImage?: string | null,
       readonly tournamentStatus: ApiTournamentStatus,
+      readonly sortDate?: string | null,
+      readonly sequenceNumber: number,
+      readonly purse?: string | null,
+      readonly ticketsURL?: string | null,
+      readonly tourStandingHeading?: string | null,
+      readonly tourStandingValue?: string | null,
+      readonly display: ApiScheduleDisplay,
+      readonly ticketmasterApiKey?: string | null,
+      readonly ticketmasterAttractionId?: string | null,
+      readonly androidTicketmasterApiKey?: string | null,
+      readonly androidTicketmasterScheme?: string | null,
+      readonly iosTicketmasterApiKey?: string | null,
+      readonly ticketsEnabled: boolean,
+      readonly tournamentSiteURL?: string | null,
+      readonly useTournamentSiteURL: boolean,
+      readonly tournamentLogoAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      },
+      readonly champions: ReadonlyArray<{
+        readonly __typename: 'ScheduleChampion',
+        readonly displayName: string,
+        readonly playerId: string
+      }>,
       readonly beautyImageAsset?: {
         readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
         readonly imageOrg: string,
-        readonly imagePath: string
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
       } | null,
       readonly status?: {
         readonly __typename: 'ScheduleTournamentStatus',
+        readonly roundStatusDisplay: string,
         readonly roundDisplay: string,
         readonly roundStatus: ApiRoundStatus,
         readonly roundStatusColor: ApiRoundStatusColor,
-        readonly roundStatusDisplay: string
+        readonly leaderboardTakeover: boolean
       } | null,
-      readonly tournamentLogoAsset: {
-        readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
-        readonly imageOrg: string,
-        readonly imagePath: string
-      }
+      readonly tournamentCategoryInfo?: {
+        readonly __typename: 'TournamentCategoryInfo',
+        readonly type: ApiTournamentCategory,
+        readonly logoLight: string,
+        readonly logoDark: string,
+        readonly label: string,
+        readonly logoLightAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        },
+        readonly logoDarkAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        }
+      } | null
     }>
   }
 };
@@ -11819,30 +12383,90 @@ export type ApiTournamentsQuery = {
 export const ApiScheduleTournamentFieldsFragmentDoc = gql`
     fragment ScheduleTournamentFields on ScheduleTournament {
   __typename
-  beautyImageAsset {
+  id
+  date
+  startDate
+  dateAccessibilityText
+  tournamentName
+  tournamentLogo
+  tournamentLogoAsset {
     __typename
-    fallbackImage
     imageOrg
     imagePath
+    assetType
+    deliveryType
+    fallbackImage
   }
-  date
-  id
-  sortDate
+  city
+  state
+  stateCode
+  country
+  countryCode
+  courseName
+  champion
+  championId
+  champions {
+    __typename
+    displayName
+    playerId
+  }
+  championEarnings
+  beautyImage
+  beautyImageAsset {
+    __typename
+    imageOrg
+    imagePath
+    assetType
+    deliveryType
+    fallbackImage
+  }
   status {
     __typename
+    roundStatusDisplay
     roundDisplay
     roundStatus
     roundStatusColor
-    roundStatusDisplay
+    leaderboardTakeover
   }
-  tournamentLogoAsset {
-    __typename
-    fallbackImage
-    imageOrg
-    imagePath
-  }
-  tournamentName
   tournamentStatus
+  sortDate
+  sequenceNumber
+  purse
+  ticketsURL
+  tourStandingHeading
+  tourStandingValue
+  display
+  tournamentCategoryInfo {
+    __typename
+    type
+    logoLight
+    logoLightAsset {
+      __typename
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    logoDark
+    logoDarkAsset {
+      __typename
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    label
+  }
+  ticketmasterApiKey
+  ticketmasterAttractionId
+  androidTicketmasterApiKey
+  androidTicketmasterScheme
+  iosTicketmasterApiKey
+  ticketsEnabled
+  tournamentSiteURL
+  useTournamentSiteURL
 }
     `;
 export const ApiScheduleMonthFieldsFragmentDoc = gql`
@@ -11860,6 +12484,7 @@ export const ApiScheduleMonthFieldsFragmentDoc = gql`
 export const ApiScheduleFieldsFragmentDoc = gql`
     fragment ScheduleFields on Schedule {
   __typename
+  tour
   seasonYear
   completed {
     __typename
@@ -11868,6 +12493,11 @@ export const ApiScheduleFieldsFragmentDoc = gql`
   upcoming {
     __typename
     ...ScheduleMonthFields
+  }
+  filters {
+    __typename
+    type
+    name
   }
 }
     ${ApiScheduleMonthFieldsFragmentDoc}`;
@@ -12227,6 +12857,12 @@ export const ApiUpcomingScheduleDocument = gql`
   __typename
   upcomingSchedule(tourCode: $tourCode) {
     __typename
+    id
+    filters {
+      __typename
+      type
+      name
+    }
     tournaments {
       __typename
       ...ScheduleTournamentFields

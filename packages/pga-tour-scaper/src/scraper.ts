@@ -1,3 +1,4 @@
+import type { PgaTourWebScraper } from "@putting-pals/putting-pals-schema";
 import * as cheerio from "cheerio";
 
 type NextDataProps = {
@@ -17,7 +18,7 @@ type NextDataProps = {
   };
 };
 
-export class PgaTourWebScraper {
+export class PgaTourCheerioWebScraper implements PgaTourWebScraper {
   async getCurrentTournamentId(): Promise<string | undefined> {
     const response = await fetch("https://www.pgatour.com/leaderboard");
     const text = await response.text();

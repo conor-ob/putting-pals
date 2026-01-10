@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "cheerio": "^1.1.2"
   },
   "devDependencies": {

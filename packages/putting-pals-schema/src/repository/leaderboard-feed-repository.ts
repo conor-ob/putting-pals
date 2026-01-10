@@ -1,25 +1,5 @@
 import type { LeaderboardEvent } from "../event/types";
 import type { DomainTourCode } from "../generated/graphql";
-import type { LeaderboardSnapshot } from "./types";
-
-export interface LeaderboardSnapshotRepository {
-  getLeaderboardSnapshot(
-    tourCode: DomainTourCode,
-    tournamentId: string,
-  ): Promise<LeaderboardSnapshot | undefined>;
-
-  createLeaderboardSnapshot(
-    tourCode: DomainTourCode,
-    tournamentId: string,
-    snapshot: LeaderboardSnapshot,
-  ): Promise<void>;
-
-  updateLeaderboardSnapshot(
-    tourCode: DomainTourCode,
-    tournamentId: string,
-    snapshot: LeaderboardSnapshot,
-  ): Promise<void>;
-}
 
 export interface LeaderboardFeedRepository {
   getLeaderboardFeed(

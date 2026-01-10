@@ -10,8 +10,10 @@
     "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
     "./leaderboard-event": "./src/leaderboard-event/leaderboard-event-processor.ts",
     "./schedule": "./src/schedule/schedule-service.ts",
+    "./schedule-years": "./src/schedule/schedule-years-service.ts",
     "./stats": "./src/stats/stats-service.ts",
-    "./tournament": "./src/tournament/tournament-service.ts"
+    "./tournament": "./src/tournament/tournament-service.ts",
+    "./tournament-resolver": "./src/tournament/tournament-resolver.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",

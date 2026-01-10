@@ -45,10 +45,10 @@ export function SchedulePage() {
         }}
       />
       {schedule?.map((season) => (
-        <View key={`${tourCode}-${season.year}`}>
+        <View key={`${tourCode}-${season.seasonYear}`}>
           {season.completed.map((month) => (
             <View key={`${tourCode}-${month.month}-completed`}>
-              <Text className="text-foreground">{`${month.month} ${season.year}`}</Text>
+              <Text className="text-foreground">{`${month.month} ${season.seasonYear}`}</Text>
               {month.tournaments.map((tournament) => (
                 <Text
                   key={`${tourCode}-${tournament.id}-completed`}
@@ -61,7 +61,7 @@ export function SchedulePage() {
           ))}
           {season.upcoming.map((month) => (
             <View key={`${tourCode}-${month.month}-upcoming`}>
-              <Text className="text-foreground">{`${month.month} ${season.year}`}</Text>
+              <Text className="text-foreground">{`${month.month} ${season.seasonYear}`}</Text>
               {month.tournaments.map((tournament) => (
                 <Text
                   key={`${tourCode}-${tournament.id}-upcoming`}
