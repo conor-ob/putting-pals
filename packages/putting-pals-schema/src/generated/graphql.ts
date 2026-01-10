@@ -1,5 +1,3 @@
-import type { GraphQLClient, RequestOptions } from 'graphql-request';
-import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -7,7 +5,6 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
-type GraphQLClientRequestHeaders = RequestOptions['requestHeaders'];
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -15,202 +12,204 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  /** The `AWSDateTime` scalar type provided by AWS AppSync, represents a valid ***extended*** [ISO 8601 DateTime](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) string. In other words, this scalar type accepts datetime strings of the form `YYYY-MM-DDThh:mm:ss.SSSZ`.  The scalar can also accept "negative years" of the form `-YYYY` which correspond to years before `0000`. For example, "**-2017-01-01T00:00Z**" and "**-9999-01-01T00:00Z**" are both valid datetime strings.  The field after the two digit seconds field is a nanoseconds field. It can accept between 1 and 9 digits. So, for example, "**1970-01-01T12:00:00.2Z**", "**1970-01-01T12:00:00.277Z**" and "**1970-01-01T12:00:00.123456789Z**" are all valid datetime strings.  The seconds and nanoseconds fields are optional (the seconds field must be specified if the nanoseconds field is to be used).  The [time zone offset](https://en.wikipedia.org/wiki/ISO_8601#Time_zone_designators) is compulsory for this scalar. The time zone offset must either be `Z` (representing the UTC time zone) or be in the format `±hh:mm:ss`. The seconds field in the timezone offset will be considered valid even though it is not part of the ISO 8601 standard. */
   AWSDateTime: { input: any; output: any; }
+  /** The `AWSTimestamp` scalar type provided by AWS AppSync, represents the number of seconds that have elapsed since `1970-01-01T00:00Z`. Negative values are also accepted and these represent the number of seconds till `1970-01-01T00:00Z`.  Timestamps are serialized and deserialized as integers. The minimum supported timestamp value is **`-31557014167219200`** which corresponds to `-1000000000-01-01T00:00Z`. The maximum supported timestamp value is **`31556889864403199`** which corresponds to `1000000000-12-31T23:59:59.999999999Z`. */
   AWSTimestamp: { input: any; output: any; }
 };
 
-export type ApiArHole = {
+export type DomainArHole = {
   readonly __typename: 'ARHole';
   readonly holeNumber: Scalars['Int']['output'];
 };
 
-export type ApiAbbreviations = {
+export type DomainAbbreviations = {
   readonly __typename: 'Abbreviations';
   readonly description?: Maybe<Scalars['String']['output']>;
   readonly key: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiAdConfig = {
+export type DomainAdConfig = {
   readonly __typename: 'AdConfig';
-  readonly aon?: Maybe<ApiAdTagConfig>;
-  readonly aonSection?: Maybe<ApiAdTagConfig>;
-  readonly audio?: Maybe<ApiAdTagConfig>;
-  readonly comcastSection?: Maybe<ApiAdTagConfig>;
-  readonly comcastTop10?: Maybe<ApiAdTagConfig>;
-  readonly config: ApiGlobalAdConfig;
-  readonly course?: Maybe<ApiAdTagConfig>;
-  readonly cupLeaderboardGroup?: Maybe<ApiAdTagConfig>;
-  readonly cupLeaderboardSingles?: Maybe<ApiAdTagConfig>;
-  readonly cupTeeTimesGroup?: Maybe<ApiAdTagConfig>;
-  readonly cupTeeTimesSingles?: Maybe<ApiAdTagConfig>;
-  readonly dpwtRankings?: Maybe<ApiAdTagConfig>;
-  readonly fantasy?: Maybe<ApiAdTagConfig>;
-  readonly fedexCup?: Maybe<ApiAdTagConfig>;
-  readonly fedexcupSection?: Maybe<ApiAdTagConfig>;
-  readonly fortinetCup?: Maybe<ApiAdTagConfig>;
-  readonly fortinetcupSection?: Maybe<ApiAdTagConfig>;
-  readonly golfBet?: Maybe<ApiAdTagConfig>;
-  readonly groupScorecard?: Maybe<ApiAdTagConfig>;
-  readonly groupStageLeaderboard?: Maybe<ApiAdTagConfig>;
-  readonly groupStageStandings?: Maybe<ApiAdTagConfig>;
-  readonly groupstageStandings?: Maybe<ApiAdTagConfig>;
-  readonly homepage?: Maybe<ApiAdTagConfig>;
-  readonly knockoutLeaderboard?: Maybe<ApiAdTagConfig>;
-  readonly leaderboard?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardCutline?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardFavorites?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardHoleByHole?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardLandscape?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardLandscapeHoleByHole?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardLandscapeOdds?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardLandscapeProbability?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardLandscapeShotDetails?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardLandscapeStrokesGained?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardOdds?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardProbability?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardRow50?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardShotDetails?: Maybe<ApiAdTagConfig>;
-  readonly leaderboardStrokesGained?: Maybe<ApiAdTagConfig>;
-  readonly liveLeaderboard?: Maybe<ApiAdTagConfig>;
-  readonly mobileHeroStory?: Maybe<ApiAdTagConfig>;
-  readonly mobilePlayerStory?: Maybe<ApiAdTagConfig>;
-  readonly mobileTopicStory?: Maybe<ApiAdTagConfig>;
-  readonly mobileYourTourHomeStory?: Maybe<ApiAdTagConfig>;
-  readonly more?: Maybe<ApiAdTagConfig>;
-  readonly netflix?: Maybe<ApiAdTagConfig>;
-  readonly news?: Maybe<ApiAdTagConfig>;
-  readonly newsArticlemidcontent?: Maybe<ApiAdTagConfig>;
-  readonly newsArticles?: Maybe<ApiAdTagConfig>;
-  readonly odds?: Maybe<ApiAdTagConfig>;
-  readonly payneStewartaward?: Maybe<ApiAdTagConfig>;
-  readonly playerProfile?: Maybe<ApiAdTagConfig>;
-  readonly playerProfileBio?: Maybe<ApiAdTagConfig>;
-  readonly playerProfileEquipment?: Maybe<ApiAdTagConfig>;
-  readonly playerProfileResults?: Maybe<ApiAdTagConfig>;
-  readonly playerProfileStats?: Maybe<ApiAdTagConfig>;
-  readonly playerScorecard?: Maybe<ApiAdTagConfig>;
-  readonly players?: Maybe<ApiAdTagConfig>;
-  readonly playoffScorecard?: Maybe<ApiAdTagConfig>;
-  readonly rsm?: Maybe<ApiAdTagConfig>;
-  readonly rsmSection?: Maybe<ApiAdTagConfig>;
-  readonly schedule?: Maybe<ApiAdTagConfig>;
-  readonly schwabCup?: Maybe<ApiAdTagConfig>;
-  readonly schwabcupSection?: Maybe<ApiAdTagConfig>;
-  readonly scorecard?: Maybe<ApiAdTagConfig>;
-  readonly scorecardOdds?: Maybe<ApiAdTagConfig>;
-  readonly sidebarTicker?: Maybe<ApiAdTagConfig>;
-  readonly standings?: Maybe<ApiAdTagConfig>;
-  readonly stats?: Maybe<ApiAdTagConfig>;
-  readonly statsSection?: Maybe<ApiAdTagConfig>;
-  readonly studios?: Maybe<ApiAdTagConfig>;
-  readonly teeTimes?: Maybe<ApiAdTagConfig>;
-  readonly the25Section?: Maybe<ApiAdTagConfig>;
-  readonly the25pointsList?: Maybe<ApiAdTagConfig>;
-  readonly tickets?: Maybe<ApiAdTagConfig>;
-  readonly totalPlayCup?: Maybe<ApiAdTagConfig>;
-  readonly totalplaycupSection?: Maybe<ApiAdTagConfig>;
-  readonly tourcast?: Maybe<ApiAdTagConfig>;
-  readonly tournament?: Maybe<ApiAdTagConfig>;
-  readonly tournamentSection?: Maybe<ApiAdTagConfig>;
-  readonly training?: Maybe<ApiAdTagConfig>;
-  readonly university?: Maybe<ApiAdTagConfig>;
-  readonly watch?: Maybe<ApiAdTagConfig>;
-  readonly webPlayerStories?: Maybe<ApiAdTagConfig>;
-  readonly webTopicStories?: Maybe<ApiAdTagConfig>;
-  readonly yahooLeaderboard?: Maybe<ApiAdTagConfig>;
+  readonly aon?: Maybe<DomainAdTagConfig>;
+  readonly aonSection?: Maybe<DomainAdTagConfig>;
+  readonly audio?: Maybe<DomainAdTagConfig>;
+  readonly comcastSection?: Maybe<DomainAdTagConfig>;
+  readonly comcastTop10?: Maybe<DomainAdTagConfig>;
+  readonly config: DomainGlobalAdConfig;
+  readonly course?: Maybe<DomainAdTagConfig>;
+  readonly cupLeaderboardGroup?: Maybe<DomainAdTagConfig>;
+  readonly cupLeaderboardSingles?: Maybe<DomainAdTagConfig>;
+  readonly cupTeeTimesGroup?: Maybe<DomainAdTagConfig>;
+  readonly cupTeeTimesSingles?: Maybe<DomainAdTagConfig>;
+  readonly dpwtRankings?: Maybe<DomainAdTagConfig>;
+  readonly fantasy?: Maybe<DomainAdTagConfig>;
+  readonly fedexCup?: Maybe<DomainAdTagConfig>;
+  readonly fedexcupSection?: Maybe<DomainAdTagConfig>;
+  readonly fortinetCup?: Maybe<DomainAdTagConfig>;
+  readonly fortinetcupSection?: Maybe<DomainAdTagConfig>;
+  readonly golfBet?: Maybe<DomainAdTagConfig>;
+  readonly groupScorecard?: Maybe<DomainAdTagConfig>;
+  readonly groupStageLeaderboard?: Maybe<DomainAdTagConfig>;
+  readonly groupStageStandings?: Maybe<DomainAdTagConfig>;
+  readonly groupstageStandings?: Maybe<DomainAdTagConfig>;
+  readonly homepage?: Maybe<DomainAdTagConfig>;
+  readonly knockoutLeaderboard?: Maybe<DomainAdTagConfig>;
+  readonly leaderboard?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardCutline?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardFavorites?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardHoleByHole?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardLandscape?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardLandscapeHoleByHole?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardLandscapeOdds?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardLandscapeProbability?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardLandscapeShotDetails?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardLandscapeStrokesGained?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardOdds?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardProbability?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardRow50?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardShotDetails?: Maybe<DomainAdTagConfig>;
+  readonly leaderboardStrokesGained?: Maybe<DomainAdTagConfig>;
+  readonly liveLeaderboard?: Maybe<DomainAdTagConfig>;
+  readonly mobileHeroStory?: Maybe<DomainAdTagConfig>;
+  readonly mobilePlayerStory?: Maybe<DomainAdTagConfig>;
+  readonly mobileTopicStory?: Maybe<DomainAdTagConfig>;
+  readonly mobileYourTourHomeStory?: Maybe<DomainAdTagConfig>;
+  readonly more?: Maybe<DomainAdTagConfig>;
+  readonly netflix?: Maybe<DomainAdTagConfig>;
+  readonly news?: Maybe<DomainAdTagConfig>;
+  readonly newsArticlemidcontent?: Maybe<DomainAdTagConfig>;
+  readonly newsArticles?: Maybe<DomainAdTagConfig>;
+  readonly odds?: Maybe<DomainAdTagConfig>;
+  readonly payneStewartaward?: Maybe<DomainAdTagConfig>;
+  readonly playerProfile?: Maybe<DomainAdTagConfig>;
+  readonly playerProfileBio?: Maybe<DomainAdTagConfig>;
+  readonly playerProfileEquipment?: Maybe<DomainAdTagConfig>;
+  readonly playerProfileResults?: Maybe<DomainAdTagConfig>;
+  readonly playerProfileStats?: Maybe<DomainAdTagConfig>;
+  readonly playerScorecard?: Maybe<DomainAdTagConfig>;
+  readonly players?: Maybe<DomainAdTagConfig>;
+  readonly playoffScorecard?: Maybe<DomainAdTagConfig>;
+  readonly rsm?: Maybe<DomainAdTagConfig>;
+  readonly rsmSection?: Maybe<DomainAdTagConfig>;
+  readonly schedule?: Maybe<DomainAdTagConfig>;
+  readonly schwabCup?: Maybe<DomainAdTagConfig>;
+  readonly schwabcupSection?: Maybe<DomainAdTagConfig>;
+  readonly scorecard?: Maybe<DomainAdTagConfig>;
+  readonly scorecardOdds?: Maybe<DomainAdTagConfig>;
+  readonly sidebarTicker?: Maybe<DomainAdTagConfig>;
+  readonly standings?: Maybe<DomainAdTagConfig>;
+  readonly stats?: Maybe<DomainAdTagConfig>;
+  readonly statsSection?: Maybe<DomainAdTagConfig>;
+  readonly studios?: Maybe<DomainAdTagConfig>;
+  readonly teeTimes?: Maybe<DomainAdTagConfig>;
+  readonly the25Section?: Maybe<DomainAdTagConfig>;
+  readonly the25pointsList?: Maybe<DomainAdTagConfig>;
+  readonly tickets?: Maybe<DomainAdTagConfig>;
+  readonly totalPlayCup?: Maybe<DomainAdTagConfig>;
+  readonly totalplaycupSection?: Maybe<DomainAdTagConfig>;
+  readonly tourcast?: Maybe<DomainAdTagConfig>;
+  readonly tournament?: Maybe<DomainAdTagConfig>;
+  readonly tournamentSection?: Maybe<DomainAdTagConfig>;
+  readonly training?: Maybe<DomainAdTagConfig>;
+  readonly university?: Maybe<DomainAdTagConfig>;
+  readonly watch?: Maybe<DomainAdTagConfig>;
+  readonly webPlayerStories?: Maybe<DomainAdTagConfig>;
+  readonly webTopicStories?: Maybe<DomainAdTagConfig>;
+  readonly yahooLeaderboard?: Maybe<DomainAdTagConfig>;
 };
 
-export type ApiAdSize = {
+export type DomainAdSize = {
   readonly __typename: 'AdSize';
   readonly height: Scalars['Int']['output'];
   readonly width: Scalars['Int']['output'];
 };
 
-export type ApiAdTagConfig = {
+export type DomainAdTagConfig = {
   readonly __typename: 'AdTagConfig';
   readonly actRefresh?: Maybe<Scalars['Boolean']['output']>;
   readonly adTest?: Maybe<Scalars['String']['output']>;
   readonly environment?: Maybe<Scalars['String']['output']>;
   readonly injectAds?: Maybe<Scalars['Boolean']['output']>;
   readonly refresh?: Maybe<Scalars['Int']['output']>;
-  readonly rows: ReadonlyArray<ApiAdTagRowConfig>;
+  readonly rows: ReadonlyArray<DomainAdTagRowConfig>;
   readonly s1: Scalars['String']['output'];
   readonly s2?: Maybe<Scalars['String']['output']>;
   readonly timedRefresh?: Maybe<Scalars['Boolean']['output']>;
   readonly uniqueId: Scalars['String']['output'];
 };
 
-export type ApiAdTagRowConfig = {
+export type DomainAdTagRowConfig = {
   readonly __typename: 'AdTagRowConfig';
-  readonly container?: Maybe<ApiAdSize>;
-  readonly containerLarge?: Maybe<ApiAdSize>;
-  readonly containerMedium?: Maybe<ApiAdSize>;
-  readonly containerSmall?: Maybe<ApiAdSize>;
+  readonly container?: Maybe<DomainAdSize>;
+  readonly containerLarge?: Maybe<DomainAdSize>;
+  readonly containerMedium?: Maybe<DomainAdSize>;
+  readonly containerSmall?: Maybe<DomainAdSize>;
   readonly fluid?: Maybe<Scalars['Boolean']['output']>;
   readonly index: Scalars['Int']['output'];
   readonly playerSponsorship?: Maybe<Scalars['Boolean']['output']>;
   readonly pos: Scalars['String']['output'];
-  readonly sizes?: Maybe<ReadonlyArray<ApiAdSize>>;
+  readonly sizes?: Maybe<ReadonlyArray<DomainAdSize>>;
 };
 
-export type ApiAllTimeRecordCategories = {
+export type DomainAllTimeRecordCategories = {
   readonly __typename: 'AllTimeRecordCategories';
-  readonly categories: ReadonlyArray<ApiAllTimeRecordCategory>;
-  readonly tourCode: ApiTourCode;
+  readonly categories: ReadonlyArray<DomainAllTimeRecordCategory>;
+  readonly tourCode: DomainTourCode;
 };
 
-export type ApiAllTimeRecordCategory = {
+export type DomainAllTimeRecordCategory = {
   readonly __typename: 'AllTimeRecordCategory';
   readonly categoryId: Scalars['String']['output'];
   readonly displayText: Scalars['String']['output'];
-  readonly subCategories: ReadonlyArray<ApiAllTimeRecordSubCategory>;
+  readonly subCategories: ReadonlyArray<DomainAllTimeRecordSubCategory>;
 };
 
-export type ApiAllTimeRecordStat = {
+export type DomainAllTimeRecordStat = {
   readonly __typename: 'AllTimeRecordStat';
   readonly categoryId: Scalars['String']['output'];
   readonly categoryName: Scalars['String']['output'];
   readonly isPlayerBased: Scalars['Boolean']['output'];
   readonly primaryColumnIndex?: Maybe<Scalars['Int']['output']>;
   readonly recordId: Scalars['String']['output'];
-  readonly rows?: Maybe<ReadonlyArray<ApiAllTimeRecordStatRow>>;
+  readonly rows?: Maybe<ReadonlyArray<DomainAllTimeRecordStatRow>>;
   readonly statHeaders: ReadonlyArray<Scalars['String']['output']>;
   readonly subCategoryName: Scalars['String']['output'];
   /**   1-17 */
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiAllTimeRecordStatRow = {
+export type DomainAllTimeRecordStatRow = {
   readonly __typename: 'AllTimeRecordStatRow';
   readonly playerId?: Maybe<Scalars['String']['output']>;
   readonly values: ReadonlyArray<Scalars['String']['output']>;
 };
 
-export type ApiAllTimeRecordStatistic = {
+export type DomainAllTimeRecordStatistic = {
   readonly __typename: 'AllTimeRecordStatistic';
   readonly displayText: Scalars['String']['output'];
   readonly recordId: Scalars['String']['output'];
 };
 
-export type ApiAllTimeRecordSubCategory = {
+export type DomainAllTimeRecordSubCategory = {
   readonly __typename: 'AllTimeRecordSubCategory';
   readonly displayText: Scalars['String']['output'];
-  readonly statistics: ReadonlyArray<ApiAllTimeRecordStatistic>;
+  readonly statistics: ReadonlyArray<DomainAllTimeRecordStatistic>;
 };
 
-export type ApiAon = {
+export type DomainAon = {
   readonly __typename: 'Aon';
   readonly description: Scalars['String']['output'];
-  readonly leaders: ReadonlyArray<ApiAonPlayer>;
+  readonly leaders: ReadonlyArray<DomainAonPlayer>;
   readonly logo: Scalars['String']['output'];
-  readonly pastTournaments: ReadonlyArray<ApiAonHole>;
-  readonly players: ReadonlyArray<ApiAonPlayer>;
+  readonly pastTournaments: ReadonlyArray<DomainAonHole>;
+  readonly players: ReadonlyArray<DomainAonPlayer>;
   readonly title: Scalars['String']['output'];
-  readonly upcomingTournaments: ReadonlyArray<ApiAonHole>;
+  readonly upcomingTournaments: ReadonlyArray<DomainAonHole>;
 };
 
-export type ApiAonHole = {
+export type DomainAonHole = {
   readonly __typename: 'AonHole';
   readonly courseName: Scalars['String']['output'];
   readonly dateText: Scalars['String']['output'];
@@ -222,7 +221,7 @@ export type ApiAonHole = {
   readonly yardage: Scalars['Int']['output'];
 };
 
-export type ApiAonPlayer = {
+export type DomainAonPlayer = {
   readonly __typename: 'AonPlayer';
   readonly countryCode: Scalars['String']['output'];
   readonly displayName: Scalars['String']['output'];
@@ -233,51 +232,51 @@ export type ApiAonPlayer = {
   readonly score: Scalars['String']['output'];
 };
 
-export type ApiArticleFormType =
+export type DomainArticleFormType =
   | 'External'
   | 'Standard';
 
-export type ApiArticleOddsMarkets = {
+export type DomainArticleOddsMarkets = {
   readonly __typename: 'ArticleOddsMarkets';
   readonly class: Scalars['String']['output'];
-  readonly market: ApiHistoricalOddsId;
+  readonly market: DomainHistoricalOddsId;
 };
 
-export type ApiArticleOddsMarketsInput = {
+export type DomainArticleOddsMarketsInput = {
   readonly class: Scalars['String']['input'];
-  readonly market: ApiHistoricalOddsId;
+  readonly market: DomainHistoricalOddsId;
 };
 
-export type ApiArticleOddsPlayer = {
+export type DomainArticleOddsPlayer = {
   readonly __typename: 'ArticleOddsPlayer';
   readonly playerId: Scalars['String']['output'];
   readonly playerName?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiArticleOddsPlayerInput = {
+export type DomainArticleOddsPlayerInput = {
   readonly playerId: Scalars['String']['input'];
   readonly playerName?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ApiArticleOddsTableQuery = {
+export type DomainArticleOddsTableQuery = {
   readonly __typename: 'ArticleOddsTableQuery';
-  readonly markets?: Maybe<ReadonlyArray<ApiArticleOddsMarkets>>;
-  readonly players?: Maybe<ReadonlyArray<ApiArticleOddsPlayer>>;
+  readonly markets?: Maybe<ReadonlyArray<DomainArticleOddsMarkets>>;
+  readonly players?: Maybe<ReadonlyArray<DomainArticleOddsPlayer>>;
   readonly timeStamp?: Maybe<Scalars['String']['output']>;
   readonly tournamentId: Scalars['String']['output'];
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiArticlePlayer = {
+export type DomainArticlePlayer = {
   readonly __typename: 'ArticlePlayer';
   readonly id: Scalars['String']['output'];
   readonly name: Scalars['String']['output'];
 };
 
-export type ApiArticleSponsor =
+export type DomainArticleSponsor =
   | 'GOLFWRX';
 
-export type ApiAudio = {
+export type DomainAudio = {
   readonly __typename: 'Audio';
   readonly id: Scalars['ID']['output'];
   readonly imageUrl: Scalars['String']['output'];
@@ -285,12 +284,12 @@ export type ApiAudio = {
   readonly numEpisodes: Scalars['Int']['output'];
   readonly rssFeed: Scalars['String']['output'];
   readonly shareUrl: Scalars['String']['output'];
-  readonly streamUrls: ApiStreamUrls;
+  readonly streamUrls: DomainStreamUrls;
   readonly summary: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiAudioStream = {
+export type DomainAudioStream = {
   readonly __typename: 'AudioStream';
   readonly id: Scalars['ID']['output'];
   readonly live: Scalars['Boolean']['output'];
@@ -300,24 +299,24 @@ export type ApiAudioStream = {
   readonly streamUrl: Scalars['String']['output'];
 };
 
-export type ApiAugmentedRealityConfig = {
+export type DomainAugmentedRealityConfig = {
   readonly __typename: 'AugmentedRealityConfig';
-  readonly holes: ReadonlyArray<ApiArHole>;
+  readonly holes: ReadonlyArray<DomainArHole>;
 };
 
-export type ApiAvailableMarket = {
+export type DomainAvailableMarket = {
   readonly __typename: 'AvailableMarket';
   readonly market: Scalars['String']['output'];
-  readonly oddsOptions: ReadonlyArray<ApiOddsOption>;
+  readonly oddsOptions: ReadonlyArray<DomainOddsOption>;
   readonly subMarket?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiBallPath = {
+export type DomainBallPath = {
   readonly __typename: 'BallPath';
-  readonly path: ReadonlyArray<ApiBallPathCoordinate>;
+  readonly path: ReadonlyArray<DomainBallPathCoordinate>;
 };
 
-export type ApiBallPathCoordinate = {
+export type DomainBallPathCoordinate = {
   readonly __typename: 'BallPathCoordinate';
   readonly secondsSinceStart: Scalars['Float']['output'];
   readonly x: Scalars['Float']['output'];
@@ -326,59 +325,59 @@ export type ApiBallPathCoordinate = {
 };
 
 /**   Odds Options Types */
-export type ApiBaseOddsOption = {
-  readonly entity: ApiOddsEntity;
-  readonly odds: ApiOddsValues;
+export type DomainBaseOddsOption = {
+  readonly entity: DomainOddsEntity;
+  readonly odds: DomainOddsValues;
 };
 
-export type ApiBioRank = {
+export type DomainBioRank = {
   readonly __typename: 'BioRank';
   readonly rank: Scalars['Int']['output'];
   readonly statName: Scalars['String']['output'];
 };
 
-export type ApiBroadcastAudioStream = {
+export type DomainBroadcastAudioStream = {
   readonly __typename: 'BroadcastAudioStream';
   readonly channelTitle: Scalars['String']['output'];
   readonly endTime: Scalars['AWSTimestamp']['output'];
   readonly id: Scalars['String']['output'];
-  readonly liveStatus: ApiLiveStatus;
-  readonly network: ApiBroadcastNetwork;
+  readonly liveStatus: DomainLiveStatus;
+  readonly network: DomainBroadcastNetwork;
   readonly roundDisplay: Scalars['String']['output'];
   readonly roundNumber: Scalars['Int']['output'];
   readonly startTime: Scalars['AWSTimestamp']['output'];
   readonly streamTitle: Scalars['String']['output'];
 };
 
-export type ApiBroadcastCoverage = {
+export type DomainBroadcastCoverage = {
   readonly __typename: 'BroadcastCoverage';
   readonly countryCode: Scalars['String']['output'];
-  readonly coverageType: ReadonlyArray<ApiBroadcastCoverageType>;
+  readonly coverageType: ReadonlyArray<DomainBroadcastCoverageType>;
   readonly id: Scalars['String']['output'];
   readonly livePillLabel: Scalars['String']['output'];
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiBroadcastCoverageCarousel = {
+export type DomainBroadcastCoverageCarousel = {
   readonly __typename: 'BroadcastCoverageCarousel';
-  readonly carousel: ReadonlyArray<ApiBroadcastCoverageVideo>;
+  readonly carousel: ReadonlyArray<DomainBroadcastCoverageVideo>;
 };
 
-export type ApiBroadcastCoverageItem = ApiBroadcastAudioStream | ApiBroadcastFeaturedGroup | ApiBroadcastFeaturedHole | ApiBroadcastFullTelecast;
+export type DomainBroadcastCoverageItem = DomainBroadcastAudioStream | DomainBroadcastFeaturedGroup | DomainBroadcastFeaturedHole | DomainBroadcastFullTelecast;
 
-export type ApiBroadcastCoverageType = ApiBroadcastAudioStream | ApiBroadcastCoverageCarousel | ApiBroadcastFeaturedGroup | ApiBroadcastFeaturedHole | ApiBroadcastFullTelecast;
+export type DomainBroadcastCoverageType = DomainBroadcastAudioStream | DomainBroadcastCoverageCarousel | DomainBroadcastFeaturedGroup | DomainBroadcastFeaturedHole | DomainBroadcastFullTelecast;
 
-export type ApiBroadcastCoverageVideo = ApiBroadcastFeaturedGroup | ApiBroadcastFeaturedHole | ApiBroadcastFullTelecast;
+export type DomainBroadcastCoverageVideo = DomainBroadcastFeaturedGroup | DomainBroadcastFeaturedHole | DomainBroadcastFullTelecast;
 
-export type ApiBroadcastFeaturedGroup = {
+export type DomainBroadcastFeaturedGroup = {
   readonly __typename: 'BroadcastFeaturedGroup';
   readonly channelTitle: Scalars['String']['output'];
   readonly courseId?: Maybe<Scalars['String']['output']>;
   readonly endTime: Scalars['AWSTimestamp']['output'];
-  readonly groups: ReadonlyArray<ApiBroadcastGroup>;
+  readonly groups: ReadonlyArray<DomainBroadcastGroup>;
   readonly id: Scalars['String']['output'];
-  readonly liveStatus: ApiLiveStatus;
-  readonly network: ApiBroadcastNetwork;
+  readonly liveStatus: DomainLiveStatus;
+  readonly network: DomainBroadcastNetwork;
   readonly promoImage?: Maybe<Scalars['String']['output']>;
   readonly promoImages: ReadonlyArray<Scalars['String']['output']>;
   readonly roundDisplay: Scalars['String']['output'];
@@ -387,15 +386,15 @@ export type ApiBroadcastFeaturedGroup = {
   readonly streamTitle: Scalars['String']['output'];
 };
 
-export type ApiBroadcastFeaturedHole = {
+export type DomainBroadcastFeaturedHole = {
   readonly __typename: 'BroadcastFeaturedHole';
   readonly channelTitle: Scalars['String']['output'];
   readonly courseId?: Maybe<Scalars['String']['output']>;
   readonly endTime: Scalars['AWSTimestamp']['output'];
   readonly featuredHoles: ReadonlyArray<Scalars['Int']['output']>;
   readonly id: Scalars['String']['output'];
-  readonly liveStatus: ApiLiveStatus;
-  readonly network: ApiBroadcastNetwork;
+  readonly liveStatus: DomainLiveStatus;
+  readonly network: DomainBroadcastNetwork;
   readonly promoImage?: Maybe<Scalars['String']['output']>;
   readonly promoImages: ReadonlyArray<Scalars['String']['output']>;
   readonly roundDisplay: Scalars['String']['output'];
@@ -404,13 +403,13 @@ export type ApiBroadcastFeaturedHole = {
   readonly streamTitle: Scalars['String']['output'];
 };
 
-export type ApiBroadcastFullTelecast = {
+export type DomainBroadcastFullTelecast = {
   readonly __typename: 'BroadcastFullTelecast';
   readonly channelTitle: Scalars['String']['output'];
   readonly endTime: Scalars['AWSTimestamp']['output'];
   readonly id: Scalars['String']['output'];
-  readonly liveStatus: ApiLiveStatus;
-  readonly network: ApiBroadcastNetwork;
+  readonly liveStatus: DomainLiveStatus;
+  readonly network: DomainBroadcastNetwork;
   readonly promoImage?: Maybe<Scalars['String']['output']>;
   readonly promoImages: ReadonlyArray<Scalars['String']['output']>;
   readonly roundDisplay: Scalars['String']['output'];
@@ -419,15 +418,15 @@ export type ApiBroadcastFullTelecast = {
   readonly streamTitle: Scalars['String']['output'];
 };
 
-export type ApiBroadcastGroup = {
+export type DomainBroadcastGroup = {
   readonly __typename: 'BroadcastGroup';
   readonly extendedCoverage?: Maybe<Scalars['Boolean']['output']>;
   readonly id: Scalars['String']['output'];
-  readonly liveStatus: ApiLiveStatus;
+  readonly liveStatus: DomainLiveStatus;
   readonly playerLastNames?: Maybe<ReadonlyArray<Maybe<Scalars['String']['output']>>>;
 };
 
-export type ApiBroadcastNetwork = {
+export type DomainBroadcastNetwork = {
   readonly __typename: 'BroadcastNetwork';
   readonly androidLink: Scalars['String']['output'];
   readonly androidStreamUrl?: Maybe<Scalars['String']['output']>;
@@ -454,10 +453,10 @@ export type ApiBroadcastNetwork = {
   readonly mode?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use networkLogoAsset */
   readonly networkLogo?: Maybe<Scalars['String']['output']>;
-  readonly networkLogoAsset?: Maybe<ApiImageAsset>;
+  readonly networkLogoAsset?: Maybe<DomainImageAsset>;
   /** @deprecated Use networkLogoDarkAsset */
   readonly networkLogoDark?: Maybe<Scalars['String']['output']>;
-  readonly networkLogoDarkAsset?: Maybe<ApiImageAsset>;
+  readonly networkLogoDarkAsset?: Maybe<DomainImageAsset>;
   readonly networkName: Scalars['String']['output'];
   readonly nw?: Maybe<Scalars['String']['output']>;
   readonly priorityNum?: Maybe<Scalars['Int']['output']>;
@@ -473,43 +472,43 @@ export type ApiBroadcastNetwork = {
   readonly vrdu?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiBroadcastNetworks = {
+export type DomainBroadcastNetworks = {
   readonly __typename: 'BroadcastNetworks';
-  readonly networks: ReadonlyArray<ApiBroadcastNetwork>;
+  readonly networks: ReadonlyArray<DomainBroadcastNetwork>;
 };
 
-export type ApiBroadcastTableFragment = {
+export type DomainBroadcastTableFragment = {
   readonly __typename: 'BroadcastTableFragment';
   readonly path: Scalars['String']['output'];
   readonly webviewUrl: Scalars['String']['output'];
 };
 
-export type ApiBubblePill = {
+export type DomainBubblePill = {
   readonly __typename: 'BubblePill';
-  readonly iconDark: ApiImageAsset;
-  readonly iconLight: ApiImageAsset;
+  readonly iconDark: DomainImageAsset;
+  readonly iconLight: DomainImageAsset;
   readonly pillText: Scalars['String']['output'];
 };
 
-export type ApiBubbleType =
+export type DomainBubbleType =
   | 'PLAYOFFS'
   | 'SIGNATURE_EVENTS';
 
-export type ApiBubbleWatch = {
+export type DomainBubbleWatch = {
   readonly __typename: 'BubbleWatch';
   readonly bubbleId: Scalars['ID']['output'];
-  readonly bubbleType: ApiBubbleType;
-  readonly items: ReadonlyArray<ApiBubbleWatchItem>;
+  readonly bubbleType: DomainBubbleType;
+  readonly items: ReadonlyArray<DomainBubbleWatchItem>;
 };
 
-export type ApiBubbleWatchItem = {
+export type DomainBubbleWatchItem = {
   readonly __typename: 'BubbleWatchItem';
   readonly info?: Maybe<Scalars['String']['output']>;
   readonly infoDesc?: Maybe<Scalars['String']['output']>;
-  readonly standings: ApiTourCupRankingEvent;
+  readonly standings: DomainTourCupRankingEvent;
 };
 
-export type ApiCallToAction = {
+export type DomainCallToAction = {
   readonly __typename: 'CallToAction';
   readonly color?: Maybe<Scalars['String']['output']>;
   readonly fontColor?: Maybe<Scalars['String']['output']>;
@@ -519,25 +518,25 @@ export type ApiCallToAction = {
   readonly webViewLink?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiCategory = {
+export type DomainCategory = {
   readonly __typename: 'Category';
   readonly displayName: Scalars['String']['output'];
-  readonly franchises: ReadonlyArray<ApiFranchise>;
+  readonly franchises: ReadonlyArray<DomainFranchise>;
   readonly queryValue: Scalars['String']['output'];
 };
 
-export type ApiCategoryPlayerStat = {
+export type DomainCategoryPlayerStat = {
   readonly __typename: 'CategoryPlayerStat';
-  readonly color: ApiStatColor;
+  readonly color: DomainStatColor;
   readonly statName: Scalars['String']['output'];
   readonly statValue: Scalars['String']['output'];
 };
 
-export type ApiCategoryStat = {
+export type DomainCategoryStat = {
   readonly __typename: 'CategoryStat';
   readonly displaySeason: Scalars['String']['output'];
   readonly lastProcessed: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiCategoryStatPlayer>;
+  readonly players: ReadonlyArray<DomainCategoryStatPlayer>;
   readonly statDescription: Scalars['String']['output'];
   readonly statHeaders: ReadonlyArray<Scalars['String']['output']>;
   readonly statTitle: Scalars['String']['output'];
@@ -545,21 +544,21 @@ export type ApiCategoryStat = {
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiCategoryStatPlayer = {
+export type DomainCategoryStatPlayer = {
   readonly __typename: 'CategoryStatPlayer';
   readonly playerId: Scalars['String']['output'];
   readonly playerName: Scalars['String']['output'];
   readonly rank: Scalars['Int']['output'];
-  readonly rankChangeTendency?: Maybe<ApiStatRankMovement>;
+  readonly rankChangeTendency?: Maybe<DomainStatRankMovement>;
   readonly rankDiff: Scalars['String']['output'];
-  readonly stats: ReadonlyArray<ApiCategoryPlayerStat>;
+  readonly stats: ReadonlyArray<DomainCategoryPlayerStat>;
 };
 
-export type ApiCategoryStatType =
+export type DomainCategoryStatType =
   | 'EVENT'
   | 'YTD';
 
-export type ApiCerosEmbedPlugin = {
+export type DomainCerosEmbedPlugin = {
   readonly __typename: 'CerosEmbedPlugin';
   readonly aspectRatio: Scalars['Float']['output'];
   readonly id: Scalars['ID']['output'];
@@ -569,71 +568,71 @@ export type ApiCerosEmbedPlugin = {
   readonly url: Scalars['String']['output'];
 };
 
-export type ApiContentCarousel = ApiImage | ApiVideo;
+export type DomainContentCarousel = DomainImage | DomainVideo;
 
-export type ApiContentFragment = {
+export type DomainContentFragment = {
   readonly __typename: 'ContentFragment';
-  readonly fragments: ReadonlyArray<ApiContentFragments>;
-  readonly pageMetadata: ApiPageMetadata;
+  readonly fragments: ReadonlyArray<DomainContentFragments>;
+  readonly pageMetadata: DomainPageMetadata;
   readonly totalLength: Scalars['Int']['output'];
 };
 
-export type ApiContentFragmentTab = {
+export type DomainContentFragmentTab = {
   readonly __typename: 'ContentFragmentTab';
-  readonly contentType: ApiContentType;
+  readonly contentType: DomainContentType;
   readonly label?: Maybe<Scalars['String']['output']>;
   readonly path: Scalars['String']['output'];
   readonly webview?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiContentFragmentTabs = {
+export type DomainContentFragmentTabs = {
   readonly __typename: 'ContentFragmentTabs';
   readonly pageHeader: Scalars['String']['output'];
   readonly partnerShipAssets?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly path: Scalars['String']['output'];
-  readonly tabs: ReadonlyArray<ApiContentFragmentTab>;
+  readonly tabs: ReadonlyArray<DomainContentFragmentTab>;
 };
 
-export type ApiContentFragmentType = {
+export type DomainContentFragmentType = {
   readonly __typename: 'ContentFragmentType';
-  readonly contentType: ApiContentType;
+  readonly contentType: DomainContentType;
   readonly path: Scalars['String']['output'];
 };
 
-export type ApiContentFragments = ApiDropdownFragment | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopZigZag | ApiMediaGallery | ApiOddsToWinTracker | ApiTglBoxScoreFragment | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
+export type DomainContentFragments = DomainDropdownFragment | DomainHomepageLead | DomainHomepageNews | DomainHomepageProgramStanding | DomainKopHeader | DomainKopSignUp | DomainKopStandingsList | DomainKopSubheader | DomainKopUpcomingTournament | DomainKopZigZag | DomainMediaGallery | DomainOddsToWinTracker | DomainTglBoxScoreFragment | DomainThreeUpPhoto | DomainThreeUpStats | DomainTwoColumn | DomainVideoHero;
 
-export type ApiContentFragmentsCompressed = {
+export type DomainContentFragmentsCompressed = {
   readonly __typename: 'ContentFragmentsCompressed';
   readonly limit?: Maybe<Scalars['Int']['output']>;
   readonly offset?: Maybe<Scalars['Int']['output']>;
   readonly path?: Maybe<Scalars['String']['output']>;
   readonly payload: Scalars['String']['output'];
-  readonly tourCode: ApiTourCode;
+  readonly tourCode: DomainTourCode;
 };
 
-export type ApiContentStat = {
+export type DomainContentStat = {
   readonly __typename: 'ContentStat';
   readonly statId: Scalars['String']['output'];
   readonly statName: Scalars['String']['output'];
 };
 
-export type ApiContentStory = {
+export type DomainContentStory = {
   readonly __typename: 'ContentStory';
   readonly desktopLatestNewsIndex?: Maybe<Scalars['Int']['output']>;
   readonly mobileLatestNewsIndex?: Maybe<Scalars['Int']['output']>;
   readonly path: Scalars['String']['output'];
   readonly sectionHeader?: Maybe<Scalars['String']['output']>;
-  readonly storyType?: Maybe<ApiStory_Type>;
+  readonly storyType?: Maybe<DomainStory_Type>;
   readonly topicLabels?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
 };
 
-export type ApiContentTopics = {
+export type DomainContentTopics = {
   readonly __typename: 'ContentTopics';
   readonly displayValue?: Maybe<Scalars['String']['output']>;
   readonly value?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiContentType =
+export type DomainContentType =
   | 'CONTENT_FRAGMENTS'
   | 'CONTENT_TABS'
   | 'GENERIC_CONTENT'
@@ -643,44 +642,44 @@ export type ApiContentType =
   | 'RYDER_CUP_GENERIC_CONTENT'
   | 'RYDER_CUP_NEWS_ARTICLE';
 
-export type ApiContentVideoCarousel = {
+export type DomainContentVideoCarousel = {
   readonly __typename: 'ContentVideoCarousel';
-  readonly bottomCta?: Maybe<ApiCallToAction>;
+  readonly bottomCta?: Maybe<DomainCallToAction>;
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
-  readonly topCta?: Maybe<ApiCallToAction>;
-  readonly videos?: Maybe<ReadonlyArray<ApiVideo>>;
+  readonly topCta?: Maybe<DomainCallToAction>;
+  readonly videos?: Maybe<ReadonlyArray<DomainVideo>>;
 };
 
-export type ApiCourse = {
+export type DomainCourse = {
   readonly __typename: 'Course';
   readonly courseCode: Scalars['String']['output'];
   readonly courseName: Scalars['String']['output'];
   readonly enabled?: Maybe<Scalars['Boolean']['output']>;
-  readonly features?: Maybe<ReadonlyArray<ApiTeeTimesFeature>>;
+  readonly features?: Maybe<ReadonlyArray<DomainTeeTimesFeature>>;
   readonly hostCourse: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
-  readonly scoringLevel: ApiScoringLevel;
+  readonly scoringLevel: DomainScoringLevel;
 };
 
-export type ApiCourseDetailRowValue = {
+export type DomainCourseDetailRowValue = {
   readonly __typename: 'CourseDetailRowValue';
-  readonly tendency?: Maybe<ApiScoringTendency>;
+  readonly tendency?: Maybe<DomainScoringTendency>;
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiCourseFilter = {
+export type DomainCourseFilter = {
   readonly __typename: 'CourseFilter';
   readonly courseId: Scalars['Int']['output'];
   readonly courseName: Scalars['String']['output'];
 };
 
-export type ApiCourseHoleHeader = {
+export type DomainCourseHoleHeader = {
   readonly __typename: 'CourseHoleHeader';
   readonly courseId: Scalars['ID']['output'];
-  readonly holeHeaders: ReadonlyArray<ApiHoleHeaderV2>;
+  readonly holeHeaders: ReadonlyArray<DomainHoleHeaderV2>;
 };
 
-export type ApiCourseHoleStats = {
+export type DomainCourseHoleStats = {
   readonly __typename: 'CourseHoleStats';
   readonly averagePaceOfPlay?: Maybe<Scalars['String']['output']>;
   readonly birdies?: Maybe<Scalars['Int']['output']>;
@@ -689,34 +688,34 @@ export type ApiCourseHoleStats = {
   readonly doubleBogey?: Maybe<Scalars['Int']['output']>;
   readonly eagles?: Maybe<Scalars['Int']['output']>;
   readonly holeImage: Scalars['String']['output'];
-  readonly holePickle?: Maybe<ApiHolePickle>;
+  readonly holePickle?: Maybe<DomainHolePickle>;
   /** @deprecated Use holePickleGreenLeftToRightAsset */
   readonly holePickleGreenLeftToRight: Scalars['String']['output'];
-  readonly holePickleGreenLeftToRightAsset: ApiImageAsset;
+  readonly holePickleGreenLeftToRightAsset: DomainImageAsset;
   /** @deprecated Use broadcast api indication instead of this. */
   readonly live: Scalars['Boolean']['output'];
   readonly parValue: Scalars['String']['output'];
   readonly pars?: Maybe<Scalars['Int']['output']>;
-  readonly pinGreen: ApiPointOfInterestCoords;
+  readonly pinGreen: DomainPointOfInterestCoords;
   readonly rank?: Maybe<Scalars['Int']['output']>;
   readonly scoringAverage: Scalars['String']['output'];
   readonly scoringAverageDiff: Scalars['String']['output'];
-  readonly scoringDiffTendency: ApiScoringTendency;
+  readonly scoringDiffTendency: DomainScoringTendency;
   readonly yards: Scalars['Int']['output'];
 };
 
-export type ApiCourseInfo = {
+export type DomainCourseInfo = {
   readonly __typename: 'CourseInfo';
-  readonly bottomCta?: Maybe<ApiCallToAction>;
+  readonly bottomCta?: Maybe<DomainCallToAction>;
   readonly coursePhotos?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
-  readonly cta1?: Maybe<ApiCallToAction>;
-  readonly cta2?: Maybe<ApiCallToAction>;
+  readonly cta1?: Maybe<DomainCallToAction>;
+  readonly cta2?: Maybe<DomainCallToAction>;
   readonly subhead?: Maybe<Scalars['String']['output']>;
   readonly title?: Maybe<Scalars['String']['output']>;
-  readonly topCta?: Maybe<ApiCallToAction>;
+  readonly topCta?: Maybe<DomainCallToAction>;
 };
 
-export type ApiCourseOverviewInfo = {
+export type DomainCourseOverviewInfo = {
   readonly __typename: 'CourseOverviewInfo';
   readonly cutsMade: Scalars['String']['output'];
   readonly cutsMissed: Scalars['String']['output'];
@@ -732,31 +731,31 @@ export type ApiCourseOverviewInfo = {
   readonly withdrew: Scalars['String']['output'];
 };
 
-export type ApiCourseOverviewItem = {
+export type DomainCourseOverviewItem = {
   readonly __typename: 'CourseOverviewItem';
-  readonly details: ReadonlyArray<ApiCourseOverviewItemDetails>;
+  readonly details: ReadonlyArray<DomainCourseOverviewItemDetails>;
   readonly displayName: Scalars['String']['output'];
   readonly image: Scalars['String']['output'];
   readonly rank: Scalars['Int']['output'];
 };
 
-export type ApiCourseOverviewItemDetails = {
+export type DomainCourseOverviewItemDetails = {
   readonly __typename: 'CourseOverviewItemDetails';
   readonly label: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiCoursePills = {
+export type DomainCoursePills = {
   readonly __typename: 'CoursePills';
   readonly courseId: Scalars['String']['output'];
   readonly courseName: Scalars['String']['output'];
 };
 
-export type ApiCourseResultsTournament = {
+export type DomainCourseResultsTournament = {
   readonly __typename: 'CourseResultsTournament';
   readonly points: Scalars['String']['output'];
   readonly position: Scalars['String']['output'];
-  readonly roundScores: ReadonlyArray<ApiRoundScoreItem>;
+  readonly roundScores: ReadonlyArray<DomainRoundScoreItem>;
   readonly season: Scalars['String']['output'];
   readonly toPar: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
@@ -771,10 +770,10 @@ export type ApiCourseResultsTournament = {
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiCourseRound = {
+export type DomainCourseRound = {
   readonly __typename: 'CourseRound';
   readonly enablePaceOfPlay?: Maybe<Scalars['Boolean']['output']>;
-  readonly holeStats: ReadonlyArray<ApiHoleStat>;
+  readonly holeStats: ReadonlyArray<DomainHoleStat>;
   readonly live: Scalars['Boolean']['output'];
   readonly paceOfPlayDescription?: Maybe<Scalars['String']['output']>;
   readonly paceOfPlayLabelTitle?: Maybe<Scalars['String']['output']>;
@@ -782,70 +781,70 @@ export type ApiCourseRound = {
   readonly roundNum?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiCourseStat = {
+export type DomainCourseStat = {
   readonly __typename: 'CourseStat';
   readonly courseCode: Scalars['String']['output'];
   readonly courseId: Scalars['String']['output'];
   readonly courseImage: Scalars['String']['output'];
   readonly courseName: Scalars['String']['output'];
-  readonly courseOverview: ApiTournamentCourse;
-  readonly holeDetailsAvailability: ApiHoleDetailsAvailability;
+  readonly courseOverview: DomainTournamentCourse;
+  readonly holeDetailsAvailability: DomainHoleDetailsAvailability;
   readonly hostCourse: Scalars['Boolean']['output'];
   readonly par: Scalars['Int']['output'];
-  readonly roundHoleStats: ReadonlyArray<ApiCourseRound>;
+  readonly roundHoleStats: ReadonlyArray<DomainCourseRound>;
   readonly roundPills?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly shotlinkLogo?: Maybe<Scalars['String']['output']>;
   readonly tournamentId: Scalars['ID']['output'];
   readonly yardage: Scalars['String']['output'];
 };
 
-export type ApiCourseStatsCategory = {
+export type DomainCourseStatsCategory = {
   readonly __typename: 'CourseStatsCategory';
-  readonly detailId: ApiCourseStatsId;
+  readonly detailId: DomainCourseStatsId;
   readonly header: Scalars['String']['output'];
-  readonly items: ReadonlyArray<ApiCourseOverviewItem>;
+  readonly items: ReadonlyArray<DomainCourseOverviewItem>;
 };
 
-export type ApiCourseStatsDetails = {
+export type DomainCourseStatsDetails = {
   readonly __typename: 'CourseStatsDetails';
   readonly displayName: Scalars['String']['output'];
   readonly displayYear: Scalars['String']['output'];
   readonly headers: ReadonlyArray<Scalars['String']['output']>;
-  readonly round: ApiToughestRound;
-  readonly roundPills: ReadonlyArray<ApiToughestCourseRoundPills>;
-  readonly rows: ReadonlyArray<ApiCourseStatsDetailsRow>;
-  readonly seasons: ReadonlyArray<ApiStatYearPills>;
+  readonly round: DomainToughestRound;
+  readonly roundPills: ReadonlyArray<DomainToughestCourseRoundPills>;
+  readonly rows: ReadonlyArray<DomainCourseStatsDetailsRow>;
+  readonly seasons: ReadonlyArray<DomainStatYearPills>;
   readonly shareURL?: Maybe<Scalars['String']['output']>;
   readonly tableName: Scalars['String']['output'];
-  readonly tourCode: ApiTourCode;
+  readonly tourCode: DomainTourCode;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiCourseStatsDetailsRow = {
+export type DomainCourseStatsDetailsRow = {
   readonly __typename: 'CourseStatsDetailsRow';
   readonly displayName: Scalars['String']['output'];
   readonly rank: Scalars['Int']['output'];
   readonly tournamentId: Scalars['String']['output'];
   readonly tournamentName: Scalars['String']['output'];
-  readonly values: ReadonlyArray<ApiCourseDetailRowValue>;
+  readonly values: ReadonlyArray<DomainCourseDetailRowValue>;
 };
 
-export type ApiCourseStatsId =
+export type DomainCourseStatsId =
   | 'TOUGHEST_COURSE'
   | 'TOUGHEST_HOLES';
 
-export type ApiCourseStatsOverview = {
+export type DomainCourseStatsOverview = {
   readonly __typename: 'CourseStatsOverview';
-  readonly categories: ReadonlyArray<ApiCourseStatsCategory>;
-  readonly tourCode: ApiTourCode;
+  readonly categories: ReadonlyArray<DomainCourseStatsCategory>;
+  readonly tourCode: DomainTourCode;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiCupLeaderboardMatch = {
+export type DomainCupLeaderboardMatch = {
   readonly __typename: 'CupLeaderboardMatch';
   readonly displayScore: Scalars['String']['output'];
   readonly euMatchWin?: Maybe<Scalars['Float']['output']>;
-  readonly holeScores?: Maybe<ReadonlyArray<ApiCupLeaderboardMatchHoles>>;
+  readonly holeScores?: Maybe<ReadonlyArray<DomainCupLeaderboardMatchHoles>>;
   readonly location: Scalars['String']['output'];
   readonly locationDescription?: Maybe<Scalars['String']['output']>;
   readonly locationSort: Scalars['Int']['output'];
@@ -856,7 +855,7 @@ export type ApiCupLeaderboardMatch = {
   readonly matchStatusFlag?: Maybe<Scalars['String']['output']>;
   readonly matchTitle: Scalars['String']['output'];
   readonly startingTee: Scalars['String']['output'];
-  readonly teams: ReadonlyArray<ApiCupLeaderboardMatchTeam>;
+  readonly teams: ReadonlyArray<DomainCupLeaderboardMatchTeam>;
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
@@ -866,15 +865,15 @@ export type ApiCupLeaderboardMatch = {
   readonly usMatchWin?: Maybe<Scalars['Float']['output']>;
 };
 
-export type ApiCupLeaderboardMatchHoles = {
+export type DomainCupLeaderboardMatchHoles = {
   readonly __typename: 'CupLeaderboardMatchHoles';
   readonly holeNumber: Scalars['String']['output'];
   readonly holeNumberColor: Scalars['String']['output'];
   readonly holeOutlineColor?: Maybe<Scalars['String']['output']>;
-  readonly holePlayedStatus: ApiHolePlayedStatus;
+  readonly holePlayedStatus: DomainHolePlayedStatus;
 };
 
-export type ApiCupLeaderboardMatchPlayer = {
+export type DomainCupLeaderboardMatchPlayer = {
   readonly __typename: 'CupLeaderboardMatchPlayer';
   readonly color?: Maybe<Scalars['String']['output']>;
   readonly displayName: Scalars['String']['output'];
@@ -882,11 +881,11 @@ export type ApiCupLeaderboardMatchPlayer = {
   readonly hideHeadshot?: Maybe<Scalars['Boolean']['output']>;
   readonly lastName?: Maybe<Scalars['String']['output']>;
   readonly playerId: Scalars['ID']['output'];
-  readonly results?: Maybe<ApiCupLeaderboardMatchPlayerResults>;
+  readonly results?: Maybe<DomainCupLeaderboardMatchPlayerResults>;
   readonly shortName: Scalars['String']['output'];
 };
 
-export type ApiCupLeaderboardMatchPlayerResults = {
+export type DomainCupLeaderboardMatchPlayerResults = {
   readonly __typename: 'CupLeaderboardMatchPlayerResults';
   readonly losses: Scalars['String']['output'];
   readonly ties: Scalars['String']['output'];
@@ -894,51 +893,51 @@ export type ApiCupLeaderboardMatchPlayerResults = {
   readonly wins: Scalars['String']['output'];
 };
 
-export type ApiCupLeaderboardMatchTeam = {
+export type DomainCupLeaderboardMatchTeam = {
   readonly __typename: 'CupLeaderboardMatchTeam';
   readonly flagSurroundColor?: Maybe<Scalars['String']['output']>;
   readonly flagSurroundColorDark?: Maybe<Scalars['String']['output']>;
-  readonly players: ReadonlyArray<ApiCupLeaderboardMatchPlayer>;
-  readonly status: ApiCupLeaderboardTeamStatus;
+  readonly players: ReadonlyArray<DomainCupLeaderboardMatchPlayer>;
+  readonly status: DomainCupLeaderboardTeamStatus;
   readonly teamColor: Scalars['String']['output'];
   readonly teamFlag: Scalars['String']['output'];
   readonly teamId: Scalars['ID']['output'];
   readonly teamName: Scalars['String']['output'];
   readonly teamScore?: Maybe<Scalars['String']['output']>;
-  readonly teamStoryContentInfo?: Maybe<ReadonlyArray<ApiTeamStoryContentInfo>>;
+  readonly teamStoryContentInfo?: Maybe<ReadonlyArray<DomainTeamStoryContentInfo>>;
   readonly textColor?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiCupLeaderboardTeamStatus =
+export type DomainCupLeaderboardTeamStatus =
   | 'BEHIND'
   | 'LEADS'
   | 'TIED'
   | 'UNKNOWN'
   | 'WINS';
 
-export type ApiCupLiveActivitySponsor = {
+export type DomainCupLiveActivitySponsor = {
   readonly __typename: 'CupLiveActivitySponsor';
   readonly sponsorLogo?: Maybe<Scalars['String']['output']>;
   readonly sponsorText?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiCupMatchesCompleteData = {
+export type DomainCupMatchesCompleteData = {
   readonly __typename: 'CupMatchesCompleteData';
   readonly completedMatches: Scalars['Int']['output'];
   readonly totalMatches: Scalars['Int']['output'];
 };
 
-export type ApiCupOverviewDisplayType =
+export type DomainCupOverviewDisplayType =
   | 'POINTS_ONLY'
   | 'PROGRESS';
 
-export type ApiCupPastResults = {
+export type DomainCupPastResults = {
   readonly __typename: 'CupPastResults';
   readonly permId: Scalars['ID']['output'];
-  readonly years: ReadonlyArray<ApiCupPastResultsYear>;
+  readonly years: ReadonlyArray<DomainCupPastResultsYear>;
 };
 
-export type ApiCupPastResultsTeam = {
+export type DomainCupPastResultsTeam = {
   readonly __typename: 'CupPastResultsTeam';
   readonly badgeText?: Maybe<Scalars['String']['output']>;
   readonly color: Scalars['String']['output'];
@@ -948,76 +947,76 @@ export type ApiCupPastResultsTeam = {
   readonly teamName: Scalars['String']['output'];
 };
 
-export type ApiCupPastResultsYear = {
+export type DomainCupPastResultsYear = {
   readonly __typename: 'CupPastResultsYear';
   readonly displayYear: Scalars['String']['output'];
-  readonly teams: ReadonlyArray<ApiCupPastResultsTeam>;
+  readonly teams: ReadonlyArray<DomainCupPastResultsTeam>;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiCupRankMovementDirection =
+export type DomainCupRankMovementDirection =
   | 'CONSTANT'
   | 'DOWN'
   | 'UNKNOWN'
   | 'UP';
 
-export type ApiCupRankingPlayer = {
+export type DomainCupRankingPlayer = {
   readonly __typename: 'CupRankingPlayer';
   readonly id: Scalars['String']['output'];
   readonly movement: Scalars['String']['output'];
-  readonly movementDirection: ApiCupRankMovementDirection;
+  readonly movementDirection: DomainCupRankMovementDirection;
   readonly name: Scalars['String']['output'];
   readonly playerCountry: Scalars['String']['output'];
   readonly position: Scalars['String']['output'];
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
   readonly rankLogoLight?: Maybe<Scalars['String']['output']>;
   readonly total: Scalars['String']['output'];
-  readonly totals: ReadonlyArray<ApiCupRankingTotal>;
+  readonly totals: ReadonlyArray<DomainCupRankingTotal>;
   readonly tourBound?: Maybe<Scalars['Boolean']['output']>;
   readonly winner?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiCupRankingPlayerInfoRow = {
+export type DomainCupRankingPlayerInfoRow = {
   readonly __typename: 'CupRankingPlayerInfoRow';
   readonly image?: Maybe<Scalars['String']['output']>;
   readonly imageDark?: Maybe<Scalars['String']['output']>;
   readonly text: Scalars['String']['output'];
 };
 
-export type ApiCupRankingPlayerWrapper = ApiCupRankingPlayer | ApiCupRankingPlayerInfoRow;
+export type DomainCupRankingPlayerWrapper = DomainCupRankingPlayer | DomainCupRankingPlayerInfoRow;
 
-export type ApiCupRankingTotal = {
+export type DomainCupRankingTotal = {
   readonly __typename: 'CupRankingTotal';
   readonly display: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiCupRound = {
+export type DomainCupRound = {
   readonly __typename: 'CupRound';
   readonly roundDisplayName: Scalars['String']['output'];
   readonly roundNum: Scalars['Int']['output'];
 };
 
-export type ApiCupRoundFormat =
+export type DomainCupRoundFormat =
   | 'ALTERNATE_SHOT'
   | 'BEST_BALL'
   | 'SINGLES';
 
-export type ApiCupScorecard = {
+export type DomainCupScorecard = {
   readonly __typename: 'CupScorecard';
   readonly currentHole?: Maybe<Scalars['Int']['output']>;
   readonly displayScore: Scalars['String']['output'];
-  readonly format: ApiCupRoundFormat;
+  readonly format: DomainCupRoundFormat;
   readonly id: Scalars['ID']['output'];
   readonly infoWebUrl?: Maybe<Scalars['String']['output']>;
-  readonly matchHoleScores: ReadonlyArray<ApiMatchHole>;
+  readonly matchHoleScores: ReadonlyArray<DomainMatchHole>;
   readonly matchName: Scalars['String']['output'];
   readonly matchStatus: Scalars['String']['output'];
   readonly matchStatusColor: Scalars['String']['output'];
   readonly matchStatusFlag?: Maybe<Scalars['String']['output']>;
-  readonly messages: ReadonlyArray<ApiMessage>;
+  readonly messages: ReadonlyArray<DomainMessage>;
   readonly scorecardTitle: Scalars['String']['output'];
-  readonly teams: ReadonlyArray<ApiCupTeam>;
+  readonly teams: ReadonlyArray<DomainCupTeam>;
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
@@ -1026,12 +1025,12 @@ export type ApiCupScorecard = {
   readonly tourcastUrlWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiCupTeam = {
+export type DomainCupTeam = {
   readonly __typename: 'CupTeam';
   readonly flagSurroundColor?: Maybe<Scalars['String']['output']>;
   readonly flagSurroundColorDark?: Maybe<Scalars['String']['output']>;
-  readonly players?: Maybe<ReadonlyArray<ApiMpScorecardPlayer>>;
-  readonly status: ApiCupLeaderboardTeamStatus;
+  readonly players?: Maybe<ReadonlyArray<DomainMpScorecardPlayer>>;
+  readonly status: DomainCupLeaderboardTeamStatus;
   readonly teamColor: Scalars['String']['output'];
   readonly teamFlag: Scalars['String']['output'];
   readonly teamId: Scalars['ID']['output'];
@@ -1041,11 +1040,11 @@ export type ApiCupTeam = {
   readonly textColor?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiCupTeamRoster = {
+export type DomainCupTeamRoster = {
   readonly __typename: 'CupTeamRoster';
   readonly flagSurroundColor?: Maybe<Scalars['String']['output']>;
   readonly flagSurroundColorDark?: Maybe<Scalars['String']['output']>;
-  readonly sections: ReadonlyArray<ApiCupTeamRosterSection>;
+  readonly sections: ReadonlyArray<DomainCupTeamRosterSection>;
   readonly teamColor: Scalars['String']['output'];
   readonly teamFlag: Scalars['String']['output'];
   readonly teamId: Scalars['ID']['output'];
@@ -1053,50 +1052,50 @@ export type ApiCupTeamRoster = {
   readonly teamName: Scalars['String']['output'];
 };
 
-export type ApiCupTeamRosterSection = {
+export type DomainCupTeamRosterSection = {
   readonly __typename: 'CupTeamRosterSection';
-  readonly players: ReadonlyArray<ApiCupLeaderboardMatchPlayer>;
+  readonly players: ReadonlyArray<DomainCupLeaderboardMatchPlayer>;
   readonly sectionTitle: Scalars['String']['output'];
   readonly showResults: Scalars['Boolean']['output'];
 };
 
-export type ApiCupTeamRosters = {
+export type DomainCupTeamRosters = {
   readonly __typename: 'CupTeamRosters';
-  readonly teams: ReadonlyArray<ApiCupTeamRoster>;
+  readonly teams: ReadonlyArray<DomainCupTeamRoster>;
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiCupTeeTimes = {
+export type DomainCupTeeTimes = {
   readonly __typename: 'CupTeeTimes';
   readonly currentRound: Scalars['Int']['output'];
   readonly drawersEnabled: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
-  readonly rounds: ReadonlyArray<ApiCupTeeTimesRound>;
+  readonly rounds: ReadonlyArray<DomainCupTeeTimesRound>;
 };
 
-export type ApiCupTeeTimesRound = {
+export type DomainCupTeeTimesRound = {
   readonly __typename: 'CupTeeTimesRound';
   readonly adConfig: Scalars['String']['output'];
   readonly completedMatches: Scalars['Int']['output'];
-  readonly matches: ReadonlyArray<ApiCupLeaderboardMatch>;
+  readonly matches: ReadonlyArray<DomainCupLeaderboardMatch>;
   readonly roundDisplay: Scalars['String']['output'];
   readonly roundNum: Scalars['Int']['output'];
   readonly totalMatches: Scalars['Int']['output'];
 };
 
-export type ApiCupTournamentLeaderboard = {
+export type DomainCupTournamentLeaderboard = {
   readonly __typename: 'CupTournamentLeaderboard';
-  readonly allRounds: ReadonlyArray<ApiCupRound>;
+  readonly allRounds: ReadonlyArray<DomainCupRound>;
   readonly completedMatches: Scalars['Int']['output'];
   readonly currentId: Scalars['String']['output'];
   readonly currentRound: Scalars['Int']['output'];
   readonly drawersEnabled: Scalars['Boolean']['output'];
-  readonly format: ApiCupRoundFormat;
+  readonly format: DomainCupRoundFormat;
   readonly id: Scalars['ID']['output'];
-  readonly liveActivitySponsor?: Maybe<ApiCupLiveActivitySponsor>;
-  readonly matches: ReadonlyArray<ApiCupLeaderboardMatch>;
+  readonly liveActivitySponsor?: Maybe<DomainCupLiveActivitySponsor>;
+  readonly matches: ReadonlyArray<DomainCupLeaderboardMatch>;
   readonly outcomeIqLogo?: Maybe<Scalars['String']['output']>;
-  readonly rounds: ReadonlyArray<ApiCupTournamentRound>;
+  readonly rounds: ReadonlyArray<DomainCupTournamentRound>;
   readonly title: Scalars['String']['output'];
   readonly totalMatches: Scalars['Int']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
@@ -1106,37 +1105,37 @@ export type ApiCupTournamentLeaderboard = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiCupTournamentLeaderboardCompressed = {
+export type DomainCupTournamentLeaderboardCompressed = {
   readonly __typename: 'CupTournamentLeaderboardCompressed';
   readonly currentId: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiCupTournamentRound = {
+export type DomainCupTournamentRound = {
   readonly __typename: 'CupTournamentRound';
   readonly adConfig: Scalars['String']['output'];
   readonly description: Scalars['String']['output'];
-  readonly format: ApiCupRoundFormat;
+  readonly format: DomainCupRoundFormat;
   readonly roundNumber: Scalars['Int']['output'];
 };
 
-export type ApiCupTournamentStatus = {
+export type DomainCupTournamentStatus = {
   readonly __typename: 'CupTournamentStatus';
   readonly heroImage?: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly infoPath?: Maybe<Scalars['String']['output']>;
-  readonly matchesComplete?: Maybe<ApiCupMatchesCompleteData>;
-  readonly messages: ReadonlyArray<ApiLeaderboardMessage>;
+  readonly matchesComplete?: Maybe<DomainCupMatchesCompleteData>;
+  readonly messages: ReadonlyArray<DomainLeaderboardMessage>;
   readonly miniLeaderboardOverride?: Maybe<Scalars['String']['output']>;
   readonly scorecardEnabled: Scalars['Boolean']['output'];
   readonly stickyBanner: Scalars['Boolean']['output'];
-  readonly teams: ReadonlyArray<ApiCupTournamentTeam>;
+  readonly teams: ReadonlyArray<DomainCupTournamentTeam>;
   readonly tournamentId: Scalars['String']['output'];
-  readonly type: ApiCupOverviewDisplayType;
+  readonly type: DomainCupOverviewDisplayType;
 };
 
-export type ApiCupTournamentTeam = {
+export type DomainCupTournamentTeam = {
   readonly __typename: 'CupTournamentTeam';
   readonly badgeText?: Maybe<Scalars['String']['output']>;
   readonly color: Scalars['String']['output'];
@@ -1159,7 +1158,7 @@ export type ApiCupTournamentTeam = {
   readonly winner?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiCurrentLeaderPlayer = {
+export type DomainCurrentLeaderPlayer = {
   readonly __typename: 'CurrentLeaderPlayer';
   readonly backNine: Scalars['Boolean']['output'];
   readonly country: Scalars['String']['output'];
@@ -1170,8 +1169,8 @@ export type ApiCurrentLeaderPlayer = {
   readonly id: Scalars['ID']['output'];
   readonly lastName: Scalars['String']['output'];
   readonly leaderboardSortOrder: Scalars['Int']['output'];
-  readonly playerIcon?: Maybe<ApiLeaderboardPlayerIcon>;
-  readonly playerState?: Maybe<ApiPlayerState>;
+  readonly playerIcon?: Maybe<DomainLeaderboardPlayerIcon>;
+  readonly playerState?: Maybe<DomainPlayerState>;
   readonly position: Scalars['String']['output'];
   readonly roundHeader: Scalars['String']['output'];
   readonly roundScore: Scalars['String']['output'];
@@ -1181,140 +1180,140 @@ export type ApiCurrentLeaderPlayer = {
   readonly totalScore: Scalars['String']['output'];
 };
 
-export type ApiCurrentLeaderSponsors = {
+export type DomainCurrentLeaderSponsors = {
   readonly __typename: 'CurrentLeaderSponsors';
-  readonly images: ReadonlyArray<ApiSponsorImage>;
+  readonly images: ReadonlyArray<DomainSponsorImage>;
   readonly text: Scalars['String']['output'];
 };
 
-export type ApiCurrentLeaders = {
+export type DomainCurrentLeaders = {
   readonly __typename: 'CurrentLeaders';
   readonly hideRolexClock: Scalars['Boolean']['output'];
   readonly hideSov: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
   readonly miniatureLeaderboardExternalLinkOverride?: Maybe<Scalars['String']['output']>;
   readonly miniatureLeaderboardImgOverride?: Maybe<Scalars['String']['output']>;
-  readonly players: ReadonlyArray<ApiCurrentLeaderPlayer>;
+  readonly players: ReadonlyArray<DomainCurrentLeaderPlayer>;
   readonly profileEnabled: Scalars['Boolean']['output'];
   readonly roundDisplay: Scalars['String']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   readonly roundStatusDisplay: Scalars['String']['output'];
-  readonly sponsor?: Maybe<ApiCurrentLeaderSponsors>;
+  readonly sponsor?: Maybe<DomainCurrentLeaderSponsors>;
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiCurrentLeadersCompressed = {
+export type DomainCurrentLeadersCompressed = {
   readonly __typename: 'CurrentLeadersCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiCutLineInfo = {
+export type DomainCutLineInfo = {
   readonly __typename: 'CutLineInfo';
   readonly lastUpdated: Scalars['AWSTimestamp']['output'];
   readonly new?: Maybe<Scalars['Boolean']['output']>;
-  readonly possibleCutLines: ReadonlyArray<ApiCutLinePossibility>;
+  readonly possibleCutLines: ReadonlyArray<DomainCutLinePossibility>;
   readonly probableCutLine: Scalars['String']['output'];
   readonly projectedCutLine: Scalars['String']['output'];
-  readonly sponsorLogo?: Maybe<ApiImageAsset>;
+  readonly sponsorLogo?: Maybe<DomainImageAsset>;
   readonly sponsorName?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiCutLinePossibility = {
+export type DomainCutLinePossibility = {
   readonly __typename: 'CutLinePossibility';
   readonly displayProbability: Scalars['String']['output'];
   readonly probability: Scalars['Float']['output'];
   readonly score: Scalars['String']['output'];
 };
 
-export type ApiDayWeather = {
+export type DomainDayWeather = {
   readonly __typename: 'DayWeather';
   readonly day: Scalars['String']['output'];
   readonly text: Scalars['String']['output'];
 };
 
-export type ApiDeleteAccountResponse = {
+export type DomainDeleteAccountResponse = {
   readonly __typename: 'DeleteAccountResponse';
   readonly ok: Scalars['Boolean']['output'];
 };
 
-export type ApiDrawerDisplayState =
+export type DomainDrawerDisplayState =
   | 'HOLE_ONLY'
   | 'PLAY_BY_PLAY'
   | 'ROUND_COMPLETE'
   | 'TEE_TIME';
 
-export type ApiDropdownFragment = {
+export type DomainDropdownFragment = {
   readonly __typename: 'DropdownFragment';
-  readonly bottomCta?: Maybe<ApiCallToAction>;
+  readonly bottomCta?: Maybe<DomainCallToAction>;
   readonly header: Scalars['String']['output'];
-  readonly rows: ReadonlyArray<ApiDropdownRow>;
+  readonly rows: ReadonlyArray<DomainDropdownRow>;
   readonly subheader?: Maybe<Scalars['String']['output']>;
-  readonly topCta?: Maybe<ApiCallToAction>;
+  readonly topCta?: Maybe<DomainCallToAction>;
 };
 
-export type ApiDropdownRow = {
+export type DomainDropdownRow = {
   readonly __typename: 'DropdownRow';
-  readonly content?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly content?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly header: Scalars['String']['output'];
 };
 
-export type ApiEfiHole = {
+export type DomainEfiHole = {
   readonly __typename: 'EFIHole';
   readonly count: Scalars['String']['output'];
   readonly hole: Scalars['String']['output'];
 };
 
-export type ApiEfiPlayer = {
+export type DomainEfiPlayer = {
   readonly __typename: 'EFIPlayer';
   readonly displayName: Scalars['String']['output'];
-  readonly history: ReadonlyArray<ApiEfiPlayerEagle>;
+  readonly history: ReadonlyArray<DomainEfiPlayerEagle>;
   readonly playerId: Scalars['ID']['output'];
   readonly totalEagles: Scalars['String']['output'];
 };
 
-export type ApiEfiPlayerEagle = {
+export type DomainEfiPlayerEagle = {
   readonly __typename: 'EFIPlayerEagle';
   readonly hole: Scalars['Int']['output'];
   readonly round: Scalars['Int']['output'];
   readonly videoId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiEaglesForImpact = {
+export type DomainEaglesForImpact = {
   readonly __typename: 'EaglesForImpact';
   readonly charity: Scalars['String']['output'];
   readonly donation: Scalars['String']['output'];
   readonly eaglesTitle: Scalars['String']['output'];
-  readonly holes: ReadonlyArray<ApiEfiHole>;
+  readonly holes: ReadonlyArray<DomainEfiHole>;
   readonly linkText?: Maybe<Scalars['String']['output']>;
   readonly linkUrl?: Maybe<Scalars['String']['output']>;
-  readonly players: ReadonlyArray<ApiEfiPlayer>;
+  readonly players: ReadonlyArray<DomainEfiPlayer>;
   readonly sponsorDescription: Scalars['String']['output'];
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo: Scalars['String']['output'];
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   readonly title: Scalars['String']['output'];
   readonly totalEagles: Scalars['String']['output'];
   readonly tournamentId: Scalars['ID']['output'];
 };
 
 /**   Player Odds V2 */
-export type ApiEntityOdds = {
+export type DomainEntityOdds = {
   readonly __typename: 'EntityOdds';
   readonly bettingProfile?: Maybe<Scalars['String']['output']>;
   readonly entityId: Scalars['ID']['output'];
-  readonly marketPills: ReadonlyArray<ApiMarketPill>;
+  readonly marketPills: ReadonlyArray<DomainMarketPill>;
   /**   others available to request */
-  readonly markets: ReadonlyArray<ApiMarket>;
-  readonly message?: Maybe<ApiOddsMessage>;
-  readonly provider: ApiOddsProvider;
+  readonly markets: ReadonlyArray<DomainMarket>;
+  readonly message?: Maybe<DomainOddsMessage>;
+  readonly provider: DomainOddsProvider;
   /**   playerId or teamId */
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiEpisode = {
+export type DomainEpisode = {
   readonly __typename: 'Episode';
   readonly date: Scalars['AWSTimestamp']['output'];
   readonly description: Scalars['String']['output'];
@@ -1324,22 +1323,22 @@ export type ApiEpisode = {
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiEvent = {
+export type DomainEvent = {
   readonly __typename: 'Event';
   readonly eventName: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly leaderboardId: Scalars['String']['output'];
 };
 
-export type ApiEventGuideConfig = {
+export type DomainEventGuideConfig = {
   readonly __typename: 'EventGuideConfig';
-  readonly augmentedReality?: Maybe<ApiAugmentedRealityConfig>;
+  readonly augmentedReality?: Maybe<DomainAugmentedRealityConfig>;
   readonly eventGuideMap?: Maybe<Scalars['String']['output']>;
   readonly eventGuideURL?: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
 };
 
-export type ApiEventHub = {
+export type DomainEventHub = {
   readonly __typename: 'EventHub';
   readonly bottomSectionTitle?: Maybe<Scalars['String']['output']>;
   readonly notSharingLocationFallbackDescriptionText?: Maybe<Scalars['String']['output']>;
@@ -1354,17 +1353,17 @@ export type ApiEventHub = {
   readonly topSectionTitle?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiEventHubTable = {
+export type DomainEventHubTable = {
   readonly __typename: 'EventHubTable';
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly mapCtaText?: Maybe<Scalars['String']['output']>;
   readonly mapIframe?: Maybe<Scalars['String']['output']>;
   readonly mapPdf?: Maybe<Scalars['String']['output']>;
   readonly mapSectionTitle?: Maybe<Scalars['String']['output']>;
-  readonly notSharingLocationCta?: Maybe<ApiCallToAction>;
+  readonly notSharingLocationCta?: Maybe<DomainCallToAction>;
   readonly notSharingLocationFallbackDescriptionText?: Maybe<Scalars['String']['output']>;
   readonly notSharingLocationFallbackTitle?: Maybe<Scalars['String']['output']>;
-  readonly outOfRangeCta?: Maybe<ApiCallToAction>;
+  readonly outOfRangeCta?: Maybe<DomainCallToAction>;
   readonly outOfRangeFallbackDescriptionText?: Maybe<Scalars['String']['output']>;
   readonly outOfRangeFallbackPromoImg?: Maybe<Scalars['String']['output']>;
   readonly outOfRangeFallbackTitle?: Maybe<Scalars['String']['output']>;
@@ -1375,131 +1374,131 @@ export type ApiEventHubTable = {
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiEventRegion =
+export type DomainEventRegion =
   | 'EUROPE'
   | 'INTERNATIONAL'
   | 'US';
 
-export type ApiExpertPicks = {
+export type DomainExpertPicks = {
   readonly __typename: 'ExpertPicks';
-  readonly expertPicksTableRows: ReadonlyArray<ApiExpertPicksTableRow>;
+  readonly expertPicksTableRows: ReadonlyArray<DomainExpertPicksTableRow>;
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiExpertPicksNode = {
+export type DomainExpertPicksNode = {
   readonly __typename: 'ExpertPicksNode';
   readonly isPowerRankings: Scalars['Boolean']['output'];
   readonly path: Scalars['String']['output'];
 };
 
-export type ApiExpertPicksTableRow = {
+export type DomainExpertPicksTableRow = {
   readonly __typename: 'ExpertPicksTableRow';
-  readonly comment: ReadonlyArray<ApiTourSponsorDescription>;
+  readonly comment: ReadonlyArray<DomainTourSponsorDescription>;
   readonly expertName?: Maybe<Scalars['String']['output']>;
   readonly expertTitle?: Maybe<Scalars['String']['output']>;
-  readonly lineup: ReadonlyArray<ApiPlayerInfo>;
+  readonly lineup: ReadonlyArray<DomainPlayerInfo>;
   readonly percentSelected?: Maybe<Scalars['String']['output']>;
-  readonly percentSelectedColor?: Maybe<ApiStatColor>;
-  readonly winner?: Maybe<ApiPlayerInfo>;
+  readonly percentSelectedColor?: Maybe<DomainStatColor>;
+  readonly winner?: Maybe<DomainPlayerInfo>;
 };
 
-export type ApiFavoritePlayer = {
+export type DomainFavoritePlayer = {
   readonly __typename: 'FavoritePlayer';
   readonly id: Scalars['ID']['output'];
 };
 
-export type ApiFavoritePlayerInput = {
+export type DomainFavoritePlayerInput = {
   readonly id: Scalars['ID']['input'];
 };
 
-export type ApiFavoriteTourResponse = {
+export type DomainFavoriteTourResponse = {
   readonly __typename: 'FavoriteTourResponse';
   readonly ok: Scalars['Boolean']['output'];
-  readonly tourCode?: Maybe<ApiTourCode>;
+  readonly tourCode?: Maybe<DomainTourCode>;
 };
 
-export type ApiFeatureItem = {
+export type DomainFeatureItem = {
   readonly __typename: 'FeatureItem';
-  readonly fieldStatType?: Maybe<ApiFieldStatType>;
-  readonly leaderboardFeatures?: Maybe<ApiLeaderboardFeature>;
+  readonly fieldStatType?: Maybe<DomainFieldStatType>;
+  readonly leaderboardFeatures?: Maybe<DomainLeaderboardFeature>;
   readonly name: Scalars['String']['output'];
   readonly new: Scalars['Boolean']['output'];
-  readonly sponsor?: Maybe<ApiFeatureSponsor>;
+  readonly sponsor?: Maybe<DomainFeatureSponsor>;
   readonly tooltipText?: Maybe<Scalars['String']['output']>;
   readonly tooltipTitle?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiFeatureSponsor = {
+export type DomainFeatureSponsor = {
   readonly __typename: 'FeatureSponsor';
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo: Scalars['String']['output'];
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   /** @deprecated use sponsorLogoDarkAsset */
   readonly sponsorLogoDark: Scalars['String']['output'];
-  readonly sponsorLogoDarkAsset: ApiImageAsset;
+  readonly sponsorLogoDarkAsset: DomainImageAsset;
   readonly sponsorText: Scalars['String']['output'];
 };
 
-export type ApiField = {
+export type DomainField = {
   readonly __typename: 'Field';
-  readonly alternates: ReadonlyArray<ApiPlayerField>;
-  readonly features: ReadonlyArray<ApiFeatureItem>;
+  readonly alternates: ReadonlyArray<DomainPlayerField>;
+  readonly features: ReadonlyArray<DomainFeatureItem>;
   readonly hideSov: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
   readonly lastUpdated?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly message?: Maybe<Scalars['String']['output']>;
-  readonly players: ReadonlyArray<ApiPlayerField>;
+  readonly players: ReadonlyArray<DomainPlayerField>;
   readonly standingsHeader: Scalars['String']['output'];
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiFieldGroup = {
+export type DomainFieldGroup = {
   readonly __typename: 'FieldGroup';
   readonly groupId?: Maybe<Scalars['String']['output']>;
   readonly groupTitle: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiPlayerField>;
+  readonly players: ReadonlyArray<DomainPlayerField>;
 };
 
-export type ApiFieldPromoSection = {
+export type DomainFieldPromoSection = {
   readonly __typename: 'FieldPromoSection';
   readonly title: Scalars['String']['output'];
   readonly tournamentIds: ReadonlyArray<Scalars['String']['output']>;
 };
 
-export type ApiFieldStatCourseFit = {
+export type DomainFieldStatCourseFit = {
   readonly __typename: 'FieldStatCourseFit';
   readonly playerId: Scalars['String']['output'];
   readonly score: Scalars['String']['output'];
-  readonly stats: ReadonlyArray<ApiFieldStatCourseFitStat>;
+  readonly stats: ReadonlyArray<DomainFieldStatCourseFitStat>;
   readonly totalRounds: Scalars['String']['output'];
 };
 
-export type ApiFieldStatCourseFitStat = {
+export type DomainFieldStatCourseFitStat = {
   readonly __typename: 'FieldStatCourseFitStat';
-  readonly statColor: ApiStatColor;
+  readonly statColor: DomainStatColor;
   readonly statRank: Scalars['String']['output'];
   readonly statValue: Scalars['String']['output'];
 };
 
-export type ApiFieldStatCurrentForm = {
+export type DomainFieldStatCurrentForm = {
   readonly __typename: 'FieldStatCurrentForm';
   readonly playerId: Scalars['String']['output'];
-  readonly strokesGained: ReadonlyArray<ApiFieldStatStrokesGained>;
+  readonly strokesGained: ReadonlyArray<DomainFieldStatStrokesGained>;
   readonly strokesGainedHeader: ReadonlyArray<Scalars['String']['output']>;
   readonly totalRounds: Scalars['String']['output'];
-  readonly tournamentResults: ReadonlyArray<ApiFieldStatTournamentResult>;
+  readonly tournamentResults: ReadonlyArray<DomainFieldStatTournamentResult>;
 };
 
-export type ApiFieldStatPlayer = ApiFieldStatCourseFit | ApiFieldStatCurrentForm;
+export type DomainFieldStatPlayer = DomainFieldStatCourseFit | DomainFieldStatCurrentForm;
 
-export type ApiFieldStatStrokesGained = {
+export type DomainFieldStatStrokesGained = {
   readonly __typename: 'FieldStatStrokesGained';
-  readonly statColor: ApiStatColor;
+  readonly statColor: DomainStatColor;
   readonly statId: Scalars['String']['output'];
   readonly statValue: Scalars['String']['output'];
 };
 
-export type ApiFieldStatTournamentResult = {
+export type DomainFieldStatTournamentResult = {
   readonly __typename: 'FieldStatTournamentResult';
   readonly columnIndex: Scalars['Int']['output'];
   readonly endDate: Scalars['String']['output'];
@@ -1511,21 +1510,21 @@ export type ApiFieldStatTournamentResult = {
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiFieldStatType =
+export type DomainFieldStatType =
   | 'COURSE_FIT'
   | 'CURRENT_FORM'
   | 'TOURNAMENT_HISTORY';
 
-export type ApiFieldStats = {
+export type DomainFieldStats = {
   readonly __typename: 'FieldStats';
-  readonly fieldStatType: ApiFieldStatType;
-  readonly players: ReadonlyArray<ApiFieldStatPlayer>;
+  readonly fieldStatType: DomainFieldStatType;
+  readonly players: ReadonlyArray<DomainFieldStatPlayer>;
   readonly statHeaders?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly tournamentId: Scalars['ID']['output'];
-  readonly tournamentSeasonHeaders?: Maybe<ReadonlyArray<ApiSeasonDisplayHeader>>;
+  readonly tournamentSeasonHeaders?: Maybe<ReadonlyArray<DomainSeasonDisplayHeader>>;
 };
 
-export type ApiFinishStatValue = {
+export type DomainFinishStatValue = {
   readonly __typename: 'FinishStatValue';
   readonly date: Scalars['Int']['output'];
   readonly displayDate: Scalars['String']['output'];
@@ -1534,55 +1533,55 @@ export type ApiFinishStatValue = {
   readonly value: Scalars['Float']['output'];
 };
 
-export type ApiFormatType =
+export type DomainFormatType =
   | 'MATCH_PLAY'
   | 'STABLEFORD'
   | 'STROKE_PLAY'
   | 'TEAM_CUP'
   | 'TEAM_STROKE';
 
-export type ApiFranchise = {
+export type DomainFranchise = {
   readonly __typename: 'Franchise';
   readonly displayName: Scalars['String']['output'];
   readonly queryValue: Scalars['String']['output'];
 };
 
-export type ApiFranchisePillConfig = {
+export type DomainFranchisePillConfig = {
   readonly __typename: 'FranchisePillConfig';
   readonly category?: Maybe<Scalars['String']['output']>;
-  readonly franchises: ReadonlyArray<ApiFranchise>;
+  readonly franchises: ReadonlyArray<DomainFranchise>;
   readonly rating?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiFutureVenuesCard = {
+export type DomainFutureVenuesCard = {
   readonly __typename: 'FutureVenuesCard';
   readonly course?: Maybe<Scalars['String']['output']>;
   readonly coursePhoto?: Maybe<Scalars['String']['output']>;
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly location?: Maybe<Scalars['String']['output']>;
   readonly venueLink?: Maybe<Scalars['String']['output']>;
   readonly year?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiFutureVenuesFragment = {
+export type DomainFutureVenuesFragment = {
   readonly __typename: 'FutureVenuesFragment';
-  readonly bottomCta?: Maybe<ApiCallToAction>;
-  readonly cards?: Maybe<ReadonlyArray<ApiFutureVenuesCard>>;
+  readonly bottomCta?: Maybe<DomainCallToAction>;
+  readonly cards?: Maybe<ReadonlyArray<DomainFutureVenuesCard>>;
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
-  readonly topCta?: Maybe<ApiCallToAction>;
+  readonly topCta?: Maybe<DomainCallToAction>;
 };
 
-export type ApiFutureVenuesRow = {
+export type DomainFutureVenuesRow = {
   readonly __typename: 'FutureVenuesRow';
   /** @deprecated Use beautyImageAsset */
   readonly beautyImage?: Maybe<Scalars['String']['output']>;
-  readonly beautyImageAsset?: Maybe<ApiImageAsset>;
+  readonly beautyImageAsset?: Maybe<DomainImageAsset>;
   readonly course?: Maybe<Scalars['String']['output']>;
   readonly eventDates?: Maybe<Scalars['String']['output']>;
   readonly hospitalityLink?: Maybe<Scalars['String']['output']>;
   readonly hospitalityLinkTarget?: Maybe<Scalars['String']['output']>;
   readonly location?: Maybe<Scalars['String']['output']>;
-  readonly moreInfoDescription?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly moreInfoDescription?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
   readonly ticketLink?: Maybe<Scalars['String']['output']>;
   readonly ticketLinkTarget?: Maybe<Scalars['String']['output']>;
   readonly volunteersLink?: Maybe<Scalars['String']['output']>;
@@ -1590,29 +1589,29 @@ export type ApiFutureVenuesRow = {
   readonly year?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiFutureVenuesTableFragment = {
+export type DomainFutureVenuesTableFragment = {
   readonly __typename: 'FutureVenuesTableFragment';
-  readonly rows: ReadonlyArray<ApiFutureVenuesRow>;
+  readonly rows: ReadonlyArray<DomainFutureVenuesRow>;
 };
 
-export type ApiGenericContent = {
+export type DomainGenericContent = {
   readonly __typename: 'GenericContent';
   readonly adConfigNode?: Maybe<Scalars['String']['output']>;
-  readonly authorReference?: Maybe<ApiNewsArticleAuthor>;
+  readonly authorReference?: Maybe<DomainNewsArticleAuthor>;
   readonly datePublished: Scalars['AWSTimestamp']['output'];
   readonly headline: Scalars['String']['output'];
-  readonly metadata?: Maybe<ApiNewsArticleMetadata>;
-  readonly nodes: ReadonlyArray<ApiNewsArticleNode>;
+  readonly metadata?: Maybe<DomainNewsArticleMetadata>;
+  readonly nodes: ReadonlyArray<DomainNewsArticleNode>;
   readonly path: Scalars['String']['output'];
 };
 
-export type ApiGenericContentCompressed = {
+export type DomainGenericContentCompressed = {
   readonly __typename: 'GenericContentCompressed';
   readonly path: Scalars['String']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiGlobalAdConfig = {
+export type DomainGlobalAdConfig = {
   readonly __typename: 'GlobalAdConfig';
   readonly actRefresh: Scalars['Boolean']['output'];
   readonly adUnitId: Scalars['String']['output'];
@@ -1625,7 +1624,7 @@ export type ApiGlobalAdConfig = {
   readonly timedRefresh?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiGroup = {
+export type DomainGroup = {
   readonly __typename: 'Group';
   readonly backNine: Scalars['Boolean']['output'];
   readonly courseId?: Maybe<Scalars['String']['output']>;
@@ -1635,9 +1634,9 @@ export type ApiGroup = {
   readonly groupLocationCode: Scalars['String']['output'];
   readonly groupNumber: Scalars['Int']['output'];
   readonly groupSort: Scalars['String']['output'];
-  readonly groupStatus: ApiPlayerState;
+  readonly groupStatus: DomainPlayerState;
   readonly holeLocation: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiPlayer>;
+  readonly players: ReadonlyArray<DomainPlayer>;
   readonly showScorecard: Scalars['Boolean']['output'];
   readonly startTee: Scalars['Int']['output'];
   readonly teeTime: Scalars['AWSTimestamp']['output'];
@@ -1648,7 +1647,7 @@ export type ApiGroup = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiGroupHoleLocation =
+export type DomainGroupHoleLocation =
   | 'COMPLETE'
   | 'FAIRWAY'
   | 'GREEN'
@@ -1656,23 +1655,23 @@ export type ApiGroupHoleLocation =
   | 'TEE'
   | 'UNKNOWN';
 
-export type ApiGroupLocation = {
+export type DomainGroupLocation = {
   readonly __typename: 'GroupLocation';
-  readonly courses: ReadonlyArray<ApiGroupLocationCourse>;
+  readonly courses: ReadonlyArray<DomainGroupLocationCourse>;
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiGroupLocationCourse = {
+export type DomainGroupLocationCourse = {
   readonly __typename: 'GroupLocationCourse';
   readonly courseId: Scalars['String']['output'];
   readonly courseName: Scalars['String']['output'];
-  readonly holes: ReadonlyArray<ApiGroupLocationHole>;
+  readonly holes: ReadonlyArray<DomainGroupLocationHole>;
   readonly round: Scalars['Int']['output'];
   readonly tournamentAndCourseId: Scalars['ID']['output'];
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiGroupLocationData = {
+export type DomainGroupLocationData = {
   readonly __typename: 'GroupLocationData';
   readonly backNinePaceOfPlayTime?: Maybe<Scalars['String']['output']>;
   readonly courseId: Scalars['String']['output'];
@@ -1680,128 +1679,128 @@ export type ApiGroupLocationData = {
   readonly frontNinePaceOfPlayTime?: Maybe<Scalars['String']['output']>;
   readonly group: Scalars['Int']['output'];
   readonly location: Scalars['String']['output'];
-  readonly locationCode: ApiGroupHoleLocation;
+  readonly locationCode: DomainGroupHoleLocation;
   readonly locationSort: Scalars['String']['output'];
   readonly teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
 };
 
-export type ApiGroupLocationGroup = {
+export type DomainGroupLocationGroup = {
   readonly __typename: 'GroupLocationGroup';
   readonly color?: Maybe<Scalars['String']['output']>;
   readonly groupNum: Scalars['Int']['output'];
   readonly groupSort: Scalars['String']['output'];
-  readonly location: ApiGroupHoleLocation;
-  readonly playerData?: Maybe<ApiGroupLocationPlayerData>;
+  readonly location: DomainGroupHoleLocation;
+  readonly playerData?: Maybe<DomainGroupLocationPlayerData>;
   readonly round: Scalars['Int']['output'];
 };
 
-export type ApiGroupLocationHole = {
+export type DomainGroupLocationHole = {
   readonly __typename: 'GroupLocationHole';
-  readonly groups: ReadonlyArray<ApiGroupLocationGroup>;
+  readonly groups: ReadonlyArray<DomainGroupLocationGroup>;
   readonly holeNumber: Scalars['Int']['output'];
   readonly par: Scalars['Int']['output'];
   readonly yardage: Scalars['Int']['output'];
 };
 
-export type ApiGroupLocationPlayerData = {
+export type DomainGroupLocationPlayerData = {
   readonly __typename: 'GroupLocationPlayerData';
   readonly addressingBall?: Maybe<Scalars['String']['output']>;
   readonly nextToHit?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiGroupRoundScore = {
+export type DomainGroupRoundScore = {
   readonly __typename: 'GroupRoundScore';
-  readonly holes: ReadonlyArray<ApiGroupScoreHeader>;
+  readonly holes: ReadonlyArray<DomainGroupScoreHeader>;
   readonly parTotal: Scalars['Int']['output'];
-  readonly players: ReadonlyArray<ApiGroupScorePlayer>;
+  readonly players: ReadonlyArray<DomainGroupScorePlayer>;
   readonly totalLabel: Scalars['String']['output'];
 };
 
-export type ApiGroupScoreHeader = {
+export type DomainGroupScoreHeader = {
   readonly __typename: 'GroupScoreHeader';
   readonly holeNumber: Scalars['Int']['output'];
   readonly par: Scalars['Int']['output'];
 };
 
-export type ApiGroupScorePlayer = {
+export type DomainGroupScorePlayer = {
   readonly __typename: 'GroupScorePlayer';
   readonly active: Scalars['Boolean']['output'];
-  readonly player: ApiPlayer;
+  readonly player: DomainPlayer;
   readonly roundTotal: Scalars['String']['output'];
   readonly roundTotalHeader: Scalars['String']['output'];
   readonly rowTotal: Scalars['String']['output'];
-  readonly scores: ReadonlyArray<ApiSimpleScore>;
+  readonly scores: ReadonlyArray<DomainSimpleScore>;
 };
 
-export type ApiGroupScorecard = {
+export type DomainGroupScorecard = {
   readonly __typename: 'GroupScorecard';
   readonly backNine: Scalars['Boolean']['output'];
   readonly courseId?: Maybe<Scalars['String']['output']>;
   readonly courseName: Scalars['String']['output'];
   readonly currentHole: Scalars['Int']['output'];
-  readonly firstNine: ApiGroupRoundScore;
+  readonly firstNine: DomainGroupRoundScore;
   readonly holeDetail: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly locationDetail: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiScorecardHeaderPlayer>;
+  readonly players: ReadonlyArray<DomainScorecardHeaderPlayer>;
   readonly roundHeader: Scalars['String']['output'];
-  readonly secondNine: ApiGroupRoundScore;
+  readonly secondNine: DomainGroupRoundScore;
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiGroupShotDetails = {
+export type DomainGroupShotDetails = {
   readonly __typename: 'GroupShotDetails';
-  readonly defaultHolePickle: ApiHolePickleType;
-  readonly displayType: ApiShotDetailsDisplayType;
+  readonly defaultHolePickle: DomainHolePickleType;
+  readonly displayType: DomainShotDetailsDisplayType;
   readonly groupNumber: Scalars['Int']['output'];
-  readonly holes: ReadonlyArray<ApiGroupShotDetailsHole>;
+  readonly holes: ReadonlyArray<DomainGroupShotDetailsHole>;
   readonly id: Scalars['ID']['output'];
   readonly message: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiGroupShotDetailsPlayer>;
+  readonly players: ReadonlyArray<DomainGroupShotDetailsPlayer>;
   readonly round: Scalars['Int']['output'];
-  readonly shotVideo?: Maybe<ApiVideo>;
-  readonly shotVideos?: Maybe<ReadonlyArray<ApiVideo>>;
+  readonly shotVideo?: Maybe<DomainVideo>;
+  readonly shotVideos?: Maybe<ReadonlyArray<DomainVideo>>;
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiGroupShotDetailsCompressed = {
+export type DomainGroupShotDetailsCompressed = {
   readonly __typename: 'GroupShotDetailsCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiGroupShotDetailsHole = {
+export type DomainGroupShotDetailsHole = {
   readonly __typename: 'GroupShotDetailsHole';
   readonly activePlayers: ReadonlyArray<Scalars['String']['output']>;
   readonly displayHoleNumber: Scalars['String']['output'];
-  readonly enhancedPickle?: Maybe<ApiHolePickle>;
-  readonly fairwayCenter: ApiStrokeCoordinates;
+  readonly enhancedPickle?: Maybe<DomainHolePickle>;
+  readonly fairwayCenter: DomainStrokeCoordinates;
   readonly green: Scalars['Boolean']['output'];
   readonly holeNumber: Scalars['Int']['output'];
   /** @deprecated Use holePickleBottomToTopAsset */
   readonly holePickleBottomToTop: Scalars['String']['output'];
-  readonly holePickleBottomToTopAsset: ApiImageAsset;
+  readonly holePickleBottomToTopAsset: DomainImageAsset;
   /** @deprecated Use holePickleGreenBottomToTopAsset */
   readonly holePickleGreenBottomToTop: Scalars['String']['output'];
-  readonly holePickleGreenBottomToTopAsset: ApiImageAsset;
+  readonly holePickleGreenBottomToTopAsset: DomainImageAsset;
   /** @deprecated Use holePickleGreenLeftToRightAsset */
   readonly holePickleGreenLeftToRight: Scalars['String']['output'];
-  readonly holePickleGreenLeftToRightAsset: ApiImageAsset;
+  readonly holePickleGreenLeftToRightAsset: DomainImageAsset;
   /** @deprecated Use holePickleLeftToRightAsset */
   readonly holePickleLeftToRight: Scalars['String']['output'];
-  readonly holePickleLeftToRightAsset: ApiImageAsset;
+  readonly holePickleLeftToRightAsset: DomainImageAsset;
   readonly par: Scalars['Int']['output'];
-  readonly pinGreen: ApiPointOfInterestCoords;
-  readonly pinOverview: ApiPointOfInterestCoords;
+  readonly pinGreen: DomainPointOfInterestCoords;
+  readonly pinOverview: DomainPointOfInterestCoords;
   readonly rank?: Maybe<Scalars['String']['output']>;
-  readonly strokes: ReadonlyArray<ApiGroupShotDetailsStroke>;
-  readonly teeGreen: ApiPointOfInterestCoords;
-  readonly teeOverview: ApiPointOfInterestCoords;
+  readonly strokes: ReadonlyArray<DomainGroupShotDetailsStroke>;
+  readonly teeGreen: DomainPointOfInterestCoords;
+  readonly teeOverview: DomainPointOfInterestCoords;
   readonly yardage: Scalars['Int']['output'];
 };
 
-export type ApiGroupShotDetailsPlayer = {
+export type DomainGroupShotDetailsPlayer = {
   readonly __typename: 'GroupShotDetailsPlayer';
   readonly displayName: Scalars['String']['output'];
   readonly firstName: Scalars['String']['output'];
@@ -1811,62 +1810,62 @@ export type ApiGroupShotDetailsPlayer = {
   readonly shortName: Scalars['String']['output'];
 };
 
-export type ApiGroupShotDetailsStroke = {
+export type DomainGroupShotDetailsStroke = {
   readonly __typename: 'GroupShotDetailsStroke';
   readonly playByPlayLabel: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiGroupShotDetailsStrokePlayer>;
+  readonly players: ReadonlyArray<DomainGroupShotDetailsStrokePlayer>;
   readonly strokeNumber: Scalars['Int']['output'];
 };
 
-export type ApiGroupShotDetailsStrokePlayer = {
+export type DomainGroupShotDetailsStrokePlayer = {
   readonly __typename: 'GroupShotDetailsStrokePlayer';
-  readonly ballPath?: Maybe<ApiBallPath>;
+  readonly ballPath?: Maybe<DomainBallPath>;
   readonly displayName: Scalars['String']['output'];
   readonly distance: Scalars['String']['output'];
   readonly distanceRemaining: Scalars['String']['output'];
   readonly finalShot: Scalars['Boolean']['output'];
   readonly fromLocation: Scalars['String']['output'];
   readonly fromLocationCode: Scalars['String']['output'];
-  readonly green: ApiShotLinkCoordWrapper;
+  readonly green: DomainShotLinkCoordWrapper;
   readonly markerText: Scalars['String']['output'];
-  readonly overview: ApiShotLinkCoordWrapper;
+  readonly overview: DomainShotLinkCoordWrapper;
   readonly playByPlay: Scalars['String']['output'];
   readonly playerId: Scalars['String']['output'];
-  readonly radarData?: Maybe<ApiRadarData>;
+  readonly radarData?: Maybe<DomainRadarData>;
   readonly score: Scalars['String']['output'];
   readonly shortName: Scalars['String']['output'];
   readonly showMarker: Scalars['Boolean']['output'];
-  readonly status: ApiHoleScoreStatus;
-  readonly strokeType: ApiHoleStrokeType;
+  readonly status: DomainHoleScoreStatus;
+  readonly strokeType: DomainHoleStrokeType;
   readonly toLocation: Scalars['String']['output'];
   readonly toLocationCode: Scalars['String']['output'];
   readonly videoId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiGroupShotDetailsTeam = {
+export type DomainGroupShotDetailsTeam = {
   readonly __typename: 'GroupShotDetailsTeam';
-  readonly players?: Maybe<ReadonlyArray<ApiGroupShotDetailsPlayer>>;
+  readonly players?: Maybe<ReadonlyArray<DomainGroupShotDetailsPlayer>>;
   readonly teamId: Scalars['String']['output'];
   readonly teamName: Scalars['String']['output'];
 };
 
-export type ApiGroupStageGroup = {
+export type DomainGroupStageGroup = {
   readonly __typename: 'GroupStageGroup';
   readonly groupHeader: Scalars['String']['output'];
-  readonly groupPlayers: ReadonlyArray<ApiGroupStagePlayer>;
+  readonly groupPlayers: ReadonlyArray<DomainGroupStagePlayer>;
 };
 
-export type ApiGroupStageHeader = {
+export type DomainGroupStageHeader = {
   readonly __typename: 'GroupStageHeader';
   readonly lost: Scalars['String']['output'];
   readonly player: Scalars['String']['output'];
   readonly points: Scalars['String']['output'];
   readonly tied: Scalars['String']['output'];
-  readonly type: ApiHeaderType;
+  readonly type: DomainHeaderType;
   readonly won: Scalars['String']['output'];
 };
 
-export type ApiGroupStagePlayer = {
+export type DomainGroupStagePlayer = {
   readonly __typename: 'GroupStagePlayer';
   readonly bracketSeed: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -1882,28 +1881,28 @@ export type ApiGroupStagePlayer = {
   readonly playerId: Scalars['ID']['output'];
   readonly playoffWinner: Scalars['Boolean']['output'];
   readonly position: Scalars['String']['output'];
-  readonly previousMatches: ApiPreviousMatches;
-  readonly record: ApiPlayerRecord;
+  readonly previousMatches: DomainPreviousMatches;
+  readonly record: DomainPlayerRecord;
   readonly shortName: Scalars['String']['output'];
   readonly tournamentSeed: Scalars['String']['output'];
 };
 
-export type ApiGroupStageRankings = {
+export type DomainGroupStageRankings = {
   readonly __typename: 'GroupStageRankings';
-  readonly groupStageHeaders: ReadonlyArray<ApiGroupStageHeader>;
-  readonly groups: ReadonlyArray<ApiGroupStageGroup>;
-  readonly informationSections: ReadonlyArray<ApiInformationSection>;
+  readonly groupStageHeaders: ReadonlyArray<DomainGroupStageHeader>;
+  readonly groups: ReadonlyArray<DomainGroupStageGroup>;
+  readonly informationSections: ReadonlyArray<DomainInformationSection>;
   readonly title: Scalars['String']['output'];
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiGroupV2 = {
+export type DomainGroupV2 = {
   readonly __typename: 'GroupV2';
   readonly backNine: Scalars['Boolean']['output'];
   readonly courseId?: Maybe<Scalars['String']['output']>;
   readonly courseName?: Maybe<Scalars['String']['output']>;
   readonly groupNumber: Scalars['Int']['output'];
-  readonly players: ReadonlyArray<ApiPlayer>;
+  readonly players: ReadonlyArray<DomainPlayer>;
   readonly showScorecard: Scalars['Boolean']['output'];
   readonly startTee: Scalars['Int']['output'];
   readonly teeTime: Scalars['AWSTimestamp']['output'];
@@ -1914,89 +1913,89 @@ export type ApiGroupV2 = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiGroupedField = {
+export type DomainGroupedField = {
   readonly __typename: 'GroupedField';
-  readonly alternates: ApiPlayerGroup;
-  readonly features: ReadonlyArray<ApiFeatureItem>;
+  readonly alternates: DomainPlayerGroup;
+  readonly features: ReadonlyArray<DomainFeatureItem>;
   readonly id: Scalars['ID']['output'];
   readonly lastUpdated?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly message?: Maybe<Scalars['String']['output']>;
-  readonly players: ApiPlayerGroup;
+  readonly players: DomainPlayerGroup;
   readonly standingsHeader: Scalars['String']['output'];
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiHeaderType =
+export type DomainHeaderType =
   | 'LONG'
   | 'SHORT';
 
-export type ApiHeroCarousel = {
+export type DomainHeroCarousel = {
   readonly __typename: 'HeroCarousel';
   readonly displayInline: Scalars['Boolean']['output'];
-  readonly slides: ReadonlyArray<ApiHeroCarouselItem>;
+  readonly slides: ReadonlyArray<DomainHeroCarouselItem>;
 };
 
-export type ApiHeroCarouselItem = {
+export type DomainHeroCarouselItem = {
   readonly __typename: 'HeroCarouselItem';
-  readonly articleContent?: Maybe<ApiNewsArticle>;
+  readonly articleContent?: Maybe<DomainNewsArticle>;
   readonly autoplay?: Maybe<Scalars['Boolean']['output']>;
-  readonly cta1?: Maybe<ApiCallToAction>;
-  readonly cta2?: Maybe<ApiCallToAction>;
+  readonly cta1?: Maybe<DomainCallToAction>;
+  readonly cta2?: Maybe<DomainCallToAction>;
   readonly heroImage?: Maybe<Scalars['String']['output']>;
   readonly slideHeadline?: Maybe<Scalars['String']['output']>;
   readonly slideSubhead?: Maybe<Scalars['String']['output']>;
-  readonly videoContent?: Maybe<ApiVideo>;
+  readonly videoContent?: Maybe<DomainVideo>;
 };
 
-export type ApiHistoricalLeaderboard = {
+export type DomainHistoricalLeaderboard = {
   readonly __typename: 'HistoricalLeaderboard';
   readonly additionalDataHeaders: ReadonlyArray<Scalars['String']['output']>;
-  readonly availableSeasons: ReadonlyArray<ApiStatYearPills>;
+  readonly availableSeasons: ReadonlyArray<DomainStatYearPills>;
   readonly id: Scalars['ID']['output'];
-  readonly players: ReadonlyArray<ApiHistoricalLeaderboardRow>;
-  readonly recap?: Maybe<ApiWeatherNotes>;
+  readonly players: ReadonlyArray<DomainHistoricalLeaderboardRow>;
+  readonly recap?: Maybe<DomainWeatherNotes>;
   readonly rounds: ReadonlyArray<Scalars['String']['output']>;
-  readonly teams?: Maybe<ReadonlyArray<Maybe<ApiHistoricalLeaderboardTeamRow>>>;
-  readonly tournamentResultsMessage?: Maybe<ApiTournamentResultsMessage>;
-  readonly winner?: Maybe<ApiWinner>;
-  readonly winningTeam?: Maybe<ReadonlyArray<Maybe<ApiWinner>>>;
+  readonly teams?: Maybe<ReadonlyArray<Maybe<DomainHistoricalLeaderboardTeamRow>>>;
+  readonly tournamentResultsMessage?: Maybe<DomainTournamentResultsMessage>;
+  readonly winner?: Maybe<DomainWinner>;
+  readonly winningTeam?: Maybe<ReadonlyArray<Maybe<DomainWinner>>>;
 };
 
-export type ApiHistoricalLeaderboardRow = {
+export type DomainHistoricalLeaderboardRow = {
   readonly __typename: 'HistoricalLeaderboardRow';
   readonly additionalData: ReadonlyArray<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly parRelativeScore: Scalars['String']['output'];
-  readonly player: ApiPlayer;
+  readonly player: DomainPlayer;
   readonly position: Scalars['String']['output'];
-  readonly rounds: ReadonlyArray<ApiHistoricalRoundScore>;
+  readonly rounds: ReadonlyArray<DomainHistoricalRoundScore>;
   readonly total: Scalars['String']['output'];
 };
 
-export type ApiHistoricalLeaderboardTeamRow = {
+export type DomainHistoricalLeaderboardTeamRow = {
   readonly __typename: 'HistoricalLeaderboardTeamRow';
   readonly additionalData: ReadonlyArray<Scalars['String']['output']>;
   readonly parRelativeScore: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiPlayer>;
+  readonly players: ReadonlyArray<DomainPlayer>;
   readonly position: Scalars['String']['output'];
-  readonly rounds?: Maybe<ReadonlyArray<ApiHistoricalRoundScore>>;
+  readonly rounds?: Maybe<ReadonlyArray<DomainHistoricalRoundScore>>;
   readonly teamId: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
 };
 
-export type ApiHistoricalOddsId =
+export type DomainHistoricalOddsId =
   | 'TOP_RANKED_3'
   | 'TOP_RANKED_5'
   | 'TOP_RANKED_10'
   | 'TOP_RANKED_20'
   | 'WINNER';
 
-export type ApiHistoricalPlayerOdds = {
+export type DomainHistoricalPlayerOdds = {
   readonly __typename: 'HistoricalPlayerOdds';
   readonly marketName: Scalars['String']['output'];
-  readonly message?: Maybe<ApiOddsMessage>;
+  readonly message?: Maybe<DomainOddsMessage>;
   readonly odds: Scalars['String']['output'];
-  readonly oddsSwing: ApiOddsSwing;
+  readonly oddsSwing: DomainOddsSwing;
   readonly optionId: Scalars['String']['output'];
   readonly playerId: Scalars['String']['output'];
   readonly season: Scalars['Int']['output'];
@@ -2004,28 +2003,28 @@ export type ApiHistoricalPlayerOdds = {
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiHistoricalPlayerScorecards = {
+export type DomainHistoricalPlayerScorecards = {
   readonly __typename: 'HistoricalPlayerScorecards';
   readonly playerId: Scalars['ID']['output'];
-  readonly tours: ReadonlyArray<ApiHistoricalScorecardTour>;
+  readonly tours: ReadonlyArray<DomainHistoricalScorecardTour>;
 };
 
-export type ApiHistoricalRoundScore = {
+export type DomainHistoricalRoundScore = {
   readonly __typename: 'HistoricalRoundScore';
   readonly parRelativeScore: Scalars['String']['output'];
   readonly score: Scalars['String']['output'];
 };
 
-export type ApiHistoricalScorecardTour = {
+export type DomainHistoricalScorecardTour = {
   readonly __typename: 'HistoricalScorecardTour';
-  readonly tourCode: ApiTourCode;
-  readonly years: ReadonlyArray<ApiHistoricalScorecardYear>;
+  readonly tourCode: DomainTourCode;
+  readonly years: ReadonlyArray<DomainHistoricalScorecardYear>;
 };
 
-export type ApiHistoricalScorecardYear = {
+export type DomainHistoricalScorecardYear = {
   readonly __typename: 'HistoricalScorecardYear';
   readonly displayYear: Scalars['String']['output'];
-  readonly tournamentPills: ReadonlyArray<ApiStatTournamentPill>;
+  readonly tournamentPills: ReadonlyArray<DomainStatTournamentPill>;
   readonly year: Scalars['Int']['output'];
 };
 
@@ -2033,36 +2032,36 @@ export type ApiHistoricalScorecardYear = {
  *   End
  *  Market Abstractions
  */
-export type ApiHistoricalTournamentOdds = {
+export type DomainHistoricalTournamentOdds = {
   readonly __typename: 'HistoricalTournamentOdds';
   readonly id: Scalars['ID']['output'];
-  readonly market?: Maybe<ApiMarket>;
-  readonly message?: Maybe<ApiOddsMessage>;
+  readonly market?: Maybe<DomainMarket>;
+  readonly message?: Maybe<DomainOddsMessage>;
   /**   tournamentId-provider */
-  readonly provider: ApiOddsProvider;
+  readonly provider: DomainOddsProvider;
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiHistoricalTournamentOddsArgs = {
+export type DomainHistoricalTournamentOddsArgs = {
   readonly __typename: 'HistoricalTournamentOddsArgs';
-  readonly marketId: ApiOddsMarketType;
+  readonly marketId: DomainOddsMarketType;
   readonly timeStamp?: Maybe<Scalars['AWSDateTime']['output']>;
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiHistoryInfo = {
+export type DomainHistoryInfo = {
   readonly __typename: 'HistoryInfo';
-  readonly contentCarousel: ReadonlyArray<Maybe<ApiContentCarousel>>;
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly contentCarousel: ReadonlyArray<Maybe<DomainContentCarousel>>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly displayCta?: Maybe<Scalars['Boolean']['output']>;
   readonly europeCaptain?: Maybe<Scalars['String']['output']>;
-  readonly infoText?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly infoText?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
   readonly usCaptain?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiHistoryScore = {
+export type DomainHistoryScore = {
   readonly __typename: 'HistoryScore';
-  readonly bottomCta?: Maybe<ApiCallToAction>;
+  readonly bottomCta?: Maybe<DomainCallToAction>;
   readonly leftFlagIcon?: Maybe<Scalars['String']['output']>;
   readonly leftScore?: Maybe<Scalars['String']['output']>;
   readonly leftTeam?: Maybe<Scalars['String']['output']>;
@@ -2071,21 +2070,21 @@ export type ApiHistoryScore = {
   readonly rightTeam?: Maybe<Scalars['String']['output']>;
   readonly sectionSubhead: Scalars['String']['output'];
   readonly sectionTitle: Scalars['String']['output'];
-  readonly topCta?: Maybe<ApiCallToAction>;
+  readonly topCta?: Maybe<DomainCallToAction>;
   readonly trophyIcon?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiHoleDetail = {
+export type DomainHoleDetail = {
   readonly __typename: 'HoleDetail';
   readonly courseId: Scalars['String']['output'];
   readonly holeImage: Scalars['String']['output'];
   readonly holeImageLandscape: Scalars['String']['output'];
-  readonly holeInfo: ApiHoleDetailInfo;
+  readonly holeInfo: DomainHoleDetailInfo;
   readonly holeNum: Scalars['Int']['output'];
   readonly id: Scalars['ID']['output'];
-  readonly rounds: ReadonlyArray<ApiHoleDetailRound>;
-  readonly statsAvailability: ApiHoleDetailsAvailability;
-  readonly statsSummary: ApiHoleStatSummary;
+  readonly rounds: ReadonlyArray<DomainHoleDetailRound>;
+  readonly statsAvailability: DomainHoleDetailsAvailability;
+  readonly statsSummary: DomainHoleStatSummary;
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
@@ -2094,7 +2093,7 @@ export type ApiHoleDetail = {
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiHoleDetailInfo = {
+export type DomainHoleDetailInfo = {
   readonly __typename: 'HoleDetailInfo';
   readonly aboutThisHole: Scalars['String']['output'];
   /** @deprecated Use holePickleGreenLeftToRightAsset */
@@ -2104,39 +2103,39 @@ export type ApiHoleDetailInfo = {
   readonly holePickle: Scalars['String']['output'];
   /** @deprecated Use holePickleBottomToTopAsset */
   readonly holePickleBottomToTop: Scalars['String']['output'];
-  readonly holePickleBottomToTopAsset: ApiImageAsset;
+  readonly holePickleBottomToTopAsset: DomainImageAsset;
   /** @deprecated Use holePickleGreenBottomToTopAsset */
   readonly holePickleGreenBottomToTop: Scalars['String']['output'];
-  readonly holePickleGreenBottomToTopAsset: ApiImageAsset;
-  readonly holePickleGreenLeftToRightAsset: ApiImageAsset;
-  readonly holePickleLeftToRightAsset: ApiImageAsset;
+  readonly holePickleGreenBottomToTopAsset: DomainImageAsset;
+  readonly holePickleGreenLeftToRightAsset: DomainImageAsset;
+  readonly holePickleLeftToRightAsset: DomainImageAsset;
   readonly par: Scalars['Int']['output'];
-  readonly pinGreen: ApiPointOfInterestCoords;
+  readonly pinGreen: DomainPointOfInterestCoords;
   readonly rank?: Maybe<Scalars['Int']['output']>;
   readonly rounds?: Maybe<Scalars['Int']['output']>;
   readonly scoringAverageDiff: Scalars['String']['output'];
   readonly yards: Scalars['Int']['output'];
 };
 
-export type ApiHoleDetailRound = {
+export type DomainHoleDetailRound = {
   readonly __typename: 'HoleDetailRound';
-  readonly groups: ReadonlyArray<ApiHoleGroup>;
-  readonly matches?: Maybe<ReadonlyArray<ApiHoleMatch>>;
+  readonly groups: ReadonlyArray<DomainHoleGroup>;
+  readonly matches?: Maybe<ReadonlyArray<DomainHoleMatch>>;
   readonly roundNum: Scalars['Int']['output'];
-  readonly teamGroups?: Maybe<ReadonlyArray<ApiTeamHoleGroups>>;
+  readonly teamGroups?: Maybe<ReadonlyArray<DomainTeamHoleGroups>>;
 };
 
-export type ApiHoleDetailsAvailability =
+export type DomainHoleDetailsAvailability =
   | 'NONE'
   | 'SHOT_DETAILS'
   | 'STATS';
 
-export type ApiHoleGroup = {
+export type DomainHoleGroup = {
   readonly __typename: 'HoleGroup';
   readonly groupLocation: Scalars['String']['output'];
   readonly groupLocationCode: Scalars['String']['output'];
   readonly groupNumber: Scalars['Int']['output'];
-  readonly players: ReadonlyArray<ApiHoleGroupPlayer>;
+  readonly players: ReadonlyArray<DomainHoleGroupPlayer>;
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
@@ -2144,7 +2143,7 @@ export type ApiHoleGroup = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiHoleGroupPlayer = {
+export type DomainHoleGroupPlayer = {
   readonly __typename: 'HoleGroupPlayer';
   readonly country: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -2158,19 +2157,19 @@ export type ApiHoleGroupPlayer = {
   readonly total: Scalars['String']['output'];
 };
 
-export type ApiHoleGroupTeam = {
+export type DomainHoleGroupTeam = {
   readonly __typename: 'HoleGroupTeam';
-  readonly players: ReadonlyArray<ApiHoleGroupPlayer>;
+  readonly players: ReadonlyArray<DomainHoleGroupPlayer>;
 };
 
-export type ApiHoleHeader = {
+export type DomainHoleHeader = {
   readonly __typename: 'HoleHeader';
   readonly hole: Scalars['String']['output'];
   readonly holeNumber: Scalars['Int']['output'];
   readonly par: Scalars['String']['output'];
 };
 
-export type ApiHoleHeaderV2 = {
+export type DomainHoleHeaderV2 = {
   readonly __typename: 'HoleHeaderV2';
   readonly displayValue: Scalars['String']['output'];
   readonly holeNumber?: Maybe<Scalars['Int']['output']>;
@@ -2178,10 +2177,10 @@ export type ApiHoleHeaderV2 = {
   readonly par: Scalars['String']['output'];
 };
 
-export type ApiHoleMatch = {
+export type DomainHoleMatch = {
   readonly __typename: 'HoleMatch';
   readonly groupName?: Maybe<Scalars['String']['output']>;
-  readonly match?: Maybe<ApiMpLeaderboardMatch>;
+  readonly match?: Maybe<DomainMpLeaderboardMatch>;
   readonly matchLocation: Scalars['String']['output'];
   readonly matchLocationCode: Scalars['String']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
@@ -2191,38 +2190,38 @@ export type ApiHoleMatch = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiHolePickle = {
+export type DomainHolePickle = {
   readonly __typename: 'HolePickle';
   readonly bottomToTop: Scalars['String']['output'];
-  readonly bottomToTopAsset: ApiImageAsset;
+  readonly bottomToTopAsset: DomainImageAsset;
   readonly greenBottomToTop: Scalars['String']['output'];
-  readonly greenBottomToTopAsset: ApiImageAsset;
+  readonly greenBottomToTopAsset: DomainImageAsset;
   readonly greenLeftToRight: Scalars['String']['output'];
-  readonly greenLeftToRightAsset: ApiImageAsset;
+  readonly greenLeftToRightAsset: DomainImageAsset;
   readonly leftToRight: Scalars['String']['output'];
-  readonly leftToRightAsset: ApiImageAsset;
+  readonly leftToRightAsset: DomainImageAsset;
 };
 
-export type ApiHolePickleType =
+export type DomainHolePickleType =
   | 'STANDARD'
   | 'TOURCAST_2D';
 
-export type ApiHolePlayedStatus =
+export type DomainHolePlayedStatus =
   | 'PLAYED'
   | 'UNPLAYED';
 
-export type ApiHoleScore = {
+export type DomainHoleScore = {
   readonly __typename: 'HoleScore';
   readonly holeNumber: Scalars['Int']['output'];
   readonly par: Scalars['Int']['output'];
   readonly roundScore: Scalars['String']['output'];
   readonly score: Scalars['String']['output'];
   readonly sequenceNumber: Scalars['Int']['output'];
-  readonly status: ApiHoleScoreStatus;
+  readonly status: DomainHoleScoreStatus;
   readonly yardage: Scalars['Int']['output'];
 };
 
-export type ApiHoleScoreStatus =
+export type DomainHoleScoreStatus =
   | 'BIRDIE'
   | 'BOGEY'
   | 'CONCEDED'
@@ -2231,9 +2230,9 @@ export type ApiHoleScoreStatus =
   | 'NONE'
   | 'PAR';
 
-export type ApiHoleStat = ApiCourseHoleStats | ApiSummaryRow;
+export type DomainHoleStat = DomainCourseHoleStats | DomainSummaryRow;
 
-export type ApiHoleStatSummary = {
+export type DomainHoleStatSummary = {
   readonly __typename: 'HoleStatSummary';
   readonly birdies?: Maybe<Scalars['Int']['output']>;
   readonly birdiesPercent: Scalars['String']['output'];
@@ -2251,37 +2250,37 @@ export type ApiHoleStatSummary = {
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiHoleStroke = {
+export type DomainHoleStroke = {
   readonly __typename: 'HoleStroke';
-  readonly ballPath?: Maybe<ApiBallPath>;
+  readonly ballPath?: Maybe<DomainBallPath>;
   readonly distance: Scalars['String']['output'];
   readonly distanceRemaining: Scalars['String']['output'];
   readonly finalStroke: Scalars['Boolean']['output'];
   readonly fromLocation: Scalars['String']['output'];
   readonly fromLocationCode: Scalars['String']['output'];
-  readonly green: ApiShotLinkCoordWrapper;
+  readonly green: DomainShotLinkCoordWrapper;
   readonly groupShowMarker: Scalars['Boolean']['output'];
   readonly markerText: Scalars['String']['output'];
-  readonly overview: ApiShotLinkCoordWrapper;
+  readonly overview: DomainShotLinkCoordWrapper;
   readonly playByPlay: Scalars['String']['output'];
   readonly playByPlayLabel: Scalars['String']['output'];
-  readonly player?: Maybe<ApiTspStrokePlayer>;
-  readonly radarData?: Maybe<ApiRadarData>;
+  readonly player?: Maybe<DomainTspStrokePlayer>;
+  readonly radarData?: Maybe<DomainRadarData>;
   readonly showMarker: Scalars['Boolean']['output'];
   readonly strokeNumber: Scalars['Int']['output'];
-  readonly strokeType: ApiHoleStrokeType;
+  readonly strokeType: DomainHoleStrokeType;
   readonly toLocation: Scalars['String']['output'];
   readonly toLocationCode: Scalars['String']['output'];
   readonly videoId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiHoleStrokeType =
+export type DomainHoleStrokeType =
   | 'DROP'
   | 'PENALTY'
   | 'PROVISIONAL'
   | 'STROKE';
 
-export type ApiHomePageLeadLayout =
+export type DomainHomePageLeadLayout =
   | 'HALF_HERO'
   | 'HALF_HERO_STACK'
   | 'HERO_STATUS'
@@ -2289,20 +2288,20 @@ export type ApiHomePageLeadLayout =
   | 'PLAYER_STORIES'
   | 'TOPIC_STORIES';
 
-export type ApiHomePageNewsLayout =
+export type DomainHomePageNewsLayout =
   | 'THREE_UP_ASSET'
   | 'TWO_UP_LARGE'
   | 'TWO_UP_SMALL'
   | 'TWO_UP_TEXT_ONLY';
 
-export type ApiHomePageProgramStandingLayout =
+export type DomainHomePageProgramStandingLayout =
   | 'FIELD_PROMO_SECTION'
   | 'NORMAL'
   | 'SHORT'
   | 'SIGNATURE_EVENT_STANDINGS'
   | 'TWO_STANDINGS';
 
-export type ApiHomePageStanding = {
+export type DomainHomePageStanding = {
   readonly __typename: 'HomePageStanding';
   readonly country: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -2311,59 +2310,59 @@ export type ApiHomePageStanding = {
   readonly lastName: Scalars['String']['output'];
   readonly playerId: Scalars['String']['output'];
   readonly rank?: Maybe<Scalars['Int']['output']>;
-  readonly stats: ReadonlyArray<ApiProgramStat>;
+  readonly stats: ReadonlyArray<DomainProgramStat>;
 };
 
-export type ApiHomepage = {
+export type DomainHomepage = {
   readonly __typename: 'Homepage';
-  readonly fragments: ReadonlyArray<ApiHomepageFragment>;
+  readonly fragments: ReadonlyArray<DomainHomepageFragment>;
 };
 
-export type ApiHomepageAssets = ApiNewsArticle | ApiVideo;
+export type DomainHomepageAssets = DomainNewsArticle | DomainVideo;
 
-export type ApiHomepageCta = {
+export type DomainHomepageCta = {
   readonly __typename: 'HomepageCta';
   readonly link: Scalars['String']['output'];
   readonly text: Scalars['String']['output'];
   readonly topText: Scalars['String']['output'];
 };
 
-export type ApiHomepageFragment = ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiMediaGallery | ApiOddsToWinTracker | ApiThreeUpPhoto;
+export type DomainHomepageFragment = DomainHomepageLead | DomainHomepageNews | DomainHomepageProgramStanding | DomainMediaGallery | DomainOddsToWinTracker | DomainThreeUpPhoto;
 
-export type ApiHomepageLead = {
+export type DomainHomepageLead = {
   readonly __typename: 'HomepageLead';
-  readonly ambientVideo?: Maybe<ApiVideo>;
-  readonly content: ReadonlyArray<ApiHomepageAssets>;
-  readonly cta?: Maybe<ApiHomepageCta>;
+  readonly ambientVideo?: Maybe<DomainVideo>;
+  readonly content: ReadonlyArray<DomainHomepageAssets>;
+  readonly cta?: Maybe<DomainHomepageCta>;
   readonly displayDateTime?: Maybe<Scalars['Boolean']['output']>;
   readonly displayPlayerPromoStats?: Maybe<Scalars['Boolean']['output']>;
   readonly halfHeroShortHeadline?: Maybe<Scalars['Boolean']['output']>;
   readonly headlineColor?: Maybe<Scalars['String']['output']>;
   readonly headlineJustification?: Maybe<Scalars['String']['output']>;
-  readonly headshot?: Maybe<ApiProfileHeadshot>;
-  readonly leadLayout: ApiHomePageLeadLayout;
-  readonly location?: Maybe<ApiTournamentLocation>;
+  readonly headshot?: Maybe<DomainProfileHeadshot>;
+  readonly leadLayout: DomainHomePageLeadLayout;
+  readonly location?: Maybe<DomainTournamentLocation>;
   readonly photoJustification?: Maybe<Scalars['String']['output']>;
   readonly playerId: Scalars['String']['output'];
-  readonly playerScore?: Maybe<ApiHomepagePlayerScore>;
+  readonly playerScore?: Maybe<DomainHomepagePlayerScore>;
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
-  readonly topStats?: Maybe<ReadonlyArray<Maybe<ApiPlayerProfileStatItem>>>;
+  readonly topStats?: Maybe<ReadonlyArray<Maybe<DomainPlayerProfileStatItem>>>;
   readonly topicLabel?: Maybe<Scalars['String']['output']>;
-  readonly weather?: Maybe<ApiTournamentWeather>;
+  readonly weather?: Maybe<DomainTournamentWeather>;
 };
 
-export type ApiHomepageNews = {
+export type DomainHomepageNews = {
   readonly __typename: 'HomepageNews';
-  readonly content: ReadonlyArray<ApiHomepageAssets>;
-  readonly cta?: Maybe<ApiHomepageCta>;
+  readonly content: ReadonlyArray<DomainHomepageAssets>;
+  readonly cta?: Maybe<DomainHomepageCta>;
   readonly displayDateTime?: Maybe<Scalars['Boolean']['output']>;
   readonly franchises: ReadonlyArray<Scalars['String']['output']>;
   readonly limit: Scalars['String']['output'];
-  readonly newsLayout: ApiHomePageNewsLayout;
+  readonly newsLayout: DomainHomePageNewsLayout;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiHomepagePlayerScore = {
+export type DomainHomepagePlayerScore = {
   readonly __typename: 'HomepagePlayerScore';
   readonly playerId: Scalars['ID']['output'];
   readonly round: Scalars['String']['output'];
@@ -2372,44 +2371,44 @@ export type ApiHomepagePlayerScore = {
   readonly total?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiHomepageProgramStanding = {
+export type DomainHomepageProgramStanding = {
   readonly __typename: 'HomepageProgramStanding';
   readonly backgroundImg?: Maybe<Scalars['String']['output']>;
-  readonly cta?: Maybe<ApiHomepageCta>;
+  readonly cta?: Maybe<DomainHomepageCta>;
   readonly lastProcessed?: Maybe<Scalars['String']['output']>;
   readonly pullFieldUpdates?: Maybe<Scalars['Boolean']['output']>;
-  readonly secondaryStandings?: Maybe<ReadonlyArray<Maybe<ApiHomePageStanding>>>;
+  readonly secondaryStandings?: Maybe<ReadonlyArray<Maybe<DomainHomePageStanding>>>;
   readonly secondaryStandingsTitle?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use sponsorImgAsset */
   readonly sponsorImg?: Maybe<Scalars['String']['output']>;
-  readonly sponsorImgAsset?: Maybe<ApiImageAsset>;
-  readonly standingLayout: ApiHomePageProgramStandingLayout;
-  readonly standings?: Maybe<ReadonlyArray<Maybe<ApiHomePageStanding>>>;
+  readonly sponsorImgAsset?: Maybe<DomainImageAsset>;
+  readonly standingLayout: DomainHomePageProgramStandingLayout;
+  readonly standings?: Maybe<ReadonlyArray<Maybe<DomainHomePageStanding>>>;
   readonly standingsTitle?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiHomepageScoring = {
+export type DomainHomepageScoring = {
   readonly __typename: 'HomepageScoring';
-  readonly desktopCta?: Maybe<ApiCallToAction>;
+  readonly desktopCta?: Maybe<DomainCallToAction>;
   readonly path: Scalars['String']['output'];
-  readonly pillCta?: Maybe<ApiCallToAction>;
+  readonly pillCta?: Maybe<DomainCallToAction>;
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
   readonly tournamentId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiHospitalityCard = {
+export type DomainHospitalityCard = {
   readonly __typename: 'HospitalityCard';
   readonly blueBackground: Scalars['Boolean']['output'];
-  readonly cardDescription?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly cardDescription?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
   readonly cardPhoto?: Maybe<Scalars['String']['output']>;
   readonly cardTitle?: Maybe<Scalars['String']['output']>;
-  readonly cta?: Maybe<ApiCallToAction>;
-  readonly cta2?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
+  readonly cta2?: Maybe<DomainCallToAction>;
   readonly photoSubtitle?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiIcon =
+export type DomainIcon =
   | 'AMATEUR'
   | 'BACKNINE'
   | 'CUSTOM_ICON'
@@ -2428,15 +2427,15 @@ export type ApiIcon =
   | 'UPCOMING'
   | 'WITHDRAW';
 
-export type ApiImage = {
+export type DomainImage = {
   readonly __typename: 'Image';
   readonly imageCreator?: Maybe<Scalars['String']['output']>;
   readonly imageDescription?: Maybe<Scalars['String']['output']>;
-  readonly imageOrientation?: Maybe<ApiOrientation>;
+  readonly imageOrientation?: Maybe<DomainOrientation>;
   readonly url?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiImageAsset = {
+export type DomainImageAsset = {
   readonly __typename: 'ImageAsset';
   readonly assetType?: Maybe<Scalars['String']['output']>;
   /**   will always be image */
@@ -2447,14 +2446,14 @@ export type ApiImageAsset = {
   readonly imagePath: Scalars['String']['output'];
 };
 
-export type ApiImageBlock = {
+export type DomainImageBlock = {
   readonly __typename: 'ImageBlock';
   readonly backgroundImage?: Maybe<Scalars['String']['output']>;
-  readonly cta?: Maybe<ApiCallToAction>;
-  readonly textNodes?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly cta?: Maybe<DomainCallToAction>;
+  readonly textNodes?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
 };
 
-export type ApiInformationData = {
+export type DomainInformationData = {
   readonly __typename: 'InformationData';
   readonly detail?: Maybe<Scalars['String']['output']>;
   readonly label: Scalars['String']['output'];
@@ -2464,52 +2463,52 @@ export type ApiInformationData = {
   readonly wide?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiInformationRow = {
+export type DomainInformationRow = {
   readonly __typename: 'InformationRow';
   readonly displayText: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly leaderboardSortOrder: Scalars['Int']['output'];
   readonly mobileDisplayText: Scalars['String']['output'];
-  readonly sponsorLogo?: Maybe<ApiImageAsset>;
+  readonly sponsorLogo?: Maybe<DomainImageAsset>;
   readonly sponsorName?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiInformationSection = {
+export type DomainInformationSection = {
   readonly __typename: 'InformationSection';
-  readonly items: ReadonlyArray<ApiInformationSectionItem>;
-  readonly sponsorImages?: Maybe<ReadonlyArray<ApiSponsorImage>>;
+  readonly items: ReadonlyArray<DomainInformationSectionItem>;
+  readonly sponsorImages?: Maybe<ReadonlyArray<DomainSponsorImage>>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiInformationSectionItem = ApiAbbreviations | ApiLegend;
+export type DomainInformationSectionItem = DomainAbbreviations | DomainLegend;
 
-export type ApiIntegratedComponent = {
+export type DomainIntegratedComponent = {
   readonly __typename: 'IntegratedComponent';
   readonly index: Scalars['Int']['output'];
-  readonly partner: ApiIntegrationPartner;
+  readonly partner: DomainIntegrationPartner;
 };
 
-export type ApiIntegrationPartner =
+export type DomainIntegrationPartner =
   | 'GOLFWRX';
 
-export type ApiJumpToSection = {
+export type DomainJumpToSection = {
   readonly __typename: 'JumpToSection';
   readonly anchorHtmlId?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly dropdownText?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
 };
 
-export type ApiKopContentType = ApiNewsArticleHeader | ApiNewsArticleImage | ApiNewsArticleLineBreak | ApiNewsArticleLink | ApiNewsArticleParagraph | ApiNewsArticleText | ApiTableFragment | ApiUnorderedListNode;
+export type DomainKopContentType = DomainNewsArticleHeader | DomainNewsArticleImage | DomainNewsArticleLineBreak | DomainNewsArticleLink | DomainNewsArticleParagraph | DomainNewsArticleText | DomainTableFragment | DomainUnorderedListNode;
 
-export type ApiKitOfParts = {
+export type DomainKitOfParts = {
   readonly __typename: 'KitOfParts';
-  readonly fragments: ReadonlyArray<ApiKopFragment>;
+  readonly fragments: ReadonlyArray<DomainKopFragment>;
 };
 
-export type ApiKopFragment = ApiHomepageNews | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopZigZag | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
+export type DomainKopFragment = DomainHomepageNews | DomainKopHeader | DomainKopSignUp | DomainKopStandingsList | DomainKopSubheader | DomainKopUpcomingTournament | DomainKopZigZag | DomainThreeUpPhoto | DomainThreeUpStats | DomainTwoColumn | DomainVideoHero;
 
-export type ApiKopHeader = {
+export type DomainKopHeader = {
   readonly __typename: 'KopHeader';
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly headerTitle: Scalars['String']['output'];
   readonly headlineColor?: Maybe<Scalars['String']['output']>;
   readonly image?: Maybe<Scalars['String']['output']>;
@@ -2518,11 +2517,11 @@ export type ApiKopHeader = {
   readonly titleJustification?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiKopSignUp = {
+export type DomainKopSignUp = {
   readonly __typename: 'KopSignUp';
   readonly backgroundColor?: Maybe<Scalars['String']['output']>;
   readonly backgroundImage?: Maybe<Scalars['String']['output']>;
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly ctaColor?: Maybe<Scalars['String']['output']>;
   readonly header?: Maybe<Scalars['String']['output']>;
   readonly logo?: Maybe<Scalars['String']['output']>;
@@ -2530,51 +2529,51 @@ export type ApiKopSignUp = {
   readonly textColor?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiKopStandingsList = {
+export type DomainKopStandingsList = {
   readonly __typename: 'KopStandingsList';
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly sectionTitle: Scalars['String']['output'];
-  readonly standings?: Maybe<ReadonlyArray<Maybe<ApiHomePageStanding>>>;
+  readonly standings?: Maybe<ReadonlyArray<Maybe<DomainHomePageStanding>>>;
   readonly type?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiKopSubheader = {
+export type DomainKopSubheader = {
   readonly __typename: 'KopSubheader';
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly displayCta?: Maybe<Scalars['Boolean']['output']>;
   readonly logo?: Maybe<Scalars['String']['output']>;
-  readonly subHeaderText?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly subHeaderText?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
   readonly type?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiKopUpcomingTournament = {
+export type DomainKopUpcomingTournament = {
   readonly __typename: 'KopUpcomingTournament';
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiKopZigZag = {
+export type DomainKopZigZag = {
   readonly __typename: 'KopZigZag';
   readonly backgroundColorOne?: Maybe<Scalars['String']['output']>;
   readonly backgroundColorTwo?: Maybe<Scalars['String']['output']>;
-  readonly ctaOne?: Maybe<ApiCallToAction>;
-  readonly ctaTwo?: Maybe<ApiCallToAction>;
+  readonly ctaOne?: Maybe<DomainCallToAction>;
+  readonly ctaTwo?: Maybe<DomainCallToAction>;
   readonly descriptionBackgroundColorOne?: Maybe<Scalars['String']['output']>;
   readonly descriptionBackgroundColorTwo?: Maybe<Scalars['String']['output']>;
-  readonly descriptionOne?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
-  readonly descriptionTwo?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly descriptionOne?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
+  readonly descriptionTwo?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
   readonly imageOne?: Maybe<Scalars['String']['output']>;
   readonly imageTwo?: Maybe<Scalars['String']['output']>;
   readonly subHeader?: Maybe<Scalars['String']['output']>;
   readonly zigZaHeader: Scalars['String']['output'];
 };
 
-export type ApiLbRound = {
+export type DomainLbRound = {
   readonly __typename: 'LBRound';
   readonly displayText: Scalars['String']['output'];
   readonly roundNumber: Scalars['Int']['output'];
 };
 
-export type ApiLeaderStat = {
+export type DomainLeaderStat = {
   readonly __typename: 'LeaderStat';
   readonly country: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -2586,20 +2585,20 @@ export type ApiLeaderStat = {
   readonly statValue: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardCompressed = {
+export type DomainLeaderboardCompressed = {
   readonly __typename: 'LeaderboardCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardCompressedV2 = {
+export type DomainLeaderboardCompressedV2 = {
   readonly __typename: 'LeaderboardCompressedV2';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
 /**   Returns the leaderboard for a tournament where payload contains the leaderboard data in Base64 encoding. */
-export type ApiLeaderboardCompressedV3 = {
+export type DomainLeaderboardCompressedV3 = {
   readonly __typename: 'LeaderboardCompressedV3';
   /**   The tournament ID */
   readonly id: Scalars['ID']['output'];
@@ -2607,91 +2606,91 @@ export type ApiLeaderboardCompressedV3 = {
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardDrawerV2 = {
+export type DomainLeaderboardDrawerV2 = {
   readonly __typename: 'LeaderboardDrawerV2';
   readonly backNine: Scalars['Boolean']['output'];
   readonly currentHole?: Maybe<Scalars['Int']['output']>;
   readonly currentRound: Scalars['Int']['output'];
   readonly groupNumber: Scalars['Int']['output'];
   readonly id: Scalars['ID']['output'];
-  readonly player: ApiPlayer;
-  readonly playerState?: Maybe<ApiPlayerState>;
-  readonly roundScores: ReadonlyArray<ApiRoundScore>;
+  readonly player: DomainPlayer;
+  readonly playerState?: Maybe<DomainPlayerState>;
+  readonly roundScores: ReadonlyArray<DomainRoundScore>;
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardFeature =
+export type DomainLeaderboardFeature =
   | 'HOLE_BY_HOLE'
   | 'ODDS'
   | 'PROBABILITIES'
   | 'SHOT_DETAILS'
   | 'STROKES_GAINED';
 
-export type ApiLeaderboardHoleByHole = {
+export type DomainLeaderboardHoleByHole = {
   readonly __typename: 'LeaderboardHoleByHole';
-  readonly courseHoleHeaders: ReadonlyArray<ApiCourseHoleHeader>;
-  readonly courses: ReadonlyArray<ApiCourse>;
+  readonly courseHoleHeaders: ReadonlyArray<DomainCourseHoleHeader>;
+  readonly courses: ReadonlyArray<DomainCourse>;
   readonly currentRound: Scalars['Int']['output'];
   /** @deprecated use courseHoleHeaders */
-  readonly holeHeaders: ReadonlyArray<ApiHoleHeader>;
-  readonly playerData: ReadonlyArray<ApiPlayerRowHoleByHole>;
-  readonly rounds: ReadonlyArray<ApiLbRound>;
+  readonly holeHeaders: ReadonlyArray<DomainHoleHeader>;
+  readonly playerData: ReadonlyArray<DomainPlayerRowHoleByHole>;
+  readonly rounds: ReadonlyArray<DomainLbRound>;
   readonly tournamentId: Scalars['ID']['output'];
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardInfo = {
+export type DomainLeaderboardInfo = {
   readonly __typename: 'LeaderboardInfo';
   /** @deprecated can ignore, we remove sponship in MW */
   readonly disableCdw: Scalars['Boolean']['output'];
-  readonly informationSections: ReadonlyArray<ApiInformationSection>;
+  readonly informationSections: ReadonlyArray<DomainInformationSection>;
   readonly odds: Scalars['Boolean']['output'];
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiLeaderboardMessage = {
+export type DomainLeaderboardMessage = {
   readonly __typename: 'LeaderboardMessage';
   readonly externalLink?: Maybe<Scalars['Boolean']['output']>;
-  readonly messageIcon: ApiLeaderboardMessageIcon;
+  readonly messageIcon: DomainLeaderboardMessageIcon;
   readonly messageLink?: Maybe<Scalars['String']['output']>;
   readonly messageText: Scalars['String']['output'];
-  readonly platforms: ReadonlyArray<ApiPlatform>;
+  readonly platforms: ReadonlyArray<DomainPlatform>;
   readonly timing?: Maybe<Scalars['Int']['output']>;
   readonly webViewLink?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiLeaderboardMessageIcon =
+export type DomainLeaderboardMessageIcon =
   | 'DELAY'
   | 'NONE'
   | 'WEATHER';
 
-export type ApiLeaderboardMovement =
+export type DomainLeaderboardMovement =
   | 'CONSTANT'
   | 'DOWN'
   | 'UP';
 
-export type ApiLeaderboardOddsSwing = {
+export type DomainLeaderboardOddsSwing = {
   readonly __typename: 'LeaderboardOddsSwing';
-  readonly swing: ApiOddsSwing;
+  readonly swing: DomainOddsSwing;
 };
 
 /**   new enum of possible player icon values, limited to hot streak at first creation */
-export type ApiLeaderboardPlayerIcon =
+export type DomainLeaderboardPlayerIcon =
   | 'HOT_STREAK';
 
-export type ApiLeaderboardRoundStats = {
+export type DomainLeaderboardRoundStats = {
   readonly __typename: 'LeaderboardRoundStats';
-  readonly players: ReadonlyArray<ApiLeaderboardStatsPlayer>;
+  readonly players: ReadonlyArray<DomainLeaderboardStatsPlayer>;
   readonly roundDisplayText: Scalars['String']['output'];
   readonly roundNumber: Scalars['Int']['output'];
 };
 
-export type ApiLeaderboardRowV2 = ApiInformationRow | ApiPlayerRowV2;
+export type DomainLeaderboardRowV2 = DomainInformationRow | DomainPlayerRowV2;
 
-export type ApiLeaderboardRowV3 = ApiInformationRow | ApiPlayerRowV3;
+export type DomainLeaderboardRowV3 = DomainInformationRow | DomainPlayerRowV3 | DomainPuttingPalsPlayerRowV3;
 
-export type ApiLeaderboardScoringDataV3 = {
+export type DomainLeaderboardScoringDataV3 = {
   readonly __typename: 'LeaderboardScoringDataV3';
   readonly backNine: Scalars['Boolean']['output'];
   /**   COURSE */
@@ -2702,25 +2701,25 @@ export type ApiLeaderboardScoringDataV3 = {
   /**   PLAYER STORIES */
   readonly hasStoryContent: Scalars['Boolean']['output'];
   readonly movementAmount: Scalars['String']['output'];
-  readonly movementDirection: ApiLeaderboardMovement;
+  readonly movementDirection: DomainLeaderboardMovement;
   readonly movementSort?: Maybe<Scalars['Int']['output']>;
   readonly oddsOptionId?: Maybe<Scalars['String']['output']>;
   readonly oddsSort?: Maybe<Scalars['Float']['output']>;
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   /**   ODDS */
   readonly oddsToWin?: Maybe<Scalars['String']['output']>;
   /**   POINTS */
   readonly official: Scalars['String']['output'];
   readonly officialSort: Scalars['Int']['output'];
   /**   Player icon, first us is for hot streak */
-  readonly playerIcon?: Maybe<ApiLeaderboardPlayerIcon>;
-  readonly playerState: ApiPlayerState;
+  readonly playerIcon?: Maybe<DomainLeaderboardPlayerIcon>;
+  readonly playerState: DomainPlayerState;
   readonly position: Scalars['String']['output'];
   readonly projected: Scalars['String']['output'];
   readonly projectedSort: Scalars['Int']['output'];
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
   readonly rankLogoLight?: Maybe<Scalars['String']['output']>;
-  readonly rankingMovement: ApiCupRankMovementDirection;
+  readonly rankingMovement: DomainCupRankMovementDirection;
   readonly rankingMovementAmount: Scalars['String']['output'];
   readonly rankingMovementAmountSort: Scalars['Int']['output'];
   readonly roundDisplaySort?: Maybe<ReadonlyArray<Maybe<Scalars['Int']['output']>>>;
@@ -2746,40 +2745,40 @@ export type ApiLeaderboardScoringDataV3 = {
   readonly totalStrokesSort?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiLeaderboardStatItem = {
+export type DomainLeaderboardStatItem = {
   readonly __typename: 'LeaderboardStatItem';
   readonly color: Scalars['String']['output'];
   readonly rank: Scalars['String']['output'];
   readonly sortValue: Scalars['Float']['output'];
   readonly statId: Scalars['String']['output'];
-  readonly supportValues?: Maybe<ReadonlyArray<ApiLeaderboardStatSupportValues>>;
+  readonly supportValues?: Maybe<ReadonlyArray<DomainLeaderboardStatSupportValues>>;
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardStatSupportValues = ApiLeaderboardOddsSwing | ApiLeaderboardSupportingString;
+export type DomainLeaderboardStatSupportValues = DomainLeaderboardOddsSwing | DomainLeaderboardSupportingString;
 
-export type ApiLeaderboardStats = {
+export type DomainLeaderboardStats = {
   readonly __typename: 'LeaderboardStats';
   readonly id: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiLeaderboardStatsPlayer>;
-  readonly rounds?: Maybe<ReadonlyArray<ApiLeaderboardRoundStats>>;
+  readonly players: ReadonlyArray<DomainLeaderboardStatsPlayer>;
+  readonly rounds?: Maybe<ReadonlyArray<DomainLeaderboardRoundStats>>;
   readonly statIds?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly titles: ReadonlyArray<Scalars['String']['output']>;
-  readonly type: ApiLeaderboardStatsType;
+  readonly type: DomainLeaderboardStatsType;
 };
 
-export type ApiLeaderboardStatsPlayer = {
+export type DomainLeaderboardStatsPlayer = {
   readonly __typename: 'LeaderboardStatsPlayer';
   readonly playerId: Scalars['String']['output'];
-  readonly stats: ReadonlyArray<ApiLeaderboardStatItem>;
+  readonly stats: ReadonlyArray<DomainLeaderboardStatItem>;
 };
 
-export type ApiLeaderboardStatsType =
+export type DomainLeaderboardStatsType =
   | 'ODDS'
   | 'PROBABILITY'
   | 'STROKES_GAINED';
 
-export type ApiLeaderboardStroke = {
+export type DomainLeaderboardStroke = {
   readonly __typename: 'LeaderboardStroke';
   readonly currentHole: Scalars['Int']['output'];
   readonly currentHoleDisplay: Scalars['String']['output'];
@@ -2795,87 +2794,87 @@ export type ApiLeaderboardStroke = {
   readonly playerId: Scalars['String']['output'];
   readonly playoffHole: Scalars['Int']['output'];
   readonly playoffHoleDisplay: Scalars['String']['output'];
-  readonly scoreStatus: ApiHoleScoreStatus;
+  readonly scoreStatus: DomainHoleScoreStatus;
   readonly strokeId: Scalars['String']['output'];
   readonly yardage: Scalars['String']['output'];
   readonly yardageSort: Scalars['Int']['output'];
 };
 
-export type ApiLeaderboardStrokes = {
+export type DomainLeaderboardStrokes = {
   readonly __typename: 'LeaderboardStrokes';
   readonly id: Scalars['ID']['output'];
-  readonly playoffs?: Maybe<ReadonlyArray<ApiLeaderboardStroke>>;
-  readonly strokes: ReadonlyArray<ApiLeaderboardStroke>;
+  readonly playoffs?: Maybe<ReadonlyArray<DomainLeaderboardStroke>>;
+  readonly strokes: ReadonlyArray<DomainLeaderboardStroke>;
 };
 
-export type ApiLeaderboardStrokesCompressed = {
+export type DomainLeaderboardStrokesCompressed = {
   readonly __typename: 'LeaderboardStrokesCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardSupportingString = {
+export type DomainLeaderboardSupportingString = {
   readonly __typename: 'LeaderboardSupportingString';
   readonly data: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardUpdateCompressed = {
+export type DomainLeaderboardUpdateCompressed = {
   readonly __typename: 'LeaderboardUpdateCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardUpdateCompressedV3 = {
+export type DomainLeaderboardUpdateCompressedV3 = {
   readonly __typename: 'LeaderboardUpdateCompressedV3';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiLeaderboardUpdatePlayerV3 = {
+export type DomainLeaderboardUpdatePlayerV3 = {
   readonly __typename: 'LeaderboardUpdatePlayerV3';
   readonly id: Scalars['ID']['output'];
   readonly leaderboardSortOrder: Scalars['Int']['output'];
-  readonly scoringData: ApiLeaderboardScoringDataV3;
+  readonly scoringData: DomainLeaderboardScoringDataV3;
 };
 
-export type ApiLeaderboardUpdateRowV3 = ApiInformationRow | ApiLeaderboardUpdatePlayerV3;
+export type DomainLeaderboardUpdateRowV3 = DomainInformationRow | DomainLeaderboardUpdatePlayerV3;
 
-export type ApiLeaderboardUpdateV3 = {
+export type DomainLeaderboardUpdateV3 = {
   readonly __typename: 'LeaderboardUpdateV3';
-  readonly cutLineProbabilities?: Maybe<ApiCutLineInfo>;
+  readonly cutLineProbabilities?: Maybe<DomainCutLineInfo>;
   readonly id: Scalars['ID']['output'];
   readonly isPlayoffActive: Scalars['Boolean']['output'];
   readonly leaderboardRoundHeader: Scalars['String']['output'];
-  readonly messages: ReadonlyArray<ApiLeaderboardMessage>;
-  readonly players: ReadonlyArray<ApiLeaderboardUpdateRowV3>;
-  readonly rounds: ReadonlyArray<ApiLbRound>;
+  readonly messages: ReadonlyArray<DomainLeaderboardMessage>;
+  readonly players: ReadonlyArray<DomainLeaderboardUpdateRowV3>;
+  readonly rounds: ReadonlyArray<DomainLbRound>;
   readonly subEvent: Scalars['Boolean']['output'];
-  readonly tournamentStatus: ApiTournamentStatus;
-  readonly winner?: Maybe<ApiWinner>;
-  readonly winners?: Maybe<ReadonlyArray<ApiWinner>>;
+  readonly tournamentStatus: DomainTournamentStatus;
+  readonly winner?: Maybe<DomainWinner>;
+  readonly winners?: Maybe<ReadonlyArray<DomainWinner>>;
 };
 
-export type ApiLeaderboardV2 = {
+export type DomainLeaderboardV2 = {
   readonly __typename: 'LeaderboardV2';
-  readonly courses: ReadonlyArray<ApiCourse>;
+  readonly courses: ReadonlyArray<DomainCourse>;
   readonly disableLeaderboard: Scalars['Boolean']['output'];
   /** @deprecated use leaderboardFeatures */
-  readonly features?: Maybe<ReadonlyArray<ApiLeaderboardFeature>>;
-  readonly formatType: ApiFormatType;
+  readonly features?: Maybe<ReadonlyArray<DomainLeaderboardFeature>>;
+  readonly formatType: DomainFormatType;
   readonly id: Scalars['ID']['output'];
   /** @deprecated Use the leaderboard legend query */
-  readonly informationSections: ReadonlyArray<ApiInformationSection>;
+  readonly informationSections: ReadonlyArray<DomainInformationSection>;
   readonly isPlayoffActive: Scalars['Boolean']['output'];
-  readonly leaderboardFeatures?: Maybe<ReadonlyArray<ApiFeatureItem>>;
+  readonly leaderboardFeatures?: Maybe<ReadonlyArray<DomainFeatureItem>>;
   readonly leaderboardRoundHeader: Scalars['String']['output'];
-  readonly messages: ReadonlyArray<ApiLeaderboardMessage>;
-  readonly players: ReadonlyArray<ApiLeaderboardRowV2>;
+  readonly messages: ReadonlyArray<DomainLeaderboardMessage>;
+  readonly players: ReadonlyArray<DomainLeaderboardRowV2>;
   readonly profileEnabled: Scalars['Boolean']['output'];
   readonly roundDisplay: Scalars['String']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   readonly roundStatusDisplay: Scalars['String']['output'];
-  readonly rounds: ReadonlyArray<ApiLbRound>;
+  readonly rounds: ReadonlyArray<DomainLbRound>;
   readonly scorecardEnabled: Scalars['Boolean']['output'];
   readonly standingsEnabled: Scalars['Boolean']['output'];
   readonly standingsHeader: Scalars['String']['output'];
@@ -2886,28 +2885,28 @@ export type ApiLeaderboardV2 = {
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
-  readonly tournamentStatus: ApiTournamentStatus;
-  readonly winner?: Maybe<ApiWinner>;
+  readonly tournamentStatus: DomainTournamentStatus;
+  readonly winner?: Maybe<DomainWinner>;
 };
 
-export type ApiLeaderboardV3 = {
+export type DomainLeaderboardV3 = {
   readonly __typename: 'LeaderboardV3';
-  readonly bubblePill?: Maybe<ApiBubblePill>;
-  readonly courses: ReadonlyArray<ApiCourse>;
-  readonly cutLineProbabilities?: Maybe<ApiCutLineInfo>;
+  readonly bubblePill?: Maybe<DomainBubblePill>;
+  readonly courses: ReadonlyArray<DomainCourse>;
+  readonly cutLineProbabilities?: Maybe<DomainCutLineInfo>;
   readonly disableBettingProfileColumn: Scalars['Boolean']['output'];
   readonly disableLeaderboard: Scalars['Boolean']['output'];
   readonly disableOdds: Scalars['Boolean']['output'];
-  readonly formatType: ApiFormatType;
+  readonly formatType: DomainFormatType;
   readonly hideSov: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
   readonly isPlayoffActive: Scalars['Boolean']['output'];
-  readonly leaderboardFeatures?: Maybe<ReadonlyArray<ApiFeatureItem>>;
+  readonly leaderboardFeatures?: Maybe<ReadonlyArray<DomainFeatureItem>>;
   readonly leaderboardRoundHeader: Scalars['String']['output'];
-  readonly messages: ReadonlyArray<ApiLeaderboardMessage>;
-  readonly players: ReadonlyArray<ApiLeaderboardRowV3>;
+  readonly messages: ReadonlyArray<DomainLeaderboardMessage>;
+  readonly players: ReadonlyArray<DomainLeaderboardRowV3>;
   readonly profileEnabled: Scalars['Boolean']['output'];
-  readonly rounds: ReadonlyArray<ApiLbRound>;
+  readonly rounds: ReadonlyArray<DomainLbRound>;
   readonly scorecardEnabled: Scalars['Boolean']['output'];
   readonly standingsEnabled: Scalars['Boolean']['output'];
   readonly standingsHeader: Scalars['String']['output'];
@@ -2919,68 +2918,68 @@ export type ApiLeaderboardV3 = {
   /** @deprecated Use tourcastURI */
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
   readonly tournamentId: Scalars['String']['output'];
-  readonly tournamentStatus: ApiTournamentStatus;
+  readonly tournamentStatus: DomainTournamentStatus;
   /** @deprecated use winners */
-  readonly winner?: Maybe<ApiWinner>;
-  readonly winners?: Maybe<ReadonlyArray<ApiWinner>>;
+  readonly winner?: Maybe<DomainWinner>;
+  readonly winners?: Maybe<ReadonlyArray<DomainWinner>>;
 };
 
-export type ApiLegend = {
+export type DomainLegend = {
   readonly __typename: 'Legend';
   readonly accessibilityText?: Maybe<Scalars['String']['output']>;
-  readonly icon: ApiIcon;
+  readonly icon: DomainIcon;
   readonly iconUrl?: Maybe<Scalars['String']['output']>;
   readonly subText?: Maybe<Scalars['String']['output']>;
   readonly text?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiListItem = {
+export type DomainListItem = {
   readonly __typename: 'ListItem';
-  readonly segments: ReadonlyArray<Maybe<ApiListNodeItems>>;
+  readonly segments: ReadonlyArray<Maybe<DomainListNodeItems>>;
 };
 
-export type ApiListNodeItems = ApiNewsArticleContentSegment | ApiNewsArticleParagraph | ApiNewsArticlePlayerTournamentOdds | ApiUnorderedListNode;
+export type DomainListNodeItems = DomainNewsArticleContentSegment | DomainNewsArticleParagraph | DomainNewsArticlePlayerTournamentOdds | DomainUnorderedListNode;
 
-export type ApiLiveOverride =
+export type DomainLiveOverride =
   | 'FORCE_OFF'
   | 'FORCE_ON'
   | 'NORMAL';
 
-export type ApiLiveStatus =
+export type DomainLiveStatus =
   | 'LIVE'
   | 'NONE'
   | 'UPCOMING';
 
-export type ApiLiveVideoOverride = {
+export type DomainLiveVideoOverride = {
   readonly __typename: 'LiveVideoOverride';
-  readonly simulcast?: Maybe<ApiBroadcastFullTelecast>;
-  readonly tourCode: ApiTourCode;
-  readonly videos: ReadonlyArray<ApiVideo>;
+  readonly simulcast?: Maybe<DomainBroadcastFullTelecast>;
+  readonly tourCode: DomainTourCode;
+  readonly videos: ReadonlyArray<DomainVideo>;
 };
 
-export type ApiMpHolePlayer = {
+export type DomainMpHolePlayer = {
   readonly __typename: 'MPHolePlayer';
   readonly holePoints?: Maybe<Scalars['String']['output']>;
   readonly holeScore?: Maybe<Scalars['String']['output']>;
   /**   used for four ball type scoring */
-  readonly holeScoreStatus?: Maybe<ApiHoleScoreStatus>;
-  readonly holeScores?: Maybe<ReadonlyArray<ApiMatchHoleScore>>;
+  readonly holeScoreStatus?: Maybe<DomainHoleScoreStatus>;
+  readonly holeScores?: Maybe<ReadonlyArray<DomainMatchHoleScore>>;
   readonly playerId: Scalars['ID']['output'];
 };
 
-export type ApiMpLeaderboard = {
+export type DomainMpLeaderboard = {
   readonly __typename: 'MPLeaderboard';
-  readonly courses: ReadonlyArray<ApiCourse>;
+  readonly courses: ReadonlyArray<DomainCourse>;
   readonly currentRound: Scalars['Int']['output'];
   readonly drawersEnabled: Scalars['Boolean']['output'];
-  readonly formatType: ApiFormatType;
+  readonly formatType: DomainFormatType;
   readonly id: Scalars['ID']['output'];
   readonly infoWebUrl: Scalars['String']['output'];
-  readonly informationSections: ReadonlyArray<ApiInformationSection>;
-  readonly messages: ReadonlyArray<ApiLeaderboardMessage>;
-  readonly roundFilters: ReadonlyArray<ApiRoundFilter>;
-  readonly rounds: ReadonlyArray<ApiMpLeaderboardRound>;
+  readonly informationSections: ReadonlyArray<DomainInformationSection>;
+  readonly messages: ReadonlyArray<DomainLeaderboardMessage>;
+  readonly roundFilters: ReadonlyArray<DomainRoundFilter>;
+  readonly rounds: ReadonlyArray<DomainMpLeaderboardRound>;
   readonly shortTimezone: Scalars['String']['output'];
   readonly timezone: Scalars['String']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
@@ -2988,32 +2987,32 @@ export type ApiMpLeaderboard = {
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
   readonly tourcastUrlWeb?: Maybe<Scalars['String']['output']>;
-  readonly winner?: Maybe<ApiMpLeaderboardPlayer>;
+  readonly winner?: Maybe<DomainMpLeaderboardPlayer>;
 };
 
-export type ApiMpLeaderboardBracket = {
+export type DomainMpLeaderboardBracket = {
   readonly __typename: 'MPLeaderboardBracket';
   readonly bracketHeader: Scalars['String']['output'];
   readonly bracketNum?: Maybe<Scalars['Int']['output']>;
-  readonly matches: ReadonlyArray<ApiMpLeaderboardMatch>;
-  readonly upcomingMatches?: Maybe<ReadonlyArray<ApiUpcomingMatch>>;
+  readonly matches: ReadonlyArray<DomainMpLeaderboardMatch>;
+  readonly upcomingMatches?: Maybe<ReadonlyArray<DomainUpcomingMatch>>;
 };
 
-export type ApiMpLeaderboardMatch = {
+export type DomainMpLeaderboardMatch = {
   readonly __typename: 'MPLeaderboardMatch';
   readonly bracketPlayerSwap?: Maybe<Scalars['Boolean']['output']>;
   readonly matchId: Scalars['ID']['output'];
   readonly matchScore?: Maybe<Scalars['String']['output']>;
   readonly matchScoreColor?: Maybe<Scalars['String']['output']>;
   readonly matchScoreColorDark?: Maybe<Scalars['String']['output']>;
-  readonly matchStatus: ApiMatchStatus;
-  readonly players: ReadonlyArray<ApiMpLeaderboardPlayer>;
+  readonly matchStatus: DomainMatchStatus;
+  readonly players: ReadonlyArray<DomainMpLeaderboardPlayer>;
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly thru?: Maybe<Scalars['String']['output']>;
   readonly thruNumberOfHoles?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiMpLeaderboardPlayer = {
+export type DomainMpLeaderboardPlayer = {
   readonly __typename: 'MPLeaderboardPlayer';
   readonly activeInPlayoff?: Maybe<Scalars['Boolean']['output']>;
   readonly bracketSeed: Scalars['String']['output'];
@@ -3033,31 +3032,31 @@ export type ApiMpLeaderboardPlayer = {
   readonly tournamentSeed: Scalars['String']['output'];
 };
 
-export type ApiMpLeaderboardRound = {
+export type DomainMpLeaderboardRound = {
   readonly __typename: 'MPLeaderboardRound';
-  readonly brackets: ReadonlyArray<ApiMpLeaderboardBracket>;
+  readonly brackets: ReadonlyArray<DomainMpLeaderboardBracket>;
   readonly round: Scalars['Int']['output'];
   readonly roundHeader: Scalars['String']['output'];
   readonly roundStatusSubHead: Scalars['String']['output'];
   readonly roundTypeSubHead: Scalars['String']['output'];
 };
 
-export type ApiMpMatchTeeTimes = {
+export type DomainMpMatchTeeTimes = {
   readonly __typename: 'MPMatchTeeTimes';
   readonly matchId: Scalars['ID']['output'];
-  readonly players: ReadonlyArray<ApiMpTeeTimePlayer>;
+  readonly players: ReadonlyArray<DomainMpTeeTimePlayer>;
   readonly status: Scalars['String']['output'];
   readonly tee: Scalars['String']['output'];
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly timezone: Scalars['String']['output'];
 };
 
-export type ApiMpPlayoffScorecard = {
+export type DomainMpPlayoffScorecard = {
   readonly __typename: 'MPPlayoffScorecard';
   readonly currentHole?: Maybe<Scalars['Int']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly infoWebUrl?: Maybe<Scalars['String']['output']>;
-  readonly playoff: ApiPlayoff;
+  readonly playoff: DomainPlayoff;
   readonly scorecardTitle: Scalars['String']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
@@ -3066,21 +3065,21 @@ export type ApiMpPlayoffScorecard = {
   readonly tourcastUrlWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiMpRoundTeeTimes = {
+export type DomainMpRoundTeeTimes = {
   readonly __typename: 'MPRoundTeeTimes';
-  readonly matchTeeTimes: ReadonlyArray<ApiMpMatchTeeTimes>;
+  readonly matchTeeTimes: ReadonlyArray<DomainMpMatchTeeTimes>;
   readonly roundNumber: Scalars['Int']['output'];
 };
 
-export type ApiMpScorecard = {
+export type DomainMpScorecard = {
   readonly __typename: 'MPScorecard';
   readonly currentHole?: Maybe<Scalars['Int']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly infoWebUrl?: Maybe<Scalars['String']['output']>;
-  readonly matchHoleScores: ReadonlyArray<ApiMatchHole>;
+  readonly matchHoleScores: ReadonlyArray<DomainMatchHole>;
   readonly matchName: Scalars['String']['output'];
-  readonly matchPlayers: ReadonlyArray<ApiMpScorecardPlayer>;
-  readonly messages: ReadonlyArray<ApiMessage>;
+  readonly matchPlayers: ReadonlyArray<DomainMpScorecardPlayer>;
+  readonly messages: ReadonlyArray<DomainMessage>;
   readonly scorecardTitle: Scalars['String']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
@@ -3089,7 +3088,7 @@ export type ApiMpScorecard = {
   readonly tourcastUrlWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiMpScorecardPlayer = {
+export type DomainMpScorecardPlayer = {
   readonly __typename: 'MPScorecardPlayer';
   readonly countryFlag: Scalars['String']['output'];
   readonly displayColor: Scalars['String']['output'];
@@ -3102,23 +3101,23 @@ export type ApiMpScorecardPlayer = {
   readonly shortName: Scalars['String']['output'];
 };
 
-export type ApiMpScorecardResults = {
+export type DomainMpScorecardResults = {
   readonly __typename: 'MPScorecardResults';
   readonly matchId: Scalars['String']['output'];
-  readonly messages?: Maybe<ReadonlyArray<ApiMessage>>;
-  readonly players: ReadonlyArray<ApiMpScorecardResultsPlayer>;
+  readonly messages?: Maybe<ReadonlyArray<DomainMessage>>;
+  readonly players: ReadonlyArray<DomainMpScorecardResultsPlayer>;
   readonly roundNum: Scalars['Int']['output'];
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiMpScorecardResultsPlayer = {
+export type DomainMpScorecardResultsPlayer = {
   readonly __typename: 'MPScorecardResultsPlayer';
   readonly displayName: Scalars['String']['output'];
   readonly playerId: Scalars['ID']['output'];
-  readonly previousRounds: ReadonlyArray<ApiPreviousRounds>;
+  readonly previousRounds: ReadonlyArray<DomainPreviousRounds>;
 };
 
-export type ApiMpTeeTimePlayer = {
+export type DomainMpTeeTimePlayer = {
   readonly __typename: 'MPTeeTimePlayer';
   readonly countryFlag: Scalars['String']['output'];
   readonly displayName: Scalars['String']['output'];
@@ -3128,24 +3127,24 @@ export type ApiMpTeeTimePlayer = {
   readonly shortName: Scalars['String']['output'];
 };
 
-export type ApiMpTeeTimes = {
+export type DomainMpTeeTimes = {
   readonly __typename: 'MPTeeTimes';
   readonly defaultRound: Scalars['Int']['output'];
   readonly drawersEnabled: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
-  readonly roundFilters: ReadonlyArray<ApiRoundFilter>;
-  readonly rounds: ReadonlyArray<ApiMpRoundTeeTimes>;
-  readonly teeTimeHeaders: ReadonlyArray<ApiTeeTimeHeader>;
+  readonly roundFilters: ReadonlyArray<DomainRoundFilter>;
+  readonly rounds: ReadonlyArray<DomainMpRoundTeeTimes>;
+  readonly teeTimeHeaders: ReadonlyArray<DomainTeeTimeHeader>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiMajorResultsTournament = {
+export type DomainMajorResultsTournament = {
   readonly __typename: 'MajorResultsTournament';
   readonly courseName: Scalars['String']['output'];
   readonly date: Scalars['String']['output'];
   readonly money: Scalars['String']['output'];
   readonly position: Scalars['String']['output'];
-  readonly roundScores: ReadonlyArray<ApiRoundScoreItem>;
+  readonly roundScores: ReadonlyArray<DomainRoundScoreItem>;
   readonly toPar: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
@@ -3158,30 +3157,30 @@ export type ApiMajorResultsTournament = {
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiMajorTimeline = {
+export type DomainMajorTimeline = {
   readonly __typename: 'MajorTimeline';
   readonly finishes: ReadonlyArray<Scalars['String']['output']>;
   readonly tournamentName: Scalars['String']['output'];
   readonly tournamentNum: Scalars['String']['output'];
 };
 
-export type ApiMarket = {
+export type DomainMarket = {
   readonly __typename: 'Market';
   readonly header: Scalars['String']['output'];
   /**   used for switching between submarkets like "Group A" */
-  readonly marketType: ApiOddsMarketType;
+  readonly marketType: DomainOddsMarketType;
   /**   Tournament Winner */
   readonly subMarketPills?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
-  readonly subMarkets: ReadonlyArray<ApiSubMarket>;
+  readonly subMarkets: ReadonlyArray<DomainSubMarket>;
 };
 
-export type ApiMarketPill = {
+export type DomainMarketPill = {
   readonly __typename: 'MarketPill';
   readonly displayText: Scalars['String']['output'];
-  readonly marketType: ApiOddsMarketType;
+  readonly marketType: DomainOddsMarketType;
 };
 
-export type ApiMatchCard = {
+export type DomainMatchCard = {
   readonly __typename: 'MatchCard';
   readonly matchId?: Maybe<Scalars['String']['output']>;
   readonly path: Scalars['String']['output'];
@@ -3190,39 +3189,39 @@ export type ApiMatchCard = {
   readonly tournamentId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiMatchHole = {
+export type DomainMatchHole = {
   readonly __typename: 'MatchHole';
   readonly courseHoleNumber: Scalars['String']['output'];
   readonly holeNumber: Scalars['String']['output'];
   readonly holeNumberColor: Scalars['String']['output'];
   readonly holeOutlineColor?: Maybe<Scalars['String']['output']>;
-  readonly holePlayedStatus: ApiHolePlayedStatus;
-  readonly matchHolePlayers: ReadonlyArray<ApiMpHolePlayer>;
+  readonly holePlayedStatus: DomainHolePlayedStatus;
+  readonly matchHolePlayers: ReadonlyArray<DomainMpHolePlayer>;
   readonly matchScore?: Maybe<Scalars['String']['output']>;
   readonly matchScoreColor: Scalars['String']['output'];
   readonly parValue: Scalars['String']['output'];
 };
 
-export type ApiMatchHoleScore = {
+export type DomainMatchHoleScore = {
   readonly __typename: 'MatchHoleScore';
   readonly holeScore?: Maybe<Scalars['String']['output']>;
-  readonly holeScoreStatus?: Maybe<ApiHoleScoreStatus>;
+  readonly holeScoreStatus?: Maybe<DomainHoleScoreStatus>;
   readonly playerId: Scalars['ID']['output'];
 };
 
-export type ApiMatchStatus =
+export type DomainMatchStatus =
   | 'COMPLETE'
   | 'IN_PROGRESS'
   | 'UPCOMING';
 
-export type ApiMatchupOptionV2 = ApiBaseOddsOption & {
+export type DomainMatchupOptionV2 = DomainBaseOddsOption & {
   readonly __typename: 'MatchupOptionV2';
-  readonly entity: ApiOddsEntity;
+  readonly entity: DomainOddsEntity;
   readonly isTie: Scalars['Boolean']['output'];
-  readonly odds: ApiOddsValues;
+  readonly odds: DomainOddsValues;
 };
 
-export type ApiMatchupsPlayer = {
+export type DomainMatchupsPlayer = {
   readonly __typename: 'MatchupsPlayer';
   readonly countryFlag?: Maybe<Scalars['String']['output']>;
   readonly currentRound?: Maybe<Scalars['Int']['output']>;
@@ -3232,381 +3231,381 @@ export type ApiMatchupsPlayer = {
   readonly lastName: Scalars['String']['output'];
   readonly matchId?: Maybe<Scalars['Int']['output']>;
   readonly odds: Scalars['String']['output'];
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly optionsId: Scalars['String']['output'];
   readonly seed?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiMediaGallery = {
+export type DomainMediaGallery = {
   readonly __typename: 'MediaGallery';
   readonly contentDescription?: Maybe<ReadonlyArray<Maybe<Scalars['String']['output']>>>;
-  readonly cta?: Maybe<ApiHomepageCta>;
+  readonly cta?: Maybe<DomainHomepageCta>;
   readonly mediaGallery?: Maybe<ReadonlyArray<Maybe<Scalars['String']['output']>>>;
-  readonly mediaGalleryObjs?: Maybe<ReadonlyArray<Maybe<ApiMediaGalleryItems>>>;
+  readonly mediaGalleryObjs?: Maybe<ReadonlyArray<Maybe<DomainMediaGalleryItems>>>;
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiMediaGalleryItem = {
+export type DomainMediaGalleryItem = {
   readonly __typename: 'MediaGalleryItem';
-  readonly orientation?: Maybe<ApiOrientation>;
+  readonly orientation?: Maybe<DomainOrientation>;
   readonly path?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiMediaGalleryItems = ApiMediaGalleryItem | ApiVideo;
+export type DomainMediaGalleryItems = DomainMediaGalleryItem | DomainVideo;
 
-export type ApiMessage = {
+export type DomainMessage = {
   readonly __typename: 'Message';
   readonly body: ReadonlyArray<Scalars['String']['output']>;
   readonly title?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiMessageBanner = {
+export type DomainMessageBanner = {
   readonly __typename: 'MessageBanner';
   readonly messageLink?: Maybe<Scalars['String']['output']>;
   readonly messageText?: Maybe<Scalars['String']['output']>;
   readonly path: Scalars['String']['output'];
 };
 
-export type ApiMobileCategoryPill = {
+export type DomainMobileCategoryPill = {
   readonly __typename: 'MobileCategoryPill';
-  readonly category?: Maybe<ApiStatCategory>;
+  readonly category?: Maybe<DomainStatCategory>;
   readonly displayName: Scalars['String']['output'];
 };
 
-export type ApiMobileStat = {
+export type DomainMobileStat = {
   readonly __typename: 'MobileStat';
   readonly statId: Scalars['String']['output'];
   readonly statTitle: Scalars['String']['output'];
 };
 
-export type ApiMobileStatCategoryLeaders = {
+export type DomainMobileStatCategoryLeaders = {
   readonly __typename: 'MobileStatCategoryLeaders';
-  readonly category: ApiStatCategory;
+  readonly category: DomainStatCategory;
   readonly categoryHeader: Scalars['String']['output'];
-  readonly leaders: ReadonlyArray<ApiLeaderStat>;
-  readonly stats: ReadonlyArray<ApiMobileStat>;
+  readonly leaders: ReadonlyArray<DomainLeaderStat>;
+  readonly stats: ReadonlyArray<DomainMobileStat>;
 };
 
-export type ApiMobileStatLeaders = {
+export type DomainMobileStatLeaders = {
   readonly __typename: 'MobileStatLeaders';
-  readonly categories: ReadonlyArray<ApiMobileStatCategoryLeaders>;
-  readonly categoryPills: ReadonlyArray<ApiMobileCategoryPill>;
-  readonly tourCode: ApiTourCode;
+  readonly categories: ReadonlyArray<DomainMobileStatCategoryLeaders>;
+  readonly categoryPills: ReadonlyArray<DomainMobileCategoryPill>;
+  readonly tourCode: DomainTourCode;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiMutation = {
+export type DomainMutation = {
   readonly __typename: 'Mutation';
-  readonly addFavoriteTour: ApiFavoriteTourResponse;
-  readonly addFavorites: ReadonlyArray<ApiFavoritePlayer>;
-  readonly addNotificationTags: ApiNotificationTagResponse;
-  readonly deleteAccount: ApiDeleteAccountResponse;
-  readonly deleteFavorites: ReadonlyArray<ApiFavoritePlayer>;
-  readonly deleteNotificationTags: ApiNotificationTagResponse;
-  readonly unsubscribe: ApiUnsubscribeResponse;
-  readonly updateBubble?: Maybe<ApiBubbleWatch>;
-  readonly updateBubbleWatch?: Maybe<ApiTourCupRankingEvent>;
-  readonly updateCourseStats?: Maybe<ApiTournamentHoleStats>;
-  readonly updateCoverage?: Maybe<ApiBroadcastCoverage>;
-  readonly updateCupOverviewLeaderboard?: Maybe<ApiCupTournamentStatus>;
-  readonly updateCupRoundLeaderboard?: Maybe<ApiCupTournamentLeaderboard>;
-  readonly updateCupRoundLeaderboardCompressed?: Maybe<ApiCupTournamentLeaderboardCompressed>;
-  readonly updateCupScorecard?: Maybe<ApiCupScorecard>;
-  readonly updateCurrentLeadersCompressed?: Maybe<ApiCurrentLeadersCompressed>;
-  readonly updateGroupLocations?: Maybe<ApiGroupLocationCourse>;
-  readonly updateGroupLocationsEnhanced?: Maybe<ApiGroupLocationCourse>;
-  readonly updateHoleDetails?: Maybe<ApiHoleDetail>;
-  readonly updateLeaderboardCompressedV2?: Maybe<ApiLeaderboardCompressedV2>;
-  readonly updateLeaderboardCompressedV3?: Maybe<ApiLeaderboardUpdateCompressedV3>;
-  readonly updateLeaderboardStrokes?: Maybe<ApiLeaderboardStrokes>;
-  readonly updateLeaderboardStrokesCompressed?: Maybe<ApiLeaderboardStrokesCompressed>;
-  readonly updateLeaderboardV2?: Maybe<ApiLeaderboardV2>;
-  readonly updateMatchOutcomeIq?: Maybe<ApiRyderCupMatchOutcomeIq>;
-  readonly updateMatchPlayLeaderboard?: Maybe<ApiMpLeaderboard>;
-  readonly updateMatchPlayLeaderboardCompressed?: Maybe<ApiLeaderboardCompressed>;
-  readonly updateMatchPlayPlayoffScorecard?: Maybe<ApiMpPlayoffScorecard>;
-  readonly updateMatchPlayScorecard?: Maybe<ApiMpScorecard>;
-  readonly updateMatchPlayTeeTimes: ApiMpTeeTimes;
-  readonly updateMatchPlayTeeTimesCompressed?: Maybe<ApiTeeTimesCompressed>;
-  readonly updateOddsToWinMarket?: Maybe<ApiOddsToWinMarket>;
-  readonly updateOddsToWinMarketCompressed?: Maybe<ApiOddsToWinMarketCompressed>;
-  readonly updatePlayerHub?: Maybe<ApiPlayerHubPlayerCompressed>;
-  readonly updatePlayerTournamentStatus?: Maybe<ApiPlayerTournamentStatus>;
-  readonly updatePlayoffScorecard?: Maybe<ApiPlayoffScorecard>;
-  readonly updatePlayoffScorecardV2: ReadonlyArray<ApiPlayoffScorecard>;
-  readonly updatePlayoffScorecardV3: ApiTournamentPlayoffScorecards;
-  readonly updatePlayoffShotDetails: ApiGroupShotDetails;
-  readonly updatePlayoffShotDetailsCompressed: ApiGroupShotDetailsCompressed;
-  readonly updateScorecardCompressedV3?: Maybe<ApiScorecardUpdateCompressedV3>;
-  readonly updateScorecardStats?: Maybe<ApiPlayerScorecardStats>;
-  readonly updateScorecardStatsCompressedV3?: Maybe<ApiPlayerScorecardStatsCompressed>;
-  readonly updateScorecardV2?: Maybe<ApiLeaderboardDrawerV2>;
-  readonly updateShotCommentary?: Maybe<ApiShotCommentary>;
-  readonly updateShotDetailsCompressedV3?: Maybe<ApiShotDetailsCompressedV3>;
-  readonly updateTGLMatch?: Maybe<ApiTglMatch>;
-  readonly updateTSPPlayoffShotDetails: ApiTeamShotDetails;
-  readonly updateTSPPlayoffShotDetailsCompressed: ApiTeamShotDetailsCompressed;
-  readonly updateTeamPlayLeaderboard?: Maybe<ApiTspLeaderboard>;
-  readonly updateTeamPlayLeaderboardCompressed?: Maybe<ApiLeaderboardCompressed>;
-  readonly updateTeamPlayScorecard?: Maybe<ApiTspScorecard>;
-  readonly updateTeamPlayScorecardRounds?: Maybe<ApiTspScorecardRounds>;
-  readonly updateTeamStrokePlayTeeTimes?: Maybe<ApiTspTeeTimes>;
-  readonly updateTeamStrokePlayTeeTimesCompressed?: Maybe<ApiTeeTimesCompressed>;
-  readonly updateTeeTimes?: Maybe<ApiTeeTimes>;
-  readonly updateTeeTimesCompressed?: Maybe<ApiTeeTimesCompressed>;
-  readonly updateTeeTimesCompressedV2?: Maybe<ApiTeeTimesCompressed>;
-  readonly updateTeeTimesV2?: Maybe<ApiTeeTimesV2>;
-  readonly updateTourCup?: Maybe<ApiTourCupRankingEvent>;
-  readonly updateTourcastTable?: Maybe<ApiTourcastTable>;
-  readonly updateTournament?: Maybe<ApiTournament>;
-  readonly updateTournamentGroupLocations?: Maybe<ApiTournamentGroupLocation>;
-  readonly updateUpcomingSchedule?: Maybe<ApiScheduleUpcoming>;
+  readonly addFavoriteTour: DomainFavoriteTourResponse;
+  readonly addFavorites: ReadonlyArray<DomainFavoritePlayer>;
+  readonly addNotificationTags: DomainNotificationTagResponse;
+  readonly deleteAccount: DomainDeleteAccountResponse;
+  readonly deleteFavorites: ReadonlyArray<DomainFavoritePlayer>;
+  readonly deleteNotificationTags: DomainNotificationTagResponse;
+  readonly unsubscribe: DomainUnsubscribeResponse;
+  readonly updateBubble?: Maybe<DomainBubbleWatch>;
+  readonly updateBubbleWatch?: Maybe<DomainTourCupRankingEvent>;
+  readonly updateCourseStats?: Maybe<DomainTournamentHoleStats>;
+  readonly updateCoverage?: Maybe<DomainBroadcastCoverage>;
+  readonly updateCupOverviewLeaderboard?: Maybe<DomainCupTournamentStatus>;
+  readonly updateCupRoundLeaderboard?: Maybe<DomainCupTournamentLeaderboard>;
+  readonly updateCupRoundLeaderboardCompressed?: Maybe<DomainCupTournamentLeaderboardCompressed>;
+  readonly updateCupScorecard?: Maybe<DomainCupScorecard>;
+  readonly updateCurrentLeadersCompressed?: Maybe<DomainCurrentLeadersCompressed>;
+  readonly updateGroupLocations?: Maybe<DomainGroupLocationCourse>;
+  readonly updateGroupLocationsEnhanced?: Maybe<DomainGroupLocationCourse>;
+  readonly updateHoleDetails?: Maybe<DomainHoleDetail>;
+  readonly updateLeaderboardCompressedV2?: Maybe<DomainLeaderboardCompressedV2>;
+  readonly updateLeaderboardCompressedV3?: Maybe<DomainLeaderboardUpdateCompressedV3>;
+  readonly updateLeaderboardStrokes?: Maybe<DomainLeaderboardStrokes>;
+  readonly updateLeaderboardStrokesCompressed?: Maybe<DomainLeaderboardStrokesCompressed>;
+  readonly updateLeaderboardV2?: Maybe<DomainLeaderboardV2>;
+  readonly updateMatchOutcomeIq?: Maybe<DomainRyderCupMatchOutcomeIq>;
+  readonly updateMatchPlayLeaderboard?: Maybe<DomainMpLeaderboard>;
+  readonly updateMatchPlayLeaderboardCompressed?: Maybe<DomainLeaderboardCompressed>;
+  readonly updateMatchPlayPlayoffScorecard?: Maybe<DomainMpPlayoffScorecard>;
+  readonly updateMatchPlayScorecard?: Maybe<DomainMpScorecard>;
+  readonly updateMatchPlayTeeTimes: DomainMpTeeTimes;
+  readonly updateMatchPlayTeeTimesCompressed?: Maybe<DomainTeeTimesCompressed>;
+  readonly updateOddsToWinMarket?: Maybe<DomainOddsToWinMarket>;
+  readonly updateOddsToWinMarketCompressed?: Maybe<DomainOddsToWinMarketCompressed>;
+  readonly updatePlayerHub?: Maybe<DomainPlayerHubPlayerCompressed>;
+  readonly updatePlayerTournamentStatus?: Maybe<DomainPlayerTournamentStatus>;
+  readonly updatePlayoffScorecard?: Maybe<DomainPlayoffScorecard>;
+  readonly updatePlayoffScorecardV2: ReadonlyArray<DomainPlayoffScorecard>;
+  readonly updatePlayoffScorecardV3: DomainTournamentPlayoffScorecards;
+  readonly updatePlayoffShotDetails: DomainGroupShotDetails;
+  readonly updatePlayoffShotDetailsCompressed: DomainGroupShotDetailsCompressed;
+  readonly updateScorecardCompressedV3?: Maybe<DomainScorecardUpdateCompressedV3>;
+  readonly updateScorecardStats?: Maybe<DomainPlayerScorecardStats>;
+  readonly updateScorecardStatsCompressedV3?: Maybe<DomainPlayerScorecardStatsCompressed>;
+  readonly updateScorecardV2?: Maybe<DomainLeaderboardDrawerV2>;
+  readonly updateShotCommentary?: Maybe<DomainShotCommentary>;
+  readonly updateShotDetailsCompressedV3?: Maybe<DomainShotDetailsCompressedV3>;
+  readonly updateTGLMatch?: Maybe<DomainTglMatch>;
+  readonly updateTSPPlayoffShotDetails: DomainTeamShotDetails;
+  readonly updateTSPPlayoffShotDetailsCompressed: DomainTeamShotDetailsCompressed;
+  readonly updateTeamPlayLeaderboard?: Maybe<DomainTspLeaderboard>;
+  readonly updateTeamPlayLeaderboardCompressed?: Maybe<DomainLeaderboardCompressed>;
+  readonly updateTeamPlayScorecard?: Maybe<DomainTspScorecard>;
+  readonly updateTeamPlayScorecardRounds?: Maybe<DomainTspScorecardRounds>;
+  readonly updateTeamStrokePlayTeeTimes?: Maybe<DomainTspTeeTimes>;
+  readonly updateTeamStrokePlayTeeTimesCompressed?: Maybe<DomainTeeTimesCompressed>;
+  readonly updateTeeTimes?: Maybe<DomainTeeTimes>;
+  readonly updateTeeTimesCompressed?: Maybe<DomainTeeTimesCompressed>;
+  readonly updateTeeTimesCompressedV2?: Maybe<DomainTeeTimesCompressed>;
+  readonly updateTeeTimesV2?: Maybe<DomainTeeTimesV2>;
+  readonly updateTourCup?: Maybe<DomainTourCupRankingEvent>;
+  readonly updateTourcastTable?: Maybe<DomainTourcastTable>;
+  readonly updateTournament?: Maybe<DomainTournament>;
+  readonly updateTournamentGroupLocations?: Maybe<DomainTournamentGroupLocation>;
+  readonly updateUpcomingSchedule?: Maybe<DomainScheduleUpcoming>;
 };
 
 
-export type ApiMutationAddFavoriteTourArgs = {
-  tourCode: ApiTourCode;
+export type DomainMutationAddFavoriteTourArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiMutationAddFavoritesArgs = {
-  favorites: ReadonlyArray<ApiFavoritePlayerInput>;
+export type DomainMutationAddFavoritesArgs = {
+  favorites: ReadonlyArray<DomainFavoritePlayerInput>;
 };
 
 
-export type ApiMutationAddNotificationTagsArgs = {
-  notificationTags: ReadonlyArray<ApiNotificationTagInput>;
+export type DomainMutationAddNotificationTagsArgs = {
+  notificationTags: ReadonlyArray<DomainNotificationTagInput>;
 };
 
 
-export type ApiMutationDeleteFavoritesArgs = {
-  favorites: ReadonlyArray<ApiFavoritePlayerInput>;
+export type DomainMutationDeleteFavoritesArgs = {
+  favorites: ReadonlyArray<DomainFavoritePlayerInput>;
 };
 
 
-export type ApiMutationDeleteNotificationTagsArgs = {
-  notificationTags: ReadonlyArray<ApiNotificationTagInput>;
+export type DomainMutationDeleteNotificationTagsArgs = {
+  notificationTags: ReadonlyArray<DomainNotificationTagInput>;
 };
 
 
-export type ApiMutationUnsubscribeArgs = {
+export type DomainMutationUnsubscribeArgs = {
   email: Scalars['String']['input'];
   subscriptionIds: ReadonlyArray<InputMaybe<Scalars['String']['input']>>;
 };
 
 
-export type ApiMutationUpdateBubbleArgs = {
+export type DomainMutationUpdateBubbleArgs = {
   bubbleId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateBubbleWatchArgs = {
-  tourCode: ApiTourCode;
+export type DomainMutationUpdateBubbleWatchArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiMutationUpdateCourseStatsArgs = {
+export type DomainMutationUpdateCourseStatsArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateCoverageArgs = {
+export type DomainMutationUpdateCoverageArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateCupOverviewLeaderboardArgs = {
+export type DomainMutationUpdateCupOverviewLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateCupRoundLeaderboardArgs = {
+export type DomainMutationUpdateCupRoundLeaderboardArgs = {
   round?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiMutationUpdateCupRoundLeaderboardCompressedArgs = {
+export type DomainMutationUpdateCupRoundLeaderboardCompressedArgs = {
   round?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiMutationUpdateCupScorecardArgs = {
+export type DomainMutationUpdateCupScorecardArgs = {
   matchId: Scalars['Int']['input'];
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateCurrentLeadersCompressedArgs = {
+export type DomainMutationUpdateCurrentLeadersCompressedArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateGroupLocationsArgs = {
+export type DomainMutationUpdateGroupLocationsArgs = {
   courseId: Scalars['String']['input'];
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateGroupLocationsEnhancedArgs = {
+export type DomainMutationUpdateGroupLocationsEnhancedArgs = {
   courseId: Scalars['String']['input'];
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateHoleDetailsArgs = {
+export type DomainMutationUpdateHoleDetailsArgs = {
   courseId: Scalars['ID']['input'];
   hole: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateLeaderboardCompressedV2Args = {
+export type DomainMutationUpdateLeaderboardCompressedV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateLeaderboardCompressedV3Args = {
-  odds?: InputMaybe<ApiOddsUpdateInput>;
+export type DomainMutationUpdateLeaderboardCompressedV3Args = {
+  odds?: InputMaybe<DomainOddsUpdateInput>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateLeaderboardStrokesArgs = {
+export type DomainMutationUpdateLeaderboardStrokesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateLeaderboardStrokesCompressedArgs = {
+export type DomainMutationUpdateLeaderboardStrokesCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateLeaderboardV2Args = {
+export type DomainMutationUpdateLeaderboardV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateMatchOutcomeIqArgs = {
+export type DomainMutationUpdateMatchOutcomeIqArgs = {
   matchId: Scalars['Int']['input'];
   roundNumber?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateMatchPlayLeaderboardArgs = {
+export type DomainMutationUpdateMatchPlayLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateMatchPlayLeaderboardCompressedArgs = {
+export type DomainMutationUpdateMatchPlayLeaderboardCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateMatchPlayPlayoffScorecardArgs = {
+export type DomainMutationUpdateMatchPlayPlayoffScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateMatchPlayScorecardArgs = {
+export type DomainMutationUpdateMatchPlayScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateMatchPlayTeeTimesArgs = {
+export type DomainMutationUpdateMatchPlayTeeTimesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateMatchPlayTeeTimesCompressedArgs = {
+export type DomainMutationUpdateMatchPlayTeeTimesCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateOddsToWinMarketArgs = {
+export type DomainMutationUpdateOddsToWinMarketArgs = {
   oddsToWinId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateOddsToWinMarketCompressedArgs = {
+export type DomainMutationUpdateOddsToWinMarketCompressedArgs = {
   oddsToWinId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdatePlayerHubArgs = {
+export type DomainMutationUpdatePlayerHubArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdatePlayerTournamentStatusArgs = {
+export type DomainMutationUpdatePlayerTournamentStatusArgs = {
   playerId: Scalars['ID']['input'];
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiMutationUpdatePlayoffScorecardArgs = {
+export type DomainMutationUpdatePlayoffScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdatePlayoffScorecardV2Args = {
+export type DomainMutationUpdatePlayoffScorecardV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdatePlayoffScorecardV3Args = {
+export type DomainMutationUpdatePlayoffScorecardV3Args = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdatePlayoffShotDetailsArgs = {
+export type DomainMutationUpdatePlayoffShotDetailsArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdatePlayoffShotDetailsCompressedArgs = {
+export type DomainMutationUpdatePlayoffShotDetailsCompressedArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateScorecardCompressedV3Args = {
+export type DomainMutationUpdateScorecardCompressedV3Args = {
   id: Scalars['ID']['input'];
   rounds?: InputMaybe<ReadonlyArray<Scalars['Int']['input']>>;
 };
 
 
-export type ApiMutationUpdateScorecardStatsArgs = {
+export type DomainMutationUpdateScorecardStatsArgs = {
   id: Scalars['ID']['input'];
   playerId: Scalars['String']['input'];
 };
 
 
-export type ApiMutationUpdateScorecardStatsCompressedV3Args = {
+export type DomainMutationUpdateScorecardStatsCompressedV3Args = {
   id: Scalars['ID']['input'];
   playerId: Scalars['String']['input'];
   rounds: ReadonlyArray<Scalars['Int']['input']>;
 };
 
 
-export type ApiMutationUpdateScorecardV2Args = {
+export type DomainMutationUpdateScorecardV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateShotCommentaryArgs = {
-  commentary: ReadonlyArray<ApiShotCommentaryItemInput>;
+export type DomainMutationUpdateShotCommentaryArgs = {
+  commentary: ReadonlyArray<DomainShotCommentaryItemInput>;
   playerId: Scalars['String']['input'];
   round: Scalars['Int']['input'];
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiMutationUpdateShotDetailsCompressedV3Args = {
+export type DomainMutationUpdateShotDetailsCompressedV3Args = {
   holes: ReadonlyArray<Scalars['Int']['input']>;
   isUs: Scalars['Boolean']['input'];
   playerId: Scalars['String']['input'];
@@ -3616,111 +3615,111 @@ export type ApiMutationUpdateShotDetailsCompressedV3Args = {
 };
 
 
-export type ApiMutationUpdateTglMatchArgs = {
+export type DomainMutationUpdateTglMatchArgs = {
   matchID: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTspPlayoffShotDetailsArgs = {
+export type DomainMutationUpdateTspPlayoffShotDetailsArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTspPlayoffShotDetailsCompressedArgs = {
+export type DomainMutationUpdateTspPlayoffShotDetailsCompressedArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTeamPlayLeaderboardArgs = {
+export type DomainMutationUpdateTeamPlayLeaderboardArgs = {
   id: Scalars['ID']['input'];
   provider: Scalars['String']['input'];
 };
 
 
-export type ApiMutationUpdateTeamPlayLeaderboardCompressedArgs = {
+export type DomainMutationUpdateTeamPlayLeaderboardCompressedArgs = {
   id: Scalars['ID']['input'];
   provider: Scalars['String']['input'];
 };
 
 
-export type ApiMutationUpdateTeamPlayScorecardArgs = {
+export type DomainMutationUpdateTeamPlayScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTeamPlayScorecardRoundsArgs = {
+export type DomainMutationUpdateTeamPlayScorecardRoundsArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTeamStrokePlayTeeTimesArgs = {
+export type DomainMutationUpdateTeamStrokePlayTeeTimesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTeamStrokePlayTeeTimesCompressedArgs = {
+export type DomainMutationUpdateTeamStrokePlayTeeTimesCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTeeTimesArgs = {
+export type DomainMutationUpdateTeeTimesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTeeTimesCompressedArgs = {
+export type DomainMutationUpdateTeeTimesCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTeeTimesCompressedV2Args = {
+export type DomainMutationUpdateTeeTimesCompressedV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTeeTimesV2Args = {
+export type DomainMutationUpdateTeeTimesV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTourCupArgs = {
+export type DomainMutationUpdateTourCupArgs = {
   id: Scalars['ID']['input'];
-  type?: InputMaybe<ApiTourCupType>;
+  type?: InputMaybe<DomainTourCupType>;
 };
 
 
-export type ApiMutationUpdateTourcastTableArgs = {
+export type DomainMutationUpdateTourcastTableArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTournamentArgs = {
+export type DomainMutationUpdateTournamentArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateTournamentGroupLocationsArgs = {
+export type DomainMutationUpdateTournamentGroupLocationsArgs = {
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiMutationUpdateUpcomingScheduleArgs = {
+export type DomainMutationUpdateUpcomingScheduleArgs = {
   tourCode: Scalars['String']['input'];
   year?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ApiNewsArticle = {
+export type DomainNewsArticle = {
   readonly __typename: 'NewsArticle';
   readonly aiGenerated?: Maybe<Scalars['Boolean']['output']>;
   readonly analyticsTags?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
-  readonly articleFormType?: Maybe<ApiArticleFormType>;
+  readonly articleFormType?: Maybe<DomainArticleFormType>;
   /** @deprecated Use articleImageAsset */
   readonly articleImage?: Maybe<Scalars['String']['output']>;
   readonly articleImageAlt: Scalars['String']['output'];
-  readonly articleImageAsset?: Maybe<ApiImageAsset>;
+  readonly articleImageAsset?: Maybe<DomainImageAsset>;
   readonly articleLabel?: Maybe<Scalars['String']['output']>;
-  readonly author?: Maybe<ApiNewsArticleAuthor>;
+  readonly author?: Maybe<DomainNewsArticleAuthor>;
   readonly brightcoveId?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use contentTournamentIds */
   readonly contentTournamentId?: Maybe<Scalars['String']['output']>;
@@ -3736,38 +3735,38 @@ export type ApiNewsArticle = {
   readonly isLive: Scalars['Boolean']['output'];
   readonly photoGalleryPath?: Maybe<Scalars['String']['output']>;
   readonly pinned: Scalars['Boolean']['output'];
-  readonly players?: Maybe<ReadonlyArray<ApiArticlePlayer>>;
+  readonly players?: Maybe<ReadonlyArray<DomainArticlePlayer>>;
   readonly publishDate?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly shareURL: Scalars['String']['output'];
-  readonly sponsor?: Maybe<ApiNewsArticleSponsor>;
-  readonly team?: Maybe<ApiRyderCupTeamType>;
+  readonly sponsor?: Maybe<DomainNewsArticleSponsor>;
+  readonly team?: Maybe<DomainRyderCupTeamType>;
   readonly teaserContent?: Maybe<Scalars['String']['output']>;
   readonly teaserHeadline?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use teaserImageOverrideAsset */
   readonly teaserImageOverride?: Maybe<Scalars['String']['output']>;
-  readonly teaserImageOverrideAsset?: Maybe<ApiImageAsset>;
-  readonly topics?: Maybe<ReadonlyArray<ApiContentTopics>>;
+  readonly teaserImageOverrideAsset?: Maybe<DomainImageAsset>;
+  readonly topics?: Maybe<ReadonlyArray<DomainContentTopics>>;
   readonly updateDate?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly url: Scalars['String']['output'];
 };
 
-export type ApiNewsArticleAuthor = {
+export type DomainNewsArticleAuthor = {
   readonly __typename: 'NewsArticleAuthor';
   readonly byLine?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use byLineIconAsset */
   readonly byLineIcon?: Maybe<Scalars['String']['output']>;
-  readonly byLineIconAsset?: Maybe<ApiImageAsset>;
+  readonly byLineIconAsset?: Maybe<DomainImageAsset>;
   readonly byLineLink?: Maybe<Scalars['String']['output']>;
   readonly byLineLinkDisplay?: Maybe<Scalars['String']['output']>;
   readonly firstName: Scalars['String']['output'];
   /** @deprecated Use headshotAsset */
   readonly headshot?: Maybe<Scalars['String']['output']>;
-  readonly headshotAsset?: Maybe<ApiImageAsset>;
+  readonly headshotAsset?: Maybe<DomainImageAsset>;
   readonly lastName: Scalars['String']['output'];
   readonly twitter?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleBlockQuote = {
+export type DomainNewsArticleBlockQuote = {
   readonly __typename: 'NewsArticleBlockQuote';
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly otherAttribute?: Maybe<Scalars['String']['output']>;
@@ -3776,88 +3775,88 @@ export type ApiNewsArticleBlockQuote = {
   readonly quote?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleContentSegment = {
+export type DomainNewsArticleContentSegment = {
   readonly __typename: 'NewsArticleContentSegment';
   readonly data?: Maybe<Scalars['String']['output']>;
-  readonly format?: Maybe<ApiNewsArticleFormat>;
+  readonly format?: Maybe<DomainNewsArticleFormat>;
   readonly id?: Maybe<Scalars['String']['output']>;
-  readonly imageAsset?: Maybe<ApiImageAsset>;
+  readonly imageAsset?: Maybe<DomainImageAsset>;
   readonly imageDescription?: Maybe<Scalars['String']['output']>;
-  readonly imageOrientation?: Maybe<ApiOrientation>;
+  readonly imageOrientation?: Maybe<DomainOrientation>;
   readonly type: Scalars['String']['output'];
   readonly value?: Maybe<Scalars['String']['output']>;
   readonly webViewLink?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleDetails = {
+export type DomainNewsArticleDetails = {
   readonly __typename: 'NewsArticleDetails';
   readonly aiGenerated?: Maybe<Scalars['Boolean']['output']>;
   readonly analyticsTags?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly articleImageAlt: Scalars['String']['output'];
   readonly articleLabel?: Maybe<Scalars['String']['output']>;
   readonly articleSponsor?: Maybe<Scalars['String']['output']>;
-  readonly authorReference?: Maybe<ApiNewsArticleAuthor>;
+  readonly authorReference?: Maybe<DomainNewsArticleAuthor>;
   readonly brandedContent: Scalars['Boolean']['output'];
   readonly canonicalUrl?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tournaments.contentTournamentId */
   readonly contentTournamentId?: Maybe<Scalars['String']['output']>;
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly datePublished: Scalars['AWSTimestamp']['output'];
   readonly disableAds: Scalars['Boolean']['output'];
   readonly franchise: Scalars['String']['output'];
   readonly franchiseDisplayName: Scalars['String']['output'];
   readonly headline: Scalars['String']['output'];
-  readonly hero?: Maybe<ApiNewsArticleHero>;
+  readonly hero?: Maybe<DomainNewsArticleHero>;
   readonly isBreakingNews?: Maybe<Scalars['Boolean']['output']>;
   readonly isLive: Scalars['Boolean']['output'];
   readonly leadVideoId?: Maybe<Scalars['String']['output']>;
   readonly leadVideoTitle?: Maybe<Scalars['String']['output']>;
   readonly longForm?: Maybe<Scalars['Boolean']['output']>;
-  readonly metadata?: Maybe<ApiNewsArticleMetadata>;
-  readonly moreNewsItems: ReadonlyArray<ApiNewsArticle>;
+  readonly metadata?: Maybe<DomainNewsArticleMetadata>;
+  readonly moreNewsItems: ReadonlyArray<DomainNewsArticle>;
   readonly moreNewsTitle?: Maybe<Scalars['String']['output']>;
-  readonly nodes: ReadonlyArray<ApiNewsArticleNode>;
-  readonly overviewNodes?: Maybe<ReadonlyArray<ApiNewsArticleNode>>;
+  readonly nodes: ReadonlyArray<DomainNewsArticleNode>;
+  readonly overviewNodes?: Maybe<ReadonlyArray<DomainNewsArticleNode>>;
   readonly path: Scalars['String']['output'];
   readonly photoPosition?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use players field that contains name and id */
   readonly playerNames?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
-  readonly players?: Maybe<ReadonlyArray<ApiArticlePlayer>>;
+  readonly players?: Maybe<ReadonlyArray<DomainArticlePlayer>>;
   readonly readTime: Scalars['String']['output'];
   readonly relatedFacts?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly shareURL: Scalars['String']['output'];
-  readonly sponsor?: Maybe<ApiNewsArticleSponsor>;
+  readonly sponsor?: Maybe<DomainNewsArticleSponsor>;
   readonly tags?: Maybe<ReadonlyArray<Maybe<Scalars['String']['output']>>>;
-  readonly team?: Maybe<ApiRyderCupTeamType>;
+  readonly team?: Maybe<DomainRyderCupTeamType>;
   readonly teaserAsset?: Maybe<Scalars['String']['output']>;
-  readonly topics?: Maybe<ReadonlyArray<ApiContentTopics>>;
+  readonly topics?: Maybe<ReadonlyArray<DomainContentTopics>>;
   /** @deprecated Use tournaments.tourName */
   readonly tourName?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tournaments.tournamentName */
   readonly tournamentName?: Maybe<Scalars['String']['output']>;
-  readonly tournaments?: Maybe<ReadonlyArray<ApiNewsArticleDetailsTournament>>;
+  readonly tournaments?: Maybe<ReadonlyArray<DomainNewsArticleDetailsTournament>>;
   readonly url: Scalars['String']['output'];
 };
 
-export type ApiNewsArticleDetailsCompressed = {
+export type DomainNewsArticleDetailsCompressed = {
   readonly __typename: 'NewsArticleDetailsCompressed';
   readonly path: Scalars['String']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiNewsArticleDetailsTournament = {
+export type DomainNewsArticleDetailsTournament = {
   readonly __typename: 'NewsArticleDetailsTournament';
   readonly contentTournamentId: Scalars['String']['output'];
   readonly tourName: Scalars['String']['output'];
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiNewsArticleDivider = {
+export type DomainNewsArticleDivider = {
   readonly __typename: 'NewsArticleDivider';
   readonly value?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleEmbedded = {
+export type DomainNewsArticleEmbedded = {
   readonly __typename: 'NewsArticleEmbedded';
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly frameborder?: Maybe<Scalars['Boolean']['output']>;
@@ -3867,36 +3866,36 @@ export type ApiNewsArticleEmbedded = {
   readonly url?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleFormat = {
+export type DomainNewsArticleFormat = {
   readonly __typename: 'NewsArticleFormat';
-  readonly styles?: Maybe<ReadonlyArray<ApiStyle>>;
+  readonly styles?: Maybe<ReadonlyArray<DomainStyle>>;
   readonly variants?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
 };
 
-export type ApiNewsArticleHeader = {
+export type DomainNewsArticleHeader = {
   readonly __typename: 'NewsArticleHeader';
-  readonly headerSegments?: Maybe<ReadonlyArray<ApiNewsArticleHeaderSegment>>;
+  readonly headerSegments?: Maybe<ReadonlyArray<DomainNewsArticleHeaderSegment>>;
   readonly id?: Maybe<Scalars['String']['output']>;
   readonly style?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleHeaderSegment = {
+export type DomainNewsArticleHeaderSegment = {
   readonly __typename: 'NewsArticleHeaderSegment';
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly headerType: Scalars['String']['output'];
-  readonly segments?: Maybe<ReadonlyArray<ApiNewsArticleContentSegment>>;
+  readonly segments?: Maybe<ReadonlyArray<DomainNewsArticleContentSegment>>;
 };
 
-export type ApiNewsArticleHero = {
+export type DomainNewsArticleHero = {
   readonly __typename: 'NewsArticleHero';
   /** @deprecated Use imageAsset */
   readonly image?: Maybe<Scalars['String']['output']>;
-  readonly imageAsset?: Maybe<ApiImageAsset>;
+  readonly imageAsset?: Maybe<DomainImageAsset>;
   readonly imageDescription?: Maybe<Scalars['String']['output']>;
-  readonly video?: Maybe<ApiVideo>;
+  readonly video?: Maybe<DomainVideo>;
 };
 
-export type ApiNewsArticleHowToWatch = {
+export type DomainNewsArticleHowToWatch = {
   readonly __typename: 'NewsArticleHowToWatch';
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly round?: Maybe<Scalars['Int']['output']>;
@@ -3904,75 +3903,75 @@ export type ApiNewsArticleHowToWatch = {
   readonly tournamentId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleImage = {
+export type DomainNewsArticleImage = {
   readonly __typename: 'NewsArticleImage';
-  readonly segments: ReadonlyArray<ApiNewsArticleContentSegment>;
+  readonly segments: ReadonlyArray<DomainNewsArticleContentSegment>;
 };
 
-export type ApiNewsArticleInlineOdds = {
+export type DomainNewsArticleInlineOdds = {
   readonly __typename: 'NewsArticleInlineOdds';
-  readonly marketId: ApiHistoricalOddsId;
+  readonly marketId: DomainHistoricalOddsId;
   readonly playerId: Scalars['String']['output'];
   readonly playerName: Scalars['String']['output'];
   readonly timeStamp?: Maybe<Scalars['AWSDateTime']['output']>;
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiNewsArticleInstagram = {
+export type DomainNewsArticleInstagram = {
   readonly __typename: 'NewsArticleInstagram';
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly url?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleLineBreak = {
+export type DomainNewsArticleLineBreak = {
   readonly __typename: 'NewsArticleLineBreak';
   readonly breakValue?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleLink = {
+export type DomainNewsArticleLink = {
   readonly __typename: 'NewsArticleLink';
-  readonly segments: ReadonlyArray<ApiNewsArticleContentSegment>;
+  readonly segments: ReadonlyArray<DomainNewsArticleContentSegment>;
 };
 
-export type ApiNewsArticleMetadata = {
+export type DomainNewsArticleMetadata = {
   readonly __typename: 'NewsArticleMetadata';
-  readonly metadata?: Maybe<ReadonlyArray<ApiNewsArticleMetadataSegment>>;
+  readonly metadata?: Maybe<ReadonlyArray<DomainNewsArticleMetadataSegment>>;
 };
 
-export type ApiNewsArticleMetadataSegment = {
+export type DomainNewsArticleMetadataSegment = {
   readonly __typename: 'NewsArticleMetadataSegment';
   readonly name: Scalars['String']['output'];
   readonly value?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleNode = ApiArticleOddsTableQuery | ApiCerosEmbedPlugin | ApiExpertPicksNode | ApiNewsArticleBlockQuote | ApiNewsArticleDivider | ApiNewsArticleEmbedded | ApiNewsArticleHeader | ApiNewsArticleHowToWatch | ApiNewsArticleImage | ApiNewsArticleInstagram | ApiNewsArticleLineBreak | ApiNewsArticleLink | ApiNewsArticleOddsGraph | ApiNewsArticleOddsParagraph | ApiNewsArticleParagraph | ApiNewsArticlePhotoGallery | ApiNewsArticlePlayerComparison | ApiNewsArticleScoreCard | ApiNewsArticleStats | ApiNewsArticleText | ApiNewsArticleTweetNode | ApiNewsArticleVideo | ApiNewsArticleWeather | ApiRelatedFactsNode | ApiTglBoxScore | ApiTableFragment | ApiUnorderedListNode;
+export type DomainNewsArticleNode = DomainArticleOddsTableQuery | DomainCerosEmbedPlugin | DomainExpertPicksNode | DomainNewsArticleBlockQuote | DomainNewsArticleDivider | DomainNewsArticleEmbedded | DomainNewsArticleHeader | DomainNewsArticleHowToWatch | DomainNewsArticleImage | DomainNewsArticleInstagram | DomainNewsArticleLineBreak | DomainNewsArticleLink | DomainNewsArticleOddsGraph | DomainNewsArticleOddsParagraph | DomainNewsArticleParagraph | DomainNewsArticlePhotoGallery | DomainNewsArticlePlayerComparison | DomainNewsArticleScoreCard | DomainNewsArticleStats | DomainNewsArticleText | DomainNewsArticleTweetNode | DomainNewsArticleVideo | DomainNewsArticleWeather | DomainRelatedFactsNode | DomainTglBoxScore | DomainTableFragment | DomainUnorderedListNode;
 
-export type ApiNewsArticleOddsGraph = {
+export type DomainNewsArticleOddsGraph = {
   readonly __typename: 'NewsArticleOddsGraph';
-  readonly marketId?: Maybe<ApiHistoricalOddsId>;
-  readonly oddsTimeType?: Maybe<ApiOddsTimeType>;
+  readonly marketId?: Maybe<DomainHistoricalOddsId>;
+  readonly oddsTimeType?: Maybe<DomainOddsTimeType>;
   readonly playerIds?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly round?: Maybe<Scalars['Int']['output']>;
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiNewsArticleOddsParagraph = {
+export type DomainNewsArticleOddsParagraph = {
   readonly __typename: 'NewsArticleOddsParagraph';
-  readonly content: ReadonlyArray<ApiOddsParagraphContent>;
+  readonly content: ReadonlyArray<DomainOddsParagraphContent>;
 };
 
-export type ApiNewsArticleParagraph = {
+export type DomainNewsArticleParagraph = {
   readonly __typename: 'NewsArticleParagraph';
   readonly id?: Maybe<Scalars['String']['output']>;
-  readonly segments: ReadonlyArray<ApiNewsArticleContentSegment>;
+  readonly segments: ReadonlyArray<DomainNewsArticleContentSegment>;
 };
 
-export type ApiNewsArticlePhotoGallery = {
+export type DomainNewsArticlePhotoGallery = {
   readonly __typename: 'NewsArticlePhotoGallery';
-  readonly images: ReadonlyArray<ApiNewsArticleImage>;
+  readonly images: ReadonlyArray<DomainNewsArticleImage>;
 };
 
-export type ApiNewsArticlePlayerComparison = {
+export type DomainNewsArticlePlayerComparison = {
   readonly __typename: 'NewsArticlePlayerComparison';
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly playerIds?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
@@ -3980,18 +3979,18 @@ export type ApiNewsArticlePlayerComparison = {
   readonly season?: Maybe<Scalars['String']['output']>;
   readonly statCategory?: Maybe<Scalars['String']['output']>;
   readonly tournamentId?: Maybe<Scalars['String']['output']>;
-  readonly type: ApiPlayerComparisonDisplay;
+  readonly type: DomainPlayerComparisonDisplay;
 };
 
-export type ApiNewsArticlePlayerTournamentOdds = {
+export type DomainNewsArticlePlayerTournamentOdds = {
   readonly __typename: 'NewsArticlePlayerTournamentOdds';
   readonly playerId: Scalars['String']['output'];
   readonly timeStamp?: Maybe<Scalars['AWSDateTime']['output']>;
   readonly tournamentId: Scalars['String']['output'];
-  readonly tournamentMarketType?: Maybe<ApiOddsMarketType>;
+  readonly tournamentMarketType?: Maybe<DomainOddsMarketType>;
 };
 
-export type ApiNewsArticleScoreCard = {
+export type DomainNewsArticleScoreCard = {
   readonly __typename: 'NewsArticleScoreCard';
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly playerId?: Maybe<Scalars['String']['output']>;
@@ -4001,60 +4000,60 @@ export type ApiNewsArticleScoreCard = {
   readonly tournamentId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleSponsor = {
+export type DomainNewsArticleSponsor = {
   readonly __typename: 'NewsArticleSponsor';
   readonly description?: Maybe<Scalars['String']['output']>;
   readonly gam?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use imageAsset */
   readonly image?: Maybe<Scalars['String']['output']>;
-  readonly imageAsset?: Maybe<ApiImageAsset>;
+  readonly imageAsset?: Maybe<DomainImageAsset>;
   /** @deprecated Use logoAsset */
   readonly logo: Scalars['String']['output'];
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   /** @deprecated Use logoDarkAsset */
   readonly logoDark: Scalars['String']['output'];
-  readonly logoDarkAsset: ApiImageAsset;
+  readonly logoDarkAsset: DomainImageAsset;
   readonly name: Scalars['String']['output'];
   readonly sponsorPrefix?: Maybe<Scalars['String']['output']>;
   readonly websiteUrl?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleStatType =
+export type DomainNewsArticleStatType =
   | 'BY_NUMBERS'
   | 'DOT_CHART'
   | 'LINE_CHART';
 
-export type ApiNewsArticleStats = {
+export type DomainNewsArticleStats = {
   readonly __typename: 'NewsArticleStats';
   readonly playerId?: Maybe<Scalars['String']['output']>;
   readonly playerName?: Maybe<Scalars['String']['output']>;
   readonly season?: Maybe<Scalars['String']['output']>;
-  readonly statType: ApiNewsArticleStatType;
-  readonly stats: ReadonlyArray<ApiContentStat>;
+  readonly statType: DomainNewsArticleStatType;
+  readonly stats: ReadonlyArray<DomainContentStat>;
   readonly tournamentId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleTeaserAsset = {
+export type DomainNewsArticleTeaserAsset = {
   readonly __typename: 'NewsArticleTeaserAsset';
   readonly value?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleText = {
+export type DomainNewsArticleText = {
   readonly __typename: 'NewsArticleText';
   readonly value?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleTweetNode = {
+export type DomainNewsArticleTweetNode = {
   readonly __typename: 'NewsArticleTweetNode';
   readonly tweetId: Scalars['String']['output'];
 };
 
-export type ApiNewsArticleVideo = {
+export type DomainNewsArticleVideo = {
   readonly __typename: 'NewsArticleVideo';
-  readonly video?: Maybe<ApiVideo>;
+  readonly video?: Maybe<DomainVideo>;
 };
 
-export type ApiNewsArticleWeather = {
+export type DomainNewsArticleWeather = {
   readonly __typename: 'NewsArticleWeather';
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly season?: Maybe<Scalars['String']['output']>;
@@ -4062,77 +4061,77 @@ export type ApiNewsArticleWeather = {
   readonly tournamentId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticles = {
+export type DomainNewsArticles = {
   readonly __typename: 'NewsArticles';
-  readonly articles: ReadonlyArray<ApiNewsArticle>;
-  readonly franchiseSponsors?: Maybe<ReadonlyArray<ApiNewsSponsor>>;
+  readonly articles: ReadonlyArray<DomainNewsArticle>;
+  readonly franchiseSponsors?: Maybe<ReadonlyArray<DomainNewsSponsor>>;
   /** @deprecated not needed */
-  readonly integratedComponents: ReadonlyArray<ApiIntegratedComponent>;
+  readonly integratedComponents: ReadonlyArray<DomainIntegratedComponent>;
 };
 
-export type ApiNewsFranchise = {
+export type DomainNewsFranchise = {
   readonly __typename: 'NewsFranchise';
   readonly franchise: Scalars['String']['output'];
   readonly franchiseLabel: Scalars['String']['output'];
 };
 
-export type ApiNewsLetterType =
+export type DomainNewsLetterType =
   | 'GLOBAL'
   | 'TOURNAMENT';
 
-export type ApiNewsSponsor = {
+export type DomainNewsSponsor = {
   readonly __typename: 'NewsSponsor';
   readonly accessibilityText: Scalars['String']['output'];
   readonly backgroundColor: Scalars['String']['output'];
   readonly franchise: Scalars['String']['output'];
   /** @deprecated Use imageAsset */
   readonly image: Scalars['String']['output'];
-  readonly imageAsset: ApiImageAsset;
+  readonly imageAsset: DomainImageAsset;
   readonly label: Scalars['String']['output'];
 };
 
-export type ApiNewsletter = {
+export type DomainNewsletter = {
   readonly __typename: 'Newsletter';
   readonly ctaText: Scalars['String']['output'];
   readonly description?: Maybe<Scalars['String']['output']>;
   readonly gigyaSubscriptionId: Scalars['String']['output'];
   readonly image: Scalars['String']['output'];
-  readonly newsLetterType: ApiNewsLetterType;
+  readonly newsLetterType: DomainNewsLetterType;
   readonly title: Scalars['String']['output'];
-  readonly tourCode?: Maybe<ApiTourCode>;
+  readonly tourCode?: Maybe<DomainTourCode>;
 };
 
-export type ApiNotificationTag = {
+export type DomainNotificationTag = {
   readonly __typename: 'NotificationTag';
   readonly tag: Scalars['String']['output'];
 };
 
-export type ApiNotificationTagInput = {
+export type DomainNotificationTagInput = {
   readonly tag: Scalars['String']['input'];
 };
 
-export type ApiNotificationTagResponse = {
+export type DomainNotificationTagResponse = {
   readonly __typename: 'NotificationTagResponse';
   readonly ok: Scalars['Boolean']['output'];
-  readonly tags: ReadonlyArray<Maybe<ApiNotificationTag>>;
+  readonly tags: ReadonlyArray<Maybe<DomainNotificationTag>>;
 };
 
-export type ApiOddsBanner = {
+export type DomainOddsBanner = {
   readonly __typename: 'OddsBanner';
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly disclaimer: Scalars['String']['output'];
   readonly image: Scalars['String']['output'];
   readonly label: Scalars['String']['output'];
 };
 
-export type ApiOddsCutsOption = {
+export type DomainOddsCutsOption = {
   readonly __typename: 'OddsCutsOption';
-  readonly entity: ApiOddsEntity;
-  readonly noOdds: ApiOddsValues;
-  readonly yesOdds: ApiOddsValues;
+  readonly entity: DomainOddsEntity;
+  readonly noOdds: DomainOddsValues;
+  readonly yesOdds: DomainOddsValues;
 };
 
-export type ApiOddsCutsPlayers = {
+export type DomainOddsCutsPlayers = {
   readonly __typename: 'OddsCutsPlayers';
   readonly countryFlag?: Maybe<Scalars['String']['output']>;
   readonly currentRound?: Maybe<Scalars['Int']['output']>;
@@ -4142,18 +4141,18 @@ export type ApiOddsCutsPlayers = {
   readonly lastName: Scalars['String']['output'];
   readonly matchId?: Maybe<Scalars['Int']['output']>;
   readonly noOdds: Scalars['String']['output'];
-  readonly noOddsSwing?: Maybe<ApiOddsSwing>;
+  readonly noOddsSwing?: Maybe<DomainOddsSwing>;
   readonly noOptionsId: Scalars['String']['output'];
   readonly position: Scalars['String']['output'];
   readonly seed?: Maybe<Scalars['Int']['output']>;
   readonly total: Scalars['String']['output'];
   readonly yesOdds: Scalars['String']['output'];
-  readonly yesOddsSwing?: Maybe<ApiOddsSwing>;
+  readonly yesOddsSwing?: Maybe<DomainOddsSwing>;
   readonly yesOptionsId: Scalars['String']['output'];
 };
 
 /**   Odds Primitives */
-export type ApiOddsEntity = {
+export type DomainOddsEntity = {
   readonly __typename: 'OddsEntity';
   readonly color?: Maybe<Scalars['String']['output']>;
   readonly entityFlagUrl?: Maybe<Scalars['String']['output']>;
@@ -4162,7 +4161,7 @@ export type ApiOddsEntity = {
   readonly flagSurroundColorDark?: Maybe<Scalars['String']['output']>;
   readonly groupNum: Scalars['Int']['output'];
   readonly maxRound: Scalars['Int']['output'];
-  readonly players: ReadonlyArray<ApiOddsPlayer>;
+  readonly players: ReadonlyArray<DomainOddsPlayer>;
   readonly position: Scalars['String']['output'];
   readonly score: Scalars['String']['output'];
   readonly seed?: Maybe<Scalars['Int']['output']>;
@@ -4171,7 +4170,7 @@ export type ApiOddsEntity = {
   readonly totalSort: Scalars['Int']['output'];
 };
 
-export type ApiOddsFinishes = {
+export type DomainOddsFinishes = {
   readonly __typename: 'OddsFinishes';
   readonly countryFlag?: Maybe<Scalars['String']['output']>;
   readonly currentRound?: Maybe<Scalars['Int']['output']>;
@@ -4181,42 +4180,42 @@ export type ApiOddsFinishes = {
   readonly lastName: Scalars['String']['output'];
   readonly matchId?: Maybe<Scalars['Int']['output']>;
   readonly odds: Scalars['String']['output'];
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly optionsId: Scalars['String']['output'];
   readonly seed?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiOddsFinishesOption = ApiBaseOddsOption & {
+export type DomainOddsFinishesOption = DomainBaseOddsOption & {
   readonly __typename: 'OddsFinishesOption';
-  readonly entity: ApiOddsEntity;
-  readonly odds: ApiOddsValues;
+  readonly entity: DomainOddsEntity;
+  readonly odds: DomainOddsValues;
 };
 
-export type ApiOddsFormat =
+export type DomainOddsFormat =
   | 'DECIMAL'
   | 'FRACTIONAL'
   | 'MONEYLINE';
 
-export type ApiOddsGroup = {
+export type DomainOddsGroup = {
   readonly __typename: 'OddsGroup';
   readonly id: Scalars['ID']['output'];
-  readonly matchupPlayers: ReadonlyArray<ApiMatchupsPlayer>;
+  readonly matchupPlayers: ReadonlyArray<DomainMatchupsPlayer>;
   readonly subMarket: Scalars['String']['output'];
 };
 
-export type ApiOddsGroupOptionV2 = ApiBaseOddsOption & {
+export type DomainOddsGroupOptionV2 = DomainBaseOddsOption & {
   readonly __typename: 'OddsGroupOptionV2';
-  readonly entity: ApiOddsEntity;
-  readonly odds: ApiOddsValues;
+  readonly entity: DomainOddsEntity;
+  readonly odds: DomainOddsValues;
 };
 
-export type ApiOddsLeadersOption = ApiBaseOddsOption & {
+export type DomainOddsLeadersOption = DomainBaseOddsOption & {
   readonly __typename: 'OddsLeadersOption';
-  readonly entity: ApiOddsEntity;
-  readonly odds: ApiOddsValues;
+  readonly entity: DomainOddsEntity;
+  readonly odds: DomainOddsValues;
 };
 
-export type ApiOddsLeadersPlayers = {
+export type DomainOddsLeadersPlayers = {
   readonly __typename: 'OddsLeadersPlayers';
   readonly countryFlag?: Maybe<Scalars['String']['output']>;
   readonly currentRound?: Maybe<Scalars['Int']['output']>;
@@ -4226,13 +4225,13 @@ export type ApiOddsLeadersPlayers = {
   readonly lastName: Scalars['String']['output'];
   readonly matchId?: Maybe<Scalars['Int']['output']>;
   readonly odds: Scalars['String']['output'];
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly optionsId: Scalars['String']['output'];
   readonly seed?: Maybe<Scalars['Int']['output']>;
 };
 
 /**   End Market Abstractions */
-export type ApiOddsMarketType =
+export type DomainOddsMarketType =
   | 'FINISHES'
   | 'GROUP_WINNER'
   | 'MATCHUP'
@@ -4240,25 +4239,25 @@ export type ApiOddsMarketType =
   | 'PLAYER_PROPS'
   | 'WINNER';
 
-export type ApiOddsMatchupOptionGroup = {
+export type DomainOddsMatchupOptionGroup = {
   readonly __typename: 'OddsMatchupOptionGroup';
-  readonly options: ReadonlyArray<ApiMatchupOptionV2>;
+  readonly options: ReadonlyArray<DomainMatchupOptionV2>;
 };
 
-export type ApiOddsMatchups = {
+export type DomainOddsMatchups = {
   readonly __typename: 'OddsMatchups';
   readonly id: Scalars['ID']['output'];
-  readonly matchupPlayers: ReadonlyArray<ApiMatchupsPlayer>;
+  readonly matchupPlayers: ReadonlyArray<DomainMatchupsPlayer>;
   readonly subMarket: Scalars['String']['output'];
 };
 
-export type ApiOddsMessage = {
+export type DomainOddsMessage = {
   readonly __typename: 'OddsMessage';
   readonly body: Scalars['String']['output'];
   readonly header: Scalars['String']['output'];
 };
 
-export type ApiOddsNationality = {
+export type DomainOddsNationality = {
   readonly __typename: 'OddsNationality';
   readonly countryFlag?: Maybe<Scalars['String']['output']>;
   readonly currentRound?: Maybe<Scalars['Int']['output']>;
@@ -4268,24 +4267,24 @@ export type ApiOddsNationality = {
   readonly lastName: Scalars['String']['output'];
   readonly matchId?: Maybe<Scalars['Int']['output']>;
   readonly odds: Scalars['String']['output'];
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly optionsId: Scalars['String']['output'];
   readonly seed?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiOddsNationalityOption = ApiBaseOddsOption & {
+export type DomainOddsNationalityOption = DomainBaseOddsOption & {
   readonly __typename: 'OddsNationalityOption';
-  readonly entity: ApiOddsEntity;
-  readonly odds: ApiOddsValues;
+  readonly entity: DomainOddsEntity;
+  readonly odds: DomainOddsValues;
 };
 
-export type ApiOddsOption = ApiOddsCutsPlayers | ApiOddsFinishes | ApiOddsGroup | ApiOddsLeadersPlayers | ApiOddsMatchups | ApiOddsNationality | ApiOddsToWin;
+export type DomainOddsOption = DomainOddsCutsPlayers | DomainOddsFinishes | DomainOddsGroup | DomainOddsLeadersPlayers | DomainOddsMatchups | DomainOddsNationality | DomainOddsToWin;
 
-export type ApiOddsOptionV2 = ApiOddsCutsOption | ApiOddsFinishesOption | ApiOddsGroupOptionV2 | ApiOddsLeadersOption | ApiOddsMatchupOptionGroup | ApiOddsNationalityOption | ApiOddsToWinV2;
+export type DomainOddsOptionV2 = DomainOddsCutsOption | DomainOddsFinishesOption | DomainOddsGroupOptionV2 | DomainOddsLeadersOption | DomainOddsMatchupOptionGroup | DomainOddsNationalityOption | DomainOddsToWinV2;
 
-export type ApiOddsParagraphContent = ApiNewsArticleInlineOdds | ApiNewsArticleText;
+export type DomainOddsParagraphContent = DomainNewsArticleInlineOdds | DomainNewsArticleText;
 
-export type ApiOddsPlayer = {
+export type DomainOddsPlayer = {
   readonly __typename: 'OddsPlayer';
   readonly color?: Maybe<Scalars['String']['output']>;
   readonly countryFlag: Scalars['String']['output'];
@@ -4297,60 +4296,60 @@ export type ApiOddsPlayer = {
   readonly shortName: Scalars['String']['output'];
 };
 
-export type ApiOddsProvider =
+export type DomainOddsProvider =
   | 'BET365'
   | 'DRAFTKINGS'
   | 'ESPNBET'
   | 'FANDUEL'
   | 'MGM';
 
-export type ApiOddsSwing =
+export type DomainOddsSwing =
   | 'CONSTANT'
   | 'DOWN'
   | 'UP';
 
 /**   Odds Table */
-export type ApiOddsTable = {
+export type DomainOddsTable = {
   readonly __typename: 'OddsTable';
-  readonly markets: ReadonlyArray<ApiArticleOddsMarkets>;
-  readonly players: ReadonlyArray<ApiPlayerMarketsRow>;
-  readonly provider?: Maybe<ApiOddsProvider>;
+  readonly markets: ReadonlyArray<DomainArticleOddsMarkets>;
+  readonly players: ReadonlyArray<DomainPlayerMarketsRow>;
+  readonly provider?: Maybe<DomainOddsProvider>;
   readonly tournamentId: Scalars['String']['output'];
   readonly tournamentName: Scalars['String']['output'];
 };
 
 /**  Odds Graph */
-export type ApiOddsTimeType =
+export type DomainOddsTimeType =
   | 'HOLE';
 
-export type ApiOddsTimeline = {
+export type DomainOddsTimeline = {
   readonly __typename: 'OddsTimeline';
   readonly countryCode: Scalars['String']['output'];
-  readonly oddsProvider: ApiOddsProvider;
-  readonly players: ReadonlyArray<ApiOddsTimelinePlayer>;
+  readonly oddsProvider: DomainOddsProvider;
+  readonly players: ReadonlyArray<DomainOddsTimelinePlayer>;
   readonly round: Scalars['String']['output'];
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiOddsTimelinePlayer = {
+export type DomainOddsTimelinePlayer = {
   readonly __typename: 'OddsTimelinePlayer';
-  readonly data: ReadonlyArray<ApiOddsTimelinePoint>;
+  readonly data: ReadonlyArray<DomainOddsTimelinePoint>;
   readonly playerColor: Scalars['String']['output'];
   readonly playerId: Scalars['String']['output'];
   readonly playerName: Scalars['String']['output'];
 };
 
-export type ApiOddsTimelinePoint = {
+export type DomainOddsTimelinePoint = {
   readonly __typename: 'OddsTimelinePoint';
   readonly holeNumber?: Maybe<Scalars['Int']['output']>;
   readonly holeSequence?: Maybe<Scalars['Int']['output']>;
   readonly odds: Scalars['String']['output'];
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly round?: Maybe<Scalars['Int']['output']>;
   readonly time: Scalars['AWSTimestamp']['output'];
 };
 
-export type ApiOddsToWin = {
+export type DomainOddsToWin = {
   readonly __typename: 'OddsToWin';
   readonly countryFlag?: Maybe<Scalars['String']['output']>;
   readonly currentRound?: Maybe<Scalars['Int']['output']>;
@@ -4360,7 +4359,7 @@ export type ApiOddsToWin = {
   readonly lastName: Scalars['String']['output'];
   readonly matchId?: Maybe<Scalars['Int']['output']>;
   readonly odds: Scalars['String']['output'];
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly optionsId: Scalars['String']['output'];
   readonly position: Scalars['String']['output'];
   readonly score: Scalars['String']['output'];
@@ -4369,32 +4368,32 @@ export type ApiOddsToWin = {
   readonly total: Scalars['String']['output'];
 };
 
-export type ApiOddsToWinMarket = {
+export type DomainOddsToWinMarket = {
   readonly __typename: 'OddsToWinMarket';
-  readonly message?: Maybe<ApiOddsMessage>;
+  readonly message?: Maybe<DomainOddsMessage>;
   readonly oddsEnabled: Scalars['Boolean']['output'];
   readonly oddsToWinId: Scalars['ID']['output'];
-  readonly players: ReadonlyArray<ApiOddsToWinPlayer>;
+  readonly players: ReadonlyArray<DomainOddsToWinPlayer>;
 };
 
 /**  Odds V3 */
-export type ApiOddsToWinMarketCompressed = {
+export type DomainOddsToWinMarketCompressed = {
   readonly __typename: 'OddsToWinMarketCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiOddsToWinPlayer = {
+export type DomainOddsToWinPlayer = {
   readonly __typename: 'OddsToWinPlayer';
   readonly odds: Scalars['String']['output'];
-  readonly oddsDirection: ApiOddsSwing;
+  readonly oddsDirection: DomainOddsSwing;
   readonly oddsSort: Scalars['Float']['output'];
   readonly optionId?: Maybe<Scalars['String']['output']>;
   readonly playerId: Scalars['ID']['output'];
   readonly url?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiOddsToWinTracker = {
+export type DomainOddsToWinTracker = {
   readonly __typename: 'OddsToWinTracker';
   readonly title: Scalars['String']['output'];
   /** @deprecated use new tournamentIds array */
@@ -4402,29 +4401,29 @@ export type ApiOddsToWinTracker = {
   readonly tournamentIds?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
 };
 
-export type ApiOddsToWinV2 = ApiBaseOddsOption & {
+export type DomainOddsToWinV2 = DomainBaseOddsOption & {
   readonly __typename: 'OddsToWinV2';
-  readonly entity: ApiOddsEntity;
-  readonly odds: ApiOddsValues;
+  readonly entity: DomainOddsEntity;
+  readonly odds: DomainOddsValues;
 };
 
-export type ApiOddsUpdateInput = {
-  readonly oddsFormat: ApiOddsFormat;
-  readonly provider: ApiOddsProvider;
+export type DomainOddsUpdateInput = {
+  readonly oddsFormat: DomainOddsFormat;
+  readonly provider: DomainOddsProvider;
 };
 
-export type ApiOddsValues = {
+export type DomainOddsValues = {
   readonly __typename: 'OddsValues';
   readonly odds: Scalars['String']['output'];
-  readonly oddsSwing: ApiOddsSwing;
+  readonly oddsSwing: DomainOddsSwing;
   readonly optionId: Scalars['ID']['output'];
 };
 
-export type ApiOrientation =
+export type DomainOrientation =
   | 'Landscape'
   | 'Portrait';
 
-export type ApiOutComeIqHole = {
+export type DomainOutComeIqHole = {
   readonly __typename: 'OutComeIQHole';
   readonly euMatchWin: Scalars['Float']['output'];
   readonly holeNum: Scalars['Int']['output'];
@@ -4432,50 +4431,50 @@ export type ApiOutComeIqHole = {
   readonly usMatchWin: Scalars['Float']['output'];
 };
 
-export type ApiOverviewStat = {
+export type DomainOverviewStat = {
   readonly __typename: 'OverviewStat';
-  readonly players: ReadonlyArray<ApiLeaderStat>;
+  readonly players: ReadonlyArray<DomainLeaderStat>;
   readonly statId: Scalars['String']['output'];
   readonly statName: Scalars['String']['output'];
   readonly tourAvg?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiOverviewStats = {
+export type DomainOverviewStats = {
   readonly __typename: 'OverviewStats';
-  readonly categories: ReadonlyArray<ApiStatCategoryConfig>;
-  readonly stats: ReadonlyArray<ApiOverviewStat>;
-  readonly tourCode: ApiTourCode;
+  readonly categories: ReadonlyArray<DomainStatCategoryConfig>;
+  readonly stats: ReadonlyArray<DomainOverviewStat>;
+  readonly tourCode: DomainTourCode;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiPageMetadata = {
+export type DomainPageMetadata = {
   readonly __typename: 'PageMetadata';
-  readonly metadata: ReadonlyArray<ApiPageMetadataSegment>;
+  readonly metadata: ReadonlyArray<DomainPageMetadataSegment>;
 };
 
-export type ApiPageMetadataSegment = {
+export type DomainPageMetadataSegment = {
   readonly __typename: 'PageMetadataSegment';
   readonly name: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiPaginationDetails = {
+export type DomainPaginationDetails = {
   readonly __typename: 'PaginationDetails';
   readonly limit?: Maybe<Scalars['Int']['output']>;
   readonly offset?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiPlatform =
+export type DomainPlatform =
   | 'ANDROID'
   | 'IOS'
   | 'WEB';
 
-export type ApiPlayer = {
+export type DomainPlayer = {
   readonly __typename: 'Player';
   readonly abbreviations: Scalars['String']['output'];
   readonly abbreviationsAccessibilityText: Scalars['String']['output'];
   readonly amateur: Scalars['Boolean']['output'];
-  readonly assets?: Maybe<ReadonlyArray<ApiPlayerAsset>>;
+  readonly assets?: Maybe<ReadonlyArray<DomainPlayerAsset>>;
   readonly bettingProfile?: Maybe<Scalars['String']['output']>;
   readonly country: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -4491,19 +4490,19 @@ export type ApiPlayer = {
   readonly tourBound?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiPlayerAsset = ApiTourBoundAsset;
+export type DomainPlayerAsset = DomainTourBoundAsset;
 
-export type ApiPlayerBio = {
+export type DomainPlayerBio = {
   readonly __typename: 'PlayerBio';
   readonly age?: Maybe<Scalars['String']['output']>;
-  readonly birthplace: ApiPlayerBioLocation;
+  readonly birthplace: DomainPlayerBioLocation;
   readonly born?: Maybe<Scalars['String']['output']>;
   readonly bornAccessibilityText?: Maybe<Scalars['String']['output']>;
   readonly careerEarnings?: Maybe<Scalars['String']['output']>;
   readonly deceased: Scalars['Boolean']['output'];
   readonly deceasedDate?: Maybe<Scalars['String']['output']>;
   readonly degree?: Maybe<Scalars['String']['output']>;
-  readonly exemptions?: Maybe<ReadonlyArray<ApiPlayerBioExemption>>;
+  readonly exemptions?: Maybe<ReadonlyArray<DomainPlayerBioExemption>>;
   readonly family?: Maybe<Scalars['String']['output']>;
   readonly graduationYear?: Maybe<Scalars['String']['output']>;
   readonly heightImperial?: Maybe<Scalars['String']['output']>;
@@ -4511,28 +4510,28 @@ export type ApiPlayerBio = {
   readonly heightMeters?: Maybe<Scalars['String']['output']>;
   readonly overview?: Maybe<Scalars['String']['output']>;
   readonly personal?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
-  readonly playsFrom: ApiPlayerBioLocation;
+  readonly playsFrom: DomainPlayerBioLocation;
   readonly primaryTour?: Maybe<Scalars['String']['output']>;
   readonly pronunciation?: Maybe<Scalars['String']['output']>;
-  readonly residence: ApiPlayerBioLocation;
+  readonly residence: DomainPlayerBioLocation;
   readonly school?: Maybe<Scalars['String']['output']>;
-  readonly social?: Maybe<ReadonlyArray<ApiPlayerBioSocial>>;
+  readonly social?: Maybe<ReadonlyArray<DomainPlayerBioSocial>>;
   /** @deprecated No data for this field, use primaryTour */
-  readonly tours: ReadonlyArray<ApiTourCode>;
+  readonly tours: ReadonlyArray<DomainTourCode>;
   readonly turnedPro?: Maybe<Scalars['String']['output']>;
   readonly websiteURL?: Maybe<Scalars['String']['output']>;
   readonly weightImperial?: Maybe<Scalars['String']['output']>;
   readonly weightKilograms?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayerBioExemption = {
+export type DomainPlayerBioExemption = {
   readonly __typename: 'PlayerBioExemption';
   readonly description?: Maybe<Scalars['String']['output']>;
   readonly expirationDate?: Maybe<Scalars['String']['output']>;
-  readonly tour?: Maybe<ApiTourCode>;
+  readonly tour?: Maybe<DomainTourCode>;
 };
 
-export type ApiPlayerBioLocation = {
+export type DomainPlayerBioLocation = {
   readonly __typename: 'PlayerBioLocation';
   readonly city?: Maybe<Scalars['String']['output']>;
   readonly country?: Maybe<Scalars['String']['output']>;
@@ -4541,13 +4540,13 @@ export type ApiPlayerBioLocation = {
   readonly stateCode?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayerBioSocial = {
+export type DomainPlayerBioSocial = {
   readonly __typename: 'PlayerBioSocial';
-  readonly type: ApiSocialType;
+  readonly type: DomainSocialType;
   readonly url: Scalars['String']['output'];
 };
 
-export type ApiPlayerBioWrapper = {
+export type DomainPlayerBioWrapper = {
   readonly __typename: 'PlayerBioWrapper';
   readonly bioLink: Scalars['String']['output'];
   readonly country: Scalars['String']['output'];
@@ -4557,24 +4556,24 @@ export type ApiPlayerBioWrapper = {
   readonly id: Scalars['ID']['output'];
   readonly lastName: Scalars['String']['output'];
   readonly owgr?: Maybe<Scalars['Int']['output']>;
-  readonly playerBio?: Maybe<ApiPlayerBio>;
-  readonly rank?: Maybe<ApiBioRank>;
+  readonly playerBio?: Maybe<DomainPlayerBio>;
+  readonly rank?: Maybe<DomainBioRank>;
 };
 
-export type ApiPlayerComparison = {
+export type DomainPlayerComparison = {
   readonly __typename: 'PlayerComparison';
-  readonly category: ApiPlayerComparisonCategory;
-  readonly categoryPills: ReadonlyArray<ApiPlayerComparisonCategoryPill>;
+  readonly category: DomainPlayerComparisonCategory;
+  readonly categoryPills: ReadonlyArray<DomainPlayerComparisonCategoryPill>;
   readonly displaySeason: Scalars['String']['output'];
   readonly noDataMessage: Scalars['String']['output'];
-  readonly seasonPills: ReadonlyArray<ApiStatYearPills>;
-  readonly table: ApiPlayerComparisonTable;
-  readonly tourCode: ApiTourCode;
+  readonly seasonPills: ReadonlyArray<DomainStatYearPills>;
+  readonly table: DomainPlayerComparisonTable;
+  readonly tourCode: DomainTourCode;
   readonly tournamentId?: Maybe<Scalars['String']['output']>;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiPlayerComparisonCategory =
+export type DomainPlayerComparisonCategory =
   | 'APPROACH_GREEN'
   | 'AROUND_GREEN'
   | 'OFF_TEE'
@@ -4582,17 +4581,17 @@ export type ApiPlayerComparisonCategory =
   | 'SCORING'
   | 'STROKES_GAINED';
 
-export type ApiPlayerComparisonCategoryPill = {
+export type DomainPlayerComparisonCategoryPill = {
   readonly __typename: 'PlayerComparisonCategoryPill';
-  readonly category: ApiPlayerComparisonCategory;
+  readonly category: DomainPlayerComparisonCategory;
   readonly displayText: Scalars['String']['output'];
 };
 
-export type ApiPlayerComparisonDisplay =
+export type DomainPlayerComparisonDisplay =
   | 'GRAPH'
   | 'TABLE';
 
-export type ApiPlayerComparisonHeader = {
+export type DomainPlayerComparisonHeader = {
   readonly __typename: 'PlayerComparisonHeader';
   readonly country?: Maybe<Scalars['String']['output']>;
   readonly displayText: Scalars['String']['output'];
@@ -4600,33 +4599,33 @@ export type ApiPlayerComparisonHeader = {
   readonly yearData: Scalars['Boolean']['output'];
 };
 
-export type ApiPlayerComparisonOdds = {
+export type DomainPlayerComparisonOdds = {
   readonly __typename: 'PlayerComparisonOdds';
   readonly color: Scalars['String']['output'];
   readonly country: Scalars['String']['output'];
   readonly countryName: Scalars['String']['output'];
   readonly displayName: Scalars['String']['output'];
-  readonly oddsSwing: ApiOddsSwing;
+  readonly oddsSwing: DomainOddsSwing;
   readonly oddsToWin: Scalars['String']['output'];
   readonly playerId: Scalars['ID']['output'];
-  readonly provider: ApiOddsProvider;
+  readonly provider: DomainOddsProvider;
 };
 
-export type ApiPlayerComparisonRow = {
+export type DomainPlayerComparisonRow = {
   readonly __typename: 'PlayerComparisonRow';
   readonly statId: Scalars['String']['output'];
   readonly statName: Scalars['String']['output'];
-  readonly values: ReadonlyArray<ApiPlayerComparisonValue>;
+  readonly values: ReadonlyArray<DomainPlayerComparisonValue>;
 };
 
-export type ApiPlayerComparisonTable = {
+export type DomainPlayerComparisonTable = {
   readonly __typename: 'PlayerComparisonTable';
   readonly header: Scalars['String']['output'];
-  readonly headerRow: ReadonlyArray<ApiPlayerComparisonHeader>;
-  readonly rows: ReadonlyArray<ApiPlayerComparisonRow>;
+  readonly headerRow: ReadonlyArray<DomainPlayerComparisonHeader>;
+  readonly rows: ReadonlyArray<DomainPlayerComparisonRow>;
 };
 
-export type ApiPlayerComparisonValue = {
+export type DomainPlayerComparisonValue = {
   readonly __typename: 'PlayerComparisonValue';
   readonly bold: Scalars['Boolean']['output'];
   readonly displayValue: Scalars['String']['output'];
@@ -4634,7 +4633,7 @@ export type ApiPlayerComparisonValue = {
   readonly rankDeviation?: Maybe<Scalars['Float']['output']>;
 };
 
-export type ApiPlayerCourse = {
+export type DomainPlayerCourse = {
   readonly __typename: 'PlayerCourse';
   readonly courseCity: Scalars['String']['output'];
   readonly courseCountry: Scalars['String']['output'];
@@ -4644,18 +4643,18 @@ export type ApiPlayerCourse = {
   readonly courseName: Scalars['String']['output'];
   readonly courseState?: Maybe<Scalars['String']['output']>;
   readonly cupEyebrowText: Scalars['String']['output'];
-  readonly overview: ReadonlyArray<ApiPlayerProfileOverviewItem>;
-  readonly overviewInfo?: Maybe<ApiCourseOverviewInfo>;
-  readonly tournaments: ReadonlyArray<ApiCourseResultsTournament>;
+  readonly overview: ReadonlyArray<DomainPlayerProfileOverviewItem>;
+  readonly overviewInfo?: Maybe<DomainCourseOverviewInfo>;
+  readonly tournaments: ReadonlyArray<DomainCourseResultsTournament>;
 };
 
-export type ApiPlayerDirectory = {
+export type DomainPlayerDirectory = {
   readonly __typename: 'PlayerDirectory';
-  readonly players: ReadonlyArray<ApiPlayerDirectoryPlayer>;
-  readonly tourCode: ApiTourCode;
+  readonly players: ReadonlyArray<DomainPlayerDirectoryPlayer>;
+  readonly tourCode: DomainTourCode;
 };
 
-export type ApiPlayerDirectoryBio = {
+export type DomainPlayerDirectoryBio = {
   readonly __typename: 'PlayerDirectoryBio';
   readonly age?: Maybe<Scalars['String']['output']>;
   readonly education?: Maybe<Scalars['String']['output']>;
@@ -4663,7 +4662,7 @@ export type ApiPlayerDirectoryBio = {
   readonly turnedPro?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayerDirectoryPlayer = {
+export type DomainPlayerDirectoryPlayer = {
   readonly __typename: 'PlayerDirectoryPlayer';
   readonly alphaSort: Scalars['String']['output'];
   readonly country: Scalars['String']['output'];
@@ -4675,11 +4674,11 @@ export type ApiPlayerDirectoryPlayer = {
   readonly id: Scalars['ID']['output'];
   readonly isActive: Scalars['Boolean']['output'];
   readonly lastName: Scalars['String']['output'];
-  readonly playerBio: ApiPlayerDirectoryBio;
+  readonly playerBio: DomainPlayerDirectoryBio;
   readonly shortName: Scalars['String']['output'];
 };
 
-export type ApiPlayerField = {
+export type DomainPlayerField = {
   readonly __typename: 'PlayerField';
   readonly alphaSort: Scalars['String']['output'];
   readonly alternate: Scalars['Boolean']['output'];
@@ -4700,11 +4699,11 @@ export type ApiPlayerField = {
   readonly rankingPoints?: Maybe<Scalars['String']['output']>;
   readonly shortName: Scalars['String']['output'];
   readonly status: Scalars['String']['output'];
-  readonly teammate?: Maybe<ApiPlayerFieldTeammate>;
+  readonly teammate?: Maybe<DomainPlayerFieldTeammate>;
   readonly withdrawn: Scalars['Boolean']['output'];
 };
 
-export type ApiPlayerFieldTeammate = {
+export type DomainPlayerFieldTeammate = {
   readonly __typename: 'PlayerFieldTeammate';
   readonly alphaSort: Scalars['String']['output'];
   readonly alternate: Scalars['Boolean']['output'];
@@ -4727,7 +4726,7 @@ export type ApiPlayerFieldTeammate = {
   readonly withdrawn: Scalars['Boolean']['output'];
 };
 
-export type ApiPlayerFinishStats = {
+export type DomainPlayerFinishStats = {
   readonly __typename: 'PlayerFinishStats';
   readonly countryCode: Scalars['String']['output'];
   readonly countryName: Scalars['String']['output'];
@@ -4738,17 +4737,17 @@ export type ApiPlayerFinishStats = {
   readonly rank: Scalars['String']['output'];
   readonly statId: Scalars['String']['output'];
   readonly statName: Scalars['String']['output'];
-  readonly statValues: ReadonlyArray<ApiFinishStatValue>;
+  readonly statValues: ReadonlyArray<DomainFinishStatValue>;
   readonly tourAvg: Scalars['String']['output'];
 };
 
-export type ApiPlayerGroup = {
+export type DomainPlayerGroup = {
   readonly __typename: 'PlayerGroup';
-  readonly fieldGroups: ReadonlyArray<ApiFieldGroup>;
+  readonly fieldGroups: ReadonlyArray<DomainFieldGroup>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiPlayerHubArticleLink = {
+export type DomainPlayerHubArticleLink = {
   readonly __typename: 'PlayerHubArticleLink';
   readonly aiGenerated?: Maybe<Scalars['Boolean']['output']>;
   readonly analyticsTags?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
@@ -4757,97 +4756,97 @@ export type ApiPlayerHubArticleLink = {
   readonly contentTournamentIds?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly franchise: Scalars['String']['output'];
   readonly franchiseDisplayName: Scalars['String']['output'];
-  readonly players?: Maybe<ReadonlyArray<ApiArticlePlayer>>;
+  readonly players?: Maybe<ReadonlyArray<DomainArticlePlayer>>;
   /**   Optional sponsor for sponsored articles */
-  readonly sponsor?: Maybe<ApiNewsArticleSponsor>;
-  readonly thumbnail?: Maybe<ApiImageAsset>;
+  readonly sponsor?: Maybe<DomainNewsArticleSponsor>;
+  readonly thumbnail?: Maybe<DomainImageAsset>;
   readonly title: Scalars['String']['output'];
   readonly webviewUrl: Scalars['String']['output'];
 };
 
-export type ApiPlayerHubArticlesWidget = {
+export type DomainPlayerHubArticlesWidget = {
   readonly __typename: 'PlayerHubArticlesWidget';
-  readonly articles: ReadonlyArray<ApiPlayerHubArticleLink>;
-  readonly icon: ApiPlayerHubWidgetIcon;
+  readonly articles: ReadonlyArray<DomainPlayerHubArticleLink>;
+  readonly icon: DomainPlayerHubWidgetIcon;
   /**   Optional widget sponsor */
-  readonly sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
+  readonly sponsor?: Maybe<DomainPlayerHubWidgetSponsor>;
   readonly subTitle?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiPlayerHubDetailData = {
+export type DomainPlayerHubDetailData = {
   readonly __typename: 'PlayerHubDetailData';
   readonly data: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiPlayerHubFooter = {
+export type DomainPlayerHubFooter = {
   readonly __typename: 'PlayerHubFooter';
-  readonly logoAsset: ApiImageAsset;
-  readonly logoAssetDark: ApiImageAsset;
-  readonly sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
+  readonly logoAsset: DomainImageAsset;
+  readonly logoAssetDark: DomainImageAsset;
+  readonly sponsor?: Maybe<DomainPlayerHubWidgetSponsor>;
 };
 
-export type ApiPlayerHubHeader = {
+export type DomainPlayerHubHeader = {
   readonly __typename: 'PlayerHubHeader';
-  readonly sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
+  readonly sponsor?: Maybe<DomainPlayerHubWidgetSponsor>;
   readonly text: Scalars['String']['output'];
 };
 
-export type ApiPlayerHubHoleDetailShotTrail = {
+export type DomainPlayerHubHoleDetailShotTrail = {
   readonly __typename: 'PlayerHubHoleDetailShotTrail';
   readonly color: Scalars['String']['output'];
   readonly finalShot: Scalars['Boolean']['output'];
-  readonly from: ApiPlayerHubHoleDetailShotTrailCoordinates;
+  readonly from: DomainPlayerHubHoleDetailShotTrailCoordinates;
   readonly markerText: Scalars['String']['output'];
   readonly shotNumber: Scalars['Int']['output'];
   readonly showMarker: Scalars['Boolean']['output'];
-  readonly strokeType: ApiHoleStrokeType;
-  readonly to: ApiPlayerHubHoleDetailShotTrailCoordinates;
+  readonly strokeType: DomainHoleStrokeType;
+  readonly to: DomainPlayerHubHoleDetailShotTrailCoordinates;
 };
 
-export type ApiPlayerHubHoleDetailShotTrailCoordinates = {
+export type DomainPlayerHubHoleDetailShotTrailCoordinates = {
   readonly __typename: 'PlayerHubHoleDetailShotTrailCoordinates';
   readonly x: Scalars['Float']['output'];
   readonly y: Scalars['Float']['output'];
 };
 
-export type ApiPlayerHubHoleDetailWidget = {
+export type DomainPlayerHubHoleDetailWidget = {
   readonly __typename: 'PlayerHubHoleDetailWidget';
-  readonly dataElements: ReadonlyArray<ApiPlayerHubDetailData>;
-  readonly flagCoords?: Maybe<ApiPlayerHubHoleDetailShotTrailCoordinates>;
-  readonly holePickleAsset: ApiImageAsset;
-  readonly icon: ApiPlayerHubWidgetIcon;
-  readonly shots: ReadonlyArray<ApiPlayerHubHoleDetailShotTrail>;
+  readonly dataElements: ReadonlyArray<DomainPlayerHubDetailData>;
+  readonly flagCoords?: Maybe<DomainPlayerHubHoleDetailShotTrailCoordinates>;
+  readonly holePickleAsset: DomainImageAsset;
+  readonly icon: DomainPlayerHubWidgetIcon;
+  readonly shots: ReadonlyArray<DomainPlayerHubHoleDetailShotTrail>;
   /**   Optional widget sponsor */
-  readonly sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
+  readonly sponsor?: Maybe<DomainPlayerHubWidgetSponsor>;
   readonly subTitle?: Maybe<Scalars['String']['output']>;
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayerHubLeaderboardWidget = {
+export type DomainPlayerHubLeaderboardWidget = {
   readonly __typename: 'PlayerHubLeaderboardWidget';
-  readonly action: ApiPlayerHubMessageBannerAction;
+  readonly action: DomainPlayerHubMessageBannerAction;
   readonly earnings?: Maybe<Scalars['String']['output']>;
   /**   Used to show if there are player stories available for this player or not */
   readonly hasStoryContent: Scalars['Boolean']['output'];
-  readonly icon: ApiPlayerHubWidgetIcon;
+  readonly icon: DomainPlayerHubWidgetIcon;
   readonly movementAmount: Scalars['String']['output'];
   /**   Leaderboard movement amount */
-  readonly movementDirection: ApiLeaderboardMovement;
+  readonly movementDirection: DomainLeaderboardMovement;
   /**   Player Icon used for Hot Streak identification */
-  readonly playerIcon?: Maybe<ApiLeaderboardPlayerIcon>;
+  readonly playerIcon?: Maybe<DomainLeaderboardPlayerIcon>;
   /**   Standard leaderboard position data */
   readonly position: Scalars['String']['output'];
-  readonly rankLogos?: Maybe<ApiSignatureEventsRankLogos>;
+  readonly rankLogos?: Maybe<DomainSignatureEventsRankLogos>;
   readonly round?: Maybe<Scalars['String']['output']>;
   readonly roundDisplay: Scalars['String']['output'];
   readonly roundHeader: Scalars['String']['output'];
   readonly roundNum: Scalars['Int']['output'];
   /**   Final scores by round */
   readonly roundScores: ReadonlyArray<Scalars['String']['output']>;
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   /**   Round Status and display information */
   readonly roundStatusDisplay: Scalars['String']['output'];
   readonly subTitle: Scalars['String']['output'];
@@ -4855,25 +4854,25 @@ export type ApiPlayerHubLeaderboardWidget = {
   readonly thru?: Maybe<Scalars['String']['output']>;
   readonly total?: Maybe<Scalars['String']['output']>;
   /**   Tells the widget what structure to display in */
-  readonly widgetDisplay: ApiPlayerHubLeaderboardWidgetDisplay;
+  readonly widgetDisplay: DomainPlayerHubLeaderboardWidgetDisplay;
 };
 
-export type ApiPlayerHubLeaderboardWidgetDisplay =
+export type DomainPlayerHubLeaderboardWidgetDisplay =
   | 'INACTIVE'
   | 'IN_PROGRESS'
   | 'TOURNAMENT_OFFICIAL';
 
 /**   Possible message banner targets */
-export type ApiPlayerHubMessageBannerAction =
+export type DomainPlayerHubMessageBannerAction =
   | 'LEADERBOARD'
   | 'NONE'
   | 'PROFILE'
   | 'SCORECARD';
 
-export type ApiPlayerHubMessageBannerWidget = {
+export type DomainPlayerHubMessageBannerWidget = {
   readonly __typename: 'PlayerHubMessageBannerWidget';
   /**   optional action should the message have a click target */
-  readonly action: ApiPlayerHubMessageBannerAction;
+  readonly action: DomainPlayerHubMessageBannerAction;
   /**   optional background color override */
   readonly background?: Maybe<Scalars['String']['output']>;
   /**   Message to display */
@@ -4882,91 +4881,91 @@ export type ApiPlayerHubMessageBannerWidget = {
   readonly textColor?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayerHubPlayer = {
+export type DomainPlayerHubPlayer = {
   readonly __typename: 'PlayerHubPlayer';
   readonly country: Scalars['String']['output'];
   readonly countryCode: Scalars['String']['output'];
-  readonly footer?: Maybe<ApiPlayerHubFooter>;
-  readonly header?: Maybe<ApiPlayerHubHeader>;
+  readonly footer?: Maybe<DomainPlayerHubFooter>;
+  readonly header?: Maybe<DomainPlayerHubHeader>;
   readonly playerId: Scalars['ID']['output'];
   readonly playerName: Scalars['String']['output'];
   readonly tournamentId: Scalars['String']['output'];
-  readonly widgets: ReadonlyArray<ApiPlayerHubWidget>;
+  readonly widgets: ReadonlyArray<DomainPlayerHubWidget>;
 };
 
 /**  PLAYER HUB */
-export type ApiPlayerHubPlayerCompressed = {
+export type DomainPlayerHubPlayerCompressed = {
   readonly __typename: 'PlayerHubPlayerCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiPlayerHubRecapWidget = {
+export type DomainPlayerHubRecapWidget = {
   readonly __typename: 'PlayerHubRecapWidget';
-  readonly icon: ApiPlayerHubWidgetIcon;
+  readonly icon: DomainPlayerHubWidgetIcon;
   readonly recap: Scalars['String']['output'];
   readonly roundDisplay: Scalars['String']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   /**   Round Status and display information */
   readonly roundStatusDisplay: Scalars['String']['output'];
   /**   Optional widget sponsor */
-  readonly sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
+  readonly sponsor?: Maybe<DomainPlayerHubWidgetSponsor>;
   readonly subTitle?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayerHubShotCommentaryWidget = {
+export type DomainPlayerHubShotCommentaryWidget = {
   readonly __typename: 'PlayerHubShotCommentaryWidget';
   readonly commentary: Scalars['String']['output'];
-  readonly icon: ApiPlayerHubWidgetIcon;
+  readonly icon: DomainPlayerHubWidgetIcon;
   readonly shotTitle: Scalars['String']['output'];
   readonly shotTitleBackgroundColor: Scalars['String']['output'];
   /**   Optional widget sponsor */
-  readonly sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
+  readonly sponsor?: Maybe<DomainPlayerHubWidgetSponsor>;
   readonly subTitle: Scalars['String']['output'];
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayerHubStatisticsWidget = {
+export type DomainPlayerHubStatisticsWidget = {
   readonly __typename: 'PlayerHubStatisticsWidget';
-  readonly icon: ApiPlayerHubWidgetIcon;
+  readonly icon: DomainPlayerHubWidgetIcon;
   /**   Optional widget sponsor */
-  readonly sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
-  readonly stats: ReadonlyArray<ApiPlayerHubDetailData>;
+  readonly sponsor?: Maybe<DomainPlayerHubWidgetSponsor>;
+  readonly stats: ReadonlyArray<DomainPlayerHubDetailData>;
   readonly subTitle: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiPlayerHubTeeTimesWidget = {
+export type DomainPlayerHubTeeTimesWidget = {
   readonly __typename: 'PlayerHubTeeTimesWidget';
   readonly currentLocation?: Maybe<Scalars['String']['output']>;
   readonly displayTeeTime: Scalars['Boolean']['output'];
-  readonly icon: ApiPlayerHubWidgetIcon;
+  readonly icon: DomainPlayerHubWidgetIcon;
   /**   Players and the group tee time */
-  readonly players: ReadonlyArray<ApiPlayer>;
+  readonly players: ReadonlyArray<DomainPlayer>;
   readonly roundDisplay: Scalars['String']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   /**   Round Status and display information */
   readonly roundStatusDisplay: Scalars['String']['output'];
   /**   Optional widget sponsor */
-  readonly sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
+  readonly sponsor?: Maybe<DomainPlayerHubWidgetSponsor>;
   readonly teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly timezone: Scalars['String']['output'];
 };
 
-export type ApiPlayerHubTournamentWidget = {
+export type DomainPlayerHubTournamentWidget = {
   readonly __typename: 'PlayerHubTournamentWidget';
   readonly course: Scalars['String']['output'];
-  readonly icon: ApiPlayerHubWidgetIcon;
-  readonly logoAsset?: Maybe<ApiImageAsset>;
-  readonly logoAssetDark?: Maybe<ApiImageAsset>;
+  readonly icon: DomainPlayerHubWidgetIcon;
+  readonly logoAsset?: Maybe<DomainImageAsset>;
+  readonly logoAssetDark?: Maybe<DomainImageAsset>;
   readonly name: Scalars['String']['output'];
 };
 
-export type ApiPlayerHubWidget = ApiPlayerHubArticlesWidget | ApiPlayerHubHoleDetailWidget | ApiPlayerHubLeaderboardWidget | ApiPlayerHubMessageBannerWidget | ApiPlayerHubRecapWidget | ApiPlayerHubShotCommentaryWidget | ApiPlayerHubStatisticsWidget | ApiPlayerHubTeeTimesWidget | ApiPlayerHubTournamentWidget | ApiPlayerStoriesWidget;
+export type DomainPlayerHubWidget = DomainPlayerHubArticlesWidget | DomainPlayerHubHoleDetailWidget | DomainPlayerHubLeaderboardWidget | DomainPlayerHubMessageBannerWidget | DomainPlayerHubRecapWidget | DomainPlayerHubShotCommentaryWidget | DomainPlayerHubStatisticsWidget | DomainPlayerHubTeeTimesWidget | DomainPlayerHubTournamentWidget | DomainPlayerStoriesWidget;
 
-export type ApiPlayerHubWidgetIcon =
+export type DomainPlayerHubWidgetIcon =
   | 'AI'
   | 'CALENDAR'
   | 'CLOCK'
@@ -4978,15 +4977,15 @@ export type ApiPlayerHubWidgetIcon =
   | 'SCORECARD'
   | 'TOURCAST';
 
-export type ApiPlayerHubWidgetSponsor = {
+export type DomainPlayerHubWidgetSponsor = {
   readonly __typename: 'PlayerHubWidgetSponsor';
-  readonly logoAsset: ApiImageAsset;
-  readonly logoAssetDark: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
+  readonly logoAssetDark: DomainImageAsset;
   readonly name: Scalars['String']['output'];
   readonly websiteUrl: Scalars['String']['output'];
 };
 
-export type ApiPlayerInfo = {
+export type DomainPlayerInfo = {
   readonly __typename: 'PlayerInfo';
   readonly countryFlag: Scalars['String']['output'];
   readonly countryName: Scalars['String']['output'];
@@ -4997,39 +4996,39 @@ export type ApiPlayerInfo = {
   readonly lastName: Scalars['String']['output'];
 };
 
-export type ApiPlayerMarketsRow = {
+export type DomainPlayerMarketsRow = {
   readonly __typename: 'PlayerMarketsRow';
   readonly country: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
-  readonly markets: ReadonlyArray<ApiHistoricalPlayerOdds>;
+  readonly markets: ReadonlyArray<DomainHistoricalPlayerOdds>;
   readonly playerId: Scalars['String']['output'];
   readonly playerName: Scalars['String']['output'];
 };
 
-export type ApiPlayerOddsMarket = {
+export type DomainPlayerOddsMarket = {
   readonly __typename: 'PlayerOddsMarket';
   readonly id: Scalars['ID']['output'];
   readonly market: Scalars['String']['output'];
-  readonly playerOddsOptions: ReadonlyArray<ApiOddsOption>;
+  readonly playerOddsOptions: ReadonlyArray<DomainOddsOption>;
   readonly subMarket?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayerOverviewStandings = {
+export type DomainPlayerOverviewStandings = {
   readonly __typename: 'PlayerOverviewStandings';
   readonly displaySeason: Scalars['String']['output'];
-  readonly standings: ReadonlyArray<ApiProfileStandings>;
-  readonly tour: ApiTourCode;
+  readonly standings: ReadonlyArray<DomainProfileStandings>;
+  readonly tour: DomainTourCode;
 };
 
-export type ApiPlayerProfileAchievement = {
+export type DomainPlayerProfileAchievement = {
   readonly __typename: 'PlayerProfileAchievement';
   readonly title: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiPlayerProfileCareer = {
+export type DomainPlayerProfileCareer = {
   readonly __typename: 'PlayerProfileCareer';
-  readonly achievements: ReadonlyArray<ApiPlayerProfileAchievement>;
+  readonly achievements: ReadonlyArray<DomainPlayerProfileAchievement>;
   readonly cutsMade?: Maybe<Scalars['String']['output']>;
   readonly events?: Maybe<Scalars['String']['output']>;
   readonly internationalWins?: Maybe<Scalars['String']['output']>;
@@ -5038,26 +5037,26 @@ export type ApiPlayerProfileCareer = {
   readonly playerId: Scalars['ID']['output'];
   readonly runnerUp?: Maybe<Scalars['String']['output']>;
   readonly second?: Maybe<Scalars['String']['output']>;
-  readonly tables: ReadonlyArray<ApiPlayerProfileTable>;
+  readonly tables: ReadonlyArray<DomainPlayerProfileTable>;
   readonly third?: Maybe<Scalars['String']['output']>;
   readonly top5?: Maybe<Scalars['String']['output']>;
   readonly top10?: Maybe<Scalars['String']['output']>;
   readonly top25?: Maybe<Scalars['String']['output']>;
-  readonly tourCode?: Maybe<ApiTourCode>;
-  readonly tourPills: ReadonlyArray<ApiTourPills>;
+  readonly tourCode?: Maybe<DomainTourCode>;
+  readonly tourPills: ReadonlyArray<DomainTourPills>;
   readonly wins?: Maybe<Scalars['String']['output']>;
   readonly winsTitle?: Maybe<Scalars['String']['output']>;
-  readonly years: ReadonlyArray<ApiPlayerProfileCareerYear>;
+  readonly years: ReadonlyArray<DomainPlayerProfileCareerYear>;
 };
 
-export type ApiPlayerProfileCareerResults = {
+export type DomainPlayerProfileCareerResults = {
   readonly __typename: 'PlayerProfileCareerResults';
   readonly playerId: Scalars['ID']['output'];
-  readonly tourPills: ReadonlyArray<ApiTourPills>;
-  readonly yearResults: ReadonlyArray<ApiPlayerProfileCareerYear>;
+  readonly tourPills: ReadonlyArray<DomainTourPills>;
+  readonly yearResults: ReadonlyArray<DomainPlayerProfileCareerYear>;
 };
 
-export type ApiPlayerProfileCareerYear = {
+export type DomainPlayerProfileCareerYear = {
   readonly __typename: 'PlayerProfileCareerYear';
   readonly cutsMade?: Maybe<Scalars['String']['output']>;
   readonly cutsMissed?: Maybe<Scalars['String']['output']>;
@@ -5071,23 +5070,23 @@ export type ApiPlayerProfileCareerYear = {
   readonly top5?: Maybe<Scalars['String']['output']>;
   readonly top10?: Maybe<Scalars['String']['output']>;
   readonly top25?: Maybe<Scalars['String']['output']>;
-  readonly tourCode: ApiTourCode;
+  readonly tourCode: DomainTourCode;
   readonly wins?: Maybe<Scalars['String']['output']>;
   readonly withdrawn?: Maybe<Scalars['String']['output']>;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiPlayerProfileCourseResults = {
+export type DomainPlayerProfileCourseResults = {
   readonly __typename: 'PlayerProfileCourseResults';
-  readonly coursePills: ReadonlyArray<ApiCoursePills>;
-  readonly courses: ReadonlyArray<ApiPlayerCourse>;
+  readonly coursePills: ReadonlyArray<DomainCoursePills>;
+  readonly courses: ReadonlyArray<DomainPlayerCourse>;
   readonly playerId: Scalars['String']['output'];
-  readonly tourCode: ApiTourCode;
-  readonly tourPills: ReadonlyArray<ApiTourCode>;
+  readonly tourCode: DomainTourCode;
+  readonly tourPills: ReadonlyArray<DomainTourCode>;
 };
 
 /**   Player Profile Tournament Results */
-export type ApiPlayerProfileInfoItem = {
+export type DomainPlayerProfileInfoItem = {
   readonly __typename: 'PlayerProfileInfoItem';
   readonly logo?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
@@ -5095,26 +5094,26 @@ export type ApiPlayerProfileInfoItem = {
   readonly wide: Scalars['Boolean']['output'];
 };
 
-export type ApiPlayerProfileMajors = {
+export type DomainPlayerProfileMajors = {
   readonly __typename: 'PlayerProfileMajors';
   readonly playerId: Scalars['String']['output'];
   readonly timelineHeaders: ReadonlyArray<Scalars['String']['output']>;
-  readonly timelineTournaments: ReadonlyArray<ApiMajorTimeline>;
-  readonly tournaments: ReadonlyArray<ApiMajorResultsTournament>;
+  readonly timelineTournaments: ReadonlyArray<DomainMajorTimeline>;
+  readonly tournaments: ReadonlyArray<DomainMajorResultsTournament>;
 };
 
-export type ApiPlayerProfileMessage = {
+export type DomainPlayerProfileMessage = {
   readonly __typename: 'PlayerProfileMessage';
   readonly message?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayerProfileOverviewItem = {
+export type DomainPlayerProfileOverviewItem = {
   readonly __typename: 'PlayerProfileOverviewItem';
   readonly title: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiPlayerProfileRows = {
+export type DomainPlayerProfileRows = {
   readonly __typename: 'PlayerProfileRows';
   readonly rowContent: ReadonlyArray<Scalars['String']['output']>;
   readonly rowTitle: Scalars['String']['output'];
@@ -5122,20 +5121,20 @@ export type ApiPlayerProfileRows = {
   readonly secondContent?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
 };
 
-export type ApiPlayerProfileStat = {
+export type DomainPlayerProfileStat = {
   readonly __typename: 'PlayerProfileStat';
-  readonly categories: ReadonlyArray<ApiPlayerProfileStatCategory>;
-  readonly stats: ReadonlyArray<ApiPlayerProfileStatItem>;
-  readonly tour: ApiTourCode;
+  readonly categories: ReadonlyArray<DomainPlayerProfileStatCategory>;
+  readonly stats: ReadonlyArray<DomainPlayerProfileStatItem>;
+  readonly tour: DomainTourCode;
 };
 
-export type ApiPlayerProfileStatCategory = {
+export type DomainPlayerProfileStatCategory = {
   readonly __typename: 'PlayerProfileStatCategory';
-  readonly category: ApiPlayerProfileStatCategoryItem;
+  readonly category: DomainPlayerProfileStatCategoryItem;
   readonly displayTitle: Scalars['String']['output'];
 };
 
-export type ApiPlayerProfileStatCategoryItem =
+export type DomainPlayerProfileStatCategoryItem =
   | 'ALL'
   | 'APPROACH'
   | 'AROUND_GREEN'
@@ -5148,67 +5147,67 @@ export type ApiPlayerProfileStatCategoryItem =
   | 'STREAKS'
   | 'STROKES_GAINED';
 
-export type ApiPlayerProfileStatFull = {
+export type DomainPlayerProfileStatFull = {
   readonly __typename: 'PlayerProfileStatFull';
-  readonly categories: ReadonlyArray<ApiPlayerProfileStatCategory>;
+  readonly categories: ReadonlyArray<DomainPlayerProfileStatCategory>;
   readonly displaySeason: Scalars['String']['output'];
-  readonly overview: ReadonlyArray<ApiPlayerProfileStatItem>;
+  readonly overview: ReadonlyArray<DomainPlayerProfileStatItem>;
   readonly season: Scalars['String']['output'];
-  readonly stats: ReadonlyArray<ApiPlayerProfileStatItem>;
-  readonly topStats: ReadonlyArray<ApiPlayerProfileStatItem>;
-  readonly tour: ApiTourCode;
+  readonly stats: ReadonlyArray<DomainPlayerProfileStatItem>;
+  readonly topStats: ReadonlyArray<DomainPlayerProfileStatItem>;
+  readonly tour: DomainTourCode;
 };
 
-export type ApiPlayerProfileStatItem = {
+export type DomainPlayerProfileStatItem = {
   readonly __typename: 'PlayerProfileStatItem';
-  readonly aboveOrBelow: ApiScoringTendency;
-  readonly category: ReadonlyArray<ApiPlayerProfileStatCategoryItem>;
+  readonly aboveOrBelow: DomainScoringTendency;
+  readonly category: ReadonlyArray<DomainPlayerProfileStatCategoryItem>;
   readonly fieldAverage: Scalars['String']['output'];
   readonly noDetail?: Maybe<Scalars['Boolean']['output']>;
   readonly rank: Scalars['String']['output'];
   readonly rankDeviation?: Maybe<Scalars['Float']['output']>;
   readonly statId: Scalars['String']['output'];
-  readonly supportingStat?: Maybe<ApiPlayerProfileStatItemDetail>;
-  readonly supportingValue?: Maybe<ApiPlayerProfileStatItemDetail>;
+  readonly supportingStat?: Maybe<DomainPlayerProfileStatItemDetail>;
+  readonly supportingValue?: Maybe<DomainPlayerProfileStatItemDetail>;
   readonly title: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiPlayerProfileStatItemDetail = {
+export type DomainPlayerProfileStatItemDetail = {
   readonly __typename: 'PlayerProfileStatItemDetail';
   readonly description: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiPlayerProfileStatYear = {
+export type DomainPlayerProfileStatYear = {
   readonly __typename: 'PlayerProfileStatYear';
   readonly season: Scalars['String']['output'];
-  readonly tours: ReadonlyArray<ApiTourCode>;
+  readonly tours: ReadonlyArray<DomainTourCode>;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiPlayerProfileStatsFullV2 = {
+export type DomainPlayerProfileStatsFullV2 = {
   readonly __typename: 'PlayerProfileStatsFullV2';
-  readonly messages?: Maybe<ReadonlyArray<ApiPlayerProfileMessage>>;
-  readonly playerProfileStatsFull: ReadonlyArray<ApiPlayerProfileStatFull>;
+  readonly messages?: Maybe<ReadonlyArray<DomainPlayerProfileMessage>>;
+  readonly playerProfileStatsFull: ReadonlyArray<DomainPlayerProfileStatFull>;
 };
 
-export type ApiPlayerProfileTable = {
+export type DomainPlayerProfileTable = {
   readonly __typename: 'PlayerProfileTable';
-  readonly rows: ReadonlyArray<ApiPlayerProfileRows>;
+  readonly rows: ReadonlyArray<DomainPlayerProfileRows>;
   readonly tableDetail?: Maybe<Scalars['String']['output']>;
   readonly tableName: Scalars['String']['output'];
 };
 
-export type ApiPlayerProfileTournamentResults = {
+export type DomainPlayerProfileTournamentResults = {
   readonly __typename: 'PlayerProfileTournamentResults';
   readonly playerId: Scalars['ID']['output'];
-  readonly tourPills: ReadonlyArray<ApiTourPills>;
-  readonly tournamentPills: ReadonlyArray<ApiTournamentResultPill>;
-  readonly tournaments: ReadonlyArray<ApiTournamentResults>;
+  readonly tourPills: ReadonlyArray<DomainTourPills>;
+  readonly tournamentPills: ReadonlyArray<DomainTournamentResultPill>;
+  readonly tournaments: ReadonlyArray<DomainTournamentResults>;
 };
 
-export type ApiPlayerProfileTournamentRow = {
+export type DomainPlayerProfileTournamentRow = {
   readonly __typename: 'PlayerProfileTournamentRow';
   readonly courseName: Scalars['String']['output'];
   readonly date: Scalars['String']['output'];
@@ -5217,7 +5216,7 @@ export type ApiPlayerProfileTournamentRow = {
   readonly points: Scalars['String']['output'];
   readonly pointsRank: Scalars['String']['output'];
   readonly position: Scalars['String']['output'];
-  readonly roundScores: ReadonlyArray<ApiRoundScoreItem>;
+  readonly roundScores: ReadonlyArray<DomainRoundScoreItem>;
   readonly startDate: Scalars['String']['output'];
   readonly toPar: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
@@ -5232,7 +5231,7 @@ export type ApiPlayerProfileTournamentRow = {
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiPlayerRecord = {
+export type DomainPlayerRecord = {
   readonly __typename: 'PlayerRecord';
   readonly losses: Scalars['String']['output'];
   readonly points: Scalars['String']['output'];
@@ -5240,7 +5239,7 @@ export type ApiPlayerRecord = {
   readonly wins: Scalars['String']['output'];
 };
 
-export type ApiPlayerResultTournament = {
+export type DomainPlayerResultTournament = {
   readonly __typename: 'PlayerResultTournament';
   readonly courseId: Scalars['String']['output'];
   readonly courseName: Scalars['String']['output'];
@@ -5269,7 +5268,7 @@ export type ApiPlayerResultTournament = {
   readonly tournamentStartDate: Scalars['String']['output'];
 };
 
-export type ApiPlayerResults = {
+export type DomainPlayerResults = {
   readonly __typename: 'PlayerResults';
   readonly amateurHighlights?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   /** @deprecated use standingsDetails */
@@ -5298,42 +5297,42 @@ export type ApiPlayerResults = {
   /** @deprecated use standingsDetails */
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
   readonly runnerUp?: Maybe<Scalars['String']['output']>;
-  readonly seasonPills: ReadonlyArray<ApiPlayerResultsSeasonPills>;
-  readonly seasonRecap?: Maybe<ApiSeasonRecap>;
+  readonly seasonPills: ReadonlyArray<DomainPlayerResultsSeasonPills>;
+  readonly seasonRecap?: Maybe<DomainSeasonRecap>;
   /** @deprecated use standingsDetails */
-  readonly secondaryCup?: Maybe<ApiSecondaryCupDetails>;
-  readonly standingsDetails: ReadonlyArray<ApiResultsStandingsDetail>;
+  readonly secondaryCup?: Maybe<DomainSecondaryCupDetails>;
+  readonly standingsDetails: ReadonlyArray<DomainResultsStandingsDetail>;
   readonly thirds?: Maybe<Scalars['String']['output']>;
   readonly top5?: Maybe<Scalars['String']['output']>;
   readonly top10?: Maybe<Scalars['String']['output']>;
   readonly top25?: Maybe<Scalars['String']['output']>;
-  readonly tour: ApiTourCode;
+  readonly tour: DomainTourCode;
   readonly tourcastEligible: Scalars['Boolean']['output'];
-  readonly tournaments: ReadonlyArray<ApiPlayerResultTournament>;
+  readonly tournaments: ReadonlyArray<DomainPlayerResultTournament>;
   readonly wins?: Maybe<Scalars['String']['output']>;
   readonly withdrew?: Maybe<Scalars['String']['output']>;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiPlayerResultsSeasonPills = {
+export type DomainPlayerResultsSeasonPills = {
   readonly __typename: 'PlayerResultsSeasonPills';
-  readonly tourCode: ApiTourCode;
-  readonly years: ReadonlyArray<ApiStatYearPills>;
+  readonly tourCode: DomainTourCode;
+  readonly years: ReadonlyArray<DomainStatYearPills>;
 };
 
-export type ApiPlayerRowHoleByHole = {
+export type DomainPlayerRowHoleByHole = {
   readonly __typename: 'PlayerRowHoleByHole';
   readonly courseCode: Scalars['String']['output'];
   readonly courseId: Scalars['String']['output'];
   readonly in?: Maybe<Scalars['String']['output']>;
   readonly out?: Maybe<Scalars['String']['output']>;
   readonly playerId: Scalars['String']['output'];
-  readonly scores: ReadonlyArray<ApiHoleScore>;
+  readonly scores: ReadonlyArray<DomainHoleScore>;
   readonly total?: Maybe<Scalars['String']['output']>;
   readonly totalToPar: Scalars['String']['output'];
 };
 
-export type ApiPlayerRowV2 = {
+export type DomainPlayerRowV2 = {
   readonly __typename: 'PlayerRowV2';
   readonly backNine: Scalars['Boolean']['output'];
   readonly courseId: Scalars['String']['output'];
@@ -5343,22 +5342,22 @@ export type ApiPlayerRowV2 = {
   readonly id: Scalars['ID']['output'];
   readonly leaderboardSortOrder: Scalars['Int']['output'];
   readonly movementAmount: Scalars['String']['output'];
-  readonly movementDirection: ApiLeaderboardMovement;
+  readonly movementDirection: DomainLeaderboardMovement;
   readonly oddsOptionId?: Maybe<Scalars['String']['output']>;
   readonly oddsSort?: Maybe<Scalars['Float']['output']>;
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly oddsToWin?: Maybe<Scalars['String']['output']>;
   readonly oddsUrl?: Maybe<Scalars['String']['output']>;
   readonly official: Scalars['String']['output'];
   readonly officialSort: Scalars['Int']['output'];
-  readonly player: ApiPlayer;
-  readonly playerState: ApiPlayerState;
+  readonly player: DomainPlayer;
+  readonly playerState: DomainPlayerState;
   readonly position: Scalars['String']['output'];
   readonly projected: Scalars['String']['output'];
   readonly projectedSort: Scalars['Int']['output'];
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
   readonly rankLogoLight?: Maybe<Scalars['String']['output']>;
-  readonly rankingMovement: ApiCupRankMovementDirection;
+  readonly rankingMovement: DomainCupRankMovementDirection;
   readonly rankingMovementAmount: Scalars['String']['output'];
   readonly rankingMovementAmountSort: Scalars['Int']['output'];
   readonly roundHeader: Scalars['String']['output'];
@@ -5376,38 +5375,38 @@ export type ApiPlayerRowV2 = {
   readonly totalStrokes: Scalars['String']['output'];
 };
 
-export type ApiPlayerRowV3 = {
+export type DomainPlayerRowV3 = {
   readonly __typename: 'PlayerRowV3';
   readonly id: Scalars['ID']['output'];
   readonly leaderboardSortOrder: Scalars['Int']['output'];
   /**   PLAYER INFO */
-  readonly player: ApiPlayer;
-  readonly scoringData: ApiLeaderboardScoringDataV3;
+  readonly player: DomainPlayer;
+  readonly scoringData: DomainLeaderboardScoringDataV3;
 };
 
-export type ApiPlayerScorecardRoundStats = {
+export type DomainPlayerScorecardRoundStats = {
   readonly __typename: 'PlayerScorecardRoundStats';
   readonly displayName: Scalars['String']['output'];
-  readonly performance: ReadonlyArray<ApiScorecardStatsItem>;
+  readonly performance: ReadonlyArray<DomainScorecardStatsItem>;
   readonly round: Scalars['String']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly scoring: ReadonlyArray<ApiScorecardStatsItem>;
-  readonly strokesGained: ReadonlyArray<ApiStrokesGainedStats>;
+  readonly roundStatus: DomainRoundStatus;
+  readonly scoring: ReadonlyArray<DomainScorecardStatsItem>;
+  readonly strokesGained: ReadonlyArray<DomainStrokesGainedStats>;
 };
 
-export type ApiPlayerScorecardStats = {
+export type DomainPlayerScorecardStats = {
   readonly __typename: 'PlayerScorecardStats';
   readonly id: Scalars['ID']['output'];
-  readonly rounds: ReadonlyArray<ApiPlayerScorecardRoundStats>;
+  readonly rounds: ReadonlyArray<DomainPlayerScorecardRoundStats>;
 };
 
-export type ApiPlayerScorecardStatsCompressed = {
+export type DomainPlayerScorecardStatsCompressed = {
   readonly __typename: 'PlayerScorecardStatsCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiPlayerSponsorBrand =
+export type DomainPlayerSponsorBrand =
   | 'ACE'
   | 'ADAM_SCOTT'
   | 'ADIDAS'
@@ -5485,20 +5484,20 @@ export type ApiPlayerSponsorBrand =
   | 'ZACH_JOHNSON'
   | 'ZURICH';
 
-export type ApiPlayerSponsors = {
+export type DomainPlayerSponsors = {
   readonly __typename: 'PlayerSponsors';
-  readonly defaultSponsor?: Maybe<ApiSponsor>;
+  readonly defaultSponsor?: Maybe<DomainSponsor>;
   readonly playerId: Scalars['String']['output'];
-  readonly sponsors: ReadonlyArray<ApiSponsor>;
+  readonly sponsors: ReadonlyArray<DomainSponsor>;
 };
 
-export type ApiPlayerSponsorship = {
+export type DomainPlayerSponsorship = {
   readonly __typename: 'PlayerSponsorship';
   readonly playerId: Scalars['String']['output'];
-  readonly sponsor?: Maybe<ApiPlayerSponsorBrand>;
+  readonly sponsor?: Maybe<DomainPlayerSponsorBrand>;
 };
 
-export type ApiPlayerState =
+export type DomainPlayerState =
   | 'ACTIVE'
   | 'BETWEEN_ROUNDS'
   | 'COMPLETE'
@@ -5507,16 +5506,16 @@ export type ApiPlayerState =
   | 'NOT_STARTED'
   | 'WITHDRAWN';
 
-export type ApiPlayerStoriesWidget = {
+export type DomainPlayerStoriesWidget = {
   readonly __typename: 'PlayerStoriesWidget';
-  readonly playerSponsorships?: Maybe<ReadonlyArray<ApiPlayerStorySponsorship>>;
+  readonly playerSponsorships?: Maybe<ReadonlyArray<DomainPlayerStorySponsorship>>;
   readonly storyRounds: ReadonlyArray<Scalars['String']['output']>;
   readonly subTitle: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiPlayerStorySponsorship = {
+export type DomainPlayerStorySponsorship = {
   readonly __typename: 'PlayerStorySponsorship';
   readonly logoDarkUrl: Scalars['String']['output'];
   readonly logoUrl: Scalars['String']['output'];
@@ -5524,14 +5523,14 @@ export type ApiPlayerStorySponsorship = {
   readonly type: Scalars['String']['output'];
 };
 
-export type ApiPlayerTournamentStatus = {
+export type DomainPlayerTournamentStatus = {
   readonly __typename: 'PlayerTournamentStatus';
-  readonly displayMode: ApiPlayerTournamentStatusDisplayMode;
+  readonly displayMode: DomainPlayerTournamentStatusDisplayMode;
   readonly playerId: Scalars['ID']['output'];
   readonly position: Scalars['String']['output'];
   readonly roundDisplay: Scalars['String']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   readonly roundStatusDisplay: Scalars['String']['output'];
   readonly score: Scalars['String']['output'];
   readonly teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
@@ -5541,12 +5540,12 @@ export type ApiPlayerTournamentStatus = {
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiPlayerTournamentStatusDisplayMode =
+export type DomainPlayerTournamentStatusDisplayMode =
   | 'IN_PROGRESS'
   | 'OFFICIAL'
   | 'TEE_TIMES';
 
-export type ApiPlayerVideo = {
+export type DomainPlayerVideo = {
   readonly __typename: 'PlayerVideo';
   readonly firstName?: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
@@ -5554,21 +5553,21 @@ export type ApiPlayerVideo = {
   readonly shortName?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayoff = {
+export type DomainPlayoff = {
   readonly __typename: 'Playoff';
   readonly currentHole: Scalars['Int']['output'];
-  readonly holes: ReadonlyArray<ApiPlayoffHole>;
-  readonly players: ReadonlyArray<ApiPlayoffPlayer>;
+  readonly holes: ReadonlyArray<DomainPlayoffHole>;
+  readonly players: ReadonlyArray<DomainPlayoffPlayer>;
   readonly thru?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayoffDisplayType =
+export type DomainPlayoffDisplayType =
   | 'ALL'
   | 'NONE'
   | 'PLAY_BY_PLAY'
   | 'SCORECARD';
 
-export type ApiPlayoffHole = {
+export type DomainPlayoffHole = {
   readonly __typename: 'PlayoffHole';
   readonly courseHole: Scalars['String']['output'];
   readonly format?: Maybe<Scalars['String']['output']>;
@@ -5577,15 +5576,15 @@ export type ApiPlayoffHole = {
   readonly playoffHole: Scalars['String']['output'];
 };
 
-export type ApiPlayoffPlayer = {
+export type DomainPlayoffPlayer = {
   readonly __typename: 'PlayoffPlayer';
   readonly active: Scalars['Boolean']['output'];
-  readonly player: ApiPlayer;
+  readonly player: DomainPlayer;
   readonly position: Scalars['String']['output'];
-  readonly scores: ReadonlyArray<ApiSimpleScore>;
+  readonly scores: ReadonlyArray<DomainSimpleScore>;
 };
 
-export type ApiPlayoffScorecard = {
+export type DomainPlayoffScorecard = {
   readonly __typename: 'PlayoffScorecard';
   readonly courseId: Scalars['String']['output'];
   readonly courseName: Scalars['String']['output'];
@@ -5594,9 +5593,9 @@ export type ApiPlayoffScorecard = {
   readonly holeDetail: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly locationDetail: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiScorecardHeaderPlayer>;
-  readonly playoff: ApiPlayoff;
-  readonly playoffScoredType: ApiPlayoffScoredType;
+  readonly players: ReadonlyArray<DomainScorecardHeaderPlayer>;
+  readonly playoff: DomainPlayoff;
+  readonly playoffScoredType: DomainPlayoffScoredType;
   readonly title: Scalars['String']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
@@ -5605,60 +5604,60 @@ export type ApiPlayoffScorecard = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPlayoffScoredType =
+export type DomainPlayoffScoredType =
   | 'AGGREGATE'
   | 'SUDDEN_DEATH';
 
-export type ApiPlayoffTeams = {
+export type DomainPlayoffTeams = {
   readonly __typename: 'PlayoffTeams';
   readonly active: Scalars['Boolean']['output'];
-  readonly players: ReadonlyArray<ApiTspScPlayer>;
+  readonly players: ReadonlyArray<DomainTspScPlayer>;
   readonly position: Scalars['String']['output'];
-  readonly scores: ReadonlyArray<ApiSimpleScore>;
+  readonly scores: ReadonlyArray<DomainSimpleScore>;
   readonly teamId: Scalars['String']['output'];
 };
 
-export type ApiPointOfInterestCoords = {
+export type DomainPointOfInterestCoords = {
   readonly __typename: 'PointOfInterestCoords';
-  readonly bottomToTopCoords: ApiStrokeCoordinates;
-  readonly leftToRightCoords: ApiStrokeCoordinates;
+  readonly bottomToTopCoords: DomainStrokeCoordinates;
+  readonly leftToRightCoords: DomainStrokeCoordinates;
 };
 
-export type ApiPowerRankings = {
+export type DomainPowerRankings = {
   readonly __typename: 'PowerRankings';
   readonly ascendingOrder: Scalars['Boolean']['output'];
-  readonly powerRankingsTableRow: ReadonlyArray<ApiPowerRankingsTableRow>;
+  readonly powerRankingsTableRow: ReadonlyArray<DomainPowerRankingsTableRow>;
   readonly tableTitle: Scalars['String']['output'];
   readonly tournamentName: Scalars['String']['output'];
   readonly unorderedList: Scalars['Boolean']['output'];
 };
 
-export type ApiPowerRankingsTableRow = {
+export type DomainPowerRankingsTableRow = {
   readonly __typename: 'PowerRankingsTableRow';
   readonly comment: Scalars['String']['output'];
-  readonly commentNodes?: Maybe<ReadonlyArray<ApiTourSponsorDescription>>;
-  readonly player?: Maybe<ApiPlayerInfo>;
+  readonly commentNodes?: Maybe<ReadonlyArray<DomainTourSponsorDescription>>;
+  readonly player?: Maybe<DomainPlayerInfo>;
   readonly rank?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiPresentedByConfig = {
+export type DomainPresentedByConfig = {
   readonly __typename: 'PresentedByConfig';
-  readonly presentedBy: ApiSponsor;
-  readonly splashScreen: ApiSponsor;
+  readonly presentedBy: DomainSponsor;
+  readonly splashScreen: DomainSponsor;
 };
 
-export type ApiPreviousMatch = {
+export type DomainPreviousMatch = {
   readonly __typename: 'PreviousMatch';
   readonly matchId: Scalars['ID']['output'];
   readonly matchResult: Scalars['String']['output'];
   readonly matchScore: Scalars['String']['output'];
   readonly matchStatus: Scalars['String']['output'];
-  readonly opponent: ApiPreviousMatchOpponent;
+  readonly opponent: DomainPreviousMatchOpponent;
   readonly roundDisplayText: Scalars['String']['output'];
   readonly roundNumber: Scalars['Int']['output'];
 };
 
-export type ApiPreviousMatchOpponent = {
+export type DomainPreviousMatchOpponent = {
   readonly __typename: 'PreviousMatchOpponent';
   readonly bracketSeed: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -5671,70 +5670,70 @@ export type ApiPreviousMatchOpponent = {
   readonly tournamentSeed: Scalars['String']['output'];
 };
 
-export type ApiPreviousMatches = {
+export type DomainPreviousMatches = {
   readonly __typename: 'PreviousMatches';
   readonly header: Scalars['String']['output'];
-  readonly matches?: Maybe<ReadonlyArray<ApiPreviousMatch>>;
-  readonly messages?: Maybe<ReadonlyArray<ApiMessage>>;
+  readonly matches?: Maybe<ReadonlyArray<DomainPreviousMatch>>;
+  readonly messages?: Maybe<ReadonlyArray<DomainMessage>>;
 };
 
-export type ApiPreviousRounds = {
+export type DomainPreviousRounds = {
   readonly __typename: 'PreviousRounds';
-  readonly matches?: Maybe<ReadonlyArray<ApiPreviousMatch>>;
+  readonly matches?: Maybe<ReadonlyArray<DomainPreviousMatch>>;
   readonly roundHeader: Scalars['String']['output'];
   readonly roundNumber: Scalars['Int']['output'];
 };
 
-export type ApiPriorityCategory = {
+export type DomainPriorityCategory = {
   readonly __typename: 'PriorityCategory';
   readonly detail?: Maybe<Scalars['String']['output']>;
   readonly displayName: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiPriorityPlayer>;
+  readonly players: ReadonlyArray<DomainPriorityPlayer>;
 };
 
-export type ApiPriorityPlayer = {
+export type DomainPriorityPlayer = {
   readonly __typename: 'PriorityPlayer';
   readonly displayName: Scalars['String']['output'];
   readonly playerId: Scalars['String']['output'];
 };
 
-export type ApiPriorityRankings = {
+export type DomainPriorityRankings = {
   readonly __typename: 'PriorityRankings';
-  readonly categories: ReadonlyArray<ApiPriorityCategory>;
+  readonly categories: ReadonlyArray<DomainPriorityCategory>;
   readonly displayYear: Scalars['String']['output'];
   readonly throughText: Scalars['String']['output'];
-  readonly tourCode: ApiTourCode;
+  readonly tourCode: DomainTourCode;
   readonly year: Scalars['Int']['output'];
-  readonly yearPills: ReadonlyArray<ApiStatYearPills>;
+  readonly yearPills: ReadonlyArray<DomainStatYearPills>;
 };
 
-export type ApiProfileFedExFallStandings = {
+export type DomainProfileFedExFallStandings = {
   readonly __typename: 'ProfileFedExFallStandings';
   readonly description: Scalars['String']['output'];
   readonly detailCopy?: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
   /** @deprecated Use logoAsset */
   readonly logo: Scalars['String']['output'];
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   /** @deprecated Use logoDarkAsset */
   readonly logoDark: Scalars['String']['output'];
-  readonly logoDarkAsset: ApiImageAsset;
+  readonly logoDarkAsset: DomainImageAsset;
   readonly rank: Scalars['String']['output'];
   /** @deprecated Use rankLogoAsset */
   readonly rankLogo?: Maybe<Scalars['String']['output']>;
-  readonly rankLogoAsset?: Maybe<ApiImageAsset>;
+  readonly rankLogoAsset?: Maybe<DomainImageAsset>;
   /** @deprecated Use rankLogoDarkAsset */
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
-  readonly rankLogoDarkAsset?: Maybe<ApiImageAsset>;
+  readonly rankLogoDarkAsset?: Maybe<DomainImageAsset>;
   readonly title: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
   readonly totalLabel: Scalars['String']['output'];
-  readonly totals?: Maybe<ReadonlyArray<ApiProfileStandingsTotal>>;
+  readonly totals?: Maybe<ReadonlyArray<DomainProfileStandingsTotal>>;
   readonly webview?: Maybe<Scalars['String']['output']>;
   readonly webviewBrowserControls?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiProfileHeadshot = {
+export type DomainProfileHeadshot = {
   readonly __typename: 'ProfileHeadshot';
   readonly country: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -5743,30 +5742,30 @@ export type ApiProfileHeadshot = {
   readonly lastName: Scalars['String']['output'];
 };
 
-export type ApiProfileOverview = {
+export type DomainProfileOverview = {
   readonly __typename: 'ProfileOverview';
   /** @deprecated use profileStandings */
-  readonly fedexFallStandings?: Maybe<ApiProfileFedExFallStandings>;
-  readonly headshot: ApiProfileHeadshot;
+  readonly fedexFallStandings?: Maybe<DomainProfileFedExFallStandings>;
+  readonly headshot: DomainProfileHeadshot;
   readonly id: Scalars['ID']['output'];
-  readonly performance: ReadonlyArray<ApiProfilePerformance>;
-  readonly profileStandings: ReadonlyArray<ApiProfileStandings>;
-  readonly snapshot: ReadonlyArray<ApiProfileSnapshotItem>;
+  readonly performance: ReadonlyArray<DomainProfilePerformance>;
+  readonly profileStandings: ReadonlyArray<DomainProfileStandings>;
+  readonly snapshot: ReadonlyArray<DomainProfileSnapshotItem>;
   /** @deprecated use profileStandings */
-  readonly standings: ApiProfileStandings;
+  readonly standings: DomainProfileStandings;
   readonly tglTeamLogo?: Maybe<Scalars['String']['output']>;
   readonly tglTeamName?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiProfilePerformance = {
+export type DomainProfilePerformance = {
   readonly __typename: 'ProfilePerformance';
   readonly displaySeason: Scalars['String']['output'];
   readonly season: Scalars['String']['output'];
-  readonly stats: ReadonlyArray<ApiProfilePerformanceStat>;
-  readonly tour: ApiTourCode;
+  readonly stats: ReadonlyArray<DomainProfilePerformanceStat>;
+  readonly tour: DomainTourCode;
 };
 
-export type ApiProfilePerformanceStat = {
+export type DomainProfilePerformanceStat = {
   readonly __typename: 'ProfilePerformanceStat';
   readonly career?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
@@ -5774,14 +5773,14 @@ export type ApiProfilePerformanceStat = {
   readonly wide?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiProfileSnapshotItem = {
+export type DomainProfileSnapshotItem = {
   readonly __typename: 'ProfileSnapshotItem';
   readonly description?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiProfileStandings = {
+export type DomainProfileStandings = {
   readonly __typename: 'ProfileStandings';
   readonly description: Scalars['String']['output'];
   readonly detailCopy?: Maybe<Scalars['String']['output']>;
@@ -5789,52 +5788,52 @@ export type ApiProfileStandings = {
   readonly id: Scalars['ID']['output'];
   /** @deprecated Use logoAsset */
   readonly logo: Scalars['String']['output'];
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   /** @deprecated Use logoDarkAsset */
   readonly logoDark: Scalars['String']['output'];
-  readonly logoDarkAsset: ApiImageAsset;
+  readonly logoDarkAsset: DomainImageAsset;
   readonly owgr?: Maybe<Scalars['String']['output']>;
   readonly rank: Scalars['String']['output'];
   /** @deprecated Use rankLogoAsset */
   readonly rankLogo?: Maybe<Scalars['String']['output']>;
-  readonly rankLogoAsset?: Maybe<ApiImageAsset>;
+  readonly rankLogoAsset?: Maybe<DomainImageAsset>;
   /** @deprecated Use rankLogoDarkAsset */
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
-  readonly rankLogoDarkAsset?: Maybe<ApiImageAsset>;
+  readonly rankLogoDarkAsset?: Maybe<DomainImageAsset>;
   readonly title: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
   readonly totalLabel: Scalars['String']['output'];
-  readonly totals?: Maybe<ReadonlyArray<ApiProfileStandingsTotal>>;
+  readonly totals?: Maybe<ReadonlyArray<DomainProfileStandingsTotal>>;
   readonly webview?: Maybe<Scalars['String']['output']>;
   readonly webviewBrowserControls?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiProfileStandingsTotal = {
+export type DomainProfileStandingsTotal = {
   readonly __typename: 'ProfileStandingsTotal';
   readonly total: Scalars['String']['output'];
   readonly totalLabel: Scalars['String']['output'];
 };
 
-export type ApiProgramStat = {
+export type DomainProgramStat = {
   readonly __typename: 'ProgramStat';
   readonly statName?: Maybe<Scalars['String']['output']>;
   readonly value?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiPromoItem = ApiFieldPromoSection | ApiPromoSection | ApiPromoSectionNewsSection;
+export type DomainPromoItem = DomainFieldPromoSection | DomainPromoSection | DomainPromoSectionNewsSection;
 
-export type ApiPromoSection = {
+export type DomainPromoSection = {
   readonly __typename: 'PromoSection';
-  readonly items: ReadonlyArray<ApiPromoSectionItem>;
+  readonly items: ReadonlyArray<DomainPromoSectionItem>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiPromoSectionContainer = {
+export type DomainPromoSectionContainer = {
   readonly __typename: 'PromoSectionContainer';
-  readonly sections: ReadonlyArray<ApiPromoItem>;
+  readonly sections: ReadonlyArray<DomainPromoItem>;
 };
 
-export type ApiPromoSectionItem = {
+export type DomainPromoSectionItem = {
   readonly __typename: 'PromoSectionItem';
   readonly accessibilityText: Scalars['String']['output'];
   readonly backgroundColor: Scalars['String']['output'];
@@ -5847,644 +5846,668 @@ export type ApiPromoSectionItem = {
   readonly webviewTitle: Scalars['String']['output'];
 };
 
-export type ApiPromoSectionNewsSection = {
+export type DomainPromoSectionNewsSection = {
   readonly __typename: 'PromoSectionNewsSection';
   readonly franchises: ReadonlyArray<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiPromoSectionType =
+export type DomainPromoSectionType =
   | 'GAMING'
   | 'MORE'
   | 'WEBGOLFBET';
 
-export type ApiQuery = {
+export type DomainPuttingPalsPlayerRowV3 = {
+  readonly __typename: 'PuttingPalsPlayerRowV3';
+  readonly id: Scalars['ID']['output'];
+  readonly leaderboardSortOrder: Scalars['Int']['output'];
+  readonly picks: ReadonlyArray<Scalars['ID']['output']>;
+  readonly player: DomainPuttingPalsPlayerV3;
+  readonly scoringData: DomainPuttingPalsPlayerScoringDataV3;
+};
+
+export type DomainPuttingPalsPlayerScoringDataV3 = {
+  readonly __typename: 'PuttingPalsPlayerScoringDataV3';
+  readonly position: Scalars['String']['output'];
+  readonly total: Scalars['String']['output'];
+  readonly totalSort: Scalars['Int']['output'];
+};
+
+export type DomainPuttingPalsPlayerV3 = {
+  readonly __typename: 'PuttingPalsPlayerV3';
+  readonly countryFlag: Scalars['String']['output'];
+  readonly displayName: Scalars['String']['output'];
+  readonly id: Scalars['ID']['output'];
+  readonly shortName: Scalars['String']['output'];
+};
+
+export type DomainQuery = {
   readonly __typename: 'Query';
   /**
    *   Returns the AdConfig for the given optionally supplied tour and/or tournament
    * @deprecated use REST API
    */
-  readonly adTagConfig: ApiAdConfig;
-  readonly allTimeRecordCategories: ApiAllTimeRecordCategories;
-  readonly allTimeRecordStat: ApiAllTimeRecordStat;
-  readonly alltoursponsors: ReadonlyArray<Maybe<ApiTourSponsor>>;
-  readonly aon: ApiAon;
+  readonly adTagConfig: DomainAdConfig;
+  readonly allTimeRecordCategories: DomainAllTimeRecordCategories;
+  readonly allTimeRecordStat: DomainAllTimeRecordStat;
+  readonly alltoursponsors: ReadonlyArray<Maybe<DomainTourSponsor>>;
+  readonly aon: DomainAon;
   /** @deprecated use REST API */
-  readonly articleAdConfig: ApiAdTagConfig;
+  readonly articleAdConfig: DomainAdTagConfig;
   /** @deprecated Use articleDetailsCompressed */
-  readonly articleDetails: ApiNewsArticleDetails;
-  readonly articleDetailsCompressed: ApiNewsArticleDetailsCompressed;
-  readonly broadcastTimes: ApiBroadcastCoverage;
+  readonly articleDetails: DomainNewsArticleDetails;
+  readonly articleDetailsCompressed: DomainNewsArticleDetailsCompressed;
+  readonly broadcastTimes: DomainBroadcastCoverage;
   /**   Note this is optional on purpose */
-  readonly bubble?: Maybe<ApiBubbleWatch>;
+  readonly bubble?: Maybe<DomainBubbleWatch>;
   /** @deprecated use bubble */
-  readonly bubbleWatch?: Maybe<ApiTourCupRankingEvent>;
-  readonly completeSchedule: ReadonlyArray<ApiSchedule>;
-  readonly contentFragmentTabs: ApiContentFragmentTabs;
-  readonly contentFragmentType?: Maybe<ApiContentFragmentType>;
-  readonly contentFragmentsCompressed: ApiContentFragmentsCompressed;
-  readonly courseHolesStats: ReadonlyArray<ApiHoleStatSummary>;
-  readonly courseStats: ApiTournamentHoleStats;
-  readonly courseStatsDetails: ApiCourseStatsDetails;
-  readonly courseStatsOverview: ApiCourseStatsOverview;
-  readonly coverage: ApiBroadcastCoverage;
-  readonly cupPastResults: ApiCupPastResults;
-  readonly cupPlayOverviewLeaderboard: ApiCupTournamentStatus;
-  readonly cupRoundLeaderboard: ApiCupTournamentLeaderboard;
-  readonly cupRoundLeaderboardCompressed: ApiCupTournamentLeaderboardCompressed;
-  readonly cupScorecard: ApiCupScorecard;
-  readonly cupTeamRoster: ApiCupTeamRosters;
-  readonly cupTeeTimes: ApiCupTeeTimes;
-  readonly currentLeadersCompressed?: Maybe<ApiCurrentLeadersCompressed>;
-  readonly defaultTourCup: ApiTourCupRankingEvent;
-  readonly eaglesForImpact: ApiEaglesForImpact;
-  readonly eventGuideConfig: ApiEventGuideConfig;
-  readonly field: ApiField;
-  readonly fieldStats: ApiFieldStats;
+  readonly bubbleWatch?: Maybe<DomainTourCupRankingEvent>;
+  readonly completeSchedule: ReadonlyArray<DomainSchedule>;
+  readonly contentFragmentTabs: DomainContentFragmentTabs;
+  readonly contentFragmentType?: Maybe<DomainContentFragmentType>;
+  readonly contentFragmentsCompressed: DomainContentFragmentsCompressed;
+  readonly courseHolesStats: ReadonlyArray<DomainHoleStatSummary>;
+  readonly courseStats: DomainTournamentHoleStats;
+  readonly courseStatsDetails: DomainCourseStatsDetails;
+  readonly courseStatsOverview: DomainCourseStatsOverview;
+  readonly coverage: DomainBroadcastCoverage;
+  readonly cupPastResults: DomainCupPastResults;
+  readonly cupPlayOverviewLeaderboard: DomainCupTournamentStatus;
+  readonly cupRoundLeaderboard: DomainCupTournamentLeaderboard;
+  readonly cupRoundLeaderboardCompressed: DomainCupTournamentLeaderboardCompressed;
+  readonly cupScorecard: DomainCupScorecard;
+  readonly cupTeamRoster: DomainCupTeamRosters;
+  readonly cupTeeTimes: DomainCupTeeTimes;
+  readonly currentLeadersCompressed?: Maybe<DomainCurrentLeadersCompressed>;
+  readonly defaultTourCup: DomainTourCupRankingEvent;
+  readonly eaglesForImpact: DomainEaglesForImpact;
+  readonly eventGuideConfig: DomainEventGuideConfig;
+  readonly field: DomainField;
+  readonly fieldStats: DomainFieldStats;
   readonly franchises: ReadonlyArray<Scalars['String']['output']>;
-  readonly genericContent: ApiGenericContent;
-  readonly genericContentCompressed: ApiGenericContentCompressed;
-  readonly getExpertPicksTable: ApiExpertPicks;
-  readonly getPowerRankingsTable: ApiPowerRankings;
-  readonly getRCPhotoGallery: ApiRcPhotoGallery;
-  readonly getRelatedFact: ApiRelatedFact;
-  readonly getShotCommentary: ApiShotCommentary;
+  readonly genericContent: DomainGenericContent;
+  readonly genericContentCompressed: DomainGenericContentCompressed;
+  readonly getExpertPicksTable: DomainExpertPicks;
+  readonly getPowerRankingsTable: DomainPowerRankings;
+  readonly getRCPhotoGallery: DomainRcPhotoGallery;
+  readonly getRelatedFact: DomainRelatedFact;
+  readonly getShotCommentary: DomainShotCommentary;
   /**   Returns full details for a match based on supplied matchId */
-  readonly groupLocations: ApiGroupLocation;
-  readonly groupStageRankings: ApiGroupStageRankings;
-  readonly groupedField: ApiGroupedField;
-  readonly historicalOdds?: Maybe<ApiHistoricalPlayerOdds>;
-  readonly historicalScorecardStats: ApiHistoricalPlayerScorecards;
-  readonly historicalTournamentsOdds?: Maybe<ApiHistoricalTournamentOdds>;
-  readonly holeDetails: ApiHoleDetail;
-  readonly leaderboardCompressedV2: ApiLeaderboardCompressedV2;
+  readonly groupLocations: DomainGroupLocation;
+  readonly groupStageRankings: DomainGroupStageRankings;
+  readonly groupedField: DomainGroupedField;
+  readonly historicalOdds?: Maybe<DomainHistoricalPlayerOdds>;
+  readonly historicalScorecardStats: DomainHistoricalPlayerScorecards;
+  readonly historicalTournamentsOdds?: Maybe<DomainHistoricalTournamentOdds>;
+  readonly holeDetails: DomainHoleDetail;
+  readonly leaderboardCompressedV2: DomainLeaderboardCompressedV2;
   /**   Get the leaderboard for a tournament by tournamentID. The data in the payload property will be Base64 encoded. */
-  readonly leaderboardCompressedV3: ApiLeaderboardCompressedV3;
-  readonly leaderboardHoleByHole: ApiLeaderboardHoleByHole;
-  readonly leaderboardLegend: ApiLeaderboardInfo;
-  readonly leaderboardStats: ApiLeaderboardStats;
-  readonly leaderboardStrokes: ApiLeaderboardStrokes;
-  readonly leaderboardStrokesCompressed: ApiLeaderboardStrokesCompressed;
-  readonly leaderboardV2: ApiLeaderboardV2;
-  readonly leaderboardV3: ApiLeaderboardV3;
-  readonly legalDocsCompressed: ApiGenericContentCompressed;
-  readonly liveAudioStream: ApiAudioStream;
-  readonly liveVideoOverride: ApiLiveVideoOverride;
-  readonly matchOutcomeIq: ApiRyderCupMatchOutcomeIq;
-  readonly matchPlayLeaderboard: ApiMpLeaderboard;
-  readonly matchPlayLeaderboardCompressed: ApiLeaderboardCompressed;
-  readonly matchPlayPlayoffScorecard: ApiMpPlayoffScorecard;
-  readonly matchPlayScorecard: ApiMpScorecard;
-  readonly matchPlayScorecardResults: ApiMpScorecardResults;
-  readonly matchPlayTeeTimes: ApiMpTeeTimes;
-  readonly matchPlayTeeTimesCompressed: ApiTeeTimesCompressed;
-  readonly networks: ApiBroadcastNetworks;
-  readonly newletterSubscriptions: ReadonlyArray<ApiNewsletter>;
-  readonly newsArticles: ApiNewsArticles;
-  readonly newsFranchises: ReadonlyArray<ApiNewsFranchise>;
-  readonly oddsGraph: ApiOddsTimeline;
-  readonly oddsTable: ApiOddsTable;
-  readonly oddsToWin: ApiOddsToWinMarket;
-  readonly oddsToWinCompressed: ApiOddsToWinMarketCompressed;
-  readonly player: ApiPlayerBioWrapper;
-  readonly playerComparison: ApiPlayerComparison;
-  readonly playerDirectory: ApiPlayerDirectory;
-  readonly playerFinishStats?: Maybe<ApiPlayerFinishStats>;
-  readonly playerHub?: Maybe<ApiPlayerHubPlayerCompressed>;
+  readonly leaderboardCompressedV3: DomainLeaderboardCompressedV3;
+  readonly leaderboardHoleByHole: DomainLeaderboardHoleByHole;
+  readonly leaderboardLegend: DomainLeaderboardInfo;
+  readonly leaderboardStats: DomainLeaderboardStats;
+  readonly leaderboardStrokes: DomainLeaderboardStrokes;
+  readonly leaderboardStrokesCompressed: DomainLeaderboardStrokesCompressed;
+  readonly leaderboardV2: DomainLeaderboardV2;
+  readonly leaderboardV3: DomainLeaderboardV3;
+  readonly legalDocsCompressed: DomainGenericContentCompressed;
+  readonly liveAudioStream: DomainAudioStream;
+  readonly liveVideoOverride: DomainLiveVideoOverride;
+  readonly matchOutcomeIq: DomainRyderCupMatchOutcomeIq;
+  readonly matchPlayLeaderboard: DomainMpLeaderboard;
+  readonly matchPlayLeaderboardCompressed: DomainLeaderboardCompressed;
+  readonly matchPlayPlayoffScorecard: DomainMpPlayoffScorecard;
+  readonly matchPlayScorecard: DomainMpScorecard;
+  readonly matchPlayScorecardResults: DomainMpScorecardResults;
+  readonly matchPlayTeeTimes: DomainMpTeeTimes;
+  readonly matchPlayTeeTimesCompressed: DomainTeeTimesCompressed;
+  readonly networks: DomainBroadcastNetworks;
+  readonly newletterSubscriptions: ReadonlyArray<DomainNewsletter>;
+  readonly newsArticles: DomainNewsArticles;
+  readonly newsFranchises: ReadonlyArray<DomainNewsFranchise>;
+  readonly oddsGraph: DomainOddsTimeline;
+  readonly oddsTable: DomainOddsTable;
+  readonly oddsToWin: DomainOddsToWinMarket;
+  readonly oddsToWinCompressed: DomainOddsToWinMarketCompressed;
+  readonly player: DomainPlayerBioWrapper;
+  readonly playerComparison: DomainPlayerComparison;
+  readonly playerDirectory: DomainPlayerDirectory;
+  readonly playerFinishStats?: Maybe<DomainPlayerFinishStats>;
+  readonly playerHub?: Maybe<DomainPlayerHubPlayerCompressed>;
   /** @deprecated use REST API */
-  readonly playerProfileCareer: ApiPlayerProfileCareer;
+  readonly playerProfileCareer: DomainPlayerProfileCareer;
   /** @deprecated use REST API */
-  readonly playerProfileCareerResults: ApiPlayerProfileCareerResults;
-  readonly playerProfileCourseResults?: Maybe<ApiPlayerProfileCourseResults>;
-  readonly playerProfileMajorResults?: Maybe<ApiPlayerProfileMajors>;
+  readonly playerProfileCareerResults: DomainPlayerProfileCareerResults;
+  readonly playerProfileCourseResults?: Maybe<DomainPlayerProfileCourseResults>;
+  readonly playerProfileMajorResults?: Maybe<DomainPlayerProfileMajors>;
   /** @deprecated use REST API */
-  readonly playerProfileOverview: ApiProfileOverview;
-  readonly playerProfileScorecards: ApiHistoricalPlayerScorecards;
+  readonly playerProfileOverview: DomainProfileOverview;
+  readonly playerProfileScorecards: DomainHistoricalPlayerScorecards;
   /** @deprecated use REST API */
-  readonly playerProfileSeasonResults: ApiPlayerResults;
+  readonly playerProfileSeasonResults: DomainPlayerResults;
   /** @deprecated use REST API */
-  readonly playerProfileStandings: ReadonlyArray<ApiPlayerOverviewStandings>;
-  readonly playerProfileStats: ReadonlyArray<ApiPlayerProfileStat>;
+  readonly playerProfileStandings: ReadonlyArray<DomainPlayerOverviewStandings>;
+  readonly playerProfileStats: ReadonlyArray<DomainPlayerProfileStat>;
   /** @deprecated use REST API */
-  readonly playerProfileStatsFull: ReadonlyArray<ApiPlayerProfileStatFull>;
+  readonly playerProfileStatsFull: ReadonlyArray<DomainPlayerProfileStatFull>;
   /** @deprecated use REST API */
-  readonly playerProfileStatsFullV2: ApiPlayerProfileStatsFullV2;
+  readonly playerProfileStatsFullV2: DomainPlayerProfileStatsFullV2;
   /** @deprecated use REST API */
-  readonly playerProfileStatsYears: ReadonlyArray<ApiPlayerProfileStatYear>;
-  readonly playerProfileTournamentResults: ApiPlayerProfileTournamentResults;
+  readonly playerProfileStatsYears: ReadonlyArray<DomainPlayerProfileStatYear>;
+  readonly playerProfileTournamentResults: DomainPlayerProfileTournamentResults;
   /** @deprecated use REST API */
-  readonly playerSponsorships: ReadonlyArray<ApiPlayerSponsorship>;
-  readonly playerTournamentStatus?: Maybe<ApiPlayerTournamentStatus>;
-  readonly players: ReadonlyArray<ApiPlayerBioWrapper>;
-  readonly playersOddsComparison: ReadonlyArray<ApiPlayerComparisonOdds>;
-  readonly playoffScorecard: ApiPlayoffScorecard;
+  readonly playerSponsorships: ReadonlyArray<DomainPlayerSponsorship>;
+  readonly playerTournamentStatus?: Maybe<DomainPlayerTournamentStatus>;
+  readonly players: ReadonlyArray<DomainPlayerBioWrapper>;
+  readonly playersOddsComparison: ReadonlyArray<DomainPlayerComparisonOdds>;
+  readonly playoffScorecard: DomainPlayoffScorecard;
   /** @deprecated use v3 */
-  readonly playoffScorecardV2?: Maybe<ReadonlyArray<ApiPlayoffScorecard>>;
-  readonly playoffScorecardV3: ApiTournamentPlayoffScorecards;
-  readonly playoffShotDetails: ApiGroupShotDetails;
-  readonly playoffShotDetailsCompressed: ApiGroupShotDetailsCompressed;
-  readonly podcastEpisodes: ReadonlyArray<ApiEpisode>;
-  readonly podcasts: ReadonlyArray<ApiAudio>;
-  readonly presentedBy: ApiPresentedByConfig;
-  readonly priorityRankings: ApiPriorityRankings;
-  readonly promoSection: ApiPromoSectionContainer;
-  readonly rankingsWinners: ReadonlyArray<ApiRankingsPastWinner>;
-  readonly rsm: ApiRsmStandings;
-  readonly rsmLeaderboard: ApiRsmLeaderboard;
-  readonly ryderCupArticleDetailsCompressed: ApiNewsArticleDetailsCompressed;
-  readonly ryderCupBroadcastCoverage: ApiRyderCupBroadcastCoverage;
-  readonly ryderCupContentFragmentsCompressed: ApiContentFragmentsCompressed;
-  readonly ryderCupContentOptions: ApiRyderCupMediaSearchOptions;
-  readonly ryderCupContentPageTabs: ApiContentFragmentTabs;
-  readonly ryderCupMixedMedia: ReadonlyArray<ApiRyderCupContent>;
-  readonly ryderCupMixedMediaCompressed: ApiRyderCupContentCompressed;
-  readonly ryderCupPlayerProfileCompressed: ApiRyderCupPlayerProfileCompressed;
+  readonly playoffScorecardV2?: Maybe<ReadonlyArray<DomainPlayoffScorecard>>;
+  readonly playoffScorecardV3: DomainTournamentPlayoffScorecards;
+  readonly playoffShotDetails: DomainGroupShotDetails;
+  readonly playoffShotDetailsCompressed: DomainGroupShotDetailsCompressed;
+  readonly podcastEpisodes: ReadonlyArray<DomainEpisode>;
+  readonly podcasts: ReadonlyArray<DomainAudio>;
+  readonly presentedBy: DomainPresentedByConfig;
+  readonly priorityRankings: DomainPriorityRankings;
+  readonly promoSection: DomainPromoSectionContainer;
+  readonly rankingsWinners: ReadonlyArray<DomainRankingsPastWinner>;
+  readonly rsm: DomainRsmStandings;
+  readonly rsmLeaderboard: DomainRsmLeaderboard;
+  readonly ryderCupArticleDetailsCompressed: DomainNewsArticleDetailsCompressed;
+  readonly ryderCupBroadcastCoverage: DomainRyderCupBroadcastCoverage;
+  readonly ryderCupContentFragmentsCompressed: DomainContentFragmentsCompressed;
+  readonly ryderCupContentOptions: DomainRyderCupMediaSearchOptions;
+  readonly ryderCupContentPageTabs: DomainContentFragmentTabs;
+  readonly ryderCupMixedMedia: ReadonlyArray<DomainRyderCupContent>;
+  readonly ryderCupMixedMediaCompressed: DomainRyderCupContentCompressed;
+  readonly ryderCupPlayerProfileCompressed: DomainRyderCupPlayerProfileCompressed;
   /** @deprecated use ryderCupTeamRankingsV2 */
-  readonly ryderCupTeamRankings?: Maybe<ApiRyderCupTeamRankings>;
+  readonly ryderCupTeamRankings?: Maybe<DomainRyderCupTeamRankings>;
   /** @deprecated use ryderCupTeamRankingsCompressedV2 */
-  readonly ryderCupTeamRankingsCompressed?: Maybe<ApiRyderCupTeamRankingsCompressed>;
-  readonly ryderCupTeamRankingsCompressedV2?: Maybe<ApiRyderCupTeamRankingsCompressed>;
-  readonly ryderCupTeamRankingsV2?: Maybe<ApiRyderCupRankingsV2>;
-  readonly ryderCupTournament?: Maybe<ApiRyderCupTournament>;
-  readonly ryderCupTournaments: ReadonlyArray<ApiRyderCupTournamentOverview>;
-  readonly ryderCupVideoById?: Maybe<ApiRcVideoPage>;
-  readonly scatterData: ApiScatterData;
-  readonly scatterDataCompressed: ApiScatterDataCompressed;
-  readonly schedule: ApiSchedule;
-  readonly scheduleYears: ApiScheduleYears;
-  readonly scorecardCompressedV3: ApiScorecardCompressedV3;
-  readonly scorecardStats: ApiPlayerScorecardStats;
-  readonly scorecardStatsComparison?: Maybe<ApiScorecardStatsComparison>;
-  readonly scorecardStatsV3: ApiPlayerScorecardStats;
-  readonly scorecardStatsV3Compressed: ApiPlayerScorecardStatsCompressed;
-  readonly scorecardV2: ApiLeaderboardDrawerV2;
-  readonly scorecardV3: ApiScorecardV3;
-  readonly searchBarFeatures: ApiSearchBarFeatures;
+  readonly ryderCupTeamRankingsCompressed?: Maybe<DomainRyderCupTeamRankingsCompressed>;
+  readonly ryderCupTeamRankingsCompressedV2?: Maybe<DomainRyderCupTeamRankingsCompressed>;
+  readonly ryderCupTeamRankingsV2?: Maybe<DomainRyderCupRankingsV2>;
+  readonly ryderCupTournament?: Maybe<DomainRyderCupTournament>;
+  readonly ryderCupTournaments: ReadonlyArray<DomainRyderCupTournamentOverview>;
+  readonly ryderCupVideoById?: Maybe<DomainRcVideoPage>;
+  readonly scatterData: DomainScatterData;
+  readonly scatterDataCompressed: DomainScatterDataCompressed;
+  readonly schedule: DomainSchedule;
+  readonly scheduleYears: DomainScheduleYears;
+  readonly scorecardCompressedV3: DomainScorecardCompressedV3;
+  readonly scorecardStats: DomainPlayerScorecardStats;
+  readonly scorecardStatsComparison?: Maybe<DomainScorecardStatsComparison>;
+  readonly scorecardStatsV3: DomainPlayerScorecardStats;
+  readonly scorecardStatsV3Compressed: DomainPlayerScorecardStatsCompressed;
+  readonly scorecardV2: DomainLeaderboardDrawerV2;
+  readonly scorecardV3: DomainScorecardV3;
+  readonly searchBarFeatures: DomainSearchBarFeatures;
   /** @deprecated No longer supported */
-  readonly searchPlayers: ReadonlyArray<ApiPlayer>;
-  readonly shotDetailsCompressedV3: ApiShotDetailsCompressedV3;
-  readonly shotDetailsV3: ApiShotDetails;
-  readonly signatureStandings: ApiSignatureStandings;
-  readonly sponsoredArticles: ReadonlyArray<ApiNewsArticle>;
-  readonly sponsoredArticlesV2: ApiSponsoredArticles;
+  readonly searchPlayers: ReadonlyArray<DomainPlayer>;
+  readonly shotDetailsCompressedV3: DomainShotDetailsCompressedV3;
+  readonly shotDetailsV3: DomainShotDetails;
+  readonly signatureStandings: DomainSignatureStandings;
+  readonly sponsoredArticles: ReadonlyArray<DomainNewsArticle>;
+  readonly sponsoredArticlesV2: DomainSponsoredArticles;
   /** @deprecated use REST API */
-  readonly sponsorships: ApiPlayerSponsors;
-  readonly statDetails: ApiStatDetails;
-  readonly statLeaders: ApiStatLeaderCategory;
-  readonly statOverview: ApiOverviewStats;
-  readonly statsLeadersMobile: ApiMobileStatLeaders;
-  readonly teamStrokePlayLeaderboard: ApiTspLeaderboard;
-  readonly teamStrokePlayLeaderboardCompressed: ApiLeaderboardCompressed;
-  readonly teamStrokePlayScorecard: ApiTspScorecard;
-  readonly teamStrokePlayScorecardRounds: ApiTspScorecardRounds;
-  readonly teamStrokePlayTeeTimes: ApiTspTeeTimes;
-  readonly teamStrokePlayTeeTimesCompressed: ApiTeeTimesCompressed;
-  readonly teeTimes: ApiTeeTimes;
-  readonly teeTimesCompressed: ApiTeeTimesCompressed;
-  readonly teeTimesCompressedV2: ApiTeeTimesCompressed;
-  readonly teeTimesV2: ApiTeeTimesV2;
+  readonly sponsorships: DomainPlayerSponsors;
+  readonly statDetails: DomainStatDetails;
+  readonly statLeaders: DomainStatLeaderCategory;
+  readonly statOverview: DomainOverviewStats;
+  readonly statsLeadersMobile: DomainMobileStatLeaders;
+  readonly teamStrokePlayLeaderboard: DomainTspLeaderboard;
+  readonly teamStrokePlayLeaderboardCompressed: DomainLeaderboardCompressed;
+  readonly teamStrokePlayScorecard: DomainTspScorecard;
+  readonly teamStrokePlayScorecardRounds: DomainTspScorecardRounds;
+  readonly teamStrokePlayTeeTimes: DomainTspTeeTimes;
+  readonly teamStrokePlayTeeTimesCompressed: DomainTeeTimesCompressed;
+  readonly teeTimes: DomainTeeTimes;
+  readonly teeTimesCompressed: DomainTeeTimesCompressed;
+  readonly teeTimesCompressedV2: DomainTeeTimesCompressed;
+  readonly teeTimesV2: DomainTeeTimesV2;
   /**   Returns full details for matches based on supplied matchIds */
-  readonly tglMatch?: Maybe<ApiTglMatch>;
+  readonly tglMatch?: Maybe<DomainTglMatch>;
   /**   return a season from TGL based on supplied year, if year is ommitted current year returned, used by AEM */
-  readonly tglMatches: ReadonlyArray<ApiTglMatch>;
+  readonly tglMatches: ReadonlyArray<DomainTglMatch>;
   /**  ## TGL queries */
-  readonly tglSchedule: ApiTglSchedule;
-  readonly tourCup: ApiTourCupRankingEvent;
-  readonly tourCupCombined: ApiTourCupCombined;
-  readonly tourCupSplit?: Maybe<ApiTourCupSplit>;
-  readonly tourCups: ReadonlyArray<ApiTourCupRankingEvent>;
-  readonly tourcastTable: ApiTourcastTable;
-  readonly tourcastVideos: ReadonlyArray<ApiVideo>;
-  readonly tournamentGroupLocations: ApiTournamentGroupLocation;
-  readonly tournamentHistory?: Maybe<ApiTournamentHistory>;
+  readonly tglSchedule: DomainTglSchedule;
+  readonly tourCup: DomainTourCupRankingEvent;
+  readonly tourCupCombined: DomainTourCupCombined;
+  readonly tourCupSplit?: Maybe<DomainTourCupSplit>;
+  readonly tourCups: ReadonlyArray<DomainTourCupRankingEvent>;
+  readonly tourcastTable: DomainTourcastTable;
+  readonly tourcastVideos: ReadonlyArray<DomainVideo>;
+  readonly tournamentGroupLocations: DomainTournamentGroupLocation;
+  readonly tournamentHistory?: Maybe<DomainTournamentHistory>;
   /** @deprecated DOES NOT WORK USE oddsWin / REST APIs */
-  readonly tournamentOddsCompressedV2: ApiTournamentOddsCompressedV2;
-  readonly tournamentOddsToWin: ApiTournamentOddsToWin;
+  readonly tournamentOddsCompressedV2: DomainTournamentOddsCompressedV2;
+  readonly tournamentOddsToWin: DomainTournamentOddsToWin;
   /** @deprecated DOES NOT WORK USE oddsToWin / REST APIs */
-  readonly tournamentOddsV2: ApiTournamentOddsV2;
-  readonly tournamentOverview: ApiTournamentOverview;
-  readonly tournamentPastResults: ApiHistoricalLeaderboard;
-  readonly tournamentRecap: ApiTournamentRecap;
+  readonly tournamentOddsV2: DomainTournamentOddsV2;
+  readonly tournamentOverview: DomainTournamentOverview;
+  readonly tournamentPastResults: DomainHistoricalLeaderboard;
+  readonly tournamentRecap: DomainTournamentRecap;
   /**   Get tournament information for the given tournament IDs */
-  readonly tournaments: ReadonlyArray<ApiTournament>;
-  readonly tspPlayoffShotDetails: ApiTeamShotDetails;
-  readonly tspPlayoffShotDetailsCompressed: ApiTeamShotDetailsCompressed;
-  readonly universityRankings: ApiUniversityRankings;
-  readonly universityTotalPoints: ApiUniversityTotalPoints;
-  readonly upcomingNetworks: ApiUpcomingBroadcastNetworks;
-  readonly upcomingSchedule: ApiScheduleUpcoming;
-  readonly videoById?: Maybe<ApiVideo>;
-  readonly videoFranchises?: Maybe<ApiTourCategories>;
-  readonly videoHero: ApiVideoHero;
-  readonly videoLandingPage?: Maybe<ApiWatchLanding>;
-  readonly videoNavigation?: Maybe<ApiVideoNavigation>;
-  readonly videoRecommendations: ReadonlyArray<ApiVideo>;
-  readonly videos: ReadonlyArray<ApiVideo>;
-  readonly weather: ApiWeatherSummary;
-  readonly yourTour: ApiYourTourStory;
-  readonly yourTourNews: ReadonlyArray<ApiYourTourNews>;
+  readonly tournaments: ReadonlyArray<DomainTournament>;
+  readonly tspPlayoffShotDetails: DomainTeamShotDetails;
+  readonly tspPlayoffShotDetailsCompressed: DomainTeamShotDetailsCompressed;
+  readonly universityRankings: DomainUniversityRankings;
+  readonly universityTotalPoints: DomainUniversityTotalPoints;
+  readonly upcomingNetworks: DomainUpcomingBroadcastNetworks;
+  readonly upcomingSchedule: DomainScheduleUpcoming;
+  readonly videoById?: Maybe<DomainVideo>;
+  readonly videoFranchises?: Maybe<DomainTourCategories>;
+  readonly videoHero: DomainVideoHero;
+  readonly videoLandingPage?: Maybe<DomainWatchLanding>;
+  readonly videoNavigation?: Maybe<DomainVideoNavigation>;
+  readonly videoRecommendations: ReadonlyArray<DomainVideo>;
+  readonly videos: ReadonlyArray<DomainVideo>;
+  readonly weather: DomainWeatherSummary;
+  readonly yourTour: DomainYourTourStory;
+  readonly yourTourNews: ReadonlyArray<DomainYourTourNews>;
 };
 
 
-export type ApiQueryAdTagConfigArgs = {
-  tour?: InputMaybe<ApiTourCode>;
+export type DomainQueryAdTagConfigArgs = {
+  tour?: InputMaybe<DomainTourCode>;
   tournamentId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryAllTimeRecordCategoriesArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryAllTimeRecordCategoriesArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryAllTimeRecordStatArgs = {
+export type DomainQueryAllTimeRecordStatArgs = {
   recordId: Scalars['String']['input'];
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryAlltoursponsorsArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryAlltoursponsorsArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryAonArgs = {
+export type DomainQueryAonArgs = {
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryArticleAdConfigArgs = {
+export type DomainQueryArticleAdConfigArgs = {
   franchise?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryArticleDetailsArgs = {
+export type DomainQueryArticleDetailsArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryArticleDetailsCompressedArgs = {
+export type DomainQueryArticleDetailsCompressedArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryBroadcastTimesArgs = {
+export type DomainQueryBroadcastTimesArgs = {
   pastResults?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryBubbleArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryBubbleArgs = {
+  tourCode: DomainTourCode;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryBubbleWatchArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryBubbleWatchArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryCompleteScheduleArgs = {
-  filter?: InputMaybe<ApiTournamentCategory>;
-  tourCode: ApiTourCode;
+export type DomainQueryCompleteScheduleArgs = {
+  filter?: InputMaybe<DomainTournamentCategory>;
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryContentFragmentTabsArgs = {
+export type DomainQueryContentFragmentTabsArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryContentFragmentTypeArgs = {
+export type DomainQueryContentFragmentTypeArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryContentFragmentsCompressedArgs = {
+export type DomainQueryContentFragmentsCompressedArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   path?: InputMaybe<Scalars['String']['input']>;
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryCourseHolesStatsArgs = {
+export type DomainQueryCourseHolesStatsArgs = {
   courseId: Scalars['ID']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryCourseStatsArgs = {
+export type DomainQueryCourseStatsArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryCourseStatsDetailsArgs = {
-  queryType: ApiCourseStatsId;
-  round?: InputMaybe<ApiToughestRound>;
-  tourCode: ApiTourCode;
+export type DomainQueryCourseStatsDetailsArgs = {
+  queryType: DomainCourseStatsId;
+  round?: InputMaybe<DomainToughestRound>;
+  tourCode: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryCourseStatsOverviewArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryCourseStatsOverviewArgs = {
+  tourCode: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryCoverageArgs = {
+export type DomainQueryCoverageArgs = {
   pastResults?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryCupPastResultsArgs = {
+export type DomainQueryCupPastResultsArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryCupPlayOverviewLeaderboardArgs = {
+export type DomainQueryCupPlayOverviewLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryCupRoundLeaderboardArgs = {
+export type DomainQueryCupRoundLeaderboardArgs = {
   round?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryCupRoundLeaderboardCompressedArgs = {
+export type DomainQueryCupRoundLeaderboardCompressedArgs = {
   round?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryCupScorecardArgs = {
+export type DomainQueryCupScorecardArgs = {
   matchId: Scalars['Int']['input'];
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryCupTeamRosterArgs = {
+export type DomainQueryCupTeamRosterArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryCupTeeTimesArgs = {
+export type DomainQueryCupTeeTimesArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryCurrentLeadersCompressedArgs = {
-  tourCode?: InputMaybe<ApiTourCode>;
+export type DomainQueryCurrentLeadersCompressedArgs = {
+  tourCode?: InputMaybe<DomainTourCode>;
   tournamentId?: InputMaybe<Scalars['ID']['input']>;
 };
 
 
-export type ApiQueryDefaultTourCupArgs = {
-  tour: ApiTourCode;
+export type DomainQueryDefaultTourCupArgs = {
+  tour: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryEaglesForImpactArgs = {
+export type DomainQueryEaglesForImpactArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryEventGuideConfigArgs = {
+export type DomainQueryEventGuideConfigArgs = {
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryFieldArgs = {
+export type DomainQueryFieldArgs = {
   changesOnly?: InputMaybe<Scalars['Boolean']['input']>;
   id: Scalars['ID']['input'];
   includeWithdrawn?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-export type ApiQueryFieldStatsArgs = {
-  fieldStatType?: InputMaybe<ApiFieldStatType>;
+export type DomainQueryFieldStatsArgs = {
+  fieldStatType?: InputMaybe<DomainFieldStatType>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryFranchisesArgs = {
+export type DomainQueryFranchisesArgs = {
   tourCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryGenericContentArgs = {
+export type DomainQueryGenericContentArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryGenericContentCompressedArgs = {
+export type DomainQueryGenericContentCompressedArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryGetExpertPicksTableArgs = {
+export type DomainQueryGetExpertPicksTableArgs = {
   path: Scalars['String']['input'];
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryGetPowerRankingsTableArgs = {
+export type DomainQueryGetPowerRankingsTableArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryGetRcPhotoGalleryArgs = {
+export type DomainQueryGetRcPhotoGalleryArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryGetRelatedFactArgs = {
+export type DomainQueryGetRelatedFactArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryGetShotCommentaryArgs = {
+export type DomainQueryGetShotCommentaryArgs = {
   playerId: Scalars['String']['input'];
   round: Scalars['Int']['input'];
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryGroupLocationsArgs = {
+export type DomainQueryGroupLocationsArgs = {
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryGroupStageRankingsArgs = {
+export type DomainQueryGroupStageRankingsArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryGroupedFieldArgs = {
+export type DomainQueryGroupedFieldArgs = {
   changesOnly?: InputMaybe<Scalars['Boolean']['input']>;
   id: Scalars['ID']['input'];
   includeWithdrawn?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-export type ApiQueryHistoricalOddsArgs = {
-  marketId: ApiHistoricalOddsId;
+export type DomainQueryHistoricalOddsArgs = {
+  marketId: DomainHistoricalOddsId;
   playerId: Scalars['String']['input'];
   timeStamp?: InputMaybe<Scalars['AWSDateTime']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryHistoricalScorecardStatsArgs = {
+export type DomainQueryHistoricalScorecardStatsArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryHistoricalTournamentsOddsArgs = {
-  marketId: ApiOddsMarketType;
+export type DomainQueryHistoricalTournamentsOddsArgs = {
+  marketId: DomainOddsMarketType;
   timeStamp?: InputMaybe<Scalars['AWSDateTime']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryHoleDetailsArgs = {
+export type DomainQueryHoleDetailsArgs = {
   courseId: Scalars['ID']['input'];
   hole: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryLeaderboardCompressedV2Args = {
+export type DomainQueryLeaderboardCompressedV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryLeaderboardCompressedV3Args = {
+export type DomainQueryLeaderboardCompressedV3Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryLeaderboardHoleByHoleArgs = {
+export type DomainQueryLeaderboardHoleByHoleArgs = {
   round?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryLeaderboardLegendArgs = {
+export type DomainQueryLeaderboardLegendArgs = {
   odds: Scalars['Boolean']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryLeaderboardStatsArgs = {
+export type DomainQueryLeaderboardStatsArgs = {
   id: Scalars['ID']['input'];
-  statsType?: InputMaybe<ApiLeaderboardStatsType>;
+  statsType?: InputMaybe<DomainLeaderboardStatsType>;
 };
 
 
-export type ApiQueryLeaderboardStrokesArgs = {
-  id: Scalars['ID']['input'];
-};
-
-
-export type ApiQueryLeaderboardStrokesCompressedArgs = {
+export type DomainQueryLeaderboardStrokesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryLeaderboardV2Args = {
+export type DomainQueryLeaderboardStrokesCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryLeaderboardV3Args = {
+export type DomainQueryLeaderboardV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryLegalDocsCompressedArgs = {
+export type DomainQueryLeaderboardV3Args = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type DomainQueryLegalDocsCompressedArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryLiveAudioStreamArgs = {
+export type DomainQueryLiveAudioStreamArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryLiveVideoOverrideArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryLiveVideoOverrideArgs = {
+  tourCode: DomainTourCode;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryMatchOutcomeIqArgs = {
+export type DomainQueryMatchOutcomeIqArgs = {
   matchId: Scalars['Int']['input'];
   roundNumber?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryMatchPlayLeaderboardArgs = {
+export type DomainQueryMatchPlayLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryMatchPlayLeaderboardCompressedArgs = {
+export type DomainQueryMatchPlayLeaderboardCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryMatchPlayPlayoffScorecardArgs = {
+export type DomainQueryMatchPlayPlayoffScorecardArgs = {
   matchId: Scalars['ID']['input'];
   roundNum: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryMatchPlayScorecardArgs = {
+export type DomainQueryMatchPlayScorecardArgs = {
   matchId: Scalars['ID']['input'];
   roundNum: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryMatchPlayScorecardResultsArgs = {
+export type DomainQueryMatchPlayScorecardResultsArgs = {
   matchId: Scalars['ID']['input'];
   roundNum: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryMatchPlayTeeTimesArgs = {
+export type DomainQueryMatchPlayTeeTimesArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryMatchPlayTeeTimesCompressedArgs = {
+export type DomainQueryMatchPlayTeeTimesCompressedArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryNetworksArgs = {
+export type DomainQueryNetworksArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryNewletterSubscriptionsArgs = {
+export type DomainQueryNewletterSubscriptionsArgs = {
   includeTournaments?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-export type ApiQueryNewsArticlesArgs = {
+export type DomainQueryNewsArticlesArgs = {
   franchise?: InputMaybe<Scalars['String']['input']>;
   franchises?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -6494,256 +6517,256 @@ export type ApiQueryNewsArticlesArgs = {
   sectionName?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
   targetYear?: InputMaybe<Scalars['String']['input']>;
-  tour?: InputMaybe<ApiTourCode>;
+  tour?: InputMaybe<DomainTourCode>;
   tournamentNum?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryNewsFranchisesArgs = {
+export type DomainQueryNewsFranchisesArgs = {
   allFranchises?: InputMaybe<Scalars['Boolean']['input']>;
   tourCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryOddsGraphArgs = {
-  marketId?: InputMaybe<ApiHistoricalOddsId>;
-  oddsTimeType?: InputMaybe<ApiOddsTimeType>;
+export type DomainQueryOddsGraphArgs = {
+  marketId?: InputMaybe<DomainHistoricalOddsId>;
+  oddsTimeType?: InputMaybe<DomainOddsTimeType>;
   playerIds: ReadonlyArray<Scalars['String']['input']>;
   round?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryOddsTableArgs = {
-  markets?: InputMaybe<ReadonlyArray<ApiArticleOddsMarketsInput>>;
-  players?: InputMaybe<ReadonlyArray<ApiArticleOddsPlayerInput>>;
+export type DomainQueryOddsTableArgs = {
+  markets?: InputMaybe<ReadonlyArray<DomainArticleOddsMarketsInput>>;
+  players?: InputMaybe<ReadonlyArray<DomainArticleOddsPlayerInput>>;
   timeStamp?: InputMaybe<Scalars['String']['input']>;
   tournamentId: Scalars['String']['input'];
   tournamentName: Scalars['String']['input'];
 };
 
 
-export type ApiQueryOddsToWinArgs = {
+export type DomainQueryOddsToWinArgs = {
   oddsToWinId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryOddsToWinCompressedArgs = {
+export type DomainQueryOddsToWinCompressedArgs = {
   oddsToWinId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayerArgs = {
+export type DomainQueryPlayerArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayerComparisonArgs = {
-  category?: InputMaybe<ApiPlayerComparisonCategory>;
+export type DomainQueryPlayerComparisonArgs = {
+  category?: InputMaybe<DomainPlayerComparisonCategory>;
   playerIds: ReadonlyArray<Scalars['String']['input']>;
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
   tournamentId?: InputMaybe<Scalars['String']['input']>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryPlayerDirectoryArgs = {
+export type DomainQueryPlayerDirectoryArgs = {
   active?: InputMaybe<Scalars['Boolean']['input']>;
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryPlayerFinishStatsArgs = {
+export type DomainQueryPlayerFinishStatsArgs = {
   playerId: Scalars['ID']['input'];
   statId: Scalars['String']['input'];
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryPlayerHubArgs = {
+export type DomainQueryPlayerHubArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayerProfileCareerArgs = {
+export type DomainQueryPlayerProfileCareerArgs = {
   playerId: Scalars['String']['input'];
-  tourCode?: InputMaybe<ApiTourCode>;
+  tourCode?: InputMaybe<DomainTourCode>;
 };
 
 
-export type ApiQueryPlayerProfileCareerResultsArgs = {
+export type DomainQueryPlayerProfileCareerResultsArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayerProfileCourseResultsArgs = {
+export type DomainQueryPlayerProfileCourseResultsArgs = {
   playerId: Scalars['String']['input'];
-  tourCode?: InputMaybe<ApiTourCode>;
+  tourCode?: InputMaybe<DomainTourCode>;
 };
 
 
-export type ApiQueryPlayerProfileMajorResultsArgs = {
+export type DomainQueryPlayerProfileMajorResultsArgs = {
   playerId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryPlayerProfileOverviewArgs = {
-  currentTour?: InputMaybe<ApiTourCode>;
+export type DomainQueryPlayerProfileOverviewArgs = {
+  currentTour?: InputMaybe<DomainTourCode>;
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayerProfileScorecardsArgs = {
+export type DomainQueryPlayerProfileScorecardsArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayerProfileSeasonResultsArgs = {
+export type DomainQueryPlayerProfileSeasonResultsArgs = {
   playerId: Scalars['ID']['input'];
-  tourCode?: InputMaybe<ApiTourCode>;
+  tourCode?: InputMaybe<DomainTourCode>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryPlayerProfileStandingsArgs = {
+export type DomainQueryPlayerProfileStandingsArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayerProfileStatsArgs = {
+export type DomainQueryPlayerProfileStatsArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayerProfileStatsFullArgs = {
-  playerId: Scalars['ID']['input'];
-  year?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type ApiQueryPlayerProfileStatsFullV2Args = {
+export type DomainQueryPlayerProfileStatsFullArgs = {
   playerId: Scalars['ID']['input'];
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryPlayerProfileStatsYearsArgs = {
+export type DomainQueryPlayerProfileStatsFullV2Args = {
+  playerId: Scalars['ID']['input'];
+  year?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type DomainQueryPlayerProfileStatsYearsArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayerProfileTournamentResultsArgs = {
+export type DomainQueryPlayerProfileTournamentResultsArgs = {
   playerId: Scalars['ID']['input'];
-  tourCode?: InputMaybe<ApiTourCode>;
+  tourCode?: InputMaybe<DomainTourCode>;
 };
 
 
-export type ApiQueryPlayerSponsorshipsArgs = {
-  sponsors?: InputMaybe<ReadonlyArray<ApiPlayerSponsorBrand>>;
-  tour: ApiTourCode;
+export type DomainQueryPlayerSponsorshipsArgs = {
+  sponsors?: InputMaybe<ReadonlyArray<DomainPlayerSponsorBrand>>;
+  tour: DomainTourCode;
 };
 
 
-export type ApiQueryPlayerTournamentStatusArgs = {
+export type DomainQueryPlayerTournamentStatusArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayersArgs = {
+export type DomainQueryPlayersArgs = {
   ids: ReadonlyArray<Scalars['ID']['input']>;
 };
 
 
-export type ApiQueryPlayersOddsComparisonArgs = {
+export type DomainQueryPlayersOddsComparisonArgs = {
   playerIds: ReadonlyArray<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryPlayoffScorecardArgs = {
+export type DomainQueryPlayoffScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayoffScorecardV2Args = {
+export type DomainQueryPlayoffScorecardV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayoffScorecardV3Args = {
+export type DomainQueryPlayoffScorecardV3Args = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayoffShotDetailsArgs = {
+export type DomainQueryPlayoffShotDetailsArgs = {
   includeRadar?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPlayoffShotDetailsCompressedArgs = {
+export type DomainQueryPlayoffShotDetailsCompressedArgs = {
   includeRadar?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryPodcastEpisodesArgs = {
+export type DomainQueryPodcastEpisodesArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   podcastId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryPriorityRankingsArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryPriorityRankingsArgs = {
+  tourCode: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryPromoSectionArgs = {
-  section: ApiPromoSectionType;
+export type DomainQueryPromoSectionArgs = {
+  section: DomainPromoSectionType;
 };
 
 
-export type ApiQueryRankingsWinnersArgs = {
-  tourCode?: InputMaybe<ApiTourCode>;
+export type DomainQueryRankingsWinnersArgs = {
+  tourCode?: InputMaybe<DomainTourCode>;
 };
 
 
-export type ApiQueryRsmArgs = {
+export type DomainQueryRsmArgs = {
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryRsmLeaderboardArgs = {
+export type DomainQueryRsmLeaderboardArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   tournamentId?: InputMaybe<Scalars['ID']['input']>;
 };
 
 
-export type ApiQueryRyderCupArticleDetailsCompressedArgs = {
+export type DomainQueryRyderCupArticleDetailsCompressedArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryRyderCupBroadcastCoverageArgs = {
-  eventRegion?: InputMaybe<ApiEventRegion>;
+export type DomainQueryRyderCupBroadcastCoverageArgs = {
+  eventRegion?: InputMaybe<DomainEventRegion>;
 };
 
 
-export type ApiQueryRyderCupContentFragmentsCompressedArgs = {
+export type DomainQueryRyderCupContentFragmentsCompressedArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   path?: InputMaybe<Scalars['String']['input']>;
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryRyderCupContentPageTabsArgs = {
+export type DomainQueryRyderCupContentPageTabsArgs = {
   path: Scalars['String']['input'];
 };
 
 
-export type ApiQueryRyderCupMixedMediaArgs = {
+export type DomainQueryRyderCupMixedMediaArgs = {
   articleTags?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
   ascending: Scalars['Boolean']['input'];
   categories?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
@@ -6751,15 +6774,15 @@ export type ApiQueryRyderCupMixedMediaArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   playerIds?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
-  team?: InputMaybe<ApiRyderCupTeamType>;
+  team?: InputMaybe<DomainRyderCupTeamType>;
   topic?: InputMaybe<Scalars['String']['input']>;
-  type?: InputMaybe<ApiRyderCupContentType>;
+  type?: InputMaybe<DomainRyderCupContentType>;
   videoTags?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryRyderCupMixedMediaCompressedArgs = {
+export type DomainQueryRyderCupMixedMediaCompressedArgs = {
   articleTags?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
   ascending: Scalars['Boolean']['input'];
   categories?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
@@ -6767,136 +6790,136 @@ export type ApiQueryRyderCupMixedMediaCompressedArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   playerIds?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
-  team?: InputMaybe<ApiRyderCupTeamType>;
+  team?: InputMaybe<DomainRyderCupTeamType>;
   topic?: InputMaybe<Scalars['String']['input']>;
-  type?: InputMaybe<ApiRyderCupContentType>;
+  type?: InputMaybe<DomainRyderCupContentType>;
   videoTags?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryRyderCupPlayerProfileCompressedArgs = {
+export type DomainQueryRyderCupPlayerProfileCompressedArgs = {
   playerId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryRyderCupTeamRankingsArgs = {
-  eventQuery?: InputMaybe<ApiRyderCupRankingsQueryInput>;
+export type DomainQueryRyderCupTeamRankingsArgs = {
+  eventQuery?: InputMaybe<DomainRyderCupRankingsQueryInput>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryRyderCupTeamRankingsCompressedArgs = {
-  eventQuery?: InputMaybe<ApiRyderCupRankingsQueryInput>;
+export type DomainQueryRyderCupTeamRankingsCompressedArgs = {
+  eventQuery?: InputMaybe<DomainRyderCupRankingsQueryInput>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryRyderCupTeamRankingsCompressedV2Args = {
-  eventQuery?: InputMaybe<ApiRyderCupRankingsQueryInput>;
+export type DomainQueryRyderCupTeamRankingsCompressedV2Args = {
+  eventQuery?: InputMaybe<DomainRyderCupRankingsQueryInput>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryRyderCupTeamRankingsV2Args = {
-  eventQuery?: InputMaybe<ApiRyderCupRankingsQueryInput>;
+export type DomainQueryRyderCupTeamRankingsV2Args = {
+  eventQuery?: InputMaybe<DomainRyderCupRankingsQueryInput>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryRyderCupTournamentArgs = {
+export type DomainQueryRyderCupTournamentArgs = {
   year: Scalars['Int']['input'];
 };
 
 
-export type ApiQueryRyderCupVideoByIdArgs = {
+export type DomainQueryRyderCupVideoByIdArgs = {
   brightcoveId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryScatterDataArgs = {
+export type DomainQueryScatterDataArgs = {
   course: Scalars['Int']['input'];
   hole: Scalars['Int']['input'];
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryScatterDataCompressedArgs = {
+export type DomainQueryScatterDataCompressedArgs = {
   course: Scalars['Int']['input'];
   hole: Scalars['Int']['input'];
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryScheduleArgs = {
-  filter?: InputMaybe<ApiTournamentCategory>;
+export type DomainQueryScheduleArgs = {
+  filter?: InputMaybe<DomainTournamentCategory>;
   tourCode: Scalars['String']['input'];
   year?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryScheduleYearsArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryScheduleYearsArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryScorecardCompressedV3Args = {
+export type DomainQueryScorecardCompressedV3Args = {
   officialEventData?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryScorecardStatsArgs = {
+export type DomainQueryScorecardStatsArgs = {
   id: Scalars['ID']['input'];
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryScorecardStatsComparisonArgs = {
-  category: ApiPlayerComparisonCategory;
+export type DomainQueryScorecardStatsComparisonArgs = {
+  category: DomainPlayerComparisonCategory;
   playerIds: ReadonlyArray<Scalars['String']['input']>;
   round?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryScorecardStatsV3Args = {
+export type DomainQueryScorecardStatsV3Args = {
   id: Scalars['ID']['input'];
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryScorecardStatsV3CompressedArgs = {
+export type DomainQueryScorecardStatsV3CompressedArgs = {
   id: Scalars['ID']['input'];
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryScorecardV2Args = {
+export type DomainQueryScorecardV2Args = {
   id: Scalars['ID']['input'];
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryScorecardV3Args = {
+export type DomainQueryScorecardV3Args = {
   officialEventData?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQuerySearchBarFeaturesArgs = {
-  tourCode?: InputMaybe<ApiTourCode>;
+export type DomainQuerySearchBarFeaturesArgs = {
+  tourCode?: InputMaybe<DomainTourCode>;
 };
 
 
-export type ApiQuerySearchPlayersArgs = {
+export type DomainQuerySearchPlayersArgs = {
   lastName?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryShotDetailsCompressedV3Args = {
+export type DomainQueryShotDetailsCompressedV3Args = {
   includeRadar?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
   round: Scalars['Int']['input'];
@@ -6904,7 +6927,7 @@ export type ApiQueryShotDetailsCompressedV3Args = {
 };
 
 
-export type ApiQueryShotDetailsV3Args = {
+export type DomainQueryShotDetailsV3Args = {
   includeRadar?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
   round: Scalars['Int']['input'];
@@ -6912,157 +6935,157 @@ export type ApiQueryShotDetailsV3Args = {
 };
 
 
-export type ApiQuerySignatureStandingsArgs = {
-  tourCode: ApiTourCode;
+export type DomainQuerySignatureStandingsArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQuerySponsoredArticlesArgs = {
-  sponsor: ApiArticleSponsor;
+export type DomainQuerySponsoredArticlesArgs = {
+  sponsor: DomainArticleSponsor;
 };
 
 
-export type ApiQuerySponsoredArticlesV2Args = {
-  sponsor: ApiArticleSponsor;
+export type DomainQuerySponsoredArticlesV2Args = {
+  sponsor: DomainArticleSponsor;
 };
 
 
-export type ApiQuerySponsorshipsArgs = {
+export type DomainQuerySponsorshipsArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryStatDetailsArgs = {
-  eventQuery?: InputMaybe<ApiStatDetailEventQuery>;
+export type DomainQueryStatDetailsArgs = {
+  eventQuery?: InputMaybe<DomainStatDetailEventQuery>;
   statId: Scalars['String']['input'];
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryStatLeadersArgs = {
-  category: ApiStatCategory;
-  tourCode: ApiTourCode;
+export type DomainQueryStatLeadersArgs = {
+  category: DomainStatCategory;
+  tourCode: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryStatOverviewArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryStatOverviewArgs = {
+  tourCode: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryStatsLeadersMobileArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryStatsLeadersMobileArgs = {
+  tourCode: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryTeamStrokePlayLeaderboardArgs = {
+export type DomainQueryTeamStrokePlayLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTeamStrokePlayLeaderboardCompressedArgs = {
+export type DomainQueryTeamStrokePlayLeaderboardCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTeamStrokePlayScorecardArgs = {
+export type DomainQueryTeamStrokePlayScorecardArgs = {
   roundNum: Scalars['Int']['input'];
   teamId: Scalars['ID']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTeamStrokePlayScorecardRoundsArgs = {
+export type DomainQueryTeamStrokePlayScorecardRoundsArgs = {
   teamId: Scalars['ID']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTeamStrokePlayTeeTimesArgs = {
+export type DomainQueryTeamStrokePlayTeeTimesArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTeamStrokePlayTeeTimesCompressedArgs = {
+export type DomainQueryTeamStrokePlayTeeTimesCompressedArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTeeTimesArgs = {
+export type DomainQueryTeeTimesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTeeTimesCompressedArgs = {
+export type DomainQueryTeeTimesCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTeeTimesCompressedV2Args = {
+export type DomainQueryTeeTimesCompressedV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTeeTimesV2Args = {
+export type DomainQueryTeeTimesV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTglMatchArgs = {
+export type DomainQueryTglMatchArgs = {
   matchId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTglMatchesArgs = {
+export type DomainQueryTglMatchesArgs = {
   matchIds: ReadonlyArray<Scalars['ID']['input']>;
 };
 
 
-export type ApiQueryTglScheduleArgs = {
+export type DomainQueryTglScheduleArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryTourCupArgs = {
+export type DomainQueryTourCupArgs = {
   id: Scalars['ID']['input'];
-  type?: InputMaybe<ApiTourCupType>;
+  type?: InputMaybe<DomainTourCupType>;
 };
 
 
-export type ApiQueryTourCupCombinedArgs = {
-  eventQuery?: InputMaybe<ApiStatDetailEventQuery>;
+export type DomainQueryTourCupCombinedArgs = {
+  eventQuery?: InputMaybe<DomainStatDetailEventQuery>;
   id?: InputMaybe<Scalars['String']['input']>;
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryTourCupSplitArgs = {
-  eventQuery?: InputMaybe<ApiStatDetailEventQuery>;
+export type DomainQueryTourCupSplitArgs = {
+  eventQuery?: InputMaybe<DomainStatDetailEventQuery>;
   id?: InputMaybe<Scalars['String']['input']>;
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryTourCupsArgs = {
-  tour: ApiTourCode;
+export type DomainQueryTourCupsArgs = {
+  tour: DomainTourCode;
   year: Scalars['Int']['input'];
 };
 
 
-export type ApiQueryTourcastTableArgs = {
+export type DomainQueryTourcastTableArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTourcastVideosArgs = {
+export type DomainQueryTourcastVideosArgs = {
   hole?: InputMaybe<Scalars['Int']['input']>;
   playerId: Scalars['ID']['input'];
   round: Scalars['Int']['input'];
@@ -7071,144 +7094,144 @@ export type ApiQueryTourcastVideosArgs = {
 };
 
 
-export type ApiQueryTournamentGroupLocationsArgs = {
+export type DomainQueryTournamentGroupLocationsArgs = {
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTournamentHistoryArgs = {
+export type DomainQueryTournamentHistoryArgs = {
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryTournamentOddsCompressedV2Args = {
-  oddsFormat?: InputMaybe<ApiOddsFormat>;
-  provider?: InputMaybe<ApiOddsProvider>;
+export type DomainQueryTournamentOddsCompressedV2Args = {
+  oddsFormat?: InputMaybe<DomainOddsFormat>;
+  provider?: InputMaybe<DomainOddsProvider>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTournamentOddsToWinArgs = {
+export type DomainQueryTournamentOddsToWinArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTournamentOddsV2Args = {
-  oddsFormat?: InputMaybe<ApiOddsFormat>;
-  provider?: InputMaybe<ApiOddsProvider>;
+export type DomainQueryTournamentOddsV2Args = {
+  oddsFormat?: InputMaybe<DomainOddsFormat>;
+  provider?: InputMaybe<DomainOddsProvider>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTournamentOverviewArgs = {
+export type DomainQueryTournamentOverviewArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTournamentPastResultsArgs = {
+export type DomainQueryTournamentPastResultsArgs = {
   id: Scalars['ID']['input'];
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryTournamentRecapArgs = {
+export type DomainQueryTournamentRecapArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiQueryTournamentsArgs = {
+export type DomainQueryTournamentsArgs = {
   ids?: InputMaybe<ReadonlyArray<Scalars['ID']['input']>>;
 };
 
 
-export type ApiQueryTspPlayoffShotDetailsArgs = {
+export type DomainQueryTspPlayoffShotDetailsArgs = {
   includeRadar?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryTspPlayoffShotDetailsCompressedArgs = {
+export type DomainQueryTspPlayoffShotDetailsCompressedArgs = {
   includeRadar?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryUniversityRankingsArgs = {
-  tourCode?: InputMaybe<ApiTourCode>;
+export type DomainQueryUniversityRankingsArgs = {
+  tourCode?: InputMaybe<DomainTourCode>;
   week?: InputMaybe<Scalars['Int']['input']>;
   year?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryUniversityTotalPointsArgs = {
+export type DomainQueryUniversityTotalPointsArgs = {
   season?: InputMaybe<Scalars['Int']['input']>;
   week?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type ApiQueryUpcomingNetworksArgs = {
-  tourCode?: InputMaybe<ApiTourCode>;
+export type DomainQueryUpcomingNetworksArgs = {
+  tourCode?: InputMaybe<DomainTourCode>;
   tournamentIds: ReadonlyArray<Scalars['ID']['input']>;
 };
 
 
-export type ApiQueryUpcomingScheduleArgs = {
-  filter?: InputMaybe<ApiTournamentCategory>;
+export type DomainQueryUpcomingScheduleArgs = {
+  filter?: InputMaybe<DomainTournamentCategory>;
   tourCode: Scalars['String']['input'];
   year?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryVideoByIdArgs = {
+export type DomainQueryVideoByIdArgs = {
   brightcoveId: Scalars['ID']['input'];
   tourcast: Scalars['Boolean']['input'];
 };
 
 
-export type ApiQueryVideoFranchisesArgs = {
-  tourCode?: InputMaybe<ApiTourCode>;
+export type DomainQueryVideoFranchisesArgs = {
+  tourCode?: InputMaybe<DomainTourCode>;
 };
 
 
-export type ApiQueryVideoHeroArgs = {
+export type DomainQueryVideoHeroArgs = {
   path?: InputMaybe<Scalars['String']['input']>;
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryVideoLandingPageArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryVideoLandingPageArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryVideoNavigationArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryVideoNavigationArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryVideoRecommendationsArgs = {
+export type DomainQueryVideoRecommendationsArgs = {
   brightcoveId?: InputMaybe<Scalars['ID']['input']>;
   franchise?: InputMaybe<Scalars['String']['input']>;
-  language?: InputMaybe<ApiVideoLanguage>;
+  language?: InputMaybe<DomainVideoLanguage>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   playerId?: InputMaybe<Scalars['String']['input']>;
   season?: InputMaybe<Scalars['String']['input']>;
   tour?: InputMaybe<Scalars['String']['input']>;
-  tourCode?: InputMaybe<ApiTourCode>;
+  tourCode?: InputMaybe<DomainTourCode>;
   tournamentId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryVideosArgs = {
+export type DomainQueryVideosArgs = {
   category?: InputMaybe<Scalars['String']['input']>;
   franchise?: InputMaybe<Scalars['String']['input']>;
   franchises?: InputMaybe<ReadonlyArray<Scalars['String']['input']>>;
   holeNumber?: InputMaybe<Scalars['String']['input']>;
-  language?: InputMaybe<ApiVideoLanguage>;
+  language?: InputMaybe<DomainVideoLanguage>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   playerId?: InputMaybe<Scalars['String']['input']>;
@@ -7216,51 +7239,51 @@ export type ApiQueryVideosArgs = {
   rating?: InputMaybe<Scalars['Int']['input']>;
   season?: InputMaybe<Scalars['String']['input']>;
   tour?: InputMaybe<Scalars['String']['input']>;
-  tourCode?: InputMaybe<ApiTourCode>;
+  tourCode?: InputMaybe<DomainTourCode>;
   tournamentId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type ApiQueryWeatherArgs = {
+export type DomainQueryWeatherArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiQueryYourTourArgs = {
-  tourCode: ApiTourCode;
+export type DomainQueryYourTourArgs = {
+  tourCode: DomainTourCode;
 };
 
 
-export type ApiQueryYourTourNewsArgs = {
+export type DomainQueryYourTourNewsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  tourCode: ApiTourCode;
+  tourCode: DomainTourCode;
 };
 
-export type ApiRcContentTypeParent = {
+export type DomainRcContentTypeParent = {
   readonly __typename: 'RCContentTypeParent';
   readonly displayValue: Scalars['String']['output'];
-  readonly queryValue: ApiRyderCupContentType;
+  readonly queryValue: DomainRyderCupContentType;
 };
 
-export type ApiRcHomepageAssets = ApiNewsArticle | ApiRcPhotoGallery | ApiVideo;
+export type DomainRcHomepageAssets = DomainNewsArticle | DomainRcPhotoGallery | DomainVideo;
 
-export type ApiRcPhotoGallery = {
+export type DomainRcPhotoGallery = {
   readonly __typename: 'RCPhotoGallery';
-  readonly authorReference?: Maybe<ApiNewsArticleAuthor>;
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly authorReference?: Maybe<DomainNewsArticleAuthor>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly date?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly eventYears?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly id: Scalars['String']['output'];
-  readonly images?: Maybe<ReadonlyArray<ApiImage>>;
+  readonly images?: Maybe<ReadonlyArray<DomainImage>>;
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
   readonly shareUrl?: Maybe<Scalars['String']['output']>;
-  readonly sponsor?: Maybe<ApiNewsArticleSponsor>;
+  readonly sponsor?: Maybe<DomainNewsArticleSponsor>;
   readonly subhead?: Maybe<Scalars['String']['output']>;
   readonly tags?: Maybe<ReadonlyArray<Maybe<Scalars['String']['output']>>>;
-  readonly team?: Maybe<ApiRyderCupTeamType>;
+  readonly team?: Maybe<DomainRyderCupTeamType>;
   readonly teaserImageOverride?: Maybe<Scalars['String']['output']>;
-  readonly topics?: Maybe<ReadonlyArray<ApiContentTopics>>;
+  readonly topics?: Maybe<ReadonlyArray<DomainContentTopics>>;
   readonly url?: Maybe<Scalars['String']['output']>;
 };
 
@@ -7270,7 +7293,7 @@ export type ApiRcPhotoGallery = {
  *      content: [NewsArticleNode]
  *  }
  */
-export type ApiRcPlayerTournamentRecord = {
+export type DomainRcPlayerTournamentRecord = {
   readonly __typename: 'RCPlayerTournamentRecord';
   readonly fourBallPoints: Scalars['Int']['output'];
   readonly foursomesPoints: Scalars['Int']['output'];
@@ -7280,19 +7303,19 @@ export type ApiRcPlayerTournamentRecord = {
   readonly singlesPoints: Scalars['Int']['output'];
 };
 
-export type ApiRcTeamTypeParent = {
+export type DomainRcTeamTypeParent = {
   readonly __typename: 'RCTeamTypeParent';
   readonly displayValue: Scalars['String']['output'];
-  readonly queryValue: ApiRyderCupTeamType;
+  readonly queryValue: DomainRyderCupTeamType;
 };
 
-export type ApiRcVideoPage = {
+export type DomainRcVideoPage = {
   readonly __typename: 'RCVideoPage';
-  readonly upNextVideos?: Maybe<ReadonlyArray<ApiVideo>>;
-  readonly video?: Maybe<ApiVideo>;
+  readonly upNextVideos?: Maybe<ReadonlyArray<DomainVideo>>;
+  readonly video?: Maybe<DomainVideo>;
 };
 
-export type ApiRsmEventWinner = {
+export type DomainRsmEventWinner = {
   readonly __typename: 'RSMEventWinner';
   readonly birdies: Scalars['String']['output'];
   readonly country: Scalars['String']['output'];
@@ -7304,25 +7327,25 @@ export type ApiRsmEventWinner = {
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiRsmHistoricalWinner = {
+export type DomainRsmHistoricalWinner = {
   readonly __typename: 'RSMHistoricalWinner';
   readonly displaySeason: Scalars['String']['output'];
-  readonly winners: ReadonlyArray<ApiRsmEventWinner>;
+  readonly winners: ReadonlyArray<DomainRsmEventWinner>;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiRsmLeaderboard = {
+export type DomainRsmLeaderboard = {
   readonly __typename: 'RSMLeaderboard';
   readonly dateText?: Maybe<Scalars['String']['output']>;
   readonly isLive?: Maybe<Scalars['Boolean']['output']>;
-  readonly livePlayers: ReadonlyArray<ApiRsmLeaderboardPlayer>;
-  readonly players: ReadonlyArray<ApiRsmLeaderboardPlayer>;
+  readonly livePlayers: ReadonlyArray<DomainRsmLeaderboardPlayer>;
+  readonly players: ReadonlyArray<DomainRsmLeaderboardPlayer>;
   readonly round?: Maybe<Scalars['String']['output']>;
   readonly tournamentId: Scalars['ID']['output'];
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiRsmLeaderboardPlayer = {
+export type DomainRsmLeaderboardPlayer = {
   readonly __typename: 'RSMLeaderboardPlayer';
   readonly countryFlag: Scalars['String']['output'];
   readonly countryName: Scalars['String']['output'];
@@ -7338,7 +7361,7 @@ export type ApiRsmLeaderboardPlayer = {
   readonly totalSort: Scalars['Int']['output'];
 };
 
-export type ApiRsmPlayer = {
+export type DomainRsmPlayer = {
   readonly __typename: 'RSMPlayer';
   readonly birdies: Scalars['String']['output'];
   readonly country: Scalars['String']['output'];
@@ -7350,20 +7373,20 @@ export type ApiRsmPlayer = {
   readonly rank: Scalars['String']['output'];
 };
 
-export type ApiRsmStandings = {
+export type DomainRsmStandings = {
   readonly __typename: 'RSMStandings';
-  readonly currentLeaderboard: ReadonlyArray<ApiRsmPlayer>;
-  readonly previousWinners: ReadonlyArray<ApiRsmHistoricalWinner>;
-  readonly weeklyWinners: ReadonlyArray<ApiRsmEventWinner>;
+  readonly currentLeaderboard: ReadonlyArray<DomainRsmPlayer>;
+  readonly previousWinners: ReadonlyArray<DomainRsmHistoricalWinner>;
+  readonly weeklyWinners: ReadonlyArray<DomainRsmEventWinner>;
 };
 
-export type ApiRyder_Cup_Ranking_Tooltip =
+export type DomainRyder_Cup_Ranking_Tooltip =
   | 'CAPTAIN_PICK'
   | 'OUTCOME_IQ'
   | 'QUALIFICATION_INFO'
   | 'QUALIFIED_LOGO';
 
-export type ApiRadarBallTracjectory = {
+export type DomainRadarBallTracjectory = {
   readonly __typename: 'RadarBallTracjectory';
   readonly kind: Scalars['String']['output'];
   readonly measuredTimeInterval: ReadonlyArray<Scalars['Float']['output']>;
@@ -7376,7 +7399,7 @@ export type ApiRadarBallTracjectory = {
   readonly zFit: ReadonlyArray<Scalars['Float']['output']>;
 };
 
-export type ApiRadarData = {
+export type DomainRadarData = {
   readonly __typename: 'RadarData';
   readonly actualFlightTime: Scalars['Int']['output'];
   readonly apexHeight: Scalars['Float']['output'];
@@ -7384,19 +7407,19 @@ export type ApiRadarData = {
   readonly apexSide: Scalars['Float']['output'];
   readonly ballImpactMeasured?: Maybe<Scalars['String']['output']>;
   readonly ballSpeed: Scalars['Float']['output'];
-  readonly ballTrajectory: ReadonlyArray<ApiRadarBallTracjectory>;
+  readonly ballTrajectory: ReadonlyArray<DomainRadarBallTracjectory>;
   readonly clubSpeed: Scalars['Float']['output'];
   readonly horizontalLaunchAngle: Scalars['Float']['output'];
   readonly launchSpin: Scalars['Float']['output'];
   /** @deprecated use normalizedTrajectoryV2 */
-  readonly normalizedTrajectory: ReadonlyArray<ApiRadarNormalizedTrajectory>;
-  readonly normalizedTrajectoryV2: ReadonlyArray<ApiRadarNormalizedTrajectoryV2>;
+  readonly normalizedTrajectory: ReadonlyArray<DomainRadarNormalizedTrajectory>;
+  readonly normalizedTrajectoryV2: ReadonlyArray<DomainRadarNormalizedTrajectoryV2>;
   readonly smashFactor: Scalars['Float']['output'];
   readonly spinAxis: Scalars['Float']['output'];
   readonly verticalLaunchAngle: Scalars['Float']['output'];
 };
 
-export type ApiRadarNormalizedTrajectory = {
+export type DomainRadarNormalizedTrajectory = {
   readonly __typename: 'RadarNormalizedTrajectory';
   readonly carry?: Maybe<Scalars['Int']['output']>;
   readonly carrySide?: Maybe<Scalars['Int']['output']>;
@@ -7412,7 +7435,7 @@ export type ApiRadarNormalizedTrajectory = {
   readonly zFit?: Maybe<ReadonlyArray<Scalars['Float']['output']>>;
 };
 
-export type ApiRadarNormalizedTrajectoryV2 = {
+export type DomainRadarNormalizedTrajectoryV2 = {
   readonly __typename: 'RadarNormalizedTrajectoryV2';
   readonly carry?: Maybe<Scalars['Float']['output']>;
   readonly carrySide?: Maybe<Scalars['Float']['output']>;
@@ -7428,7 +7451,7 @@ export type ApiRadarNormalizedTrajectoryV2 = {
   readonly zFit?: Maybe<ReadonlyArray<Scalars['Float']['output']>>;
 };
 
-export type ApiRangeWeatherTemp = {
+export type DomainRangeWeatherTemp = {
   readonly __typename: 'RangeWeatherTemp';
   readonly maxTempC: Scalars['String']['output'];
   readonly maxTempF: Scalars['String']['output'];
@@ -7436,48 +7459,48 @@ export type ApiRangeWeatherTemp = {
   readonly minTempF: Scalars['String']['output'];
 };
 
-export type ApiRankingsPastWinner = {
+export type DomainRankingsPastWinner = {
   readonly __typename: 'RankingsPastWinner';
   readonly description: Scalars['String']['output'];
   readonly displayName: Scalars['String']['output'];
   /** @deprecated Use imageAsset */
   readonly image: Scalars['String']['output'];
-  readonly imageAsset: ApiImageAsset;
+  readonly imageAsset: DomainImageAsset;
   readonly playerId: Scalars['ID']['output'];
   readonly season: Scalars['String']['output'];
 };
 
-export type ApiRankingsTeams =
+export type DomainRankingsTeams =
   | 'EUROPE'
   | 'USA';
 
-export type ApiRcBroadcastPrograms = {
+export type DomainRcBroadcastPrograms = {
   readonly __typename: 'RcBroadcastPrograms';
   readonly broadcastDate: Scalars['String']['output'];
-  readonly programs: ReadonlyArray<ApiRcProgram>;
+  readonly programs: ReadonlyArray<DomainRcProgram>;
 };
 
-export type ApiRcBroadcastType =
+export type DomainRcBroadcastType =
   | 'AUDIO'
   | 'VIDEO';
 
-export type ApiRcProducts = {
+export type DomainRcProducts = {
   readonly __typename: 'RcProducts';
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly header?: Maybe<Scalars['String']['output']>;
   readonly imageGallery?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly path: Scalars['String']['output'];
-  readonly productDescription?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly productDescription?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
 };
 
-export type ApiRcProgram = {
+export type DomainRcProgram = {
   readonly __typename: 'RcProgram';
   readonly androidLink?: Maybe<Scalars['String']['output']>;
   readonly appleAppStore?: Maybe<Scalars['String']['output']>;
   readonly brightcoveId?: Maybe<Scalars['String']['output']>;
-  readonly broadcastType: ApiRcBroadcastType;
-  readonly cta1?: Maybe<ApiCallToAction>;
-  readonly cta2?: Maybe<ApiCallToAction>;
+  readonly broadcastType: DomainRcBroadcastType;
+  readonly cta1?: Maybe<DomainCallToAction>;
+  readonly cta2?: Maybe<DomainCallToAction>;
   readonly endTime?: Maybe<Scalars['String']['output']>;
   readonly endTimeUtc?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly featuredMatchPlayers?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
@@ -7489,12 +7512,12 @@ export type ApiRcProgram = {
   readonly networkBackgroundColor?: Maybe<Scalars['String']['output']>;
   readonly networkFontColor?: Maybe<Scalars['String']['output']>;
   readonly networkLogo?: Maybe<Scalars['String']['output']>;
-  readonly networkLogoAsset?: Maybe<ApiImageAsset>;
+  readonly networkLogoAsset?: Maybe<DomainImageAsset>;
   readonly networkLogoDark?: Maybe<Scalars['String']['output']>;
-  readonly networkLogoDarkAsset?: Maybe<ApiImageAsset>;
+  readonly networkLogoDarkAsset?: Maybe<DomainImageAsset>;
   readonly networkName?: Maybe<Scalars['String']['output']>;
   readonly posterImage?: Maybe<Scalars['String']['output']>;
-  readonly posterImageAsset?: Maybe<ApiImageAsset>;
+  readonly posterImageAsset?: Maybe<DomainImageAsset>;
   readonly regions?: Maybe<ReadonlyArray<Maybe<Scalars['String']['output']>>>;
   readonly roundNum?: Maybe<Scalars['String']['output']>;
   readonly shortDescription?: Maybe<Scalars['String']['output']>;
@@ -7502,66 +7525,66 @@ export type ApiRcProgram = {
   readonly startTimeUtc?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly streamUrl?: Maybe<Scalars['String']['output']>;
   readonly thumbnailImage?: Maybe<Scalars['String']['output']>;
-  readonly thumbnailImageAsset?: Maybe<ApiImageAsset>;
+  readonly thumbnailImageAsset?: Maybe<DomainImageAsset>;
   readonly title: Scalars['String']['output'];
   readonly url: Scalars['String']['output'];
 };
 
-export type ApiRelatedFact = {
+export type DomainRelatedFact = {
   readonly __typename: 'RelatedFact';
-  readonly factText?: Maybe<ReadonlyArray<ApiTourSponsorDescription>>;
+  readonly factText?: Maybe<ReadonlyArray<DomainTourSponsorDescription>>;
   readonly photo?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiRelatedFactsNode = {
+export type DomainRelatedFactsNode = {
   readonly __typename: 'RelatedFactsNode';
   readonly path: Scalars['String']['output'];
 };
 
-export type ApiResultsStandingsDetail = {
+export type DomainResultsStandingsDetail = {
   readonly __typename: 'ResultsStandingsDetail';
   /** @deprecated Use cupLogoAsset */
   readonly cupLogo?: Maybe<Scalars['String']['output']>;
   readonly cupLogoAccessibilityText?: Maybe<Scalars['String']['output']>;
-  readonly cupLogoAsset?: Maybe<ApiImageAsset>;
+  readonly cupLogoAsset?: Maybe<DomainImageAsset>;
   /** @deprecated Use cupLogoDarkAsset */
   readonly cupLogoDark?: Maybe<Scalars['String']['output']>;
-  readonly cupLogoDarkAsset?: Maybe<ApiImageAsset>;
+  readonly cupLogoDarkAsset?: Maybe<DomainImageAsset>;
   readonly cupName?: Maybe<Scalars['String']['output']>;
   readonly cupPoints?: Maybe<Scalars['String']['output']>;
   readonly cupRank?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use rankLogoAsset */
   readonly rankLogo?: Maybe<Scalars['String']['output']>;
   readonly rankLogoAccessibilityText?: Maybe<Scalars['String']['output']>;
-  readonly rankLogoAsset?: Maybe<ApiImageAsset>;
+  readonly rankLogoAsset?: Maybe<DomainImageAsset>;
   /** @deprecated Use rankLogoDarkAsset */
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
-  readonly rankLogoDarkAsset?: Maybe<ApiImageAsset>;
+  readonly rankLogoDarkAsset?: Maybe<DomainImageAsset>;
 };
 
-export type ApiResultsYears = {
+export type DomainResultsYears = {
   readonly __typename: 'ResultsYears';
-  readonly tour: ApiTourCode;
+  readonly tour: DomainTourCode;
   readonly years: ReadonlyArray<Scalars['String']['output']>;
 };
 
-export type ApiRolexClock = {
+export type DomainRolexClock = {
   readonly __typename: 'RolexClock';
   readonly height?: Maybe<Scalars['Float']['output']>;
   readonly width?: Maybe<Scalars['Float']['output']>;
 };
 
-export type ApiRoundFilter = {
+export type DomainRoundFilter = {
   readonly __typename: 'RoundFilter';
   readonly displayText: Scalars['String']['output'];
   readonly roundNumbers: ReadonlyArray<Scalars['Int']['output']>;
 };
 
-export type ApiRoundFormat =
+export type DomainRoundFormat =
   | 'ALTERNATE_SHOT'
   | 'BEST_BALL';
 
-export type ApiRoundScore = {
+export type DomainRoundScore = {
   readonly __typename: 'RoundScore';
   readonly complete: Scalars['Boolean']['output'];
   readonly courseAbbreviation?: Maybe<Scalars['String']['output']>;
@@ -7569,12 +7592,12 @@ export type ApiRoundScore = {
   readonly courseName: Scalars['String']['output'];
   readonly currentHole: Scalars['Int']['output'];
   readonly currentRound: Scalars['Boolean']['output'];
-  readonly firstNine: ApiScorecardRow;
+  readonly firstNine: DomainScorecardRow;
   readonly groupNumber: Scalars['Int']['output'];
   readonly parTotal: Scalars['Int']['output'];
   readonly roundNumber: Scalars['Int']['output'];
   readonly scoreToPar: Scalars['String']['output'];
-  readonly secondNine: ApiScorecardRow;
+  readonly secondNine: DomainScorecardRow;
   readonly total: Scalars['String']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
@@ -7583,14 +7606,14 @@ export type ApiRoundScore = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiRoundScoreItem = {
+export type DomainRoundScoreItem = {
   readonly __typename: 'RoundScoreItem';
   readonly roundDisplay: Scalars['String']['output'];
   readonly roundNum: Scalars['Int']['output'];
   readonly roundScore: Scalars['String']['output'];
 };
 
-export type ApiRoundStatus =
+export type DomainRoundStatus =
   | 'COMPLETE'
   | 'GROUPINGS_OFFICIAL'
   | 'IN_PROGRESS'
@@ -7598,24 +7621,24 @@ export type ApiRoundStatus =
   | 'SUSPENDED'
   | 'UPCOMING';
 
-export type ApiRoundStatusColor =
+export type DomainRoundStatusColor =
   | 'BLUE'
   | 'GRAY'
   | 'GREEN'
   | 'RED'
   | 'YELLOW';
 
-export type ApiRyderCupBio = {
+export type DomainRyderCupBio = {
   readonly __typename: 'RyderCupBio';
-  readonly bio?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly bio?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
 };
 
-export type ApiRyderCupBroadcastCoverage = {
+export type DomainRyderCupBroadcastCoverage = {
   readonly __typename: 'RyderCupBroadcastCoverage';
-  readonly broadcastPrograms: ReadonlyArray<ApiRcBroadcastPrograms>;
+  readonly broadcastPrograms: ReadonlyArray<DomainRcBroadcastPrograms>;
 };
 
-export type ApiRyderCupCaptain = {
+export type DomainRyderCupCaptain = {
   readonly __typename: 'RyderCupCaptain';
   readonly displayName: Scalars['String']['output'];
   readonly firstName: Scalars['String']['output'];
@@ -7623,50 +7646,50 @@ export type ApiRyderCupCaptain = {
   readonly playerId: Scalars['String']['output'];
 };
 
-export type ApiRyderCupContent = ApiNewsArticle | ApiRcPhotoGallery | ApiVideo;
+export type DomainRyderCupContent = DomainNewsArticle | DomainRcPhotoGallery | DomainVideo;
 
-export type ApiRyderCupContentCategories = {
+export type DomainRyderCupContentCategories = {
   readonly __typename: 'RyderCupContentCategories';
   readonly id: Scalars['Int']['output'];
   readonly name: Scalars['String']['output'];
 };
 
-export type ApiRyderCupContentCompressed = {
+export type DomainRyderCupContentCompressed = {
   readonly __typename: 'RyderCupContentCompressed';
-  readonly input?: Maybe<ApiPaginationDetails>;
+  readonly input?: Maybe<DomainPaginationDetails>;
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiRyderCupContentFragment = {
+export type DomainRyderCupContentFragment = {
   readonly __typename: 'RyderCupContentFragment';
-  readonly fragments: ReadonlyArray<ApiRyderCupContentFragments>;
-  readonly pageMetadata: ApiPageMetadata;
+  readonly fragments: ReadonlyArray<DomainRyderCupContentFragments>;
+  readonly pageMetadata: DomainPageMetadata;
   readonly totalLength: Scalars['Int']['output'];
 };
 
-export type ApiRyderCupContentFragments = ApiBroadcastTableFragment | ApiContentFragmentTabs | ApiContentStory | ApiContentVideoCarousel | ApiCourseInfo | ApiDropdownFragment | ApiEventHub | ApiEventHubTable | ApiFutureVenuesFragment | ApiFutureVenuesTableFragment | ApiGenericContent | ApiHeroCarousel | ApiHistoryInfo | ApiHistoryScore | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiHomepageScoring | ApiHospitalityCard | ApiImageBlock | ApiJumpToSection | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopZigZag | ApiMatchCard | ApiMediaGallery | ApiMessageBanner | ApiOddsToWinTracker | ApiRcProducts | ApiRolexClock | ApiRyderCupCourseModel | ApiRyderCupLatestNewsSection | ApiRyderCupPlayerBios | ApiSecondaryHero | ApiTeamRankings | ApiThreeUpPhoto | ApiThreeUpStats | ApiTicketSectionContainer | ApiTwoColumn | ApiVideoHero;
+export type DomainRyderCupContentFragments = DomainBroadcastTableFragment | DomainContentFragmentTabs | DomainContentStory | DomainContentVideoCarousel | DomainCourseInfo | DomainDropdownFragment | DomainEventHub | DomainEventHubTable | DomainFutureVenuesFragment | DomainFutureVenuesTableFragment | DomainGenericContent | DomainHeroCarousel | DomainHistoryInfo | DomainHistoryScore | DomainHomepageLead | DomainHomepageNews | DomainHomepageProgramStanding | DomainHomepageScoring | DomainHospitalityCard | DomainImageBlock | DomainJumpToSection | DomainKopHeader | DomainKopSignUp | DomainKopStandingsList | DomainKopSubheader | DomainKopUpcomingTournament | DomainKopZigZag | DomainMatchCard | DomainMediaGallery | DomainMessageBanner | DomainOddsToWinTracker | DomainRcProducts | DomainRolexClock | DomainRyderCupCourseModel | DomainRyderCupLatestNewsSection | DomainRyderCupPlayerBios | DomainSecondaryHero | DomainTeamRankings | DomainThreeUpPhoto | DomainThreeUpStats | DomainTicketSectionContainer | DomainTwoColumn | DomainVideoHero;
 
-export type ApiRyderCupContentPlayer = {
+export type DomainRyderCupContentPlayer = {
   readonly __typename: 'RyderCupContentPlayer';
   readonly displayName: Scalars['String']['output'];
   readonly id: Scalars['String']['output'];
   readonly name: Scalars['String']['output'];
 };
 
-export type ApiRyderCupContentTags = {
+export type DomainRyderCupContentTags = {
   readonly __typename: 'RyderCupContentTags';
   readonly id: Scalars['Int']['output'];
   readonly name: Scalars['String']['output'];
 };
 
-export type ApiRyderCupContentType =
+export type DomainRyderCupContentType =
   | 'ALL'
   | 'ARTICLES'
   | 'PHOTO_GALLERY'
   | 'VIDEOS'
   | 'VIDEO_ARTICLES';
 
-export type ApiRyderCupCourse = {
+export type DomainRyderCupCourse = {
   readonly __typename: 'RyderCupCourse';
   readonly countryCode?: Maybe<Scalars['String']['output']>;
   readonly courseCity?: Maybe<Scalars['String']['output']>;
@@ -7675,24 +7698,24 @@ export type ApiRyderCupCourse = {
   readonly courseState?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiRyderCupCourseModel = {
+export type DomainRyderCupCourseModel = {
   readonly __typename: 'RyderCupCourseModel';
   readonly city?: Maybe<Scalars['String']['output']>;
   readonly country?: Maybe<Scalars['String']['output']>;
-  readonly courseDescription?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly courseDescription?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
   readonly courseId?: Maybe<Scalars['String']['output']>;
   readonly courseName?: Maybe<Scalars['String']['output']>;
   readonly courseYardage?: Maybe<Scalars['String']['output']>;
-  readonly holes?: Maybe<ReadonlyArray<ApiRyderCupCourseModelHole>>;
+  readonly holes?: Maybe<ReadonlyArray<DomainRyderCupCourseModelHole>>;
   readonly par?: Maybe<Scalars['Int']['output']>;
   readonly state?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiRyderCupCourseModelHole = {
+export type DomainRyderCupCourseModelHole = {
   readonly __typename: 'RyderCupCourseModelHole';
   readonly holeBeautyImage?: Maybe<Scalars['String']['output']>;
-  readonly holeDescription?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
-  readonly holeFlyoverVideo?: Maybe<ApiVideo>;
+  readonly holeDescription?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
+  readonly holeFlyoverVideo?: Maybe<DomainVideo>;
   readonly holeNumber: Scalars['Int']['output'];
   readonly holePickleImage?: Maybe<Scalars['String']['output']>;
   readonly par: Scalars['Int']['output'];
@@ -7700,7 +7723,7 @@ export type ApiRyderCupCourseModelHole = {
 };
 
 /**  ## Ryder Cup */
-export type ApiRyderCupEventState =
+export type DomainRyderCupEventState =
   | 'LIVE_WEEK'
   | 'LIVE_WEEKEND'
   | 'OFF_SEASON'
@@ -7708,39 +7731,39 @@ export type ApiRyderCupEventState =
   | 'POST_EVENT'
   | 'PRE_EVENT';
 
-export type ApiRyderCupLatestNewsSection = {
+export type DomainRyderCupLatestNewsSection = {
   readonly __typename: 'RyderCupLatestNewsSection';
-  readonly bottomCta?: Maybe<ApiCallToAction>;
-  readonly content?: Maybe<ReadonlyArray<ApiRcHomepageAssets>>;
+  readonly bottomCta?: Maybe<DomainCallToAction>;
+  readonly content?: Maybe<ReadonlyArray<DomainRcHomepageAssets>>;
   readonly franchiseTags?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly limit?: Maybe<Scalars['Int']['output']>;
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
-  readonly topCta?: Maybe<ApiCallToAction>;
+  readonly topCta?: Maybe<DomainCallToAction>;
 };
 
-export type ApiRyderCupMatchOutcomeIq = {
+export type DomainRyderCupMatchOutcomeIq = {
   readonly __typename: 'RyderCupMatchOutcomeIQ';
   readonly euMatchWin: Scalars['Float']['output'];
-  readonly holes: ReadonlyArray<ApiOutComeIqHole>;
+  readonly holes: ReadonlyArray<DomainOutComeIqHole>;
   readonly id: Scalars['String']['output'];
   readonly logo?: Maybe<Scalars['String']['output']>;
   readonly matchDraw: Scalars['Float']['output'];
   readonly matchId: Scalars['Int']['output'];
   readonly roundNum: Scalars['Int']['output'];
-  readonly toolTip?: Maybe<ApiToolTipComponent>;
+  readonly toolTip?: Maybe<DomainToolTipComponent>;
   readonly usMatchWin: Scalars['Float']['output'];
 };
 
-export type ApiRyderCupMediaSearchOptions = {
+export type DomainRyderCupMediaSearchOptions = {
   readonly __typename: 'RyderCupMediaSearchOptions';
-  readonly contentTypes: ReadonlyArray<ApiRcContentTypeParent>;
-  readonly playerOptions: ReadonlyArray<ApiRyderCupPlayerOption>;
-  readonly teamOptions: ReadonlyArray<ApiRcTeamTypeParent>;
-  readonly topicOptions: ReadonlyArray<ApiRyderCupTopicOption>;
+  readonly contentTypes: ReadonlyArray<DomainRcContentTypeParent>;
+  readonly playerOptions: ReadonlyArray<DomainRyderCupPlayerOption>;
+  readonly teamOptions: ReadonlyArray<DomainRcTeamTypeParent>;
+  readonly topicOptions: ReadonlyArray<DomainRyderCupTopicOption>;
   readonly yearOptions: ReadonlyArray<Scalars['String']['output']>;
 };
 
-export type ApiRyderCupPlayer = {
+export type DomainRyderCupPlayer = {
   readonly __typename: 'RyderCupPlayer';
   readonly countryCode?: Maybe<Scalars['String']['output']>;
   readonly countryName?: Maybe<Scalars['String']['output']>;
@@ -7750,51 +7773,51 @@ export type ApiRyderCupPlayer = {
   readonly playerId: Scalars['String']['output'];
 };
 
-export type ApiRyderCupPlayerBios = {
+export type DomainRyderCupPlayerBios = {
   readonly __typename: 'RyderCupPlayerBios';
-  readonly bios?: Maybe<ReadonlyArray<Maybe<ApiRyderCupBio>>>;
+  readonly bios?: Maybe<ReadonlyArray<Maybe<DomainRyderCupBio>>>;
   readonly headshots?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
 };
 
-export type ApiRyderCupPlayerOption = {
+export type DomainRyderCupPlayerOption = {
   readonly __typename: 'RyderCupPlayerOption';
   readonly displayName: Scalars['String']['output'];
   readonly id: Scalars['String']['output'];
   readonly name: Scalars['String']['output'];
 };
 
-export type ApiRyderCupPlayerProfile = {
+export type DomainRyderCupPlayerProfile = {
   readonly __typename: 'RyderCupPlayerProfile';
   readonly playerId: Scalars['String']['output'];
-  readonly playerProfileHeader: ApiRyderCupPlayerProfileHeader;
-  readonly profileContentSections: ReadonlyArray<ApiRyderCupPlayerProfileSection>;
-  readonly team: ApiRankingsTeams;
+  readonly playerProfileHeader: DomainRyderCupPlayerProfileHeader;
+  readonly profileContentSections: ReadonlyArray<DomainRyderCupPlayerProfileSection>;
+  readonly team: DomainRankingsTeams;
 };
 
-export type ApiRyderCupPlayerProfileCompressed = {
+export type DomainRyderCupPlayerProfileCompressed = {
   readonly __typename: 'RyderCupPlayerProfileCompressed';
   readonly payload: Scalars['String']['output'];
   readonly playerId: Scalars['String']['output'];
 };
 
-export type ApiRyderCupPlayerProfileHeader = {
+export type DomainRyderCupPlayerProfileHeader = {
   readonly __typename: 'RyderCupPlayerProfileHeader';
   readonly age?: Maybe<Scalars['String']['output']>;
   readonly appearances?: Maybe<Scalars['Int']['output']>;
-  readonly headshot: ApiProfileHeadshot;
+  readonly headshot: DomainProfileHeadshot;
   readonly wins?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ApiRyderCupPlayerProfileSection = ApiGenericContent | ApiRcPlayerTournamentRecord | ApiRolexClock | ApiRyderCupLatestNewsSection | ApiThreeUpStats;
+export type DomainRyderCupPlayerProfileSection = DomainGenericContent | DomainRcPlayerTournamentRecord | DomainRolexClock | DomainRyderCupLatestNewsSection | DomainThreeUpStats;
 
-export type ApiRyderCupRankingsQueryInput = {
-  readonly team: ApiRankingsTeams;
+export type DomainRyderCupRankingsQueryInput = {
+  readonly team: DomainRankingsTeams;
   readonly tournamentId: Scalars['String']['input'];
 };
 
-export type ApiRyderCupRankingsRow = ApiInformationRow | ApiStatDetailsPlayer;
+export type DomainRyderCupRankingsRow = DomainInformationRow | DomainStatDetailsPlayer;
 
-export type ApiRyderCupRankingsTeam = {
+export type DomainRyderCupRankingsTeam = {
   readonly __typename: 'RyderCupRankingsTeam';
   readonly banner?: Maybe<Scalars['String']['output']>;
   readonly captain?: Maybe<Scalars['String']['output']>;
@@ -7806,32 +7829,32 @@ export type ApiRyderCupRankingsTeam = {
   readonly header?: Maybe<Scalars['String']['output']>;
   readonly lastUpdated?: Maybe<Scalars['String']['output']>;
   readonly qualifiedIndex?: Maybe<Scalars['Int']['output']>;
-  readonly rankings: ReadonlyArray<ApiRyderCupRankingsRow>;
+  readonly rankings: ReadonlyArray<DomainRyderCupRankingsRow>;
   readonly teamName: Scalars['String']['output'];
-  readonly toolTips: ReadonlyArray<ApiToolTipComponent>;
-  readonly tournamentPills: ReadonlyArray<ApiStatTournamentPill>;
+  readonly toolTips: ReadonlyArray<DomainToolTipComponent>;
+  readonly tournamentPills: ReadonlyArray<DomainStatTournamentPill>;
   readonly usInfoBlurb?: Maybe<Scalars['String']['output']>;
   readonly viceCaptain?: Maybe<Scalars['String']['output']>;
   readonly viceCaptainLabel?: Maybe<Scalars['String']['output']>;
   readonly year?: Maybe<Scalars['Int']['output']>;
-  readonly years: ReadonlyArray<ApiStatYearPills>;
+  readonly years: ReadonlyArray<DomainStatYearPills>;
 };
 
-export type ApiRyderCupRankingsV2 = {
+export type DomainRyderCupRankingsV2 = {
   readonly __typename: 'RyderCupRankingsV2';
   readonly defaultUS: Scalars['Boolean']['output'];
-  readonly teams: ReadonlyArray<ApiRyderCupRankingsTeam>;
+  readonly teams: ReadonlyArray<DomainRyderCupRankingsTeam>;
 };
 
-export type ApiRyderCupTeam = {
+export type DomainRyderCupTeam = {
   readonly __typename: 'RyderCupTeam';
-  readonly captain: ApiRyderCupCaptain;
-  readonly players: ReadonlyArray<ApiRyderCupPlayer>;
+  readonly captain: DomainRyderCupCaptain;
+  readonly players: ReadonlyArray<DomainRyderCupPlayer>;
   readonly teamLogo: Scalars['String']['output'];
   readonly teamName: Scalars['String']['output'];
 };
 
-export type ApiRyderCupTeamRankings = {
+export type DomainRyderCupTeamRankings = {
   readonly __typename: 'RyderCupTeamRankings';
   readonly defaultUS: Scalars['Boolean']['output'];
   readonly euroBanner: Scalars['String']['output'];
@@ -7839,12 +7862,12 @@ export type ApiRyderCupTeamRankings = {
   readonly euroDisplaySeason?: Maybe<Scalars['String']['output']>;
   readonly euroHeader: Scalars['String']['output'];
   readonly euroLastUpdated: Scalars['String']['output'];
-  readonly euroRankings: ReadonlyArray<ApiRyderCupRankingsRow>;
-  readonly euroToolTips?: Maybe<ReadonlyArray<ApiToolTipComponent>>;
-  readonly euroTournamentPills?: Maybe<ReadonlyArray<ApiStatTournamentPill>>;
+  readonly euroRankings: ReadonlyArray<DomainRyderCupRankingsRow>;
+  readonly euroToolTips?: Maybe<ReadonlyArray<DomainToolTipComponent>>;
+  readonly euroTournamentPills?: Maybe<ReadonlyArray<DomainStatTournamentPill>>;
   readonly euroViceCaptainLabel?: Maybe<Scalars['String']['output']>;
   readonly euroYear?: Maybe<Scalars['Int']['output']>;
-  readonly euroYears?: Maybe<ReadonlyArray<ApiStatYearPills>>;
+  readonly euroYears?: Maybe<ReadonlyArray<DomainStatYearPills>>;
   readonly europeCaptain?: Maybe<Scalars['String']['output']>;
   readonly europeInfoBlurb?: Maybe<Scalars['String']['output']>;
   readonly europeQualifiedIndex?: Maybe<Scalars['Int']['output']>;
@@ -7857,52 +7880,52 @@ export type ApiRyderCupTeamRankings = {
   readonly usInfoBlurb?: Maybe<Scalars['String']['output']>;
   readonly usLastUpdated: Scalars['String']['output'];
   readonly usQualifiedIndex?: Maybe<Scalars['Int']['output']>;
-  readonly usRankings: ReadonlyArray<ApiRyderCupRankingsRow>;
-  readonly usToolTips?: Maybe<ReadonlyArray<ApiToolTipComponent>>;
-  readonly usTournamentPills?: Maybe<ReadonlyArray<ApiStatTournamentPill>>;
+  readonly usRankings: ReadonlyArray<DomainRyderCupRankingsRow>;
+  readonly usToolTips?: Maybe<ReadonlyArray<DomainToolTipComponent>>;
+  readonly usTournamentPills?: Maybe<ReadonlyArray<DomainStatTournamentPill>>;
   readonly usViceCaptain?: Maybe<Scalars['String']['output']>;
   readonly usViceCaptainLabel?: Maybe<Scalars['String']['output']>;
   readonly usYear?: Maybe<Scalars['Int']['output']>;
-  readonly usYears?: Maybe<ReadonlyArray<ApiStatYearPills>>;
+  readonly usYears?: Maybe<ReadonlyArray<DomainStatYearPills>>;
 };
 
-export type ApiRyderCupTeamRankingsCompressed = {
+export type DomainRyderCupTeamRankingsCompressed = {
   readonly __typename: 'RyderCupTeamRankingsCompressed';
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiRyderCupTeamType =
+export type DomainRyderCupTeamType =
   | 'BOTH'
   | 'EUROPE'
   | 'USA';
 
-export type ApiRyderCupTopicOption = {
+export type DomainRyderCupTopicOption = {
   readonly __typename: 'RyderCupTopicOption';
   readonly displayValue: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiRyderCupTournament = {
+export type DomainRyderCupTournament = {
   readonly __typename: 'RyderCupTournament';
-  readonly course?: Maybe<ApiRyderCupCourse>;
+  readonly course?: Maybe<DomainRyderCupCourse>;
   readonly euroScore: Scalars['String']['output'];
-  readonly euroTeam: ApiRyderCupTeam;
-  readonly historyInfo?: Maybe<ApiHistoryInfo>;
+  readonly euroTeam: DomainRyderCupTeam;
+  readonly historyInfo?: Maybe<DomainHistoryInfo>;
   readonly usScore: Scalars['String']['output'];
-  readonly usTeam: ApiRyderCupTeam;
+  readonly usTeam: DomainRyderCupTeam;
   readonly winner: Scalars['String']['output'];
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiRyderCupTournamentOverview = {
+export type DomainRyderCupTournamentOverview = {
   readonly __typename: 'RyderCupTournamentOverview';
-  readonly course?: Maybe<ApiRyderCupCourse>;
+  readonly course?: Maybe<DomainRyderCupCourse>;
   readonly endDate?: Maybe<Scalars['String']['output']>;
   readonly euroScore: Scalars['String']['output'];
   readonly euroTeamLogo: Scalars['String']['output'];
   /** @deprecated logoAsset */
   readonly logo?: Maybe<Scalars['String']['output']>;
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   readonly startDate?: Maybe<Scalars['String']['output']>;
   readonly tournamentName: Scalars['String']['output'];
   readonly usScore: Scalars['String']['output'];
@@ -7911,30 +7934,30 @@ export type ApiRyderCupTournamentOverview = {
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiStory_Type =
+export type DomainStory_Type =
   | 'MOMENTS'
   | 'PLAYER_STORIES'
   | 'TOPIC_STORIES';
 
-export type ApiScatterCoord = {
+export type DomainScatterCoord = {
   readonly __typename: 'ScatterCoord';
-  readonly player: ApiScatterPlayer;
-  readonly result: ApiHoleScoreStatus;
-  readonly shotCoords: ApiScatterShotData;
+  readonly player: DomainScatterPlayer;
+  readonly result: DomainHoleScoreStatus;
+  readonly shotCoords: DomainScatterShotData;
 };
 
-export type ApiScatterData = {
+export type DomainScatterData = {
   readonly __typename: 'ScatterData';
   readonly courseId: Scalars['Int']['output'];
   readonly hole: Scalars['Int']['output'];
-  readonly holePickle?: Maybe<ApiHolePickle>;
+  readonly holePickle?: Maybe<DomainHolePickle>;
   readonly id: Scalars['ID']['output'];
-  readonly rounds: ReadonlyArray<ApiScatterRound>;
+  readonly rounds: ReadonlyArray<DomainScatterRound>;
   /**   Recommend combo of tournamentID, course and hole */
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiScatterDataCompressed = {
+export type DomainScatterDataCompressed = {
   readonly __typename: 'ScatterDataCompressed';
   readonly courseId: Scalars['Int']['output'];
   readonly hole: Scalars['Int']['output'];
@@ -7942,39 +7965,39 @@ export type ApiScatterDataCompressed = {
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiScatterPlayer = {
+export type DomainScatterPlayer = {
   readonly __typename: 'ScatterPlayer';
   readonly id: Scalars['String']['output'];
   readonly name: Scalars['String']['output'];
 };
 
-export type ApiScatterRound = {
+export type DomainScatterRound = {
   readonly __typename: 'ScatterRound';
   readonly display?: Maybe<Scalars['String']['output']>;
   readonly num: Scalars['Int']['output'];
-  readonly pinCoords: ApiScatterShotData;
-  readonly strokes: ReadonlyArray<ApiScatterStroke>;
+  readonly pinCoords: DomainScatterShotData;
+  readonly strokes: ReadonlyArray<DomainScatterStroke>;
 };
 
-export type ApiScatterShotCoordData = {
+export type DomainScatterShotCoordData = {
   readonly __typename: 'ScatterShotCoordData';
-  readonly landscapeCoords?: Maybe<ApiScattterXyData>;
-  readonly portraitCoords?: Maybe<ApiScattterXyData>;
+  readonly landscapeCoords?: Maybe<DomainScattterXyData>;
+  readonly portraitCoords?: Maybe<DomainScattterXyData>;
 };
 
-export type ApiScatterShotData = {
+export type DomainScatterShotData = {
   readonly __typename: 'ScatterShotData';
-  readonly green: ApiScatterShotCoordData;
-  readonly overview: ApiScatterShotCoordData;
+  readonly green: DomainScatterShotCoordData;
+  readonly overview: DomainScatterShotCoordData;
 };
 
-export type ApiScatterStroke = {
+export type DomainScatterStroke = {
   readonly __typename: 'ScatterStroke';
-  readonly playerShots: ReadonlyArray<ApiScatterCoord>;
+  readonly playerShots: ReadonlyArray<DomainScatterCoord>;
   readonly strokeNumber: Scalars['Int']['output'];
 };
 
-export type ApiScattterXyData = {
+export type DomainScattterXyData = {
   readonly __typename: 'ScattterXYData';
   readonly enhancedX: Scalars['Float']['output'];
   /**   New field, -1 if no data */
@@ -7986,51 +8009,51 @@ export type ApiScattterXyData = {
   readonly y: Scalars['Float']['output'];
 };
 
-export type ApiSchedule = {
+export type DomainSchedule = {
   readonly __typename: 'Schedule';
-  readonly completed: ReadonlyArray<ApiScheduleMonth>;
-  readonly filters?: Maybe<ReadonlyArray<ApiScheduleTournamentFilter>>;
+  readonly completed: ReadonlyArray<DomainScheduleMonth>;
+  readonly filters?: Maybe<ReadonlyArray<DomainScheduleTournamentFilter>>;
   readonly seasonYear: Scalars['String']['output'];
   readonly tour: Scalars['String']['output'];
-  readonly upcoming: ReadonlyArray<ApiScheduleMonth>;
+  readonly upcoming: ReadonlyArray<DomainScheduleMonth>;
 };
 
-export type ApiScheduleChampion = {
+export type DomainScheduleChampion = {
   readonly __typename: 'ScheduleChampion';
   readonly displayName: Scalars['String']['output'];
   readonly playerId: Scalars['String']['output'];
 };
 
-export type ApiScheduleDisplay =
+export type DomainScheduleDisplay =
   | 'SHOW'
   | 'SHOW_NO_LINK';
 
-export type ApiScheduleMonth = {
+export type DomainScheduleMonth = {
   readonly __typename: 'ScheduleMonth';
   readonly month: Scalars['String']['output'];
   readonly monthSort?: Maybe<Scalars['Int']['output']>;
-  readonly tournaments: ReadonlyArray<ApiScheduleTournament>;
+  readonly tournaments: ReadonlyArray<DomainScheduleTournament>;
   readonly year: Scalars['String']['output'];
 };
 
-export type ApiScheduleTournament = {
+export type DomainScheduleTournament = {
   readonly __typename: 'ScheduleTournament';
   readonly androidTicketmasterApiKey?: Maybe<Scalars['String']['output']>;
   readonly androidTicketmasterScheme?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use beautyImageAsset */
   readonly beautyImage?: Maybe<Scalars['String']['output']>;
-  readonly beautyImageAsset?: Maybe<ApiImageAsset>;
+  readonly beautyImageAsset?: Maybe<DomainImageAsset>;
   readonly champion: Scalars['String']['output'];
   readonly championEarnings?: Maybe<Scalars['String']['output']>;
   readonly championId: Scalars['String']['output'];
-  readonly champions: ReadonlyArray<ApiScheduleChampion>;
+  readonly champions: ReadonlyArray<DomainScheduleChampion>;
   readonly city: Scalars['String']['output'];
   readonly country: Scalars['String']['output'];
   readonly countryCode: Scalars['String']['output'];
   readonly courseName: Scalars['String']['output'];
   readonly date: Scalars['String']['output'];
   readonly dateAccessibilityText: Scalars['String']['output'];
-  readonly display: ApiScheduleDisplay;
+  readonly display: DomainScheduleDisplay;
   readonly id: Scalars['ID']['output'];
   readonly iosTicketmasterApiKey?: Maybe<Scalars['String']['output']>;
   readonly purse?: Maybe<Scalars['String']['output']>;
@@ -8039,7 +8062,7 @@ export type ApiScheduleTournament = {
   readonly startDate: Scalars['AWSTimestamp']['output'];
   readonly state: Scalars['String']['output'];
   readonly stateCode: Scalars['String']['output'];
-  readonly status?: Maybe<ApiScheduleTournamentStatus>;
+  readonly status?: Maybe<DomainScheduleTournamentStatus>;
   /** @deprecated Name does not reflect intent, use ticketmasterAttractionId */
   readonly ticketmasterApiKey?: Maybe<Scalars['String']['output']>;
   readonly ticketmasterAttractionId?: Maybe<Scalars['String']['output']>;
@@ -8047,94 +8070,94 @@ export type ApiScheduleTournament = {
   readonly ticketsURL?: Maybe<Scalars['String']['output']>;
   readonly tourStandingHeading?: Maybe<Scalars['String']['output']>;
   readonly tourStandingValue?: Maybe<Scalars['String']['output']>;
-  readonly tournamentCategoryInfo?: Maybe<ApiTournamentCategoryInfo>;
+  readonly tournamentCategoryInfo?: Maybe<DomainTournamentCategoryInfo>;
   /** @deprecated use tournamentLogoAsset */
   readonly tournamentLogo: Scalars['String']['output'];
-  readonly tournamentLogoAsset: ApiImageAsset;
+  readonly tournamentLogoAsset: DomainImageAsset;
   readonly tournamentName: Scalars['String']['output'];
   readonly tournamentSiteURL?: Maybe<Scalars['String']['output']>;
-  readonly tournamentStatus: ApiTournamentStatus;
+  readonly tournamentStatus: DomainTournamentStatus;
   readonly useTournamentSiteURL: Scalars['Boolean']['output'];
 };
 
-export type ApiScheduleTournamentFilter = {
+export type DomainScheduleTournamentFilter = {
   readonly __typename: 'ScheduleTournamentFilter';
   readonly name: Scalars['String']['output'];
-  readonly type: ApiTournamentCategory;
+  readonly type: DomainTournamentCategory;
 };
 
-export type ApiScheduleTournamentStatus = {
+export type DomainScheduleTournamentStatus = {
   readonly __typename: 'ScheduleTournamentStatus';
   readonly leaderboardTakeover: Scalars['Boolean']['output'];
   readonly roundDisplay: Scalars['String']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   readonly roundStatusDisplay: Scalars['String']['output'];
 };
 
-export type ApiScheduleUpcoming = {
+export type DomainScheduleUpcoming = {
   readonly __typename: 'ScheduleUpcoming';
-  readonly filters?: Maybe<ReadonlyArray<ApiScheduleTournamentFilter>>;
+  readonly filters?: Maybe<ReadonlyArray<DomainScheduleTournamentFilter>>;
   readonly id: Scalars['ID']['output'];
-  readonly tournaments: ReadonlyArray<ApiScheduleTournament>;
+  readonly tournaments: ReadonlyArray<DomainScheduleTournament>;
 };
 
-export type ApiScheduleYear = {
+export type DomainScheduleYear = {
   readonly __typename: 'ScheduleYear';
   readonly default: Scalars['Boolean']['output'];
   readonly displayValue: Scalars['String']['output'];
   readonly queryValue: Scalars['String']['output'];
 };
 
-export type ApiScheduleYears = {
+export type DomainScheduleYears = {
   readonly __typename: 'ScheduleYears';
-  readonly years: ReadonlyArray<ApiScheduleYear>;
+  readonly years: ReadonlyArray<DomainScheduleYear>;
 };
 
-export type ApiScorecardCompressedV3 = {
+export type DomainScorecardCompressedV3 = {
   readonly __typename: 'ScorecardCompressedV3';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiScorecardHeaderPlayer = {
+export type DomainScorecardHeaderPlayer = {
   readonly __typename: 'ScorecardHeaderPlayer';
   readonly active: Scalars['Boolean']['output'];
   readonly finalRoundTotal: Scalars['String']['output'];
-  readonly player: ApiPlayer;
+  readonly player: DomainPlayer;
   readonly position: Scalars['String']['output'];
   readonly roundDisplay: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
 };
 
-export type ApiScorecardRow = {
+export type DomainScorecardRow = {
   readonly __typename: 'ScorecardRow';
-  readonly holes: ReadonlyArray<ApiHoleScore>;
+  readonly holes: ReadonlyArray<DomainHoleScore>;
   readonly parTotal: Scalars['Int']['output'];
   readonly total: Scalars['String']['output'];
   readonly totalLabel: Scalars['String']['output'];
 };
 
-export type ApiScorecardStandings = {
+export type DomainScorecardStandings = {
   readonly __typename: 'ScorecardStandings';
-  readonly logo?: Maybe<ApiImageAsset>;
-  readonly logoDark?: Maybe<ApiImageAsset>;
+  readonly logo?: Maybe<DomainImageAsset>;
+  readonly logoDark?: Maybe<DomainImageAsset>;
   readonly points: Scalars['String']['output'];
 };
 
-export type ApiScorecardStatsComparison = {
+export type DomainScorecardStatsComparison = {
   readonly __typename: 'ScorecardStatsComparison';
-  readonly category: ApiPlayerComparisonCategory;
-  readonly categoryPills: ReadonlyArray<ApiPlayerComparisonCategoryPill>;
+  readonly category: DomainPlayerComparisonCategory;
+  readonly categoryPills: ReadonlyArray<DomainPlayerComparisonCategoryPill>;
   readonly disabled?: Maybe<Scalars['Boolean']['output']>;
   readonly noDataMessage: Scalars['String']['output'];
   readonly roundDisplay?: Maybe<Scalars['String']['output']>;
   readonly roundNum?: Maybe<Scalars['Int']['output']>;
-  readonly table: ApiPlayerComparisonTable;
+  readonly table: DomainPlayerComparisonTable;
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiScorecardStatsItem = {
+export type DomainScorecardStatsItem = {
   readonly __typename: 'ScorecardStatsItem';
   readonly label: Scalars['String']['output'];
   readonly rank: Scalars['String']['output'];
@@ -8143,103 +8166,103 @@ export type ApiScorecardStatsItem = {
   readonly yearToDate: Scalars['String']['output'];
 };
 
-export type ApiScorecardTabFeature =
+export type DomainScorecardTabFeature =
   | 'EQUIPMENT'
   | 'HIGHLIGHTS'
   | 'ODDS'
   | 'SCORECARD'
   | 'STATS';
 
-export type ApiScorecardUpdateCompressedV3 = {
+export type DomainScorecardUpdateCompressedV3 = {
   readonly __typename: 'ScorecardUpdateCompressedV3';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiScorecardUpdateV3 = {
+export type DomainScorecardUpdateV3 = {
   readonly __typename: 'ScorecardUpdateV3';
   readonly backNine: Scalars['Boolean']['output'];
   readonly currentHole?: Maybe<Scalars['Int']['output']>;
   readonly currentHoleDisplay: Scalars['String']['output'];
   readonly currentRound: Scalars['Int']['output'];
   readonly currentShotDisplay?: Maybe<Scalars['String']['output']>;
-  readonly drawerDisplayState: ApiDrawerDisplayState;
+  readonly drawerDisplayState: DomainDrawerDisplayState;
   readonly groupNumber: Scalars['Int']['output'];
   readonly hideSov: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
   readonly playByPlay?: Maybe<Scalars['String']['output']>;
   readonly playerId: Scalars['String']['output'];
-  readonly playerState?: Maybe<ApiPlayerState>;
+  readonly playerState?: Maybe<DomainPlayerState>;
   readonly profileEnabled: Scalars['Boolean']['output'];
-  readonly roundScores: ReadonlyArray<ApiRoundScore>;
+  readonly roundScores: ReadonlyArray<DomainRoundScore>;
   readonly teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiScorecardV3 = {
+export type DomainScorecardV3 = {
   readonly __typename: 'ScorecardV3';
   readonly backNine: Scalars['Boolean']['output'];
   readonly currentHole?: Maybe<Scalars['Int']['output']>;
   readonly currentHoleDisplay: Scalars['String']['output'];
   readonly currentRound: Scalars['Int']['output'];
   readonly currentShotDisplay?: Maybe<Scalars['String']['output']>;
-  readonly drawerDisplayState: ApiDrawerDisplayState;
+  readonly drawerDisplayState: DomainDrawerDisplayState;
   readonly groupNumber: Scalars['Int']['output'];
   readonly hideSov: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
   readonly playByPlay?: Maybe<Scalars['String']['output']>;
-  readonly player: ApiPlayer;
-  readonly playerState?: Maybe<ApiPlayerState>;
+  readonly player: DomainPlayer;
+  readonly playerState?: Maybe<DomainPlayerState>;
   readonly profileEnabled: Scalars['Boolean']['output'];
-  readonly roundScores: ReadonlyArray<ApiRoundScore>;
-  readonly standings?: Maybe<ApiScorecardStandings>;
+  readonly roundScores: ReadonlyArray<DomainRoundScore>;
+  readonly standings?: Maybe<DomainScorecardStandings>;
   readonly teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly totalStrokes?: Maybe<Scalars['String']['output']>;
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiScoringLevel =
+export type DomainScoringLevel =
   | 'BASIC'
   | 'STATS'
   | 'TOURCAST';
 
-export type ApiScoringTendency =
+export type DomainScoringTendency =
   | 'ABOVE'
   | 'BELOW'
   | 'EVEN';
 
-export type ApiSearchBarFeatures = {
+export type DomainSearchBarFeatures = {
   readonly __typename: 'SearchBarFeatures';
-  readonly playerFeatures: ApiSearchBarPlayerFeatures;
+  readonly playerFeatures: DomainSearchBarPlayerFeatures;
 };
 
-export type ApiSearchBarPlayer = {
+export type DomainSearchBarPlayer = {
   readonly __typename: 'SearchBarPlayer';
   readonly displayName: Scalars['String']['output'];
   readonly playerId: Scalars['ID']['output'];
 };
 
-export type ApiSearchBarPlayerFeatures = {
+export type DomainSearchBarPlayerFeatures = {
   readonly __typename: 'SearchBarPlayerFeatures';
   readonly playerHeader: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiSearchBarPlayer>;
+  readonly players: ReadonlyArray<DomainSearchBarPlayer>;
 };
 
-export type ApiSeasonDisplayHeader = {
+export type DomainSeasonDisplayHeader = {
   readonly __typename: 'SeasonDisplayHeader';
   readonly endYear?: Maybe<Scalars['Int']['output']>;
   readonly startYear: Scalars['Int']['output'];
 };
 
-export type ApiSeasonRecap = {
+export type DomainSeasonRecap = {
   readonly __typename: 'SeasonRecap';
   readonly displayMostRecentSeason?: Maybe<Scalars['String']['output']>;
-  readonly items?: Maybe<ReadonlyArray<ApiSeasonRecapSeason>>;
+  readonly items?: Maybe<ReadonlyArray<DomainSeasonRecapSeason>>;
   readonly mostRecentRecapYear?: Maybe<Scalars['Int']['output']>;
-  readonly tourCode: ApiTourCode;
+  readonly tourCode: DomainTourCode;
 };
 
-export type ApiSeasonRecapItems = {
+export type DomainSeasonRecapItems = {
   readonly __typename: 'SeasonRecapItems';
   readonly body: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
@@ -8247,14 +8270,14 @@ export type ApiSeasonRecapItems = {
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiSeasonRecapSeason = {
+export type DomainSeasonRecapSeason = {
   readonly __typename: 'SeasonRecapSeason';
   readonly displaySeason: Scalars['String']['output'];
-  readonly items: ReadonlyArray<ApiSeasonRecapItems>;
+  readonly items: ReadonlyArray<DomainSeasonRecapItems>;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiSecondaryCupDetails = {
+export type DomainSecondaryCupDetails = {
   readonly __typename: 'SecondaryCupDetails';
   readonly cupLogo?: Maybe<Scalars['String']['output']>;
   readonly cupLogoAccessibilityText?: Maybe<Scalars['String']['output']>;
@@ -8267,38 +8290,38 @@ export type ApiSecondaryCupDetails = {
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiSecondaryHero = {
+export type DomainSecondaryHero = {
   readonly __typename: 'SecondaryHero';
   readonly backgroundPhoto?: Maybe<Scalars['String']['output']>;
   readonly photoPosition?: Maybe<Scalars['String']['output']>;
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo?: Maybe<Scalars['String']['output']>;
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   readonly subheader?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiSegmentedCupRanking = {
+export type DomainSegmentedCupRanking = {
   readonly __typename: 'SegmentedCupRanking';
   readonly defaultSelection: Scalars['Boolean']['output'];
-  readonly rankings: ReadonlyArray<ApiCupRankingPlayer>;
+  readonly rankings: ReadonlyArray<DomainCupRankingPlayer>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiSegmentedCupRankingWrapper = {
+export type DomainSegmentedCupRankingWrapper = {
   readonly __typename: 'SegmentedCupRankingWrapper';
-  readonly segments?: Maybe<ReadonlyArray<Maybe<ApiSegmentedCupRanking>>>;
+  readonly segments?: Maybe<ReadonlyArray<Maybe<DomainSegmentedCupRanking>>>;
 };
 
-export type ApiShotCommentary = {
+export type DomainShotCommentary = {
   readonly __typename: 'ShotCommentary';
-  readonly commentary: ReadonlyArray<ApiShotCommentaryItem>;
+  readonly commentary: ReadonlyArray<DomainShotCommentaryItem>;
   readonly playerId: Scalars['String']['output'];
   readonly round: Scalars['Int']['output'];
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiShotCommentaryItem = {
+export type DomainShotCommentaryItem = {
   readonly __typename: 'ShotCommentaryItem';
   readonly active: Scalars['Boolean']['output'];
   readonly commentary: Scalars['String']['output'];
@@ -8307,7 +8330,7 @@ export type ApiShotCommentaryItem = {
   readonly strokeId: Scalars['Int']['output'];
 };
 
-export type ApiShotCommentaryItemInput = {
+export type DomainShotCommentaryItemInput = {
   readonly active: Scalars['Boolean']['input'];
   readonly commentary: Scalars['String']['input'];
   readonly hole: Scalars['Int']['input'];
@@ -8315,38 +8338,38 @@ export type ApiShotCommentaryItemInput = {
   readonly strokeId: Scalars['Int']['input'];
 };
 
-export type ApiShotDetailHole = {
+export type DomainShotDetailHole = {
   readonly __typename: 'ShotDetailHole';
   readonly displayHoleNumber: Scalars['String']['output'];
-  readonly enhancedPickle?: Maybe<ApiHolePickle>;
-  readonly fairwayCenter: ApiStrokeCoordinates;
+  readonly enhancedPickle?: Maybe<DomainHolePickle>;
+  readonly fairwayCenter: DomainStrokeCoordinates;
   readonly green: Scalars['Boolean']['output'];
   readonly holeNumber: Scalars['Int']['output'];
   /** @deprecated Use holePickleBottomToTopAsset */
   readonly holePickleBottomToTop: Scalars['String']['output'];
-  readonly holePickleBottomToTopAsset: ApiImageAsset;
+  readonly holePickleBottomToTopAsset: DomainImageAsset;
   /** @deprecated Use holePickleGreenBottomToTopAsset */
   readonly holePickleGreenBottomToTop: Scalars['String']['output'];
-  readonly holePickleGreenBottomToTopAsset: ApiImageAsset;
+  readonly holePickleGreenBottomToTopAsset: DomainImageAsset;
   /** @deprecated Use holePickleGreenLeftToRightAsset */
   readonly holePickleGreenLeftToRight: Scalars['String']['output'];
-  readonly holePickleGreenLeftToRightAsset: ApiImageAsset;
+  readonly holePickleGreenLeftToRightAsset: DomainImageAsset;
   /** @deprecated Use holePickleLeftToRightAsset */
   readonly holePickleLeftToRight: Scalars['String']['output'];
-  readonly holePickleLeftToRightAsset: ApiImageAsset;
+  readonly holePickleLeftToRightAsset: DomainImageAsset;
   readonly par: Scalars['Int']['output'];
-  readonly pinGreen: ApiPointOfInterestCoords;
-  readonly pinOverview: ApiPointOfInterestCoords;
+  readonly pinGreen: DomainPointOfInterestCoords;
+  readonly pinOverview: DomainPointOfInterestCoords;
   readonly rank?: Maybe<Scalars['String']['output']>;
   readonly score: Scalars['String']['output'];
-  readonly status: ApiHoleScoreStatus;
-  readonly strokes: ReadonlyArray<ApiHoleStroke>;
-  readonly teeGreen: ApiPointOfInterestCoords;
-  readonly teeOverview: ApiPointOfInterestCoords;
+  readonly status: DomainHoleScoreStatus;
+  readonly strokes: ReadonlyArray<DomainHoleStroke>;
+  readonly teeGreen: DomainPointOfInterestCoords;
+  readonly teeOverview: DomainPointOfInterestCoords;
   readonly yardage: Scalars['Int']['output'];
 };
 
-export type ApiShotDetailVideo = {
+export type DomainShotDetailVideo = {
   readonly __typename: 'ShotDetailVideo';
   readonly duration: Scalars['Int']['output'];
   readonly holeNumber: Scalars['String']['output'];
@@ -8355,80 +8378,80 @@ export type ApiShotDetailVideo = {
   readonly shotNumber: Scalars['String']['output'];
   /** @deprecated Use thumbnailAsset */
   readonly thumbnail: Scalars['String']['output'];
-  readonly thumbnailAsset: ApiImageAsset;
+  readonly thumbnailAsset: DomainImageAsset;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiShotDetails = {
+export type DomainShotDetails = {
   readonly __typename: 'ShotDetails';
-  readonly defaultHolePickle: ApiHolePickleType;
-  readonly displayType: ApiShotDetailsDisplayType;
+  readonly defaultHolePickle: DomainHolePickleType;
+  readonly displayType: DomainShotDetailsDisplayType;
   readonly groupPlayers: ReadonlyArray<Scalars['String']['output']>;
-  readonly holes: ReadonlyArray<ApiShotDetailHole>;
+  readonly holes: ReadonlyArray<DomainShotDetailHole>;
   readonly id: Scalars['ID']['output'];
   readonly lineColor: Scalars['String']['output'];
   readonly message: Scalars['String']['output'];
   readonly playerId: Scalars['ID']['output'];
   readonly round: Scalars['Int']['output'];
   /** @deprecated Use tourcastVideos */
-  readonly shotVideo?: Maybe<ApiVideo>;
+  readonly shotVideo?: Maybe<DomainVideo>;
   /** @deprecated Use tourcastVideos */
-  readonly shotVideos?: Maybe<ReadonlyArray<ApiVideo>>;
+  readonly shotVideos?: Maybe<ReadonlyArray<DomainVideo>>;
   readonly textColor?: Maybe<Scalars['String']['output']>;
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiShotDetailsCompressed = {
+export type DomainShotDetailsCompressed = {
   readonly __typename: 'ShotDetailsCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiShotDetailsCompressedV3 = {
+export type DomainShotDetailsCompressedV3 = {
   readonly __typename: 'ShotDetailsCompressedV3';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiShotDetailsDisplayType =
+export type DomainShotDetailsDisplayType =
   | 'ALL'
   | 'NONE'
   | 'PLAY_BY_PLAY';
 
-export type ApiShotLinkCoordWrapper = {
+export type DomainShotLinkCoordWrapper = {
   readonly __typename: 'ShotLinkCoordWrapper';
-  readonly bottomToTopCoords: ApiShotLinkCoordinates;
-  readonly leftToRightCoords: ApiShotLinkCoordinates;
+  readonly bottomToTopCoords: DomainShotLinkCoordinates;
+  readonly leftToRightCoords: DomainShotLinkCoordinates;
 };
 
-export type ApiShotLinkCoordinates = {
+export type DomainShotLinkCoordinates = {
   readonly __typename: 'ShotLinkCoordinates';
-  readonly fromCoords: ApiStrokeCoordinates;
-  readonly toCoords: ApiStrokeCoordinates;
+  readonly fromCoords: DomainStrokeCoordinates;
+  readonly toCoords: DomainStrokeCoordinates;
 };
 
-export type ApiSignatureEventsRankLogos = {
+export type DomainSignatureEventsRankLogos = {
   readonly __typename: 'SignatureEventsRankLogos';
   readonly dark: Scalars['String']['output'];
-  readonly darkAsset: ApiImageAsset;
+  readonly darkAsset: DomainImageAsset;
   readonly light: Scalars['String']['output'];
-  readonly lightAsset: ApiImageAsset;
+  readonly lightAsset: DomainImageAsset;
   readonly tooltipText: Scalars['String']['output'];
   readonly tooltipTitle: Scalars['String']['output'];
 };
 
-export type ApiSignatureInfoLine = {
+export type DomainSignatureInfoLine = {
   readonly __typename: 'SignatureInfoLine';
   readonly text: Scalars['String']['output'];
 };
 
-export type ApiSignaturePlayer = {
+export type DomainSignaturePlayer = {
   readonly __typename: 'SignaturePlayer';
   readonly countryFlag: Scalars['String']['output'];
   readonly countryName: Scalars['String']['output'];
   readonly displayName: Scalars['String']['output'];
   readonly movementAmount: Scalars['String']['output'];
-  readonly movementDirection: ApiLeaderboardMovement;
+  readonly movementDirection: DomainLeaderboardMovement;
   readonly playerId: Scalars['ID']['output'];
   readonly projected: Scalars['String']['output'];
   readonly projectedPoints: Scalars['String']['output'];
@@ -8436,123 +8459,123 @@ export type ApiSignaturePlayer = {
   readonly started: Scalars['String']['output'];
 };
 
-export type ApiSignaturePlayerRow = ApiSignatureInfoLine | ApiSignaturePlayer;
+export type DomainSignaturePlayerRow = DomainSignatureInfoLine | DomainSignaturePlayer;
 
-export type ApiSignatureStandings = {
+export type DomainSignatureStandings = {
   readonly __typename: 'SignatureStandings';
   readonly infoDescription: Scalars['String']['output'];
   readonly infoTitle: Scalars['String']['output'];
-  readonly interim: ApiSignatureStandingsData;
+  readonly interim: DomainSignatureStandingsData;
   readonly linktoField: Scalars['Boolean']['output'];
   /** @deprecated Use mobileLogoAsset */
   readonly mobileLogo: Scalars['String']['output'];
-  readonly mobileLogoAsset: ApiImageAsset;
+  readonly mobileLogoAsset: DomainImageAsset;
   readonly noFieldText?: Maybe<Scalars['String']['output']>;
   readonly noFieldToolTipText?: Maybe<Scalars['String']['output']>;
   readonly noFieldToolTipTitle?: Maybe<Scalars['String']['output']>;
-  readonly official: ApiSignatureStandingsData;
+  readonly official: DomainSignatureStandingsData;
   readonly tournamentID: Scalars['ID']['output'];
-  readonly tournamentInfo: ApiSignatureStandingsTournamentInfo;
+  readonly tournamentInfo: DomainSignatureStandingsTournamentInfo;
 };
 
-export type ApiSignatureStandingsData = {
+export type DomainSignatureStandingsData = {
   readonly __typename: 'SignatureStandingsData';
   readonly description?: Maybe<Scalars['String']['output']>;
   readonly emptyTableDescription?: Maybe<Scalars['String']['output']>;
   readonly emptyTableTitle?: Maybe<Scalars['String']['output']>;
   readonly eyebrowText?: Maybe<Scalars['String']['output']>;
-  readonly players: ReadonlyArray<ApiSignaturePlayerRow>;
+  readonly players: ReadonlyArray<DomainSignaturePlayerRow>;
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo?: Maybe<Scalars['String']['output']>;
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   readonly sponsorName?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
   readonly tooltipText?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiSignatureStandingsTournamentInfo = {
+export type DomainSignatureStandingsTournamentInfo = {
   readonly __typename: 'SignatureStandingsTournamentInfo';
   readonly displayDate: Scalars['String']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   readonly roundStatusDisplay: Scalars['String']['output'];
   /** @deprecated use tournamentLogoAsset */
   readonly tournamentLogo: ReadonlyArray<Scalars['String']['output']>;
-  readonly tournamentLogoAsset: ReadonlyArray<ApiImageAsset>;
+  readonly tournamentLogoAsset: ReadonlyArray<DomainImageAsset>;
   readonly tournamentName: Scalars['String']['output'];
-  readonly tournamentStatus: ApiTournamentStatus;
+  readonly tournamentStatus: DomainTournamentStatus;
 };
 
-export type ApiSimpleScore = {
+export type DomainSimpleScore = {
   readonly __typename: 'SimpleScore';
   readonly holeNumber: Scalars['Int']['output'];
   readonly isTotal?: Maybe<Scalars['Boolean']['output']>;
   readonly score: Scalars['String']['output'];
-  readonly status: ApiHoleScoreStatus;
+  readonly status: DomainHoleScoreStatus;
 };
 
-export type ApiSocialType =
+export type DomainSocialType =
   | 'facebook'
   | 'instagram'
   | 'twitter'
   | 'youtube';
 
-export type ApiSponsor = {
+export type DomainSponsor = {
   readonly __typename: 'Sponsor';
   readonly accessibilityText: Scalars['String']['output'];
   /** @deprecated use logoAsset */
   readonly logo?: Maybe<Scalars['String']['output']>;
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   /** @deprecated use logoDarkAsset */
   readonly logoDark?: Maybe<Scalars['String']['output']>;
-  readonly logoDarkAsset: ApiImageAsset;
+  readonly logoDarkAsset: DomainImageAsset;
   /** @deprecated use logoTabletAsset */
   readonly logoTablet?: Maybe<Scalars['String']['output']>;
-  readonly logoTabletAsset: ApiImageAsset;
+  readonly logoTabletAsset: DomainImageAsset;
   /** @deprecated use logoTabletDarkAsset */
   readonly logoTabletDark?: Maybe<Scalars['String']['output']>;
-  readonly logoTabletDarkAsset: ApiImageAsset;
-  readonly sponsor: ApiPlayerSponsorBrand;
+  readonly logoTabletDarkAsset: DomainImageAsset;
+  readonly sponsor: DomainPlayerSponsorBrand;
 };
 
-export type ApiSponsorImage = {
+export type DomainSponsorImage = {
   readonly __typename: 'SponsorImage';
   readonly accessibilityText: Scalars['String']['output'];
   readonly link?: Maybe<Scalars['String']['output']>;
   /** @deprecated use logoAsset */
   readonly logo: Scalars['String']['output'];
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   /** @deprecated use logoDarkAsset */
   readonly logoDark: Scalars['String']['output'];
-  readonly logoDarkAsset: ApiImageAsset;
+  readonly logoDarkAsset: DomainImageAsset;
 };
 
-export type ApiSponsoredArticles = {
+export type DomainSponsoredArticles = {
   readonly __typename: 'SponsoredArticles';
-  readonly articleSponsor: ApiArticleSponsor;
-  readonly articles: ReadonlyArray<ApiNewsArticle>;
-  readonly cta?: Maybe<ApiCallToAction>;
+  readonly articleSponsor: DomainArticleSponsor;
+  readonly articles: ReadonlyArray<DomainNewsArticle>;
+  readonly cta?: Maybe<DomainCallToAction>;
   readonly moreNewsTitle?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiStandardCupRanking = {
+export type DomainStandardCupRanking = {
   readonly __typename: 'StandardCupRanking';
-  readonly rankings: ReadonlyArray<ApiCupRankingPlayer>;
+  readonly rankings: ReadonlyArray<DomainCupRankingPlayer>;
 };
 
-export type ApiStandardWeatherTemp = {
+export type DomainStandardWeatherTemp = {
   readonly __typename: 'StandardWeatherTemp';
   readonly tempC: Scalars['String']['output'];
   readonly tempF: Scalars['String']['output'];
 };
 
-export type ApiStandingStat = {
+export type DomainStandingStat = {
   readonly __typename: 'StandingStat';
   readonly statName: Scalars['String']['output'];
   readonly statValue: Scalars['String']['output'];
 };
 
-export type ApiStatCategory =
+export type DomainStatCategory =
   | 'APPROACH_GREEN'
   | 'AROUND_GREEN'
   | 'FACTS_AND_FIGURES'
@@ -8564,69 +8587,69 @@ export type ApiStatCategory =
   | 'STREAKS'
   | 'STROKES_GAINED';
 
-export type ApiStatCategoryConfig = {
+export type DomainStatCategoryConfig = {
   readonly __typename: 'StatCategoryConfig';
   readonly category: Scalars['String']['output'];
-  readonly categoryType?: Maybe<ApiStatCategoryConfigType>;
+  readonly categoryType?: Maybe<DomainStatCategoryConfigType>;
   readonly displayName: Scalars['String']['output'];
-  readonly subCategories: ReadonlyArray<ApiStatSubCategory>;
+  readonly subCategories: ReadonlyArray<DomainStatSubCategory>;
 };
 
-export type ApiStatCategoryConfigType =
+export type DomainStatCategoryConfigType =
   | 'ALL_TIME_RECORDS'
   | 'TRADITIONAL_STAT';
 
-export type ApiStatCategoryStat = {
+export type DomainStatCategoryStat = {
   readonly __typename: 'StatCategoryStat';
   readonly statId: Scalars['String']['output'];
   readonly statTitle: Scalars['String']['output'];
 };
 
-export type ApiStatColor =
+export type DomainStatColor =
   | 'BLACK'
   | 'GRAY'
   | 'GREEN'
   | 'RED';
 
-export type ApiStatDetailEventQuery = {
-  readonly queryType: ApiStatDetailQueryType;
+export type DomainStatDetailEventQuery = {
+  readonly queryType: DomainStatDetailQueryType;
   readonly tournamentId: Scalars['String']['input'];
 };
 
-export type ApiStatDetailQueryType =
+export type DomainStatDetailQueryType =
   | 'EVENT_ONLY'
   | 'THROUGH_EVENT';
 
-export type ApiStatDetailTourAvg = {
+export type DomainStatDetailTourAvg = {
   readonly __typename: 'StatDetailTourAvg';
   readonly displayName: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiStatDetails = {
+export type DomainStatDetails = {
   readonly __typename: 'StatDetails';
   readonly cutOffButtonText?: Maybe<Scalars['String']['output']>;
   readonly cutOffNumber?: Maybe<Scalars['Int']['output']>;
   readonly displaySeason: Scalars['String']['output'];
   readonly lastProcessed: Scalars['String']['output'];
-  readonly rows: ReadonlyArray<ApiStatDetailsRow>;
+  readonly rows: ReadonlyArray<DomainStatDetailsRow>;
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo?: Maybe<Scalars['String']['output']>;
-  readonly sponsorLogoAsset: ApiImageAsset;
-  readonly statCategories: ReadonlyArray<ApiStatCategoryConfig>;
+  readonly sponsorLogoAsset: DomainImageAsset;
+  readonly statCategories: ReadonlyArray<DomainStatCategoryConfig>;
   readonly statDescription: Scalars['String']['output'];
   readonly statHeaders: ReadonlyArray<Scalars['String']['output']>;
   readonly statId: Scalars['String']['output'];
   readonly statTitle: Scalars['String']['output'];
-  readonly statType: ApiCategoryStatType;
+  readonly statType: DomainCategoryStatType;
   readonly tourAvg?: Maybe<Scalars['String']['output']>;
-  readonly tourCode: ApiTourCode;
-  readonly tournamentPills: ReadonlyArray<ApiStatTournamentPill>;
+  readonly tourCode: DomainTourCode;
+  readonly tournamentPills: ReadonlyArray<DomainStatTournamentPill>;
   readonly year: Scalars['Int']['output'];
-  readonly yearPills: ReadonlyArray<ApiStatYearPills>;
+  readonly yearPills: ReadonlyArray<DomainStatYearPills>;
 };
 
-export type ApiStatDetailsPlayer = {
+export type DomainStatDetailsPlayer = {
   readonly __typename: 'StatDetailsPlayer';
   readonly country: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -8634,71 +8657,71 @@ export type ApiStatDetailsPlayer = {
   readonly playerId: Scalars['String']['output'];
   readonly playerName: Scalars['String']['output'];
   readonly rank: Scalars['Int']['output'];
-  readonly rankChangeTendency?: Maybe<ApiStatRankMovement>;
+  readonly rankChangeTendency?: Maybe<DomainStatRankMovement>;
   readonly rankDiff: Scalars['String']['output'];
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
   readonly rankLogoLight?: Maybe<Scalars['String']['output']>;
-  readonly stats: ReadonlyArray<ApiCategoryPlayerStat>;
+  readonly stats: ReadonlyArray<DomainCategoryPlayerStat>;
 };
 
-export type ApiStatDetailsRow = ApiStatDetailTourAvg | ApiStatDetailsPlayer;
+export type DomainStatDetailsRow = DomainStatDetailTourAvg | DomainStatDetailsPlayer;
 
-export type ApiStatLeaderCategory = {
+export type DomainStatLeaderCategory = {
   readonly __typename: 'StatLeaderCategory';
   readonly categoryHeader: Scalars['String']['output'];
   readonly displayYear: Scalars['String']['output'];
-  readonly otherCategories: ReadonlyArray<ApiStatCategoryConfig>;
-  readonly statCategory: ApiStatCategory;
-  readonly subCategories: ReadonlyArray<ApiStatLeaderSubCategory>;
-  readonly tourCode: ApiTourCode;
+  readonly otherCategories: ReadonlyArray<DomainStatCategoryConfig>;
+  readonly statCategory: DomainStatCategory;
+  readonly subCategories: ReadonlyArray<DomainStatLeaderSubCategory>;
+  readonly tourCode: DomainTourCode;
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiStatLeaderSubCategory = {
+export type DomainStatLeaderSubCategory = {
   readonly __typename: 'StatLeaderSubCategory';
-  readonly stats: ReadonlyArray<ApiLeaderStat>;
-  readonly subCatPromo?: Maybe<ApiStatLeaderSubCategoryPromo>;
+  readonly stats: ReadonlyArray<DomainLeaderStat>;
+  readonly subCatPromo?: Maybe<DomainStatLeaderSubCategoryPromo>;
   readonly subCategoryName: Scalars['String']['output'];
 };
 
-export type ApiStatLeaderSubCategoryPromo = {
+export type DomainStatLeaderSubCategoryPromo = {
   readonly __typename: 'StatLeaderSubCategoryPromo';
   readonly image: Scalars['String']['output'];
   readonly link: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiStatRankMovement =
+export type DomainStatRankMovement =
   | 'CONSTANT'
   | 'DOWN'
   | 'UP';
 
-export type ApiStatSubCategory = {
+export type DomainStatSubCategory = {
   readonly __typename: 'StatSubCategory';
   readonly displayName?: Maybe<Scalars['String']['output']>;
-  readonly stats: ReadonlyArray<ApiStatCategoryStat>;
+  readonly stats: ReadonlyArray<DomainStatCategoryStat>;
 };
 
-export type ApiStatTournamentPill = {
+export type DomainStatTournamentPill = {
   readonly __typename: 'StatTournamentPill';
   readonly displayName: Scalars['String']['output'];
   readonly endDateDisplay?: Maybe<Scalars['String']['output']>;
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiStatWeekPill = {
+export type DomainStatWeekPill = {
   readonly __typename: 'StatWeekPill';
   readonly displayWeek: Scalars['String']['output'];
   readonly week: Scalars['Int']['output'];
 };
 
-export type ApiStatYearPills = {
+export type DomainStatYearPills = {
   readonly __typename: 'StatYearPills';
   readonly displaySeason: Scalars['String']['output'];
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiStats = {
+export type DomainStats = {
   readonly __typename: 'Stats';
   readonly id: Scalars['ID']['output'];
   readonly statAvg?: Maybe<Scalars['String']['output']>;
@@ -8707,7 +8730,7 @@ export type ApiStats = {
   readonly statValue: Scalars['String']['output'];
 };
 
-export type ApiStreamUrls = {
+export type DomainStreamUrls = {
   readonly __typename: 'StreamUrls';
   readonly applePodcast: Scalars['String']['output'];
   readonly googlePodcast: Scalars['String']['output'];
@@ -8716,7 +8739,7 @@ export type ApiStreamUrls = {
   readonly tuneIn: Scalars['String']['output'];
 };
 
-export type ApiStrokeCoordinates = {
+export type DomainStrokeCoordinates = {
   readonly __typename: 'StrokeCoordinates';
   readonly enhancedX: Scalars['Float']['output'];
   readonly enhancedY: Scalars['Float']['output'];
@@ -8728,7 +8751,7 @@ export type ApiStrokeCoordinates = {
   readonly z: Scalars['Float']['output'];
 };
 
-export type ApiStrokesGainedStats = {
+export type DomainStrokesGainedStats = {
   readonly __typename: 'StrokesGainedStats';
   readonly graph: Scalars['Boolean']['output'];
   readonly label: Scalars['String']['output'];
@@ -8741,369 +8764,369 @@ export type ApiStrokesGainedStats = {
   readonly yearToDateNum: Scalars['Float']['output'];
 };
 
-export type ApiStyle = {
+export type DomainStyle = {
   readonly __typename: 'Style';
   readonly key: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiSubMarket = {
+export type DomainSubMarket = {
   readonly __typename: 'SubMarket';
   readonly header: Scalars['String']['output'];
   readonly id: Scalars['String']['output'];
-  readonly options: ReadonlyArray<ApiOddsOptionV2>;
+  readonly options: ReadonlyArray<DomainOddsOptionV2>;
 };
 
-export type ApiSubscription = {
+export type DomainSubscription = {
   readonly __typename: 'Subscription';
-  readonly onUpdateBubble?: Maybe<ApiBubbleWatch>;
-  readonly onUpdateBubbleWatch?: Maybe<ApiTourCupRankingEvent>;
-  readonly onUpdateCourseStats?: Maybe<ApiTournamentHoleStats>;
-  readonly onUpdateCoverage?: Maybe<ApiBroadcastCoverage>;
-  readonly onUpdateCupOverviewLeaderboard?: Maybe<ApiCupTournamentStatus>;
-  readonly onUpdateCupRoundLeaderboard?: Maybe<ApiCupTournamentLeaderboard>;
-  readonly onUpdateCupRoundLeaderboardCompressed?: Maybe<ApiCupTournamentLeaderboardCompressed>;
-  readonly onUpdateCupScorecard?: Maybe<ApiCupScorecard>;
-  readonly onUpdateCurrentLeadersCompressed?: Maybe<ApiCurrentLeadersCompressed>;
-  readonly onUpdateGroupLocations?: Maybe<ApiGroupLocationCourse>;
-  readonly onUpdateGroupLocationsEnhanced?: Maybe<ApiGroupLocationCourse>;
-  readonly onUpdateHoleDetails?: Maybe<ApiHoleDetail>;
-  readonly onUpdateLeaderboardCompressedV2?: Maybe<ApiLeaderboardCompressedV2>;
-  readonly onUpdateLeaderboardCompressedV3?: Maybe<ApiLeaderboardUpdateCompressedV3>;
-  readonly onUpdateLeaderboardStrokes?: Maybe<ApiLeaderboardStrokes>;
-  readonly onUpdateLeaderboardStrokesCompresssed?: Maybe<ApiLeaderboardStrokesCompressed>;
-  readonly onUpdateLeaderboardV2?: Maybe<ApiLeaderboardV2>;
-  readonly onUpdateMatchOutcomeIq?: Maybe<ApiRyderCupMatchOutcomeIq>;
-  readonly onUpdateMatchPlayLeaderboard?: Maybe<ApiMpLeaderboard>;
-  readonly onUpdateMatchPlayLeaderboardCompressed?: Maybe<ApiLeaderboardCompressed>;
-  readonly onUpdateMatchPlayPlayoffScorecard?: Maybe<ApiMpPlayoffScorecard>;
-  readonly onUpdateMatchPlayScorecard?: Maybe<ApiMpScorecard>;
-  readonly onUpdateMatchPlayTeeTimes?: Maybe<ApiMpTeeTimes>;
-  readonly onUpdateMatchPlayTeeTimesCompressed?: Maybe<ApiTeeTimesCompressed>;
-  readonly onUpdateOddsToWinMarket?: Maybe<ApiOddsToWinMarket>;
-  readonly onUpdateOddsToWinMarketCompressed?: Maybe<ApiOddsToWinMarketCompressed>;
-  readonly onUpdatePlayerHub?: Maybe<ApiPlayerHubPlayerCompressed>;
-  readonly onUpdatePlayerTournamentStatus?: Maybe<ApiPlayerTournamentStatus>;
-  readonly onUpdatePlayoffScorecard?: Maybe<ApiPlayoffScorecard>;
+  readonly onUpdateBubble?: Maybe<DomainBubbleWatch>;
+  readonly onUpdateBubbleWatch?: Maybe<DomainTourCupRankingEvent>;
+  readonly onUpdateCourseStats?: Maybe<DomainTournamentHoleStats>;
+  readonly onUpdateCoverage?: Maybe<DomainBroadcastCoverage>;
+  readonly onUpdateCupOverviewLeaderboard?: Maybe<DomainCupTournamentStatus>;
+  readonly onUpdateCupRoundLeaderboard?: Maybe<DomainCupTournamentLeaderboard>;
+  readonly onUpdateCupRoundLeaderboardCompressed?: Maybe<DomainCupTournamentLeaderboardCompressed>;
+  readonly onUpdateCupScorecard?: Maybe<DomainCupScorecard>;
+  readonly onUpdateCurrentLeadersCompressed?: Maybe<DomainCurrentLeadersCompressed>;
+  readonly onUpdateGroupLocations?: Maybe<DomainGroupLocationCourse>;
+  readonly onUpdateGroupLocationsEnhanced?: Maybe<DomainGroupLocationCourse>;
+  readonly onUpdateHoleDetails?: Maybe<DomainHoleDetail>;
+  readonly onUpdateLeaderboardCompressedV2?: Maybe<DomainLeaderboardCompressedV2>;
+  readonly onUpdateLeaderboardCompressedV3?: Maybe<DomainLeaderboardUpdateCompressedV3>;
+  readonly onUpdateLeaderboardStrokes?: Maybe<DomainLeaderboardStrokes>;
+  readonly onUpdateLeaderboardStrokesCompresssed?: Maybe<DomainLeaderboardStrokesCompressed>;
+  readonly onUpdateLeaderboardV2?: Maybe<DomainLeaderboardV2>;
+  readonly onUpdateMatchOutcomeIq?: Maybe<DomainRyderCupMatchOutcomeIq>;
+  readonly onUpdateMatchPlayLeaderboard?: Maybe<DomainMpLeaderboard>;
+  readonly onUpdateMatchPlayLeaderboardCompressed?: Maybe<DomainLeaderboardCompressed>;
+  readonly onUpdateMatchPlayPlayoffScorecard?: Maybe<DomainMpPlayoffScorecard>;
+  readonly onUpdateMatchPlayScorecard?: Maybe<DomainMpScorecard>;
+  readonly onUpdateMatchPlayTeeTimes?: Maybe<DomainMpTeeTimes>;
+  readonly onUpdateMatchPlayTeeTimesCompressed?: Maybe<DomainTeeTimesCompressed>;
+  readonly onUpdateOddsToWinMarket?: Maybe<DomainOddsToWinMarket>;
+  readonly onUpdateOddsToWinMarketCompressed?: Maybe<DomainOddsToWinMarketCompressed>;
+  readonly onUpdatePlayerHub?: Maybe<DomainPlayerHubPlayerCompressed>;
+  readonly onUpdatePlayerTournamentStatus?: Maybe<DomainPlayerTournamentStatus>;
+  readonly onUpdatePlayoffScorecard?: Maybe<DomainPlayoffScorecard>;
   /** @deprecated Use onUpdatePlayoffScorecardV3. This sub does not work */
-  readonly onUpdatePlayoffScorecardV2?: Maybe<ReadonlyArray<Maybe<ApiPlayoffScorecard>>>;
-  readonly onUpdatePlayoffScorecardV3?: Maybe<ApiTournamentPlayoffScorecards>;
-  readonly onUpdatePlayoffShotDetails?: Maybe<ApiGroupShotDetails>;
-  readonly onUpdatePlayoffShotDetailsCompressed?: Maybe<ApiGroupShotDetailsCompressed>;
-  readonly onUpdateScorecardCompressedV3?: Maybe<ApiScorecardUpdateCompressedV3>;
-  readonly onUpdateScorecardStatsCompressedV3?: Maybe<ApiPlayerScorecardStatsCompressed>;
-  readonly onUpdateScorecardV2?: Maybe<ApiLeaderboardDrawerV2>;
-  readonly onUpdateShotCommentary?: Maybe<ApiShotCommentary>;
+  readonly onUpdatePlayoffScorecardV2?: Maybe<ReadonlyArray<Maybe<DomainPlayoffScorecard>>>;
+  readonly onUpdatePlayoffScorecardV3?: Maybe<DomainTournamentPlayoffScorecards>;
+  readonly onUpdatePlayoffShotDetails?: Maybe<DomainGroupShotDetails>;
+  readonly onUpdatePlayoffShotDetailsCompressed?: Maybe<DomainGroupShotDetailsCompressed>;
+  readonly onUpdateScorecardCompressedV3?: Maybe<DomainScorecardUpdateCompressedV3>;
+  readonly onUpdateScorecardStatsCompressedV3?: Maybe<DomainPlayerScorecardStatsCompressed>;
+  readonly onUpdateScorecardV2?: Maybe<DomainLeaderboardDrawerV2>;
+  readonly onUpdateShotCommentary?: Maybe<DomainShotCommentary>;
   /**    V2 version that only sends updated holes */
-  readonly onUpdateShotDetailsCompressedV3?: Maybe<ApiShotDetailsCompressedV3>;
-  readonly onUpdateTGLMatch?: Maybe<ApiTglMatch>;
-  readonly onUpdateTSPPlayoffShotDetails?: Maybe<ApiTeamShotDetails>;
-  readonly onUpdateTSPPlayoffShotDetailsCompressed?: Maybe<ApiTeamShotDetailsCompressed>;
-  readonly onUpdateTeamPlayLeaderboard?: Maybe<ApiTspLeaderboard>;
-  readonly onUpdateTeamPlayLeaderboardCompressed?: Maybe<ApiLeaderboardCompressed>;
-  readonly onUpdateTeamPlayScorecard?: Maybe<ApiTspScorecard>;
-  readonly onUpdateTeamPlayScorecardRounds?: Maybe<ApiTspScorecardRounds>;
-  readonly onUpdateTeamStrokePlayTeeTimes?: Maybe<ApiTspTeeTimes>;
-  readonly onUpdateTeamStrokePlayTeeTimesCompressed?: Maybe<ApiTeeTimesCompressed>;
-  readonly onUpdateTeeTimes?: Maybe<ApiTeeTimes>;
-  readonly onUpdateTeeTimesCompressed?: Maybe<ApiTeeTimesCompressed>;
-  readonly onUpdateTeeTimesCompressedV2?: Maybe<ApiTeeTimesCompressed>;
-  readonly onUpdateTeeTimesV2?: Maybe<ApiTeeTimesV2>;
-  readonly onUpdateTourCup?: Maybe<ApiTourCupRankingEvent>;
-  readonly onUpdateTourcastTable?: Maybe<ApiTourcastTable>;
-  readonly onUpdateTournament?: Maybe<ApiTournament>;
-  readonly onUpdateTournamentGroupLocations?: Maybe<ApiTournamentGroupLocation>;
-  readonly onUpdateUpcomingSchedule?: Maybe<ApiScheduleUpcoming>;
+  readonly onUpdateShotDetailsCompressedV3?: Maybe<DomainShotDetailsCompressedV3>;
+  readonly onUpdateTGLMatch?: Maybe<DomainTglMatch>;
+  readonly onUpdateTSPPlayoffShotDetails?: Maybe<DomainTeamShotDetails>;
+  readonly onUpdateTSPPlayoffShotDetailsCompressed?: Maybe<DomainTeamShotDetailsCompressed>;
+  readonly onUpdateTeamPlayLeaderboard?: Maybe<DomainTspLeaderboard>;
+  readonly onUpdateTeamPlayLeaderboardCompressed?: Maybe<DomainLeaderboardCompressed>;
+  readonly onUpdateTeamPlayScorecard?: Maybe<DomainTspScorecard>;
+  readonly onUpdateTeamPlayScorecardRounds?: Maybe<DomainTspScorecardRounds>;
+  readonly onUpdateTeamStrokePlayTeeTimes?: Maybe<DomainTspTeeTimes>;
+  readonly onUpdateTeamStrokePlayTeeTimesCompressed?: Maybe<DomainTeeTimesCompressed>;
+  readonly onUpdateTeeTimes?: Maybe<DomainTeeTimes>;
+  readonly onUpdateTeeTimesCompressed?: Maybe<DomainTeeTimesCompressed>;
+  readonly onUpdateTeeTimesCompressedV2?: Maybe<DomainTeeTimesCompressed>;
+  readonly onUpdateTeeTimesV2?: Maybe<DomainTeeTimesV2>;
+  readonly onUpdateTourCup?: Maybe<DomainTourCupRankingEvent>;
+  readonly onUpdateTourcastTable?: Maybe<DomainTourcastTable>;
+  readonly onUpdateTournament?: Maybe<DomainTournament>;
+  readonly onUpdateTournamentGroupLocations?: Maybe<DomainTournamentGroupLocation>;
+  readonly onUpdateUpcomingSchedule?: Maybe<DomainScheduleUpcoming>;
 };
 
 
-export type ApiSubscriptionOnUpdateBubbleArgs = {
+export type DomainSubscriptionOnUpdateBubbleArgs = {
   bubbleId: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateBubbleWatchArgs = {
+export type DomainSubscriptionOnUpdateBubbleWatchArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateCourseStatsArgs = {
+export type DomainSubscriptionOnUpdateCourseStatsArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateCoverageArgs = {
+export type DomainSubscriptionOnUpdateCoverageArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateCupOverviewLeaderboardArgs = {
+export type DomainSubscriptionOnUpdateCupOverviewLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateCupRoundLeaderboardArgs = {
+export type DomainSubscriptionOnUpdateCupRoundLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateCupRoundLeaderboardCompressedArgs = {
+export type DomainSubscriptionOnUpdateCupRoundLeaderboardCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateCupScorecardArgs = {
+export type DomainSubscriptionOnUpdateCupScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateCurrentLeadersCompressedArgs = {
+export type DomainSubscriptionOnUpdateCurrentLeadersCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateGroupLocationsArgs = {
+export type DomainSubscriptionOnUpdateGroupLocationsArgs = {
   courseId: Scalars['String']['input'];
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateGroupLocationsEnhancedArgs = {
+export type DomainSubscriptionOnUpdateGroupLocationsEnhancedArgs = {
   courseId: Scalars['String']['input'];
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateHoleDetailsArgs = {
+export type DomainSubscriptionOnUpdateHoleDetailsArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateLeaderboardCompressedV2Args = {
+export type DomainSubscriptionOnUpdateLeaderboardCompressedV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateLeaderboardCompressedV3Args = {
+export type DomainSubscriptionOnUpdateLeaderboardCompressedV3Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateLeaderboardStrokesArgs = {
+export type DomainSubscriptionOnUpdateLeaderboardStrokesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateLeaderboardStrokesCompresssedArgs = {
+export type DomainSubscriptionOnUpdateLeaderboardStrokesCompresssedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateLeaderboardV2Args = {
+export type DomainSubscriptionOnUpdateLeaderboardV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateMatchOutcomeIqArgs = {
+export type DomainSubscriptionOnUpdateMatchOutcomeIqArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateMatchPlayLeaderboardArgs = {
+export type DomainSubscriptionOnUpdateMatchPlayLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateMatchPlayLeaderboardCompressedArgs = {
+export type DomainSubscriptionOnUpdateMatchPlayLeaderboardCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateMatchPlayPlayoffScorecardArgs = {
+export type DomainSubscriptionOnUpdateMatchPlayPlayoffScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateMatchPlayScorecardArgs = {
+export type DomainSubscriptionOnUpdateMatchPlayScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateMatchPlayTeeTimesArgs = {
+export type DomainSubscriptionOnUpdateMatchPlayTeeTimesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateMatchPlayTeeTimesCompressedArgs = {
+export type DomainSubscriptionOnUpdateMatchPlayTeeTimesCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateOddsToWinMarketArgs = {
+export type DomainSubscriptionOnUpdateOddsToWinMarketArgs = {
   oddsToWinId: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateOddsToWinMarketCompressedArgs = {
+export type DomainSubscriptionOnUpdateOddsToWinMarketCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdatePlayerHubArgs = {
+export type DomainSubscriptionOnUpdatePlayerHubArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdatePlayerTournamentStatusArgs = {
+export type DomainSubscriptionOnUpdatePlayerTournamentStatusArgs = {
   playerId: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdatePlayoffScorecardArgs = {
+export type DomainSubscriptionOnUpdatePlayoffScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdatePlayoffScorecardV2Args = {
+export type DomainSubscriptionOnUpdatePlayoffScorecardV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdatePlayoffScorecardV3Args = {
+export type DomainSubscriptionOnUpdatePlayoffScorecardV3Args = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdatePlayoffShotDetailsArgs = {
+export type DomainSubscriptionOnUpdatePlayoffShotDetailsArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdatePlayoffShotDetailsCompressedArgs = {
+export type DomainSubscriptionOnUpdatePlayoffShotDetailsCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateScorecardCompressedV3Args = {
+export type DomainSubscriptionOnUpdateScorecardCompressedV3Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateScorecardStatsCompressedV3Args = {
+export type DomainSubscriptionOnUpdateScorecardStatsCompressedV3Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateScorecardV2Args = {
+export type DomainSubscriptionOnUpdateScorecardV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateShotCommentaryArgs = {
+export type DomainSubscriptionOnUpdateShotCommentaryArgs = {
   playerId: Scalars['String']['input'];
   round: Scalars['Int']['input'];
   tournamentId: Scalars['String']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateShotDetailsCompressedV3Args = {
+export type DomainSubscriptionOnUpdateShotDetailsCompressedV3Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTglMatchArgs = {
+export type DomainSubscriptionOnUpdateTglMatchArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTspPlayoffShotDetailsArgs = {
+export type DomainSubscriptionOnUpdateTspPlayoffShotDetailsArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTspPlayoffShotDetailsCompressedArgs = {
+export type DomainSubscriptionOnUpdateTspPlayoffShotDetailsCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeamPlayLeaderboardArgs = {
+export type DomainSubscriptionOnUpdateTeamPlayLeaderboardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeamPlayLeaderboardCompressedArgs = {
+export type DomainSubscriptionOnUpdateTeamPlayLeaderboardCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeamPlayScorecardArgs = {
+export type DomainSubscriptionOnUpdateTeamPlayScorecardArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeamPlayScorecardRoundsArgs = {
+export type DomainSubscriptionOnUpdateTeamPlayScorecardRoundsArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeamStrokePlayTeeTimesArgs = {
+export type DomainSubscriptionOnUpdateTeamStrokePlayTeeTimesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeamStrokePlayTeeTimesCompressedArgs = {
+export type DomainSubscriptionOnUpdateTeamStrokePlayTeeTimesCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeeTimesArgs = {
+export type DomainSubscriptionOnUpdateTeeTimesArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeeTimesCompressedArgs = {
+export type DomainSubscriptionOnUpdateTeeTimesCompressedArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeeTimesCompressedV2Args = {
+export type DomainSubscriptionOnUpdateTeeTimesCompressedV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTeeTimesV2Args = {
+export type DomainSubscriptionOnUpdateTeeTimesV2Args = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTourCupArgs = {
+export type DomainSubscriptionOnUpdateTourCupArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTourcastTableArgs = {
+export type DomainSubscriptionOnUpdateTourcastTableArgs = {
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTournamentArgs = {
+export type DomainSubscriptionOnUpdateTournamentArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateTournamentGroupLocationsArgs = {
+export type DomainSubscriptionOnUpdateTournamentGroupLocationsArgs = {
   round: Scalars['Int']['input'];
   tournamentId: Scalars['ID']['input'];
 };
 
 
-export type ApiSubscriptionOnUpdateUpcomingScheduleArgs = {
+export type DomainSubscriptionOnUpdateUpcomingScheduleArgs = {
   id: Scalars['ID']['input'];
 };
 
-export type ApiSummaryRow = {
+export type DomainSummaryRow = {
   readonly __typename: 'SummaryRow';
   readonly averagePaceOfPlay?: Maybe<Scalars['String']['output']>;
   readonly birdies?: Maybe<Scalars['Int']['output']>;
@@ -9112,42 +9135,42 @@ export type ApiSummaryRow = {
   readonly eagles?: Maybe<Scalars['Int']['output']>;
   readonly par: Scalars['Int']['output'];
   readonly pars?: Maybe<Scalars['Int']['output']>;
-  readonly rowType: ApiSummaryRowType;
+  readonly rowType: DomainSummaryRowType;
   readonly scoringAverage: Scalars['String']['output'];
   readonly scoringAverageDiff: Scalars['String']['output'];
-  readonly scoringDiffTendency: ApiScoringTendency;
+  readonly scoringDiffTendency: DomainScoringTendency;
   readonly yardage: Scalars['Int']['output'];
 };
 
-export type ApiSummaryRowType =
+export type DomainSummaryRowType =
   | 'IN'
   | 'OUT'
   | 'TOTAL';
 
-export type ApiTcWinner = ApiMpLeaderboardPlayer | ApiTspWinner | ApiWinner;
+export type DomainTcWinner = DomainMpLeaderboardPlayer | DomainTspWinner | DomainWinner;
 
-export type ApiTglBoxScore = {
+export type DomainTglBoxScore = {
   readonly __typename: 'TGLBoxScore';
   readonly matchId: Scalars['String']['output'];
 };
 
-export type ApiTglBoxScoreFragment = {
+export type DomainTglBoxScoreFragment = {
   readonly __typename: 'TGLBoxScoreFragment';
   readonly matchIds?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
 };
 
-export type ApiTglMatch = {
+export type DomainTglMatch = {
   readonly __typename: 'TGLMatch';
   readonly currentHole?: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly isOvertime: Scalars['Boolean']['output'];
   readonly matchDate: Scalars['AWSTimestamp']['output'];
-  readonly matchStatus: ApiTglMatchStatus;
+  readonly matchStatus: DomainTglMatchStatus;
   readonly matchStatusColor: Scalars['String']['output'];
   readonly matchStatusDisplay: Scalars['String']['output'];
   readonly matchUrl?: Maybe<Scalars['String']['output']>;
   readonly subscriptionsActive: Scalars['Boolean']['output'];
-  readonly teams: ReadonlyArray<ApiTglTeam>;
+  readonly teams: ReadonlyArray<DomainTglTeam>;
   readonly tglLogo?: Maybe<Scalars['String']['output']>;
   readonly tglLogoDark?: Maybe<Scalars['String']['output']>;
   readonly tglLogoFallback: Scalars['String']['output'];
@@ -9157,49 +9180,49 @@ export type ApiTglMatch = {
 };
 
 /**  ## TGL Types */
-export type ApiTglMatchStatus =
+export type DomainTglMatchStatus =
   | 'COMPLETE'
   | 'IN_PROGRESS'
   | 'UNKNOWN'
   | 'UPCOMING';
 
-export type ApiTglPlayer = {
+export type DomainTglPlayer = {
   readonly __typename: 'TGLPlayer';
   readonly displayName: Scalars['String']['output'];
   readonly playerHeadshot: Scalars['String']['output'];
   readonly playerId: Scalars['ID']['output'];
 };
 
-export type ApiTglSchedule = {
+export type DomainTglSchedule = {
   readonly __typename: 'TGLSchedule';
-  readonly matches: ReadonlyArray<ApiTglMatch>;
+  readonly matches: ReadonlyArray<DomainTglMatch>;
   readonly season: Scalars['Int']['output'];
 };
 
-export type ApiTglTeam = {
+export type DomainTglTeam = {
   readonly __typename: 'TGLTeam';
   readonly losses: Scalars['Int']['output'];
   readonly matchWinner?: Maybe<Scalars['Boolean']['output']>;
-  readonly players: ReadonlyArray<ApiTglPlayer>;
+  readonly players: ReadonlyArray<DomainTglPlayer>;
   readonly score: Scalars['String']['output'];
   readonly teamLogo: Scalars['String']['output'];
   readonly teamName: Scalars['String']['output'];
   readonly wins: Scalars['Int']['output'];
 };
 
-export type ApiTspLeaderboard = {
+export type DomainTspLeaderboard = {
   readonly __typename: 'TSPLeaderboard';
   readonly currentRound: Scalars['Int']['output'];
   readonly currentRoundScoringFormat?: Maybe<Scalars['String']['output']>;
   readonly disableOdds: Scalars['Boolean']['output'];
-  readonly formatType: ApiFormatType;
+  readonly formatType: DomainFormatType;
   readonly id: Scalars['ID']['output'];
   readonly infoUrl: Scalars['String']['output'];
-  readonly informationSections: ReadonlyArray<ApiInformationSection>;
-  readonly leaderboard: ReadonlyArray<ApiTspLeaderboardRow>;
-  readonly messages: ReadonlyArray<ApiLeaderboardMessage>;
-  readonly playoff?: Maybe<ApiTspPlayoff>;
-  readonly rounds: ReadonlyArray<ApiTspLeaderboardRound>;
+  readonly informationSections: ReadonlyArray<DomainInformationSection>;
+  readonly leaderboard: ReadonlyArray<DomainTspLeaderboardRow>;
+  readonly messages: ReadonlyArray<DomainLeaderboardMessage>;
+  readonly playoff?: Maybe<DomainTspPlayoff>;
+  readonly rounds: ReadonlyArray<DomainTspLeaderboardRound>;
   readonly scorecardEnabled: Scalars['Boolean']['output'];
   readonly shortTimezone: Scalars['String']['output'];
   readonly timezone?: Maybe<Scalars['String']['output']>;
@@ -9208,11 +9231,11 @@ export type ApiTspLeaderboard = {
   readonly tourcastUrl?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
   readonly tourcastUrlWeb?: Maybe<Scalars['String']['output']>;
-  readonly tournamentStatus: ApiTournamentStatus;
-  readonly winner?: Maybe<ApiTspWinner>;
+  readonly tournamentStatus: DomainTournamentStatus;
+  readonly winner?: Maybe<DomainTspWinner>;
 };
 
-export type ApiTspLeaderboardRound = {
+export type DomainTspLeaderboardRound = {
   readonly __typename: 'TSPLeaderboardRound';
   readonly round: Scalars['Int']['output'];
   readonly roundHeader: Scalars['String']['output'];
@@ -9221,28 +9244,28 @@ export type ApiTspLeaderboardRound = {
   readonly roundTypeSubHead: Scalars['String']['output'];
 };
 
-export type ApiTspLeaderboardRow = ApiInformationRow | ApiTspTeamRow;
+export type DomainTspLeaderboardRow = DomainInformationRow | DomainTspTeamRow;
 
-export type ApiTspScorecard = {
+export type DomainTspScorecard = {
   readonly __typename: 'TSPScorecard';
   readonly backNine: Scalars['Boolean']['output'];
   readonly courseId?: Maybe<Scalars['Int']['output']>;
   readonly currentHole?: Maybe<Scalars['Int']['output']>;
   readonly currentRound: Scalars['Int']['output'];
   readonly currentRoundTotal: Scalars['String']['output'];
-  readonly firstNine?: Maybe<ApiTeamPlayScoreCardRow>;
+  readonly firstNine?: Maybe<DomainTeamPlayScoreCardRow>;
   readonly groupNumber: Scalars['Int']['output'];
-  readonly groupState: ApiPlayerState;
+  readonly groupState: DomainPlayerState;
   readonly id: Scalars['ID']['output'];
   readonly locationDetail: Scalars['String']['output'];
   readonly parTotal: Scalars['Int']['output'];
-  readonly players: ReadonlyArray<ApiTspScPlayer>;
+  readonly players: ReadonlyArray<DomainTspScPlayer>;
   readonly position: Scalars['String']['output'];
   readonly roundDisplay: Scalars['String']['output'];
-  readonly roundFormat: ApiRoundFormat;
+  readonly roundFormat: DomainRoundFormat;
   readonly roundNumber: Scalars['Int']['output'];
   readonly scorecardTitle: Scalars['String']['output'];
-  readonly secondNine?: Maybe<ApiTeamPlayScoreCardRow>;
+  readonly secondNine?: Maybe<DomainTeamPlayScoreCardRow>;
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly thru: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
@@ -9254,25 +9277,25 @@ export type ApiTspScorecard = {
   readonly tourcastUrlWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTspScorecardRounds = {
+export type DomainTspScorecardRounds = {
   readonly __typename: 'TSPScorecardRounds';
   readonly id: Scalars['ID']['output'];
-  readonly scorecards: ReadonlyArray<ApiTspScorecard>;
+  readonly scorecards: ReadonlyArray<DomainTspScorecard>;
 };
 
-export type ApiTspTeeTimeGroup = {
+export type DomainTspTeeTimeGroup = {
   readonly __typename: 'TSPTeeTimeGroup';
   readonly courseId?: Maybe<Scalars['String']['output']>;
   readonly groupNumber: Scalars['Int']['output'];
-  readonly groupState: ApiPlayerState;
+  readonly groupState: DomainPlayerState;
   readonly groupStatus: Scalars['String']['output'];
   readonly holeLocation?: Maybe<Scalars['String']['output']>;
   readonly startTee: Scalars['Int']['output'];
-  readonly teams: ReadonlyArray<ApiTspTeeTimeTeam>;
+  readonly teams: ReadonlyArray<DomainTspTeeTimeTeam>;
   readonly teeTime: Scalars['AWSTimestamp']['output'];
 };
 
-export type ApiTspTeeTimeHeaders = {
+export type DomainTspTeeTimeHeaders = {
   readonly __typename: 'TSPTeeTimeHeaders';
   readonly status: Scalars['String']['output'];
   readonly team: Scalars['String']['output'];
@@ -9280,7 +9303,7 @@ export type ApiTspTeeTimeHeaders = {
   readonly time: Scalars['String']['output'];
 };
 
-export type ApiTspTeeTimePlayer = {
+export type DomainTspTeeTimePlayer = {
   readonly __typename: 'TSPTeeTimePlayer';
   readonly country: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -9294,91 +9317,91 @@ export type ApiTspTeeTimePlayer = {
   readonly shortName: Scalars['String']['output'];
 };
 
-export type ApiTspTeeTimeRound = {
+export type DomainTspTeeTimeRound = {
   readonly __typename: 'TSPTeeTimeRound';
-  readonly groups: ReadonlyArray<ApiTspTeeTimeGroup>;
+  readonly groups: ReadonlyArray<DomainTspTeeTimeGroup>;
   readonly roundFormat: Scalars['String']['output'];
   readonly roundNumber: Scalars['Int']['output'];
 };
 
-export type ApiTspTeeTimeTeam = {
+export type DomainTspTeeTimeTeam = {
   readonly __typename: 'TSPTeeTimeTeam';
-  readonly players: ReadonlyArray<ApiTspTeeTimePlayer>;
+  readonly players: ReadonlyArray<DomainTspTeeTimePlayer>;
   readonly teamId: Scalars['ID']['output'];
 };
 
-export type ApiTspTeeTimes = {
+export type DomainTspTeeTimes = {
   readonly __typename: 'TSPTeeTimes';
-  readonly courseFilters: ReadonlyArray<ApiCourseFilter>;
-  readonly courses: ReadonlyArray<ApiCourse>;
+  readonly courseFilters: ReadonlyArray<DomainCourseFilter>;
+  readonly courses: ReadonlyArray<DomainCourse>;
   readonly defaultRound: Scalars['Int']['output'];
   readonly drawersEnabled: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
-  readonly informationSections: ReadonlyArray<ApiInformationSection>;
-  readonly roundFilters: ReadonlyArray<ApiRoundFilter>;
-  readonly rounds: ReadonlyArray<ApiTspTeeTimeRound>;
-  readonly teeTimeHeaders: ApiTspTeeTimeHeaders;
+  readonly informationSections: ReadonlyArray<DomainInformationSection>;
+  readonly roundFilters: ReadonlyArray<DomainRoundFilter>;
+  readonly rounds: ReadonlyArray<DomainTspTeeTimeRound>;
+  readonly teeTimeHeaders: DomainTspTeeTimeHeaders;
   readonly timezone: Scalars['String']['output'];
 };
 
-export type ApiTableBody = {
+export type DomainTableBody = {
   readonly __typename: 'TableBody';
-  readonly rows: ReadonlyArray<ApiTableRows>;
+  readonly rows: ReadonlyArray<DomainTableRows>;
 };
 
-export type ApiTableColumn = {
+export type DomainTableColumn = {
   readonly __typename: 'TableColumn';
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly colspan?: Maybe<Scalars['String']['output']>;
   readonly height?: Maybe<Scalars['String']['output']>;
   readonly rowspan?: Maybe<Scalars['String']['output']>;
   readonly valign?: Maybe<Scalars['String']['output']>;
-  readonly value?: Maybe<ReadonlyArray<ApiTableColumnValue>>;
+  readonly value?: Maybe<ReadonlyArray<DomainTableColumnValue>>;
   readonly width?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTableColumnSegment = {
+export type DomainTableColumnSegment = {
   readonly __typename: 'TableColumnSegment';
   readonly data?: Maybe<Scalars['String']['output']>;
-  readonly format?: Maybe<ApiNewsArticleFormat>;
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly format?: Maybe<DomainNewsArticleFormat>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly type: Scalars['String']['output'];
   readonly value?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTableColumnValue = ApiTableColumnSegment | ApiUnorderedListNode;
+export type DomainTableColumnValue = DomainTableColumnSegment | DomainUnorderedListNode;
 
-export type ApiTableDataRow = {
+export type DomainTableDataRow = {
   readonly __typename: 'TableDataRow';
   readonly class?: Maybe<Scalars['String']['output']>;
-  readonly columns?: Maybe<ReadonlyArray<Maybe<ApiTableColumn>>>;
+  readonly columns?: Maybe<ReadonlyArray<Maybe<DomainTableColumn>>>;
 };
 
-export type ApiTableFragment = {
+export type DomainTableFragment = {
   readonly __typename: 'TableFragment';
   readonly border?: Maybe<Scalars['String']['output']>;
   readonly cellpadding?: Maybe<Scalars['String']['output']>;
   readonly cellspacing?: Maybe<Scalars['String']['output']>;
   readonly class?: Maybe<Scalars['String']['output']>;
   readonly id?: Maybe<Scalars['String']['output']>;
-  readonly table?: Maybe<ApiTableBody>;
+  readonly table?: Maybe<DomainTableBody>;
   readonly width?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTableHeaderRow = {
+export type DomainTableHeaderRow = {
   readonly __typename: 'TableHeaderRow';
   readonly class?: Maybe<Scalars['String']['output']>;
-  readonly columns?: Maybe<ReadonlyArray<Maybe<ApiTableColumn>>>;
+  readonly columns?: Maybe<ReadonlyArray<Maybe<DomainTableColumn>>>;
 };
 
-export type ApiTableRows = ApiTableDataRow | ApiTableHeaderRow;
+export type DomainTableRows = DomainTableDataRow | DomainTableHeaderRow;
 
-export type ApiTeamHoleGroups = {
+export type DomainTeamHoleGroups = {
   readonly __typename: 'TeamHoleGroups';
   readonly groupLocation: Scalars['String']['output'];
   readonly groupLocationCode: Scalars['String']['output'];
   readonly groupNumber: Scalars['Int']['output'];
-  readonly teams: ReadonlyArray<ApiHoleGroupTeam>;
+  readonly teams: ReadonlyArray<DomainHoleGroupTeam>;
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
@@ -9386,25 +9409,25 @@ export type ApiTeamHoleGroups = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTeamPlayHole = {
+export type DomainTeamPlayHole = {
   readonly __typename: 'TeamPlayHole';
   readonly holeNumber: Scalars['String']['output'];
   readonly parValue: Scalars['String']['output'];
-  readonly playerScores: ReadonlyArray<ApiTspPlayerHole>;
+  readonly playerScores: ReadonlyArray<DomainTspPlayerHole>;
   readonly round: Scalars['Int']['output'];
-  readonly teamplayHoleScore: ApiTspTeamHole;
+  readonly teamplayHoleScore: DomainTspTeamHole;
   readonly yardage: Scalars['String']['output'];
 };
 
-export type ApiTeamPlayScoreCardRow = {
+export type DomainTeamPlayScoreCardRow = {
   readonly __typename: 'TeamPlayScoreCardRow';
-  readonly holes: ReadonlyArray<ApiTeamPlayHole>;
+  readonly holes: ReadonlyArray<DomainTeamPlayHole>;
   readonly parTotal: Scalars['Int']['output'];
   readonly total: Scalars['String']['output'];
   readonly totalLabel: Scalars['String']['output'];
 };
 
-export type ApiTeamRankings = {
+export type DomainTeamRankings = {
   readonly __typename: 'TeamRankings';
   readonly defaultEuropeRankings: Scalars['Boolean']['output'];
   readonly defaultUsRankings: Scalars['Boolean']['output'];
@@ -9413,41 +9436,41 @@ export type ApiTeamRankings = {
   readonly euroHeader: Scalars['String']['output'];
   readonly euroViceCaptainLabel?: Maybe<Scalars['String']['output']>;
   readonly europeCaptain?: Maybe<Scalars['String']['output']>;
-  readonly europeCta?: Maybe<ApiCallToAction>;
+  readonly europeCta?: Maybe<DomainCallToAction>;
   readonly europeInfoBlurb?: Maybe<Scalars['String']['output']>;
   readonly europeViceCaptain?: Maybe<Scalars['String']['output']>;
   readonly sectionHeader: Scalars['String']['output'];
   readonly usCaptain?: Maybe<Scalars['String']['output']>;
   readonly usCaptainLabel?: Maybe<Scalars['String']['output']>;
-  readonly usCta?: Maybe<ApiCallToAction>;
+  readonly usCta?: Maybe<DomainCallToAction>;
   readonly usHeader: Scalars['String']['output'];
   readonly usInfoBlurb?: Maybe<Scalars['String']['output']>;
   readonly usViceCaptain?: Maybe<Scalars['String']['output']>;
   readonly usViceCaptainLabel?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTeamShotDetails = {
+export type DomainTeamShotDetails = {
   readonly __typename: 'TeamShotDetails';
-  readonly defaultHolePickle: ApiHolePickleType;
-  readonly displayType: ApiShotDetailsDisplayType;
+  readonly defaultHolePickle: DomainHolePickleType;
+  readonly displayType: DomainShotDetailsDisplayType;
   readonly groupNumber: Scalars['Int']['output'];
-  readonly holes: ReadonlyArray<ApiGroupShotDetailsHole>;
+  readonly holes: ReadonlyArray<DomainGroupShotDetailsHole>;
   readonly id: Scalars['ID']['output'];
   readonly message: Scalars['String']['output'];
   readonly round: Scalars['Int']['output'];
-  readonly shotVideo?: Maybe<ApiVideo>;
-  readonly shotVideos?: Maybe<ReadonlyArray<ApiVideo>>;
-  readonly teams: ReadonlyArray<ApiGroupShotDetailsTeam>;
+  readonly shotVideo?: Maybe<DomainVideo>;
+  readonly shotVideos?: Maybe<ReadonlyArray<DomainVideo>>;
+  readonly teams: ReadonlyArray<DomainGroupShotDetailsTeam>;
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiTeamShotDetailsCompressed = {
+export type DomainTeamShotDetailsCompressed = {
   readonly __typename: 'TeamShotDetailsCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiTeamStoryContentInfo = {
+export type DomainTeamStoryContentInfo = {
   readonly __typename: 'TeamStoryContentInfo';
   readonly hasStoryContent: Scalars['Boolean']['output'];
   readonly playerId: Scalars['String']['output'];
@@ -9455,14 +9478,14 @@ export type ApiTeamStoryContentInfo = {
   readonly storyContentRounds: ReadonlyArray<Scalars['Int']['output']>;
 };
 
-export type ApiTeamplayHolePlayer = {
+export type DomainTeamplayHolePlayer = {
   readonly __typename: 'TeamplayHolePlayer';
   readonly holeScore?: Maybe<Scalars['String']['output']>;
-  readonly holeScoreStatus?: Maybe<ApiHoleScoreStatus>;
+  readonly holeScoreStatus?: Maybe<DomainHoleScoreStatus>;
   readonly playerId: Scalars['ID']['output'];
 };
 
-export type ApiTeeTimeHeader = {
+export type DomainTeeTimeHeader = {
   readonly __typename: 'TeeTimeHeader';
   readonly players: Scalars['String']['output'];
   readonly status: Scalars['String']['output'];
@@ -9470,64 +9493,64 @@ export type ApiTeeTimeHeader = {
   readonly time: Scalars['String']['output'];
 };
 
-export type ApiTeeTimeRound = {
+export type DomainTeeTimeRound = {
   readonly __typename: 'TeeTimeRound';
-  readonly groups: ReadonlyArray<ApiGroup>;
+  readonly groups: ReadonlyArray<DomainGroup>;
   readonly id: Scalars['ID']['output'];
   readonly roundDisplay: Scalars['String']['output'];
   readonly roundInt: Scalars['Int']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   readonly roundStatusDisplay: Scalars['String']['output'];
 };
 
-export type ApiTeeTimeRoundV2 = {
+export type DomainTeeTimeRoundV2 = {
   readonly __typename: 'TeeTimeRoundV2';
-  readonly groups: ReadonlyArray<ApiGroupV2>;
+  readonly groups: ReadonlyArray<DomainGroupV2>;
   readonly id: Scalars['ID']['output'];
   readonly roundDisplay: Scalars['String']['output'];
   readonly roundInt: Scalars['Int']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   readonly roundStatusDisplay: Scalars['String']['output'];
 };
 
-export type ApiTeeTimes = {
+export type DomainTeeTimes = {
   readonly __typename: 'TeeTimes';
-  readonly courses: ReadonlyArray<ApiCourse>;
+  readonly courses: ReadonlyArray<DomainCourse>;
   readonly defaultRound: Scalars['Int']['output'];
   readonly drawersEnabled: Scalars['Boolean']['output'];
   readonly hideSov: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
-  readonly informationSections: ReadonlyArray<ApiInformationSection>;
-  readonly rounds: ReadonlyArray<ApiTeeTimeRound>;
+  readonly informationSections: ReadonlyArray<DomainInformationSection>;
+  readonly rounds: ReadonlyArray<DomainTeeTimeRound>;
   readonly timezone: Scalars['String']['output'];
 };
 
-export type ApiTeeTimesCompressed = {
+export type DomainTeeTimesCompressed = {
   readonly __typename: 'TeeTimesCompressed';
   readonly id: Scalars['ID']['output'];
   readonly payload: Scalars['String']['output'];
 };
 
-export type ApiTeeTimesFeature =
+export type DomainTeeTimesFeature =
   | 'GROUPINGS'
   | 'GROUP_TRACKER';
 
-export type ApiTeeTimesV2 = {
+export type DomainTeeTimesV2 = {
   readonly __typename: 'TeeTimesV2';
-  readonly courses: ReadonlyArray<ApiCourse>;
+  readonly courses: ReadonlyArray<DomainCourse>;
   readonly defaultRound: Scalars['Int']['output'];
   readonly drawersEnabled: Scalars['Boolean']['output'];
   readonly hideSov: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
-  readonly informationSections: ReadonlyArray<ApiInformationSection>;
-  readonly rounds: ReadonlyArray<ApiTeeTimeRoundV2>;
-  readonly teeTimesFeatures: ReadonlyArray<ApiTeeTimesFeature>;
+  readonly informationSections: ReadonlyArray<DomainInformationSection>;
+  readonly rounds: ReadonlyArray<DomainTeeTimeRoundV2>;
+  readonly teeTimesFeatures: ReadonlyArray<DomainTeeTimesFeature>;
   readonly timezone: Scalars['String']['output'];
 };
 
-export type ApiThreeUpPhoto = {
+export type DomainThreeUpPhoto = {
   readonly __typename: 'ThreeUpPhoto';
   readonly photoOne?: Maybe<Scalars['String']['output']>;
   readonly photoOneAccessibilityText?: Maybe<Scalars['String']['output']>;
@@ -9544,7 +9567,7 @@ export type ApiThreeUpPhoto = {
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiThreeUpStats = {
+export type DomainThreeUpStats = {
   readonly __typename: 'ThreeUpStats';
   readonly header?: Maybe<Scalars['String']['output']>;
   readonly statsDescriptionOne?: Maybe<Scalars['String']['output']>;
@@ -9555,7 +9578,7 @@ export type ApiThreeUpStats = {
   readonly valueTwo?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTicketCards = {
+export type DomainTicketCards = {
   readonly __typename: 'TicketCards';
   readonly blueBackground: Scalars['Boolean']['output'];
   readonly cardLabel?: Maybe<Scalars['String']['output']>;
@@ -9569,68 +9592,69 @@ export type ApiTicketCards = {
   readonly webViewLink?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTicketSectionContainer = {
+export type DomainTicketSectionContainer = {
   readonly __typename: 'TicketSectionContainer';
-  readonly bottomCta?: Maybe<ApiCallToAction>;
-  readonly cards?: Maybe<ReadonlyArray<ApiTicketCards>>;
+  readonly bottomCta?: Maybe<DomainCallToAction>;
+  readonly cards?: Maybe<ReadonlyArray<DomainTicketCards>>;
   readonly layout?: Maybe<Scalars['String']['output']>;
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
-  readonly topCta?: Maybe<ApiCallToAction>;
+  readonly topCta?: Maybe<DomainCallToAction>;
 };
 
-export type ApiToolTipComponent = {
+export type DomainToolTipComponent = {
   readonly __typename: 'ToolTipComponent';
   readonly detailCopy?: Maybe<Scalars['String']['output']>;
-  readonly detailCopyRichText?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly detailCopyRichText?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
   readonly header: Scalars['String']['output'];
-  readonly id?: Maybe<ApiRyder_Cup_Ranking_Tooltip>;
+  readonly id?: Maybe<DomainRyder_Cup_Ranking_Tooltip>;
   readonly logo: Scalars['String']['output'];
 };
 
-export type ApiTopicStoriesPillConfig = {
+export type DomainTopicStoriesPillConfig = {
   readonly __typename: 'TopicStoriesPillConfig';
   readonly label: Scalars['String']['output'];
 };
 
-export type ApiToughestCourseRoundPills = {
+export type DomainToughestCourseRoundPills = {
   readonly __typename: 'ToughestCourseRoundPills';
   readonly display: Scalars['String']['output'];
-  readonly queryVal: ApiToughestRound;
+  readonly queryVal: DomainToughestRound;
 };
 
-export type ApiToughestRound =
+export type DomainToughestRound =
   | 'ALL'
   | 'FOUR'
   | 'ONE'
   | 'THREE'
   | 'TWO';
 
-export type ApiTourBoundAsset = {
+export type DomainTourBoundAsset = {
   readonly __typename: 'TourBoundAsset';
   readonly tourBoundLogo?: Maybe<Scalars['String']['output']>;
   readonly tourBoundLogoDark?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTourCategories = {
+export type DomainTourCategories = {
   readonly __typename: 'TourCategories';
-  readonly categories: ReadonlyArray<ApiCategory>;
-  readonly tourCode: ApiTourCode;
+  readonly categories: ReadonlyArray<DomainCategory>;
+  readonly tourCode: DomainTourCode;
 };
 
-export type ApiTourCode =
+export type DomainTourCode =
   | 'C'
   | 'E'
   | 'H'
   | 'I'
   | 'M'
+  | 'P'
   | 'R'
   | 'S'
   | 'U'
   | 'Y';
 
-export type ApiTourCupCombined = {
+export type DomainTourCupCombined = {
   readonly __typename: 'TourCupCombined';
-  readonly bannerMessage?: Maybe<ApiLeaderboardMessage>;
+  readonly bannerMessage?: Maybe<DomainLeaderboardMessage>;
   readonly columnHeaders: ReadonlyArray<Scalars['String']['output']>;
   readonly cutOffButtonText?: Maybe<Scalars['String']['output']>;
   readonly cutOffNumber?: Maybe<Scalars['Int']['output']>;
@@ -9640,12 +9664,12 @@ export type ApiTourCupCombined = {
   readonly id: Scalars['ID']['output'];
   /** @deprecated Use logoAsset */
   readonly logo: Scalars['String']['output'];
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   readonly message?: Maybe<Scalars['String']['output']>;
-  readonly options: ApiTourCupType;
+  readonly options: DomainTourCupType;
   readonly partner?: Maybe<Scalars['String']['output']>;
   readonly partnerLink?: Maybe<Scalars['String']['output']>;
-  readonly players: ReadonlyArray<ApiTourCupCombinedRow>;
+  readonly players: ReadonlyArray<DomainTourCupCombinedRow>;
   readonly pointsEyebrow?: Maybe<Scalars['String']['output']>;
   readonly projectedLive: Scalars['Boolean']['output'];
   readonly projectedTitle: Scalars['String']['output'];
@@ -9653,40 +9677,40 @@ export type ApiTourCupCombined = {
   readonly rankingsHeader: Scalars['String']['output'];
   readonly season: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
-  readonly tournamentPills: ReadonlyArray<ApiStatTournamentPill>;
-  readonly winner?: Maybe<ApiTourCupCombinedWinner>;
-  readonly yearPills: ReadonlyArray<ApiStatYearPills>;
+  readonly tournamentPills: ReadonlyArray<DomainStatTournamentPill>;
+  readonly winner?: Maybe<DomainTourCupCombinedWinner>;
+  readonly yearPills: ReadonlyArray<DomainStatYearPills>;
 };
 
-export type ApiTourCupCombinedData = {
+export type DomainTourCupCombinedData = {
   readonly __typename: 'TourCupCombinedData';
   readonly event: Scalars['String']['output'];
   /** @deprecated Use logoAsset */
   readonly logo?: Maybe<Scalars['String']['output']>;
-  readonly logoAsset?: Maybe<ApiImageAsset>;
+  readonly logoAsset?: Maybe<DomainImageAsset>;
   /** @deprecated Use logoDarkAsset */
   readonly logoDark?: Maybe<Scalars['String']['output']>;
-  readonly logoDarkAsset?: Maybe<ApiImageAsset>;
-  readonly movement: ApiCupRankMovementDirection;
+  readonly logoDarkAsset?: Maybe<DomainImageAsset>;
+  readonly movement: DomainCupRankMovementDirection;
   readonly movementAmount: Scalars['String']['output'];
   readonly official: Scalars['String']['output'];
   readonly projected: Scalars['String']['output'];
 };
 
-export type ApiTourCupCombinedInfo = {
+export type DomainTourCupCombinedInfo = {
   readonly __typename: 'TourCupCombinedInfo';
   /** @deprecated Use logoAsset */
   readonly logo?: Maybe<Scalars['String']['output']>;
-  readonly logoAsset?: Maybe<ApiImageAsset>;
+  readonly logoAsset?: Maybe<DomainImageAsset>;
   /** @deprecated Use logoDarkAsset */
   readonly logoDark?: Maybe<Scalars['String']['output']>;
-  readonly logoDarkAsset?: Maybe<ApiImageAsset>;
+  readonly logoDarkAsset?: Maybe<DomainImageAsset>;
   readonly sortValue: Scalars['Int']['output'];
   readonly text: Scalars['String']['output'];
   readonly toolTip?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTourCupCombinedPlayer = {
+export type DomainTourCupCombinedPlayer = {
   readonly __typename: 'TourCupCombinedPlayer';
   readonly columnData: ReadonlyArray<Scalars['String']['output']>;
   readonly country: Scalars['String']['output'];
@@ -9696,30 +9720,30 @@ export type ApiTourCupCombinedPlayer = {
   readonly id: Scalars['ID']['output'];
   readonly lastName: Scalars['String']['output'];
   readonly officialSort: Scalars['Int']['output'];
-  readonly pointData?: Maybe<ApiTourCupCombinedData>;
+  readonly pointData?: Maybe<DomainTourCupCombinedData>;
   readonly previousWeekRank: Scalars['String']['output'];
   readonly projectedSort: Scalars['Int']['output'];
   /** @deprecated Use rankLogoDarkAsset */
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
-  readonly rankLogoDarkAsset?: Maybe<ApiImageAsset>;
+  readonly rankLogoDarkAsset?: Maybe<DomainImageAsset>;
   /** @deprecated Use rankLogoLightAsset */
   readonly rankLogoLight?: Maybe<Scalars['String']['output']>;
-  readonly rankLogoLightAsset?: Maybe<ApiImageAsset>;
-  readonly rankingData?: Maybe<ApiTourCupCombinedData>;
+  readonly rankLogoLightAsset?: Maybe<DomainImageAsset>;
+  readonly rankingData?: Maybe<DomainTourCupCombinedData>;
   readonly shortName: Scalars['String']['output'];
   readonly thisWeekRank: Scalars['String']['output'];
   readonly tourBound?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiTourCupCombinedRow = ApiTourCupCombinedInfo | ApiTourCupCombinedPlayer;
+export type DomainTourCupCombinedRow = DomainTourCupCombinedInfo | DomainTourCupCombinedPlayer;
 
-export type ApiTourCupCombinedTotal = {
+export type DomainTourCupCombinedTotal = {
   readonly __typename: 'TourCupCombinedTotal';
   readonly label: Scalars['String']['output'];
   readonly value: Scalars['String']['output'];
 };
 
-export type ApiTourCupCombinedWinner = {
+export type DomainTourCupCombinedWinner = {
   readonly __typename: 'TourCupCombinedWinner';
   readonly country: Scalars['String']['output'];
   readonly countryFlag: Scalars['String']['output'];
@@ -9730,40 +9754,40 @@ export type ApiTourCupCombinedWinner = {
   readonly lastName: Scalars['String']['output'];
   readonly rank: Scalars['String']['output'];
   readonly shortName: Scalars['String']['output'];
-  readonly totals: ReadonlyArray<ApiTourCupCombinedTotal>;
+  readonly totals: ReadonlyArray<DomainTourCupCombinedTotal>;
 };
 
-export type ApiTourCupRankingData = ApiSegmentedCupRankingWrapper | ApiStandardCupRanking;
+export type DomainTourCupRankingData = DomainSegmentedCupRankingWrapper | DomainStandardCupRanking;
 
-export type ApiTourCupRankingEvent = {
+export type DomainTourCupRankingEvent = {
   readonly __typename: 'TourCupRankingEvent';
-  readonly bannerMessage?: Maybe<ApiLeaderboardMessage>;
+  readonly bannerMessage?: Maybe<DomainLeaderboardMessage>;
   readonly description: Scalars['String']['output'];
   readonly detailCopy?: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly live: Scalars['Boolean']['output'];
   /** @deprecated Use logoAsset */
   readonly logo: Scalars['String']['output'];
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   /** @deprecated Use logoDarkAsset */
   readonly logoDark: Scalars['String']['output'];
-  readonly logoDarkAsset: ApiImageAsset;
-  readonly options: ApiTourCupType;
+  readonly logoDarkAsset: DomainImageAsset;
+  readonly options: DomainTourCupType;
   readonly partner?: Maybe<Scalars['String']['output']>;
   readonly partnerLink?: Maybe<Scalars['String']['output']>;
-  readonly rankings: ReadonlyArray<ApiCupRankingPlayerWrapper>;
+  readonly rankings: ReadonlyArray<DomainCupRankingPlayerWrapper>;
   readonly rankingsHeader: Scalars['String']['output'];
   readonly showInLeaderboard: Scalars['Boolean']['output'];
-  readonly standings: ApiTourCupRankingData;
+  readonly standings: DomainTourCupRankingData;
   readonly title: Scalars['String']['output'];
   readonly webviewBrowserControls?: Maybe<Scalars['Boolean']['output']>;
   readonly webviewUrl?: Maybe<Scalars['String']['output']>;
-  readonly winner?: Maybe<ApiTourCupWinner>;
+  readonly winner?: Maybe<DomainTourCupWinner>;
 };
 
-export type ApiTourCupSplit = {
+export type DomainTourCupSplit = {
   readonly __typename: 'TourCupSplit';
-  readonly bannerMessage?: Maybe<ApiLeaderboardMessage>;
+  readonly bannerMessage?: Maybe<DomainLeaderboardMessage>;
   readonly columnHeaders: ReadonlyArray<Scalars['String']['output']>;
   readonly cutOffButtonText?: Maybe<Scalars['String']['output']>;
   readonly cutOffNumber?: Maybe<Scalars['Int']['output']>;
@@ -9773,31 +9797,31 @@ export type ApiTourCupSplit = {
   readonly id: Scalars['ID']['output'];
   /** @deprecated Use logoAsset */
   readonly logo: Scalars['String']['output'];
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   readonly message?: Maybe<Scalars['String']['output']>;
-  readonly officialPlayers: ReadonlyArray<ApiTourCupCombinedRow>;
-  readonly options: ApiTourCupType;
+  readonly officialPlayers: ReadonlyArray<DomainTourCupCombinedRow>;
+  readonly options: DomainTourCupType;
   readonly partner?: Maybe<Scalars['String']['output']>;
   readonly partnerLink?: Maybe<Scalars['String']['output']>;
   readonly pointsEyebrow?: Maybe<Scalars['String']['output']>;
   readonly projectedLive: Scalars['Boolean']['output'];
-  readonly projectedPlayers: ReadonlyArray<ApiTourCupCombinedRow>;
+  readonly projectedPlayers: ReadonlyArray<DomainTourCupCombinedRow>;
   readonly projectedTitle: Scalars['String']['output'];
   readonly rankEyebrow?: Maybe<Scalars['String']['output']>;
   readonly rankingsHeader: Scalars['String']['output'];
   readonly season: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
-  readonly tournamentPills: ReadonlyArray<ApiStatTournamentPill>;
-  readonly winner?: Maybe<ApiTourCupCombinedWinner>;
-  readonly yearPills: ReadonlyArray<ApiStatYearPills>;
+  readonly tournamentPills: ReadonlyArray<DomainStatTournamentPill>;
+  readonly winner?: Maybe<DomainTourCupCombinedWinner>;
+  readonly yearPills: ReadonlyArray<DomainStatYearPills>;
 };
 
-export type ApiTourCupType =
+export type DomainTourCupType =
   | 'OFFICIAL'
   | 'OFFICIAL_AND_PROJECTED'
   | 'PROJECTED';
 
-export type ApiTourCupWinner = {
+export type DomainTourCupWinner = {
   readonly __typename: 'TourCupWinner';
   readonly id: Scalars['String']['output'];
   readonly name: Scalars['String']['output'];
@@ -9806,39 +9830,39 @@ export type ApiTourCupWinner = {
   readonly totalValue: Scalars['String']['output'];
 };
 
-export type ApiTourPills = {
+export type DomainTourPills = {
   readonly __typename: 'TourPills';
   readonly displayName: Scalars['String']['output'];
-  readonly tourCode?: Maybe<ApiTourCode>;
+  readonly tourCode?: Maybe<DomainTourCode>;
 };
 
-export type ApiTourSponsor = {
+export type DomainTourSponsor = {
   readonly __typename: 'TourSponsor';
   readonly _path?: Maybe<Scalars['String']['output']>;
-  readonly sponsorDescription: ReadonlyArray<ApiTourSponsorDescription>;
+  readonly sponsorDescription: ReadonlyArray<DomainTourSponsorDescription>;
   readonly sponsorImage?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use sponsorLogoAsset */
   readonly sponsorLogo?: Maybe<Scalars['String']['output']>;
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   readonly sponsorName?: Maybe<Scalars['String']['output']>;
   readonly sponsorWebsiteUrl?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTourSponsorDescription = ApiNewsArticleImage | ApiNewsArticleLineBreak | ApiNewsArticleLink | ApiNewsArticleParagraph | ApiNewsArticleText;
+export type DomainTourSponsorDescription = DomainNewsArticleImage | DomainNewsArticleLineBreak | DomainNewsArticleLink | DomainNewsArticleParagraph | DomainNewsArticleText;
 
-export type ApiTourcastCourse = {
+export type DomainTourcastCourse = {
   readonly __typename: 'TourcastCourse';
   readonly courseId: Scalars['String']['output'];
-  readonly holes: ReadonlyArray<ApiTourcastHole>;
-  readonly playoff?: Maybe<ApiTourcastPlayoff>;
+  readonly holes: ReadonlyArray<DomainTourcastHole>;
+  readonly playoff?: Maybe<DomainTourcastPlayoff>;
 };
 
-export type ApiTourcastGroup = {
+export type DomainTourcastGroup = {
   readonly __typename: 'TourcastGroup';
   readonly groupName: Scalars['String']['output'];
   readonly groupNum: Scalars['Int']['output'];
   readonly location: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiTourcastPlayer>;
+  readonly players: ReadonlyArray<DomainTourcastPlayer>;
   readonly roundNum: Scalars['Int']['output'];
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
@@ -9848,22 +9872,22 @@ export type ApiTourcastGroup = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTourcastHole = {
+export type DomainTourcastHole = {
   readonly __typename: 'TourcastHole';
-  readonly cupMatches?: Maybe<ReadonlyArray<ApiCupLeaderboardMatch>>;
+  readonly cupMatches?: Maybe<ReadonlyArray<DomainCupLeaderboardMatch>>;
   readonly displayRank: Scalars['String']['output'];
-  readonly groups: ReadonlyArray<ApiTourcastGroup>;
+  readonly groups: ReadonlyArray<DomainTourcastGroup>;
   readonly holeNum: Scalars['Int']['output'];
-  readonly matches: ReadonlyArray<ApiHoleMatch>;
+  readonly matches: ReadonlyArray<DomainHoleMatch>;
   readonly par: Scalars['String']['output'];
   readonly rank: Scalars['Int']['output'];
   readonly round: Scalars['String']['output'];
   readonly scoringAvg: Scalars['String']['output'];
-  readonly teamGroups: ReadonlyArray<ApiTourcastTeamGroup>;
+  readonly teamGroups: ReadonlyArray<DomainTourcastTeamGroup>;
   readonly yardage: Scalars['String']['output'];
 };
 
-export type ApiTourcastPlayer = {
+export type DomainTourcastPlayer = {
   readonly __typename: 'TourcastPlayer';
   readonly amateur: Scalars['Boolean']['output'];
   readonly backNine: Scalars['Boolean']['output'];
@@ -9877,11 +9901,11 @@ export type ApiTourcastPlayer = {
   readonly total: Scalars['String']['output'];
 };
 
-export type ApiTourcastPlayoff = {
+export type DomainTourcastPlayoff = {
   readonly __typename: 'TourcastPlayoff';
   readonly holeNum: Scalars['Int']['output'];
   readonly playOffHole: Scalars['Int']['output'];
-  readonly players: ReadonlyArray<ApiTourcastPlayoffPlayer>;
+  readonly players: ReadonlyArray<DomainTourcastPlayoffPlayer>;
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
@@ -9889,7 +9913,7 @@ export type ApiTourcastPlayoff = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTourcastPlayoffPlayer = {
+export type DomainTourcastPlayoffPlayer = {
   readonly __typename: 'TourcastPlayoffPlayer';
   readonly countryCode: Scalars['String']['output'];
   readonly displayName: Scalars['String']['output'];
@@ -9897,31 +9921,31 @@ export type ApiTourcastPlayoffPlayer = {
   readonly shortName: Scalars['String']['output'];
 };
 
-export type ApiTourcastTable = {
+export type DomainTourcastTable = {
   readonly __typename: 'TourcastTable';
-  readonly courses: ReadonlyArray<ApiTourcastCourse>;
-  readonly informationSections: ReadonlyArray<ApiInformationSection>;
+  readonly courses: ReadonlyArray<DomainTourcastCourse>;
+  readonly informationSections: ReadonlyArray<DomainInformationSection>;
   readonly tournamentId: Scalars['ID']['output'];
-  readonly winner?: Maybe<ApiTcWinner>;
+  readonly winner?: Maybe<DomainTcWinner>;
 };
 
-export type ApiTourcastTeam = {
+export type DomainTourcastTeam = {
   readonly __typename: 'TourcastTeam';
   readonly backNine: Scalars['Boolean']['output'];
-  readonly players: ReadonlyArray<ApiTourcastPlayer>;
+  readonly players: ReadonlyArray<DomainTourcastPlayer>;
   readonly roundScore: Scalars['String']['output'];
   readonly teamId: Scalars['ID']['output'];
   readonly thru: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
 };
 
-export type ApiTourcastTeamGroup = {
+export type DomainTourcastTeamGroup = {
   readonly __typename: 'TourcastTeamGroup';
   readonly groupName: Scalars['String']['output'];
   readonly groupNum: Scalars['Int']['output'];
   readonly location: Scalars['String']['output'];
   readonly roundNum: Scalars['Int']['output'];
-  readonly teams: ReadonlyArray<ApiTourcastTeam>;
+  readonly teams: ReadonlyArray<DomainTourcastTeam>;
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly tourcastURI?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
@@ -9930,22 +9954,22 @@ export type ApiTourcastTeamGroup = {
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTournament = {
+export type DomainTournament = {
   readonly __typename: 'Tournament';
   /** @deprecated Use beautyImageAsset */
   readonly beautyImage: Scalars['String']['output'];
-  readonly beautyImageAsset: ApiImageAsset;
+  readonly beautyImageAsset: DomainImageAsset;
   readonly city: Scalars['String']['output'];
   readonly conductedByLabel?: Maybe<Scalars['String']['output']>;
   readonly conductedByLink?: Maybe<Scalars['String']['output']>;
   readonly country: Scalars['String']['output'];
-  readonly courses: ReadonlyArray<ApiCourse>;
+  readonly courses: ReadonlyArray<DomainCourse>;
   readonly currentRound: Scalars['Int']['output'];
-  readonly disabledScorecardTabs: ReadonlyArray<ApiScorecardTabFeature>;
+  readonly disabledScorecardTabs: ReadonlyArray<DomainScorecardTabFeature>;
   readonly displayDate: Scalars['String']['output'];
-  readonly events: ReadonlyArray<ApiEvent>;
-  readonly features?: Maybe<ReadonlyArray<ApiTournamentFeature>>;
-  readonly formatType: ApiFormatType;
+  readonly events: ReadonlyArray<DomainEvent>;
+  readonly features?: Maybe<ReadonlyArray<DomainTournamentFeature>>;
+  readonly formatType: DomainFormatType;
   readonly headshotBaseUrl?: Maybe<Scalars['String']['output']>;
   readonly hideRolexClock: Scalars['Boolean']['output'];
   readonly hideSov: Scalars['Boolean']['output'];
@@ -9959,61 +9983,61 @@ export type ApiTournament = {
   readonly infoPathWebview?: Maybe<Scalars['String']['output']>;
   readonly leaderboardTakeover: Scalars['Boolean']['output'];
   readonly pdfUrl?: Maybe<Scalars['String']['output']>;
-  readonly rightRailConfig?: Maybe<ApiTournamentRightRailConfig>;
+  readonly rightRailConfig?: Maybe<DomainTournamentRightRailConfig>;
   readonly roundDisplay: Scalars['String']['output'];
-  readonly roundStatus: ApiRoundStatus;
-  readonly roundStatusColor: ApiRoundStatusColor;
+  readonly roundStatus: DomainRoundStatus;
+  readonly roundStatusColor: DomainRoundStatusColor;
   readonly roundStatusDisplay: Scalars['String']['output'];
-  readonly scoredLevel: ApiScoringLevel;
+  readonly scoredLevel: DomainScoringLevel;
   readonly seasonYear: Scalars['String']['output'];
   readonly shouldSubscribe?: Maybe<Scalars['Boolean']['output']>;
   readonly state: Scalars['String']['output'];
   readonly ticketsEnabled: Scalars['Boolean']['output'];
   readonly ticketsURL?: Maybe<Scalars['String']['output']>;
   readonly timezone: Scalars['String']['output'];
-  readonly tournamentCategoryInfo?: Maybe<ApiTournamentCategoryInfo>;
+  readonly tournamentCategoryInfo?: Maybe<DomainTournamentCategoryInfo>;
   readonly tournamentLocation: Scalars['String']['output'];
   /** @deprecated use tournamentLogoAsset */
   readonly tournamentLogo: ReadonlyArray<Scalars['String']['output']>;
-  readonly tournamentLogoAsset: ReadonlyArray<ApiImageAsset>;
+  readonly tournamentLogoAsset: ReadonlyArray<DomainImageAsset>;
   readonly tournamentName: Scalars['String']['output'];
   readonly tournamentSiteURL?: Maybe<Scalars['String']['output']>;
-  readonly tournamentStatus: ApiTournamentStatus;
+  readonly tournamentStatus: DomainTournamentStatus;
   readonly useTournamentSiteURL: Scalars['Boolean']['output'];
-  readonly weather?: Maybe<ApiTournamentWeather>;
+  readonly weather?: Maybe<DomainTournamentWeather>;
 };
 
-export type ApiTournamentActivation = {
+export type DomainTournamentActivation = {
   readonly __typename: 'TournamentActivation';
   readonly data: Scalars['String']['output'];
   readonly description: Scalars['String']['output'];
   readonly detail?: Maybe<Scalars['String']['output']>;
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo: Scalars['String']['output'];
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   /** @deprecated use sponsorLogoDarkAsset */
   readonly sponsorLogoDark: Scalars['String']['output'];
-  readonly sponsorLogoDarkAsset: ApiImageAsset;
+  readonly sponsorLogoDarkAsset: DomainImageAsset;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiTournamentCategory =
+export type DomainTournamentCategory =
   | 'PLAYOFF'
   | 'SIGNATURE';
 
-export type ApiTournamentCategoryInfo = {
+export type DomainTournamentCategoryInfo = {
   readonly __typename: 'TournamentCategoryInfo';
   readonly label: Scalars['String']['output'];
   /** @deprecated use logoDarkAsset */
   readonly logoDark: Scalars['String']['output'];
-  readonly logoDarkAsset: ApiImageAsset;
+  readonly logoDarkAsset: DomainImageAsset;
   /** @deprecated use logoLightAsset */
   readonly logoLight: Scalars['String']['output'];
-  readonly logoLightAsset: ApiImageAsset;
-  readonly type: ApiTournamentCategory;
+  readonly logoLightAsset: DomainImageAsset;
+  readonly type: DomainTournamentCategory;
 };
 
-export type ApiTournamentChampion = {
+export type DomainTournamentChampion = {
   readonly __typename: 'TournamentChampion';
   readonly countryCode: Scalars['String']['output'];
   readonly displayName: Scalars['String']['output'];
@@ -10027,18 +10051,18 @@ export type ApiTournamentChampion = {
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiTournamentCourse = {
+export type DomainTournamentCourse = {
   readonly __typename: 'TournamentCourse';
   readonly city?: Maybe<Scalars['String']['output']>;
   readonly country?: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly image: Scalars['String']['output'];
   readonly name: Scalars['String']['output'];
-  readonly overview: ReadonlyArray<ApiInformationData>;
+  readonly overview: ReadonlyArray<DomainInformationData>;
   readonly state?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTournamentFeature =
+export type DomainTournamentFeature =
   | 'COURSE_STATS'
   | 'CUP_TEAMS'
   | 'FEDEXFALL_STANDINGS'
@@ -10054,24 +10078,24 @@ export type ApiTournamentFeature =
   | 'TEE_TIMES'
   | 'TOURCAST';
 
-export type ApiTournamentGroupLocation = {
+export type DomainTournamentGroupLocation = {
   readonly __typename: 'TournamentGroupLocation';
-  readonly groupLocations: ReadonlyArray<ApiGroupLocationData>;
+  readonly groupLocations: ReadonlyArray<DomainGroupLocationData>;
   readonly round: Scalars['Int']['output'];
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiTournamentHistory = {
+export type DomainTournamentHistory = {
   readonly __typename: 'TournamentHistory';
-  readonly courses: ApiTournamentHistoryCourseTable;
-  readonly defendingChampion: ApiTournamentHistoryPlayerTable;
-  readonly pastChampions: ApiTournamentHistoryPlayerTable;
-  readonly tourCode: ApiTourCode;
+  readonly courses: DomainTournamentHistoryCourseTable;
+  readonly defendingChampion: DomainTournamentHistoryPlayerTable;
+  readonly pastChampions: DomainTournamentHistoryPlayerTable;
+  readonly tourCode: DomainTourCode;
   readonly tournamentName: Scalars['String']['output'];
   readonly tournamentNum: Scalars['String']['output'];
 };
 
-export type ApiTournamentHistoryCourse = {
+export type DomainTournamentHistoryCourse = {
   readonly __typename: 'TournamentHistoryCourse';
   readonly courseId: Scalars['String']['output'];
   readonly courseImage: Scalars['String']['output'];
@@ -10082,13 +10106,13 @@ export type ApiTournamentHistoryCourse = {
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiTournamentHistoryCourseTable = {
+export type DomainTournamentHistoryCourseTable = {
   readonly __typename: 'TournamentHistoryCourseTable';
-  readonly courses: ReadonlyArray<ApiTournamentHistoryCourse>;
+  readonly courses: ReadonlyArray<DomainTournamentHistoryCourse>;
   readonly header: Scalars['String']['output'];
 };
 
-export type ApiTournamentHistoryPlayer = {
+export type DomainTournamentHistoryPlayer = {
   readonly __typename: 'TournamentHistoryPlayer';
   readonly countryFlag: Scalars['String']['output'];
   readonly displaySeason: Scalars['String']['output'];
@@ -10099,100 +10123,100 @@ export type ApiTournamentHistoryPlayer = {
   readonly year: Scalars['Int']['output'];
 };
 
-export type ApiTournamentHistoryPlayerTable = {
+export type DomainTournamentHistoryPlayerTable = {
   readonly __typename: 'TournamentHistoryPlayerTable';
   readonly header: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiTournamentHistoryPlayer>;
+  readonly players: ReadonlyArray<DomainTournamentHistoryPlayer>;
 };
 
-export type ApiTournamentHoleStats = {
+export type DomainTournamentHoleStats = {
   readonly __typename: 'TournamentHoleStats';
-  readonly courses: ReadonlyArray<ApiCourseStat>;
+  readonly courses: ReadonlyArray<DomainCourseStat>;
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiTournamentLocation = {
+export type DomainTournamentLocation = {
   readonly __typename: 'TournamentLocation';
   readonly city?: Maybe<Scalars['String']['output']>;
   readonly country?: Maybe<Scalars['String']['output']>;
   readonly state?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTournamentOdds = {
+export type DomainTournamentOdds = {
   readonly __typename: 'TournamentOdds';
-  readonly availableMarkets: ReadonlyArray<ApiAvailableMarket>;
+  readonly availableMarkets: ReadonlyArray<DomainAvailableMarket>;
   readonly country: Scalars['String']['output'];
   readonly drawersEnabled: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
   /** @deprecated Use banners from config these values are incorrect */
-  readonly oddsBanner: ApiOddsBanner;
-  readonly oddsMessage?: Maybe<ApiOddsMessage>;
-  readonly oddsProvider: ApiOddsProvider;
+  readonly oddsBanner: DomainOddsBanner;
+  readonly oddsMessage?: Maybe<DomainOddsMessage>;
+  readonly oddsProvider: DomainOddsProvider;
 };
 
-export type ApiTournamentOddsCompressed = {
+export type DomainTournamentOddsCompressed = {
   readonly __typename: 'TournamentOddsCompressed';
   readonly id: Scalars['ID']['output'];
   readonly tournamentOddsPayload: Scalars['String']['output'];
 };
 
-export type ApiTournamentOddsCompressedV2 = {
+export type DomainTournamentOddsCompressedV2 = {
   readonly __typename: 'TournamentOddsCompressedV2';
   readonly id: Scalars['ID']['output'];
   readonly oddsPayload: Scalars['String']['output'];
 };
 
-export type ApiTournamentOddsPlayer = {
+export type DomainTournamentOddsPlayer = {
   readonly __typename: 'TournamentOddsPlayer';
   readonly oddsOptionId?: Maybe<Scalars['String']['output']>;
   readonly oddsSort: Scalars['Float']['output'];
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly oddsToWin: Scalars['String']['output'];
   readonly playerId: Scalars['ID']['output'];
 };
 
-export type ApiTournamentOddsToWin = {
+export type DomainTournamentOddsToWin = {
   readonly __typename: 'TournamentOddsToWin';
-  readonly players: ReadonlyArray<ApiTournamentOddsPlayer>;
+  readonly players: ReadonlyArray<DomainTournamentOddsPlayer>;
   readonly tournamentId: Scalars['ID']['output'];
   /** @deprecated use tournamentLogoAsset */
   readonly tournamentLogo: Scalars['String']['output'];
-  readonly tournamentLogoAsset: ApiImageAsset;
+  readonly tournamentLogoAsset: DomainImageAsset;
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiTournamentOddsV2 = {
+export type DomainTournamentOddsV2 = {
   readonly __typename: 'TournamentOddsV2';
   readonly drawersEnabled: Scalars['Boolean']['output'];
   readonly id: Scalars['ID']['output'];
-  readonly marketPills: ReadonlyArray<ApiMarketPill>;
-  readonly markets: ReadonlyArray<ApiMarket>;
-  readonly message?: Maybe<ApiOddsMessage>;
+  readonly marketPills: ReadonlyArray<DomainMarketPill>;
+  readonly markets: ReadonlyArray<DomainMarket>;
+  readonly message?: Maybe<DomainOddsMessage>;
   /**   tournamentId-provider */
-  readonly provider: ApiOddsProvider;
+  readonly provider: DomainOddsProvider;
   /**   other markets you can */
   readonly round: Scalars['String']['output'];
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiTournamentOverview = {
+export type DomainTournamentOverview = {
   readonly __typename: 'TournamentOverview';
-  readonly activation?: Maybe<ApiTournamentActivation>;
+  readonly activation?: Maybe<DomainTournamentActivation>;
   readonly androidTicketmasterApiKey?: Maybe<Scalars['String']['output']>;
   readonly androidTicketmasterScheme?: Maybe<Scalars['String']['output']>;
-  readonly augmentedReality?: Maybe<ApiAugmentedRealityConfig>;
+  readonly augmentedReality?: Maybe<DomainAugmentedRealityConfig>;
   /** @deprecated Use beautyImageAsset */
   readonly beautyImage: Scalars['String']['output'];
-  readonly beautyImageAsset: ApiImageAsset;
-  readonly courses: ReadonlyArray<ApiTournamentCourse>;
-  readonly defendingChampion?: Maybe<ApiTournamentChampion>;
-  readonly defendingTeamChampion?: Maybe<ReadonlyArray<Maybe<ApiTournamentChampion>>>;
+  readonly beautyImageAsset: DomainImageAsset;
+  readonly courses: ReadonlyArray<DomainTournamentCourse>;
+  readonly defendingChampion?: Maybe<DomainTournamentChampion>;
+  readonly defendingTeamChampion?: Maybe<ReadonlyArray<Maybe<DomainTournamentChampion>>>;
   readonly eventGuideURL?: Maybe<Scalars['String']['output']>;
-  readonly formatType: ApiFormatType;
+  readonly formatType: DomainFormatType;
   readonly iosTicketmasterApiKey?: Maybe<Scalars['String']['output']>;
-  readonly overview: ReadonlyArray<ApiInformationData>;
-  readonly pastChampions: ReadonlyArray<ApiTournamentChampion>;
-  readonly pastTeamChampions?: Maybe<ReadonlyArray<Maybe<ApiTournamentTeamChampion>>>;
+  readonly overview: ReadonlyArray<DomainInformationData>;
+  readonly pastChampions: ReadonlyArray<DomainTournamentChampion>;
+  readonly pastTeamChampions?: Maybe<ReadonlyArray<Maybe<DomainTournamentTeamChampion>>>;
   readonly shareURL?: Maybe<Scalars['String']['output']>;
   readonly ticketmasterAttractionId?: Maybe<Scalars['String']['output']>;
   readonly ticketsURL?: Maybe<Scalars['String']['output']>;
@@ -10201,12 +10225,12 @@ export type ApiTournamentOverview = {
   readonly tourcastURL?: Maybe<Scalars['String']['output']>;
   /** @deprecated Use tourcastURI */
   readonly tourcastURLWeb?: Maybe<Scalars['String']['output']>;
-  readonly tournamentCategoryInfo?: Maybe<ApiTournamentCategoryInfo>;
-  readonly tournamentResultsMessage?: Maybe<ApiTournamentResultsMessage>;
+  readonly tournamentCategoryInfo?: Maybe<DomainTournamentCategoryInfo>;
+  readonly tournamentResultsMessage?: Maybe<DomainTournamentResultsMessage>;
   readonly webviewBrowserControls: Scalars['Boolean']['output'];
 };
 
-export type ApiTournamentOverviewInfo = {
+export type DomainTournamentOverviewInfo = {
   readonly __typename: 'TournamentOverviewInfo';
   readonly cutsMade: Scalars['Int']['output'];
   readonly cutsMissed: Scalars['Int']['output'];
@@ -10223,22 +10247,22 @@ export type ApiTournamentOverviewInfo = {
   readonly withdrew: Scalars['Int']['output'];
 };
 
-export type ApiTournamentPlayoffScorecards = {
+export type DomainTournamentPlayoffScorecards = {
   readonly __typename: 'TournamentPlayoffScorecards';
-  readonly playoffs: ReadonlyArray<ApiPlayoffScorecard>;
+  readonly playoffs: ReadonlyArray<DomainPlayoffScorecard>;
   readonly tournamentId: Scalars['ID']['output'];
 };
 
-export type ApiTournamentRecap = {
+export type DomainTournamentRecap = {
   readonly __typename: 'TournamentRecap';
-  readonly courses: ReadonlyArray<ApiTournamentRecapCourse>;
+  readonly courses: ReadonlyArray<DomainTournamentRecapCourse>;
   readonly durationDate: Scalars['String']['output'];
-  readonly newsArticles: ReadonlyArray<ApiNewsArticle>;
+  readonly newsArticles: ReadonlyArray<DomainNewsArticle>;
   readonly tournamentId: Scalars['String']['output'];
-  readonly videos: ReadonlyArray<ApiVideo>;
+  readonly videos: ReadonlyArray<DomainVideo>;
 };
 
-export type ApiTournamentRecapCourse = {
+export type DomainTournamentRecapCourse = {
   readonly __typename: 'TournamentRecapCourse';
   readonly city: Scalars['String']['output'];
   readonly country?: Maybe<Scalars['String']['output']>;
@@ -10250,7 +10274,7 @@ export type ApiTournamentRecapCourse = {
   readonly yardage: Scalars['String']['output'];
 };
 
-export type ApiTournamentResultOverview = {
+export type DomainTournamentResultOverview = {
   readonly __typename: 'TournamentResultOverview';
   readonly courseCity: Scalars['String']['output'];
   readonly courseCountry: Scalars['String']['output'];
@@ -10259,32 +10283,32 @@ export type ApiTournamentResultOverview = {
   readonly displaySeason: Scalars['String']['output'];
   readonly tournamentId: Scalars['String']['output'];
   readonly tournamentLogo: Scalars['String']['output'];
-  readonly tournamentLogoAsset: ApiImageAsset;
+  readonly tournamentLogoAsset: DomainImageAsset;
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiTournamentResultPill = {
+export type DomainTournamentResultPill = {
   readonly __typename: 'TournamentResultPill';
   readonly tournamentName: Scalars['String']['output'];
   readonly tournamentNum: Scalars['ID']['output'];
 };
 
-export type ApiTournamentResults = {
+export type DomainTournamentResults = {
   readonly __typename: 'TournamentResults';
   readonly cupEyebrowText: Scalars['String']['output'];
-  readonly overview: ReadonlyArray<ApiPlayerProfileInfoItem>;
-  readonly overviewInfo?: Maybe<ApiTournamentOverviewInfo>;
+  readonly overview: ReadonlyArray<DomainPlayerProfileInfoItem>;
+  readonly overviewInfo?: Maybe<DomainTournamentOverviewInfo>;
   readonly tournamentNum: Scalars['ID']['output'];
-  readonly tournamentOverview?: Maybe<ApiTournamentResultOverview>;
-  readonly tournaments: ReadonlyArray<ApiPlayerProfileTournamentRow>;
+  readonly tournamentOverview?: Maybe<DomainTournamentResultOverview>;
+  readonly tournaments: ReadonlyArray<DomainPlayerProfileTournamentRow>;
 };
 
-export type ApiTournamentResultsMessage = {
+export type DomainTournamentResultsMessage = {
   readonly __typename: 'TournamentResultsMessage';
   readonly message?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTournamentRightRailConfig = {
+export type DomainTournamentRightRailConfig = {
   readonly __typename: 'TournamentRightRailConfig';
   readonly buttonLink?: Maybe<Scalars['String']['output']>;
   readonly buttonText?: Maybe<Scalars['String']['output']>;
@@ -10292,41 +10316,41 @@ export type ApiTournamentRightRailConfig = {
   readonly imageUrl: Scalars['String']['output'];
 };
 
-export type ApiTournamentStatus =
+export type DomainTournamentStatus =
   | 'COMPLETED'
   | 'IN_PROGRESS'
   | 'NOT_STARTED';
 
-export type ApiTournamentTeamChampion = {
+export type DomainTournamentTeamChampion = {
   readonly __typename: 'TournamentTeamChampion';
-  readonly players: ReadonlyArray<ApiTournamentChampion>;
+  readonly players: ReadonlyArray<DomainTournamentChampion>;
 };
 
-export type ApiTournamentWeather = {
+export type DomainTournamentWeather = {
   readonly __typename: 'TournamentWeather';
-  readonly condition: ApiWeatherCondition;
+  readonly condition: DomainWeatherCondition;
   readonly humidity: Scalars['String']['output'];
   /** @deprecated use logoAsset */
   readonly logo?: Maybe<Scalars['String']['output']>;
   readonly logoAccessibility: Scalars['String']['output'];
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   /** @deprecated use logoDarkAsset */
   readonly logoDark?: Maybe<Scalars['String']['output']>;
-  readonly logoDarkAsset: ApiImageAsset;
+  readonly logoDarkAsset: DomainImageAsset;
   readonly precipitation: Scalars['String']['output'];
   readonly tempC: Scalars['String']['output'];
   readonly tempF: Scalars['String']['output'];
-  readonly windDirection: ApiWindDirection;
+  readonly windDirection: DomainWindDirection;
   readonly windSpeedKPH: Scalars['String']['output'];
   readonly windSpeedMPH: Scalars['String']['output'];
 };
 
-export type ApiTournamentsPillConfig = {
+export type DomainTournamentsPillConfig = {
   readonly __typename: 'TournamentsPillConfig';
   readonly currentSeason: Scalars['Int']['output'];
 };
 
-export type ApiTspPlayer = {
+export type DomainTspPlayer = {
   readonly __typename: 'TspPlayer';
   readonly abbreviations: Scalars['String']['output'];
   readonly abbreviationsAccessibilityText: Scalars['String']['output'];
@@ -10342,33 +10366,33 @@ export type ApiTspPlayer = {
   readonly projected: Scalars['String']['output'];
   readonly rankLogoDark?: Maybe<Scalars['String']['output']>;
   readonly rankLogoLight?: Maybe<Scalars['String']['output']>;
-  readonly rankingMovement: ApiCupRankMovementDirection;
+  readonly rankingMovement: DomainCupRankMovementDirection;
   readonly rankingMovementAmount: Scalars['String']['output'];
   readonly shortName: Scalars['String']['output'];
 };
 
-export type ApiTspPlayerHole = {
+export type DomainTspPlayerHole = {
   readonly __typename: 'TspPlayerHole';
   readonly inTheHoleTimestamp?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly playComplete?: Maybe<Scalars['Boolean']['output']>;
   readonly playerId: Scalars['ID']['output'];
   readonly playerTotal?: Maybe<Scalars['String']['output']>;
   readonly statsScoreId?: Maybe<Scalars['String']['output']>;
-  readonly status?: Maybe<ApiHoleScoreStatus>;
+  readonly status?: Maybe<DomainHoleScoreStatus>;
   readonly strokes: Scalars['Int']['output'];
   readonly strokesValue: Scalars['String']['output'];
 };
 
-export type ApiTspPlayoff = {
+export type DomainTspPlayoff = {
   readonly __typename: 'TspPlayoff';
   readonly currentHole: Scalars['Int']['output'];
-  readonly holes: ReadonlyArray<ApiPlayoffHole>;
+  readonly holes: ReadonlyArray<DomainPlayoffHole>;
   readonly location?: Maybe<Scalars['String']['output']>;
-  readonly teams: ReadonlyArray<ApiPlayoffTeams>;
+  readonly teams: ReadonlyArray<DomainPlayoffTeams>;
   readonly thru?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTspScPlayer = {
+export type DomainTspScPlayer = {
   readonly __typename: 'TspSCPlayer';
   readonly abbreviations: Scalars['String']['output'];
   readonly abbreviationsAccessibilityText: Scalars['String']['output'];
@@ -10386,7 +10410,7 @@ export type ApiTspScPlayer = {
   readonly superShortName?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTspStrokePlayer = {
+export type DomainTspStrokePlayer = {
   readonly __typename: 'TspStrokePlayer';
   readonly color?: Maybe<Scalars['String']['output']>;
   readonly displayName?: Maybe<Scalars['String']['output']>;
@@ -10397,19 +10421,19 @@ export type ApiTspStrokePlayer = {
   readonly shortName?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTspTeamHole = {
+export type DomainTspTeamHole = {
   readonly __typename: 'TspTeamHole';
   readonly inTheHoleTimestamp?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly playComplete?: Maybe<Scalars['Boolean']['output']>;
   readonly statsScoreId?: Maybe<Scalars['String']['output']>;
-  readonly status?: Maybe<ApiHoleScoreStatus>;
+  readonly status?: Maybe<DomainHoleScoreStatus>;
   readonly strokes: Scalars['Int']['output'];
   readonly strokesValue: Scalars['String']['output'];
   readonly teamId: Scalars['ID']['output'];
   readonly teamTotal?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiTspTeamRow = {
+export type DomainTspTeamRow = {
   readonly __typename: 'TspTeamRow';
   readonly backNine: Scalars['Boolean']['output'];
   readonly courseId: Scalars['String']['output'];
@@ -10417,21 +10441,21 @@ export type ApiTspTeamRow = {
   readonly groupNumber: Scalars['Int']['output'];
   readonly leaderboardSortOrder: Scalars['Int']['output'];
   readonly movementAmount: Scalars['String']['output'];
-  readonly movementDirection: ApiLeaderboardMovement;
+  readonly movementDirection: DomainLeaderboardMovement;
   readonly oddsOptionId?: Maybe<Scalars['String']['output']>;
   readonly oddsSort?: Maybe<Scalars['Float']['output']>;
-  readonly oddsSwing?: Maybe<ApiOddsSwing>;
+  readonly oddsSwing?: Maybe<DomainOddsSwing>;
   readonly oddsToWin?: Maybe<Scalars['String']['output']>;
-  readonly players: ReadonlyArray<ApiTspPlayer>;
+  readonly players: ReadonlyArray<DomainTspPlayer>;
   readonly position: Scalars['String']['output'];
   readonly rounds: ReadonlyArray<Scalars['String']['output']>;
   readonly score: Scalars['String']['output'];
   readonly scoreSort: Scalars['Int']['output'];
   readonly startHole?: Maybe<Scalars['String']['output']>;
-  readonly status?: Maybe<ApiPlayerState>;
+  readonly status?: Maybe<DomainPlayerState>;
   readonly teamId: Scalars['ID']['output'];
   readonly teamName: Scalars['String']['output'];
-  readonly teamStoryContentInfo: ReadonlyArray<ApiTeamStoryContentInfo>;
+  readonly teamStoryContentInfo: ReadonlyArray<DomainTeamStoryContentInfo>;
   readonly teeTime: Scalars['AWSTimestamp']['output'];
   readonly thru: Scalars['String']['output'];
   readonly thruSort: Scalars['Int']['output'];
@@ -10440,17 +10464,17 @@ export type ApiTspTeamRow = {
   readonly totalStrokes: Scalars['String']['output'];
 };
 
-export type ApiTspWinner = {
+export type DomainTspWinner = {
   readonly __typename: 'TspWinner';
   readonly points?: Maybe<Scalars['String']['output']>;
   readonly purse?: Maybe<Scalars['String']['output']>;
   readonly teamId: Scalars['ID']['output'];
   readonly totalScore: Scalars['String']['output'];
   readonly totalStrokes: Scalars['Int']['output'];
-  readonly winningTeam: ReadonlyArray<ApiTspWinningPlayer>;
+  readonly winningTeam: ReadonlyArray<DomainTspWinningPlayer>;
 };
 
-export type ApiTspWinningPlayer = {
+export type DomainTspWinningPlayer = {
   readonly __typename: 'TspWinningPlayer';
   readonly countryFlag: Scalars['String']['output'];
   readonly countryName: Scalars['String']['output'];
@@ -10461,21 +10485,21 @@ export type ApiTspWinningPlayer = {
   readonly lastName: Scalars['String']['output'];
 };
 
-export type ApiTwoColumn = {
+export type DomainTwoColumn = {
   readonly __typename: 'TwoColumn';
-  readonly sectionOne?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly sectionOne?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
   readonly sectionOneTitle?: Maybe<Scalars['String']['output']>;
-  readonly sectionTwo?: Maybe<ReadonlyArray<Maybe<ApiNewsArticleNode>>>;
+  readonly sectionTwo?: Maybe<ReadonlyArray<Maybe<DomainNewsArticleNode>>>;
   readonly sectionTwoTitle?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiUniversityRankColor =
+export type DomainUniversityRankColor =
   | 'BLACK'
   | 'BLUE'
   | 'GOLD'
   | 'GRAY';
 
-export type ApiUniversityRankingPlayer = {
+export type DomainUniversityRankingPlayer = {
   readonly __typename: 'UniversityRankingPlayer';
   readonly avg: Scalars['String']['output'];
   readonly country: Scalars['String']['output'];
@@ -10483,33 +10507,33 @@ export type ApiUniversityRankingPlayer = {
   readonly events: Scalars['Int']['output'];
   readonly playerId: Scalars['ID']['output'];
   readonly rank: Scalars['Int']['output'];
-  readonly rankColor: ApiUniversityRankColor;
-  readonly rankingMovement: ApiCupRankMovementDirection;
+  readonly rankColor: DomainUniversityRankColor;
+  readonly rankingMovement: DomainCupRankMovementDirection;
   readonly rankingMovementAmount: Scalars['String']['output'];
   readonly rankingMovementAmountSort: Scalars['Int']['output'];
   readonly schoolName: Scalars['String']['output'];
   readonly top10: Scalars['Int']['output'];
-  readonly tournaments: ReadonlyArray<ApiUniversityRankingsTournament>;
+  readonly tournaments: ReadonlyArray<DomainUniversityRankingsTournament>;
   readonly wins: Scalars['Int']['output'];
 };
 
-export type ApiUniversityRankings = {
+export type DomainUniversityRankings = {
   readonly __typename: 'UniversityRankings';
   readonly description: Scalars['String']['output'];
   readonly disclaimer?: Maybe<Scalars['String']['output']>;
   readonly displayYear: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiUniversityRankingPlayer>;
+  readonly players: ReadonlyArray<DomainUniversityRankingPlayer>;
   readonly sponsorImage?: Maybe<Scalars['String']['output']>;
   readonly sponsorName: Scalars['String']['output'];
   readonly throughText: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
   readonly weekNum: Scalars['Int']['output'];
-  readonly weekPills: ReadonlyArray<ApiStatWeekPill>;
+  readonly weekPills: ReadonlyArray<DomainStatWeekPill>;
   readonly year: Scalars['Int']['output'];
-  readonly yearPills: ReadonlyArray<ApiStatYearPills>;
+  readonly yearPills: ReadonlyArray<DomainStatYearPills>;
 };
 
-export type ApiUniversityRankingsTournament = {
+export type DomainUniversityRankingsTournament = {
   readonly __typename: 'UniversityRankingsTournament';
   readonly finishPosition: Scalars['String']['output'];
   readonly name: Scalars['String']['output'];
@@ -10518,92 +10542,92 @@ export type ApiUniversityRankingsTournament = {
   readonly week: Scalars['Int']['output'];
 };
 
-export type ApiUniversityTotalPoints = {
+export type DomainUniversityTotalPoints = {
   readonly __typename: 'UniversityTotalPoints';
   readonly description: Scalars['String']['output'];
-  readonly footerInfo?: Maybe<ApiNewsArticleParagraph>;
-  readonly headerInfo?: Maybe<ApiNewsArticleParagraph>;
+  readonly footerInfo?: Maybe<DomainNewsArticleParagraph>;
+  readonly headerInfo?: Maybe<DomainNewsArticleParagraph>;
   readonly headers: ReadonlyArray<Scalars['String']['output']>;
-  readonly players: ReadonlyArray<ApiUniversityTotalPointsPlayer>;
+  readonly players: ReadonlyArray<DomainUniversityTotalPointsPlayer>;
   readonly season: Scalars['Int']['output'];
-  readonly seasonNavigation: ReadonlyArray<ApiUniversityTotalPointsPill>;
+  readonly seasonNavigation: ReadonlyArray<DomainUniversityTotalPointsPill>;
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo?: Maybe<Scalars['String']['output']>;
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   readonly sponsorText?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
   readonly week: Scalars['Int']['output'];
-  readonly weekNavigation: ReadonlyArray<ApiUniversityTotalPointsPill>;
+  readonly weekNavigation: ReadonlyArray<DomainUniversityTotalPointsPill>;
 };
 
-export type ApiUniversityTotalPointsPill = {
+export type DomainUniversityTotalPointsPill = {
   readonly __typename: 'UniversityTotalPointsPill';
   readonly displayText: Scalars['String']['output'];
   readonly value: Scalars['Int']['output'];
 };
 
-export type ApiUniversityTotalPointsPlayer = {
+export type DomainUniversityTotalPointsPlayer = {
   readonly __typename: 'UniversityTotalPointsPlayer';
   readonly data: ReadonlyArray<Scalars['String']['output']>;
   readonly playerId: Scalars['ID']['output'];
   readonly playerName: Scalars['String']['output'];
   readonly rank: Scalars['String']['output'];
   readonly rankSort: Scalars['Int']['output'];
-  readonly rankingMovement: ApiCupRankMovementDirection;
+  readonly rankingMovement: DomainCupRankMovementDirection;
   readonly rankingMovementAmount: Scalars['String']['output'];
   readonly rankingMovementAmountSort: Scalars['Int']['output'];
-  readonly tournaments: ReadonlyArray<ApiUniversityRankingsTournament>;
+  readonly tournaments: ReadonlyArray<DomainUniversityRankingsTournament>;
 };
 
-export type ApiUnorderedListNode = {
+export type DomainUnorderedListNode = {
   readonly __typename: 'UnorderedListNode';
-  readonly historicalTournamentOddsArgs?: Maybe<ApiHistoricalTournamentOddsArgs>;
-  readonly items: ReadonlyArray<ApiListItem>;
+  readonly historicalTournamentOddsArgs?: Maybe<DomainHistoricalTournamentOddsArgs>;
+  readonly items: ReadonlyArray<DomainListItem>;
   readonly ordered?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type ApiUnsubscribeResponse = {
+export type DomainUnsubscribeResponse = {
   readonly __typename: 'UnsubscribeResponse';
   readonly ok: Scalars['Boolean']['output'];
 };
 
-export type ApiUpcomingBroadcastNetwork = {
+export type DomainUpcomingBroadcastNetwork = {
   readonly __typename: 'UpcomingBroadcastNetwork';
-  readonly networks: ReadonlyArray<ApiBroadcastNetwork>;
+  readonly networks: ReadonlyArray<DomainBroadcastNetwork>;
   readonly tournamentId: Scalars['String']['output'];
 };
 
-export type ApiUpcomingBroadcastNetworks = {
+export type DomainUpcomingBroadcastNetworks = {
   readonly __typename: 'UpcomingBroadcastNetworks';
-  readonly upcomingNetworks: ReadonlyArray<ApiUpcomingBroadcastNetwork>;
+  readonly upcomingNetworks: ReadonlyArray<DomainUpcomingBroadcastNetwork>;
 };
 
-export type ApiUpcomingMatch = {
+export type DomainUpcomingMatch = {
   readonly __typename: 'UpcomingMatch';
   readonly isConsolationMatch: Scalars['Boolean']['output'];
   readonly matchId: Scalars['String']['output'];
-  readonly potentialPlayers: ReadonlyArray<ApiUpcomingMatchPotentialPlayer>;
+  readonly potentialPlayers: ReadonlyArray<DomainUpcomingMatchPotentialPlayer>;
 };
 
-export type ApiUpcomingMatchPotentialPlayer = {
+export type DomainUpcomingMatchPotentialPlayer = {
   readonly __typename: 'UpcomingMatchPotentialPlayer';
   readonly isKnown: Scalars['Boolean']['output'];
   readonly nameLabel: Scalars['String']['output'];
-  readonly players: ReadonlyArray<ApiMpLeaderboardPlayer>;
+  readonly players: ReadonlyArray<DomainMpLeaderboardPlayer>;
   readonly relationshipLabel?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiVideo = {
+export type DomainVideo = {
   readonly __typename: 'Video';
   /** @deprecated No longer supported */
   readonly accountId?: Maybe<Scalars['String']['output']>;
-  readonly categories?: Maybe<ReadonlyArray<ApiRyderCupContentCategories>>;
+  readonly categories?: Maybe<ReadonlyArray<DomainRyderCupContentCategories>>;
   readonly category: Scalars['String']['output'];
   readonly categoryDisplayName: Scalars['String']['output'];
   readonly contentTournamentId?: Maybe<Scalars['String']['output']>;
   readonly created?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly description?: Maybe<Scalars['String']['output']>;
-  readonly descriptionNode?: Maybe<ReadonlyArray<ApiVideoDescription>>;
+  readonly descriptionNode?: Maybe<ReadonlyArray<DomainVideoDescription>>;
   readonly duration: Scalars['Int']['output'];
   readonly endsAt?: Maybe<Scalars['AWSTimestamp']['output']>;
   readonly franchise: Scalars['String']['output'];
@@ -10614,8 +10638,8 @@ export type ApiVideo = {
   readonly holeNumber?: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly pinned: Scalars['Boolean']['output'];
-  readonly playerVideos?: Maybe<ReadonlyArray<ApiPlayerVideo>>;
-  readonly players?: Maybe<ReadonlyArray<ApiRyderCupContentPlayer>>;
+  readonly playerVideos?: Maybe<ReadonlyArray<DomainPlayerVideo>>;
+  readonly players?: Maybe<ReadonlyArray<DomainRyderCupContentPlayer>>;
   readonly poster: Scalars['String']['output'];
   readonly pubdate: Scalars['AWSTimestamp']['output'];
   readonly publishDate?: Maybe<Scalars['String']['output']>;
@@ -10624,15 +10648,15 @@ export type ApiVideo = {
   readonly seqHoleNumber?: Maybe<Scalars['String']['output']>;
   readonly shareUrl?: Maybe<Scalars['String']['output']>;
   readonly shotNumber?: Maybe<Scalars['String']['output']>;
-  readonly sponsor?: Maybe<ApiVideoSponsor>;
+  readonly sponsor?: Maybe<DomainVideoSponsor>;
   readonly startsAt?: Maybe<Scalars['AWSTimestamp']['output']>;
-  readonly tags?: Maybe<ReadonlyArray<ApiRyderCupContentTags>>;
-  readonly team?: Maybe<ApiRyderCupTeamType>;
+  readonly tags?: Maybe<ReadonlyArray<DomainRyderCupContentTags>>;
+  readonly team?: Maybe<DomainRyderCupTeamType>;
   /** @deprecated Use thumbnailAsset */
   readonly thumbnail: Scalars['String']['output'];
-  readonly thumbnailAsset: ApiImageAsset;
+  readonly thumbnailAsset: DomainImageAsset;
   readonly title: Scalars['String']['output'];
-  readonly topics?: Maybe<ReadonlyArray<ApiContentTopics>>;
+  readonly topics?: Maybe<ReadonlyArray<DomainContentTopics>>;
   readonly tourCode: Scalars['String']['output'];
   readonly tournamentId?: Maybe<Scalars['String']['output']>;
   readonly videoAccountId?: Maybe<Scalars['String']['output']>;
@@ -10640,48 +10664,48 @@ export type ApiVideo = {
   readonly years?: Maybe<ReadonlyArray<Maybe<Scalars['String']['output']>>>;
 };
 
-export type ApiVideoDescription = ApiNewsArticleLink | ApiNewsArticleText;
+export type DomainVideoDescription = DomainNewsArticleLink | DomainNewsArticleText;
 
-export type ApiVideoFilterPillConfig = {
+export type DomainVideoFilterPillConfig = {
   readonly __typename: 'VideoFilterPillConfig';
-  readonly franchises: ReadonlyArray<ApiFranchise>;
-  readonly pinnedFranchises: ReadonlyArray<ApiFranchise>;
+  readonly franchises: ReadonlyArray<DomainFranchise>;
+  readonly pinnedFranchises: ReadonlyArray<DomainFranchise>;
 };
 
-export type ApiVideoHero = {
+export type DomainVideoHero = {
   readonly __typename: 'VideoHero';
   readonly gtmAssetKey?: Maybe<Scalars['String']['output']>;
   readonly partnershipAsset?: Maybe<Scalars['String']['output']>;
   readonly partnershipText?: Maybe<Scalars['String']['output']>;
   readonly sectionTitle?: Maybe<Scalars['String']['output']>;
   readonly tourcastWebviewLink?: Maybe<Scalars['String']['output']>;
-  readonly video?: Maybe<ApiVideo>;
-  readonly videos: ReadonlyArray<ApiVideo>;
+  readonly video?: Maybe<DomainVideo>;
+  readonly videos: ReadonlyArray<DomainVideo>;
 };
 
-export type ApiVideoLanguage =
+export type DomainVideoLanguage =
   | 'ENGLISH'
   | 'FRENCH';
 
-export type ApiVideoNavigation = {
+export type DomainVideoNavigation = {
   readonly __typename: 'VideoNavigation';
-  readonly items: ReadonlyArray<ApiVideoPill>;
-  readonly liveOverride: ApiLiveOverride;
-  readonly tourCode: ApiTourCode;
+  readonly items: ReadonlyArray<DomainVideoPill>;
+  readonly liveOverride: DomainLiveOverride;
+  readonly tourCode: DomainTourCode;
 };
 
-export type ApiVideoPill = {
+export type DomainVideoPill = {
   readonly __typename: 'VideoPill';
   readonly defaultView: Scalars['Boolean']['output'];
   readonly displayText: Scalars['String']['output'];
-  readonly enabledCompanionPills?: Maybe<ReadonlyArray<ApiVideoPillType>>;
-  readonly pillConfig?: Maybe<ApiVideoPillConfig>;
-  readonly videoPillType: ApiVideoPillType;
+  readonly enabledCompanionPills?: Maybe<ReadonlyArray<DomainVideoPillType>>;
+  readonly pillConfig?: Maybe<DomainVideoPillConfig>;
+  readonly videoPillType: DomainVideoPillType;
 };
 
-export type ApiVideoPillConfig = ApiFranchisePillConfig | ApiTopicStoriesPillConfig | ApiTournamentsPillConfig | ApiVideoFilterPillConfig;
+export type DomainVideoPillConfig = DomainFranchisePillConfig | DomainTopicStoriesPillConfig | DomainTournamentsPillConfig | DomainVideoFilterPillConfig;
 
-export type ApiVideoPillType =
+export type DomainVideoPillType =
   | 'ALL'
   | 'FAVORITES'
   | 'FEATURES'
@@ -10694,42 +10718,42 @@ export type ApiVideoPillType =
   | 'TOURNAMENTS'
   | 'TRENDING';
 
-export type ApiVideoSponsor = {
+export type DomainVideoSponsor = {
   readonly __typename: 'VideoSponsor';
   readonly description?: Maybe<Scalars['String']['output']>;
   readonly gam?: Maybe<Scalars['String']['output']>;
   readonly image?: Maybe<Scalars['String']['output']>;
   /** @deprecated use logoAsset */
   readonly logo: Scalars['String']['output'];
-  readonly logoAsset: ApiImageAsset;
+  readonly logoAsset: DomainImageAsset;
   /** @deprecated use logoDarkAsset */
   readonly logoDark: Scalars['String']['output'];
-  readonly logoDarkAsset: ApiImageAsset;
+  readonly logoDarkAsset: DomainImageAsset;
   readonly logoPrefix?: Maybe<Scalars['String']['output']>;
   readonly name: Scalars['String']['output'];
   readonly websiteUrl?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiWatchLanding = {
+export type DomainWatchLanding = {
   readonly __typename: 'WatchLanding';
   /** @deprecated Use featuredVideos array */
-  readonly featuredVideo?: Maybe<ApiVideo>;
-  readonly featuredVideos?: Maybe<ReadonlyArray<ApiVideo>>;
-  readonly landingSections: ReadonlyArray<ApiWatchLandingSection>;
-  readonly mobileVideos?: Maybe<ReadonlyArray<ApiVideo>>;
+  readonly featuredVideo?: Maybe<DomainVideo>;
+  readonly featuredVideos?: Maybe<ReadonlyArray<DomainVideo>>;
+  readonly landingSections: ReadonlyArray<DomainWatchLandingSection>;
+  readonly mobileVideos?: Maybe<ReadonlyArray<DomainVideo>>;
   readonly mobileWebVideoLimit: Scalars['Int']['output'];
-  readonly tourCode: ApiTourCode;
+  readonly tourCode: DomainTourCode;
 };
 
-export type ApiWatchLandingSection = {
+export type DomainWatchLandingSection = {
   readonly __typename: 'WatchLandingSection';
-  readonly pillConfig?: Maybe<ApiVideoPillConfig>;
+  readonly pillConfig?: Maybe<DomainVideoPillConfig>;
   readonly title: Scalars['String']['output'];
-  readonly videoPillType: ApiVideoPillType;
-  readonly videos: ReadonlyArray<ApiVideo>;
+  readonly videoPillType: DomainVideoPillType;
+  readonly videos: ReadonlyArray<DomainVideo>;
 };
 
-export type ApiWeatherCondition =
+export type DomainWeatherCondition =
   | 'DAY_CLOUDY'
   | 'DAY_FOG_MIST'
   | 'DAY_MOSTLY_CLOUDY'
@@ -10745,49 +10769,49 @@ export type ApiWeatherCondition =
   | 'NIGHT_MOSTLY_CLOUDY'
   | 'NIGHT_PARTLY_CLOUDY';
 
-export type ApiWeatherDetails = {
+export type DomainWeatherDetails = {
   readonly __typename: 'WeatherDetails';
-  readonly condition: ApiWeatherCondition;
+  readonly condition: DomainWeatherCondition;
   readonly humidity: Scalars['String']['output'];
   readonly precipitation: Scalars['String']['output'];
-  readonly temperature: ApiWeatherTemp;
+  readonly temperature: DomainWeatherTemp;
   readonly title: Scalars['String']['output'];
-  readonly windDirection: ApiWindDirection;
+  readonly windDirection: DomainWindDirection;
   readonly windSpeedKPH: Scalars['String']['output'];
   readonly windSpeedMPH: Scalars['String']['output'];
 };
 
-export type ApiWeatherNotes = {
+export type DomainWeatherNotes = {
   readonly __typename: 'WeatherNotes';
   readonly notes: ReadonlyArray<Scalars['String']['output']>;
-  readonly weather: ReadonlyArray<ApiDayWeather>;
+  readonly weather: ReadonlyArray<DomainDayWeather>;
 };
 
-export type ApiWeatherSummary = {
+export type DomainWeatherSummary = {
   readonly __typename: 'WeatherSummary';
   readonly accessibilityText?: Maybe<Scalars['String']['output']>;
-  readonly daily: ReadonlyArray<ApiWeatherDetails>;
-  readonly hourly: ReadonlyArray<ApiWeatherDetails>;
+  readonly daily: ReadonlyArray<DomainWeatherDetails>;
+  readonly hourly: ReadonlyArray<DomainWeatherDetails>;
   /** @deprecated use modalSponsorLogoAsset */
   readonly modalSponsorLogo?: Maybe<Scalars['String']['output']>;
-  readonly modalSponsorLogoAsset: ApiImageAsset;
+  readonly modalSponsorLogoAsset: DomainImageAsset;
   /** @deprecated use modalSponsorLogoDarkAsset */
   readonly modalSponsorLogoDark?: Maybe<Scalars['String']['output']>;
-  readonly modalSponsorLogoDarkAsset: ApiImageAsset;
+  readonly modalSponsorLogoDarkAsset: DomainImageAsset;
   readonly sponsorDescription?: Maybe<Scalars['String']['output']>;
   readonly sponsorLink?: Maybe<Scalars['String']['output']>;
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo?: Maybe<Scalars['String']['output']>;
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   /** @deprecated use sponsorLogoDarkAsset */
   readonly sponsorLogoDark?: Maybe<Scalars['String']['output']>;
-  readonly sponsorLogoDarkAsset: ApiImageAsset;
+  readonly sponsorLogoDarkAsset: DomainImageAsset;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiWeatherTemp = ApiRangeWeatherTemp | ApiStandardWeatherTemp;
+export type DomainWeatherTemp = DomainRangeWeatherTemp | DomainStandardWeatherTemp;
 
-export type ApiWindDirection =
+export type DomainWindDirection =
   | 'EAST'
   | 'NORTH'
   | 'NORTH_EAST'
@@ -10797,7 +10821,7 @@ export type ApiWindDirection =
   | 'SOUTH_WEST'
   | 'WEST';
 
-export type ApiWinner = {
+export type DomainWinner = {
   readonly __typename: 'Winner';
   readonly countryFlag: Scalars['String']['output'];
   readonly countryName: Scalars['String']['output'];
@@ -10809,52 +10833,52 @@ export type ApiWinner = {
   readonly points?: Maybe<Scalars['String']['output']>;
   readonly pointsLabel?: Maybe<Scalars['String']['output']>;
   readonly purse?: Maybe<Scalars['String']['output']>;
-  readonly roundScores?: Maybe<ReadonlyArray<ApiWinnerRoundScore>>;
+  readonly roundScores?: Maybe<ReadonlyArray<DomainWinnerRoundScore>>;
   readonly seed?: Maybe<Scalars['String']['output']>;
   readonly totalScore: Scalars['String']['output'];
   readonly totalStrokes: Scalars['Int']['output'];
-  readonly winnerIcon?: Maybe<ApiWinnerIcon>;
+  readonly winnerIcon?: Maybe<DomainWinnerIcon>;
 };
 
-export type ApiWinnerIcon = {
+export type DomainWinnerIcon = {
   readonly __typename: 'WinnerIcon';
   readonly color: Scalars['String']['output'];
   readonly label: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
-  readonly type: ApiWinnerIconType;
+  readonly type: DomainWinnerIconType;
 };
 
-export type ApiWinnerIconType =
+export type DomainWinnerIconType =
   | 'BRONZE'
   | 'GOLD'
   | 'SILVER';
 
-export type ApiWinnerRoundScore = {
+export type DomainWinnerRoundScore = {
   readonly __typename: 'WinnerRoundScore';
   readonly label: Scalars['String']['output'];
   readonly total: Scalars['String']['output'];
 };
 
-export type ApiYtActivationData = {
+export type DomainYtActivationData = {
   readonly __typename: 'YTActivationData';
   readonly data: Scalars['String']['output'];
   readonly description?: Maybe<Scalars['String']['output']>;
   readonly title?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiYtAdInterstitialCard = {
+export type DomainYtAdInterstitialCard = {
   readonly __typename: 'YTAdInterstitialCard';
   readonly adUrl: Scalars['String']['output'];
-  readonly props: ApiYtCardProps;
+  readonly props: DomainYtCardProps;
 };
 
-export type ApiYtArticleCard = {
+export type DomainYtArticleCard = {
   readonly __typename: 'YTArticleCard';
-  readonly props: ApiYtCardProps;
+  readonly props: DomainYtCardProps;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiYtCardCtaProps = {
+export type DomainYtCardCtaProps = {
   readonly __typename: 'YTCardCtaProps';
   readonly color?: Maybe<Scalars['String']['output']>;
   readonly isTourCastCta: Scalars['Boolean']['output'];
@@ -10862,14 +10886,14 @@ export type ApiYtCardCtaProps = {
   readonly text: Scalars['String']['output'];
 };
 
-export type ApiYtCardProps = {
+export type DomainYtCardProps = {
   readonly __typename: 'YTCardProps';
   readonly backgroundColor?: Maybe<Scalars['String']['output']>;
   readonly cardFranchise?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
   readonly cardHeading?: Maybe<Scalars['String']['output']>;
   readonly cardName?: Maybe<Scalars['String']['output']>;
   readonly cardSubHead?: Maybe<Scalars['String']['output']>;
-  readonly cta?: Maybe<ApiYtCardCtaProps>;
+  readonly cta?: Maybe<DomainYtCardCtaProps>;
   readonly ctaText?: Maybe<Scalars['String']['output']>;
   readonly date: Scalars['AWSTimestamp']['output'];
   readonly deepLink: Scalars['String']['output'];
@@ -10877,1514 +10901,126 @@ export type ApiYtCardProps = {
   readonly disableSlowZoom: Scalars['Boolean']['output'];
   /** @deprecated use imageAsset */
   readonly image?: Maybe<Scalars['String']['output']>;
-  readonly imageAsset?: Maybe<ApiImageAsset>;
+  readonly imageAsset?: Maybe<DomainImageAsset>;
   readonly link: Scalars['String']['output'];
   readonly opacity: Scalars['Float']['output'];
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo?: Maybe<Scalars['String']['output']>;
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   readonly sponsorText?: Maybe<Scalars['String']['output']>;
   readonly textColor: Scalars['String']['output'];
-  readonly textPosition: ApiYtTextPosition;
+  readonly textPosition: DomainYtTextPosition;
   readonly tourCastCta: Scalars['Boolean']['output'];
   readonly videoId?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiYtCardSponsorProps = {
+export type DomainYtCardSponsorProps = {
   readonly __typename: 'YTCardSponsorProps';
-  readonly activationData: ReadonlyArray<ApiYtActivationData>;
+  readonly activationData: ReadonlyArray<DomainYtActivationData>;
   readonly activationSubtitle: Scalars['String']['output'];
   readonly activationTitle: Scalars['String']['output'];
   /** @deprecated use sponsorLogoAsset */
   readonly sponsorLogo: Scalars['String']['output'];
-  readonly sponsorLogoAsset: ApiImageAsset;
+  readonly sponsorLogoAsset: DomainImageAsset;
   /** @deprecated use tournamentLogoAsset */
   readonly tournamentLogo: Scalars['String']['output'];
-  readonly tournamentLogoAsset: ApiImageAsset;
+  readonly tournamentLogoAsset: DomainImageAsset;
   readonly tournamentName: Scalars['String']['output'];
 };
 
-export type ApiYtCoverCard = {
+export type DomainYtCoverCard = {
   readonly __typename: 'YTCoverCard';
-  readonly props: ApiYtCardProps;
+  readonly props: DomainYtCardProps;
   readonly subTitle?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiYtHighlightCard = {
+export type DomainYtHighlightCard = {
   readonly __typename: 'YTHighlightCard';
   readonly hole?: Maybe<Scalars['String']['output']>;
-  readonly props: ApiYtCardProps;
+  readonly props: DomainYtCardProps;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiYtLeaderboardCard = {
+export type DomainYtLeaderboardCard = {
   readonly __typename: 'YTLeaderboardCard';
-  readonly players: ReadonlyArray<ApiYtPlayer>;
-  readonly props: ApiYtCardProps;
+  readonly players: ReadonlyArray<DomainYtPlayer>;
+  readonly props: DomainYtCardProps;
   readonly title: Scalars['String']['output'];
-  readonly tournament: ApiYtTournament;
+  readonly tournament: DomainYtTournament;
 };
 
-export type ApiYtNuggetCard = {
+export type DomainYtNuggetCard = {
   readonly __typename: 'YTNuggetCard';
-  readonly props: ApiYtCardProps;
+  readonly props: DomainYtCardProps;
   readonly subText: Scalars['String']['output'];
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiYtPlayer = {
+export type DomainYtPlayer = {
   readonly __typename: 'YTPlayer';
   readonly id: Scalars['String']['output'];
   readonly name: Scalars['String']['output'];
 };
 
-export type ApiYtRound = {
+export type DomainYtRound = {
   readonly __typename: 'YTRound';
   readonly roundDisplay: Scalars['String']['output'];
   readonly roundNumber: Scalars['Int']['output'];
 };
 
-export type ApiYtScorecardCard = {
+export type DomainYtScorecardCard = {
   readonly __typename: 'YTScorecardCard';
-  readonly player: ApiYtPlayer;
-  readonly props: ApiYtCardProps;
+  readonly player: DomainYtPlayer;
+  readonly props: DomainYtCardProps;
   readonly title: Scalars['String']['output'];
-  readonly tournament: ApiYtTournament;
+  readonly tournament: DomainYtTournament;
 };
 
-export type ApiYtSponsorActivationCard = {
+export type DomainYtSponsorActivationCard = {
   readonly __typename: 'YTSponsorActivationCard';
-  readonly props: ApiYtCardProps;
-  readonly sponsorProps: ApiYtCardSponsorProps;
+  readonly props: DomainYtCardProps;
+  readonly sponsorProps: DomainYtCardSponsorProps;
   readonly subTitle?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiYtTextPosition =
+export type DomainYtTextPosition =
   | 'BOTTOM'
   | 'TOP';
 
-export type ApiYtTournament = {
+export type DomainYtTournament = {
   readonly __typename: 'YTTournament';
   readonly id: Scalars['String']['output'];
-  readonly round: ApiYtRound;
+  readonly round: DomainYtRound;
 };
 
-export type ApiYtTournamentUpdateCard = {
+export type DomainYtTournamentUpdateCard = {
   readonly __typename: 'YTTournamentUpdateCard';
-  readonly props: ApiYtCardProps;
+  readonly props: DomainYtCardProps;
   readonly title: Scalars['String']['output'];
 };
 
-export type ApiYourTourCard = ApiYtAdInterstitialCard | ApiYtArticleCard | ApiYtCoverCard | ApiYtHighlightCard | ApiYtLeaderboardCard | ApiYtNuggetCard | ApiYtScorecardCard | ApiYtSponsorActivationCard | ApiYtTournamentUpdateCard;
+export type DomainYourTourCard = DomainYtAdInterstitialCard | DomainYtArticleCard | DomainYtCoverCard | DomainYtHighlightCard | DomainYtLeaderboardCard | DomainYtNuggetCard | DomainYtScorecardCard | DomainYtSponsorActivationCard | DomainYtTournamentUpdateCard;
 
-export type ApiYourTourNews = ApiNewsArticle | ApiVideo;
+export type DomainYourTourNews = DomainNewsArticle | DomainVideo;
 
-export type ApiYourTourStory = {
+export type DomainYourTourStory = {
   readonly __typename: 'YourTourStory';
   readonly cardTopic?: Maybe<Scalars['String']['output']>;
-  readonly cards: ReadonlyArray<ApiYourTourCard>;
-  readonly homeCard?: Maybe<ApiYourTourCard>;
+  readonly cards: ReadonlyArray<DomainYourTourCard>;
+  readonly homeCard?: Maybe<DomainYourTourCard>;
   readonly id: Scalars['ID']['output'];
   readonly tglMatchIds?: Maybe<ReadonlyArray<Scalars['String']['output']>>;
-  readonly videoStories: ReadonlyArray<ApiYtVideoStory>;
+  readonly videoStories: ReadonlyArray<DomainYtVideoStory>;
 };
 
-export type ApiYtVideoStory = {
+export type DomainYtVideoStory = {
   readonly __typename: 'YtVideoStory';
   readonly topicLabel?: Maybe<Scalars['String']['output']>;
-  readonly type: ApiYtVideoStoryType;
+  readonly type: DomainYtVideoStoryType;
 };
 
-export type ApiYtVideoStoryType =
+export type DomainYtVideoStoryType =
   | 'PLAYER_STORIES'
   | 'TOPIC_STORIES';
-
-export type ApiLeaderboardV3QueryVariables = Exact<{
-  leaderboardV3Id: Scalars['ID']['input'];
-}>;
-
-
-export type ApiLeaderboardV3Query = {
-  readonly __typename: 'Query',
-  readonly leaderboardV3: {
-    readonly __typename: 'LeaderboardV3',
-    readonly id: string,
-    readonly tournamentId: string,
-    readonly leaderboardRoundHeader: string,
-    readonly formatType: ApiFormatType,
-    readonly timezone: string,
-    readonly tourcastURL?: string | null,
-    readonly tourcastURLWeb?: string | null,
-    readonly tourcastURI?: string | null,
-    readonly tournamentStatus: ApiTournamentStatus,
-    readonly isPlayoffActive: boolean,
-    readonly scorecardEnabled: boolean,
-    readonly profileEnabled: boolean,
-    readonly subEvent: boolean,
-    readonly standingsEnabled: boolean,
-    readonly standingsHeader: string,
-    readonly hideSov: boolean,
-    readonly disableOdds: boolean,
-    readonly disableBettingProfileColumn: boolean,
-    readonly disableLeaderboard: boolean,
-    readonly players: ReadonlyArray<
-      | {
-        readonly __typename: 'InformationRow',
-        readonly id: string,
-        readonly leaderboardSortOrder: number,
-        readonly displayText: string,
-        readonly mobileDisplayText: string,
-        readonly sponsorName?: string | null
-      }
-      | {
-        readonly __typename: 'PlayerRowV3',
-        readonly id: string,
-        readonly leaderboardSortOrder: number,
-        readonly player: {
-          readonly __typename: 'Player',
-          readonly id: string,
-          readonly firstName: string,
-          readonly lastName: string,
-          readonly shortName: string,
-          readonly displayName: string,
-          readonly abbreviations: string,
-          readonly abbreviationsAccessibilityText: string,
-          readonly amateur: boolean,
-          readonly country: string,
-          readonly countryFlag: string,
-          readonly lineColor: string,
-          readonly seed?: string | null,
-          readonly status?: string | null,
-          readonly tourBound?: boolean | null,
-          readonly bettingProfile?: string | null,
-          readonly playerBioOverrideLink?: string | null,
-          readonly assets?: ReadonlyArray<{
-            readonly __typename: 'TourBoundAsset',
-            readonly tourBoundLogo?: string | null,
-            readonly tourBoundLogoDark?: string | null
-          }> | null
-        },
-        readonly scoringData: {
-          readonly __typename: 'LeaderboardScoringDataV3',
-          readonly groupNumber: number,
-          readonly currentRound: number,
-          readonly backNine: boolean,
-          readonly playerState: ApiPlayerState,
-          readonly teeTime?: any | null,
-          readonly totalStrokes: string,
-          readonly totalStrokesSort?: number | null,
-          readonly total: string,
-          readonly totalSort: number,
-          readonly thru: string,
-          readonly thruSort: number,
-          readonly score: string,
-          readonly scoreSort: number,
-          readonly movementDirection: ApiLeaderboardMovement,
-          readonly movementAmount: string,
-          readonly movementSort?: number | null,
-          readonly position: string,
-          readonly rounds: ReadonlyArray<string>,
-          readonly roundDisplaySort?: ReadonlyArray<number | null> | null,
-          readonly roundHeader: string,
-          readonly roundStatus: string,
-          readonly courseId: string,
-          readonly official: string,
-          readonly officialSort: number,
-          readonly projected: string,
-          readonly projectedSort: number,
-          readonly rankingMovement: ApiCupRankMovementDirection,
-          readonly rankingMovementAmount: string,
-          readonly rankingMovementAmountSort: number,
-          readonly rankLogoLight?: string | null,
-          readonly rankLogoDark?: string | null,
-          readonly tooltipText?: string | null,
-          readonly tooltipTitle?: string | null,
-          readonly oddsToWin?: string | null,
-          readonly oddsSwing?: ApiOddsSwing | null,
-          readonly oddsOptionId?: string | null,
-          readonly oddsSort?: number | null,
-          readonly hasStoryContent: boolean,
-          readonly storyContentRound?: number | null,
-          readonly storyContentRounds: ReadonlyArray<number>,
-          readonly playerIcon?: ApiLeaderboardPlayerIcon | null
-        }
-      }
-    >,
-    readonly winner?: {
-      readonly __typename: 'Winner',
-      readonly id: string,
-      readonly firstName: string,
-      readonly lastName: string,
-      readonly totalStrokes: number,
-      readonly totalScore: string,
-      readonly countryFlag: string,
-      readonly countryName: string,
-      readonly purse?: string | null,
-      readonly displayPoints: boolean,
-      readonly displayPurse: boolean,
-      readonly points?: string | null,
-      readonly seed?: string | null,
-      readonly pointsLabel?: string | null,
-      readonly winnerIcon?: {
-        readonly __typename: 'WinnerIcon',
-        readonly type: ApiWinnerIconType,
-        readonly title: string,
-        readonly label: string,
-        readonly color: string
-      } | null,
-      readonly roundScores?: ReadonlyArray<{
-        readonly __typename: 'WinnerRoundScore',
-        readonly label: string,
-        readonly total: string
-      }> | null
-    } | null,
-    readonly winners?: ReadonlyArray<{
-      readonly __typename: 'Winner',
-      readonly id: string,
-      readonly firstName: string,
-      readonly lastName: string,
-      readonly totalStrokes: number,
-      readonly totalScore: string,
-      readonly countryFlag: string,
-      readonly countryName: string,
-      readonly purse?: string | null,
-      readonly displayPoints: boolean,
-      readonly displayPurse: boolean,
-      readonly points?: string | null,
-      readonly seed?: string | null,
-      readonly pointsLabel?: string | null
-    }> | null,
-    readonly courses: ReadonlyArray<{
-      readonly __typename: 'Course',
-      readonly id: string,
-      readonly courseName: string,
-      readonly courseCode: string,
-      readonly hostCourse: boolean,
-      readonly scoringLevel: ApiScoringLevel,
-      readonly enabled?: boolean | null,
-      readonly features?: ReadonlyArray<ApiTeeTimesFeature> | null
-    }>,
-    readonly messages: ReadonlyArray<{
-      readonly __typename: 'LeaderboardMessage',
-      readonly messageText: string,
-      readonly messageIcon: ApiLeaderboardMessageIcon,
-      readonly messageLink?: string | null,
-      readonly webViewLink?: string | null,
-      readonly externalLink?: boolean | null,
-      readonly platforms: ReadonlyArray<ApiPlatform>,
-      readonly timing?: number | null
-    }>,
-    readonly rounds: ReadonlyArray<{
-      readonly __typename: 'LBRound',
-      readonly roundNumber: number,
-      readonly displayText: string
-    }>,
-    readonly leaderboardFeatures?: ReadonlyArray<{
-      readonly __typename: 'FeatureItem',
-      readonly name: string,
-      readonly new: boolean,
-      readonly tooltipText?: string | null,
-      readonly tooltipTitle?: string | null,
-      readonly fieldStatType?: ApiFieldStatType | null,
-      readonly leaderboardFeatures?: ApiLeaderboardFeature | null,
-      readonly sponsor?: {
-        readonly __typename: 'FeatureSponsor',
-        readonly sponsorLogo: string,
-        readonly sponsorLogoDark: string,
-        readonly sponsorText: string,
-        readonly sponsorLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly imageOrg: string,
-          readonly imagePath: string,
-          readonly assetType?: string | null,
-          readonly deliveryType?: string | null,
-          readonly fallbackImage?: string | null
-        },
-        readonly sponsorLogoDarkAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly imageOrg: string,
-          readonly imagePath: string,
-          readonly assetType?: string | null,
-          readonly deliveryType?: string | null,
-          readonly fallbackImage?: string | null
-        }
-      } | null
-    }> | null,
-    readonly cutLineProbabilities?: {
-      readonly __typename: 'CutLineInfo',
-      readonly projectedCutLine: string,
-      readonly probableCutLine: string,
-      readonly sponsorName?: string | null,
-      readonly lastUpdated: any,
-      readonly new?: boolean | null,
-      readonly sponsorLogo?: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      } | null,
-      readonly possibleCutLines: ReadonlyArray<{
-        readonly __typename: 'CutLinePossibility',
-        readonly score: string,
-        readonly probability: number,
-        readonly displayProbability: string
-      }>
-    } | null,
-    readonly bubblePill?: {
-      readonly __typename: 'BubblePill',
-      readonly pillText: string,
-      readonly iconLight: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      },
-      readonly iconDark: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      }
-    } | null
-  }
-};
-
-export type ApiLeaderboardHoleByHoleQueryVariables = Exact<{
-  tournamentId: Scalars['ID']['input'];
-  round?: InputMaybe<Scalars['Int']['input']>;
-}>;
-
-
-export type ApiLeaderboardHoleByHoleQuery = {
-  readonly __typename: 'Query',
-  readonly leaderboardHoleByHole: {
-    readonly __typename: 'LeaderboardHoleByHole',
-    readonly tournamentId: string,
-    readonly currentRound: number,
-    readonly tournamentName: string,
-    readonly rounds: ReadonlyArray<{
-      readonly __typename: 'LBRound',
-      readonly roundNumber: number,
-      readonly displayText: string
-    }>,
-    readonly holeHeaders: ReadonlyArray<{
-      readonly __typename: 'HoleHeader',
-      readonly holeNumber: number,
-      readonly hole: string,
-      readonly par: string
-    }>,
-    readonly courseHoleHeaders: ReadonlyArray<{
-      readonly __typename: 'CourseHoleHeader',
-      readonly courseId: string,
-      readonly holeHeaders: ReadonlyArray<{
-        readonly __typename: 'HoleHeaderV2',
-        readonly holeNumber?: number | null,
-        readonly order: number,
-        readonly displayValue: string,
-        readonly par: string
-      }>
-    }>,
-    readonly courses: ReadonlyArray<{
-      readonly __typename: 'Course',
-      readonly id: string,
-      readonly courseName: string,
-      readonly courseCode: string,
-      readonly hostCourse: boolean,
-      readonly scoringLevel: ApiScoringLevel,
-      readonly enabled?: boolean | null,
-      readonly features?: ReadonlyArray<ApiTeeTimesFeature> | null
-    }>,
-    readonly playerData: ReadonlyArray<{
-      readonly __typename: 'PlayerRowHoleByHole',
-      readonly playerId: string,
-      readonly courseId: string,
-      readonly courseCode: string,
-      readonly out?: string | null,
-      readonly in?: string | null,
-      readonly total?: string | null,
-      readonly totalToPar: string,
-      readonly scores: ReadonlyArray<{
-        readonly __typename: 'HoleScore',
-        readonly holeNumber: number,
-        readonly par: number,
-        readonly yardage: number,
-        readonly sequenceNumber: number,
-        readonly score: string,
-        readonly status: ApiHoleScoreStatus,
-        readonly roundScore: string
-      }>
-    }>
-  }
-};
-
-export type ApiScheduleTournamentFieldsFragment = {
-  readonly __typename: 'ScheduleTournament',
-  readonly date: string,
-  readonly id: string,
-  readonly sortDate?: string | null,
-  readonly tournamentName: string,
-  readonly tournamentStatus: ApiTournamentStatus,
-  readonly beautyImageAsset?: {
-    readonly __typename: 'ImageAsset',
-    readonly fallbackImage?: string | null,
-    readonly imageOrg: string,
-    readonly imagePath: string
-  } | null,
-  readonly status?: {
-    readonly __typename: 'ScheduleTournamentStatus',
-    readonly roundDisplay: string,
-    readonly roundStatus: ApiRoundStatus,
-    readonly roundStatusColor: ApiRoundStatusColor,
-    readonly roundStatusDisplay: string
-  } | null,
-  readonly tournamentLogoAsset: {
-    readonly __typename: 'ImageAsset',
-    readonly fallbackImage?: string | null,
-    readonly imageOrg: string,
-    readonly imagePath: string
-  }
-};
-
-export type ApiScheduleMonthFieldsFragment = {
-  readonly __typename: 'ScheduleMonth',
-  readonly year: string,
-  readonly month: string,
-  readonly monthSort?: number | null,
-  readonly tournaments: ReadonlyArray<{
-    readonly __typename: 'ScheduleTournament',
-    readonly date: string,
-    readonly id: string,
-    readonly sortDate?: string | null,
-    readonly tournamentName: string,
-    readonly tournamentStatus: ApiTournamentStatus,
-    readonly beautyImageAsset?: {
-      readonly __typename: 'ImageAsset',
-      readonly fallbackImage?: string | null,
-      readonly imageOrg: string,
-      readonly imagePath: string
-    } | null,
-    readonly status?: {
-      readonly __typename: 'ScheduleTournamentStatus',
-      readonly roundDisplay: string,
-      readonly roundStatus: ApiRoundStatus,
-      readonly roundStatusColor: ApiRoundStatusColor,
-      readonly roundStatusDisplay: string
-    } | null,
-    readonly tournamentLogoAsset: {
-      readonly __typename: 'ImageAsset',
-      readonly fallbackImage?: string | null,
-      readonly imageOrg: string,
-      readonly imagePath: string
-    }
-  }>
-};
-
-export type ApiScheduleFieldsFragment = {
-  readonly __typename: 'Schedule',
-  readonly seasonYear: string,
-  readonly completed: ReadonlyArray<{
-    readonly __typename: 'ScheduleMonth',
-    readonly year: string,
-    readonly month: string,
-    readonly monthSort?: number | null,
-    readonly tournaments: ReadonlyArray<{
-      readonly __typename: 'ScheduleTournament',
-      readonly date: string,
-      readonly id: string,
-      readonly sortDate?: string | null,
-      readonly tournamentName: string,
-      readonly tournamentStatus: ApiTournamentStatus,
-      readonly beautyImageAsset?: {
-        readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
-        readonly imageOrg: string,
-        readonly imagePath: string
-      } | null,
-      readonly status?: {
-        readonly __typename: 'ScheduleTournamentStatus',
-        readonly roundDisplay: string,
-        readonly roundStatus: ApiRoundStatus,
-        readonly roundStatusColor: ApiRoundStatusColor,
-        readonly roundStatusDisplay: string
-      } | null,
-      readonly tournamentLogoAsset: {
-        readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
-        readonly imageOrg: string,
-        readonly imagePath: string
-      }
-    }>
-  }>,
-  readonly upcoming: ReadonlyArray<{
-    readonly __typename: 'ScheduleMonth',
-    readonly year: string,
-    readonly month: string,
-    readonly monthSort?: number | null,
-    readonly tournaments: ReadonlyArray<{
-      readonly __typename: 'ScheduleTournament',
-      readonly date: string,
-      readonly id: string,
-      readonly sortDate?: string | null,
-      readonly tournamentName: string,
-      readonly tournamentStatus: ApiTournamentStatus,
-      readonly beautyImageAsset?: {
-        readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
-        readonly imageOrg: string,
-        readonly imagePath: string
-      } | null,
-      readonly status?: {
-        readonly __typename: 'ScheduleTournamentStatus',
-        readonly roundDisplay: string,
-        readonly roundStatus: ApiRoundStatus,
-        readonly roundStatusColor: ApiRoundStatusColor,
-        readonly roundStatusDisplay: string
-      } | null,
-      readonly tournamentLogoAsset: {
-        readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
-        readonly imageOrg: string,
-        readonly imagePath: string
-      }
-    }>
-  }>
-};
-
-export type ApiScheduleYearsQueryVariables = Exact<{
-  tourCode: ApiTourCode;
-}>;
-
-
-export type ApiScheduleYearsQuery = {
-  readonly __typename: 'Query',
-  readonly scheduleYears: {
-    readonly __typename: 'ScheduleYears',
-    readonly years: ReadonlyArray<{
-      readonly __typename: 'ScheduleYear',
-      readonly default: boolean,
-      readonly displayValue: string,
-      readonly queryValue: string
-    }>
-  }
-};
-
-export type ApiScheduleQueryVariables = Exact<{
-  tourCode: Scalars['String']['input'];
-  year?: InputMaybe<Scalars['String']['input']>;
-}>;
-
-
-export type ApiScheduleQuery = {
-  readonly __typename: 'Query',
-  readonly schedule: {
-    readonly __typename: 'Schedule',
-    readonly seasonYear: string,
-    readonly completed: ReadonlyArray<{
-      readonly __typename: 'ScheduleMonth',
-      readonly year: string,
-      readonly month: string,
-      readonly monthSort?: number | null,
-      readonly tournaments: ReadonlyArray<{
-        readonly __typename: 'ScheduleTournament',
-        readonly date: string,
-        readonly id: string,
-        readonly sortDate?: string | null,
-        readonly tournamentName: string,
-        readonly tournamentStatus: ApiTournamentStatus,
-        readonly beautyImageAsset?: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        } | null,
-        readonly status?: {
-          readonly __typename: 'ScheduleTournamentStatus',
-          readonly roundDisplay: string,
-          readonly roundStatus: ApiRoundStatus,
-          readonly roundStatusColor: ApiRoundStatusColor,
-          readonly roundStatusDisplay: string
-        } | null,
-        readonly tournamentLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        }
-      }>
-    }>,
-    readonly upcoming: ReadonlyArray<{
-      readonly __typename: 'ScheduleMonth',
-      readonly year: string,
-      readonly month: string,
-      readonly monthSort?: number | null,
-      readonly tournaments: ReadonlyArray<{
-        readonly __typename: 'ScheduleTournament',
-        readonly date: string,
-        readonly id: string,
-        readonly sortDate?: string | null,
-        readonly tournamentName: string,
-        readonly tournamentStatus: ApiTournamentStatus,
-        readonly beautyImageAsset?: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        } | null,
-        readonly status?: {
-          readonly __typename: 'ScheduleTournamentStatus',
-          readonly roundDisplay: string,
-          readonly roundStatus: ApiRoundStatus,
-          readonly roundStatusColor: ApiRoundStatusColor,
-          readonly roundStatusDisplay: string
-        } | null,
-        readonly tournamentLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        }
-      }>
-    }>
-  }
-};
-
-export type ApiCompleteScheduleQueryVariables = Exact<{
-  tourCode: ApiTourCode;
-}>;
-
-
-export type ApiCompleteScheduleQuery = {
-  readonly __typename: 'Query',
-  readonly completeSchedule: ReadonlyArray<{
-    readonly __typename: 'Schedule',
-    readonly seasonYear: string,
-    readonly completed: ReadonlyArray<{
-      readonly __typename: 'ScheduleMonth',
-      readonly year: string,
-      readonly month: string,
-      readonly monthSort?: number | null,
-      readonly tournaments: ReadonlyArray<{
-        readonly __typename: 'ScheduleTournament',
-        readonly date: string,
-        readonly id: string,
-        readonly sortDate?: string | null,
-        readonly tournamentName: string,
-        readonly tournamentStatus: ApiTournamentStatus,
-        readonly beautyImageAsset?: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        } | null,
-        readonly status?: {
-          readonly __typename: 'ScheduleTournamentStatus',
-          readonly roundDisplay: string,
-          readonly roundStatus: ApiRoundStatus,
-          readonly roundStatusColor: ApiRoundStatusColor,
-          readonly roundStatusDisplay: string
-        } | null,
-        readonly tournamentLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        }
-      }>
-    }>,
-    readonly upcoming: ReadonlyArray<{
-      readonly __typename: 'ScheduleMonth',
-      readonly year: string,
-      readonly month: string,
-      readonly monthSort?: number | null,
-      readonly tournaments: ReadonlyArray<{
-        readonly __typename: 'ScheduleTournament',
-        readonly date: string,
-        readonly id: string,
-        readonly sortDate?: string | null,
-        readonly tournamentName: string,
-        readonly tournamentStatus: ApiTournamentStatus,
-        readonly beautyImageAsset?: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        } | null,
-        readonly status?: {
-          readonly __typename: 'ScheduleTournamentStatus',
-          readonly roundDisplay: string,
-          readonly roundStatus: ApiRoundStatus,
-          readonly roundStatusColor: ApiRoundStatusColor,
-          readonly roundStatusDisplay: string
-        } | null,
-        readonly tournamentLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly fallbackImage?: string | null,
-          readonly imageOrg: string,
-          readonly imagePath: string
-        }
-      }>
-    }>
-  }>
-};
-
-export type ApiUpcomingScheduleQueryVariables = Exact<{
-  tourCode: Scalars['String']['input'];
-}>;
-
-
-export type ApiUpcomingScheduleQuery = {
-  readonly __typename: 'Query',
-  readonly upcomingSchedule: {
-    readonly __typename: 'ScheduleUpcoming',
-    readonly tournaments: ReadonlyArray<{
-      readonly __typename: 'ScheduleTournament',
-      readonly date: string,
-      readonly id: string,
-      readonly sortDate?: string | null,
-      readonly tournamentName: string,
-      readonly tournamentStatus: ApiTournamentStatus,
-      readonly beautyImageAsset?: {
-        readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
-        readonly imageOrg: string,
-        readonly imagePath: string
-      } | null,
-      readonly status?: {
-        readonly __typename: 'ScheduleTournamentStatus',
-        readonly roundDisplay: string,
-        readonly roundStatus: ApiRoundStatus,
-        readonly roundStatusColor: ApiRoundStatusColor,
-        readonly roundStatusDisplay: string
-      } | null,
-      readonly tournamentLogoAsset: {
-        readonly __typename: 'ImageAsset',
-        readonly fallbackImage?: string | null,
-        readonly imageOrg: string,
-        readonly imagePath: string
-      }
-    }>
-  }
-};
-
-export type ApiTournamentsQueryVariables = Exact<{
-  ids?: InputMaybe<ReadonlyArray<Scalars['ID']['input']> | Scalars['ID']['input']>;
-}>;
-
-
-export type ApiTournamentsQuery = {
-  readonly __typename: 'Query',
-  readonly tournaments: ReadonlyArray<{
-    readonly __typename: 'Tournament',
-    readonly id: string,
-    readonly tournamentName: string,
-    readonly tournamentLogo: ReadonlyArray<string>,
-    readonly tournamentLocation: string,
-    readonly tournamentStatus: ApiTournamentStatus,
-    readonly features?: ReadonlyArray<ApiTournamentFeature> | null,
-    readonly formatType: ApiFormatType,
-    readonly roundStatusDisplay: string,
-    readonly roundDisplay: string,
-    readonly roundStatus: ApiRoundStatus,
-    readonly roundStatusColor: ApiRoundStatusColor,
-    readonly leaderboardTakeover: boolean,
-    readonly currentRound: number,
-    readonly timezone: string,
-    readonly seasonYear: string,
-    readonly displayDate: string,
-    readonly country: string,
-    readonly state: string,
-    readonly city: string,
-    readonly scoredLevel: ApiScoringLevel,
-    readonly ticketsURL?: string | null,
-    readonly tournamentSiteURL?: string | null,
-    readonly useTournamentSiteURL: boolean,
-    readonly pdfUrl?: string | null,
-    readonly conductedByLabel?: string | null,
-    readonly conductedByLink?: string | null,
-    readonly beautyImage: string,
-    readonly shouldSubscribe?: boolean | null,
-    readonly infoPath?: string | null,
-    readonly infoPathWebview?: string | null,
-    readonly howItWorks?: string | null,
-    readonly howItWorksPill?: string | null,
-    readonly howItWorksWebview?: string | null,
-    readonly hideRolexClock: boolean,
-    readonly hideSov: boolean,
-    readonly ticketsEnabled: boolean,
-    readonly headshotBaseUrl?: string | null,
-    readonly disabledScorecardTabs: ReadonlyArray<ApiScorecardTabFeature>,
-    readonly tournamentLogoAsset: ReadonlyArray<{
-      readonly __typename: 'ImageAsset',
-      readonly imageOrg: string,
-      readonly imagePath: string,
-      readonly assetType?: string | null,
-      readonly deliveryType?: string | null,
-      readonly fallbackImage?: string | null
-    }>,
-    readonly events: ReadonlyArray<{
-      readonly __typename: 'Event',
-      readonly id: string,
-      readonly eventName: string,
-      readonly leaderboardId: string
-    }>,
-    readonly courses: ReadonlyArray<{
-      readonly __typename: 'Course',
-      readonly id: string,
-      readonly courseName: string,
-      readonly courseCode: string,
-      readonly hostCourse: boolean,
-      readonly scoringLevel: ApiScoringLevel,
-      readonly enabled?: boolean | null,
-      readonly features?: ReadonlyArray<ApiTeeTimesFeature> | null
-    }>,
-    readonly weather?: {
-      readonly __typename: 'TournamentWeather',
-      readonly logo?: string | null,
-      readonly logoDark?: string | null,
-      readonly logoAccessibility: string,
-      readonly tempF: string,
-      readonly tempC: string,
-      readonly condition: ApiWeatherCondition,
-      readonly windDirection: ApiWindDirection,
-      readonly windSpeedMPH: string,
-      readonly windSpeedKPH: string,
-      readonly precipitation: string,
-      readonly humidity: string,
-      readonly logoAsset: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      },
-      readonly logoDarkAsset: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      }
-    } | null,
-    readonly beautyImageAsset: {
-      readonly __typename: 'ImageAsset',
-      readonly imageOrg: string,
-      readonly imagePath: string,
-      readonly assetType?: string | null,
-      readonly deliveryType?: string | null,
-      readonly fallbackImage?: string | null
-    },
-    readonly rightRailConfig?: {
-      readonly __typename: 'TournamentRightRailConfig',
-      readonly imageUrl: string,
-      readonly imageAltText: string,
-      readonly buttonLink?: string | null,
-      readonly buttonText?: string | null
-    } | null,
-    readonly tournamentCategoryInfo?: {
-      readonly __typename: 'TournamentCategoryInfo',
-      readonly type: ApiTournamentCategory,
-      readonly logoLight: string,
-      readonly logoDark: string,
-      readonly label: string,
-      readonly logoLightAsset: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      }
-    } | null
-  }>
-};
-
-export const ApiScheduleTournamentFieldsFragmentDoc = gql`
-    fragment ScheduleTournamentFields on ScheduleTournament {
-  __typename
-  beautyImageAsset {
-    __typename
-    fallbackImage
-    imageOrg
-    imagePath
-  }
-  date
-  id
-  sortDate
-  status {
-    __typename
-    roundDisplay
-    roundStatus
-    roundStatusColor
-    roundStatusDisplay
-  }
-  tournamentLogoAsset {
-    __typename
-    fallbackImage
-    imageOrg
-    imagePath
-  }
-  tournamentName
-  tournamentStatus
-}
-    `;
-export const ApiScheduleMonthFieldsFragmentDoc = gql`
-    fragment ScheduleMonthFields on ScheduleMonth {
-  __typename
-  year
-  month
-  monthSort
-  tournaments {
-    __typename
-    ...ScheduleTournamentFields
-  }
-}
-    ${ApiScheduleTournamentFieldsFragmentDoc}`;
-export const ApiScheduleFieldsFragmentDoc = gql`
-    fragment ScheduleFields on Schedule {
-  __typename
-  seasonYear
-  completed {
-    __typename
-    ...ScheduleMonthFields
-  }
-  upcoming {
-    __typename
-    ...ScheduleMonthFields
-  }
-}
-    ${ApiScheduleMonthFieldsFragmentDoc}`;
-export const ApiLeaderboardV3Document = gql`
-    query LeaderboardV3($leaderboardV3Id: ID!) {
-  __typename
-  leaderboardV3(id: $leaderboardV3Id) {
-    __typename
-    id
-    tournamentId
-    players {
-      __typename
-      ... on PlayerRowV3 {
-        __typename
-        id
-        leaderboardSortOrder
-        player {
-          __typename
-          id
-          firstName
-          lastName
-          shortName
-          displayName
-          abbreviations
-          abbreviationsAccessibilityText
-          amateur
-          country
-          countryFlag
-          lineColor
-          seed
-          status
-          tourBound
-          assets {
-            __typename
-            ... on TourBoundAsset {
-              __typename
-              tourBoundLogo
-              tourBoundLogoDark
-            }
-          }
-          bettingProfile
-          playerBioOverrideLink
-        }
-        scoringData {
-          __typename
-          groupNumber
-          currentRound
-          backNine
-          playerState
-          teeTime
-          totalStrokes
-          totalStrokesSort
-          total
-          totalSort
-          thru
-          thruSort
-          score
-          scoreSort
-          movementDirection
-          movementAmount
-          movementSort
-          position
-          rounds
-          roundDisplaySort
-          roundHeader
-          roundStatus
-          courseId
-          official
-          officialSort
-          projected
-          projectedSort
-          rankingMovement
-          rankingMovementAmount
-          rankingMovementAmountSort
-          rankLogoLight
-          rankLogoDark
-          tooltipText
-          tooltipTitle
-          oddsToWin
-          oddsSwing
-          oddsOptionId
-          oddsSort
-          hasStoryContent
-          storyContentRound
-          storyContentRounds
-          playerIcon
-        }
-      }
-      ... on InformationRow {
-        __typename
-        id
-        leaderboardSortOrder
-        displayText
-        mobileDisplayText
-        sponsorName
-      }
-    }
-    leaderboardRoundHeader
-    formatType
-    timezone
-    winner {
-      __typename
-      id
-      firstName
-      lastName
-      totalStrokes
-      totalScore
-      countryFlag
-      countryName
-      purse
-      displayPoints
-      displayPurse
-      points
-      seed
-      pointsLabel
-      winnerIcon {
-        __typename
-        type
-        title
-        label
-        color
-      }
-      roundScores {
-        __typename
-        label
-        total
-      }
-    }
-    winners {
-      __typename
-      id
-      firstName
-      lastName
-      totalStrokes
-      totalScore
-      countryFlag
-      countryName
-      purse
-      displayPoints
-      displayPurse
-      points
-      seed
-      pointsLabel
-    }
-    courses {
-      __typename
-      id
-      courseName
-      courseCode
-      hostCourse
-      scoringLevel
-      enabled
-      features
-    }
-    messages {
-      __typename
-      messageText
-      messageIcon
-      messageLink
-      webViewLink
-      externalLink
-      platforms
-      timing
-    }
-    tourcastURL
-    tourcastURLWeb
-    tourcastURI
-    tournamentStatus
-    rounds {
-      __typename
-      roundNumber
-      displayText
-    }
-    isPlayoffActive
-    scorecardEnabled
-    profileEnabled
-    subEvent
-    leaderboardFeatures {
-      __typename
-      name
-      new
-      tooltipText
-      tooltipTitle
-      fieldStatType
-      leaderboardFeatures
-      sponsor {
-        __typename
-        sponsorLogo
-        sponsorLogoAsset {
-          __typename
-          imageOrg
-          imagePath
-          assetType
-          deliveryType
-          fallbackImage
-        }
-        sponsorLogoDark
-        sponsorLogoDarkAsset {
-          __typename
-          imageOrg
-          imagePath
-          assetType
-          deliveryType
-          fallbackImage
-        }
-        sponsorText
-      }
-    }
-    standingsEnabled
-    standingsHeader
-    hideSov
-    disableOdds
-    disableBettingProfileColumn
-    cutLineProbabilities {
-      __typename
-      projectedCutLine
-      probableCutLine
-      sponsorLogo {
-        __typename
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
-      }
-      sponsorName
-      lastUpdated
-      possibleCutLines {
-        __typename
-        score
-        probability
-        displayProbability
-      }
-      new
-    }
-    disableLeaderboard
-    bubblePill {
-      __typename
-      iconLight {
-        __typename
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
-      }
-      iconDark {
-        __typename
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
-      }
-      pillText
-    }
-  }
-}
-    `;
-export const ApiLeaderboardHoleByHoleDocument = gql`
-    query LeaderboardHoleByHole($tournamentId: ID!, $round: Int) {
-  __typename
-  leaderboardHoleByHole(tournamentId: $tournamentId, round: $round) {
-    __typename
-    tournamentId
-    currentRound
-    rounds {
-      __typename
-      roundNumber
-      displayText
-    }
-    tournamentName
-    holeHeaders {
-      __typename
-      holeNumber
-      hole
-      par
-    }
-    courseHoleHeaders {
-      __typename
-      courseId
-      holeHeaders {
-        __typename
-        holeNumber
-        order
-        displayValue
-        par
-      }
-    }
-    courses {
-      __typename
-      id
-      courseName
-      courseCode
-      hostCourse
-      scoringLevel
-      enabled
-      features
-    }
-    playerData {
-      __typename
-      playerId
-      courseId
-      courseCode
-      scores {
-        __typename
-        holeNumber
-        par
-        yardage
-        sequenceNumber
-        score
-        status
-        roundScore
-      }
-      out
-      in
-      total
-      totalToPar
-    }
-  }
-}
-    `;
-export const ApiScheduleYearsDocument = gql`
-    query ScheduleYears($tourCode: TourCode!) {
-  __typename
-  scheduleYears(tourCode: $tourCode) {
-    __typename
-    years {
-      __typename
-      default
-      displayValue
-      queryValue
-    }
-  }
-}
-    `;
-export const ApiScheduleDocument = gql`
-    query Schedule($tourCode: String!, $year: String) {
-  __typename
-  schedule(tourCode: $tourCode, year: $year) {
-    __typename
-    ...ScheduleFields
-  }
-}
-    ${ApiScheduleFieldsFragmentDoc}`;
-export const ApiCompleteScheduleDocument = gql`
-    query CompleteSchedule($tourCode: TourCode!) {
-  __typename
-  completeSchedule(tourCode: $tourCode) {
-    __typename
-    ...ScheduleFields
-  }
-}
-    ${ApiScheduleFieldsFragmentDoc}`;
-export const ApiUpcomingScheduleDocument = gql`
-    query UpcomingSchedule($tourCode: String!) {
-  __typename
-  upcomingSchedule(tourCode: $tourCode) {
-    __typename
-    tournaments {
-      __typename
-      ...ScheduleTournamentFields
-    }
-  }
-}
-    ${ApiScheduleTournamentFieldsFragmentDoc}`;
-export const ApiTournamentsDocument = gql`
-    query Tournaments($ids: [ID!]) {
-  __typename
-  tournaments(ids: $ids) {
-    __typename
-    id
-    tournamentName
-    tournamentLogo
-    tournamentLogoAsset {
-      __typename
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
-    }
-    tournamentLocation
-    tournamentStatus
-    features
-    formatType
-    roundStatusDisplay
-    roundDisplay
-    roundStatus
-    roundStatusColor
-    leaderboardTakeover
-    currentRound
-    timezone
-    seasonYear
-    displayDate
-    country
-    state
-    city
-    scoredLevel
-    events {
-      __typename
-      id
-      eventName
-      leaderboardId
-    }
-    courses {
-      __typename
-      id
-      courseName
-      courseCode
-      hostCourse
-      scoringLevel
-      enabled
-      features
-    }
-    weather {
-      __typename
-      logo
-      logoAsset {
-        __typename
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
-      }
-      logoDark
-      logoDarkAsset {
-        __typename
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
-      }
-      logoAccessibility
-      tempF
-      tempC
-      condition
-      windDirection
-      windSpeedMPH
-      windSpeedKPH
-      precipitation
-      humidity
-    }
-    ticketsURL
-    tournamentSiteURL
-    useTournamentSiteURL
-    pdfUrl
-    conductedByLabel
-    conductedByLink
-    beautyImage
-    beautyImageAsset {
-      __typename
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
-    }
-    shouldSubscribe
-    infoPath
-    infoPathWebview
-    howItWorks
-    howItWorksPill
-    howItWorksWebview
-    hideRolexClock
-    hideSov
-    ticketsEnabled
-    headshotBaseUrl
-    rightRailConfig {
-      __typename
-      imageUrl
-      imageAltText
-      buttonLink
-      buttonText
-    }
-    tournamentCategoryInfo {
-      __typename
-      type
-      logoLight
-      logoLightAsset {
-        __typename
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
-      }
-      logoDark
-      label
-    }
-    disabledScorecardTabs
-  }
-}
-    `;
-
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
-
-
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, _variables) => action();
-
-export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
-  return {
-    LeaderboardV3(variables: ApiLeaderboardV3QueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ApiLeaderboardV3Query> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ApiLeaderboardV3Query>({ document: ApiLeaderboardV3Document, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'LeaderboardV3', 'query', variables);
-    },
-    LeaderboardHoleByHole(variables: ApiLeaderboardHoleByHoleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ApiLeaderboardHoleByHoleQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ApiLeaderboardHoleByHoleQuery>({ document: ApiLeaderboardHoleByHoleDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'LeaderboardHoleByHole', 'query', variables);
-    },
-    ScheduleYears(variables: ApiScheduleYearsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ApiScheduleYearsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ApiScheduleYearsQuery>({ document: ApiScheduleYearsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'ScheduleYears', 'query', variables);
-    },
-    Schedule(variables: ApiScheduleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ApiScheduleQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ApiScheduleQuery>({ document: ApiScheduleDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'Schedule', 'query', variables);
-    },
-    CompleteSchedule(variables: ApiCompleteScheduleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ApiCompleteScheduleQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ApiCompleteScheduleQuery>({ document: ApiCompleteScheduleDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'CompleteSchedule', 'query', variables);
-    },
-    UpcomingSchedule(variables: ApiUpcomingScheduleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ApiUpcomingScheduleQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ApiUpcomingScheduleQuery>({ document: ApiUpcomingScheduleDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'UpcomingSchedule', 'query', variables);
-    },
-    Tournaments(variables?: ApiTournamentsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<ApiTournamentsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ApiTournamentsQuery>({ document: ApiTournamentsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'Tournaments', 'query', variables);
-    }
-  };
-}
-export type Sdk = ReturnType<typeof getSdk>;

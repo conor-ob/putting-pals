@@ -11,33 +11,12 @@ import type {
 export type Leader = Awaited<ReturnType<Sdk["LeaderboardV3"]>>["leaderboardV3"];
 
 // Auto-generated hash - run `pnpm update:snapshot` after changing LeaderboardSnapshot
-export const LeaderboardSnapshotHash = "bdb266bf" as const;
+export const LeaderboardSnapshotHash = "db1bcfaa" as const;
 export const LeaderboardSnapshotVersion = 1 as const;
 
 export type LeaderboardSnapshot = {
   tournament: ApiTournament;
-  leaderboard: Omit<ApiLeaderboard, "players"> & {
-    players: ReadonlyArray<
-      | ApiLeaderboard["players"][number]
-      | {
-          __typename: "PuttingPalsPlayerRow";
-          id: string;
-          leaderboardSortOrder: number;
-          picks: string[];
-          player: {
-            countryFlag: string;
-            displayName: string;
-            id: string;
-            shortName: string;
-          };
-          scoringData: {
-            position: string;
-            total: string;
-            totalSort: number;
-          };
-        }
-    >;
-  };
+  leaderboard: ApiLeaderboard;
   leaderboardHoleByHole: ApiLeaderboardHoleByHole;
 };
 
@@ -88,7 +67,7 @@ export type LeaderChangedV1 = ChangeEvent<
           };
         }[]
       | {
-          __typename: "PuttingPalsPlayerRow";
+          __typename: "PuttingPalsPlayerRowV3";
           player: {
             id: string;
           };

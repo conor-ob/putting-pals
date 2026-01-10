@@ -1,8 +1,8 @@
-import type { ApiLeaderboard } from "@putting-pals/pga-tour-schema/types";
+import type { ApiLeaderboardV3Query } from "@putting-pals/pga-tour-schema/types";
 import type { Competition } from "@putting-pals/putting-pals-schema/types";
 
 export function aggregateLeaderboard(
-  leaderboard: ApiLeaderboard,
+  leaderboard: ApiLeaderboardV3Query["leaderboardV3"],
   competition: Competition,
 ) {
   const competitors = competition.competitors
@@ -94,15 +94,17 @@ export function aggregateLeaderboard(
   const rows = aggregatedCompetitors
     .flatMap((competitor) => [
       {
-        __typename: "PuttingPalsPlayerRow" as const,
+        __typename: "PuttingPalsPlayerRowV3" as const,
         id: competitor.id,
         player: {
+          __typename: "PuttingPalsPlayerV3" as const,
           countryFlag: competitor.countryFlag,
           displayName: competitor.displayName,
           id: competitor.id,
           shortName: competitor.shortName,
         },
         scoringData: {
+          __typename: "PuttingPalsPlayerScoringDataV3" as const,
           position: competitor.position,
           total: competitor.total,
           totalSort: competitor.totalSort,
@@ -146,11 +148,11 @@ function applyScoringRules({
   scoringRules,
 }: {
   picks: Extract<
-    ApiLeaderboard["players"][number],
+    ApiLeaderboardV3Query["leaderboardV3"]["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   allPicks: Extract<
-    ApiLeaderboard["players"][number],
+    ApiLeaderboardV3Query["leaderboardV3"]["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   scoringRules?: string;

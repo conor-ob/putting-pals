@@ -56,7 +56,7 @@ export function LeaderboardPage() {
                 <Text className="w-1/3">{row.scoringData.position}</Text>
                 <Text className="w-1/3">{row.scoringData.total}</Text>
               </View>
-            ) : row.__typename === "PuttingPalsPlayerRow" ? (
+            ) : row.__typename === "PuttingPalsPlayerRowV3" ? (
               <View className="flex flex-row w-full items-center gap-2">
                 <Text className="w-1/3">{row.player.displayName}</Text>
                 <Text className="w-1/3">{row.scoringData.position}</Text>

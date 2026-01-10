@@ -1,7 +1,9 @@
-import type { ApiLeaderboard } from "@putting-pals/pga-tour-schema/types";
+import type { ApiLeaderboardV3Query } from "@putting-pals/pga-tour-schema/types";
 import { getCountryFlag } from "./leaderboard-flag-utils";
 
-export function transformLeaderboard(leaderboard: ApiLeaderboard) {
+export function transformLeaderboard(
+  leaderboard: ApiLeaderboardV3Query["leaderboardV3"],
+) {
   return {
     ...leaderboard,
     players: leaderboard.players.flatMap((row) => {

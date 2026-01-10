@@ -3,6 +3,7 @@ import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 import { NotFoundError } from "../utils/service-error";
 import { TournamentResolver } from "./tournament-resolver";
 import { transformTournament } from "./tournament-utils";
+
 export class TournamentService {
   async getTournament(tourCode: TourCode, id?: string) {
     const tournamentId = await this.resolveTournamentId(tourCode, id);

@@ -9,6 +9,7 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
+    "codegen": "graphql-codegen --config codegen.ts",
     "typecheck": "tsc --noEmit true && tsx scripts/check-snapshot-version.ts",
     "update:snapshot": "tsx scripts/update-snapshot-version.ts"
   },
@@ -17,6 +18,8 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/typescript": "^5.0.7",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "tsx": "^4.21.0",
