@@ -1,3 +1,8 @@
+import {
+  type Competition,
+  type CompetitionRepository,
+  CompetitionSchema,
+} from "@putting-pals/putting-pals-schema";
 import mastersTournament2021 from "./data/2021/01-masters-tournament";
 import pgaChampionship2021 from "./data/2021/02-pga-championship";
 import usOpen2021 from "./data/2021/03-us-open";
@@ -23,8 +28,18 @@ import pgaChampionship2026 from "./data/2026/02-pga-championship";
 import usOpen2026 from "./data/2026/03-us-open";
 import theOpenChampionship2026 from "./data/2026/04-the-open-championship";
 
-export class FileReader {
-  readCompetitionFiles() {
+export class CompetitionRepositoryImpl implements CompetitionRepository {
+  getCompetition(id: string): Competition | undefined {
+    return this.getCompetitions().find(
+      (competition) => competition.tournamentId === id,
+    );
+  }
+
+  getCompetitions(): Competition[] {
+    return this.readCompetitionFiles();
+  }
+
+  private readCompetitionFiles(): Competition[] {
     return [
       mastersTournament2021,
       pgaChampionship2021,
@@ -50,6 +65,6 @@ export class FileReader {
       pgaChampionship2026,
       usOpen2026,
       theOpenChampionship2026,
-    ];
+    ].map((fileContent) => CompetitionSchema.parse(fileContent));
   }
 }

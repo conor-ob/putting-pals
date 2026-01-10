@@ -46,6 +46,7 @@ export * from "./client/schedule-client";
 export * from "./client/tournament-client";
 export * from "./db/types";
 export * from "./event/types";
+export * from "./repository/competition-repository";
 export * from "./repository/leaderboard-feed-repository";
 export * from "./repository/leaderboard-snapshot-repository";
 export * from "./service/competition-service";

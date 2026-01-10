@@ -251,6 +251,9 @@ importers:
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../../packages/putting-pals-core
+      '@putting-pals/putting-pals-data':
+        specifier: workspace:*
+        version: link:../../packages/putting-pals-data
       '@putting-pals/putting-pals-db':
         specifier: workspace:*
         version: link:../../packages/putting-pals-db
@@ -418,18 +421,6 @@ importers:
 
   packages/putting-pals-core:
     dependencies:
-      '@putting-pals/pga-tour-api':
-        specifier: workspace:*
-        version: link:../pga-tour-api
-      '@putting-pals/pga-tour-scaper':
-        specifier: workspace:*
-        version: link:../pga-tour-scaper
-      '@putting-pals/pga-tour-schema':
-        specifier: workspace:*
-        version: link:../pga-tour-schema
-      '@putting-pals/putting-pals-data':
-        specifier: workspace:*
-        version: link:../putting-pals-data
       '@putting-pals/putting-pals-schema':
         specifier: workspace:*
         version: link:../putting-pals-schema
@@ -457,6 +448,10 @@ importers:
         version: 4.0.16(@types/node@24.10.6)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
 
   packages/putting-pals-data:
+    dependencies:
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
     devDependencies:
       '@total-typescript/tsconfig':
         specifier: 'catalog:'

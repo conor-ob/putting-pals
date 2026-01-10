@@ -3,12 +3,20 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "exports": {
-    "./file-reader": "./src/file-reader.ts"
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
     "typecheck": "tsc --noEmit true"
+  },
+  "dependencies": {
+    "@putting-pals/putting-pals-schema": "workspace:*"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",

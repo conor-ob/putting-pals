@@ -20,6 +20,7 @@
     "@putting-pals/pga-tour-scaper": "workspace:*",
     "@putting-pals/putting-pals-api": "workspace:*",
     "@putting-pals/putting-pals-core": "workspace:*",
+    "@putting-pals/putting-pals-data": "workspace:*",
     "@putting-pals/putting-pals-db": "workspace:*",
     "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",

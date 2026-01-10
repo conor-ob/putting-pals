@@ -21,10 +21,6 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@putting-pals/pga-tour-api": "workspace:*",
-    "@putting-pals/pga-tour-scaper": "workspace:*",
-    "@putting-pals/pga-tour-schema": "workspace:*",
-    "@putting-pals/putting-pals-data": "workspace:*",
     "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
     "date-fns": "^4.1.0"

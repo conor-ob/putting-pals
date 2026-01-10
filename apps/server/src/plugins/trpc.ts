@@ -16,6 +16,7 @@ import { ScheduleServiceImpl } from "@putting-pals/putting-pals-core/schedule";
 import { ScheduleYearsServiceImpl } from "@putting-pals/putting-pals-core/schedule-years";
 import { TournamentServiceImpl } from "@putting-pals/putting-pals-core/tournament";
 import { TournamentResolverImpl } from "@putting-pals/putting-pals-core/tournament-resolver";
+import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
   db,
   LeaderboardFeedPostgresRepository,
@@ -37,10 +38,13 @@ export default function (fastify: FastifyInstance) {
         const tournamentClient = new TournamentGraphQlClient();
         const leaderboardClient = new LeaderboardGraphQlClient();
         const scheduleClient = new ScheduleGraphQlClient();
+        const competitionRepository = new CompetitionRepositoryImpl();
 
         const pgaTourWebScraper = new PgaTourCheerioWebScraper();
 
-        const competitionService = new CompetitionServiceImpl();
+        const competitionService = new CompetitionServiceImpl(
+          competitionRepository,
+        );
         const tournamentResolver = new TournamentResolverImpl(
           tournamentClient,
           pgaTourWebScraper,
