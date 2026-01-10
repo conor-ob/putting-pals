@@ -11803,6 +11803,14 @@ export type ApiTournamentsQuery = {
         readonly assetType?: string | null,
         readonly deliveryType?: string | null,
         readonly fallbackImage?: string | null
+      },
+      readonly logoDarkAsset: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
       }
     } | null
   }>
@@ -12350,6 +12358,14 @@ export const ApiTournamentsDocument = gql`
         fallbackImage
       }
       logoDark
+      logoDarkAsset {
+        __typename
+        imageOrg
+        imagePath
+        assetType
+        deliveryType
+        fallbackImage
+      }
       label
     }
     disabledScorecardTabs

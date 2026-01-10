@@ -1,4 +1,4 @@
-import { ScheduleClient } from "@putting-pals/pga-tour-api/schedule";
+import { ScheduleClient } from "@putting-pals/pga-tour-api";
 import type { TourCode } from "@putting-pals/putting-pals-schema/types";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { parseISO } from "date-fns";

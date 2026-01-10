@@ -1,10 +1,12 @@
-import type { ApiLeaderboardV3Query } from "@putting-pals/pga-tour-schema/types";
-import type { Competition } from "@putting-pals/putting-pals-schema/types";
+import type {
+  Competition,
+  DomainLeaderboardV3,
+} from "@putting-pals/putting-pals-schema/types";
 
 export function aggregateLeaderboard(
-  leaderboard: ApiLeaderboardV3Query["leaderboardV3"],
+  leaderboard: DomainLeaderboardV3,
   competition: Competition,
-) {
+): DomainLeaderboardV3 {
   const competitors = competition.competitors
     .map((competitor) => {
       const playerRows = leaderboard.players.filter(
@@ -148,11 +150,11 @@ function applyScoringRules({
   scoringRules,
 }: {
   picks: Extract<
-    ApiLeaderboardV3Query["leaderboardV3"]["players"][number],
+    DomainLeaderboardV3["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   allPicks: Extract<
-    ApiLeaderboardV3Query["leaderboardV3"]["players"][number],
+    DomainLeaderboardV3["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   scoringRules?: string;

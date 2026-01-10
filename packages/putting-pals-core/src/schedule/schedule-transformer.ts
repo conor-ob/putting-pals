@@ -1,12 +1,12 @@
 import type {
-  ScheduleMonthFieldsFragment,
-  ScheduleQuery,
-  ScheduleTournamentFieldsFragment,
-} from "@putting-pals/pga-tour-schema/types";
+  ApiSchedule,
+  ApiScheduleMonth,
+  ApiScheduleTournament,
+} from "@putting-pals/pga-tour-schema";
 import { getImageUrl } from "../utils/image-utils";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
-export function transformSchedule(schedule: ScheduleQuery["schedule"]) {
+export function transformSchedule(schedule: ApiSchedule) {
   return {
     year: schedule.seasonYear,
     yearSort: Number(schedule.seasonYear),
@@ -15,9 +15,7 @@ export function transformSchedule(schedule: ScheduleQuery["schedule"]) {
   };
 }
 
-export function transformScheduleTournament(
-  tournament: ScheduleTournamentFieldsFragment,
-) {
+export function transformScheduleTournament(tournament: ApiScheduleTournament) {
   return {
     beautyImage: tournament.beautyImageAsset
       ? getImageUrl(tournament.beautyImageAsset, "jpg", "ar_0.667,c_crop")
@@ -39,7 +37,7 @@ export function transformScheduleTournament(
   };
 }
 
-function transformScheduleMonth(scheduleMonth: ScheduleMonthFieldsFragment) {
+function transformScheduleMonth(scheduleMonth: ApiScheduleMonth) {
   return {
     year: scheduleMonth.year,
     month: scheduleMonth.month,

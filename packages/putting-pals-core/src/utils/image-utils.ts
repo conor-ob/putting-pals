@@ -1,7 +1,7 @@
-import type { ImageAsset } from "@putting-pals/pga-tour-schema/types";
+import type { DomainImageAsset } from "@putting-pals/putting-pals-schema/types";
 
 export function getImageUrl(
-  imageAsset: ImageAsset,
+  imageAsset: DomainImageAsset,
   imageFormat: "jpg" | "png",
   imageAdjustment?: string,
 ) {

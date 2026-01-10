@@ -18,7 +18,7 @@ type NextDataProps = {
 };
 
 export class PgaTourWebScraper {
-  async getCurrentTournamentId() {
+  async getCurrentTournamentId(): Promise<string | undefined> {
     const response = await fetch("https://www.pgatour.com/leaderboard");
     const text = await response.text();
     const $ = cheerio.load(text);

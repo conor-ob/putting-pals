@@ -1,14 +1,13 @@
 import type {
-  ApiLeaderboard,
   ApiLeaderboardHoleByHole,
+  ApiLeaderboardV3,
   ApiTournament,
-  RoundStatus,
-  RoundStatusColor,
-  Sdk,
-  TournamentStatus,
-} from "@putting-pals/pga-tour-schema/types";
-
-export type Leader = Awaited<ReturnType<Sdk["LeaderboardV3"]>>["leaderboardV3"];
+} from "@putting-pals/pga-tour-schema";
+import type {
+  DomainRoundStatus,
+  DomainRoundStatusColor,
+  DomainTournamentStatus,
+} from "../generated/graphql";
 
 // Auto-generated hash - run `pnpm update:snapshot` after changing LeaderboardSnapshot
 export const LeaderboardSnapshotHash = "db1bcfaa" as const;
@@ -16,7 +15,7 @@ export const LeaderboardSnapshotVersion = 1 as const;
 
 export type LeaderboardSnapshot = {
   tournament: ApiTournament;
-  leaderboard: ApiLeaderboard;
+  leaderboard: ApiLeaderboardV3;
   leaderboardHoleByHole: ApiLeaderboardHoleByHole;
 };
 
@@ -34,8 +33,8 @@ export type RoundStatusChangedV1 = ChangeEvent<
   "RoundStatusChangedV1",
   {
     roundDisplay: string;
-    roundStatus: RoundStatus;
-    roundStatusColor: RoundStatusColor;
+    roundStatus: DomainRoundStatus;
+    roundStatusColor: DomainRoundStatusColor;
     roundStatusDisplay: string;
   }
 >;
@@ -43,14 +42,14 @@ export type RoundStatusChangedV1 = ChangeEvent<
 export type TournamentStatusChangedV1 = ChangeEvent<
   "TournamentStatusChangedV1",
   {
-    tournamentStatus: TournamentStatus;
+    tournamentStatus: DomainTournamentStatus;
   }
 >;
 
 export type LeaderChangedV1 = ChangeEvent<
   "LeaderChangedV1",
   {
-    players:
+    players: (
       | {
           __typename: "PlayerRowV3";
           player: {
@@ -65,7 +64,7 @@ export type LeaderChangedV1 = ChangeEvent<
             score: string;
             scoreSort: number;
           };
-        }[]
+        }
       | {
           __typename: "PuttingPalsPlayerRowV3";
           player: {
@@ -76,7 +75,8 @@ export type LeaderChangedV1 = ChangeEvent<
             total: string;
             totalSort: number;
           };
-        }[];
+        }
+    )[];
   }
 >;
 

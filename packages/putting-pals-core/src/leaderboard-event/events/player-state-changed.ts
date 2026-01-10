@@ -1,9 +1,11 @@
-import type { PlayerState } from "@putting-pals/pga-tour-schema/types";
-import type { LeaderboardSnapshot } from "@putting-pals/putting-pals-schema/types";
+import type {
+  DomainPlayerState,
+  LeaderboardSnapshot,
+} from "@putting-pals/putting-pals-schema/types";
 import { AbstractEventEmitter } from "../event-emitter";
 
 export abstract class PlayerStateChanged extends AbstractEventEmitter {
-  protected getPlayersStateChanged(playerState: PlayerState) {
+  protected getPlayersStateChanged(playerState: DomainPlayerState) {
     const playersWithExpectedState = this.getPlayers(this.after).filter(
       (player) => player.scoringData.playerState === playerState,
     );

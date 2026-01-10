@@ -5,6 +5,8 @@ import type {
   TourCodeSchema,
 } from "./schemas";
 
+export * from "./generated/graphql";
+
 export type TourCode = z.infer<typeof TourCodeSchema>;
 
 export type Competitor = z.infer<typeof CompetitorSchema>;

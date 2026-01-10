@@ -1,5 +1,5 @@
-import type { Sdk } from "@putting-pals/pga-tour-schema/types";
-import { getSdk } from "@putting-pals/pga-tour-schema/types";
+import type { Sdk } from "@putting-pals/pga-tour-schema";
+import { getSdk } from "@putting-pals/pga-tour-schema";
 import { GraphQLClient } from "graphql-request";
 
 export class GraphQlClient {

@@ -1,8 +1,11 @@
-import type { ApiTournament } from "@putting-pals/pga-tour-schema/types";
+import type { ApiTournament } from "@putting-pals/pga-tour-schema";
+import type { DomainTournament } from "@putting-pals/putting-pals-schema/types";
 import { formatISO, parse } from "date-fns";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
-export function transformTournament(tournament: ApiTournament) {
+export function transformTournament(
+  tournament: ApiTournament,
+): DomainTournament {
   return {
     ...tournament,
     tournamentName: stripParenthesizedYear(tournament.tournamentName),
