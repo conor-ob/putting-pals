@@ -2,7 +2,7 @@ import type {
   LeaderboardEvent,
   LeaderboardSnapshot,
   TourCode,
-} from "@putting-pals/putting-pals-schema/types";
+} from "@putting-pals/putting-pals-schema";
 
 export interface EventEmitter {
   emit(): LeaderboardEvent[];

@@ -8,7 +8,7 @@ import {
   type LeaderboardSnapshot,
   LeaderboardSnapshotVersion,
   type TourCode,
-} from "@putting-pals/putting-pals-schema/types";
+} from "@putting-pals/putting-pals-schema";
 import { and, desc, eq } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";

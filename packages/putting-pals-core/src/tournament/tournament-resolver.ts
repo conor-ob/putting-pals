@@ -1,5 +1,5 @@
 import { PgaTourWebScraper } from "@putting-pals/pga-tour-scaper/scraper";
-import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { CompetitionService } from "../competition/competition-service";
 import { NotFoundError } from "../utils/service-error";

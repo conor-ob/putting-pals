@@ -1,5 +1,5 @@
 import { FileReader } from "@putting-pals/putting-pals-data/file-reader";
-import { CompetitionSchema } from "@putting-pals/putting-pals-schema/schemas";
+import { CompetitionSchema } from "@putting-pals/putting-pals-schema";
 import { NotFoundError } from "../utils/service-error";
 
 export class CompetitionService {

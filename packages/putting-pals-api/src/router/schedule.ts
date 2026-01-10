@@ -1,5 +1,5 @@
 import { ScheduleService } from "@putting-pals/putting-pals-core/schedule";
-import { TourCodeSchema } from "@putting-pals/putting-pals-schema/schemas";
+import { TourCodeSchema } from "@putting-pals/putting-pals-schema";
 import z from "zod";
 import { ScheduleYearsService } from "../../../putting-pals-core/src/schedule/schedule-years-service";
 import { publicProcedure, router } from "../trpc";

@@ -1,5 +1,5 @@
 import { ScheduleClient } from "@putting-pals/pga-tour-api";
-import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { CompetitionService } from "../competition/competition-service";
 import {

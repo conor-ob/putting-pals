@@ -1,7 +1,7 @@
 import type {
   Competition,
   DomainLeaderboardV3,
-} from "@putting-pals/putting-pals-schema/types";
+} from "@putting-pals/putting-pals-schema";
 
 export function aggregateLeaderboard(
   leaderboard: DomainLeaderboardV3,

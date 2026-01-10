@@ -2,7 +2,7 @@ import type {
   LeaderboardEvent,
   LeaderboardSnapshot,
   LeaderChangedV1,
-} from "@putting-pals/putting-pals-schema/types";
+} from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 

@@ -1,5 +1,5 @@
 import { TournamentClient } from "@putting-pals/pga-tour-api";
-import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { NotFoundError } from "../utils/service-error";
 import { TournamentResolver } from "./tournament-resolver";
 import { transformTournament } from "./tournament-utils";

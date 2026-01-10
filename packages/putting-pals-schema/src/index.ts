@@ -32,3 +32,15 @@ export const CompetitionSchema = z
       runnerUpPayout: runnerUpPayout,
     };
   });
+
+export * from "./generated/graphql";
+
+export type TourCode = z.infer<typeof TourCodeSchema>;
+
+export type Competitor = z.infer<typeof CompetitorSchema>;
+
+export type Competition = z.infer<typeof CompetitionSchema>;
+
+export * from "./db/types";
+
+export * from "./event/types";

@@ -1,5 +1,5 @@
 import type { ApiTournament } from "@putting-pals/pga-tour-schema";
-import type { DomainTournament } from "@putting-pals/putting-pals-schema/types";
+import type { DomainTournament } from "@putting-pals/putting-pals-schema";
 import { formatISO, parse } from "date-fns";
 import { stripParenthesizedYear } from "../utils/string-utils";
 

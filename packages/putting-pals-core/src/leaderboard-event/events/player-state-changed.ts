@@ -1,7 +1,7 @@
 import type {
   DomainPlayerState,
   LeaderboardSnapshot,
-} from "@putting-pals/putting-pals-schema/types";
+} from "@putting-pals/putting-pals-schema";
 import { AbstractEventEmitter } from "../event-emitter";
 
 export abstract class PlayerStateChanged extends AbstractEventEmitter {

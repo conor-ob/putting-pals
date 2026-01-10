@@ -1,4 +1,4 @@
-import type { DomainImageAsset } from "@putting-pals/putting-pals-schema/types";
+import type { DomainImageAsset } from "@putting-pals/putting-pals-schema";
 
 export function getImageUrl(
   imageAsset: DomainImageAsset,

@@ -1,4 +1,4 @@
-import type { LeaderboardEvent } from "@putting-pals/putting-pals-schema/types";
+import type { LeaderboardEvent } from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 

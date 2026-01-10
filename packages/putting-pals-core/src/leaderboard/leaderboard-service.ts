@@ -3,7 +3,7 @@ import type {
   DomainLeaderboardHoleByHole,
   DomainLeaderboardV3,
   TourCode,
-} from "@putting-pals/putting-pals-schema/types";
+} from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
 import { CompetitionService } from "../competition/competition-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";

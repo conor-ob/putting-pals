@@ -3,7 +3,7 @@ import { leaderboardFeedTable } from "@putting-pals/putting-pals-db/schema";
 import type {
   LeaderboardEvent,
   TourCode,
-} from "@putting-pals/putting-pals-schema/types";
+} from "@putting-pals/putting-pals-schema";
 import { and, desc, eq, isNull, lt } from "drizzle-orm";
 import { LeaderboardService } from "../leaderboard/leaderboard-service";
 import { TournamentResolver } from "../tournament/tournament-resolver";

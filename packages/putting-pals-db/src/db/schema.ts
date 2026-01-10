@@ -2,7 +2,7 @@ import type {
   LeaderboardEvent,
   LeaderboardSnapshot,
   TournamentSnapshot,
-} from "@putting-pals/putting-pals-schema/types";
+} from "@putting-pals/putting-pals-schema";
 import {
   index,
   integer,

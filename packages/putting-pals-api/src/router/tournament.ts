@@ -1,5 +1,5 @@
 import { TournamentService } from "@putting-pals/putting-pals-core/tournament";
-import { TourCodeSchema } from "@putting-pals/putting-pals-schema/schemas";
+import { TourCodeSchema } from "@putting-pals/putting-pals-schema";
 import z from "zod";
 import { publicProcedure, router } from "../trpc";
 import { TournamentIdSchema } from "../validation/input-schema";
