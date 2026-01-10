@@ -47,7 +47,7 @@ export function LeaderboardPage() {
         }}
       />
       {leaderboard?.players
-        .sort((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder)
+        .toSorted((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder)
         .map((row) => (
           <View key={row.id} className="flex flex-row items-center gap-2">
             {row.__typename === "PlayerRowV3" ? (

@@ -1,22 +1,20 @@
 import type {
-  ApiLeaderboardHoleByHole,
-  ApiLeaderboardV3,
-  ApiTournament,
-} from "@putting-pals/pga-tour-schema";
-import type {
+  DomainLeaderboardHoleByHole,
+  DomainLeaderboardV3,
   DomainRoundStatus,
   DomainRoundStatusColor,
+  DomainTournament,
   DomainTournamentStatus,
 } from "../generated/graphql";
 
 // Auto-generated hash - run `pnpm update:snapshot` after changing LeaderboardSnapshot
-export const LeaderboardSnapshotHash = "db1bcfaa" as const;
+export const LeaderboardSnapshotHash = "f048028d" as const;
 export const LeaderboardSnapshotVersion = 1 as const;
 
 export type LeaderboardSnapshot = {
-  tournament: ApiTournament;
-  leaderboard: ApiLeaderboardV3;
-  leaderboardHoleByHole: ApiLeaderboardHoleByHole;
+  tournament: DomainTournament;
+  leaderboard: DomainLeaderboardV3;
+  leaderboardHoleByHole: DomainLeaderboardHoleByHole;
 };
 
 type Event<TName extends string, T> = {
