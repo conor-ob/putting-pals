@@ -19,7 +19,7 @@ import { TournamentServiceImpl } from "@putting-pals/putting-pals-core/tournamen
 import { TournamentResolverImpl } from "@putting-pals/putting-pals-core/tournament-resolver";
 import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
-  db,
+  createDatabaseConnection,
   LeaderboardFeedPostgresRepository,
   LeaderboardSnapshotPostgresRepository,
 } from "@putting-pals/putting-pals-db/client";
@@ -35,70 +35,12 @@ export default function (fastify: FastifyInstance) {
     prefix: "/trpc",
     trpcOptions: {
       router: appRouter,
-      createContext(_: CreateFastifyContextOptions) {
-        const tournamentClient = new TournamentGraphQlClient();
-        const leaderboardClient = new LeaderboardGraphQlClient();
-        const scheduleClient = new ScheduleGraphQlClient();
-        const competitionRepository = new CompetitionRepositoryImpl();
-
-        const pgaTourWebScraper = new PgaTourCheerioWebScraper();
-
-        const competitionService = new CompetitionServiceImpl(
-          competitionRepository,
-        );
-        const tournamentResolver = new TournamentResolverImpl(
-          tournamentClient,
-          pgaTourWebScraper,
-          competitionService,
-        );
-        const tournamentService = new TournamentServiceImpl(
-          tournamentClient,
-          tournamentResolver,
-        );
-        const leaderboardService = new LeaderboardServiceImpl(
-          leaderboardClient,
-          tournamentResolver,
-          competitionService,
-        );
-        const scheduleService = new ScheduleServiceImpl(
-          scheduleClient,
-          competitionService,
-        );
-        const scheduleYearsService = new ScheduleYearsServiceImpl(
-          scheduleClient,
-          competitionService,
-          tournamentService,
-        );
-        const leaderboardSnapshotRepository =
-          new LeaderboardSnapshotPostgresRepository(db);
-        const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
-          db,
-        );
-
-        const feedService = new FeedServiceImpl(
-          tournamentService,
-          leaderboardService,
-          tournamentResolver,
-          leaderboardFeedRepository,
-        );
-
-        const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
-          tournamentService,
-          leaderboardService,
-          tournamentResolver,
-          leaderboardSnapshotRepository,
-          leaderboardFeedRepository,
-        );
-
-        return createTrpcContext({
-          tournamentService,
-          competitionService,
-          leaderboardService,
-          leaderboardEventProcessor,
-          feedService,
-          scheduleService,
-          scheduleYearsService,
-        });
+      createContext({
+        req: _req,
+        res: _res,
+        info: _info,
+      }: CreateFastifyContextOptions) {
+        return createContext();
       },
       onError({ path, type, error }) {
         fastify.log.error(
@@ -107,5 +49,71 @@ export default function (fastify: FastifyInstance) {
         );
       },
     } satisfies FastifyTRPCPluginOptions<AppRouter>["trpcOptions"],
+  });
+}
+
+function createContext() {
+  const tournamentClient = new TournamentGraphQlClient();
+  const leaderboardClient = new LeaderboardGraphQlClient();
+  const scheduleClient = new ScheduleGraphQlClient();
+  const competitionRepository = new CompetitionRepositoryImpl();
+
+  const pgaTourWebScraper = new PgaTourCheerioWebScraper();
+
+  const competitionService = new CompetitionServiceImpl(competitionRepository);
+  const tournamentResolver = new TournamentResolverImpl(
+    tournamentClient,
+    pgaTourWebScraper,
+    competitionService,
+  );
+  const tournamentService = new TournamentServiceImpl(
+    tournamentClient,
+    tournamentResolver,
+  );
+  const leaderboardService = new LeaderboardServiceImpl(
+    leaderboardClient,
+    tournamentResolver,
+    competitionService,
+  );
+  const scheduleService = new ScheduleServiceImpl(
+    scheduleClient,
+    competitionService,
+  );
+  const scheduleYearsService = new ScheduleYearsServiceImpl(
+    scheduleClient,
+    competitionService,
+    tournamentService,
+  );
+
+  const database = createDatabaseConnection();
+  const leaderboardSnapshotRepository =
+    new LeaderboardSnapshotPostgresRepository(database);
+  const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
+    database,
+  );
+
+  const feedService = new FeedServiceImpl(
+    tournamentService,
+    leaderboardService,
+    tournamentResolver,
+    leaderboardFeedRepository,
+  );
+
+  const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
+    tournamentService,
+    leaderboardService,
+    tournamentResolver,
+    leaderboardSnapshotRepository,
+    leaderboardFeedRepository,
+  );
+
+  return createTrpcContext({
+    tournamentService,
+    competitionService,
+    leaderboardService,
+    leaderboardEventProcessor,
+    feedService,
+    scheduleService,
+    scheduleYearsService,
   });
 }

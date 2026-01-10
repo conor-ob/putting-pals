@@ -18,15 +18,4 @@ export function onError(error: TRPCError) {
       cause,
     });
   }
-
-  // Log database errors with more detail for debugging
-  if (cause && typeof cause === "object" && "code" in cause) {
-    // biome-ignore lint/suspicious/noConsole: error logging
-    console.error("Database error:", {
-      code: cause.code,
-      message: cause.message,
-      detail: "detail" in cause ? cause.detail : undefined,
-      constraint: "constraint" in cause ? cause.constraint : undefined,
-    });
-  }
 }
