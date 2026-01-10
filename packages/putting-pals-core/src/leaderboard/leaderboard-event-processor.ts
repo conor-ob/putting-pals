@@ -9,17 +9,17 @@ import type {
   TournamentResolver,
   TournamentService,
 } from "@putting-pals/putting-pals-schema";
-import type { EventEmitter } from "./event-emitter";
-import { BirdieStreak } from "./events/birdie-streak";
-import { LeaderChanged } from "./events/leader-changed";
-import { PlayerDisqualified } from "./events/player-disqualified";
-import { PlayerMissedCut } from "./events/player-missed-cut";
-import { PlayerPositionDecreased } from "./events/player-position-decreased";
-import { PlayerPositionIncreased } from "./events/player-position-increased";
-import { PlayerWithdrawn } from "./events/player-withdrawn";
-import { RoundStatusChanged } from "./events/round-status-changed";
-import { TournamentStatusChanged } from "./events/tournament-status-changed";
-import { TournamentWinner } from "./events/tournament-winner";
+import type { EventEmitter } from "../event/event-emitter";
+import { BirdieStreak } from "../event/events/birdie-streak";
+import { LeaderChanged } from "../event/events/leader-changed";
+import { PlayerDisqualified } from "../event/events/player-disqualified";
+import { PlayerMissedCut } from "../event/events/player-missed-cut";
+import { PlayerPositionDecreased } from "../event/events/player-position-decreased";
+import { PlayerPositionIncreased } from "../event/events/player-position-increased";
+import { PlayerWithdrawn } from "../event/events/player-withdrawn";
+import { RoundStatusChanged } from "../event/events/round-status-changed";
+import { TournamentStatusChanged } from "../event/events/tournament-status-changed";
+import { TournamentWinner } from "../event/events/tournament-winner";
 
 export class LeaderboardEventProcessorImpl
   implements LeaderboardEventProcessor

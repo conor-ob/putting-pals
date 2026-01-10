@@ -3,20 +3,22 @@ import {
   ScheduleGraphQlClient,
   TournamentGraphQlClient,
 } from "@putting-pals/pga-tour-api";
-import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper/scraper";
+import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
 import {
   type AppRouter,
   appRouter,
 } from "@putting-pals/putting-pals-api/router";
 import { createTrpcContext } from "@putting-pals/putting-pals-api/trpc";
-import { CompetitionServiceImpl } from "@putting-pals/putting-pals-core/competition";
-import { FeedServiceImpl } from "@putting-pals/putting-pals-core/feed";
-import { LeaderboardServiceImpl } from "@putting-pals/putting-pals-core/leaderboard";
-import { LeaderboardEventProcessorImpl } from "@putting-pals/putting-pals-core/leaderboard-event";
-import { ScheduleServiceImpl } from "@putting-pals/putting-pals-core/schedule";
-import { ScheduleYearsServiceImpl } from "@putting-pals/putting-pals-core/schedule-years";
-import { TournamentServiceImpl } from "@putting-pals/putting-pals-core/tournament";
-import { TournamentResolverImpl } from "@putting-pals/putting-pals-core/tournament-resolver";
+import {
+  CompetitionServiceImpl,
+  FeedServiceImpl,
+  LeaderboardEventProcessorImpl,
+  LeaderboardServiceImpl,
+  ScheduleServiceImpl,
+  ScheduleYearsServiceImpl,
+  TournamentResolverImpl,
+  TournamentServiceImpl,
+} from "@putting-pals/putting-pals-core";
 import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
   createDatabaseConnection,

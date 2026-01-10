@@ -3,17 +3,13 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "exports": {
-    "./competition": "./src/competition/competition-service.ts",
-    "./service-error": "./src/utils/service-error.ts",
-    "./feed": "./src/feed/feed-service.ts",
-    "./leaderboard": "./src/leaderboard/leaderboard-service.ts",
-    "./leaderboard-event": "./src/leaderboard-event/leaderboard-event-processor.ts",
-    "./schedule": "./src/schedule/schedule-service.ts",
-    "./schedule-years": "./src/schedule/schedule-years-service.ts",
-    "./stats": "./src/stats/stats-service.ts",
-    "./tournament": "./src/tournament/tournament-service.ts",
-    "./tournament-resolver": "./src/tournament/tournament-resolver.ts"
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
