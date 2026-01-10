@@ -6,6 +6,7 @@ import type {
   ScheduleClient,
   ScheduleService,
 } from "@putting-pals/putting-pals-schema";
+import { UnsupportedTourCodeError } from "../utils/service-error";
 import {
   transformSchedule,
   transformScheduleTournament,
@@ -30,7 +31,7 @@ export class ScheduleServiceImpl implements ScheduleService {
       case "R":
         return this.getPgaTourSchedule(year);
       default:
-        throw new Error(`Unsupported tour code: ${tourCode}`);
+        throw new UnsupportedTourCodeError(tourCode);
     }
   }
 
@@ -43,7 +44,7 @@ export class ScheduleServiceImpl implements ScheduleService {
       case "R":
         return this.getPgaTourUpcomingSchedule();
       default:
-        throw new Error(`Unsupported tour code: ${tourCode}`);
+        throw new UnsupportedTourCodeError(tourCode);
     }
   }
 

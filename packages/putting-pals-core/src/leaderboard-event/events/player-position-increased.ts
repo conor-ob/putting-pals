@@ -1,4 +1,5 @@
 import type { LeaderboardEvent } from "@putting-pals/putting-pals-schema";
+import { UnsupportedTourCodeError } from "../../utils/service-error";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class PlayerPositionIncreased extends AbstractEventEmitter {
@@ -9,7 +10,7 @@ export class PlayerPositionIncreased extends AbstractEventEmitter {
       case "R":
         return [];
       default:
-        throw new Error(`Unsupported tour code: ${this.tourCode}`);
+        throw new UnsupportedTourCodeError(this.tourCode);
     }
   }
 

@@ -7,6 +7,7 @@ import type {
   LeaderboardService,
   TournamentResolver,
 } from "@putting-pals/putting-pals-schema";
+import { UnsupportedTourCodeError } from "../utils/service-error";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 import { transformLeaderboard } from "./leaderboard-utils";
 
@@ -32,7 +33,7 @@ export class LeaderboardServiceImpl implements LeaderboardService {
       case "R":
         return this.getPgaTourLeaderboardById(tournamentId);
       default:
-        throw new Error(`Unsupported tour code: ${tourCode}`);
+        throw new UnsupportedTourCodeError(tourCode);
     }
   }
 

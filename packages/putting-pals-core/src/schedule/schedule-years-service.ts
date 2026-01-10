@@ -8,6 +8,7 @@ import type {
 } from "@putting-pals/putting-pals-schema";
 import { parseISO } from "date-fns";
 import { parseStartDate } from "../tournament/tournament-utils";
+import { UnsupportedTourCodeError } from "../utils/service-error";
 
 export class ScheduleYearsServiceImpl implements ScheduleYearsService {
   constructor(
@@ -27,7 +28,7 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
       case "R":
         return this.getPgaTourScheduleYears();
       default:
-        throw new Error(`Unsupported tour code: ${tourCode}`);
+        throw new UnsupportedTourCodeError(tourCode);
     }
   }
 

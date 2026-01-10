@@ -5,7 +5,10 @@ import type {
   TournamentResolver,
   TournamentService,
 } from "@putting-pals/putting-pals-schema";
-import { NotFoundError } from "../utils/service-error";
+import {
+  NotFoundError,
+  UnsupportedTourCodeError,
+} from "../utils/service-error";
 import { transformTournament } from "./tournament-utils";
 
 export class TournamentServiceImpl implements TournamentService {
@@ -32,7 +35,7 @@ export class TournamentServiceImpl implements TournamentService {
         case "R":
           return this.tournamentResolver.getCurrentTournamentId(tourCode);
         default:
-          throw new Error(`Unsupported tour code: ${tourCode}`);
+          throw new UnsupportedTourCodeError(tourCode);
       }
     }
     return id;
