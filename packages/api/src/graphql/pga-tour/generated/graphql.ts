@@ -11001,25 +11001,6 @@ export type ApiYtVideoStoryType =
   | 'PLAYER_STORIES'
   | 'TOPIC_STORIES';
 
-export type ApiPlayerRowV3FieldsFragment = {
-  readonly __typename: 'PlayerRowV3',
-  readonly id: string,
-  readonly leaderboardSortOrder: number,
-  readonly player: {
-    readonly __typename: 'Player',
-    readonly id: string,
-    readonly countryFlag: string,
-    readonly displayName: string,
-    readonly shortName: string
-  },
-  readonly scoringData: {
-    readonly __typename: 'LeaderboardScoringDataV3',
-    readonly position: string,
-    readonly total: string,
-    readonly totalSort: number
-  }
-};
-
 export type ApiLeaderboardV3QueryVariables = Exact<{
   leaderboardV3Id: Scalars['ID']['input'];
 }>;
@@ -11032,7 +11013,12 @@ export type ApiLeaderboardV3Query = {
     readonly id: string,
     readonly players: ReadonlyArray<
       | {
-        readonly __typename: 'InformationRow'
+        readonly __typename: 'InformationRow',
+        readonly id: string,
+        readonly displayText: string,
+        readonly leaderboardSortOrder: number,
+        readonly mobileDisplayText: string,
+        readonly sponsorName?: string | null
       }
       | {
         readonly __typename: 'PlayerRowV3',
@@ -11059,6 +11045,34 @@ export type ApiLeaderboardV3Query = {
 export type ApiLeaderboardV3FieldsFragment = {
   readonly __typename: 'LeaderboardV3',
   readonly id: string
+};
+
+export type ApiPlayerRowV3FieldsFragment = {
+  readonly __typename: 'PlayerRowV3',
+  readonly id: string,
+  readonly leaderboardSortOrder: number,
+  readonly player: {
+    readonly __typename: 'Player',
+    readonly id: string,
+    readonly countryFlag: string,
+    readonly displayName: string,
+    readonly shortName: string
+  },
+  readonly scoringData: {
+    readonly __typename: 'LeaderboardScoringDataV3',
+    readonly position: string,
+    readonly total: string,
+    readonly totalSort: number
+  }
+};
+
+export type ApiInformationRowFieldsFragment = {
+  readonly __typename: 'InformationRow',
+  readonly id: string,
+  readonly displayText: string,
+  readonly leaderboardSortOrder: number,
+  readonly mobileDisplayText: string,
+  readonly sponsorName?: string | null
 };
 
 export type ApiLeaderboardHoleByHoleQueryVariables = Exact<{
@@ -12184,6 +12198,12 @@ export type ApiTournamentsQuery = {
   }>
 };
 
+export const ApiLeaderboardV3FieldsFragmentDoc = gql`
+    fragment LeaderboardV3Fields on LeaderboardV3 {
+  __typename
+  id
+}
+    `;
 export const ApiPlayerRowV3FieldsFragmentDoc = gql`
     fragment PlayerRowV3Fields on PlayerRowV3 {
   __typename
@@ -12204,10 +12224,14 @@ export const ApiPlayerRowV3FieldsFragmentDoc = gql`
   }
 }
     `;
-export const ApiLeaderboardV3FieldsFragmentDoc = gql`
-    fragment LeaderboardV3Fields on LeaderboardV3 {
+export const ApiInformationRowFieldsFragmentDoc = gql`
+    fragment InformationRowFields on InformationRow {
   __typename
   id
+  displayText
+  leaderboardSortOrder
+  mobileDisplayText
+  sponsorName
 }
     `;
 export const ApiScheduleTournamentFieldsFragmentDoc = gql`
@@ -12340,11 +12364,13 @@ export const ApiLeaderboardV3Document = gql`
     players {
       __typename
       ...PlayerRowV3Fields
+      ...InformationRowFields
     }
   }
 }
     ${ApiLeaderboardV3FieldsFragmentDoc}
-${ApiPlayerRowV3FieldsFragmentDoc}`;
+${ApiPlayerRowV3FieldsFragmentDoc}
+${ApiInformationRowFieldsFragmentDoc}`;
 export const ApiLeaderboardHoleByHoleDocument = gql`
     query LeaderboardHoleByHole($tournamentId: ID!, $round: Int) {
   __typename

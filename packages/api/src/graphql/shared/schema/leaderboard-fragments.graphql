@@ -1,3 +1,7 @@
+fragment LeaderboardV3Fields on LeaderboardV3 {
+  id
+}
+
 fragment PlayerRowV3Fields on PlayerRowV3 {
   id
   leaderboardSortOrder
@@ -14,11 +18,10 @@ fragment PlayerRowV3Fields on PlayerRowV3 {
   }
 }
 
-query LeaderboardV3($leaderboardV3Id: ID!) {
-  leaderboardV3(id: $leaderboardV3Id) {
-    ...LeaderboardV3Fields
-    players {
-      ...PlayerRowV3Fields
-    }
-  }
+fragment InformationRowFields on InformationRow {
+  id
+  displayText
+  leaderboardSortOrder
+  mobileDisplayText
+  sponsorName
 }

@@ -2688,7 +2688,7 @@ export type DomainLeaderboardRoundStats = {
 
 export type DomainLeaderboardRowV2 = DomainInformationRow | DomainPlayerRowV2;
 
-export type DomainLeaderboardRowV3 = DomainInformationRow | DomainPlayerRowV3 | DomainPuttingPalsPlayerRowV3;
+export type DomainLeaderboardRowV3 = DomainInformationRow | DomainPlayerRowV3 | DomainPuttingPalsPlayerRow;
 
 export type DomainLeaderboardScoringDataV3 = {
   readonly __typename: 'LeaderboardScoringDataV3';
@@ -5857,28 +5857,28 @@ export type DomainPromoSectionType =
   | 'MORE'
   | 'WEBGOLFBET';
 
-export type DomainPuttingPalsPlayerRowV3 = {
-  readonly __typename: 'PuttingPalsPlayerRowV3';
-  readonly id: Scalars['ID']['output'];
-  readonly leaderboardSortOrder: Scalars['Int']['output'];
-  readonly picks: ReadonlyArray<Scalars['ID']['output']>;
-  readonly player: DomainPuttingPalsPlayerV3;
-  readonly scoringData: DomainPuttingPalsPlayerScoringDataV3;
-};
-
-export type DomainPuttingPalsPlayerScoringDataV3 = {
-  readonly __typename: 'PuttingPalsPlayerScoringDataV3';
-  readonly position: Scalars['String']['output'];
-  readonly total: Scalars['String']['output'];
-  readonly totalSort: Scalars['Int']['output'];
-};
-
-export type DomainPuttingPalsPlayerV3 = {
-  readonly __typename: 'PuttingPalsPlayerV3';
+export type DomainPuttingPalsPlayer = {
+  readonly __typename: 'PuttingPalsPlayer';
   readonly countryFlag: Scalars['String']['output'];
   readonly displayName: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly shortName: Scalars['String']['output'];
+};
+
+export type DomainPuttingPalsPlayerRow = {
+  readonly __typename: 'PuttingPalsPlayerRow';
+  readonly id: Scalars['ID']['output'];
+  readonly leaderboardSortOrder: Scalars['Int']['output'];
+  readonly picks: ReadonlyArray<Scalars['ID']['output']>;
+  readonly player: DomainPuttingPalsPlayer;
+  readonly scoringData: DomainPuttingPalsPlayerScoringData;
+};
+
+export type DomainPuttingPalsPlayerScoringData = {
+  readonly __typename: 'PuttingPalsPlayerScoringData';
+  readonly position: Scalars['String']['output'];
+  readonly total: Scalars['String']['output'];
+  readonly totalSort: Scalars['Int']['output'];
 };
 
 export type DomainQuery = {

@@ -2,9 +2,9 @@ import type {
   Competition,
   DomainLeaderboardV3,
   DomainPlayerRowV3,
-  DomainPuttingPalsPlayerRowV3,
-  DomainPuttingPalsPlayerScoringDataV3,
-  DomainPuttingPalsPlayerV3,
+  DomainPuttingPalsPlayer,
+  DomainPuttingPalsPlayerRow,
+  DomainPuttingPalsPlayerScoringData,
 } from "@putting-pals/putting-pals-schema";
 
 export function aggregateLeaderboard(
@@ -100,24 +100,24 @@ export function aggregateLeaderboard(
   const rows = aggregatedCompetitors
     .flatMap((competitor) => [
       {
-        __typename: "PuttingPalsPlayerRowV3" as const,
+        __typename: "PuttingPalsPlayerRow" as const,
         id: competitor.id,
         leaderboardSortOrder: 0,
         player: {
-          __typename: "PuttingPalsPlayerV3" as const,
+          __typename: "PuttingPalsPlayer" as const,
           countryFlag: competitor.countryFlag,
           displayName: competitor.displayName,
           id: competitor.id,
           shortName: competitor.shortName,
-        } satisfies DomainPuttingPalsPlayerV3,
+        } satisfies DomainPuttingPalsPlayer,
         scoringData: {
-          __typename: "PuttingPalsPlayerScoringDataV3" as const,
+          __typename: "PuttingPalsPlayerScoringData" as const,
           position: competitor.position,
           total: competitor.total,
           totalSort: competitor.totalSort,
-        } satisfies DomainPuttingPalsPlayerScoringDataV3,
+        } satisfies DomainPuttingPalsPlayerScoringData,
         picks: competitor.picks.map((pick) => pick.player.id),
-      } satisfies DomainPuttingPalsPlayerRowV3,
+      } satisfies DomainPuttingPalsPlayerRow,
       ...competitor.picks.map((pick) => ({
         ...pick,
         id: `${competitor.id}-${pick.id}`,

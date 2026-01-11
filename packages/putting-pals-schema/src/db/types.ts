@@ -65,7 +65,7 @@ export type LeaderChangedV1 = ChangeEvent<
           };
         }
       | {
-          __typename: "PuttingPalsPlayerRowV3";
+          __typename: "PuttingPalsPlayerRow";
           player: {
             id: string;
           };

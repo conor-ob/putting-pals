@@ -6,7 +6,7 @@ export const LeaderboardOutputSchema = z.object({
     .array(
       z.discriminatedUnion("__typename", [
         z.object({
-          __typename: z.literal("PuttingPalsPlayerRowV3"),
+          __typename: z.literal("PuttingPalsPlayerRow"),
           id: z.string(),
           leaderboardSortOrder: z.number(),
           player: z.object({

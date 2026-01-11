@@ -1,4 +1,4 @@
-fragment PuttingPalsPlayerRowV3Fields on PuttingPalsPlayerRowV3 {
+fragment PuttingPalsPlayerRowFields on PuttingPalsPlayerRow {
   id
   leaderboardSortOrder
   player {
@@ -19,7 +19,9 @@ query LeaderboardV3($leaderboardV3Id: ID!) {
   leaderboardV3(id: $leaderboardV3Id) {
     ...LeaderboardV3Fields
     players {
-      ...PuttingPalsPlayerRowV3Fields
+      ...PlayerRowV3Fields
+      ...PuttingPalsPlayerRowFields
+      ...InformationRowFields
     }
   }
 }

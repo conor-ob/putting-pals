@@ -2688,7 +2688,7 @@ export type DomainLeaderboardRoundStats = {
 
 export type DomainLeaderboardRowV2 = DomainInformationRow | DomainPlayerRowV2;
 
-export type DomainLeaderboardRowV3 = DomainInformationRow | DomainPlayerRowV3 | DomainPuttingPalsPlayerRowV3;
+export type DomainLeaderboardRowV3 = DomainInformationRow | DomainPlayerRowV3 | DomainPuttingPalsPlayerRow;
 
 export type DomainLeaderboardScoringDataV3 = {
   readonly __typename: 'LeaderboardScoringDataV3';
@@ -5857,28 +5857,28 @@ export type DomainPromoSectionType =
   | 'MORE'
   | 'WEBGOLFBET';
 
-export type DomainPuttingPalsPlayerRowV3 = {
-  readonly __typename: 'PuttingPalsPlayerRowV3';
-  readonly id: Scalars['ID']['output'];
-  readonly leaderboardSortOrder: Scalars['Int']['output'];
-  readonly picks: ReadonlyArray<Scalars['ID']['output']>;
-  readonly player: DomainPuttingPalsPlayerV3;
-  readonly scoringData: DomainPuttingPalsPlayerScoringDataV3;
-};
-
-export type DomainPuttingPalsPlayerScoringDataV3 = {
-  readonly __typename: 'PuttingPalsPlayerScoringDataV3';
-  readonly position: Scalars['String']['output'];
-  readonly total: Scalars['String']['output'];
-  readonly totalSort: Scalars['Int']['output'];
-};
-
-export type DomainPuttingPalsPlayerV3 = {
-  readonly __typename: 'PuttingPalsPlayerV3';
+export type DomainPuttingPalsPlayer = {
+  readonly __typename: 'PuttingPalsPlayer';
   readonly countryFlag: Scalars['String']['output'];
   readonly displayName: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly shortName: Scalars['String']['output'];
+};
+
+export type DomainPuttingPalsPlayerRow = {
+  readonly __typename: 'PuttingPalsPlayerRow';
+  readonly id: Scalars['ID']['output'];
+  readonly leaderboardSortOrder: Scalars['Int']['output'];
+  readonly picks: ReadonlyArray<Scalars['ID']['output']>;
+  readonly player: DomainPuttingPalsPlayer;
+  readonly scoringData: DomainPuttingPalsPlayerScoringData;
+};
+
+export type DomainPuttingPalsPlayerScoringData = {
+  readonly __typename: 'PuttingPalsPlayerScoringData';
+  readonly position: Scalars['String']['output'];
+  readonly total: Scalars['String']['output'];
+  readonly totalSort: Scalars['Int']['output'];
 };
 
 export type DomainQuery = {
@@ -11025,20 +11025,20 @@ export type DomainYtVideoStoryType =
   | 'PLAYER_STORIES'
   | 'TOPIC_STORIES';
 
-export type DomainPuttingPalsPlayerRowV3FieldsFragment = {
-  readonly __typename: 'PuttingPalsPlayerRowV3',
+export type DomainPuttingPalsPlayerRowFieldsFragment = {
+  readonly __typename: 'PuttingPalsPlayerRow',
   readonly id: string,
   readonly leaderboardSortOrder: number,
   readonly picks: ReadonlyArray<string>,
   readonly player: {
-    readonly __typename: 'PuttingPalsPlayerV3',
+    readonly __typename: 'PuttingPalsPlayer',
     readonly id: string,
     readonly countryFlag: string,
     readonly displayName: string,
     readonly shortName: string
   },
   readonly scoringData: {
-    readonly __typename: 'PuttingPalsPlayerScoringDataV3',
+    readonly __typename: 'PuttingPalsPlayerScoringData',
     readonly position: string,
     readonly total: string,
     readonly totalSort: number
@@ -11057,25 +11057,45 @@ export type DomainLeaderboardV3Query = {
     readonly id: string,
     readonly players: ReadonlyArray<
       | {
-        readonly __typename: 'InformationRow'
+        readonly __typename: 'InformationRow',
+        readonly id: string,
+        readonly displayText: string,
+        readonly leaderboardSortOrder: number,
+        readonly mobileDisplayText: string,
+        readonly sponsorName?: string | null
       }
       | {
-        readonly __typename: 'PlayerRowV3'
-      }
-      | {
-        readonly __typename: 'PuttingPalsPlayerRowV3',
+        readonly __typename: 'PlayerRowV3',
         readonly id: string,
         readonly leaderboardSortOrder: number,
-        readonly picks: ReadonlyArray<string>,
         readonly player: {
-          readonly __typename: 'PuttingPalsPlayerV3',
+          readonly __typename: 'Player',
           readonly id: string,
           readonly countryFlag: string,
           readonly displayName: string,
           readonly shortName: string
         },
         readonly scoringData: {
-          readonly __typename: 'PuttingPalsPlayerScoringDataV3',
+          readonly __typename: 'LeaderboardScoringDataV3',
+          readonly position: string,
+          readonly total: string,
+          readonly totalSort: number
+        }
+      }
+      | {
+        readonly __typename: 'PuttingPalsPlayerRow',
+        readonly id: string,
+        readonly leaderboardSortOrder: number,
+        readonly picks: ReadonlyArray<string>,
+        readonly player: {
+          readonly __typename: 'PuttingPalsPlayer',
+          readonly id: string,
+          readonly countryFlag: string,
+          readonly displayName: string,
+          readonly shortName: string
+        },
+        readonly scoringData: {
+          readonly __typename: 'PuttingPalsPlayerScoringData',
           readonly position: string,
           readonly total: string,
           readonly totalSort: number
@@ -11088,6 +11108,34 @@ export type DomainLeaderboardV3Query = {
 export type DomainLeaderboardV3FieldsFragment = {
   readonly __typename: 'LeaderboardV3',
   readonly id: string
+};
+
+export type DomainPlayerRowV3FieldsFragment = {
+  readonly __typename: 'PlayerRowV3',
+  readonly id: string,
+  readonly leaderboardSortOrder: number,
+  readonly player: {
+    readonly __typename: 'Player',
+    readonly id: string,
+    readonly countryFlag: string,
+    readonly displayName: string,
+    readonly shortName: string
+  },
+  readonly scoringData: {
+    readonly __typename: 'LeaderboardScoringDataV3',
+    readonly position: string,
+    readonly total: string,
+    readonly totalSort: number
+  }
+};
+
+export type DomainInformationRowFieldsFragment = {
+  readonly __typename: 'InformationRow',
+  readonly id: string,
+  readonly displayText: string,
+  readonly leaderboardSortOrder: number,
+  readonly mobileDisplayText: string,
+  readonly sponsorName?: string | null
 };
 
 export type DomainLeaderboardHoleByHoleQueryVariables = Exact<{
