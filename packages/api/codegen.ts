@@ -36,6 +36,7 @@ const config: CodegenConfig = {
       documentTransforms: [addTypenameSelectionDocumentTransform],
       config: {
         ...sharedConfig,
+        noExport: true,
         typesPrefix: "Api",
         fragmentPrefix: "Api",
         fragmentVariablePrefix: "Api",
@@ -52,10 +53,6 @@ const config: CodegenConfig = {
       documentTransforms: [addTypenameSelectionDocumentTransform],
       config: {
         ...sharedConfig,
-        typesPrefix: "Domain",
-        fragmentPrefix: "Domain",
-        fragmentVariablePrefix: "Domain",
-        documentVariablePrefix: "Domain",
       },
     },
   },
