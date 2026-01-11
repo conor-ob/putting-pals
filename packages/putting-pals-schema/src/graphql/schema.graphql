@@ -1,0 +1,26 @@
+type PuttingPalsPlayerV3 {
+  id: ID!
+  countryFlag: String!
+  displayName: String!
+  shortName: String!
+}
+
+type PuttingPalsPlayerScoringDataV3 {
+  position: String!
+  total: String!
+  totalSort: Int!
+}
+
+type PuttingPalsPlayerRowV3 {
+  id: ID!
+  leaderboardSortOrder: Int!
+  player: PuttingPalsPlayerV3!
+  scoringData: PuttingPalsPlayerScoringDataV3!
+  picks: [ID!]!
+}
+
+extend union LeaderboardRowV3 = PuttingPalsPlayerRowV3
+
+extend enum TourCode {
+  P
+}

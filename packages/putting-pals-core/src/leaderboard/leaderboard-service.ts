@@ -1,13 +1,31 @@
-import { LeaderboardClient } from "@putting-pals/pga-tour-api/leaderboard";
-import type { TourCode } from "@putting-pals/putting-pals-schema/types";
-import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
-import { CompetitionService } from "../competition/competition-service";
-import { TournamentResolver } from "../tournament/tournament-resolver";
+import type {
+  CompetitionService,
+  DomainLeaderboardHoleByHole,
+  DomainLeaderboardV3,
+  DomainTourCode,
+  LeaderboardClient,
+  LeaderboardService,
+  TournamentResolver,
+} from "@putting-pals/putting-pals-schema";
+import { UnsupportedTourCodeError } from "../utils/service-error";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 import { transformLeaderboard } from "./leaderboard-utils";
 
-export class LeaderboardService {
-  async getLeaderboard(tourCode: TourCode, id?: string) {
+export class LeaderboardServiceImpl implements LeaderboardService {
+  constructor(
+    private readonly leaderboardClient: LeaderboardClient,
+    private readonly tournamentResolver: TournamentResolver,
+    private readonly competitionService: CompetitionService,
+  ) {
+    this.leaderboardClient = leaderboardClient;
+    this.tournamentResolver = tournamentResolver;
+    this.competitionService = competitionService;
+  }
+
+  async getLeaderboard(
+    tourCode: DomainTourCode,
+    id?: string,
+  ): Promise<DomainLeaderboardV3> {
     const tournamentId = await this.resolveTournamentId(tourCode, id);
     switch (tourCode) {
       case "P":
@@ -15,29 +33,39 @@ export class LeaderboardService {
       case "R":
         return this.getPgaTourLeaderboardById(tournamentId);
       default:
-        assertNever(tourCode);
+        throw new UnsupportedTourCodeError(tourCode);
     }
   }
 
-  async getLeaderboardHoleByHole(id: string, round: number) {
-    return new LeaderboardClient().getLeaderboardHoleByHole(id, round);
+  getLeaderboardHoleByHole(
+    id: string,
+    round: number,
+  ): Promise<DomainLeaderboardHoleByHole> {
+    return this.leaderboardClient.getLeaderboardHoleByHole(id, round);
   }
 
-  private async resolveTournamentId(tourCode: TourCode, id?: string) {
+  private async resolveTournamentId(
+    tourCode: DomainTourCode,
+    id?: string,
+  ): Promise<string> {
     if (id === undefined) {
-      return await new TournamentResolver().getCurrentTournamentId(tourCode);
+      return await this.tournamentResolver.getCurrentTournamentId(tourCode);
     }
     return id;
   }
 
-  private async getPuttingPalsLeaderboardById(id: string) {
-    const competition = new CompetitionService().getCompetition(id);
+  private async getPuttingPalsLeaderboardById(
+    id: string,
+  ): Promise<DomainLeaderboardV3> {
+    const competition = this.competitionService.getCompetition(id);
     const pgaTourLeaderboard = await this.getPgaTourLeaderboardById(id);
     return aggregateLeaderboard(pgaTourLeaderboard, competition);
   }
 
-  private async getPgaTourLeaderboardById(id: string) {
-    const leaderboard = await new LeaderboardClient().getLeaderboard(id);
+  private async getPgaTourLeaderboardById(
+    id: string,
+  ): Promise<DomainLeaderboardV3> {
+    const leaderboard = await this.leaderboardClient.getLeaderboard(id);
     return transformLeaderboard(leaderboard);
   }
 }

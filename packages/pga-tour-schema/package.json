@@ -3,8 +3,13 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "exports": {
-    "./types": "./src/types.ts"
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
@@ -16,9 +21,9 @@
     "graphql-request": "catalog:"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/cli": "catalog:",
     "@graphql-codegen/client-preset": "^5.2.2",
-    "@graphql-codegen/typescript": "^5.0.7",
+    "@graphql-codegen/typescript": "catalog:",
     "@graphql-codegen/typescript-graphql-request": "^6.3.0",
     "@graphql-codegen/typescript-operations": "^5.0.7",
     "@total-typescript/tsconfig": "catalog:",

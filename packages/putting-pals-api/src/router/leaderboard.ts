@@ -1,18 +1,21 @@
-import { LeaderboardService } from "@putting-pals/putting-pals-core/leaderboard";
-import { TourCodeSchema } from "@putting-pals/putting-pals-schema/schemas";
 import z from "zod";
-import { publicProcedure, router } from "../trpc";
-import { TournamentIdSchema } from "../validation/input-schema";
+import { publicProcedure, router } from "../trpc/router";
+import {
+  TourCodeInputSchema,
+  TournamentIdInputSchema,
+} from "../validation/input-schema";
+import { LeaderboardOutputSchema } from "../validation/output-schema";
+
+const LeaderboardInputSchema = z.object({
+  tourCode: TourCodeInputSchema,
+  id: TournamentIdInputSchema.optional(),
+});
 
 export const leaderboardRouter = router({
   getById: publicProcedure
-    .input(
-      z.object({
-        tourCode: TourCodeSchema,
-        id: TournamentIdSchema.optional(),
-      }),
-    )
-    .query(async ({ input }) => {
-      return new LeaderboardService().getLeaderboard(input.tourCode, input.id);
+    .input(LeaderboardInputSchema)
+    .output(LeaderboardOutputSchema)
+    .query(async ({ ctx, input }) => {
+      return ctx.leaderboardService.getLeaderboard(input.tourCode, input.id);
     }),
 });

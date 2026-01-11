@@ -1,38 +1,36 @@
-import { ScheduleService } from "@putting-pals/putting-pals-core/schedule";
-import { TourCodeSchema } from "@putting-pals/putting-pals-schema/schemas";
 import z from "zod";
-import { ScheduleYearsService } from "../../../putting-pals-core/src/schedule/schedule-years-service";
-import { publicProcedure, router } from "../trpc";
+import { publicProcedure, router } from "../trpc/router";
+import { TourCodeInputSchema } from "../validation/input-schema";
 
 export const scheduleRouter = router({
   getScheduleYears: publicProcedure
     .input(
       z.object({
-        tourCode: TourCodeSchema,
+        tourCode: TourCodeInputSchema,
       }),
     )
-    .query(async ({ input }) => {
-      return new ScheduleYearsService().getScheduleYears(input.tourCode);
+    .query(async ({ ctx, input }) => {
+      return ctx.scheduleYearsService.getScheduleYears(input.tourCode);
     }),
 
   getByYear: publicProcedure
     .input(
       z.object({
-        tourCode: TourCodeSchema,
+        tourCode: TourCodeInputSchema,
         year: z.string().optional(),
       }),
     )
-    .query(async ({ input }) => {
-      return new ScheduleService().getSchedule(input.tourCode, input.year);
+    .query(async ({ ctx, input }) => {
+      return ctx.scheduleService.getSchedule(input.tourCode, input.year);
     }),
 
   getUpcoming: publicProcedure
     .input(
       z.object({
-        tourCode: TourCodeSchema,
+        tourCode: TourCodeInputSchema,
       }),
     )
-    .query(async ({ input }) => {
-      return new ScheduleService().getUpcomingSchedule(input.tourCode);
+    .query(async ({ ctx, input }) => {
+      return ctx.scheduleService.getUpcomingSchedule(input.tourCode);
     }),
 });

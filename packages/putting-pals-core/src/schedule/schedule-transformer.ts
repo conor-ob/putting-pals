@@ -1,48 +1,32 @@
 import type {
-  ScheduleMonthFieldsFragment,
-  ScheduleQuery,
-  ScheduleTournamentFieldsFragment,
-} from "@putting-pals/pga-tour-schema/types";
-import { getImageUrl } from "../utils/image-utils";
+  DomainSchedule,
+  DomainScheduleMonth,
+  DomainScheduleTournament,
+} from "@putting-pals/putting-pals-schema";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
-export function transformSchedule(schedule: ScheduleQuery["schedule"]) {
+export function transformSchedule(schedule: DomainSchedule): DomainSchedule {
   return {
-    year: schedule.seasonYear,
-    yearSort: Number(schedule.seasonYear),
+    ...schedule,
     completed: schedule.completed.map(transformScheduleMonth),
     upcoming: schedule.upcoming.map(transformScheduleMonth),
   };
 }
 
 export function transformScheduleTournament(
-  tournament: ScheduleTournamentFieldsFragment,
-) {
+  tournament: DomainScheduleTournament,
+): DomainScheduleTournament {
   return {
-    beautyImage: tournament.beautyImageAsset
-      ? getImageUrl(tournament.beautyImageAsset, "jpg", "ar_0.667,c_crop")
-      : undefined,
-    date: tournament.date,
-    id: tournament.id,
-    sortDate: tournament.sortDate,
-    status: tournament.status
-      ? {
-          roundDisplay: tournament.status.roundDisplay,
-          roundStatus: tournament.status.roundStatus,
-          roundStatusColor: tournament.status.roundStatusColor,
-          roundStatusDisplay: tournament.status.roundStatusDisplay,
-        }
-      : undefined,
-    tournamentLogo: getImageUrl(tournament.tournamentLogoAsset, "png"),
+    ...tournament,
     tournamentName: stripParenthesizedYear(tournament.tournamentName),
-    tournamentStatus: tournament.tournamentStatus,
   };
 }
 
-function transformScheduleMonth(scheduleMonth: ScheduleMonthFieldsFragment) {
+function transformScheduleMonth(
+  scheduleMonth: DomainScheduleMonth,
+): DomainScheduleMonth {
   return {
-    year: scheduleMonth.year,
-    month: scheduleMonth.month,
+    ...scheduleMonth,
     monthSort: scheduleMonth.monthSort ?? 0, // TODO: add default month sort
     tournaments: scheduleMonth.tournaments.map(transformScheduleTournament),
   };

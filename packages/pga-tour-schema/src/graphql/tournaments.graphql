@@ -109,6 +109,13 @@ query Tournaments($ids: [ID!]) {
         fallbackImage
       }
       logoDark
+      logoDarkAsset {
+        imageOrg
+        imagePath
+        assetType
+        deliveryType
+        fallbackImage
+      }
       label
     }
     disabledScorecardTabs

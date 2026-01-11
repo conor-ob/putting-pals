@@ -1,4 +1,4 @@
-import { getDatabaseUrlSchema } from "@putting-pals/putting-pals-utils/schema-utils";
+import { getDatabaseUrlSchema } from "@putting-pals/putting-pals-utils";
 import "dotenv/config";
 import { z } from "zod";
 

@@ -1,3 +1,3 @@
-import { SchedulePage } from "~/features/schedule-page/schedule-page";
+import { SchedulePage } from "~/features/schedule/schedule-page";
 
 export default SchedulePage;

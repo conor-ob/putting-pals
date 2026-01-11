@@ -1,25 +1,81 @@
 fragment ScheduleTournamentFields on ScheduleTournament {
-  beautyImageAsset {
-    fallbackImage
+  id
+  date
+  startDate
+  dateAccessibilityText
+  tournamentName
+  tournamentLogo
+  tournamentLogoAsset {
     imageOrg
     imagePath
+    assetType
+    deliveryType
+    fallbackImage
   }
-  date
-  id
-  sortDate
+  city
+  state
+  stateCode
+  country
+  countryCode
+  courseName
+  champion
+  championId
+  champions {
+    displayName
+    playerId
+  }
+  championEarnings
+  beautyImage
+  beautyImageAsset {
+    imageOrg
+    imagePath
+    assetType
+    deliveryType
+    fallbackImage
+  }
   status {
+    roundStatusDisplay
     roundDisplay
     roundStatus
     roundStatusColor
-    roundStatusDisplay
+    leaderboardTakeover
   }
-  tournamentLogoAsset {
-    fallbackImage
-    imageOrg
-    imagePath
-  }
-  tournamentName
   tournamentStatus
+  sortDate
+  sequenceNumber
+  purse
+  ticketsURL
+  tourStandingHeading
+  tourStandingValue
+  display
+  tournamentCategoryInfo {
+    type
+    logoLight
+    logoLightAsset {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    logoDark
+    logoDarkAsset {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    label
+  }
+  ticketmasterApiKey
+  ticketmasterAttractionId
+  androidTicketmasterApiKey
+  androidTicketmasterScheme
+  iosTicketmasterApiKey
+  ticketsEnabled
+  tournamentSiteURL
+  useTournamentSiteURL
 }
 
 fragment ScheduleMonthFields on ScheduleMonth {
@@ -32,12 +88,17 @@ fragment ScheduleMonthFields on ScheduleMonth {
 }
 
 fragment ScheduleFields on Schedule {
+  tour
   seasonYear
   completed {
     ...ScheduleMonthFields
   }
   upcoming {
     ...ScheduleMonthFields
+  }
+  filters {
+    type
+    name
   }
 }
 
@@ -65,6 +126,11 @@ query CompleteSchedule($tourCode: TourCode!) {
 
 query UpcomingSchedule($tourCode: String!) {
   upcomingSchedule(tourCode: $tourCode) {
+    id
+    filters {
+      type
+      name
+    }
     tournaments {
       ...ScheduleTournamentFields
     }

@@ -1,44 +1,21 @@
 import type {
-  ApiLeaderboard,
-  ApiLeaderboardHoleByHole,
-  ApiTournament,
-  RoundStatus,
-  RoundStatusColor,
-  Sdk,
-  TournamentStatus,
-} from "@putting-pals/pga-tour-schema/types";
+  DomainLeaderboardHoleByHole,
+  DomainLeaderboardV3,
+  DomainRoundStatus,
+  DomainRoundStatusColor,
+  DomainTournament,
+  DomainTournamentStatus,
+} from "../generated/graphql";
 
-export type Leader = Awaited<ReturnType<Sdk["LeaderboardV3"]>>["leaderboardV3"];
+export type TournamentSnapshot = DomainTournament;
 
-// Auto-generated hash - run `pnpm update:snapshot` after changing LeaderboardSnapshot
-export const LeaderboardSnapshotHash = "bdb266bf" as const;
+export const LeaderboardSnapshotHash = "f048028d" as const;
 export const LeaderboardSnapshotVersion = 1 as const;
 
 export type LeaderboardSnapshot = {
-  tournament: ApiTournament;
-  leaderboard: Omit<ApiLeaderboard, "players"> & {
-    players: ReadonlyArray<
-      | ApiLeaderboard["players"][number]
-      | {
-          __typename: "PuttingPalsPlayerRow";
-          id: string;
-          leaderboardSortOrder: number;
-          picks: string[];
-          player: {
-            countryFlag: string;
-            displayName: string;
-            id: string;
-            shortName: string;
-          };
-          scoringData: {
-            position: string;
-            total: string;
-            totalSort: number;
-          };
-        }
-    >;
-  };
-  leaderboardHoleByHole: ApiLeaderboardHoleByHole;
+  tournament: DomainTournament;
+  leaderboard: DomainLeaderboardV3;
+  leaderboardHoleByHole: DomainLeaderboardHoleByHole;
 };
 
 type Event<TName extends string, T> = {
@@ -55,8 +32,8 @@ export type RoundStatusChangedV1 = ChangeEvent<
   "RoundStatusChangedV1",
   {
     roundDisplay: string;
-    roundStatus: RoundStatus;
-    roundStatusColor: RoundStatusColor;
+    roundStatus: DomainRoundStatus;
+    roundStatusColor: DomainRoundStatusColor;
     roundStatusDisplay: string;
   }
 >;
@@ -64,14 +41,14 @@ export type RoundStatusChangedV1 = ChangeEvent<
 export type TournamentStatusChangedV1 = ChangeEvent<
   "TournamentStatusChangedV1",
   {
-    tournamentStatus: TournamentStatus;
+    tournamentStatus: DomainTournamentStatus;
   }
 >;
 
 export type LeaderChangedV1 = ChangeEvent<
   "LeaderChangedV1",
   {
-    players:
+    players: (
       | {
           __typename: "PlayerRowV3";
           player: {
@@ -86,9 +63,9 @@ export type LeaderChangedV1 = ChangeEvent<
             score: string;
             scoreSort: number;
           };
-        }[]
+        }
       | {
-          __typename: "PuttingPalsPlayerRow";
+          __typename: "PuttingPalsPlayerRowV3";
           player: {
             id: string;
           };
@@ -97,7 +74,8 @@ export type LeaderChangedV1 = ChangeEvent<
             total: string;
             totalSort: number;
           };
-        }[];
+        }
+    )[];
   }
 >;
 

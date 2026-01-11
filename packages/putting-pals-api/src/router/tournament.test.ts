@@ -1,17 +1,31 @@
-import type { IncomingHttpHeaders } from "node:http";
-import type { IncomingHttpHeaders as IncomingHttp2Headers } from "node:http2";
+import type {
+  CompetitionService,
+  FeedService,
+  LeaderboardEventProcessor,
+  LeaderboardService,
+  ScheduleService,
+  ScheduleYearsService,
+  TournamentService,
+} from "@putting-pals/putting-pals-schema";
 import { TRPCError } from "@trpc/server";
-import { expect, suite, test } from "vitest";
+import { expect, suite, test, vi } from "vitest";
 import { ZodError } from "zod";
-import { appRouter } from "../api";
-import { createCallerFactory, createTrpcContext } from "../trpc";
+import { appRouter } from "../trpc/api";
+import { createCallerFactory, createTrpcContext } from "../trpc/router";
 
 suite("tournamentRouter", () => {
   test("should return error if tournament id is invalid", async () => {
     const createCaller = createCallerFactory(appRouter);
     const caller = createCaller(
       createTrpcContext({
-        headers: {} as IncomingHttpHeaders | IncomingHttp2Headers,
+        tournamentService: vi.fn() as unknown as TournamentService,
+        competitionService: vi.fn() as unknown as CompetitionService,
+        leaderboardService: vi.fn() as unknown as LeaderboardService,
+        leaderboardEventProcessor:
+          vi.fn() as unknown as LeaderboardEventProcessor,
+        feedService: vi.fn() as unknown as FeedService,
+        scheduleService: vi.fn() as unknown as ScheduleService,
+        scheduleYearsService: vi.fn() as unknown as ScheduleYearsService,
       }),
     );
 

@@ -1,10 +1,15 @@
-import type { ApiLeaderboard } from "@putting-pals/pga-tour-schema/types";
-import type { Competition } from "@putting-pals/putting-pals-schema/types";
+import type {
+  Competition,
+  DomainLeaderboardV3,
+  DomainPuttingPalsPlayerRowV3,
+  DomainPuttingPalsPlayerScoringDataV3,
+  DomainPuttingPalsPlayerV3,
+} from "@putting-pals/putting-pals-schema";
 
 export function aggregateLeaderboard(
-  leaderboard: ApiLeaderboard,
+  leaderboard: DomainLeaderboardV3,
   competition: Competition,
-) {
+): DomainLeaderboardV3 {
   const competitors = competition.competitors
     .map((competitor) => {
       const playerRows = leaderboard.players.filter(
@@ -94,21 +99,24 @@ export function aggregateLeaderboard(
   const rows = aggregatedCompetitors
     .flatMap((competitor) => [
       {
-        __typename: "PuttingPalsPlayerRow" as const,
+        __typename: "PuttingPalsPlayerRowV3" as const,
         id: competitor.id,
+        leaderboardSortOrder: 0,
         player: {
+          __typename: "PuttingPalsPlayerV3" as const,
           countryFlag: competitor.countryFlag,
           displayName: competitor.displayName,
           id: competitor.id,
           shortName: competitor.shortName,
-        },
+        } satisfies DomainPuttingPalsPlayerV3,
         scoringData: {
+          __typename: "PuttingPalsPlayerScoringDataV3" as const,
           position: competitor.position,
           total: competitor.total,
           totalSort: competitor.totalSort,
-        },
+        } satisfies DomainPuttingPalsPlayerScoringDataV3,
         picks: competitor.picks.map((pick) => pick.player.id),
-      },
+      } satisfies DomainPuttingPalsPlayerRowV3,
       ...competitor.picks.map((pick) => ({
         ...pick,
         id: `${competitor.id}-${pick.id}`,
@@ -146,11 +154,11 @@ function applyScoringRules({
   scoringRules,
 }: {
   picks: Extract<
-    ApiLeaderboard["players"][number],
+    DomainLeaderboardV3["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   allPicks: Extract<
-    ApiLeaderboard["players"][number],
+    DomainLeaderboardV3["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   scoringRules?: string;

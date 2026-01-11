@@ -3,6 +3,8 @@ packages:
   - "packages/*"
 
 catalog:
+  "@graphql-codegen/cli": ^6.1.0  
+  "@graphql-codegen/typescript": ^5.0.7
   "@total-typescript/tsconfig": ^1.0.4
   "@trpc/client": ^11.8.0
   "@trpc/server": ^11.8.0
@@ -10,7 +12,6 @@ catalog:
   "@types/node": ^24.10.1
   dotenv: ^17.2.3
   drizzle-orm: ^0.45.1
-  fast-json-patch: ^3.1.1
   graphql: ^16.12.0
   graphql-request: ^7.4.0
   superjson: ^2.2.5

@@ -1,18 +1,21 @@
-import { TournamentService } from "@putting-pals/putting-pals-core/tournament";
-import { TourCodeSchema } from "@putting-pals/putting-pals-schema/schemas";
 import z from "zod";
-import { publicProcedure, router } from "../trpc";
-import { TournamentIdSchema } from "../validation/input-schema";
+import { publicProcedure, router } from "../trpc/router";
+import {
+  TourCodeInputSchema,
+  TournamentIdInputSchema,
+} from "../validation/input-schema";
+import { TournamentOutputSchema } from "../validation/output-schema";
+
+const TournamentInputSchema = z.object({
+  tourCode: TourCodeInputSchema,
+  id: TournamentIdInputSchema.optional(),
+});
 
 export const tournamentRouter = router({
   getById: publicProcedure
-    .input(
-      z.object({
-        tourCode: TourCodeSchema,
-        id: TournamentIdSchema.optional(),
-      }),
-    )
-    .query(async ({ input }) => {
-      return new TournamentService().getTournament(input.tourCode, input.id);
+    .input(TournamentInputSchema)
+    .output(TournamentOutputSchema)
+    .query(async ({ ctx, input }) => {
+      return ctx.tournamentService.getTournament(input.tourCode, input.id);
     }),
 });

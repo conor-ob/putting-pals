@@ -1,7 +1,4 @@
-import {
-  NotFoundError,
-  ServiceError,
-} from "@putting-pals/putting-pals-core/service-error";
+import { NotFoundError, ServiceError } from "@putting-pals/putting-pals-core";
 import { TRPCError } from "@trpc/server";
 import { expect, suite, test } from "vitest";
 import { onError } from "./error-handler";

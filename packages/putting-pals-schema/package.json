@@ -3,20 +3,26 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "exports": {
-    "./schemas": "./src/schemas.ts",
-    "./types": "./src/types.ts"
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
+    "codegen": "graphql-codegen --config codegen.ts",
     "typecheck": "tsc --noEmit true && tsx scripts/check-snapshot-version.ts",
     "update:snapshot": "tsx scripts/update-snapshot-version.ts"
   },
   "dependencies": {
-    "@putting-pals/pga-tour-schema": "workspace:*",
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "catalog:",
+    "@graphql-codegen/typescript": "catalog:",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "tsx": "^4.21.0",

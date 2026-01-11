@@ -1,10 +1,20 @@
-import type { Competitor } from "@putting-pals/putting-pals-schema/types";
-import { CompetitionService } from "../competition/competition-service";
-import { TournamentService } from "../tournament/tournament-service";
+import type {
+  CompetitionService,
+  Competitor,
+  TournamentService,
+} from "@putting-pals/putting-pals-schema";
 
 export class StatsService {
+  constructor(
+    private readonly competitionService: CompetitionService,
+    private readonly tournamentService: TournamentService,
+  ) {
+    this.competitionService = competitionService;
+    this.tournamentService = tournamentService;
+  }
+
   async getEarnings() {
-    const competitions = new CompetitionService()
+    const competitions = this.competitionService
       .getCompetitions()
       .filter(
         (competition) =>
@@ -12,7 +22,7 @@ export class StatsService {
             competition.runnerUpId !== undefined) ||
           competition.competitors.length > 0,
       );
-    const tournaments = await new TournamentService().getTournaments(
+    const tournaments = await this.tournamentService.getTournaments(
       competitions.map((competition) => competition.tournamentId),
     );
 
@@ -35,7 +45,7 @@ export class StatsService {
     //     activeCompetitions[0].tournamentId,
     //   );
     //   const competitors = leaderboard.rows
-    //     .filter((row) => row.__typename === "PuttingPalsPlayerRow")
+    //     .filter((row) => row.__typename === "PuttingPalsPlayerRowV3")
     //     .sort((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder);
     //   const winnerId = leaderboard.rows[0]?.id;
     //   const runnerUpId = leaderboard.rows[1]?.id;

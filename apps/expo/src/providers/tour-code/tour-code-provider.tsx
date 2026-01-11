@@ -1,10 +1,10 @@
-import type { TourCode } from "@putting-pals/putting-pals-schema/types";
+import type { DomainTourCode } from "@putting-pals/putting-pals-schema";
 import { createContext, type ReactNode, useContext } from "react";
 import { useLocalStorage } from "~/storage/use-local-storage";
 
 interface TourCodeContextType {
-  tourCode: TourCode;
-  setTourCode: (tourCode: TourCode) => void;
+  tourCode: DomainTourCode;
+  setTourCode: (tourCode: DomainTourCode) => void;
 }
 
 const TourCodeContext = createContext<TourCodeContextType | undefined>(

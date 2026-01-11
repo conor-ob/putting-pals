@@ -1,6 +1,4 @@
-import { drizzle } from "drizzle-orm/node-postgres";
-import { env } from "./env/schema";
-
-export const db = drizzle(env.DATABASE_URL);
-
-export type Database = typeof db;
+export { createDatabaseConnection } from "./db/connection";
+export type { Database } from "./db/types";
+export { LeaderboardFeedPostgresRepository } from "./repository/leaderboard-feed-repository";
+export { LeaderboardSnapshotPostgresRepository } from "./repository/leaderboard-snapshot-repository";
