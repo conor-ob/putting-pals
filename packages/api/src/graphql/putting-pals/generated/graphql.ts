@@ -1,3 +1,4 @@
+import * as z from 'zod'
 import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -12282,3 +12283,258 @@ export const ScheduleDocument = {"kind":"Document","definitions":[{"kind":"Opera
 export const CompleteScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CompleteSchedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TourCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"completeSchedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"startDate"}},{"kind":"Field","name":{"kind":"Name","value":"dateAccessibilityText"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state"}},{"kind":"Field","name":{"kind":"Name","value":"stateCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"countryCode"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"champion"}},{"kind":"Field","name":{"kind":"Name","value":"championId"}},{"kind":"Field","name":{"kind":"Name","value":"champions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"playerId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"championEarnings"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImage"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardTakeover"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"sequenceNumber"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsURL"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingHeading"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingValue"}},{"kind":"Field","name":{"kind":"Name","value":"display"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentCategoryInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"logoLight"}},{"kind":"Field","name":{"kind":"Name","value":"logoLightAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"logoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterAttractionId"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterScheme"}},{"kind":"Field","name":{"kind":"Name","value":"iosTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"useTournamentSiteURL"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"tour"}},{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"filters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<CompleteScheduleQuery, CompleteScheduleQueryVariables>;
 export const UpcomingScheduleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"UpcomingSchedule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"upcomingSchedule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"tourCode"},"value":{"kind":"Variable","name":{"kind":"Name","value":"tourCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"filters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"startDate"}},{"kind":"Field","name":{"kind":"Name","value":"dateAccessibilityText"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state"}},{"kind":"Field","name":{"kind":"Name","value":"stateCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"countryCode"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"champion"}},{"kind":"Field","name":{"kind":"Name","value":"championId"}},{"kind":"Field","name":{"kind":"Name","value":"champions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"playerId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"championEarnings"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImage"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardTakeover"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"sequenceNumber"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsURL"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingHeading"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingValue"}},{"kind":"Field","name":{"kind":"Name","value":"display"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentCategoryInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"logoLight"}},{"kind":"Field","name":{"kind":"Name","value":"logoLightAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"logoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterAttractionId"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterScheme"}},{"kind":"Field","name":{"kind":"Name","value":"iosTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"useTournamentSiteURL"}}]}}]} as unknown as DocumentNode<UpcomingScheduleQuery, UpcomingScheduleQueryVariables>;
 export const TournamentsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Tournaments"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"ids"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"ids"},"value":{"kind":"Variable","name":{"kind":"Name","value":"ids"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLocation"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"features"}},{"kind":"Field","name":{"kind":"Name","value":"formatType"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardTakeover"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"timezone"}},{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"displayDate"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"state"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"scoredLevel"}},{"kind":"Field","name":{"kind":"Name","value":"events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"eventName"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"weather"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"logo"}},{"kind":"Field","name":{"kind":"Name","value":"logoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"logoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoAccessibility"}},{"kind":"Field","name":{"kind":"Name","value":"tempF"}},{"kind":"Field","name":{"kind":"Name","value":"tempC"}},{"kind":"Field","name":{"kind":"Name","value":"condition"}},{"kind":"Field","name":{"kind":"Name","value":"windDirection"}},{"kind":"Field","name":{"kind":"Name","value":"windSpeedMPH"}},{"kind":"Field","name":{"kind":"Name","value":"windSpeedKPH"}},{"kind":"Field","name":{"kind":"Name","value":"precipitation"}},{"kind":"Field","name":{"kind":"Name","value":"humidity"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ticketsURL"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"useTournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"pdfUrl"}},{"kind":"Field","name":{"kind":"Name","value":"conductedByLabel"}},{"kind":"Field","name":{"kind":"Name","value":"conductedByLink"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImage"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"shouldSubscribe"}},{"kind":"Field","name":{"kind":"Name","value":"infoPath"}},{"kind":"Field","name":{"kind":"Name","value":"infoPathWebview"}},{"kind":"Field","name":{"kind":"Name","value":"howItWorks"}},{"kind":"Field","name":{"kind":"Name","value":"howItWorksPill"}},{"kind":"Field","name":{"kind":"Name","value":"howItWorksWebview"}},{"kind":"Field","name":{"kind":"Name","value":"hideRolexClock"}},{"kind":"Field","name":{"kind":"Name","value":"hideSov"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"headshotBaseUrl"}},{"kind":"Field","name":{"kind":"Name","value":"rightRailConfig"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"imageAltText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonLink"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentCategoryInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"logoLight"}},{"kind":"Field","name":{"kind":"Name","value":"logoLightAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"logoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"disabledScorecardTabs"}}]}}]}}]} as unknown as DocumentNode<TournamentsQuery, TournamentsQueryVariables>;
+
+type Properties<T> = Required<{
+  [K in keyof T]: z.ZodType<T[K]>;
+}>;
+
+type definedNonNullAny = {};
+
+export const isDefinedNonNullAny = (v: any): v is definedNonNullAny => v !== undefined && v !== null;
+
+export const definedNonNullAnySchema = z.any().refine((v) => isDefinedNonNullAny(v));
+
+export const ArticleFormTypeSchema = z.enum(['External', 'Standard']);
+
+export const ArticleSponsorSchema = z.enum(['GOLFWRX']);
+
+export const BubbleTypeSchema = z.enum(['PLAYOFFS', 'SIGNATURE_EVENTS']);
+
+export const CategoryStatTypeSchema = z.enum(['EVENT', 'YTD']);
+
+export const ContentTypeSchema = z.enum(['CONTENT_FRAGMENTS', 'CONTENT_TABS', 'GENERIC_CONTENT', 'NEWS_ARTICLE', 'RYDER_CUP_CONTENT_FRAGMENTS', 'RYDER_CUP_CONTENT_TABS', 'RYDER_CUP_GENERIC_CONTENT', 'RYDER_CUP_NEWS_ARTICLE']);
+
+export const CourseStatsIdSchema = z.enum(['TOUGHEST_COURSE', 'TOUGHEST_HOLES']);
+
+export const CupLeaderboardTeamStatusSchema = z.enum(['BEHIND', 'LEADS', 'TIED', 'UNKNOWN', 'WINS']);
+
+export const CupOverviewDisplayTypeSchema = z.enum(['POINTS_ONLY', 'PROGRESS']);
+
+export const CupRankMovementDirectionSchema = z.enum(['CONSTANT', 'DOWN', 'UNKNOWN', 'UP']);
+
+export const CupRoundFormatSchema = z.enum(['ALTERNATE_SHOT', 'BEST_BALL', 'SINGLES']);
+
+export const DrawerDisplayStateSchema = z.enum(['HOLE_ONLY', 'PLAY_BY_PLAY', 'ROUND_COMPLETE', 'TEE_TIME']);
+
+export const EventRegionSchema = z.enum(['EUROPE', 'INTERNATIONAL', 'US']);
+
+export const FieldStatTypeSchema = z.enum(['COURSE_FIT', 'CURRENT_FORM', 'TOURNAMENT_HISTORY']);
+
+export const FormatTypeSchema = z.enum(['MATCH_PLAY', 'STABLEFORD', 'STROKE_PLAY', 'TEAM_CUP', 'TEAM_STROKE']);
+
+export const GroupHoleLocationSchema = z.enum(['COMPLETE', 'FAIRWAY', 'GREEN', 'NOT_STARTED', 'TEE', 'UNKNOWN']);
+
+export const HeaderTypeSchema = z.enum(['LONG', 'SHORT']);
+
+export const HistoricalOddsIdSchema = z.enum(['TOP_RANKED_3', 'TOP_RANKED_5', 'TOP_RANKED_10', 'TOP_RANKED_20', 'WINNER']);
+
+export const HoleDetailsAvailabilitySchema = z.enum(['NONE', 'SHOT_DETAILS', 'STATS']);
+
+export const HolePickleTypeSchema = z.enum(['STANDARD', 'TOURCAST_2D']);
+
+export const HolePlayedStatusSchema = z.enum(['PLAYED', 'UNPLAYED']);
+
+export const HoleScoreStatusSchema = z.enum(['BIRDIE', 'BOGEY', 'CONCEDED', 'DOUBLE_BOGEY', 'EAGLE', 'NONE', 'PAR']);
+
+export const HoleStrokeTypeSchema = z.enum(['DROP', 'PENALTY', 'PROVISIONAL', 'STROKE']);
+
+export const HomePageLeadLayoutSchema = z.enum(['HALF_HERO', 'HALF_HERO_STACK', 'HERO_STATUS', 'HERO_STORY', 'PLAYER_STORIES', 'TOPIC_STORIES']);
+
+export const HomePageNewsLayoutSchema = z.enum(['THREE_UP_ASSET', 'TWO_UP_LARGE', 'TWO_UP_SMALL', 'TWO_UP_TEXT_ONLY']);
+
+export const HomePageProgramStandingLayoutSchema = z.enum(['FIELD_PROMO_SECTION', 'NORMAL', 'SHORT', 'SIGNATURE_EVENT_STANDINGS', 'TWO_STANDINGS']);
+
+export const IconSchema = z.enum(['AMATEUR', 'BACKNINE', 'CUSTOM_ICON', 'DISQUALIFIED', 'FAVORITES', 'HOT_STREAK', 'LIVE', 'ODDS_IMPROVED', 'ODDS_WORSENED', 'PLAYOFF_WIN', 'PREVIOUSROUND', 'SPONSOR', 'SUDDEN_DEATH', 'TOP_FEDEX_FALL_PLAYER', 'TOUR_BOUND', 'UPCOMING', 'WITHDRAW']);
+
+export const IntegrationPartnerSchema = z.enum(['GOLFWRX']);
+
+export const LeaderboardFeatureSchema = z.enum(['HOLE_BY_HOLE', 'ODDS', 'PROBABILITIES', 'SHOT_DETAILS', 'STROKES_GAINED']);
+
+export const LeaderboardMessageIconSchema = z.enum(['DELAY', 'NONE', 'WEATHER']);
+
+export const LeaderboardMovementSchema = z.enum(['CONSTANT', 'DOWN', 'UP']);
+
+export const LeaderboardPlayerIconSchema = z.enum(['HOT_STREAK']);
+
+export const LeaderboardStatsTypeSchema = z.enum(['ODDS', 'PROBABILITY', 'STROKES_GAINED']);
+
+export const LiveOverrideSchema = z.enum(['FORCE_OFF', 'FORCE_ON', 'NORMAL']);
+
+export const LiveStatusSchema = z.enum(['LIVE', 'NONE', 'UPCOMING']);
+
+export const MatchStatusSchema = z.enum(['COMPLETE', 'IN_PROGRESS', 'UPCOMING']);
+
+export const NewsArticleStatTypeSchema = z.enum(['BY_NUMBERS', 'DOT_CHART', 'LINE_CHART']);
+
+export const NewsLetterTypeSchema = z.enum(['GLOBAL', 'TOURNAMENT']);
+
+export const OddsFormatSchema = z.enum(['DECIMAL', 'FRACTIONAL', 'MONEYLINE']);
+
+export const OddsMarketTypeSchema = z.enum(['FINISHES', 'GROUP_WINNER', 'MATCHUP', 'NATIONALITY', 'PLAYER_PROPS', 'WINNER']);
+
+export const OddsProviderSchema = z.enum(['BET365', 'DRAFTKINGS', 'ESPNBET', 'FANDUEL', 'MGM']);
+
+export const OddsSwingSchema = z.enum(['CONSTANT', 'DOWN', 'UP']);
+
+export const OddsTimeTypeSchema = z.enum(['HOLE']);
+
+export const OrientationSchema = z.enum(['Landscape', 'Portrait']);
+
+export const PlatformSchema = z.enum(['ANDROID', 'IOS', 'WEB']);
+
+export const PlayerComparisonCategorySchema = z.enum(['APPROACH_GREEN', 'AROUND_GREEN', 'OFF_TEE', 'PUTTING', 'SCORING', 'STROKES_GAINED']);
+
+export const PlayerComparisonDisplaySchema = z.enum(['GRAPH', 'TABLE']);
+
+export const PlayerHubLeaderboardWidgetDisplaySchema = z.enum(['INACTIVE', 'IN_PROGRESS', 'TOURNAMENT_OFFICIAL']);
+
+export const PlayerHubMessageBannerActionSchema = z.enum(['LEADERBOARD', 'NONE', 'PROFILE', 'SCORECARD']);
+
+export const PlayerHubWidgetIconSchema = z.enum(['AI', 'CALENDAR', 'CLOCK', 'LEADERBOARD', 'NEWS', 'NONE', 'PIE_CHART', 'PROFILE', 'SCORECARD', 'TOURCAST']);
+
+export const PlayerProfileStatCategoryItemSchema = z.enum(['ALL', 'APPROACH', 'AROUND_GREEN', 'DRIVING', 'MONEY_FINISHES', 'PACE_OF_PLAY', 'POINTS_RANKINGS', 'PUTTING', 'SCORING', 'STREAKS', 'STROKES_GAINED']);
+
+export const PlayerSponsorBrandSchema = z.enum(['ACE', 'ADAM_SCOTT', 'ADIDAS', 'ADP', 'AMAZON', 'AON', 'BONOBOS', 'BRANDT_SNEDEKER', 'BRIDGESTONE_GOLF', 'CALLAWAY', 'CALLAWAY_FEED', 'CAMERON_PERCY', 'CLEVELANDGOLF', 'CLEVELANDGOLF_FEED', 'COBRA', 'COBRAPUMA', 'CONCUR', 'COUNTRYINNS', 'EMPOWER_RETIREMENT', 'FEDEX', 'GOLDMAN_SACHS', 'GOLFFOREVER', 'GREYGOOSE', 'HONMA', 'IAN_POULTER', 'JORDAN_SPIETH', 'LEVELWEAR', 'MASSAGE_ENVY', 'MASTERCARD', 'MATT_KUCHAR', 'MERCEDES', 'METLIFE', 'MIZUNO', 'NIKE', 'NIKE_FEED', 'OAKLEY', 'OSTEO_BIFLEX', 'PACIFICLIFE', 'PERRY_ELLIS', 'PGATOURLIVEFRI', 'PGATOURLIVETHURS', 'PHIL_MICKELSON', 'PING', 'PUMA', 'PUTNAM', 'PUTNAM_BRADLEY', 'PUTNAM_CURRAN', 'PUTNAM_STEELE', 'QUICKENLOANS', 'RICKIE_FOWLER', 'RORY_MCILROY', 'SERGIO_GARCIA', 'SIKGOLF', 'SKECHERS', 'STRYKER_FRED', 'STRYKER_HAL', 'SUPERSTROKE', 'TAYLORMADE', 'TEST1', 'TEST2', 'TGLTEAMATL', 'TGLTEAMBOS', 'TGLTEAMJUP', 'TGLTEAMLA', 'TGLTEAMNY', 'TGLTEAMSF', 'TIGER_WOODS', 'TITLEIST', 'TITLEIST_BALL', 'TITLEIST_FULL', 'TMAG', 'TP5', 'UNITED_RENTALS', 'VERITEX', 'ZACH_JOHNSON', 'ZURICH']);
+
+export const PlayerStateSchema = z.enum(['ACTIVE', 'BETWEEN_ROUNDS', 'COMPLETE', 'CUT', 'DISQUALIFIED', 'NOT_STARTED', 'WITHDRAWN']);
+
+export const PlayerTournamentStatusDisplayModeSchema = z.enum(['IN_PROGRESS', 'OFFICIAL', 'TEE_TIMES']);
+
+export const PlayoffDisplayTypeSchema = z.enum(['ALL', 'NONE', 'PLAY_BY_PLAY', 'SCORECARD']);
+
+export const PlayoffScoredTypeSchema = z.enum(['AGGREGATE', 'SUDDEN_DEATH']);
+
+export const PromoSectionTypeSchema = z.enum(['GAMING', 'MORE', 'WEBGOLFBET']);
+
+export const Ryder_Cup_Ranking_TooltipSchema = z.enum(['CAPTAIN_PICK', 'OUTCOME_IQ', 'QUALIFICATION_INFO', 'QUALIFIED_LOGO']);
+
+export const RankingsTeamsSchema = z.enum(['EUROPE', 'USA']);
+
+export const RcBroadcastTypeSchema = z.enum(['AUDIO', 'VIDEO']);
+
+export const RoundFormatSchema = z.enum(['ALTERNATE_SHOT', 'BEST_BALL']);
+
+export const RoundStatusSchema = z.enum(['COMPLETE', 'GROUPINGS_OFFICIAL', 'IN_PROGRESS', 'OFFICIAL', 'SUSPENDED', 'UPCOMING']);
+
+export const RoundStatusColorSchema = z.enum(['BLUE', 'GRAY', 'GREEN', 'RED', 'YELLOW']);
+
+export const RyderCupContentTypeSchema = z.enum(['ALL', 'ARTICLES', 'PHOTO_GALLERY', 'VIDEOS', 'VIDEO_ARTICLES']);
+
+export const RyderCupEventStateSchema = z.enum(['LIVE_WEEK', 'LIVE_WEEKEND', 'OFF_SEASON', 'POINTS_RACE', 'POST_EVENT', 'PRE_EVENT']);
+
+export const RyderCupTeamTypeSchema = z.enum(['BOTH', 'EUROPE', 'USA']);
+
+export const Story_TypeSchema = z.enum(['MOMENTS', 'PLAYER_STORIES', 'TOPIC_STORIES']);
+
+export const ScheduleDisplaySchema = z.enum(['SHOW', 'SHOW_NO_LINK']);
+
+export const ScorecardTabFeatureSchema = z.enum(['EQUIPMENT', 'HIGHLIGHTS', 'ODDS', 'SCORECARD', 'STATS']);
+
+export const ScoringLevelSchema = z.enum(['BASIC', 'STATS', 'TOURCAST']);
+
+export const ScoringTendencySchema = z.enum(['ABOVE', 'BELOW', 'EVEN']);
+
+export const ShotDetailsDisplayTypeSchema = z.enum(['ALL', 'NONE', 'PLAY_BY_PLAY']);
+
+export const SocialTypeSchema = z.enum(['facebook', 'instagram', 'twitter', 'youtube']);
+
+export const StatCategorySchema = z.enum(['APPROACH_GREEN', 'AROUND_GREEN', 'FACTS_AND_FIGURES', 'MONEY_FINISHES', 'OFF_TEE', 'POINTS_RANKINGS', 'PUTTING', 'SCORING', 'STREAKS', 'STROKES_GAINED']);
+
+export const StatCategoryConfigTypeSchema = z.enum(['ALL_TIME_RECORDS', 'TRADITIONAL_STAT']);
+
+export const StatColorSchema = z.enum(['BLACK', 'GRAY', 'GREEN', 'RED']);
+
+export const StatDetailQueryTypeSchema = z.enum(['EVENT_ONLY', 'THROUGH_EVENT']);
+
+export const StatRankMovementSchema = z.enum(['CONSTANT', 'DOWN', 'UP']);
+
+export const SummaryRowTypeSchema = z.enum(['IN', 'OUT', 'TOTAL']);
+
+export const TglMatchStatusSchema = z.enum(['COMPLETE', 'IN_PROGRESS', 'UNKNOWN', 'UPCOMING']);
+
+export const TeeTimesFeatureSchema = z.enum(['GROUPINGS', 'GROUP_TRACKER']);
+
+export const ToughestRoundSchema = z.enum(['ALL', 'FOUR', 'ONE', 'THREE', 'TWO']);
+
+export const TourCodeSchema = z.enum(['C', 'E', 'H', 'I', 'M', 'P', 'R', 'S', 'U', 'Y']);
+
+export const TourCupTypeSchema = z.enum(['OFFICIAL', 'OFFICIAL_AND_PROJECTED', 'PROJECTED']);
+
+export const TournamentCategorySchema = z.enum(['PLAYOFF', 'SIGNATURE']);
+
+export const TournamentFeatureSchema = z.enum(['COURSE_STATS', 'CUP_TEAMS', 'FEDEXFALL_STANDINGS', 'FIELD', 'GROUP_STAGE', 'LEADERBOARD', 'ODDS', 'OVERVIEW', 'PAST_RESULTS', 'RECAP', 'SIGNATURE_STANDINGS', 'STANDINGS', 'TEE_TIMES', 'TOURCAST']);
+
+export const TournamentStatusSchema = z.enum(['COMPLETED', 'IN_PROGRESS', 'NOT_STARTED']);
+
+export const UniversityRankColorSchema = z.enum(['BLACK', 'BLUE', 'GOLD', 'GRAY']);
+
+export const VideoLanguageSchema = z.enum(['ENGLISH', 'FRENCH']);
+
+export const VideoPillTypeSchema = z.enum(['ALL', 'FAVORITES', 'FEATURES', 'FILTER', 'INTERVIEWS', 'PLAYER_SEARCH', 'PLAYER_STORIES', 'TOPIC_STORIES', 'TOP_SHOTS', 'TOURNAMENTS', 'TRENDING']);
+
+export const WeatherConditionSchema = z.enum(['DAY_CLOUDY', 'DAY_FOG_MIST', 'DAY_MOSTLY_CLOUDY', 'DAY_MOSTLY_SUNNY', 'DAY_PARTLY_CLOUDY', 'DAY_RAINY', 'DAY_SCATTERED_SHOWERS', 'DAY_SNOW', 'DAY_SUNNY', 'DAY_THUNDERSTORMS', 'NIGHT_CLEAR', 'NIGHT_ISOLATED_CLOUDS', 'NIGHT_MOSTLY_CLOUDY', 'NIGHT_PARTLY_CLOUDY']);
+
+export const WindDirectionSchema = z.enum(['EAST', 'NORTH', 'NORTH_EAST', 'NORTH_WEST', 'SOUTH', 'SOUTH_EAST', 'SOUTH_WEST', 'WEST']);
+
+export const WinnerIconTypeSchema = z.enum(['BRONZE', 'GOLD', 'SILVER']);
+
+export const YtTextPositionSchema = z.enum(['BOTTOM', 'TOP']);
+
+export const YtVideoStoryTypeSchema = z.enum(['PLAYER_STORIES', 'TOPIC_STORIES']);
+
+export function ArticleOddsMarketsInputSchema(): z.ZodObject<Properties<ArticleOddsMarketsInput>> {
+  return z.object({
+    class: z.string(),
+    market: HistoricalOddsIdSchema
+  })
+}
+
+export function ArticleOddsPlayerInputSchema(): z.ZodObject<Properties<ArticleOddsPlayerInput>> {
+  return z.object({
+    playerId: z.string(),
+    playerName: z.string().nullish()
+  })
+}
+
+export function FavoritePlayerInputSchema(): z.ZodObject<Properties<FavoritePlayerInput>> {
+  return z.object({
+    id: z.string()
+  })
+}
+
+export function NotificationTagInputSchema(): z.ZodObject<Properties<NotificationTagInput>> {
+  return z.object({
+    tag: z.string()
+  })
+}
+
+export function OddsUpdateInputSchema(): z.ZodObject<Properties<OddsUpdateInput>> {
+  return z.object({
+    oddsFormat: OddsFormatSchema,
+    provider: OddsProviderSchema
+  })
+}
+
+export function RyderCupRankingsQueryInputSchema(): z.ZodObject<Properties<RyderCupRankingsQueryInput>> {
+  return z.object({
+    team: RankingsTeamsSchema,
+    tournamentId: z.string()
+  })
+}
+
+export function ShotCommentaryItemInputSchema(): z.ZodObject<Properties<ShotCommentaryItemInput>> {
+  return z.object({
+    active: z.boolean(),
+    commentary: z.string(),
+    hole: z.number(),
+    shot: z.number(),
+    strokeId: z.number()
+  })
+}
+
+export function StatDetailEventQuerySchema(): z.ZodObject<Properties<StatDetailEventQuery>> {
+  return z.object({
+    queryType: StatDetailQueryTypeSchema,
+    tournamentId: z.string()
+  })
+}
