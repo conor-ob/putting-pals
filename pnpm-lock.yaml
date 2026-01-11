@@ -6,6 +6,12 @@ settings:
 
 catalogs:
   default:
+    '@graphql-codegen/cli':
+      specifier: ^6.1.0
+      version: 6.1.0
+    '@graphql-codegen/typescript':
+      specifier: ^5.0.7
+      version: 5.0.7
     '@total-typescript/tsconfig':
       specifier: ^1.0.4
       version: 1.0.4
@@ -355,13 +361,13 @@ importers:
         version: 7.4.0(graphql@16.12.0)
     devDependencies:
       '@graphql-codegen/cli':
-        specifier: ^6.1.0
+        specifier: 'catalog:'
         version: 6.1.0(@types/node@24.10.7)(graphql@16.12.0)(typescript@5.9.3)
       '@graphql-codegen/client-preset':
         specifier: ^5.2.2
         version: 5.2.2(graphql@16.12.0)
       '@graphql-codegen/typescript':
-        specifier: ^5.0.7
+        specifier: 'catalog:'
         version: 5.0.7(graphql@16.12.0)
       '@graphql-codegen/typescript-graphql-request':
         specifier: ^6.3.0
@@ -504,10 +510,10 @@ importers:
         version: 4.3.5
     devDependencies:
       '@graphql-codegen/cli':
-        specifier: ^6.1.0
+        specifier: 'catalog:'
         version: 6.1.0(@types/node@24.10.7)(graphql@16.12.0)(typescript@5.9.3)
       '@graphql-codegen/typescript':
-        specifier: ^5.0.7
+        specifier: 'catalog:'
         version: 5.0.7(graphql@16.12.0)
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
@@ -10559,7 +10565,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 24.10.7
+      '@types/node': 25.0.6
 
   '@types/yargs-parser@21.0.3': {}
 

@@ -21,9 +21,9 @@
     "graphql-request": "catalog:"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/cli": "catalog:",
     "@graphql-codegen/client-preset": "^5.2.2",
-    "@graphql-codegen/typescript": "^5.0.7",
+    "@graphql-codegen/typescript": "catalog:",
     "@graphql-codegen/typescript-graphql-request": "^6.3.0",
     "@graphql-codegen/typescript-operations": "^5.0.7",
     "@total-typescript/tsconfig": "catalog:",
