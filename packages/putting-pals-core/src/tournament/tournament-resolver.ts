@@ -5,7 +5,10 @@ import type {
   TournamentClient,
   TournamentResolver,
 } from "@putting-pals/putting-pals-schema";
-import { NotFoundError } from "../utils/service-error";
+import {
+  NotFoundError,
+  UnsupportedTourCodeError,
+} from "../utils/service-error";
 import { parseStartDate } from "./tournament-utils";
 
 export class TournamentResolverImpl implements TournamentResolver {
@@ -26,12 +29,11 @@ export class TournamentResolverImpl implements TournamentResolver {
       case "R":
         return this.getCurrentPgaTourTournamentId();
       default:
-        // assertNever(tourCode);
-        throw new Error(`Unsupported tour code: ${tourCode}`);
+        throw new UnsupportedTourCodeError(tourCode);
     }
   }
 
-  private async getCurrentPgaTourTournamentId() {
+  private async getCurrentPgaTourTournamentId(): Promise<string> {
     const tournamentId = await this.pgaTourWebScraper.getCurrentTournamentId();
     if (tournamentId === undefined) {
       throw new NotFoundError("Failed to get current PGA TOUR tournament id");
@@ -39,7 +41,7 @@ export class TournamentResolverImpl implements TournamentResolver {
     return tournamentId;
   }
 
-  private async getCurrentPuttingPalsTournamentId() {
+  private async getCurrentPuttingPalsTournamentId(): Promise<string> {
     const competitions = this.competitionService.getCompetitions();
 
     const oddsAvailableCompetition = competitions.find(

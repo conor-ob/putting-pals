@@ -35,7 +35,7 @@ export function transformLeaderboard(
 }
 
 // biome-ignore lint/suspicious/noExplicitAny: AWSTimestamp
-function parseTeeTime(teeTime?: any) {
+function parseTeeTime(teeTime?: any): Date | undefined {
   if (!teeTime) {
     return undefined;
   }
@@ -51,7 +51,7 @@ function parseTeeTime(teeTime?: any) {
   return new Date(teeTime);
 }
 
-function fixTotalSort(total: string, totalSort: number) {
+function fixTotalSort(total: string, totalSort: number): number {
   if (total !== "-" && total.startsWith("-") && totalSort > 0) {
     // biome-ignore lint/suspicious/noConsole: logging PGA Tour API issue
     console.warn(

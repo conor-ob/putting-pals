@@ -98,7 +98,10 @@ export class FeedServiceImpl implements FeedService {
     }
   }
 
-  private async resolveTournamentId(tourCode: DomainTourCode, id?: string) {
+  private async resolveTournamentId(
+    tourCode: DomainTourCode,
+    id?: string,
+  ): Promise<string> {
     if (id === undefined) {
       return await this.tournamentResolver.getCurrentTournamentId(tourCode);
     }

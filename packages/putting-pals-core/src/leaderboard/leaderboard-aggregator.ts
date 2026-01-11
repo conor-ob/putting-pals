@@ -1,6 +1,7 @@
 import type {
   Competition,
   DomainLeaderboardV3,
+  DomainPlayerRowV3,
   DomainPuttingPalsPlayerRowV3,
   DomainPuttingPalsPlayerScoringDataV3,
   DomainPuttingPalsPlayerV3,
@@ -162,7 +163,7 @@ function applyScoringRules({
     { __typename: "PlayerRowV3" }
   >[];
   scoringRules?: string;
-}) {
+}): DomainPlayerRowV3[] {
   if (scoringRules === "MISSED_CUT") {
     return picks.map((playerRow) => {
       if (

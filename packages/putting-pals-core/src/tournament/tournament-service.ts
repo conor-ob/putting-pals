@@ -5,10 +5,7 @@ import type {
   TournamentResolver,
   TournamentService,
 } from "@putting-pals/putting-pals-schema";
-import {
-  NotFoundError,
-  UnsupportedTourCodeError,
-} from "../utils/service-error";
+import { NotFoundError } from "../utils/service-error";
 import { transformTournament } from "./tournament-utils";
 
 export class TournamentServiceImpl implements TournamentService {
@@ -28,25 +25,22 @@ export class TournamentServiceImpl implements TournamentService {
     return this.getTournamentById(tournamentId);
   }
 
-  private async resolveTournamentId(tourCode: DomainTourCode, id?: string) {
+  private async resolveTournamentId(
+    tourCode: DomainTourCode,
+    id?: string,
+  ): Promise<string> {
     if (id === undefined) {
-      switch (tourCode) {
-        case "P":
-        case "R":
-          return this.tournamentResolver.getCurrentTournamentId(tourCode);
-        default:
-          throw new UnsupportedTourCodeError(tourCode);
-      }
+      return this.tournamentResolver.getCurrentTournamentId(tourCode);
     }
     return id;
   }
 
-  async getTournaments(ids: string[]) {
+  async getTournaments(ids: string[]): Promise<DomainTournament[]> {
     const tournaments = await this.tournamentClient.getTournaments(ids);
     return tournaments.map(transformTournament);
   }
 
-  private async getTournamentById(id: string) {
+  private async getTournamentById(id: string): Promise<DomainTournament> {
     const tournaments = await this.getTournaments([id]);
     const tournament = tournaments[0];
     if (tournament === undefined) {
