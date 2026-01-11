@@ -11055,6 +11055,24 @@ export type DomainLeaderboardV3Query = {
   readonly leaderboardV3: {
     readonly __typename: 'LeaderboardV3',
     readonly id: string,
+    readonly tournamentId: string,
+    readonly leaderboardRoundHeader: string,
+    readonly formatType: DomainFormatType,
+    readonly timezone: string,
+    readonly tourcastURL?: string | null,
+    readonly tourcastURLWeb?: string | null,
+    readonly tourcastURI?: string | null,
+    readonly tournamentStatus: DomainTournamentStatus,
+    readonly isPlayoffActive: boolean,
+    readonly scorecardEnabled: boolean,
+    readonly profileEnabled: boolean,
+    readonly subEvent: boolean,
+    readonly standingsEnabled: boolean,
+    readonly standingsHeader: string,
+    readonly hideSov: boolean,
+    readonly disableOdds: boolean,
+    readonly disableBettingProfileColumn: boolean,
+    readonly disableLeaderboard: boolean,
     readonly players: ReadonlyArray<
       | {
         readonly __typename: 'InformationRow',
@@ -11101,13 +11119,44 @@ export type DomainLeaderboardV3Query = {
           readonly totalSort: number
         }
       }
-    >
+    >,
+    readonly bubblePill?: {
+      readonly __typename: 'BubblePill',
+      readonly pillText: string
+    } | null
   }
 };
 
 export type DomainLeaderboardV3FieldsFragment = {
   readonly __typename: 'LeaderboardV3',
-  readonly id: string
+  readonly id: string,
+  readonly tournamentId: string,
+  readonly leaderboardRoundHeader: string,
+  readonly formatType: DomainFormatType,
+  readonly timezone: string,
+  readonly tourcastURL?: string | null,
+  readonly tourcastURLWeb?: string | null,
+  readonly tourcastURI?: string | null,
+  readonly tournamentStatus: DomainTournamentStatus,
+  readonly isPlayoffActive: boolean,
+  readonly scorecardEnabled: boolean,
+  readonly profileEnabled: boolean,
+  readonly subEvent: boolean,
+  readonly standingsEnabled: boolean,
+  readonly standingsHeader: string,
+  readonly hideSov: boolean,
+  readonly disableOdds: boolean,
+  readonly disableBettingProfileColumn: boolean,
+  readonly disableLeaderboard: boolean,
+  readonly bubblePill?: {
+    readonly __typename: 'BubblePill',
+    readonly pillText: string
+  } | null
+};
+
+export type DomainBubblePillFieldsFragment = {
+  readonly __typename: 'BubblePill',
+  readonly pillText: string
 };
 
 export type DomainPlayerRowV3FieldsFragment = {

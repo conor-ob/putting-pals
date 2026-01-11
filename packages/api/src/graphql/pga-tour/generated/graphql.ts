@@ -11011,6 +11011,24 @@ export type ApiLeaderboardV3Query = {
   readonly leaderboardV3: {
     readonly __typename: 'LeaderboardV3',
     readonly id: string,
+    readonly tournamentId: string,
+    readonly leaderboardRoundHeader: string,
+    readonly formatType: ApiFormatType,
+    readonly timezone: string,
+    readonly tourcastURL?: string | null,
+    readonly tourcastURLWeb?: string | null,
+    readonly tourcastURI?: string | null,
+    readonly tournamentStatus: ApiTournamentStatus,
+    readonly isPlayoffActive: boolean,
+    readonly scorecardEnabled: boolean,
+    readonly profileEnabled: boolean,
+    readonly subEvent: boolean,
+    readonly standingsEnabled: boolean,
+    readonly standingsHeader: string,
+    readonly hideSov: boolean,
+    readonly disableOdds: boolean,
+    readonly disableBettingProfileColumn: boolean,
+    readonly disableLeaderboard: boolean,
     readonly players: ReadonlyArray<
       | {
         readonly __typename: 'InformationRow',
@@ -11038,13 +11056,44 @@ export type ApiLeaderboardV3Query = {
           readonly totalSort: number
         }
       }
-    >
+    >,
+    readonly bubblePill?: {
+      readonly __typename: 'BubblePill',
+      readonly pillText: string
+    } | null
   }
 };
 
 export type ApiLeaderboardV3FieldsFragment = {
   readonly __typename: 'LeaderboardV3',
-  readonly id: string
+  readonly id: string,
+  readonly tournamentId: string,
+  readonly leaderboardRoundHeader: string,
+  readonly formatType: ApiFormatType,
+  readonly timezone: string,
+  readonly tourcastURL?: string | null,
+  readonly tourcastURLWeb?: string | null,
+  readonly tourcastURI?: string | null,
+  readonly tournamentStatus: ApiTournamentStatus,
+  readonly isPlayoffActive: boolean,
+  readonly scorecardEnabled: boolean,
+  readonly profileEnabled: boolean,
+  readonly subEvent: boolean,
+  readonly standingsEnabled: boolean,
+  readonly standingsHeader: string,
+  readonly hideSov: boolean,
+  readonly disableOdds: boolean,
+  readonly disableBettingProfileColumn: boolean,
+  readonly disableLeaderboard: boolean,
+  readonly bubblePill?: {
+    readonly __typename: 'BubblePill',
+    readonly pillText: string
+  } | null
+};
+
+export type ApiBubblePillFieldsFragment = {
+  readonly __typename: 'BubblePill',
+  readonly pillText: string
 };
 
 export type ApiPlayerRowV3FieldsFragment = {
@@ -12198,12 +12247,40 @@ export type ApiTournamentsQuery = {
   }>
 };
 
+export const ApiBubblePillFieldsFragmentDoc = gql`
+    fragment BubblePillFields on BubblePill {
+  __typename
+  pillText
+}
+    `;
 export const ApiLeaderboardV3FieldsFragmentDoc = gql`
     fragment LeaderboardV3Fields on LeaderboardV3 {
   __typename
   id
+  tournamentId
+  leaderboardRoundHeader
+  formatType
+  timezone
+  tourcastURL
+  tourcastURLWeb
+  tourcastURI
+  tournamentStatus
+  isPlayoffActive
+  scorecardEnabled
+  profileEnabled
+  subEvent
+  standingsEnabled
+  standingsHeader
+  hideSov
+  disableOdds
+  disableBettingProfileColumn
+  disableLeaderboard
+  bubblePill {
+    __typename
+    ...BubblePillFields
+  }
 }
-    `;
+    ${ApiBubblePillFieldsFragmentDoc}`;
 export const ApiPlayerRowV3FieldsFragmentDoc = gql`
     fragment PlayerRowV3Fields on PlayerRowV3 {
   __typename

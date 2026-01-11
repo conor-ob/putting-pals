@@ -1,5 +1,30 @@
 fragment LeaderboardV3Fields on LeaderboardV3 {
   id
+  tournamentId
+  leaderboardRoundHeader
+  formatType
+  timezone
+  tourcastURL
+  tourcastURLWeb
+  tourcastURI
+  tournamentStatus
+  isPlayoffActive
+  scorecardEnabled
+  profileEnabled
+  subEvent
+  standingsEnabled
+  standingsHeader
+  hideSov
+  disableOdds
+  disableBettingProfileColumn
+  disableLeaderboard
+  bubblePill {
+    ...BubblePillFields
+  }
+}
+
+fragment BubblePillFields on BubblePill {
+  pillText
 }
 
 fragment PlayerRowV3Fields on PlayerRowV3 {
