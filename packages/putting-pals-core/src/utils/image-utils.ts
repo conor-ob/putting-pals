@@ -4,7 +4,7 @@ export function getImageUrl(
   imageAsset: DomainImageAsset,
   imageFormat: "jpg" | "png",
   imageAdjustment?: string,
-) {
+): string {
   if (imageAdjustment === undefined) {
     return `https://res.cloudinary.com/${imageAsset.imageOrg}/d_${imageAsset.fallbackImage}/${imageAsset.imagePath}.${imageFormat}`;
   } else {

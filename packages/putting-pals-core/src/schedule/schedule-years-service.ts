@@ -2,6 +2,7 @@ import type {
   CompetitionService,
   DomainScheduleYears,
   DomainTourCode,
+  DomainTournament,
   ScheduleClient,
   ScheduleYearsService,
   TournamentService,
@@ -32,7 +33,7 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
     }
   }
 
-  private async getPuttingPalsScheduleYears() {
+  private async getPuttingPalsScheduleYears(): Promise<DomainScheduleYears> {
     const [pgaTourScheduleYears, puttingPalsHistoricalSchedule] =
       await Promise.all([
         this.getPgaTourScheduleYears(),
@@ -51,7 +52,9 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
     };
   }
 
-  private async getPuttingPalsHistoricalSchedule() {
+  private async getPuttingPalsHistoricalSchedule(): Promise<
+    readonly DomainTournament[]
+  > {
     const competitions = this.competitionService.getCompetitions();
     const tournamentIds = competitions.map(
       (competition) => competition.tournamentId,
@@ -61,7 +64,7 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
     return tournaments;
   }
 
-  private async getPgaTourScheduleYears() {
+  private async getPgaTourScheduleYears(): Promise<DomainScheduleYears> {
     return this.scheduleClient.getScheduleYears();
   }
 }

@@ -11,7 +11,7 @@ export function transformTournament(
   };
 }
 
-export function parseStartDate(tournament: DomainTournament) {
+export function parseStartDate(tournament: DomainTournament): string {
   const startDate = tournament.displayDate.replace(/\s+-\s+\d+/, "");
   const parsedStartDate = parse(startDate, "MMM d, yyyy", new Date());
   return formatISO(parsedStartDate);

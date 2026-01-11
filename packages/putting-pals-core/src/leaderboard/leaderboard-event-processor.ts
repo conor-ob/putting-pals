@@ -86,7 +86,7 @@ export class LeaderboardEventProcessorImpl
   private async getLeaderboardSnapshotBefore(
     tourCode: DomainTourCode,
     tournamentId: string,
-  ) {
+  ): Promise<LeaderboardSnapshot | undefined> {
     return this.leaderboardSnapshotRepository.getLeaderboardSnapshot(
       tourCode,
       tournamentId,
@@ -96,7 +96,7 @@ export class LeaderboardEventProcessorImpl
   private async getLeaderboardSnapshotAfter(
     tourCode: DomainTourCode,
     tournamentId: string,
-  ) {
+  ): Promise<LeaderboardSnapshot> {
     const [tournament, leaderboard] = await Promise.all([
       this.tournamentService.getTournament(tourCode, tournamentId),
       this.leaderboardService.getLeaderboard(tourCode, tournamentId),
@@ -120,7 +120,7 @@ export class LeaderboardEventProcessorImpl
     tourCode: DomainTourCode,
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
-  ) {
+  ): Promise<void> {
     return this.leaderboardSnapshotRepository.createLeaderboardSnapshot(
       tourCode,
       tournamentId,
@@ -133,7 +133,7 @@ export class LeaderboardEventProcessorImpl
     tournamentId: string,
     events: LeaderboardEvent[],
     snapshot: LeaderboardSnapshot,
-  ) {
+  ): Promise<void> {
     await this.leaderboardFeedRepository.createLeaderboardFeedItems(
       tourCode,
       tournamentId,

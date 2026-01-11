@@ -146,7 +146,7 @@ export class ScheduleServiceImpl implements ScheduleService {
     };
   }
 
-  private async getPgaTourUpcomingSchedule() {
+  private async getPgaTourUpcomingSchedule(): Promise<DomainScheduleUpcoming> {
     const upcomingSchedule = await this.scheduleClient.getUpcomingSchedule();
     return {
       ...upcomingSchedule,

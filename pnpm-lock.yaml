@@ -10565,7 +10565,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 25.0.6
+      '@types/node': 24.10.7
 
   '@types/yargs-parser@21.0.3': {}
 
