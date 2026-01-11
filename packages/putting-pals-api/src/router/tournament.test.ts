@@ -10,8 +10,8 @@ import type {
 import { TRPCError } from "@trpc/server";
 import { expect, suite, test, vi } from "vitest";
 import { ZodError } from "zod";
-import { appRouter } from "../api";
-import { createCallerFactory, createTrpcContext } from "../trpc";
+import { appRouter } from "../trpc/api";
+import { createCallerFactory, createTrpcContext } from "../trpc/router";
 
 suite("tournamentRouter", () => {
   test("should return error if tournament id is invalid", async () => {

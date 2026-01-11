@@ -1,1 +1,1 @@
-export { PgaTourCheerioWebScraper } from "./scraper";
+export { PgaTourCheerioWebScraper } from "./scraper/scraper";

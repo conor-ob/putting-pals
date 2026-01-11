@@ -1,4 +1,4 @@
-import type { AppRouter } from "@putting-pals/putting-pals-api/router";
+import type { AppRouter } from "@putting-pals/putting-pals-api";
 import { QueryClient } from "@tanstack/react-query";
 import { createTRPCClient, httpBatchStreamLink } from "@trpc/client";
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";

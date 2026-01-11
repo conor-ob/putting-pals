@@ -19,7 +19,7 @@ import type {
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import z, { ZodError } from "zod";
-import { onError } from "./error/error-handler";
+import { onError } from "../error/error-handler";
 
 /**
  * 1. CONTEXT

@@ -2,7 +2,7 @@ import type {
   LeaderboardEvent,
   RoundStatusChangedV1,
 } from "@putting-pals/putting-pals-schema";
-import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
+import { assertNever } from "@putting-pals/putting-pals-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class RoundStatusChanged extends AbstractEventEmitter {

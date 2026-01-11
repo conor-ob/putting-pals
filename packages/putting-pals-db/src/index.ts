@@ -1,10 +1,4 @@
-import { drizzle } from "drizzle-orm/node-postgres";
-import { env } from "./env/schema";
-
-export function createDatabaseConnection() {
-  return drizzle(env.DATABASE_URL);
-}
-
-export type Database = ReturnType<typeof createDatabaseConnection>;
-
-export * from "./repository/repository";
+export { createDatabaseConnection } from "./db/connection";
+export type { Database } from "./db/types";
+export { LeaderboardFeedPostgresRepository } from "./repository/leaderboard-feed-repository";
+export { LeaderboardSnapshotPostgresRepository } from "./repository/leaderboard-snapshot-repository";

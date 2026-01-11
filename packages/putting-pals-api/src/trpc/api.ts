@@ -1,10 +1,10 @@
-import { eventRouter } from "./router/event";
-import { feedRouter } from "./router/feed";
-import { leaderboardRouter } from "./router/leaderboard";
-import { scheduleRouter } from "./router/schedule";
-import { statsRouter } from "./router/stats";
-import { tournamentRouter } from "./router/tournament";
-import { createCallerFactory, router } from "./trpc";
+import { eventRouter } from "../router/event";
+import { feedRouter } from "../router/feed";
+import { leaderboardRouter } from "../router/leaderboard";
+import { scheduleRouter } from "../router/schedule";
+import { statsRouter } from "../router/stats";
+import { tournamentRouter } from "../router/tournament";
+import { createCallerFactory, router } from "./router";
 
 /**
  * This is the primary router for your server.

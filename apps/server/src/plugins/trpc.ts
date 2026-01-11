@@ -7,8 +7,8 @@ import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
 import {
   type AppRouter,
   appRouter,
-} from "@putting-pals/putting-pals-api/router";
-import { createTrpcContext } from "@putting-pals/putting-pals-api/trpc";
+  createTrpcContext,
+} from "@putting-pals/putting-pals-api";
 import {
   CompetitionServiceImpl,
   FeedServiceImpl,
@@ -24,7 +24,7 @@ import {
   createDatabaseConnection,
   LeaderboardFeedPostgresRepository,
   LeaderboardSnapshotPostgresRepository,
-} from "@putting-pals/putting-pals-db/client";
+} from "@putting-pals/putting-pals-db";
 import type {
   CreateFastifyContextOptions,
   FastifyTRPCPluginOptions,

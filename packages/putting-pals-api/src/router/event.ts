@@ -1,6 +1,6 @@
-import { assertNever } from "@putting-pals/putting-pals-utils/type-utils";
+import { assertNever } from "@putting-pals/putting-pals-utils";
 import z from "zod";
-import { publicProcedure, router } from "../trpc";
+import { publicProcedure, router } from "../trpc/router";
 import {
   EventTypeInputSchema,
   TourCodeInputSchema,
