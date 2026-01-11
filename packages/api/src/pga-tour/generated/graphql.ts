@@ -11001,6 +11001,25 @@ export type ApiYtVideoStoryType =
   | 'PLAYER_STORIES'
   | 'TOPIC_STORIES';
 
+export type ApiPlayerRowV3FieldsFragment = {
+  readonly __typename: 'PlayerRowV3',
+  readonly id: string,
+  readonly leaderboardSortOrder: number,
+  readonly player: {
+    readonly __typename: 'Player',
+    readonly id: string,
+    readonly countryFlag: string,
+    readonly displayName: string,
+    readonly shortName: string
+  },
+  readonly scoringData: {
+    readonly __typename: 'LeaderboardScoringDataV3',
+    readonly position: string,
+    readonly total: string,
+    readonly totalSort: number
+  }
+};
+
 export type ApiLeaderboardV3QueryVariables = Exact<{
   leaderboardV3Id: Scalars['ID']['input'];
 }>;
@@ -11011,32 +11030,9 @@ export type ApiLeaderboardV3Query = {
   readonly leaderboardV3: {
     readonly __typename: 'LeaderboardV3',
     readonly id: string,
-    readonly tournamentId: string,
-    readonly leaderboardRoundHeader: string,
-    readonly formatType: ApiFormatType,
-    readonly timezone: string,
-    readonly tourcastURL?: string | null,
-    readonly tourcastURLWeb?: string | null,
-    readonly tourcastURI?: string | null,
-    readonly tournamentStatus: ApiTournamentStatus,
-    readonly isPlayoffActive: boolean,
-    readonly scorecardEnabled: boolean,
-    readonly profileEnabled: boolean,
-    readonly subEvent: boolean,
-    readonly standingsEnabled: boolean,
-    readonly standingsHeader: string,
-    readonly hideSov: boolean,
-    readonly disableOdds: boolean,
-    readonly disableBettingProfileColumn: boolean,
-    readonly disableLeaderboard: boolean,
     readonly players: ReadonlyArray<
       | {
-        readonly __typename: 'InformationRow',
-        readonly id: string,
-        readonly leaderboardSortOrder: number,
-        readonly displayText: string,
-        readonly mobileDisplayText: string,
-        readonly sponsorName?: string | null
+        readonly __typename: 'InformationRow'
       }
       | {
         readonly __typename: 'PlayerRowV3',
@@ -11045,216 +11041,24 @@ export type ApiLeaderboardV3Query = {
         readonly player: {
           readonly __typename: 'Player',
           readonly id: string,
-          readonly firstName: string,
-          readonly lastName: string,
-          readonly shortName: string,
-          readonly displayName: string,
-          readonly abbreviations: string,
-          readonly abbreviationsAccessibilityText: string,
-          readonly amateur: boolean,
-          readonly country: string,
           readonly countryFlag: string,
-          readonly lineColor: string,
-          readonly seed?: string | null,
-          readonly status?: string | null,
-          readonly tourBound?: boolean | null,
-          readonly bettingProfile?: string | null,
-          readonly playerBioOverrideLink?: string | null,
-          readonly assets?: ReadonlyArray<{
-            readonly __typename: 'TourBoundAsset',
-            readonly tourBoundLogo?: string | null,
-            readonly tourBoundLogoDark?: string | null
-          }> | null
+          readonly displayName: string,
+          readonly shortName: string
         },
         readonly scoringData: {
           readonly __typename: 'LeaderboardScoringDataV3',
-          readonly groupNumber: number,
-          readonly currentRound: number,
-          readonly backNine: boolean,
-          readonly playerState: ApiPlayerState,
-          readonly teeTime?: any | null,
-          readonly totalStrokes: string,
-          readonly totalStrokesSort?: number | null,
-          readonly total: string,
-          readonly totalSort: number,
-          readonly thru: string,
-          readonly thruSort: number,
-          readonly score: string,
-          readonly scoreSort: number,
-          readonly movementDirection: ApiLeaderboardMovement,
-          readonly movementAmount: string,
-          readonly movementSort?: number | null,
           readonly position: string,
-          readonly rounds: ReadonlyArray<string>,
-          readonly roundDisplaySort?: ReadonlyArray<number | null> | null,
-          readonly roundHeader: string,
-          readonly roundStatus: string,
-          readonly courseId: string,
-          readonly official: string,
-          readonly officialSort: number,
-          readonly projected: string,
-          readonly projectedSort: number,
-          readonly rankingMovement: ApiCupRankMovementDirection,
-          readonly rankingMovementAmount: string,
-          readonly rankingMovementAmountSort: number,
-          readonly rankLogoLight?: string | null,
-          readonly rankLogoDark?: string | null,
-          readonly tooltipText?: string | null,
-          readonly tooltipTitle?: string | null,
-          readonly oddsToWin?: string | null,
-          readonly oddsSwing?: ApiOddsSwing | null,
-          readonly oddsOptionId?: string | null,
-          readonly oddsSort?: number | null,
-          readonly hasStoryContent: boolean,
-          readonly storyContentRound?: number | null,
-          readonly storyContentRounds: ReadonlyArray<number>,
-          readonly playerIcon?: ApiLeaderboardPlayerIcon | null
+          readonly total: string,
+          readonly totalSort: number
         }
       }
-    >,
-    readonly winner?: {
-      readonly __typename: 'Winner',
-      readonly id: string,
-      readonly firstName: string,
-      readonly lastName: string,
-      readonly totalStrokes: number,
-      readonly totalScore: string,
-      readonly countryFlag: string,
-      readonly countryName: string,
-      readonly purse?: string | null,
-      readonly displayPoints: boolean,
-      readonly displayPurse: boolean,
-      readonly points?: string | null,
-      readonly seed?: string | null,
-      readonly pointsLabel?: string | null,
-      readonly winnerIcon?: {
-        readonly __typename: 'WinnerIcon',
-        readonly type: ApiWinnerIconType,
-        readonly title: string,
-        readonly label: string,
-        readonly color: string
-      } | null,
-      readonly roundScores?: ReadonlyArray<{
-        readonly __typename: 'WinnerRoundScore',
-        readonly label: string,
-        readonly total: string
-      }> | null
-    } | null,
-    readonly winners?: ReadonlyArray<{
-      readonly __typename: 'Winner',
-      readonly id: string,
-      readonly firstName: string,
-      readonly lastName: string,
-      readonly totalStrokes: number,
-      readonly totalScore: string,
-      readonly countryFlag: string,
-      readonly countryName: string,
-      readonly purse?: string | null,
-      readonly displayPoints: boolean,
-      readonly displayPurse: boolean,
-      readonly points?: string | null,
-      readonly seed?: string | null,
-      readonly pointsLabel?: string | null
-    }> | null,
-    readonly courses: ReadonlyArray<{
-      readonly __typename: 'Course',
-      readonly id: string,
-      readonly courseName: string,
-      readonly courseCode: string,
-      readonly hostCourse: boolean,
-      readonly scoringLevel: ApiScoringLevel,
-      readonly enabled?: boolean | null,
-      readonly features?: ReadonlyArray<ApiTeeTimesFeature> | null
-    }>,
-    readonly messages: ReadonlyArray<{
-      readonly __typename: 'LeaderboardMessage',
-      readonly messageText: string,
-      readonly messageIcon: ApiLeaderboardMessageIcon,
-      readonly messageLink?: string | null,
-      readonly webViewLink?: string | null,
-      readonly externalLink?: boolean | null,
-      readonly platforms: ReadonlyArray<ApiPlatform>,
-      readonly timing?: number | null
-    }>,
-    readonly rounds: ReadonlyArray<{
-      readonly __typename: 'LBRound',
-      readonly roundNumber: number,
-      readonly displayText: string
-    }>,
-    readonly leaderboardFeatures?: ReadonlyArray<{
-      readonly __typename: 'FeatureItem',
-      readonly name: string,
-      readonly new: boolean,
-      readonly tooltipText?: string | null,
-      readonly tooltipTitle?: string | null,
-      readonly fieldStatType?: ApiFieldStatType | null,
-      readonly leaderboardFeatures?: ApiLeaderboardFeature | null,
-      readonly sponsor?: {
-        readonly __typename: 'FeatureSponsor',
-        readonly sponsorLogo: string,
-        readonly sponsorLogoDark: string,
-        readonly sponsorText: string,
-        readonly sponsorLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly imageOrg: string,
-          readonly imagePath: string,
-          readonly assetType?: string | null,
-          readonly deliveryType?: string | null,
-          readonly fallbackImage?: string | null
-        },
-        readonly sponsorLogoDarkAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly imageOrg: string,
-          readonly imagePath: string,
-          readonly assetType?: string | null,
-          readonly deliveryType?: string | null,
-          readonly fallbackImage?: string | null
-        }
-      } | null
-    }> | null,
-    readonly cutLineProbabilities?: {
-      readonly __typename: 'CutLineInfo',
-      readonly projectedCutLine: string,
-      readonly probableCutLine: string,
-      readonly sponsorName?: string | null,
-      readonly lastUpdated: any,
-      readonly new?: boolean | null,
-      readonly sponsorLogo?: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      } | null,
-      readonly possibleCutLines: ReadonlyArray<{
-        readonly __typename: 'CutLinePossibility',
-        readonly score: string,
-        readonly probability: number,
-        readonly displayProbability: string
-      }>
-    } | null,
-    readonly bubblePill?: {
-      readonly __typename: 'BubblePill',
-      readonly pillText: string,
-      readonly iconLight: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      },
-      readonly iconDark: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      }
-    } | null
+    >
   }
+};
+
+export type ApiLeaderboardV3FieldsFragment = {
+  readonly __typename: 'LeaderboardV3',
+  readonly id: string
 };
 
 export type ApiLeaderboardHoleByHoleQueryVariables = Exact<{
@@ -12380,6 +12184,32 @@ export type ApiTournamentsQuery = {
   }>
 };
 
+export const ApiPlayerRowV3FieldsFragmentDoc = gql`
+    fragment PlayerRowV3Fields on PlayerRowV3 {
+  __typename
+  id
+  leaderboardSortOrder
+  player {
+    __typename
+    id
+    countryFlag
+    displayName
+    shortName
+  }
+  scoringData {
+    __typename
+    position
+    total
+    totalSort
+  }
+}
+    `;
+export const ApiLeaderboardV3FieldsFragmentDoc = gql`
+    fragment LeaderboardV3Fields on LeaderboardV3 {
+  __typename
+  id
+}
+    `;
 export const ApiScheduleTournamentFieldsFragmentDoc = gql`
     fragment ScheduleTournamentFields on ScheduleTournament {
   __typename
@@ -12506,257 +12336,15 @@ export const ApiLeaderboardV3Document = gql`
   __typename
   leaderboardV3(id: $leaderboardV3Id) {
     __typename
-    id
-    tournamentId
+    ...LeaderboardV3Fields
     players {
       __typename
-      ... on PlayerRowV3 {
-        __typename
-        id
-        leaderboardSortOrder
-        player {
-          __typename
-          id
-          firstName
-          lastName
-          shortName
-          displayName
-          abbreviations
-          abbreviationsAccessibilityText
-          amateur
-          country
-          countryFlag
-          lineColor
-          seed
-          status
-          tourBound
-          assets {
-            __typename
-            ... on TourBoundAsset {
-              __typename
-              tourBoundLogo
-              tourBoundLogoDark
-            }
-          }
-          bettingProfile
-          playerBioOverrideLink
-        }
-        scoringData {
-          __typename
-          groupNumber
-          currentRound
-          backNine
-          playerState
-          teeTime
-          totalStrokes
-          totalStrokesSort
-          total
-          totalSort
-          thru
-          thruSort
-          score
-          scoreSort
-          movementDirection
-          movementAmount
-          movementSort
-          position
-          rounds
-          roundDisplaySort
-          roundHeader
-          roundStatus
-          courseId
-          official
-          officialSort
-          projected
-          projectedSort
-          rankingMovement
-          rankingMovementAmount
-          rankingMovementAmountSort
-          rankLogoLight
-          rankLogoDark
-          tooltipText
-          tooltipTitle
-          oddsToWin
-          oddsSwing
-          oddsOptionId
-          oddsSort
-          hasStoryContent
-          storyContentRound
-          storyContentRounds
-          playerIcon
-        }
-      }
-      ... on InformationRow {
-        __typename
-        id
-        leaderboardSortOrder
-        displayText
-        mobileDisplayText
-        sponsorName
-      }
-    }
-    leaderboardRoundHeader
-    formatType
-    timezone
-    winner {
-      __typename
-      id
-      firstName
-      lastName
-      totalStrokes
-      totalScore
-      countryFlag
-      countryName
-      purse
-      displayPoints
-      displayPurse
-      points
-      seed
-      pointsLabel
-      winnerIcon {
-        __typename
-        type
-        title
-        label
-        color
-      }
-      roundScores {
-        __typename
-        label
-        total
-      }
-    }
-    winners {
-      __typename
-      id
-      firstName
-      lastName
-      totalStrokes
-      totalScore
-      countryFlag
-      countryName
-      purse
-      displayPoints
-      displayPurse
-      points
-      seed
-      pointsLabel
-    }
-    courses {
-      __typename
-      id
-      courseName
-      courseCode
-      hostCourse
-      scoringLevel
-      enabled
-      features
-    }
-    messages {
-      __typename
-      messageText
-      messageIcon
-      messageLink
-      webViewLink
-      externalLink
-      platforms
-      timing
-    }
-    tourcastURL
-    tourcastURLWeb
-    tourcastURI
-    tournamentStatus
-    rounds {
-      __typename
-      roundNumber
-      displayText
-    }
-    isPlayoffActive
-    scorecardEnabled
-    profileEnabled
-    subEvent
-    leaderboardFeatures {
-      __typename
-      name
-      new
-      tooltipText
-      tooltipTitle
-      fieldStatType
-      leaderboardFeatures
-      sponsor {
-        __typename
-        sponsorLogo
-        sponsorLogoAsset {
-          __typename
-          imageOrg
-          imagePath
-          assetType
-          deliveryType
-          fallbackImage
-        }
-        sponsorLogoDark
-        sponsorLogoDarkAsset {
-          __typename
-          imageOrg
-          imagePath
-          assetType
-          deliveryType
-          fallbackImage
-        }
-        sponsorText
-      }
-    }
-    standingsEnabled
-    standingsHeader
-    hideSov
-    disableOdds
-    disableBettingProfileColumn
-    cutLineProbabilities {
-      __typename
-      projectedCutLine
-      probableCutLine
-      sponsorLogo {
-        __typename
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
-      }
-      sponsorName
-      lastUpdated
-      possibleCutLines {
-        __typename
-        score
-        probability
-        displayProbability
-      }
-      new
-    }
-    disableLeaderboard
-    bubblePill {
-      __typename
-      iconLight {
-        __typename
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
-      }
-      iconDark {
-        __typename
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
-      }
-      pillText
+      ...PlayerRowV3Fields
     }
   }
 }
-    `;
+    ${ApiLeaderboardV3FieldsFragmentDoc}
+${ApiPlayerRowV3FieldsFragmentDoc}`;
 export const ApiLeaderboardHoleByHoleDocument = gql`
     query LeaderboardHoleByHole($tournamentId: ID!, $round: Int) {
   __typename

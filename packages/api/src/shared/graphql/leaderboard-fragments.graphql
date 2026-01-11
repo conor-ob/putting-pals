@@ -1,0 +1,3 @@
+fragment LeaderboardV3Fields on LeaderboardV3 {
+  id
+}

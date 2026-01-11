@@ -11025,6 +11025,139 @@ export type DomainYtVideoStoryType =
   | 'PLAYER_STORIES'
   | 'TOPIC_STORIES';
 
+export type DomainPuttingPalsPlayerRowV3FieldsFragment = {
+  readonly __typename: 'PuttingPalsPlayerRowV3',
+  readonly id: string,
+  readonly leaderboardSortOrder: number,
+  readonly picks: ReadonlyArray<string>,
+  readonly player: {
+    readonly __typename: 'PuttingPalsPlayerV3',
+    readonly id: string,
+    readonly countryFlag: string,
+    readonly displayName: string,
+    readonly shortName: string
+  },
+  readonly scoringData: {
+    readonly __typename: 'PuttingPalsPlayerScoringDataV3',
+    readonly position: string,
+    readonly total: string,
+    readonly totalSort: number
+  }
+};
+
+export type DomainLeaderboardV3QueryVariables = Exact<{
+  leaderboardV3Id: Scalars['ID']['input'];
+}>;
+
+
+export type DomainLeaderboardV3Query = {
+  readonly __typename: 'Query',
+  readonly leaderboardV3: {
+    readonly __typename: 'LeaderboardV3',
+    readonly id: string,
+    readonly players: ReadonlyArray<
+      | {
+        readonly __typename: 'InformationRow'
+      }
+      | {
+        readonly __typename: 'PlayerRowV3'
+      }
+      | {
+        readonly __typename: 'PuttingPalsPlayerRowV3',
+        readonly id: string,
+        readonly leaderboardSortOrder: number,
+        readonly picks: ReadonlyArray<string>,
+        readonly player: {
+          readonly __typename: 'PuttingPalsPlayerV3',
+          readonly id: string,
+          readonly countryFlag: string,
+          readonly displayName: string,
+          readonly shortName: string
+        },
+        readonly scoringData: {
+          readonly __typename: 'PuttingPalsPlayerScoringDataV3',
+          readonly position: string,
+          readonly total: string,
+          readonly totalSort: number
+        }
+      }
+    >
+  }
+};
+
+export type DomainLeaderboardV3FieldsFragment = {
+  readonly __typename: 'LeaderboardV3',
+  readonly id: string
+};
+
+export type DomainLeaderboardHoleByHoleQueryVariables = Exact<{
+  tournamentId: Scalars['ID']['input'];
+  round?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type DomainLeaderboardHoleByHoleQuery = {
+  readonly __typename: 'Query',
+  readonly leaderboardHoleByHole: {
+    readonly __typename: 'LeaderboardHoleByHole',
+    readonly tournamentId: string,
+    readonly currentRound: number,
+    readonly tournamentName: string,
+    readonly rounds: ReadonlyArray<{
+      readonly __typename: 'LBRound',
+      readonly roundNumber: number,
+      readonly displayText: string
+    }>,
+    readonly holeHeaders: ReadonlyArray<{
+      readonly __typename: 'HoleHeader',
+      readonly holeNumber: number,
+      readonly hole: string,
+      readonly par: string
+    }>,
+    readonly courseHoleHeaders: ReadonlyArray<{
+      readonly __typename: 'CourseHoleHeader',
+      readonly courseId: string,
+      readonly holeHeaders: ReadonlyArray<{
+        readonly __typename: 'HoleHeaderV2',
+        readonly holeNumber?: number | null,
+        readonly order: number,
+        readonly displayValue: string,
+        readonly par: string
+      }>
+    }>,
+    readonly courses: ReadonlyArray<{
+      readonly __typename: 'Course',
+      readonly id: string,
+      readonly courseName: string,
+      readonly courseCode: string,
+      readonly hostCourse: boolean,
+      readonly scoringLevel: DomainScoringLevel,
+      readonly enabled?: boolean | null,
+      readonly features?: ReadonlyArray<DomainTeeTimesFeature> | null
+    }>,
+    readonly playerData: ReadonlyArray<{
+      readonly __typename: 'PlayerRowHoleByHole',
+      readonly playerId: string,
+      readonly courseId: string,
+      readonly courseCode: string,
+      readonly out?: string | null,
+      readonly in?: string | null,
+      readonly total?: string | null,
+      readonly totalToPar: string,
+      readonly scores: ReadonlyArray<{
+        readonly __typename: 'HoleScore',
+        readonly holeNumber: number,
+        readonly par: number,
+        readonly yardage: number,
+        readonly sequenceNumber: number,
+        readonly score: string,
+        readonly status: DomainHoleScoreStatus,
+        readonly roundScore: string
+      }>
+    }>
+  }
+};
+
 export type DomainScheduleTournamentFieldsFragment = {
   readonly __typename: 'ScheduleTournament',
   readonly id: string,

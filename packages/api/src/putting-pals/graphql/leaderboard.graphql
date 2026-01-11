@@ -1,4 +1,4 @@
-fragment PlayerRowV3Fields on PlayerRowV3 {
+fragment PuttingPalsPlayerRowV3Fields on PuttingPalsPlayerRowV3 {
   id
   leaderboardSortOrder
   player {
@@ -12,13 +12,14 @@ fragment PlayerRowV3Fields on PlayerRowV3 {
     total
     totalSort
   }
+  picks
 }
 
 query LeaderboardV3($leaderboardV3Id: ID!) {
   leaderboardV3(id: $leaderboardV3Id) {
     ...LeaderboardV3Fields
     players {
-      ...PlayerRowV3Fields
+      ...PuttingPalsPlayerRowV3Fields
     }
   }
 }
