@@ -17,11 +17,11 @@
   },
   "dependencies": {
     "@putting-pals/pga-tour-schema": "workspace:*",
-    "@putting-pals/putting-pals-schema": "workspace:*",
     "graphql": "catalog:",
     "graphql-request": "catalog:"
   },
   "devDependencies": {
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:"

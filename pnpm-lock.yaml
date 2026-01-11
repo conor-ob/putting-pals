@@ -102,9 +102,6 @@ importers:
       '@expo/vector-icons':
         specifier: ^15.0.3
         version: 15.0.3(expo-font@14.0.10(expo@54.0.31)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../../packages/putting-pals-schema
       '@react-native-async-storage/async-storage':
         specifier: 2.2.0
         version: 2.2.0(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))
@@ -123,9 +120,6 @@ importers:
       '@trpc/client':
         specifier: 'catalog:'
         version: 11.8.1(@trpc/server@11.8.1(typescript@5.9.3))(typescript@5.9.3)
-      '@trpc/server':
-        specifier: 'catalog:'
-        version: 11.8.1(typescript@5.9.3)
       '@trpc/tanstack-react-query':
         specifier: 'catalog:'
         version: 11.8.1(@tanstack/react-query@5.90.16(react@19.1.0))(@trpc/client@11.8.1(@trpc/server@11.8.1(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.8.1(typescript@5.9.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.9.3)
@@ -211,6 +205,12 @@ importers:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*
         version: link:../../packages/putting-pals-api
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../../packages/putting-pals-schema
+      '@trpc/server':
+        specifier: 'catalog:'
+        version: 11.8.1(typescript@5.9.3)
       '@types/react':
         specifier: ~19.1.1
         version: 19.1.17
@@ -257,9 +257,6 @@ importers:
       '@putting-pals/putting-pals-db':
         specifier: workspace:*
         version: link:../../packages/putting-pals-db
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../../packages/putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../../packages/putting-pals-utils
@@ -309,9 +306,6 @@ importers:
       '@putting-pals/pga-tour-schema':
         specifier: workspace:*
         version: link:../pga-tour-schema
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
       graphql:
         specifier: 'catalog:'
         version: 16.12.0
@@ -319,6 +313,9 @@ importers:
         specifier: 'catalog:'
         version: 7.4.0(graphql@16.12.0)
     devDependencies:
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
