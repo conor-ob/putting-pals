@@ -48,7 +48,7 @@ const config: CodegenConfig = {
         "src/graphql/putting-pals/schema/**/*.graphql",
         "src/graphql/shared/schema/**/*.graphql",
       ],
-      plugins: ["typescript", "typescript-operations"],
+      plugins: ["typescript", "typescript-operations", "typed-document-node"],
       documentTransforms: [addTypenameSelectionDocumentTransform],
       config: {
         ...sharedConfig,
