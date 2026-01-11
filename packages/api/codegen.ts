@@ -41,6 +41,8 @@ const config: CodegenConfig = {
         fragmentPrefix: "Api",
         fragmentVariablePrefix: "Api",
         documentVariablePrefix: "Api",
+        documentMode: "documentNode",
+        // documentNodeImport: "@graphql-typed-document-node/core",
       },
     },
     "src/graphql/putting-pals/generated/graphql.ts": {

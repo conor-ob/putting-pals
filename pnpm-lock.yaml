@@ -315,9 +315,6 @@ importers:
       graphql-request:
         specifier: 'catalog:'
         version: 7.4.0(graphql@16.12.0)
-      graphql-tag:
-        specifier: ^2.12.6
-        version: 2.12.6(graphql@16.12.0)
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -352,6 +349,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.7
+      graphql:
+        specifier: ^16.12.0
+        version: 16.12.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
