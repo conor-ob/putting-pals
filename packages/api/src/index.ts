@@ -13,7 +13,7 @@ async function main() {
   });
   const sdk = getSdk(client);
   const leaderboardV3 = await sdk
-    .LeaderboardV3({ leaderboardV3Id: "R2025100" })
+    .LeaderboardV3({ leaderboardV3Id: "S2025600" })
     .then((data) => data.leaderboardV3);
 
   const normalizer = new InMemoryCache();
@@ -26,15 +26,43 @@ async function main() {
     },
   });
 
+  function sortKeys<T>(obj: T): T {
+    if (Array.isArray(obj)) {
+      const sorted = obj.map(sortKeys);
+      // Sort arrays of refs by their __ref value
+      if (
+        sorted.every(
+          (item) => item && typeof item === "object" && "__ref" in item,
+        )
+      ) {
+        return sorted.sort((a, b) =>
+          (a.__ref as string).localeCompare(b.__ref as string),
+        ) as T;
+      }
+      return sorted as T;
+    }
+    if (obj && typeof obj === "object") {
+      const sorted: Record<string, unknown> = {};
+      for (const key of Object.keys(obj).sort()) {
+        sorted[key] = sortKeys((obj as Record<string, unknown>)[key]);
+      }
+      return sorted as T;
+    }
+    return obj;
+  }
+
   const normalized = normalizer.extract();
-  console.log("normalized", normalized);
+  const deterministic = sortKeys(normalized);
+  console.log("normalized", JSON.stringify(deterministic, null, 2));
+
+  normalizer.restore(normalized);
 
   // const extracted = cache.extract();
   const result = normalizer.readQuery({
     query: LeaderboardV3Document,
     variables: { leaderboardV3Id: leaderboardV3.id },
   });
-  console.log("result2", result);
+  // console.log("result2", result);
 }
 
 main();
