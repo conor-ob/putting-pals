@@ -14,11 +14,9 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
     "codegen": "graphql-codegen --config codegen.ts",
-    "typecheck": "tsc --noEmit true",
-    "dev": "tsx watch src/normalize/demo.ts"
+    "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@apollo/client": "4.0.11",
     "graphql-request": "catalog:",
     "rxjs": "7.8.2",
     "zod": "catalog:"
@@ -33,6 +31,7 @@
     "@graphql-typed-document-node/core": "^3.2.0",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
+    "fast-json-patch": "^3.1.1",
     "graphql": "^16.12.0",
     "graphql-codegen-typescript-validation-schema": "^0.18.1",
     "tsx": "^4.21.0",

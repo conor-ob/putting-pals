@@ -5,8 +5,10 @@ import {
 } from "@putting-pals/pga-tour-graphql";
 import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
 import {
+  ApolloCacheNormalizer,
   CompetitionServiceImpl,
   FeedServiceImpl,
+  LeaderboardChangeDetectorImpl,
   LeaderboardEventProcessorImpl,
   LeaderboardServiceImpl,
   ScheduleServiceImpl,
@@ -17,8 +19,10 @@ import {
 import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
   createDatabaseConnection,
+  LeaderboardAggregatePostgresRepository,
   LeaderboardFeedPostgresRepository,
   LeaderboardSnapshotPostgresRepository,
+  TournamentAggregatePostgresRepository,
 } from "@putting-pals/putting-pals-db";
 import {
   type AppRouter,
@@ -93,6 +97,10 @@ function createContext() {
   const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
     database,
   );
+  const tournamentAggregateRepository =
+    new TournamentAggregatePostgresRepository(database);
+  const leaderboardAggregateRepository =
+    new LeaderboardAggregatePostgresRepository(database);
 
   const feedService = new FeedServiceImpl(
     tournamentService,
@@ -101,7 +109,7 @@ function createContext() {
     leaderboardFeedRepository,
   );
 
-  const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
+  const leaderboardChangeDetector = new LeaderboardChangeDetectorImpl(
     tournamentService,
     leaderboardService,
     tournamentResolver,
@@ -109,10 +117,22 @@ function createContext() {
     leaderboardFeedRepository,
   );
 
+  const normalizer = new ApolloCacheNormalizer();
+
+  const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
+    tournamentService,
+    leaderboardService,
+    tournamentResolver,
+    tournamentAggregateRepository,
+    leaderboardAggregateRepository,
+    normalizer,
+  );
+
   return createTrpcContext({
     tournamentService,
     competitionService,
     leaderboardService,
+    leaderboardChangeDetector,
     leaderboardEventProcessor,
     feedService,
     scheduleService,

@@ -16,6 +16,7 @@ import {
   uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
+import type { Operation } from "fast-json-patch";
 
 const identifierColumns = {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -80,6 +81,64 @@ export const leaderboardSnapshotTable = pgTable(
       table.tournamentId,
     ),
   ],
+);
+
+export const tournamentAggregateTable = pgTable(
+  "tournament_aggregate",
+  {
+    ...identifierColumns,
+    ...timestampColumns,
+    ...tournamentIdentifierColumns,
+    seq: serial("seq").notNull(),
+    aggregate: jsonb("aggregate").notNull().$type<object>(),
+  },
+  (table) => [
+    uniqueIndex("tournament_aggregate_tournament_idx").on(
+      table.tourCode,
+      table.tournamentId,
+    ),
+    index("tournament_aggregate_seq_idx").on(table.seq),
+  ],
+);
+
+export const leaderboardAggregateTable = pgTable(
+  "leaderboard_aggregate",
+  {
+    ...identifierColumns,
+    ...timestampColumns,
+    ...tournamentIdentifierColumns,
+    seq: serial("seq").notNull(),
+    aggregate: jsonb("aggregate").notNull().$type<object>(),
+  },
+  (table) => [
+    uniqueIndex("leaderboard_aggregate_tournament_idx").on(
+      table.tourCode,
+      table.tournamentId,
+    ),
+    index("leaderboard_aggregate_seq_idx").on(table.seq),
+  ],
+);
+
+export const tournamentAggregatePatchTable = pgTable(
+  "tournament_aggregate_patch",
+  {
+    ...identifierColumns,
+    ...timestampColumns,
+    ...tournamentIdentifierColumns,
+    seq: serial("seq").notNull(),
+    patch: jsonb("patch").notNull().$type<Operation[]>(),
+  },
+);
+
+export const leaderboardAggregatePatchTable = pgTable(
+  "leaderboard_aggregate_patch",
+  {
+    ...identifierColumns,
+    ...timestampColumns,
+    ...tournamentIdentifierColumns,
+    seq: serial("seq").notNull(),
+    patch: jsonb("patch").notNull().$type<Operation[]>(),
+  },
 );
 
 export const leaderboardFeedTable = pgTable(

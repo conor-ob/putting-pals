@@ -10,6 +10,7 @@
 import type {
   CompetitionService,
   FeedService,
+  LeaderboardChangeDetector,
   LeaderboardEventProcessor,
   LeaderboardService,
   ScheduleService,
@@ -37,6 +38,7 @@ export function createTrpcContext({
   tournamentService,
   competitionService,
   leaderboardService,
+  leaderboardChangeDetector,
   leaderboardEventProcessor,
   feedService,
   scheduleService,
@@ -45,6 +47,7 @@ export function createTrpcContext({
   tournamentService: TournamentService;
   competitionService: CompetitionService;
   leaderboardService: LeaderboardService;
+  leaderboardChangeDetector: LeaderboardChangeDetector;
   leaderboardEventProcessor: LeaderboardEventProcessor;
   feedService: FeedService;
   scheduleService: ScheduleService;
@@ -54,6 +57,7 @@ export function createTrpcContext({
     tournamentService,
     competitionService,
     leaderboardService,
+    leaderboardChangeDetector,
     leaderboardEventProcessor,
     feedService,
     scheduleService,

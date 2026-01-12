@@ -1,25 +1,16 @@
-import type {
-  LeaderboardEvent,
-  LeaderboardEventProcessor,
-  LeaderboardFeedRepository,
-  LeaderboardService,
-  LeaderboardSnapshot,
-  LeaderboardSnapshotRepository,
-  TourCode,
-  TournamentResolver,
-  TournamentService,
+import {
+  type LeaderboardAggregateRepository,
+  LeaderboardDocument,
+  type LeaderboardEventProcessor,
+  type LeaderboardService,
+  type Normalizer,
+  type TourCode,
+  type TournamentAggregateRepository,
+  TournamentDocument,
+  type TournamentResolver,
+  type TournamentService,
 } from "@putting-pals/putting-pals-api";
-import type { EventEmitter } from "../event/event-emitter";
-import { BirdieStreak } from "../event/events/birdie-streak";
-import { LeaderChanged } from "../event/events/leader-changed";
-import { PlayerDisqualified } from "../event/events/player-disqualified";
-import { PlayerMissedCut } from "../event/events/player-missed-cut";
-import { PlayerPositionDecreased } from "../event/events/player-position-decreased";
-import { PlayerPositionIncreased } from "../event/events/player-position-increased";
-import { PlayerWithdrawn } from "../event/events/player-withdrawn";
-import { RoundStatusChanged } from "../event/events/round-status-changed";
-import { TournamentStatusChanged } from "../event/events/tournament-status-changed";
-import { TournamentWinner } from "../event/events/tournament-winner";
+import patch from "fast-json-patch";
 
 export class LeaderboardEventProcessorImpl
   implements LeaderboardEventProcessor
@@ -28,122 +19,138 @@ export class LeaderboardEventProcessorImpl
     private readonly tournamentService: TournamentService,
     private readonly leaderboardService: LeaderboardService,
     private readonly tournamentResolver: TournamentResolver,
-    private readonly leaderboardSnapshotRepository: LeaderboardSnapshotRepository,
-    private readonly leaderboardFeedRepository: LeaderboardFeedRepository,
+    private readonly tournamentAggregateRepository: TournamentAggregateRepository,
+    private readonly leaderboardAggregateRepository: LeaderboardAggregateRepository,
+    private readonly normalizer: Normalizer,
   ) {
     this.tournamentService = tournamentService;
     this.leaderboardService = leaderboardService;
     this.tournamentResolver = tournamentResolver;
-    this.leaderboardSnapshotRepository = leaderboardSnapshotRepository;
-    this.leaderboardFeedRepository = leaderboardFeedRepository;
+    this.normalizer = normalizer;
   }
 
-  async detectChange(tourCode: TourCode): Promise<void> {
+  async processEvent(tourCode: TourCode): Promise<void> {
     const tournamentId =
       await this.tournamentResolver.getCurrentTournamentId(tourCode);
 
-    const [before, after] = await Promise.all([
-      this.getLeaderboardSnapshotBefore(tourCode, tournamentId),
-      this.getLeaderboardSnapshotAfter(tourCode, tournamentId),
+    const [
+      tournamentBefore,
+      tournamentAfter,
+      leaderboardBefore,
+      leaderboardAfter,
+    ] = await Promise.all([
+      this.getTournamentAggregateBefore(tourCode, tournamentId),
+      this.getTournamentAggregateAfter(tourCode, tournamentId),
+      this.getLeaderboardAggregateBefore(tourCode, tournamentId),
+      this.getLeaderboardAggregateAfter(tourCode, tournamentId),
     ]);
 
-    if (before === undefined) {
-      await this.insertBaseLeaderboardSnapshot(tourCode, tournamentId, after);
-      return;
-    }
-    // } else if (queryResult.version !== LeaderboardSnapshotVersion) {
-    //   await this.updateLeaderboardSnapshot(tourCode, tournamentId, after);
-    //   return;
-    // }
-
-    const eventEmitters: EventEmitter[] = [
-      new BirdieStreak(tourCode, before, after),
-      new LeaderChanged(tourCode, before, after),
-      new PlayerDisqualified(tourCode, before, after),
-      new PlayerMissedCut(tourCode, before, after),
-      new PlayerPositionDecreased(tourCode, before, after),
-      new PlayerPositionIncreased(tourCode, before, after),
-      new PlayerWithdrawn(tourCode, before, after),
-      new RoundStatusChanged(tourCode, before, after),
-      new TournamentStatusChanged(tourCode, before, after),
-      new TournamentWinner(tourCode, before, after),
-    ];
-
-    const events = eventEmitters
-      .sort((a, b) => a.getPriority() - b.getPriority())
-      .flatMap((eventEmitter) => eventEmitter.emit());
-
-    if (events.length > 0) {
-      await this.insertLeaderboardFeedEvents(
+    if (tournamentBefore === undefined) {
+      await this.tournamentAggregateRepository.createTournamentAggregate(
         tourCode,
         tournamentId,
-        events,
-        after,
+        tournamentAfter,
       );
+    } else {
+      const tournamentPatches =
+        await this.tournamentAggregateRepository.getTournamentPatches(
+          tourCode,
+          tournamentId,
+        );
+
+      // console.log("tournamentBefore", tournamentBefore);
+
+      console.log("tournamentPatches", tournamentPatches);
+
+      const tournamentMaterialized = patch.applyPatch(
+        structuredClone(tournamentBefore),
+        tournamentPatches,
+        false,
+      ).newDocument;
+
+      // console.log("tournamentMaterialized", tournamentMaterialized);
+
+      const diff = patch.compare(tournamentMaterialized, tournamentAfter);
+      if (diff.length > 0) {
+        console.log("diff", diff);
+        await this.tournamentAggregateRepository.createTournamentPatches(
+          tourCode,
+          tournamentId,
+          diff,
+        );
+      }
+    }
+
+    if (leaderboardBefore === undefined) {
+      await this.leaderboardAggregateRepository.createLeaderboardAggregate(
+        tourCode,
+        tournamentId,
+        leaderboardAfter,
+      );
+    } else {
     }
   }
 
-  private async getLeaderboardSnapshotBefore(
+  private async getTournamentAggregateBefore(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<LeaderboardSnapshot | undefined> {
-    return this.leaderboardSnapshotRepository.getLeaderboardSnapshot(
+  ): Promise<object | undefined> {
+    return this.tournamentAggregateRepository.getTournamentAggregate(
       tourCode,
       tournamentId,
     );
   }
 
-  private async getLeaderboardSnapshotAfter(
+  private async getLeaderboardAggregateBefore(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<LeaderboardSnapshot> {
-    const [tournament, leaderboard] = await Promise.all([
-      this.tournamentService.getTournament(tourCode, tournamentId),
-      this.leaderboardService.getLeaderboard(tourCode, tournamentId),
-    ]);
-
-    const currentRound = tournament.currentRound;
-    const leaderboardHoleByHole =
-      await this.leaderboardService.getLeaderboardHoleByHole(
-        tournamentId,
-        currentRound,
-      );
-
-    return {
-      tournament: tournament,
-      leaderboard: leaderboard,
-      leaderboardHoleByHole: leaderboardHoleByHole,
-    } satisfies LeaderboardSnapshot;
-  }
-
-  private async insertBaseLeaderboardSnapshot(
-    tourCode: TourCode,
-    tournamentId: string,
-    snapshot: LeaderboardSnapshot,
-  ): Promise<void> {
-    return this.leaderboardSnapshotRepository.createLeaderboardSnapshot(
+  ): Promise<object | undefined> {
+    return this.leaderboardAggregateRepository.getLeaderboardAggregate(
       tourCode,
       tournamentId,
-      snapshot,
     );
   }
 
-  private async insertLeaderboardFeedEvents(
+  private async getTournamentAggregateAfter(
     tourCode: TourCode,
     tournamentId: string,
-    events: LeaderboardEvent[],
-    snapshot: LeaderboardSnapshot,
-  ): Promise<void> {
-    await this.leaderboardFeedRepository.createLeaderboardFeedItems(
+  ): Promise<object> {
+    const tournament = await this.tournamentService.getTournament(
       tourCode,
       tournamentId,
-      events,
     );
 
-    await this.leaderboardSnapshotRepository.updateLeaderboardSnapshot(
+    const normalizedTournament = this.normalizer.normalize(
+      TournamentDocument,
+      {
+        __typename: "Query",
+        tournament: {
+          ...tournament,
+          tournamentName: "Poop!",
+        },
+      },
+      { id: tournamentId },
+    );
+
+    return normalizedTournament;
+  }
+
+  private async getLeaderboardAggregateAfter(
+    tourCode: TourCode,
+    tournamentId: string,
+  ): Promise<object> {
+    const leaderboard = await this.leaderboardService.getLeaderboard(
       tourCode,
       tournamentId,
-      snapshot,
     );
+    const leaderboardV3 = { ...leaderboard };
+
+    const normalizedLeaderboard = this.normalizer.normalize(
+      LeaderboardDocument,
+      { __typename: "Query", leaderboardV3 },
+      { id: leaderboardV3.id },
+    );
+
+    return normalizedLeaderboard;
   }
 }

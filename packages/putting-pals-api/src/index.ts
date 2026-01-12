@@ -15,11 +15,14 @@ export * from "./graphql/putting-pals/generated/graphql";
 export type { Normalizer } from "./normalize/normalizer";
 
 export type { CompetitionRepository } from "./repository/competition-repository";
+export type { LeaderboardAggregateRepository } from "./repository/leaderboard-aggregate-repository";
 export type { LeaderboardFeedRepository } from "./repository/leaderboard-feed-repository";
 export type { LeaderboardSnapshotRepository } from "./repository/leaderboard-snapshot-repository";
+export type { TournamentAggregateRepository } from "./repository/tournament-aggregate-repository";
 
 export type { CompetitionService } from "./service/competition-service";
 export type { FeedService } from "./service/feed-service";
+export type { LeaderboardChangeDetector } from "./service/leaderboard-change-detector";
 export type { LeaderboardEventProcessor } from "./service/leaderboard-event-processor";
 export type { LeaderboardService } from "./service/leaderboard-service";
 export type { PgaTourWebScraper } from "./service/pga-tour-web-scraper";

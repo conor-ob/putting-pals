@@ -1,5 +1,7 @@
 export { CompetitionServiceImpl } from "./competition/competition-service";
 export { FeedServiceImpl } from "./feed/feed-service";
+export { ApolloCacheNormalizer } from "./leaderboard/apollo-cache-normalizer";
+export { LeaderboardChangeDetectorImpl } from "./leaderboard/leaderboard-change-detector";
 export { LeaderboardEventProcessorImpl } from "./leaderboard/leaderboard-event-processor";
 export { LeaderboardServiceImpl } from "./leaderboard/leaderboard-service";
 export { ScheduleServiceImpl } from "./schedule/schedule-service";
