@@ -5,11 +5,6 @@ import {
 } from "@putting-pals/pga-tour-api";
 import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
 import {
-  type AppRouter,
-  appRouter,
-  createTrpcContext,
-} from "@putting-pals/putting-pals-api";
-import {
   CompetitionServiceImpl,
   FeedServiceImpl,
   LeaderboardEventProcessorImpl,
@@ -25,6 +20,11 @@ import {
   LeaderboardFeedPostgresRepository,
   LeaderboardSnapshotPostgresRepository,
 } from "@putting-pals/putting-pals-db";
+import {
+  type AppRouter,
+  appRouter,
+  createTrpcContext,
+} from "@putting-pals/putting-pals-trpc";
 import type {
   CreateFastifyContextOptions,
   FastifyTRPCPluginOptions,

@@ -13,21 +13,29 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
+    "codegen": "graphql-codegen --config codegen.ts",
     "typecheck": "tsc --noEmit true",
-    "test": "vitest"
+    "dev": "tsx watch src/normalize/demo.ts"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-core": "workspace:*",
-    "@putting-pals/putting-pals-schema": "workspace:*",
-    "@putting-pals/putting-pals-utils": "workspace:*",
-    "@trpc/server": "catalog:",
-    "superjson": "catalog:",
+    "@apollo/client": "4.0.11",
+    "graphql-request": "catalog:",
+    "rxjs": "7.8.2",
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "catalog:",
+    "@graphql-codegen/client-preset": "^5.2.2",
+    "@graphql-codegen/typed-document-node": "^6.1.5",
+    "@graphql-codegen/typescript": "catalog:",
+    "@graphql-codegen/typescript-graphql-request": "^6.4.0",
+    "@graphql-codegen/typescript-operations": "^5.0.7",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
-    "typescript": "catalog:",
-    "vitest": "catalog:"
+    "graphql": "^16.12.0",
+    "graphql-codegen-typescript-validation-schema": "^0.18.1",
+    "tsx": "^4.21.0",
+    "typescript": "catalog:"
   }
 }

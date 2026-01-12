@@ -1,4 +1,4 @@
-import type { AppRouter } from "@putting-pals/putting-pals-api";
+import type { AppRouter } from "@putting-pals/putting-pals-trpc";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import superjson from "superjson";
 import { env } from "./env/schema";

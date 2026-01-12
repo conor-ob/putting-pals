@@ -1,3 +1,1 @@
-export type { AppRouter } from "./trpc/api";
-export { appRouter } from "./trpc/api";
-export { createTrpcContext } from "./trpc/router";
+export * from "./graphql/putting-pals/generated/graphql";

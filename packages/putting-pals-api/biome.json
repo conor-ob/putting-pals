@@ -1,3 +1,10 @@
 {
-  "extends": "//"
+  "extends": "//",
+  "files": {
+    "includes": [
+      "**",
+      "!src/graphql/pga-tour/generated/graphql.ts",
+      "!src/graphql/putting-pals/generated/graphql.ts"
+    ]
+  }
 }

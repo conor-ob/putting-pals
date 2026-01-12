@@ -15,13 +15,17 @@ fragment PuttingPalsPlayerRowFields on PuttingPalsPlayerRow {
   picks
 }
 
+fragment CustomLeaderboardV3Fields on LeaderboardV3 {
+  ...LeaderboardV3Fields
+  players {
+    ...PlayerRowV3Fields
+    ...PuttingPalsPlayerRowFields
+    ...InformationRowFields
+  }
+}
+
 query LeaderboardV3($leaderboardV3Id: ID!) {
   leaderboardV3(id: $leaderboardV3Id) {
-    ...LeaderboardV3Fields
-    players {
-      ...PlayerRowV3Fields
-      ...PuttingPalsPlayerRowFields
-      ...InformationRowFields
-    }
+    ...CustomLeaderboardV3Fields
   }
 }
