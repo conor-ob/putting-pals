@@ -34,22 +34,22 @@ export class LeaderboardEventProcessorImpl
       await this.tournamentResolver.getCurrentTournamentId(tourCode);
 
     const [
-      tournamentBefore,
-      tournamentAfter,
-      leaderboardBefore,
-      leaderboardAfter,
+      baseTournamentAggregate,
+      latestTournamentAggregate,
+      baseLeaderboardAggregate,
+      latestLeaderboardAggregate,
     ] = await Promise.all([
-      this.getTournamentAggregateBefore(tourCode, tournamentId),
-      this.getTournamentAggregateAfter(tourCode, tournamentId),
-      this.getLeaderboardAggregateBefore(tourCode, tournamentId),
-      this.getLeaderboardAggregateAfter(tourCode, tournamentId),
+      this.getBaseTournamentAggregate(tourCode, tournamentId),
+      this.getLatestTournamentAggregate(tourCode, tournamentId),
+      this.getBaseLeaderboardAggregate(tourCode, tournamentId),
+      this.getLatestLeaderboardAggregate(tourCode, tournamentId),
     ]);
 
-    if (tournamentBefore === undefined) {
+    if (baseTournamentAggregate === undefined) {
       await this.tournamentAggregateRepository.createTournamentAggregate(
         tourCode,
         tournamentId,
-        tournamentAfter,
+        latestTournamentAggregate,
       );
     } else {
       const tournamentPatches =
@@ -58,21 +58,17 @@ export class LeaderboardEventProcessorImpl
           tournamentId,
         );
 
-      // console.log("tournamentBefore", tournamentBefore);
-
-      console.log("tournamentPatches", tournamentPatches);
-
-      const tournamentMaterialized = patch.applyPatch(
-        structuredClone(tournamentBefore),
+      const materializedTournamentAggregate = patch.applyPatch(
+        structuredClone(baseTournamentAggregate),
         tournamentPatches,
         false,
       ).newDocument;
 
-      // console.log("tournamentMaterialized", tournamentMaterialized);
-
-      const diff = patch.compare(tournamentMaterialized, tournamentAfter);
+      const diff = patch.compare(
+        materializedTournamentAggregate,
+        latestTournamentAggregate,
+      );
       if (diff.length > 0) {
-        console.log("diff", diff);
         await this.tournamentAggregateRepository.createTournamentPatches(
           tourCode,
           tournamentId,
@@ -81,17 +77,40 @@ export class LeaderboardEventProcessorImpl
       }
     }
 
-    if (leaderboardBefore === undefined) {
+    if (baseLeaderboardAggregate === undefined) {
       await this.leaderboardAggregateRepository.createLeaderboardAggregate(
         tourCode,
         tournamentId,
-        leaderboardAfter,
+        latestLeaderboardAggregate,
       );
     } else {
+      const leaderboardPatches =
+        await this.leaderboardAggregateRepository.getLeaderboardPatches(
+          tourCode,
+          tournamentId,
+        );
+
+      const materializedLeaderboardAggregate = patch.applyPatch(
+        structuredClone(baseLeaderboardAggregate),
+        leaderboardPatches,
+        false,
+      ).newDocument;
+
+      const diff = patch.compare(
+        materializedLeaderboardAggregate,
+        latestLeaderboardAggregate,
+      );
+      if (diff.length > 0) {
+        await this.leaderboardAggregateRepository.createLeaderboardPatches(
+          tourCode,
+          tournamentId,
+          diff,
+        );
+      }
     }
   }
 
-  private async getTournamentAggregateBefore(
+  private async getBaseTournamentAggregate(
     tourCode: TourCode,
     tournamentId: string,
   ): Promise<object | undefined> {
@@ -101,7 +120,7 @@ export class LeaderboardEventProcessorImpl
     );
   }
 
-  private async getLeaderboardAggregateBefore(
+  private async getBaseLeaderboardAggregate(
     tourCode: TourCode,
     tournamentId: string,
   ): Promise<object | undefined> {
@@ -111,7 +130,7 @@ export class LeaderboardEventProcessorImpl
     );
   }
 
-  private async getTournamentAggregateAfter(
+  private async getLatestTournamentAggregate(
     tourCode: TourCode,
     tournamentId: string,
   ): Promise<object> {
@@ -124,10 +143,7 @@ export class LeaderboardEventProcessorImpl
       TournamentDocument,
       {
         __typename: "Query",
-        tournament: {
-          ...tournament,
-          tournamentName: "Poop!",
-        },
+        tournament,
       },
       { id: tournamentId },
     );
@@ -135,7 +151,7 @@ export class LeaderboardEventProcessorImpl
     return normalizedTournament;
   }
 
-  private async getLeaderboardAggregateAfter(
+  private async getLatestLeaderboardAggregate(
     tourCode: TourCode,
     tournamentId: string,
   ): Promise<object> {
@@ -143,12 +159,14 @@ export class LeaderboardEventProcessorImpl
       tourCode,
       tournamentId,
     );
-    const leaderboardV3 = { ...leaderboard };
 
     const normalizedLeaderboard = this.normalizer.normalize(
       LeaderboardDocument,
-      { __typename: "Query", leaderboardV3 },
-      { id: leaderboardV3.id },
+      {
+        __typename: "Query",
+        leaderboardV3: { ...leaderboard, formatType: "TEAM_CUP" },
+      },
+      { id: leaderboard.id },
     );
 
     return normalizedLeaderboard;
