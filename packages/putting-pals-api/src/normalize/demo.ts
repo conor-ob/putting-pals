@@ -5,6 +5,7 @@ import { getSdk, type Sdk } from "../graphql/pga-tour/generated/graphql";
 import {
   // CustomLeaderboardV3FieldsFragmentDoc,
   LeaderboardDocument,
+  TourCodeSchema,
   TournamentDocument,
 } from "../graphql/putting-pals/generated/graphql";
 import { ApolloCacheNormalizer, type Normalizer } from "./normalizer";
@@ -33,7 +34,6 @@ class LeaderboardProcessor {
       { __typename: "Query", tournament },
       { id: leaderboardV3Id },
     );
-
     console.log("normalizedTournament", normalizedTournament);
 
     const denormalizedTournament = this.normalizer.denormalize(
@@ -41,7 +41,6 @@ class LeaderboardProcessor {
       normalizedTournament,
       { id: leaderboardV3Id },
     );
-
     console.log("denormalizedTournament", denormalizedTournament?.tournament);
 
     const normalizedLeaderboard = this.normalizer.normalize(
@@ -49,8 +48,20 @@ class LeaderboardProcessor {
       { __typename: "Query", leaderboardV3 },
       { id: leaderboardV3.id },
     );
-
     console.log("normalizedLeaderboard", normalizedLeaderboard);
+
+    const denormalizedLeaderboard = this.normalizer.denormalize(
+      LeaderboardDocument,
+      normalizedLeaderboard,
+      { id: leaderboardV3.id },
+    );
+    console.log(
+      "denormalizedLeaderboard",
+      denormalizedLeaderboard?.leaderboardV3,
+    );
+
+    // const options = TourCodeSchema.options as [string, ...string[]];
+    // console.log("options", options);
 
     // const normalizedLeaderboardFragment = this.normalizer.normalizeFragment(
     //   CustomLeaderboardV3FieldsFragmentDoc,
@@ -58,19 +69,7 @@ class LeaderboardProcessor {
     //   leaderboardV3,
     //   "CustomLeaderboardV3Fields", // Required when fragment doc contains multiple fragments
     // );
-
     // console.log("normalizedLeaderboardFragment", normalizedLeaderboardFragment);
-
-    const denormalizedLeaderboard = this.normalizer.denormalize(
-      LeaderboardDocument,
-      normalizedLeaderboard,
-      { id: leaderboardV3.id },
-    );
-
-    console.log(
-      "denormalizedLeaderboard",
-      denormalizedLeaderboard?.leaderboardV3,
-    );
   }
 }
 

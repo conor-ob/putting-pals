@@ -1,7 +1,8 @@
-import type {
-  LeaderboardEvent,
-  LeaderboardSnapshot,
-  TournamentSnapshot,
+import {
+  type LeaderboardEvent,
+  type LeaderboardSnapshot,
+  TourCodeSchema,
+  type TournamentSnapshot,
 } from "@putting-pals/putting-pals-api";
 import {
   index,
@@ -41,7 +42,7 @@ const timestampColumns = {
 
 const tournamentIdentifierColumns = {
   tourCode: text("tour_code", {
-    enum: ["C", "E", "H", "I", "M", "P", "R", "S", "U", "Y"],
+    enum: TourCodeSchema.options as [string, ...string[]],
   }).notNull(),
   tournamentId: text("tournament_id").notNull(),
 };

@@ -1,17 +1,7 @@
+import { TourCodeSchema } from "@putting-pals/putting-pals-api";
 import { z } from "zod";
 
-export const TourCodeInputSchema = z.enum([
-  "C",
-  "E",
-  "H",
-  "I",
-  "M",
-  "P",
-  "R",
-  "S",
-  "U",
-  "Y",
-]);
+export const TourCodeInputSchema = TourCodeSchema;
 
 export const TournamentIdInputSchema = z
   .string()
