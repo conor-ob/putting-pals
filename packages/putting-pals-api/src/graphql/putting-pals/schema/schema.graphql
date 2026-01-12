@@ -25,6 +25,6 @@ extend enum TourCode {
   P
 }
 
-# extend type Query {
-#   tournament(id: ID!): Tournament @client
-# }
+extend type Query {
+  tournament(id: ID!): Tournament @client
+}

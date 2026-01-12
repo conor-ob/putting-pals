@@ -1,4 +1,4 @@
-query LeaderboardV3($id: ID!) {
+query Leaderboard($id: ID!) {
   leaderboardV3(id: $id) {
     ...LeaderboardV3Fields
     players {
@@ -9,8 +9,8 @@ query LeaderboardV3($id: ID!) {
   }
 }
 
-# query Tournament($id: ID!) {
-#   tournament(id: $id) {
-#     ...TournamentFields
-#   }
-# }
+query Tournament($id: ID!) {
+  tournament(id: $id) {
+    ...TournamentFields
+  }
+}

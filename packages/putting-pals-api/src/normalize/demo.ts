@@ -3,9 +3,9 @@
 import { GraphQLClient } from "graphql-request";
 import { getSdk, type Sdk } from "../graphql/pga-tour/generated/graphql";
 import {
-  CustomLeaderboardV3FieldsFragmentDoc,
-  LeaderboardV3Document,
-  TournamentsDocument,
+  // CustomLeaderboardV3FieldsFragmentDoc,
+  LeaderboardDocument,
+  TournamentDocument,
 } from "../graphql/putting-pals/generated/graphql";
 import { ApolloCacheNormalizer, type Normalizer } from "./normalizer";
 
@@ -22,51 +22,49 @@ class LeaderboardProcessor {
     const tournaments = await this.sdk
       .Tournaments({ ids: [leaderboardV3Id] })
       .then((data) => data.tournaments);
+    const tournament = tournaments[0];
 
     const leaderboardV3 = await this.sdk
       .LeaderboardV3({ leaderboardV3Id })
       .then((data) => data.leaderboardV3);
 
-    const normalizedTournaments = this.normalizer.normalize(
-      TournamentsDocument,
-      { __typename: "Query", tournaments },
-      { ids: [leaderboardV3Id] },
+    const normalizedTournament = this.normalizer.normalize(
+      TournamentDocument,
+      { __typename: "Query", tournament },
+      { id: leaderboardV3Id },
     );
 
-    console.log("normalizedTournaments", normalizedTournaments);
+    console.log("normalizedTournament", normalizedTournament);
 
-    const denormalizedTournaments = this.normalizer.denormalize(
-      TournamentsDocument,
-      normalizedTournaments,
-      { ids: [leaderboardV3Id] },
+    const denormalizedTournament = this.normalizer.denormalize(
+      TournamentDocument,
+      normalizedTournament,
+      { id: leaderboardV3Id },
     );
 
-    console.log(
-      "denormalizedTournaments",
-      denormalizedTournaments?.tournaments,
-    );
+    console.log("denormalizedTournament", denormalizedTournament?.tournament);
 
     const normalizedLeaderboard = this.normalizer.normalize(
-      LeaderboardV3Document,
+      LeaderboardDocument,
       { __typename: "Query", leaderboardV3 },
-      { leaderboardV3Id: leaderboardV3.id },
+      { id: leaderboardV3.id },
     );
 
     console.log("normalizedLeaderboard", normalizedLeaderboard);
 
-    const normalizedLeaderboardFragment = this.normalizer.normalizeFragment(
-      CustomLeaderboardV3FieldsFragmentDoc,
-      leaderboardV3.id,
-      leaderboardV3,
-      "CustomLeaderboardV3Fields", // Required when fragment doc contains multiple fragments
-    );
+    // const normalizedLeaderboardFragment = this.normalizer.normalizeFragment(
+    //   CustomLeaderboardV3FieldsFragmentDoc,
+    //   leaderboardV3.id,
+    //   leaderboardV3,
+    //   "CustomLeaderboardV3Fields", // Required when fragment doc contains multiple fragments
+    // );
 
-    console.log("normalizedLeaderboardFragment", normalizedLeaderboardFragment);
+    // console.log("normalizedLeaderboardFragment", normalizedLeaderboardFragment);
 
     const denormalizedLeaderboard = this.normalizer.denormalize(
-      LeaderboardV3Document,
+      LeaderboardDocument,
       normalizedLeaderboard,
-      { leaderboardV3Id: leaderboardV3.id },
+      { id: leaderboardV3.id },
     );
 
     console.log(
