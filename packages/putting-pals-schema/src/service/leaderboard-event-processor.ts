@@ -1,5 +1,5 @@
-import type { DomainTourCode } from "../generated/graphql";
+import type { TourCode } from "@putting-pals/putting-pals-api";
 
 export interface LeaderboardEventProcessor {
-  detectChange(tourCode: DomainTourCode): Promise<void>;
+  detectChange(tourCode: TourCode): Promise<void>;
 }

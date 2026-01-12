@@ -1,5 +1,5 @@
+import type { TourCode } from "@putting-pals/putting-pals-api";
 import {
-  type DomainTourCode,
   type LeaderboardSnapshot,
   type LeaderboardSnapshotRepository,
   LeaderboardSnapshotVersion,
@@ -16,7 +16,7 @@ export class LeaderboardSnapshotPostgresRepository
   }
 
   async getLeaderboardSnapshot(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
   ): Promise<LeaderboardSnapshot | undefined> {
     const queryResult = await this.db
@@ -46,7 +46,7 @@ export class LeaderboardSnapshotPostgresRepository
   }
 
   async createLeaderboardSnapshot(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
   ): Promise<void> {
@@ -71,7 +71,7 @@ export class LeaderboardSnapshotPostgresRepository
   }
 
   async updateLeaderboardSnapshot(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
   ): Promise<void> {

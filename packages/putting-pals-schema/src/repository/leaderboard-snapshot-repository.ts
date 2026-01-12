@@ -1,20 +1,20 @@
+import type { TourCode } from "@putting-pals/putting-pals-api";
 import type { LeaderboardSnapshot } from "../db/types";
-import type { DomainTourCode } from "../generated/graphql";
 
 export interface LeaderboardSnapshotRepository {
   getLeaderboardSnapshot(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
   ): Promise<LeaderboardSnapshot | undefined>;
 
   createLeaderboardSnapshot(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
   ): Promise<void>;
 
   updateLeaderboardSnapshot(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
   ): Promise<void>;

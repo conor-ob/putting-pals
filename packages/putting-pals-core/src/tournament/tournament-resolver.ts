@@ -1,6 +1,6 @@
+import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
   CompetitionService,
-  DomainTourCode,
   PgaTourWebScraper,
   TournamentClient,
   TournamentResolver,
@@ -22,7 +22,7 @@ export class TournamentResolverImpl implements TournamentResolver {
     this.competitionService = competitionService;
   }
 
-  getCurrentTournamentId(tourCode: DomainTourCode): Promise<string> {
+  getCurrentTournamentId(tourCode: TourCode): Promise<string> {
     switch (tourCode) {
       case "P":
         return this.getCurrentPuttingPalsTournamentId();

@@ -1,16 +1,16 @@
 import type {
-  Competition,
-  DomainLeaderboardV3,
-  DomainPlayerRowV3,
-  DomainPuttingPalsPlayer,
-  DomainPuttingPalsPlayerRow,
-  DomainPuttingPalsPlayerScoringData,
-} from "@putting-pals/putting-pals-schema";
+  LeaderboardV3,
+  PlayerRowV3,
+  PuttingPalsPlayer,
+  PuttingPalsPlayerRow,
+  PuttingPalsPlayerScoringData,
+} from "@putting-pals/putting-pals-api";
+import type { Competition } from "@putting-pals/putting-pals-schema";
 
 export function aggregateLeaderboard(
-  leaderboard: DomainLeaderboardV3,
+  leaderboard: LeaderboardV3,
   competition: Competition,
-): DomainLeaderboardV3 {
+): LeaderboardV3 {
   const competitors = competition.competitors
     .map((competitor) => {
       const playerRows = leaderboard.players.filter(
@@ -109,15 +109,15 @@ export function aggregateLeaderboard(
           displayName: competitor.displayName,
           id: competitor.id,
           shortName: competitor.shortName,
-        } satisfies DomainPuttingPalsPlayer,
+        } satisfies PuttingPalsPlayer,
         scoringData: {
           __typename: "PuttingPalsPlayerScoringData" as const,
           position: competitor.position,
           total: competitor.total,
           totalSort: competitor.totalSort,
-        } satisfies DomainPuttingPalsPlayerScoringData,
+        } satisfies PuttingPalsPlayerScoringData,
         picks: competitor.picks.map((pick) => pick.player.id),
-      } satisfies DomainPuttingPalsPlayerRow,
+      } satisfies PuttingPalsPlayerRow,
       ...competitor.picks.map((pick) => ({
         ...pick,
         id: `${competitor.id}-${pick.id}`,
@@ -155,15 +155,15 @@ function applyScoringRules({
   scoringRules,
 }: {
   picks: Extract<
-    DomainLeaderboardV3["players"][number],
+    LeaderboardV3["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   allPicks: Extract<
-    DomainLeaderboardV3["players"][number],
+    LeaderboardV3["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   scoringRules?: string;
-}): DomainPlayerRowV3[] {
+}): PlayerRowV3[] {
   if (scoringRules === "MISSED_CUT") {
     return picks.map((playerRow) => {
       if (

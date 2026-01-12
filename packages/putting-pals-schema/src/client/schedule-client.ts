@@ -1,15 +1,15 @@
 import type {
-  DomainSchedule,
-  DomainScheduleUpcoming,
-  DomainScheduleYears,
-} from "../generated/graphql";
+  Schedule,
+  ScheduleUpcoming,
+  ScheduleYears,
+} from "@putting-pals/putting-pals-api";
 
 export interface ScheduleClient {
-  getScheduleYears(): Promise<DomainScheduleYears>;
+  getScheduleYears(): Promise<ScheduleYears>;
 
-  getSchedule(year?: string): Promise<DomainSchedule>;
+  getSchedule(year?: string): Promise<Schedule>;
 
-  getCompleteSchedule(): Promise<readonly DomainSchedule[]>;
+  getCompleteSchedule(): Promise<readonly Schedule[]>;
 
-  getUpcomingSchedule(): Promise<DomainScheduleUpcoming>;
+  getUpcomingSchedule(): Promise<ScheduleUpcoming>;
 }

@@ -1,8 +1,10 @@
 import type {
+  ScheduleYears,
+  TourCode,
+  Tournament,
+} from "@putting-pals/putting-pals-api";
+import type {
   CompetitionService,
-  DomainScheduleYears,
-  DomainTourCode,
-  DomainTournament,
   ScheduleClient,
   ScheduleYearsService,
   TournamentService,
@@ -22,7 +24,7 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
     this.tournamentService = tournamentService;
   }
 
-  getScheduleYears(tourCode: DomainTourCode): Promise<DomainScheduleYears> {
+  getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     switch (tourCode) {
       case "P":
         return this.getPuttingPalsScheduleYears();
@@ -33,7 +35,7 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
     }
   }
 
-  private async getPuttingPalsScheduleYears(): Promise<DomainScheduleYears> {
+  private async getPuttingPalsScheduleYears(): Promise<ScheduleYears> {
     const [pgaTourScheduleYears, puttingPalsHistoricalSchedule] =
       await Promise.all([
         this.getPgaTourScheduleYears(),
@@ -53,7 +55,7 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
   }
 
   private async getPuttingPalsHistoricalSchedule(): Promise<
-    readonly DomainTournament[]
+    readonly Tournament[]
   > {
     const competitions = this.competitionService.getCompetitions();
     const tournamentIds = competitions.map(
@@ -64,7 +66,7 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
     return tournaments;
   }
 
-  private async getPgaTourScheduleYears(): Promise<DomainScheduleYears> {
+  private async getPgaTourScheduleYears(): Promise<ScheduleYears> {
     return this.scheduleClient.getScheduleYears();
   }
 }

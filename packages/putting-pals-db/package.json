@@ -20,6 +20,7 @@
     "dev": "drizzle-kit studio"
   },
   "dependencies": {
+    "@putting-pals/putting-pals-api": "workspace:*",
     "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
     "dotenv": "catalog:",

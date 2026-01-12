@@ -31,8 +31,6 @@ export const CompetitionSchema = z
     };
   });
 
-export * from "./generated/graphql";
-
 export type Competitor = z.infer<typeof CompetitorSchema>;
 
 export type Competition = z.infer<typeof CompetitionSchema>;

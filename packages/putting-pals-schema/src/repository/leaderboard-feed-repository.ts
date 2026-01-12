@@ -1,9 +1,9 @@
+import type { TourCode } from "@putting-pals/putting-pals-api";
 import type { LeaderboardEvent } from "../event/types";
-import type { DomainTourCode } from "../generated/graphql";
 
 export interface LeaderboardFeedRepository {
   getLeaderboardFeed(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     pageSize: number,
     cursor?: number,
@@ -12,7 +12,7 @@ export interface LeaderboardFeedRepository {
       seq: number;
       type: string;
       feedItem: LeaderboardEvent;
-      tourCode: DomainTourCode;
+      tourCode: TourCode;
       tournamentId: string;
       createdAt: Date;
       updatedAt: Date;
@@ -22,7 +22,7 @@ export interface LeaderboardFeedRepository {
   >;
 
   createLeaderboardFeedItems(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     events: LeaderboardEvent[],
   ): Promise<void>;

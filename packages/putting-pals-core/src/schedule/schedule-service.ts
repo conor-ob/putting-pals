@@ -1,8 +1,10 @@
 import type {
+  Schedule,
+  ScheduleUpcoming,
+  TourCode,
+} from "@putting-pals/putting-pals-api";
+import type {
   CompetitionService,
-  DomainSchedule,
-  DomainScheduleUpcoming,
-  DomainTourCode,
   ScheduleClient,
   ScheduleService,
 } from "@putting-pals/putting-pals-schema";
@@ -21,10 +23,7 @@ export class ScheduleServiceImpl implements ScheduleService {
     this.competitionService = competitionService;
   }
 
-  getSchedule(
-    tourCode: DomainTourCode,
-    year?: string,
-  ): Promise<readonly DomainSchedule[]> {
+  getSchedule(tourCode: TourCode, year?: string): Promise<readonly Schedule[]> {
     switch (tourCode) {
       case "P":
         return this.getPuttingPalsSchedule(year);
@@ -35,9 +34,7 @@ export class ScheduleServiceImpl implements ScheduleService {
     }
   }
 
-  getUpcomingSchedule(
-    tourCode: DomainTourCode,
-  ): Promise<DomainScheduleUpcoming> {
+  getUpcomingSchedule(tourCode: TourCode): Promise<ScheduleUpcoming> {
     switch (tourCode) {
       case "P":
         return this.getPuttingPalsUpcomingSchedule();
@@ -50,7 +47,7 @@ export class ScheduleServiceImpl implements ScheduleService {
 
   private async getPuttingPalsSchedule(
     year?: string,
-  ): Promise<readonly DomainSchedule[]> {
+  ): Promise<readonly Schedule[]> {
     function filterScheduleMonths(
       months: ReturnType<typeof transformSchedule>["completed" | "upcoming"],
     ) {
@@ -94,7 +91,7 @@ export class ScheduleServiceImpl implements ScheduleService {
 
   private async getPgaTourSchedule(
     year?: string,
-  ): Promise<readonly DomainSchedule[]> {
+  ): Promise<readonly Schedule[]> {
     if (year) {
       const schedule = await this.scheduleClient.getSchedule(year);
       return [transformSchedule(schedule)];
@@ -104,7 +101,7 @@ export class ScheduleServiceImpl implements ScheduleService {
     }
   }
 
-  private async getPuttingPalsUpcomingSchedule(): Promise<DomainScheduleUpcoming> {
+  private async getPuttingPalsUpcomingSchedule(): Promise<ScheduleUpcoming> {
     const competitionIds = this.competitionService
       .getCompetitions()
       .map((competition) => competition.tournamentId);
@@ -146,7 +143,7 @@ export class ScheduleServiceImpl implements ScheduleService {
     };
   }
 
-  private async getPgaTourUpcomingSchedule(): Promise<DomainScheduleUpcoming> {
+  private async getPgaTourUpcomingSchedule(): Promise<ScheduleUpcoming> {
     const upcomingSchedule = await this.scheduleClient.getUpcomingSchedule();
     return {
       ...upcomingSchedule,

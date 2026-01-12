@@ -1,5 +1,5 @@
+import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
-  DomainTourCode,
   LeaderboardEvent,
   LeaderboardFeedRepository,
 } from "@putting-pals/putting-pals-schema";
@@ -15,7 +15,7 @@ export class LeaderboardFeedPostgresRepository
   }
 
   async getLeaderboardFeed(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     pageSize: number,
     cursor?: number,
@@ -24,7 +24,7 @@ export class LeaderboardFeedPostgresRepository
       seq: number;
       type: string;
       feedItem: LeaderboardEvent;
-      tourCode: DomainTourCode;
+      tourCode: TourCode;
       tournamentId: string;
       createdAt: Date;
       updatedAt: Date;
@@ -48,7 +48,7 @@ export class LeaderboardFeedPostgresRepository
   }
 
   async createLeaderboardFeedItems(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     events: LeaderboardEvent[],
   ): Promise<void> {

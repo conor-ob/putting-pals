@@ -208,9 +208,9 @@ importers:
         specifier: ^1.2.2
         version: 1.2.3(react-native@0.81.5(@babel/core@7.28.6)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.18)
     devDependencies:
-      '@putting-pals/putting-pals-schema':
+      '@putting-pals/putting-pals-api':
         specifier: workspace:*
-        version: link:../../packages/putting-pals-schema
+        version: link:../../packages/putting-pals-api
       '@putting-pals/putting-pals-trpc':
         specifier: workspace:*
         version: link:../../packages/putting-pals-trpc
@@ -408,6 +408,9 @@ importers:
 
   packages/putting-pals-core:
     dependencies:
+      '@putting-pals/putting-pals-api':
+        specifier: workspace:*
+        version: link:../putting-pals-api
       '@putting-pals/putting-pals-schema':
         specifier: workspace:*
         version: link:../putting-pals-schema
@@ -452,6 +455,9 @@ importers:
 
   packages/putting-pals-db:
     dependencies:
+      '@putting-pals/putting-pals-api':
+        specifier: workspace:*
+        version: link:../putting-pals-api
       '@putting-pals/putting-pals-schema':
         specifier: workspace:*
         version: link:../putting-pals-schema
@@ -489,16 +495,13 @@ importers:
 
   packages/putting-pals-schema:
     dependencies:
+      '@putting-pals/putting-pals-api':
+        specifier: workspace:*
+        version: link:../putting-pals-api
       zod:
         specifier: 'catalog:'
         version: 4.3.5
     devDependencies:
-      '@graphql-codegen/cli':
-        specifier: 'catalog:'
-        version: 6.1.1(@types/node@24.10.7)(graphql@16.12.0)(typescript@5.9.3)
-      '@graphql-codegen/typescript':
-        specifier: 'catalog:'
-        version: 5.0.7(graphql@16.12.0)
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4

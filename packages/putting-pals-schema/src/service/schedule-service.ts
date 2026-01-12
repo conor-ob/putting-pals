@@ -1,16 +1,11 @@
 import type {
-  DomainSchedule,
-  DomainScheduleUpcoming,
-  DomainTourCode,
-} from "../generated/graphql";
+  Schedule,
+  ScheduleUpcoming,
+  TourCode,
+} from "@putting-pals/putting-pals-api";
 
 export interface ScheduleService {
-  getSchedule(
-    tourCode: DomainTourCode,
-    year?: string,
-  ): Promise<readonly DomainSchedule[]>;
+  getSchedule(tourCode: TourCode, year?: string): Promise<readonly Schedule[]>;
 
-  getUpcomingSchedule(
-    tourCode: DomainTourCode,
-  ): Promise<DomainScheduleUpcoming>;
+  getUpcomingSchedule(tourCode: TourCode): Promise<ScheduleUpcoming>;
 }

@@ -1,5 +1,5 @@
+import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
-  DomainTourCode,
   LeaderboardEvent,
   LeaderboardEventProcessor,
   LeaderboardFeedRepository,
@@ -38,7 +38,7 @@ export class LeaderboardEventProcessorImpl
     this.leaderboardFeedRepository = leaderboardFeedRepository;
   }
 
-  async detectChange(tourCode: DomainTourCode): Promise<void> {
+  async detectChange(tourCode: TourCode): Promise<void> {
     const tournamentId =
       await this.tournamentResolver.getCurrentTournamentId(tourCode);
 
@@ -84,7 +84,7 @@ export class LeaderboardEventProcessorImpl
   }
 
   private async getLeaderboardSnapshotBefore(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
   ): Promise<LeaderboardSnapshot | undefined> {
     return this.leaderboardSnapshotRepository.getLeaderboardSnapshot(
@@ -94,7 +94,7 @@ export class LeaderboardEventProcessorImpl
   }
 
   private async getLeaderboardSnapshotAfter(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
   ): Promise<LeaderboardSnapshot> {
     const [tournament, leaderboard] = await Promise.all([
@@ -117,7 +117,7 @@ export class LeaderboardEventProcessorImpl
   }
 
   private async insertBaseLeaderboardSnapshot(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
   ): Promise<void> {
@@ -129,7 +129,7 @@ export class LeaderboardEventProcessorImpl
   }
 
   private async insertLeaderboardFeedEvents(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     tournamentId: string,
     events: LeaderboardEvent[],
     snapshot: LeaderboardSnapshot,

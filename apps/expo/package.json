@@ -50,7 +50,7 @@
     "uniwind": "^1.2.2"
   },
   "devDependencies": {
-    "@putting-pals/putting-pals-schema": "workspace:*",
+    "@putting-pals/putting-pals-api": "workspace:*",
     "@putting-pals/putting-pals-trpc": "workspace:*",
     "@trpc/server": "catalog:",
     "@types/react": "~19.1.1",

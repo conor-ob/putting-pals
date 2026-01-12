@@ -1,5 +1,5 @@
-import type { DomainScheduleYears, DomainTourCode } from "../generated/graphql";
+import type { ScheduleYears, TourCode } from "@putting-pals/putting-pals-api";
 
 export interface ScheduleYearsService {
-  getScheduleYears(tourCode: DomainTourCode): Promise<DomainScheduleYears>;
+  getScheduleYears(tourCode: TourCode): Promise<ScheduleYears>;
 }

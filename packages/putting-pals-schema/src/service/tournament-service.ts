@@ -1,10 +1,7 @@
-import type { DomainTourCode, DomainTournament } from "../generated/graphql";
+import type { TourCode, Tournament } from "@putting-pals/putting-pals-api";
 
 export interface TournamentService {
-  getTournament(
-    tourCode: DomainTourCode,
-    id?: string,
-  ): Promise<DomainTournament>;
+  getTournament(tourCode: TourCode, id?: string): Promise<Tournament>;
 
-  getTournaments(ids: string[]): Promise<readonly DomainTournament[]>;
+  getTournaments(ids: string[]): Promise<readonly Tournament[]>;
 }

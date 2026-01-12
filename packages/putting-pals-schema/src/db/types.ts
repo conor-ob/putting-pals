@@ -1,21 +1,21 @@
 import type {
-  DomainLeaderboardHoleByHole,
-  DomainLeaderboardV3,
-  DomainRoundStatus,
-  DomainRoundStatusColor,
-  DomainTournament,
-  DomainTournamentStatus,
-} from "../generated/graphql";
+  LeaderboardHoleByHole,
+  LeaderboardV3,
+  RoundStatus,
+  RoundStatusColor,
+  Tournament,
+  TournamentStatus,
+} from "@putting-pals/putting-pals-api";
 
-export type TournamentSnapshot = DomainTournament;
+export type TournamentSnapshot = Tournament;
 
 export const LeaderboardSnapshotHash = "f048028d" as const;
 export const LeaderboardSnapshotVersion = 1 as const;
 
 export type LeaderboardSnapshot = {
-  tournament: DomainTournament;
-  leaderboard: DomainLeaderboardV3;
-  leaderboardHoleByHole: DomainLeaderboardHoleByHole;
+  tournament: Tournament;
+  leaderboard: LeaderboardV3;
+  leaderboardHoleByHole: LeaderboardHoleByHole;
 };
 
 type Event<TName extends string, T> = {
@@ -32,8 +32,8 @@ export type RoundStatusChangedV1 = ChangeEvent<
   "RoundStatusChangedV1",
   {
     roundDisplay: string;
-    roundStatus: DomainRoundStatus;
-    roundStatusColor: DomainRoundStatusColor;
+    roundStatus: RoundStatus;
+    roundStatusColor: RoundStatusColor;
     roundStatusDisplay: string;
   }
 >;
@@ -41,7 +41,7 @@ export type RoundStatusChangedV1 = ChangeEvent<
 export type TournamentStatusChangedV1 = ChangeEvent<
   "TournamentStatusChangedV1",
   {
-    tournamentStatus: DomainTournamentStatus;
+    tournamentStatus: TournamentStatus;
   }
 >;
 

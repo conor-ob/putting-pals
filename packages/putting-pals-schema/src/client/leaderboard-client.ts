@@ -1,13 +1,13 @@
 import type {
-  DomainLeaderboardHoleByHole,
-  DomainLeaderboardV3,
-} from "../generated/graphql";
+  LeaderboardHoleByHole,
+  LeaderboardV3,
+} from "@putting-pals/putting-pals-api";
 
 export interface LeaderboardClient {
-  getLeaderboard(id: string): Promise<DomainLeaderboardV3>;
+  getLeaderboard(id: string): Promise<LeaderboardV3>;
 
   getLeaderboardHoleByHole(
     id: string,
     round: number,
-  ): Promise<DomainLeaderboardHoleByHole>;
+  ): Promise<LeaderboardHoleByHole>;
 }
