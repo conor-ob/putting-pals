@@ -1,11 +1,11 @@
 import type {
-  DomainPlayerState,
   LeaderboardSnapshot,
-} from "@putting-pals/putting-pals-schema";
+  PlayerState,
+} from "@putting-pals/putting-pals-api";
 import { AbstractEventEmitter } from "../event-emitter";
 
 export abstract class PlayerStateChanged extends AbstractEventEmitter {
-  protected getPlayersStateChanged(playerState: DomainPlayerState) {
+  protected getPlayersStateChanged(playerState: PlayerState) {
     const playersWithExpectedState = this.getPlayers(this.after).filter(
       (player) => player.scoringData.playerState === playerState,
     );

@@ -2,7 +2,7 @@ import type {
   Competition,
   CompetitionRepository,
   CompetitionService,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { NotFoundError } from "../utils/service-error";
 
 export class CompetitionServiceImpl implements CompetitionService {

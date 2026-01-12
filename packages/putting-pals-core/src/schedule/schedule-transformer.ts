@@ -1,11 +1,11 @@
 import type {
-  DomainSchedule,
-  DomainScheduleMonth,
-  DomainScheduleTournament,
-} from "@putting-pals/putting-pals-schema";
+  Schedule,
+  ScheduleMonth,
+  ScheduleTournament,
+} from "@putting-pals/putting-pals-api";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
-export function transformSchedule(schedule: DomainSchedule): DomainSchedule {
+export function transformSchedule(schedule: Schedule): Schedule {
   return {
     ...schedule,
     completed: schedule.completed.map(transformScheduleMonth),
@@ -14,17 +14,15 @@ export function transformSchedule(schedule: DomainSchedule): DomainSchedule {
 }
 
 export function transformScheduleTournament(
-  tournament: DomainScheduleTournament,
-): DomainScheduleTournament {
+  tournament: ScheduleTournament,
+): ScheduleTournament {
   return {
     ...tournament,
     tournamentName: stripParenthesizedYear(tournament.tournamentName),
   };
 }
 
-function transformScheduleMonth(
-  scheduleMonth: DomainScheduleMonth,
-): DomainScheduleMonth {
+function transformScheduleMonth(scheduleMonth: ScheduleMonth): ScheduleMonth {
   return {
     ...scheduleMonth,
     monthSort: scheduleMonth.monthSort ?? 0, // TODO: add default month sort

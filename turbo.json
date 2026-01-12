@@ -6,7 +6,11 @@
       "cache": false
     },
     "codegen": {
-      "outputs": ["src/generated/**"]
+      "outputs": [
+        "src/generated/**",
+        "src/graphql/pga-tour/generated/**",
+        "src/graphql/putting-pals/generated/**"
+      ]
     },
     "db:generate": {
       "outputs": ["drizzle/**"]

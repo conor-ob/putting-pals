@@ -1,0 +1,33 @@
+{
+  "name": "@putting-pals/putting-pals-trpc",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@putting-pals/putting-pals-api": "workspace:*",
+    "@putting-pals/putting-pals-core": "workspace:*",
+    "@putting-pals/putting-pals-utils": "workspace:*",
+    "@trpc/server": "catalog:",
+    "superjson": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

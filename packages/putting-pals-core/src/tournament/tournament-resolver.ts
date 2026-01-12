@@ -1,10 +1,10 @@
 import type {
   CompetitionService,
-  DomainTourCode,
   PgaTourWebScraper,
+  TourCode,
   TournamentClient,
   TournamentResolver,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import {
   NotFoundError,
   UnsupportedTourCodeError,
@@ -22,7 +22,7 @@ export class TournamentResolverImpl implements TournamentResolver {
     this.competitionService = competitionService;
   }
 
-  getCurrentTournamentId(tourCode: DomainTourCode): Promise<string> {
+  getCurrentTournamentId(tourCode: TourCode): Promise<string> {
     switch (tourCode) {
       case "P":
         return this.getCurrentPuttingPalsTournamentId();

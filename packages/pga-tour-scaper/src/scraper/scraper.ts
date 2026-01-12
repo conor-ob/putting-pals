@@ -1,4 +1,4 @@
-import type { PgaTourWebScraper } from "@putting-pals/putting-pals-schema";
+import type { PgaTourWebScraper } from "@putting-pals/putting-pals-api";
 import * as cheerio from "cheerio";
 
 type NextDataProps = {

@@ -1,12 +1,12 @@
 import type {
-  DomainTourCode,
   FeedService,
   LeaderboardEvent,
   LeaderboardFeedRepository,
   LeaderboardService,
+  TourCode,
   TournamentResolver,
   TournamentService,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 
 const PAGE_SIZE = 20;
 
@@ -23,7 +23,7 @@ export class FeedServiceImpl implements FeedService {
     this.leaderboardFeedRepository = leaderboardFeedRepository;
   }
 
-  async getFeed(tourCode: DomainTourCode, id?: string, cursor?: number) {
+  async getFeed(tourCode: TourCode, id?: string, cursor?: number) {
     const tournamentId = await this.resolveTournamentId(tourCode, id);
     const [_tournament, _leaderboard] = await Promise.all([
       this.tournamentService.getTournament(tourCode, tournamentId),
@@ -99,7 +99,7 @@ export class FeedServiceImpl implements FeedService {
   }
 
   private async resolveTournamentId(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     id?: string,
   ): Promise<string> {
     if (id === undefined) {

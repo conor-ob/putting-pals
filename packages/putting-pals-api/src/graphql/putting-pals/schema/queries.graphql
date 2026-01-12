@@ -1,0 +1,16 @@
+query Leaderboard($id: ID!) {
+  leaderboardV3(id: $id) {
+    ...LeaderboardV3Fields
+    players {
+      ...PlayerRowV3Fields
+      ...PuttingPalsPlayerRowFields
+      ...InformationRowFields
+    }
+  }
+}
+
+query Tournament($id: ID!) {
+  tournament(id: $id) {
+    ...TournamentFields
+  }
+}

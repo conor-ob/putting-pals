@@ -1,12 +1,12 @@
 import type {
   CompetitionService,
-  DomainLeaderboardHoleByHole,
-  DomainLeaderboardV3,
-  DomainTourCode,
   LeaderboardClient,
+  LeaderboardHoleByHole,
   LeaderboardService,
+  LeaderboardV3,
+  TourCode,
   TournamentResolver,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { UnsupportedTourCodeError } from "../utils/service-error";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 import { transformLeaderboard } from "./leaderboard-utils";
@@ -23,9 +23,9 @@ export class LeaderboardServiceImpl implements LeaderboardService {
   }
 
   async getLeaderboard(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     id?: string,
-  ): Promise<DomainLeaderboardV3> {
+  ): Promise<LeaderboardV3> {
     const tournamentId = await this.resolveTournamentId(tourCode, id);
     switch (tourCode) {
       case "P":
@@ -40,12 +40,12 @@ export class LeaderboardServiceImpl implements LeaderboardService {
   getLeaderboardHoleByHole(
     id: string,
     round: number,
-  ): Promise<DomainLeaderboardHoleByHole> {
+  ): Promise<LeaderboardHoleByHole> {
     return this.leaderboardClient.getLeaderboardHoleByHole(id, round);
   }
 
   private async resolveTournamentId(
-    tourCode: DomainTourCode,
+    tourCode: TourCode,
     id?: string,
   ): Promise<string> {
     if (id === undefined) {
@@ -56,15 +56,13 @@ export class LeaderboardServiceImpl implements LeaderboardService {
 
   private async getPuttingPalsLeaderboardById(
     id: string,
-  ): Promise<DomainLeaderboardV3> {
+  ): Promise<LeaderboardV3> {
     const competition = this.competitionService.getCompetition(id);
     const pgaTourLeaderboard = await this.getPgaTourLeaderboardById(id);
     return aggregateLeaderboard(pgaTourLeaderboard, competition);
   }
 
-  private async getPgaTourLeaderboardById(
-    id: string,
-  ): Promise<DomainLeaderboardV3> {
+  private async getPgaTourLeaderboardById(id: string): Promise<LeaderboardV3> {
     const leaderboard = await this.leaderboardClient.getLeaderboard(id);
     return transformLeaderboard(leaderboard);
   }

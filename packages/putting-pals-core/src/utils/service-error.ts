@@ -1,4 +1,4 @@
-import type { DomainTourCode } from "@putting-pals/putting-pals-schema";
+import type { TourCode } from "@putting-pals/putting-pals-api";
 
 export type ServiceErrorCode =
   | "INTERNAL_SERVER_ERROR"
@@ -33,7 +33,7 @@ export class NotImplementedError extends ServiceError {
 }
 
 export class UnsupportedTourCodeError extends ServiceError {
-  constructor(tourCode: DomainTourCode) {
+  constructor(tourCode: TourCode) {
     super("NOT_IMPLEMENTED", `Unsupported tour code: ${tourCode}`);
   }
 }

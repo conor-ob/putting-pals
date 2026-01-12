@@ -1,7 +1,7 @@
-import type { DomainImageAsset } from "@putting-pals/putting-pals-schema";
+import type { ImageAsset } from "@putting-pals/putting-pals-api";
 
 export function getImageUrl(
-  imageAsset: DomainImageAsset,
+  imageAsset: ImageAsset,
   imageFormat: "jpg" | "png",
   imageAdjustment?: string,
 ): string {

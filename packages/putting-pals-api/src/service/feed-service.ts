@@ -1,0 +1,23 @@
+import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { LeaderboardEvent } from "../event/types";
+
+export interface FeedService {
+  getFeed(
+    tourCode: TourCode,
+    id?: string,
+    cursor?: number,
+  ): Promise<{
+    items: {
+      seq: number;
+      type: string;
+      feedItem: LeaderboardEvent;
+      tourCode: TourCode;
+      tournamentId: string;
+      createdAt: Date;
+      updatedAt: Date;
+      deletedAt: Date | null;
+      id: string;
+    }[];
+    nextCursor?: number;
+  }>;
+}

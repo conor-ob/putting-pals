@@ -1,0 +1,452 @@
+fragment LeaderboardV3Fields on LeaderboardV3 {
+  id
+  tournamentId
+  leaderboardRoundHeader
+  formatType
+  timezone
+  winner {
+    id
+    firstName
+    lastName
+    totalStrokes
+    totalScore
+    countryFlag
+    countryName
+    purse
+    displayPoints
+    displayPurse
+    points
+    seed
+    pointsLabel
+    winnerIcon {
+      type
+      title
+      label
+      color
+    }
+    roundScores {
+      label
+      total
+    }
+  }
+  winners {
+    id
+    firstName
+    lastName
+    totalStrokes
+    totalScore
+    countryFlag
+    countryName
+    purse
+    displayPoints
+    displayPurse
+    points
+    seed
+    pointsLabel
+  }
+  courses {
+    id
+    courseName
+    courseCode
+    hostCourse
+    scoringLevel
+    enabled
+    features
+  }
+  messages {
+    messageText
+    messageIcon
+    messageLink
+    webViewLink
+    externalLink
+    platforms
+    timing
+  }
+  tourcastURL
+  tourcastURLWeb
+  tourcastURI
+  tournamentStatus
+  rounds {
+    roundNumber
+    displayText
+  }
+  isPlayoffActive
+  scorecardEnabled
+  profileEnabled
+  subEvent
+  leaderboardFeatures {
+    name
+    new
+    tooltipText
+    tooltipTitle
+    fieldStatType
+    leaderboardFeatures
+    sponsor {
+      sponsorLogo
+      sponsorLogoAsset {
+        imageOrg
+        imagePath
+        assetType
+        deliveryType
+        fallbackImage
+      }
+      sponsorLogoDark
+      sponsorLogoDarkAsset {
+        imageOrg
+        imagePath
+        assetType
+        deliveryType
+        fallbackImage
+      }
+      sponsorText
+    }
+  }
+  standingsEnabled
+  standingsHeader
+  hideSov
+  disableOdds
+  disableBettingProfileColumn
+  cutLineProbabilities {
+    projectedCutLine
+    probableCutLine
+    sponsorLogo {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    sponsorName
+    lastUpdated
+    possibleCutLines {
+      score
+      probability
+      displayProbability
+    }
+    new
+  }
+  disableLeaderboard
+  bubblePill {
+    iconLight {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    iconDark {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    pillText
+  }
+}
+
+fragment PlayerRowV3Fields on PlayerRowV3 {
+  id
+  leaderboardSortOrder
+  player {
+    id
+    firstName
+    lastName
+    shortName
+    displayName
+    abbreviations
+    abbreviationsAccessibilityText
+    amateur
+    country
+    countryFlag
+    lineColor
+    seed
+    status
+    tourBound
+    assets {
+      ... on TourBoundAsset {
+        tourBoundLogo
+        tourBoundLogoDark
+      }
+    }
+    bettingProfile
+    playerBioOverrideLink
+  }
+  scoringData {
+    groupNumber
+    currentRound
+    backNine
+    playerState
+    teeTime
+    totalStrokes
+    totalStrokesSort
+    total
+    totalSort
+    thru
+    thruSort
+    score
+    scoreSort
+    movementDirection
+    movementAmount
+    movementSort
+    position
+    rounds
+    roundDisplaySort
+    roundHeader
+    roundStatus
+    courseId
+    official
+    officialSort
+    projected
+    projectedSort
+    rankingMovement
+    rankingMovementAmount
+    rankingMovementAmountSort
+    rankLogoLight
+    rankLogoDark
+    tooltipText
+    tooltipTitle
+    oddsToWin
+    oddsSwing
+    oddsOptionId
+    oddsSort
+    hasStoryContent
+    storyContentRound
+    storyContentRounds
+    playerIcon
+  }
+}
+
+fragment InformationRowFields on InformationRow {
+  id
+  leaderboardSortOrder
+  displayText
+  mobileDisplayText
+  sponsorName
+}
+
+fragment ScheduleTournamentFields on ScheduleTournament {
+  id
+  date
+  startDate
+  dateAccessibilityText
+  tournamentName
+  tournamentLogo
+  tournamentLogoAsset {
+    imageOrg
+    imagePath
+    assetType
+    deliveryType
+    fallbackImage
+  }
+  city
+  state
+  stateCode
+  country
+  countryCode
+  courseName
+  champion
+  championId
+  champions {
+    displayName
+    playerId
+  }
+  championEarnings
+  beautyImage
+  beautyImageAsset {
+    imageOrg
+    imagePath
+    assetType
+    deliveryType
+    fallbackImage
+  }
+  status {
+    roundStatusDisplay
+    roundDisplay
+    roundStatus
+    roundStatusColor
+    leaderboardTakeover
+  }
+  tournamentStatus
+  sortDate
+  sequenceNumber
+  purse
+  ticketsURL
+  tourStandingHeading
+  tourStandingValue
+  display
+  tournamentCategoryInfo {
+    type
+    logoLight
+    logoLightAsset {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    logoDark
+    logoDarkAsset {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    label
+  }
+  ticketmasterApiKey
+  ticketmasterAttractionId
+  androidTicketmasterApiKey
+  androidTicketmasterScheme
+  iosTicketmasterApiKey
+  ticketsEnabled
+  tournamentSiteURL
+  useTournamentSiteURL
+}
+
+fragment ScheduleMonthFields on ScheduleMonth {
+  year
+  month
+  monthSort
+  tournaments {
+    ...ScheduleTournamentFields
+  }
+}
+
+fragment ScheduleFields on Schedule {
+  tour
+  seasonYear
+  completed {
+    ...ScheduleMonthFields
+  }
+  upcoming {
+    ...ScheduleMonthFields
+  }
+  filters {
+    type
+    name
+  }
+}
+
+fragment TournamentFields on Tournament {
+  id
+  tournamentName
+  tournamentLogo
+  tournamentLogoAsset {
+    imageOrg
+    imagePath
+    assetType
+    deliveryType
+    fallbackImage
+  }
+  tournamentLocation
+  tournamentStatus
+  features
+  formatType
+  roundStatusDisplay
+  roundDisplay
+  roundStatus
+  roundStatusColor
+  leaderboardTakeover
+  currentRound
+  timezone
+  seasonYear
+  displayDate
+  country
+  state
+  city
+  scoredLevel
+  events {
+    id
+    eventName
+    leaderboardId
+  }
+  courses {
+    id
+    courseName
+    courseCode
+    hostCourse
+    scoringLevel
+    enabled
+    features
+  }
+  weather {
+    logo
+    logoAsset {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    logoDark
+    logoDarkAsset {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    logoAccessibility
+    tempF
+    tempC
+    condition
+    windDirection
+    windSpeedMPH
+    windSpeedKPH
+    precipitation
+    humidity
+  }
+  ticketsURL
+  tournamentSiteURL
+  useTournamentSiteURL
+  pdfUrl
+  conductedByLabel
+  conductedByLink
+  beautyImage
+  beautyImageAsset {
+    imageOrg
+    imagePath
+    assetType
+    deliveryType
+    fallbackImage
+  }
+  shouldSubscribe
+  infoPath
+  infoPathWebview
+  howItWorks
+  howItWorksPill
+  howItWorksWebview
+  hideRolexClock
+  hideSov
+  ticketsEnabled
+  headshotBaseUrl
+  rightRailConfig {
+    imageUrl
+    imageAltText
+    buttonLink
+    buttonText
+  }
+  tournamentCategoryInfo {
+    type
+    logoLight
+    logoLightAsset {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    logoDark
+    logoDarkAsset {
+      imageOrg
+      imagePath
+      assetType
+      deliveryType
+      fallbackImage
+    }
+    label
+  }
+  disabledScorecardTabs
+}

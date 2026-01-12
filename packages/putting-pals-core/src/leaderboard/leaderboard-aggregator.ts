@@ -1,16 +1,16 @@
 import type {
   Competition,
-  DomainLeaderboardV3,
-  DomainPlayerRowV3,
-  DomainPuttingPalsPlayerRowV3,
-  DomainPuttingPalsPlayerScoringDataV3,
-  DomainPuttingPalsPlayerV3,
-} from "@putting-pals/putting-pals-schema";
+  LeaderboardV3,
+  PlayerRowV3,
+  PuttingPalsPlayer,
+  PuttingPalsPlayerRow,
+  PuttingPalsPlayerScoringData,
+} from "@putting-pals/putting-pals-api";
 
 export function aggregateLeaderboard(
-  leaderboard: DomainLeaderboardV3,
+  leaderboard: LeaderboardV3,
   competition: Competition,
-): DomainLeaderboardV3 {
+): LeaderboardV3 {
   const competitors = competition.competitors
     .map((competitor) => {
       const playerRows = leaderboard.players.filter(
@@ -100,24 +100,24 @@ export function aggregateLeaderboard(
   const rows = aggregatedCompetitors
     .flatMap((competitor) => [
       {
-        __typename: "PuttingPalsPlayerRowV3" as const,
+        __typename: "PuttingPalsPlayerRow" as const,
         id: competitor.id,
         leaderboardSortOrder: 0,
         player: {
-          __typename: "PuttingPalsPlayerV3" as const,
+          __typename: "PuttingPalsPlayer" as const,
           countryFlag: competitor.countryFlag,
           displayName: competitor.displayName,
           id: competitor.id,
           shortName: competitor.shortName,
-        } satisfies DomainPuttingPalsPlayerV3,
+        } satisfies PuttingPalsPlayer,
         scoringData: {
-          __typename: "PuttingPalsPlayerScoringDataV3" as const,
+          __typename: "PuttingPalsPlayerScoringData" as const,
           position: competitor.position,
           total: competitor.total,
           totalSort: competitor.totalSort,
-        } satisfies DomainPuttingPalsPlayerScoringDataV3,
+        } satisfies PuttingPalsPlayerScoringData,
         picks: competitor.picks.map((pick) => pick.player.id),
-      } satisfies DomainPuttingPalsPlayerRowV3,
+      } satisfies PuttingPalsPlayerRow,
       ...competitor.picks.map((pick) => ({
         ...pick,
         id: `${competitor.id}-${pick.id}`,
@@ -155,15 +155,15 @@ function applyScoringRules({
   scoringRules,
 }: {
   picks: Extract<
-    DomainLeaderboardV3["players"][number],
+    LeaderboardV3["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   allPicks: Extract<
-    DomainLeaderboardV3["players"][number],
+    LeaderboardV3["players"][number],
     { __typename: "PlayerRowV3" }
   >[];
   scoringRules?: string;
-}): DomainPlayerRowV3[] {
+}): PlayerRowV3[] {
   if (scoringRules === "MISSED_CUT") {
     return picks.map((playerRow) => {
       if (

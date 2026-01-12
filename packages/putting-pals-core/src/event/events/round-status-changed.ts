@@ -1,7 +1,7 @@
 import type {
   LeaderboardEvent,
   RoundStatusChangedV1,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { assertNever } from "@putting-pals/putting-pals-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 

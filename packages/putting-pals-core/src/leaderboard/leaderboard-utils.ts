@@ -1,9 +1,9 @@
-import type { DomainLeaderboardV3 } from "@putting-pals/putting-pals-schema";
+import type { LeaderboardV3 } from "@putting-pals/putting-pals-api";
 import { getCountryFlag } from "./leaderboard-flag-utils";
 
 export function transformLeaderboard(
-  leaderboard: DomainLeaderboardV3,
-): DomainLeaderboardV3 {
+  leaderboard: LeaderboardV3,
+): LeaderboardV3 {
   return {
     ...leaderboard,
     players: leaderboard.players.flatMap((row) => {
