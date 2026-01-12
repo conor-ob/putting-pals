@@ -2,7 +2,7 @@ import {
   LeaderboardGraphQlClient,
   ScheduleGraphQlClient,
   TournamentGraphQlClient,
-} from "@putting-pals/pga-tour-api";
+} from "@putting-pals/pga-tour-graphql";
 import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
 import {
   CompetitionServiceImpl,

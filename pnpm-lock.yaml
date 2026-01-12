@@ -245,9 +245,9 @@ importers:
       '@mgcrea/pino-pretty-compact':
         specifier: ^1.4.2
         version: 1.4.2
-      '@putting-pals/pga-tour-api':
+      '@putting-pals/pga-tour-graphql':
         specifier: workspace:*
-        version: link:../../packages/pga-tour-api
+        version: link:../../packages/pga-tour-graphql
       '@putting-pals/pga-tour-scaper':
         specifier: workspace:*
         version: link:../../packages/pga-tour-scaper
@@ -307,11 +307,11 @@ importers:
         specifier: 'catalog:'
         version: 4.0.17(@types/node@24.10.7)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
 
-  packages/pga-tour-api:
+  packages/pga-tour-graphql:
     dependencies:
-      '@putting-pals/pga-tour-schema':
+      '@putting-pals/putting-pals-api':
         specifier: workspace:*
-        version: link:../pga-tour-schema
+        version: link:../putting-pals-api
       graphql:
         specifier: 'catalog:'
         version: 16.12.0
@@ -347,43 +347,6 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 24.10.7
-      typescript:
-        specifier: 'catalog:'
-        version: 5.9.3
-
-  packages/pga-tour-schema:
-    dependencies:
-      graphql:
-        specifier: 'catalog:'
-        version: 16.12.0
-      graphql-request:
-        specifier: 'catalog:'
-        version: 7.4.0(graphql@16.12.0)
-    devDependencies:
-      '@graphql-codegen/cli':
-        specifier: 'catalog:'
-        version: 6.1.1(@types/node@24.10.7)(graphql@16.12.0)(typescript@5.9.3)
-      '@graphql-codegen/client-preset':
-        specifier: ^5.2.2
-        version: 5.2.2(graphql@16.12.0)
-      '@graphql-codegen/typescript':
-        specifier: 'catalog:'
-        version: 5.0.7(graphql@16.12.0)
-      '@graphql-codegen/typescript-graphql-request':
-        specifier: ^6.4.0
-        version: 6.4.0(graphql-request@7.4.0(graphql@16.12.0))(graphql-tag@2.12.6(graphql@16.12.0))(graphql@16.12.0)
-      '@graphql-codegen/typescript-operations':
-        specifier: ^5.0.7
-        version: 5.0.7(graphql@16.12.0)
-      '@total-typescript/tsconfig':
-        specifier: 'catalog:'
-        version: 1.0.4
-      '@types/node':
-        specifier: 'catalog:'
-        version: 24.10.7
-      graphql-tag:
-        specifier: ^2.12.6
-        version: 2.12.6(graphql@16.12.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -10670,7 +10633,7 @@ snapshots:
 
   '@types/pg@8.16.0':
     dependencies:
-      '@types/node': 24.10.7
+      '@types/node': 25.0.6
       pg-protocol: 1.10.3
       pg-types: 2.2.0
 
@@ -10686,7 +10649,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 24.10.7
+      '@types/node': 25.0.6
 
   '@types/yargs-parser@21.0.3': {}
 

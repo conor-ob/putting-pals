@@ -1,5 +1,5 @@
 {
-  "name": "@putting-pals/pga-tour-api",
+  "name": "@putting-pals/pga-tour-graphql",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@putting-pals/pga-tour-schema": "workspace:*",
+    "@putting-pals/putting-pals-api": "workspace:*",
     "graphql": "catalog:",
     "graphql-request": "catalog:"
   },
