@@ -1,7 +1,7 @@
 import type {
   LeaderboardEvent,
   PlayerMissedCutV1,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { EventPriority } from "../event-emitter";
 import { PlayerStateChanged } from "./player-state-changed";
 

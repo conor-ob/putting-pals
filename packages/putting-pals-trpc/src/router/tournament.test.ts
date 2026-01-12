@@ -6,7 +6,7 @@ import type {
   ScheduleService,
   ScheduleYearsService,
   TournamentService,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { TRPCError } from "@trpc/server";
 import { expect, suite, test, vi } from "vitest";
 import { ZodError } from "zod";

@@ -21,7 +21,6 @@
     "graphql-request": "catalog:"
   },
   "devDependencies": {
-    "@putting-pals/putting-pals-schema": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:"

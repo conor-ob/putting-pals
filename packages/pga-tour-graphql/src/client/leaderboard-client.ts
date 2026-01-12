@@ -1,8 +1,8 @@
 import type {
+  LeaderboardClient,
   LeaderboardHoleByHole,
   LeaderboardV3,
 } from "@putting-pals/putting-pals-api";
-import type { LeaderboardClient } from "@putting-pals/putting-pals-schema";
 import { GraphQlClient } from "./graphql-client";
 
 export class LeaderboardGraphQlClient

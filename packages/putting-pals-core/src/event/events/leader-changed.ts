@@ -2,7 +2,7 @@ import type {
   LeaderboardEvent,
   LeaderboardSnapshot,
   LeaderChangedV1,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { UnsupportedTourCodeError } from "../../utils/service-error";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 

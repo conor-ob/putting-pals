@@ -1,4 +1,4 @@
-import type { Competition } from "..";
+import type { Competition } from "../data/types";
 
 export interface CompetitionRepository {
   getCompetition(id: string): Competition | undefined;

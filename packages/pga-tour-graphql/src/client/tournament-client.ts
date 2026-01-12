@@ -1,5 +1,7 @@
-import type { Tournament } from "@putting-pals/putting-pals-api";
-import type { TournamentClient } from "@putting-pals/putting-pals-schema";
+import type {
+  Tournament,
+  TournamentClient,
+} from "@putting-pals/putting-pals-api";
 import { GraphQlClient } from "./graphql-client";
 
 export class TournamentGraphQlClient

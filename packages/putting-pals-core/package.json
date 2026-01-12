@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@putting-pals/putting-pals-api": "workspace:*",
-    "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
     "date-fns": "^4.1.0"
   },

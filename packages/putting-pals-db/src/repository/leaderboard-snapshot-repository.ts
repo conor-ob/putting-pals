@@ -3,7 +3,7 @@ import {
   type LeaderboardSnapshot,
   type LeaderboardSnapshotRepository,
   LeaderboardSnapshotVersion,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { and, desc, eq } from "drizzle-orm";
 import { leaderboardSnapshotTable } from "../db/schema";
 import type { Database } from "../index";

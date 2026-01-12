@@ -1,10 +1,10 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
   CompetitionService,
   PgaTourWebScraper,
+  TourCode,
   TournamentClient,
   TournamentResolver,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import {
   NotFoundError,
   UnsupportedTourCodeError,

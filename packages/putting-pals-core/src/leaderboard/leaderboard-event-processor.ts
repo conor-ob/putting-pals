@@ -1,4 +1,3 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
   LeaderboardEvent,
   LeaderboardEventProcessor,
@@ -6,9 +5,10 @@ import type {
   LeaderboardService,
   LeaderboardSnapshot,
   LeaderboardSnapshotRepository,
+  TourCode,
   TournamentResolver,
   TournamentService,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import type { EventEmitter } from "../event/event-emitter";
 import { BirdieStreak } from "../event/events/birdie-streak";
 import { LeaderChanged } from "../event/events/leader-changed";

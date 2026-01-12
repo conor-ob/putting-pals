@@ -1,12 +1,12 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
   FeedService,
   LeaderboardEvent,
   LeaderboardFeedRepository,
   LeaderboardService,
+  TourCode,
   TournamentResolver,
   TournamentService,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 
 const PAGE_SIZE = 20;
 

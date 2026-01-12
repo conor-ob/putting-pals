@@ -1,9 +1,10 @@
-import type { TourCode, Tournament } from "@putting-pals/putting-pals-api";
 import type {
+  TourCode,
+  Tournament,
   TournamentClient,
   TournamentResolver,
   TournamentService,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { NotFoundError } from "../utils/service-error";
 import { transformTournament } from "./tournament-utils";
 

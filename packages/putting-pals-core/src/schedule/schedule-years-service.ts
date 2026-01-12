@@ -1,14 +1,12 @@
 import type {
-  ScheduleYears,
-  TourCode,
-  Tournament,
-} from "@putting-pals/putting-pals-api";
-import type {
   CompetitionService,
   ScheduleClient,
+  ScheduleYears,
   ScheduleYearsService,
+  TourCode,
+  Tournament,
   TournamentService,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { parseISO } from "date-fns";
 import { parseStartDate } from "../tournament/tournament-utils";
 import { UnsupportedTourCodeError } from "../utils/service-error";

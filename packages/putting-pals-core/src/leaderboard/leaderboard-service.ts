@@ -1,14 +1,12 @@
 import type {
-  LeaderboardHoleByHole,
-  LeaderboardV3,
-  TourCode,
-} from "@putting-pals/putting-pals-api";
-import type {
   CompetitionService,
   LeaderboardClient,
+  LeaderboardHoleByHole,
   LeaderboardService,
+  LeaderboardV3,
+  TourCode,
   TournamentResolver,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { UnsupportedTourCodeError } from "../utils/service-error";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 import { transformLeaderboard } from "./leaderboard-utils";

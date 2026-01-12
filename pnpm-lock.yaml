@@ -319,9 +319,6 @@ importers:
         specifier: 'catalog:'
         version: 7.4.0(graphql@16.12.0)
     devDependencies:
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
@@ -334,9 +331,9 @@ importers:
 
   packages/pga-tour-scaper:
     dependencies:
-      '@putting-pals/putting-pals-schema':
+      '@putting-pals/putting-pals-api':
         specifier: workspace:*
-        version: link:../putting-pals-schema
+        version: link:../putting-pals-api
       cheerio:
         specifier: ^1.1.2
         version: 1.1.2
@@ -411,9 +408,6 @@ importers:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*
         version: link:../putting-pals-api
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
@@ -439,9 +433,9 @@ importers:
 
   packages/putting-pals-data:
     dependencies:
-      '@putting-pals/putting-pals-schema':
+      '@putting-pals/putting-pals-api':
         specifier: workspace:*
-        version: link:../putting-pals-schema
+        version: link:../putting-pals-api
     devDependencies:
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
@@ -458,9 +452,6 @@ importers:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*
         version: link:../putting-pals-api
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
@@ -493,36 +484,14 @@ importers:
         specifier: 'catalog:'
         version: 5.9.3
 
-  packages/putting-pals-schema:
+  packages/putting-pals-trpc:
     dependencies:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*
         version: link:../putting-pals-api
-      zod:
-        specifier: 'catalog:'
-        version: 4.3.5
-    devDependencies:
-      '@total-typescript/tsconfig':
-        specifier: 'catalog:'
-        version: 1.0.4
-      '@types/node':
-        specifier: 'catalog:'
-        version: 24.10.7
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: 'catalog:'
-        version: 5.9.3
-
-  packages/putting-pals-trpc:
-    dependencies:
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
@@ -10636,7 +10605,7 @@ snapshots:
 
   '@types/pg@8.16.0':
     dependencies:
-      '@types/node': 25.0.6
+      '@types/node': 24.10.7
       pg-protocol: 1.10.3
       pg-types: 2.2.0
 
@@ -10652,7 +10621,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 25.0.6
+      '@types/node': 24.10.7
 
   '@types/yargs-parser@21.0.3': {}
 

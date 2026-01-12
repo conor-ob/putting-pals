@@ -2,7 +2,7 @@ import type {
   CompetitionService,
   Competitor,
   TournamentService,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 
 export class StatsService {
   constructor(

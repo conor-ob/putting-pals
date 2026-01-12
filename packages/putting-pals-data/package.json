@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-schema": "workspace:*"
+    "@putting-pals/putting-pals-api": "workspace:*"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",

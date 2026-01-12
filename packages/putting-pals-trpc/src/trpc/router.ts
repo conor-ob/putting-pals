@@ -15,7 +15,7 @@ import type {
   ScheduleService,
   ScheduleYearsService,
   TournamentService,
-} from "@putting-pals/putting-pals-schema";
+} from "@putting-pals/putting-pals-api";
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import z, { ZodError } from "zod";

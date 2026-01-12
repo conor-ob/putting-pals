@@ -1,8 +1,8 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
   LeaderboardEvent,
   LeaderboardSnapshot,
-} from "@putting-pals/putting-pals-schema";
+  TourCode,
+} from "@putting-pals/putting-pals-api";
 
 export interface EventEmitter {
   emit(): LeaderboardEvent[];
