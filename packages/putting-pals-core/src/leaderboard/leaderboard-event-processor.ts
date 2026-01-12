@@ -164,7 +164,7 @@ export class LeaderboardEventProcessorImpl
       LeaderboardDocument,
       {
         __typename: "Query",
-        leaderboardV3: { ...leaderboard, formatType: "TEAM_CUP" },
+        leaderboardV3: leaderboard,
       },
       { id: leaderboard.id },
     );
