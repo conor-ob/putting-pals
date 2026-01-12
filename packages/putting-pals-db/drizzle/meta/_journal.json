@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1767601968741,
-      "tag": "0000_abnormal_skreet",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1768009367740,
-      "tag": "0001_romantic_captain_marvel",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1768255231055,
-      "tag": "0002_long_master_chief",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1768256262951,
-      "tag": "0003_gifted_doctor_strange",
+      "when": 1768261028765,
+      "tag": "0000_sad_princess_powerful",
       "breakpoints": true
     }
   ]

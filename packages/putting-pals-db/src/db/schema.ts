@@ -89,15 +89,15 @@ export const tournamentAggregateTable = pgTable(
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
-    seq: serial("seq").notNull(),
+    patchSeq: integer("patch_seq").notNull().default(0),
     aggregate: jsonb("aggregate").notNull().$type<object>(),
   },
   (table) => [
-    uniqueIndex("tournament_aggregate_tournament_idx").on(
+    index("tournament_aggregate_tournament_idx").on(
       table.tourCode,
       table.tournamentId,
     ),
-    index("tournament_aggregate_seq_idx").on(table.seq),
+    index("tournament_aggregate_patch_seq_idx").on(table.patchSeq),
   ],
 );
 
@@ -107,15 +107,15 @@ export const leaderboardAggregateTable = pgTable(
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
-    seq: serial("seq").notNull(),
+    patchSeq: integer("patch_seq").notNull().default(0),
     aggregate: jsonb("aggregate").notNull().$type<object>(),
   },
   (table) => [
-    uniqueIndex("leaderboard_aggregate_tournament_idx").on(
+    index("leaderboard_aggregate_tournament_idx").on(
       table.tourCode,
       table.tournamentId,
     ),
-    index("leaderboard_aggregate_seq_idx").on(table.seq),
+    index("leaderboard_aggregate_patch_seq_idx").on(table.patchSeq),
   ],
 );
 

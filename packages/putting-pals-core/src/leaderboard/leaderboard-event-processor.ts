@@ -1,4 +1,5 @@
 import {
+  type AggregateWithPatchSeq,
   type LeaderboardAggregateRepository,
   LeaderboardDocument,
   type LeaderboardEventProcessor,
@@ -11,6 +12,8 @@ import {
   type TournamentService,
 } from "@putting-pals/putting-pals-api";
 import patch from "fast-json-patch";
+
+const MAX_PATCH_COUNT = 100;
 
 export class LeaderboardEventProcessorImpl
   implements LeaderboardEventProcessor
@@ -56,10 +59,11 @@ export class LeaderboardEventProcessorImpl
         await this.tournamentAggregateRepository.getTournamentPatches(
           tourCode,
           tournamentId,
+          baseTournamentAggregate.patchSeq,
         );
 
       const materializedTournamentAggregate = patch.applyPatch(
-        structuredClone(baseTournamentAggregate),
+        structuredClone(baseTournamentAggregate.aggregate),
         tournamentPatches,
         false,
       ).newDocument;
@@ -73,6 +77,12 @@ export class LeaderboardEventProcessorImpl
           tourCode,
           tournamentId,
           diff,
+        );
+
+        await this.maybeCompactTournamentAggregate(
+          tourCode,
+          tournamentId,
+          baseTournamentAggregate.patchSeq,
         );
       }
     }
@@ -88,10 +98,11 @@ export class LeaderboardEventProcessorImpl
         await this.leaderboardAggregateRepository.getLeaderboardPatches(
           tourCode,
           tournamentId,
+          baseLeaderboardAggregate.patchSeq,
         );
 
       const materializedLeaderboardAggregate = patch.applyPatch(
-        structuredClone(baseLeaderboardAggregate),
+        structuredClone(baseLeaderboardAggregate.aggregate),
         leaderboardPatches,
         false,
       ).newDocument;
@@ -106,14 +117,126 @@ export class LeaderboardEventProcessorImpl
           tournamentId,
           diff,
         );
+
+        await this.maybeCompactLeaderboardAggregate(
+          tourCode,
+          tournamentId,
+          baseLeaderboardAggregate.patchSeq,
+        );
       }
     }
+  }
+
+  private async maybeCompactTournamentAggregate(
+    tourCode: TourCode,
+    tournamentId: string,
+    currentPatchSeq: number,
+  ): Promise<void> {
+    const patchCount =
+      await this.tournamentAggregateRepository.getTournamentPatchCount(
+        tourCode,
+        tournamentId,
+        currentPatchSeq,
+      );
+
+    if (patchCount < MAX_PATCH_COUNT) {
+      return;
+    }
+
+    const baseAggregate =
+      await this.tournamentAggregateRepository.getTournamentAggregate(
+        tourCode,
+        tournamentId,
+      );
+
+    if (!baseAggregate) {
+      return;
+    }
+
+    const patches =
+      await this.tournamentAggregateRepository.getTournamentPatches(
+        tourCode,
+        tournamentId,
+        baseAggregate.patchSeq,
+      );
+
+    const compactedAggregate = patch.applyPatch(
+      structuredClone(baseAggregate.aggregate),
+      patches,
+      false,
+    ).newDocument;
+
+    const maxPatchSeq =
+      await this.tournamentAggregateRepository.getMaxTournamentPatchSeq(
+        tourCode,
+        tournamentId,
+      );
+
+    await this.tournamentAggregateRepository.createTournamentAggregate(
+      tourCode,
+      tournamentId,
+      compactedAggregate,
+      maxPatchSeq,
+    );
+  }
+
+  private async maybeCompactLeaderboardAggregate(
+    tourCode: TourCode,
+    tournamentId: string,
+    currentPatchSeq: number,
+  ): Promise<void> {
+    const patchCount =
+      await this.leaderboardAggregateRepository.getLeaderboardPatchCount(
+        tourCode,
+        tournamentId,
+        currentPatchSeq,
+      );
+
+    if (patchCount < MAX_PATCH_COUNT) {
+      return;
+    }
+
+    const baseAggregate =
+      await this.leaderboardAggregateRepository.getLeaderboardAggregate(
+        tourCode,
+        tournamentId,
+      );
+
+    if (!baseAggregate) {
+      return;
+    }
+
+    const patches =
+      await this.leaderboardAggregateRepository.getLeaderboardPatches(
+        tourCode,
+        tournamentId,
+        baseAggregate.patchSeq,
+      );
+
+    const compactedAggregate = patch.applyPatch(
+      structuredClone(baseAggregate.aggregate),
+      patches,
+      false,
+    ).newDocument;
+
+    const maxPatchSeq =
+      await this.leaderboardAggregateRepository.getMaxLeaderboardPatchSeq(
+        tourCode,
+        tournamentId,
+      );
+
+    await this.leaderboardAggregateRepository.createLeaderboardAggregate(
+      tourCode,
+      tournamentId,
+      compactedAggregate,
+      maxPatchSeq,
+    );
   }
 
   private async getBaseTournamentAggregate(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<object | undefined> {
+  ): Promise<AggregateWithPatchSeq | undefined> {
     return this.tournamentAggregateRepository.getTournamentAggregate(
       tourCode,
       tournamentId,
@@ -123,7 +246,7 @@ export class LeaderboardEventProcessorImpl
   private async getBaseLeaderboardAggregate(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<object | undefined> {
+  ): Promise<AggregateWithPatchSeq | undefined> {
     return this.leaderboardAggregateRepository.getLeaderboardAggregate(
       tourCode,
       tournamentId,

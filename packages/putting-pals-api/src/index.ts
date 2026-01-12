@@ -15,7 +15,10 @@ export * from "./graphql/putting-pals/generated/graphql";
 export type { Normalizer } from "./normalize/normalizer";
 
 export type { CompetitionRepository } from "./repository/competition-repository";
-export type { LeaderboardAggregateRepository } from "./repository/leaderboard-aggregate-repository";
+export type {
+  AggregateWithPatchSeq,
+  LeaderboardAggregateRepository,
+} from "./repository/leaderboard-aggregate-repository";
 export type { LeaderboardFeedRepository } from "./repository/leaderboard-feed-repository";
 export type { LeaderboardSnapshotRepository } from "./repository/leaderboard-snapshot-repository";
 export type { TournamentAggregateRepository } from "./repository/tournament-aggregate-repository";

@@ -1,8 +1,9 @@
 import type {
+  AggregateWithPatchSeq,
   LeaderboardAggregateRepository,
   TourCode,
 } from "@putting-pals/putting-pals-api";
-import { and, asc, eq } from "drizzle-orm";
+import { and, asc, count, desc, eq, gt, max } from "drizzle-orm";
 import type { Operation } from "fast-json-patch";
 import {
   leaderboardAggregatePatchTable,
@@ -20,9 +21,12 @@ export class LeaderboardAggregatePostgresRepository
   async getLeaderboardAggregate(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<object | undefined> {
+  ): Promise<AggregateWithPatchSeq | undefined> {
     return this.db
-      .select({ aggregate: leaderboardAggregateTable.aggregate })
+      .select({
+        aggregate: leaderboardAggregateTable.aggregate,
+        patchSeq: leaderboardAggregateTable.patchSeq,
+      })
       .from(leaderboardAggregateTable)
       .where(
         and(
@@ -30,25 +34,29 @@ export class LeaderboardAggregatePostgresRepository
           eq(leaderboardAggregateTable.tournamentId, tournamentId),
         ),
       )
+      .orderBy(desc(leaderboardAggregateTable.patchSeq))
       .limit(1)
-      .then(([result]) => result?.aggregate);
+      .then(([result]) => result);
   }
 
   async createLeaderboardAggregate(
     tourCode: TourCode,
     tournamentId: string,
     aggregate: object,
+    patchSeq = 0,
   ): Promise<void> {
     await this.db.insert(leaderboardAggregateTable).values({
       tourCode,
       tournamentId,
       aggregate,
+      patchSeq,
     });
   }
 
   async getLeaderboardPatches(
     tourCode: TourCode,
     tournamentId: string,
+    afterSeq: number,
   ): Promise<Operation[]> {
     return this.db
       .select({ patch: leaderboardAggregatePatchTable.patch })
@@ -57,10 +65,45 @@ export class LeaderboardAggregatePostgresRepository
         and(
           eq(leaderboardAggregatePatchTable.tourCode, tourCode),
           eq(leaderboardAggregatePatchTable.tournamentId, tournamentId),
+          gt(leaderboardAggregatePatchTable.seq, afterSeq),
         ),
       )
       .orderBy(asc(leaderboardAggregatePatchTable.seq))
       .then((results) => results.flatMap((result) => result.patch));
+  }
+
+  async getLeaderboardPatchCount(
+    tourCode: TourCode,
+    tournamentId: string,
+    afterSeq: number,
+  ): Promise<number> {
+    const result = await this.db
+      .select({ count: count() })
+      .from(leaderboardAggregatePatchTable)
+      .where(
+        and(
+          eq(leaderboardAggregatePatchTable.tourCode, tourCode),
+          eq(leaderboardAggregatePatchTable.tournamentId, tournamentId),
+          gt(leaderboardAggregatePatchTable.seq, afterSeq),
+        ),
+      );
+    return result[0]?.count ?? 0;
+  }
+
+  async getMaxLeaderboardPatchSeq(
+    tourCode: TourCode,
+    tournamentId: string,
+  ): Promise<number> {
+    const result = await this.db
+      .select({ maxSeq: max(leaderboardAggregatePatchTable.seq) })
+      .from(leaderboardAggregatePatchTable)
+      .where(
+        and(
+          eq(leaderboardAggregatePatchTable.tourCode, tourCode),
+          eq(leaderboardAggregatePatchTable.tournamentId, tournamentId),
+        ),
+      );
+    return result[0]?.maxSeq ?? 0;
   }
 
   async createLeaderboardPatches(

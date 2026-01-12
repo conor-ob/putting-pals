@@ -18,10 +18,10 @@ async function sendEvent() {
       tourCode: "P",
       type: "leaderboard/detect-change",
     }),
-    // client.event.processEvent.mutate({
-    //   tourCode: "R",
-    //   type: "leaderboard/detect-change",
-    // }),
+    client.event.processEvent.mutate({
+      tourCode: "R",
+      type: "leaderboard/detect-change",
+    }),
   ]);
 }
 
