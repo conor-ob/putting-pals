@@ -1,0 +1,16 @@
+fragment PuttingPalsPlayerRowFields on PuttingPalsPlayerRow {
+  id
+  leaderboardSortOrder
+  player {
+    id
+    countryFlag
+    displayName
+    shortName
+  }
+  scoringData {
+    position
+    total
+    totalSort
+  }
+  picks
+}

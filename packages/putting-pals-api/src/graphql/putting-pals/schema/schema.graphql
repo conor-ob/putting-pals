@@ -24,3 +24,7 @@ extend union LeaderboardRowV3 = PuttingPalsPlayerRow
 extend enum TourCode {
   P
 }
+
+# extend type Query {
+#   tournament(id: ID!): Tournament @client
+# }

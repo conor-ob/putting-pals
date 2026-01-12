@@ -50,3 +50,44 @@ query LeaderboardHoleByHole($tournamentId: ID!, $round: Int) {
     }
   }
 }
+
+query ScheduleYears($tourCode: TourCode!) {
+  scheduleYears(tourCode: $tourCode) {
+    years {
+      default
+      displayValue
+      queryValue
+    }
+  }
+}
+
+query Schedule($tourCode: String!, $year: String) {
+  schedule(tourCode: $tourCode, year: $year) {
+    ...ScheduleFields
+  }
+}
+
+query CompleteSchedule($tourCode: TourCode!) {
+  completeSchedule(tourCode: $tourCode) {
+    ...ScheduleFields
+  }
+}
+
+query UpcomingSchedule($tourCode: String!) {
+  upcomingSchedule(tourCode: $tourCode) {
+    id
+    filters {
+      type
+      name
+    }
+    tournaments {
+      ...ScheduleTournamentFields
+    }
+  }
+}
+
+query Tournaments($ids: [ID!]) {
+  tournaments(ids: $ids) {
+    ...TournamentFields
+  }
+}
