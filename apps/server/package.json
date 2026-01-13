@@ -21,6 +21,7 @@
     "@putting-pals/putting-pals-core": "workspace:*",
     "@putting-pals/putting-pals-data": "workspace:*",
     "@putting-pals/putting-pals-db": "workspace:*",
+    "@putting-pals/putting-pals-event": "workspace:*",
     "@putting-pals/putting-pals-trpc": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
     "@trpc/server": "catalog:",

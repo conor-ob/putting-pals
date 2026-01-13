@@ -1,10 +1,10 @@
 import type {
-  LeaderboardSnapshot,
+  LeaderboardV3,
   PlayerState,
 } from "@putting-pals/putting-pals-api";
 import { AbstractEventEmitter } from "../event-emitter";
 
-export abstract class PlayerStateChanged extends AbstractEventEmitter {
+export abstract class PlayerStateChanged extends AbstractEventEmitter<LeaderboardV3> {
   protected getPlayersStateChanged(playerState: PlayerState) {
     const playersWithExpectedState = this.getPlayers(this.after).filter(
       (player) => player.scoringData.playerState === playerState,
@@ -24,8 +24,8 @@ export abstract class PlayerStateChanged extends AbstractEventEmitter {
     );
   }
 
-  private getPlayers(snapshot: LeaderboardSnapshot) {
-    return snapshot.leaderboard.players.filter(
+  private getPlayers(leaderboard: LeaderboardV3) {
+    return leaderboard.players.filter(
       (row) => row.__typename === "PlayerRowV3",
     );
   }

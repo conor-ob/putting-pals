@@ -1,9 +1,9 @@
 import {
+  type AggregateType,
   type LeaderboardEvent,
-  type LeaderboardSnapshot,
+  type LeaderboardEventType,
   type TourCode,
   TourCodeSchema,
-  type TournamentSnapshot,
 } from "@putting-pals/putting-pals-api";
 import {
   index,
@@ -13,9 +13,9 @@ import {
   serial,
   text,
   timestamp,
-  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
+import type { Operation } from "fast-json-patch";
 
 const identifierColumns = {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -48,36 +48,41 @@ const tournamentIdentifierColumns = {
   tournamentId: text("tournament_id").notNull(),
 };
 
-export const tournamentSnapshotTable = pgTable(
-  "tournament_snapshot",
+export const aggregateSnapshotTable = pgTable(
+  "aggregate_snapshot",
   {
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
-    version: integer("version").notNull(),
-    snapshot: jsonb("snapshot").notNull().$type<TournamentSnapshot>(),
+    type: text("type").notNull().$type<AggregateType>(),
+    patchSeq: integer("patch_seq").notNull().default(0),
+    aggregate: jsonb("aggregate").notNull().$type<object>(),
   },
   (table) => [
-    uniqueIndex("tournament_snapshot_tournament_idx").on(
+    index("aggregate_snapshot_tournament_type_idx").on(
       table.tourCode,
       table.tournamentId,
+      table.type,
     ),
   ],
 );
 
-export const leaderboardSnapshotTable = pgTable(
-  "leaderboard_snapshot",
+export const aggregatePatchTable = pgTable(
+  "aggregate_patch",
   {
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
-    version: integer("version").notNull(),
-    snapshot: jsonb("snapshot").notNull().$type<LeaderboardSnapshot>(),
+    type: text("type").notNull().$type<AggregateType>(),
+    seq: serial("seq").notNull(),
+    patch: jsonb("patch").notNull().$type<Operation[]>(),
   },
   (table) => [
-    uniqueIndex("leaderboard_snapshot_tournament_idx").on(
+    index("aggregate_patch_tournament_type_seq_idx").on(
       table.tourCode,
       table.tournamentId,
+      table.type,
+      table.seq,
     ),
   ],
 );
@@ -88,8 +93,8 @@ export const leaderboardFeedTable = pgTable(
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
+    type: text("type").notNull().$type<LeaderboardEventType>(),
     seq: serial("seq").notNull(),
-    type: text("type").notNull(),
     feedItem: jsonb("feed_item").notNull().$type<LeaderboardEvent>(),
   },
   (table) => [

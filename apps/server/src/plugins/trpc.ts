@@ -7,7 +7,6 @@ import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
 import {
   CompetitionServiceImpl,
   FeedServiceImpl,
-  LeaderboardEventProcessorImpl,
   LeaderboardServiceImpl,
   ScheduleServiceImpl,
   ScheduleYearsServiceImpl,
@@ -16,10 +15,17 @@ import {
 } from "@putting-pals/putting-pals-core";
 import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
+  AggregatePostgresRepository,
   createDatabaseConnection,
   LeaderboardFeedPostgresRepository,
-  LeaderboardSnapshotPostgresRepository,
 } from "@putting-pals/putting-pals-db";
+import {
+  ApolloCacheNormalizer,
+  LeaderboardEventProcessorImpl,
+  LeaderboardEventProcessorServiceImpl,
+  LeaderboardHoleByHoleEventProcessorServiceImpl,
+  TournamentEventProcessorImpl,
+} from "@putting-pals/putting-pals-event";
 import {
   type AppRouter,
   appRouter,
@@ -88,11 +94,10 @@ function createContext() {
   );
 
   const database = createDatabaseConnection();
-  const leaderboardSnapshotRepository =
-    new LeaderboardSnapshotPostgresRepository(database);
   const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
     database,
   );
+  const aggregateRepository = new AggregatePostgresRepository(database);
 
   const feedService = new FeedServiceImpl(
     tournamentService,
@@ -101,11 +106,28 @@ function createContext() {
     leaderboardFeedRepository,
   );
 
+  const normalizer = new ApolloCacheNormalizer();
+
   const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
-    tournamentService,
-    leaderboardService,
     tournamentResolver,
-    leaderboardSnapshotRepository,
+    [
+      new TournamentEventProcessorImpl(
+        tournamentService,
+        normalizer,
+        aggregateRepository,
+      ),
+      new LeaderboardEventProcessorServiceImpl(
+        leaderboardService,
+        normalizer,
+        aggregateRepository,
+      ),
+      new LeaderboardHoleByHoleEventProcessorServiceImpl(
+        tournamentService,
+        leaderboardService,
+        normalizer,
+        aggregateRepository,
+      ),
+    ],
     leaderboardFeedRepository,
   );
 

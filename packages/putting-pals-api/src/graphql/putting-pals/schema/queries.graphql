@@ -1,4 +1,4 @@
-query Leaderboard($id: ID!) {
+query LeaderboardV3($id: ID!) {
   leaderboardV3(id: $id) {
     ...LeaderboardV3Fields
     players {

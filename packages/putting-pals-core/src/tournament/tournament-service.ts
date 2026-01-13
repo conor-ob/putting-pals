@@ -5,7 +5,7 @@ import type {
   TournamentResolver,
   TournamentService,
 } from "@putting-pals/putting-pals-api";
-import { NotFoundError } from "../utils/service-error";
+import { NotFoundError } from "@putting-pals/putting-pals-api";
 import { transformTournament } from "./tournament-utils";
 
 export class TournamentServiceImpl implements TournamentService {

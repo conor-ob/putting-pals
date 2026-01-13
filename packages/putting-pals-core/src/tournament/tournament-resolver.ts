@@ -8,7 +8,7 @@ import type {
 import {
   NotFoundError,
   UnsupportedTourCodeError,
-} from "../utils/service-error";
+} from "@putting-pals/putting-pals-api";
 import { parseStartDate } from "./tournament-utils";
 
 export class TournamentResolverImpl implements TournamentResolver {

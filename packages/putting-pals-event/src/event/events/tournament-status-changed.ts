@@ -1,16 +1,16 @@
 import type {
   LeaderboardEvent,
+  Tournament,
   TournamentStatusChangedV1,
 } from "@putting-pals/putting-pals-api";
 import { assertNever } from "@putting-pals/putting-pals-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class TournamentStatusChanged extends AbstractEventEmitter {
+export class TournamentStatusChanged extends AbstractEventEmitter<Tournament> {
   override emit(): LeaderboardEvent[] {
     if (
-      this.after.tournament.tournamentStatus === "NOT_STARTED" ||
-      this.after.tournament.tournamentStatus ===
-        this.before.tournament.tournamentStatus
+      this.after.tournamentStatus === "NOT_STARTED" ||
+      this.after.tournamentStatus === this.before.tournamentStatus
     ) {
       return [];
     }
@@ -19,24 +19,24 @@ export class TournamentStatusChanged extends AbstractEventEmitter {
       {
         __typename: "TournamentStatusChangedV1" as const,
         before: {
-          tournamentStatus: this.before.tournament.tournamentStatus,
+          tournamentStatus: this.before.tournamentStatus,
         },
         after: {
-          tournamentStatus: this.after.tournament.tournamentStatus,
+          tournamentStatus: this.after.tournamentStatus,
         },
       } satisfies TournamentStatusChangedV1,
     ];
   }
 
   override getPriority(): number {
-    switch (this.after.tournament.tournamentStatus) {
+    switch (this.after.tournamentStatus) {
       case "NOT_STARTED":
       case "IN_PROGRESS":
         return EventPriority.TOURNAMENT_STARTING_EVENT;
       case "COMPLETED":
         return EventPriority.TOURNAMENT_STOPPING_EVENT;
       default:
-        assertNever(this.after.tournament.tournamentStatus);
+        assertNever(this.after.tournamentStatus);
     }
   }
 }

@@ -7,9 +7,9 @@ import type {
   Tournament,
   TournamentService,
 } from "@putting-pals/putting-pals-api";
+import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
 import { parseISO } from "date-fns";
 import { parseStartDate } from "../tournament/tournament-utils";
-import { UnsupportedTourCodeError } from "../utils/service-error";
 
 export class ScheduleYearsServiceImpl implements ScheduleYearsService {
   constructor(

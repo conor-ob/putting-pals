@@ -6,7 +6,7 @@ import type {
   ScheduleUpcoming,
   TourCode,
 } from "@putting-pals/putting-pals-api";
-import { UnsupportedTourCodeError } from "../utils/service-error";
+import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
 import {
   transformSchedule,
   transformScheduleTournament,

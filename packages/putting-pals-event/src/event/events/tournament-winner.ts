@@ -1,8 +1,11 @@
-import type { LeaderboardEvent } from "@putting-pals/putting-pals-api";
-import { UnsupportedTourCodeError } from "../../utils/service-error";
+import type {
+  LeaderboardEvent,
+  LeaderboardV3,
+} from "@putting-pals/putting-pals-api";
+import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class BirdieStreak extends AbstractEventEmitter {
+export class TournamentWinner extends AbstractEventEmitter<LeaderboardV3> {
   override emit(): LeaderboardEvent[] {
     switch (this.tourCode) {
       case "P":
@@ -15,6 +18,6 @@ export class BirdieStreak extends AbstractEventEmitter {
   }
 
   override getPriority(): number {
-    return EventPriority.BIRDIE_STREAK_EVENT;
+    return EventPriority.TOURNAMENT_WINNER_EVENT;
   }
 }

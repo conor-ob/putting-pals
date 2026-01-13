@@ -14,3 +14,11 @@ export type LeaderboardEvent =
   | PlayerWithdrawnV1
   | RoundStatusChangedV1
   | TournamentStatusChangedV1;
+
+export type LeaderboardEventType = LeaderboardEvent["__typename"];
+
+export interface EventEmitter {
+  emit(): LeaderboardEvent[];
+
+  getPriority(): number;
+}

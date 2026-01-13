@@ -3,7 +3,7 @@ import type {
   CompetitionRepository,
   CompetitionService,
 } from "@putting-pals/putting-pals-api";
-import { NotFoundError } from "../utils/service-error";
+import { NotFoundError } from "@putting-pals/putting-pals-api";
 
 export class CompetitionServiceImpl implements CompetitionService {
   constructor(private readonly competitionRepository: CompetitionRepository) {

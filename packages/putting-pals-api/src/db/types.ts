@@ -1,22 +1,8 @@
 import type {
-  LeaderboardHoleByHole,
-  LeaderboardV3,
   RoundStatus,
   RoundStatusColor,
-  Tournament,
   TournamentStatus,
 } from "@putting-pals/putting-pals-api";
-
-export type TournamentSnapshot = Tournament;
-
-export const LeaderboardSnapshotHash = "f048028d" as const;
-export const LeaderboardSnapshotVersion = 1 as const;
-
-export type LeaderboardSnapshot = {
-  tournament: Tournament;
-  leaderboard: LeaderboardV3;
-  leaderboardHoleByHole: LeaderboardHoleByHole;
-};
 
 type Event<TName extends string, T> = {
   __typename: TName;

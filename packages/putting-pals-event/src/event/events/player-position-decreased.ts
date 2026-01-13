@@ -1,8 +1,11 @@
-import type { LeaderboardEvent } from "@putting-pals/putting-pals-api";
-import { UnsupportedTourCodeError } from "../../utils/service-error";
+import type {
+  LeaderboardEvent,
+  LeaderboardV3,
+} from "@putting-pals/putting-pals-api";
+import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class PlayerPositionDecreased extends AbstractEventEmitter {
+export class PlayerPositionDecreased extends AbstractEventEmitter<LeaderboardV3> {
   override emit(): LeaderboardEvent[] {
     switch (this.tourCode) {
       case "P":
