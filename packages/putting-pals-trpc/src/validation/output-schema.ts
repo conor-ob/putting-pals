@@ -33,6 +33,7 @@ export const LeaderboardOutputSchema = z.object({
           }),
           scoringData: z.object({
             position: z.string(),
+            teeTime: z.number().nullable().optional(),
             total: z.string(),
             totalSort: z.number(),
             score: z.string(),

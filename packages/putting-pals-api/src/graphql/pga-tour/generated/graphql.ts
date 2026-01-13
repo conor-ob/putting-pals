@@ -15,8 +15,8 @@ type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  AWSDateTime: { input: any; output: any; }
-  AWSTimestamp: { input: any; output: any; }
+  AWSDateTime: { input: string; output: string; }
+  AWSTimestamp: { input: number; output: number; }
 };
 
 type ApiArHole = {
@@ -11072,7 +11072,7 @@ type ApiLeaderboardV3Query = {
           readonly currentRound: number,
           readonly backNine: boolean,
           readonly playerState: ApiPlayerState,
-          readonly teeTime?: any | null,
+          readonly teeTime?: number | null,
           readonly totalStrokes: string,
           readonly totalStrokesSort?: number | null,
           readonly total: string,
@@ -11217,7 +11217,7 @@ type ApiLeaderboardV3Query = {
       readonly projectedCutLine: string,
       readonly probableCutLine: string,
       readonly sponsorName?: string | null,
-      readonly lastUpdated: any,
+      readonly lastUpdated: number,
       readonly new?: boolean | null,
       readonly sponsorLogo?: {
         readonly __typename: 'ImageAsset',
@@ -11383,7 +11383,7 @@ type ApiLeaderboardV3FieldsFragment = {
     readonly projectedCutLine: string,
     readonly probableCutLine: string,
     readonly sponsorName?: string | null,
-    readonly lastUpdated: any,
+    readonly lastUpdated: number,
     readonly new?: boolean | null,
     readonly sponsorLogo?: {
       readonly __typename: 'ImageAsset',
@@ -11456,7 +11456,7 @@ type ApiPlayerRowV3FieldsFragment = {
     readonly currentRound: number,
     readonly backNine: boolean,
     readonly playerState: ApiPlayerState,
-    readonly teeTime?: any | null,
+    readonly teeTime?: number | null,
     readonly totalStrokes: string,
     readonly totalStrokesSort?: number | null,
     readonly total: string,
@@ -11509,7 +11509,7 @@ type ApiScheduleTournamentFieldsFragment = {
   readonly __typename: 'ScheduleTournament',
   readonly id: string,
   readonly date: string,
-  readonly startDate: any,
+  readonly startDate: number,
   readonly dateAccessibilityText: string,
   readonly tournamentName: string,
   readonly tournamentLogo: string,
@@ -11602,7 +11602,7 @@ type ApiScheduleMonthFieldsFragment = {
     readonly __typename: 'ScheduleTournament',
     readonly id: string,
     readonly date: string,
-    readonly startDate: any,
+    readonly startDate: number,
     readonly dateAccessibilityText: string,
     readonly tournamentName: string,
     readonly tournamentLogo: string,
@@ -11700,7 +11700,7 @@ type ApiScheduleFieldsFragment = {
       readonly __typename: 'ScheduleTournament',
       readonly id: string,
       readonly date: string,
-      readonly startDate: any,
+      readonly startDate: number,
       readonly dateAccessibilityText: string,
       readonly tournamentName: string,
       readonly tournamentLogo: string,
@@ -11793,7 +11793,7 @@ type ApiScheduleFieldsFragment = {
       readonly __typename: 'ScheduleTournament',
       readonly id: string,
       readonly date: string,
-      readonly startDate: any,
+      readonly startDate: number,
       readonly dateAccessibilityText: string,
       readonly tournamentName: string,
       readonly tournamentLogo: string,
@@ -12125,7 +12125,7 @@ type ApiScheduleQuery = {
         readonly __typename: 'ScheduleTournament',
         readonly id: string,
         readonly date: string,
-        readonly startDate: any,
+        readonly startDate: number,
         readonly dateAccessibilityText: string,
         readonly tournamentName: string,
         readonly tournamentLogo: string,
@@ -12218,7 +12218,7 @@ type ApiScheduleQuery = {
         readonly __typename: 'ScheduleTournament',
         readonly id: string,
         readonly date: string,
-        readonly startDate: any,
+        readonly startDate: number,
         readonly dateAccessibilityText: string,
         readonly tournamentName: string,
         readonly tournamentLogo: string,
@@ -12330,7 +12330,7 @@ type ApiCompleteScheduleQuery = {
         readonly __typename: 'ScheduleTournament',
         readonly id: string,
         readonly date: string,
-        readonly startDate: any,
+        readonly startDate: number,
         readonly dateAccessibilityText: string,
         readonly tournamentName: string,
         readonly tournamentLogo: string,
@@ -12423,7 +12423,7 @@ type ApiCompleteScheduleQuery = {
         readonly __typename: 'ScheduleTournament',
         readonly id: string,
         readonly date: string,
-        readonly startDate: any,
+        readonly startDate: number,
         readonly dateAccessibilityText: string,
         readonly tournamentName: string,
         readonly tournamentLogo: string,
@@ -12534,7 +12534,7 @@ type ApiUpcomingScheduleQuery = {
       readonly __typename: 'ScheduleTournament',
       readonly id: string,
       readonly date: string,
-      readonly startDate: any,
+      readonly startDate: number,
       readonly dateAccessibilityText: string,
       readonly tournamentName: string,
       readonly tournamentLogo: string,
