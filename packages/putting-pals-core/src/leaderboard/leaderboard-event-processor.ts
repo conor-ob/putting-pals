@@ -68,6 +68,36 @@ export class LeaderboardEventProcessorImpl
         false,
       ).newDocument;
 
+      // const denormalizedBaseTournamentAggregate = this.normalizer.denormalize(
+      //   TournamentDocument,
+      //   baseTournamentAggregate.aggregate,
+      //   { id: tournamentId },
+      // );
+      // const denormalizedMaterializedTournamentAggregate =
+      //   this.normalizer.denormalize(
+      //     TournamentDocument,
+      //     materializedTournamentAggregate,
+      //     { id: tournamentId },
+      //   );
+      // const denormalizedLatestTournamentAggregate = this.normalizer.denormalize(
+      //   TournamentDocument,
+      //   latestTournamentAggregate,
+      //   { id: tournamentId },
+      // );
+
+      // console.log(
+      //   "denormalizedBaseTournamentAggregate",
+      //   denormalizedBaseTournamentAggregate?.tournament?.tournamentName,
+      // );
+      // console.log(
+      //   "denormalizedMaterializedTournamentAggregate",
+      //   denormalizedMaterializedTournamentAggregate?.tournament?.tournamentName,
+      // );
+      // console.log(
+      //   "denormalizedLatestTournamentAggregate",
+      //   denormalizedLatestTournamentAggregate?.tournament?.tournamentName,
+      // );
+
       const diff = patch.compare(
         materializedTournamentAggregate,
         latestTournamentAggregate,
