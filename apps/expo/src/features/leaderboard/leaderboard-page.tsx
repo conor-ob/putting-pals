@@ -1,10 +1,13 @@
-import { Button, ScrollView, View } from "react-native";
+import { FlashList } from "@shopify/flash-list";
+import { Button, ScrollView } from "react-native";
 import { TournamentHeader } from "~/components/tournament-header";
-import { Text } from "~/components/ui/text";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { trpc } from "~/providers/trpc/utils/trpc";
 import { useQuery } from "~/providers/trpc/utils/use-query";
 import { useLocalStorage } from "~/storage/use-local-storage";
+import { InformationRow } from "./information-row";
+import { PlayerRowV3 } from "./player-row-v3";
+import { PuttingPalsPlayerRow } from "./putting-pals-player-row";
 
 export function LeaderboardPage() {
   const { tourCode, setTourCode } = useTourCode();
@@ -46,29 +49,22 @@ export function LeaderboardPage() {
           setTourCode("R");
         }}
       />
-      {leaderboard?.players
-        .toSorted((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder)
-        .map((row) => (
-          <View key={row.id} className="flex flex-row items-center gap-2">
-            {row.__typename === "PlayerRowV3" ? (
-              <View className="flex flex-row w-full items-center gap-2">
-                <Text className="w-1/3">{row.player.displayName}</Text>
-                <Text className="w-1/3">{row.scoringData.position}</Text>
-                <Text className="w-1/3">{row.scoringData.total}</Text>
-              </View>
-            ) : row.__typename === "PuttingPalsPlayerRow" ? (
-              <View className="flex flex-row w-full items-center gap-2">
-                <Text className="w-1/3">{row.player.displayName}</Text>
-                <Text className="w-1/3">{row.scoringData.position}</Text>
-                <Text className="w-1/3">{row.scoringData.total}</Text>
-              </View>
-            ) : row.__typename === "InformationRow" ? (
-              <View className="flex flex-row w-full items-center gap-2">
-                <Text>{row.displayText}</Text>
-              </View>
-            ) : null}
-          </View>
-        ))}
+      <FlashList
+        data={leaderboard?.players.toSorted(
+          (a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder,
+        )}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => {
+          switch (item.__typename) {
+            case "PlayerRowV3":
+              return <PlayerRowV3 row={item} />;
+            case "PuttingPalsPlayerRow":
+              return <PuttingPalsPlayerRow row={item} />;
+            case "InformationRow":
+              return <InformationRow row={item} />;
+          }
+        }}
+      />
     </ScrollView>
   );
 }

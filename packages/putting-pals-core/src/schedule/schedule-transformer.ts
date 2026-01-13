@@ -25,7 +25,7 @@ export function transformScheduleTournament(
 function transformScheduleMonth(scheduleMonth: ScheduleMonth): ScheduleMonth {
   return {
     ...scheduleMonth,
-    monthSort: scheduleMonth.monthSort ?? 0, // TODO: add default month sort
+    monthSort: scheduleMonth.monthSort,
     tournaments: scheduleMonth.tournaments.map(transformScheduleTournament),
   };
 }

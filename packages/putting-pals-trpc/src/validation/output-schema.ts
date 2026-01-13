@@ -15,6 +15,7 @@ export const LeaderboardOutputSchema = z.object({
           scoringData: z.object({
             position: z.string(),
             total: z.string(),
+            totalSort: z.number(),
           }),
         }),
         z.object({
@@ -33,6 +34,9 @@ export const LeaderboardOutputSchema = z.object({
           scoringData: z.object({
             position: z.string(),
             total: z.string(),
+            totalSort: z.number(),
+            score: z.string(),
+            scoreSort: z.number(),
           }),
         }),
       ]),

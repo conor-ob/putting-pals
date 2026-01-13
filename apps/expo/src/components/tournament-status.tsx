@@ -1,14 +1,14 @@
 import { View, type ViewProps } from "react-native";
 import { RoundStatusBadge } from "~/components/round-status-badge";
 import { RoundStatusLabel } from "~/components/round-status-label";
-import type { Tournament } from "~/components/tournament-header";
 import { cn } from "~/lib/utils";
+import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
 
 export function TournamentStatus({
   className,
   tournament,
   ...props
-}: { tournament: Tournament } & ViewProps) {
+}: { tournament: RouterOutputs["tournament"]["getById"] } & ViewProps) {
   if (isTournamentInProgress(tournament)) {
     return (
       <View
@@ -37,7 +37,9 @@ export function TournamentStatus({
   }
 }
 
-function isTournamentInProgress(tournament: Tournament) {
+function isTournamentInProgress(
+  tournament: RouterOutputs["tournament"]["getById"],
+) {
   const isNotStarted =
     tournament.tournamentStatus === "NOT_STARTED" &&
     tournament.roundStatus === "UPCOMING";

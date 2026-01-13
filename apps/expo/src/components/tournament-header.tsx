@@ -6,13 +6,11 @@ import { TournamentStatus } from "~/components/tournament-status";
 import { cn } from "~/lib/utils";
 import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
 
-export type Tournament = RouterOutputs["tournament"]["getById"];
-
 export function TournamentHeader({
   className,
   tournament,
   ...props
-}: { tournament: Tournament } & ViewProps) {
+}: { tournament: RouterOutputs["tournament"]["getById"] } & ViewProps) {
   return (
     <View
       className={cn("flex flex-row items-center gap-4", className)}

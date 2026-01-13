@@ -1,4 +1,6 @@
-import { Button, ScrollView, Text, View } from "react-native";
+import { FlashList } from "@shopify/flash-list";
+import { Button, ScrollView } from "react-native";
+import { Text } from "~/components/ui/text";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { trpc } from "~/providers/trpc/utils/trpc";
 import { useQuery } from "~/providers/trpc/utils/use-query";
@@ -31,7 +33,7 @@ export function SchedulePage() {
   console.log("upcomingSchedule.error", upcomingScheduleError);
 
   return (
-    <ScrollView className="bg-background flex-1 justify-center gap-4">
+    <ScrollView className="p-4 gap-4">
       <Button
         title="Putting Pals"
         onPress={() => {
@@ -44,36 +46,20 @@ export function SchedulePage() {
           setTourCode("R");
         }}
       />
-      {schedule?.map((season) => (
-        <View key={`${tourCode}-${season.seasonYear}`}>
-          {season.completed.map((month) => (
-            <View key={`${tourCode}-${month.month}-completed`}>
-              <Text className="text-foreground">{`${month.month} ${season.seasonYear}`}</Text>
-              {month.tournaments.map((tournament) => (
-                <Text
-                  key={`${tourCode}-${tournament.id}-completed`}
-                  className="text-foreground"
-                >
-                  {tournament.tournamentName}
-                </Text>
-              ))}
-            </View>
-          ))}
-          {season.upcoming.map((month) => (
-            <View key={`${tourCode}-${month.month}-upcoming`}>
-              <Text className="text-foreground">{`${month.month} ${season.seasonYear}`}</Text>
-              {month.tournaments.map((tournament) => (
-                <Text
-                  key={`${tourCode}-${tournament.id}-upcoming`}
-                  className="text-foreground"
-                >
-                  {tournament.tournamentName}
-                </Text>
-              ))}
-            </View>
-          ))}
-        </View>
-      ))}
+      <FlashList
+        data={[
+          ...(schedule?.flatMap((season) =>
+            season.completed.flatMap((month) => month.tournaments),
+          ) ?? []),
+          ...(schedule?.flatMap((season) =>
+            season.upcoming.flatMap((month) => month.tournaments),
+          ) ?? []),
+        ]}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => {
+          return <Text className="text-foreground">{item.tournamentName}</Text>;
+        }}
+      />
     </ScrollView>
   );
 }
