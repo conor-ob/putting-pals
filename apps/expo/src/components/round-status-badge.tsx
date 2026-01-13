@@ -1,10 +1,10 @@
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
 import type { View, ViewProps } from "react-native";
-import type { Tournament } from "~/components/tournament-header";
 import { Badge } from "~/components/ui/badge";
 import { Text } from "~/components/ui/text";
 import { cn } from "~/lib/utils";
+import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
 
 const roundStatusBadgeVariants = cva("px-1.5 py-0.25", {
   variants: {
@@ -14,14 +14,17 @@ const roundStatusBadgeVariants = cva("px-1.5 py-0.25", {
       GREEN: "bg-pga-green",
       RED: "bg-pga-red",
       YELLOW: "bg-pga-yellow",
-    } satisfies Record<Tournament["roundStatusColor"], string>,
+    } satisfies Record<
+      RouterOutputs["tournament"]["getById"]["roundStatusColor"],
+      string
+    >,
   },
   defaultVariants: {
     color: "GRAY",
   },
 });
 
-const roundStatusBadgeTextVariants = cva("text-xs font-semibold", {
+const roundStatusBadgeTextVariants = cva("text-xs font-semibold uppercase", {
   variants: {
     color: {
       BLUE: "text-white",
@@ -29,7 +32,10 @@ const roundStatusBadgeTextVariants = cva("text-xs font-semibold", {
       GREEN: "text-white",
       RED: "text-white",
       YELLOW: "text-black",
-    } satisfies Record<Tournament["roundStatusColor"], string>,
+    } satisfies Record<
+      RouterOutputs["tournament"]["getById"]["roundStatusColor"],
+      string
+    >,
   },
   defaultVariants: {
     color: "GRAY",
@@ -63,4 +69,5 @@ export {
   roundStatusBadgeTextVariants,
   roundStatusBadgeVariants,
 };
+
 export type { RoundStatusBadgeProps };
