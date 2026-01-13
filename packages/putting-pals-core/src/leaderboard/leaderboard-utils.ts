@@ -20,7 +20,6 @@ export function transformLeaderboard(
             },
             scoringData: {
               ...row.scoringData,
-              teeTime: parseTeeTime(row.scoringData.teeTime),
               totalSort: fixTotalSort(
                 row.scoringData.total,
                 row.scoringData.totalSort,
@@ -32,23 +31,6 @@ export function transformLeaderboard(
       }
     }),
   };
-}
-
-// biome-ignore lint/suspicious/noExplicitAny: AWSTimestamp
-function parseTeeTime(teeTime?: any): Date | undefined {
-  if (!teeTime) {
-    return undefined;
-  }
-
-  if (typeof teeTime !== "number") {
-    return undefined;
-  }
-
-  if (teeTime <= 0) {
-    return undefined;
-  }
-
-  return new Date(teeTime);
 }
 
 function fixTotalSort(total: string, totalSort: number): number {

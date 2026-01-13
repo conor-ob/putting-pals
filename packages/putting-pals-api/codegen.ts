@@ -18,6 +18,16 @@ const sharedConfig = {
   nonOptionalTypename: true,
   printFieldsOnNewLines: true,
   useTypeImports: true,
+  scalars: {
+    AWSDateTime: {
+      input: "string",
+      output: "string",
+    },
+    AWSTimestamp: {
+      input: "number",
+      output: "number",
+    },
+  },
 };
 
 const config: CodegenConfig = {
