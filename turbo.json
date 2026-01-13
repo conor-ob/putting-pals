@@ -7,7 +7,6 @@
     },
     "codegen": {
       "outputs": [
-        "src/generated/**",
         "src/graphql/pga-tour/generated/**",
         "src/graphql/putting-pals/generated/**"
       ]

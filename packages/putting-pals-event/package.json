@@ -13,7 +13,8 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "typecheck": "tsc --noEmit true"
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest"
   },
   "dependencies": {
     "@apollo/client": "4.0.12",
@@ -26,6 +27,7 @@
     "@graphql-typed-document-node/core": "^3.2.0",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }
