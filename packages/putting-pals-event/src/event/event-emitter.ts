@@ -1,20 +1,14 @@
 import type {
+  EventEmitter,
   LeaderboardEvent,
-  LeaderboardSnapshot,
   TourCode,
 } from "@putting-pals/putting-pals-api";
 
-export interface EventEmitter {
-  emit(): LeaderboardEvent[];
-
-  getPriority(): number;
-}
-
-export abstract class AbstractEventEmitter implements EventEmitter {
+export abstract class AbstractEventEmitter<T> implements EventEmitter {
   constructor(
     protected readonly tourCode: TourCode,
-    protected readonly before: LeaderboardSnapshot,
-    protected readonly after: LeaderboardSnapshot,
+    protected readonly before: T,
+    protected readonly after: T,
   ) {
     this.tourCode = tourCode;
     this.before = before;
@@ -36,7 +30,7 @@ export const EventPriority = {
   PLAYER_MISSED_CUT_EVENT: 6,
   BIRDIE_STREAK_EVENT: 7,
   LEADER_CHANGED_EVENT: 8,
-  TOURNAMENT_WINNER_EVENT: 9,
-  ROUND_STOPPING_EVENT: 10,
-  TOURNAMENT_STOPPING_EVENT: 11,
+  ROUND_STOPPING_EVENT: 9,
+  TOURNAMENT_STOPPING_EVENT: 10,
+  TOURNAMENT_WINNER_EVENT: 11,
 } as const;

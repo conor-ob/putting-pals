@@ -1,4 +1,4 @@
-import { ServiceError } from "@putting-pals/putting-pals-core";
+import { ServiceError } from "@putting-pals/putting-pals-api";
 import { TRPCError } from "@trpc/server";
 
 export function onError(error: TRPCError) {

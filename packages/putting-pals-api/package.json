@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "graphql-request": "catalog:",
-    "rxjs": "7.8.2",
     "zod": "catalog:"
   },
   "devDependencies": {

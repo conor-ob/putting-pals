@@ -5,11 +5,8 @@ import {
 } from "@putting-pals/pga-tour-graphql";
 import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
 import {
-  ApolloCacheNormalizer,
   CompetitionServiceImpl,
   FeedServiceImpl,
-  LeaderboardChangeDetectorImpl,
-  LeaderboardEventProcessorImpl,
   LeaderboardServiceImpl,
   ScheduleServiceImpl,
   ScheduleYearsServiceImpl,
@@ -18,12 +15,17 @@ import {
 } from "@putting-pals/putting-pals-core";
 import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
+  AggregatePostgresRepository,
   createDatabaseConnection,
-  LeaderboardAggregatePostgresRepository,
   LeaderboardFeedPostgresRepository,
-  LeaderboardSnapshotPostgresRepository,
-  TournamentAggregatePostgresRepository,
 } from "@putting-pals/putting-pals-db";
+import {
+  ApolloCacheNormalizer,
+  LeaderboardEventProcessorImpl,
+  LeaderboardEventProcessorServiceImpl,
+  LeaderboardHoleByHoleEventProcessorServiceImpl,
+  TournamentEventProcessorImpl,
+} from "@putting-pals/putting-pals-event";
 import {
   type AppRouter,
   appRouter,
@@ -92,15 +94,10 @@ function createContext() {
   );
 
   const database = createDatabaseConnection();
-  const leaderboardSnapshotRepository =
-    new LeaderboardSnapshotPostgresRepository(database);
   const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
     database,
   );
-  const tournamentAggregateRepository =
-    new TournamentAggregatePostgresRepository(database);
-  const leaderboardAggregateRepository =
-    new LeaderboardAggregatePostgresRepository(database);
+  const aggregateRepository = new AggregatePostgresRepository(database);
 
   const feedService = new FeedServiceImpl(
     tournamentService,
@@ -109,30 +106,35 @@ function createContext() {
     leaderboardFeedRepository,
   );
 
-  const leaderboardChangeDetector = new LeaderboardChangeDetectorImpl(
-    tournamentService,
-    leaderboardService,
-    tournamentResolver,
-    leaderboardSnapshotRepository,
-    leaderboardFeedRepository,
-  );
-
   const normalizer = new ApolloCacheNormalizer();
 
   const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
-    tournamentService,
-    leaderboardService,
     tournamentResolver,
-    tournamentAggregateRepository,
-    leaderboardAggregateRepository,
-    normalizer,
+    [
+      new TournamentEventProcessorImpl(
+        tournamentService,
+        normalizer,
+        aggregateRepository,
+      ),
+      new LeaderboardEventProcessorServiceImpl(
+        leaderboardService,
+        normalizer,
+        aggregateRepository,
+      ),
+      new LeaderboardHoleByHoleEventProcessorServiceImpl(
+        tournamentService,
+        leaderboardService,
+        normalizer,
+        aggregateRepository,
+      ),
+    ],
+    leaderboardFeedRepository,
   );
 
   return createTrpcContext({
     tournamentService,
     competitionService,
     leaderboardService,
-    leaderboardChangeDetector,
     leaderboardEventProcessor,
     feedService,
     scheduleService,

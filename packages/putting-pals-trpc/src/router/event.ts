@@ -18,7 +18,6 @@ export const eventRouter = router({
       switch (input.type) {
         case "leaderboard/detect-change":
           return await Promise.all([
-            ctx.leaderboardChangeDetector.detectChange(input.tourCode),
             ctx.leaderboardEventProcessor.processEvent(input.tourCode),
           ]);
         default:

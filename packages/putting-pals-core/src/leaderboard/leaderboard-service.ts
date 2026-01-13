@@ -7,7 +7,7 @@ import type {
   TourCode,
   TournamentResolver,
 } from "@putting-pals/putting-pals-api";
-import { UnsupportedTourCodeError } from "../utils/service-error";
+import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 import { transformLeaderboard } from "./leaderboard-utils";
 

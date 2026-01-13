@@ -1,12 +1,12 @@
 import type {
   LeaderboardEvent,
-  LeaderboardSnapshot,
+  LeaderboardV3,
   LeaderChangedV1,
 } from "@putting-pals/putting-pals-api";
-import { UnsupportedTourCodeError } from "../../utils/service-error";
+import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class LeaderChanged extends AbstractEventEmitter {
+export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
   override emit(): LeaderboardEvent[] {
     switch (this.tourCode) {
       case "P":
@@ -81,8 +81,8 @@ export class LeaderChanged extends AbstractEventEmitter {
     ];
   }
 
-  private getLeaders(snapshot: LeaderboardSnapshot) {
-    return snapshot.leaderboard.players
+  private getLeaders(leaderboard: LeaderboardV3) {
+    return leaderboard.players
       .filter((row) => row.__typename === "PlayerRowV3")
       .filter(
         (row) =>
