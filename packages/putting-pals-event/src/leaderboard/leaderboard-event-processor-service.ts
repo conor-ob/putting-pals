@@ -1,8 +1,8 @@
 import {
   type AggregateRepository,
   type EventEmitter,
+  LeaderboardAggregateDocument,
   type LeaderboardService,
-  LeaderboardV3Document,
   type Normalizer,
   type TourCode,
 } from "@putting-pals/putting-pals-api";
@@ -36,10 +36,10 @@ export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessor
     );
 
     const normalizedLeaderboard = this.normalizer.normalize(
-      LeaderboardV3Document,
+      LeaderboardAggregateDocument,
       {
         __typename: "Query",
-        leaderboardV3: leaderboard,
+        leaderboardAggregate: leaderboard,
       },
       { id: leaderboard.id },
     );
@@ -55,16 +55,16 @@ export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessor
   ): Promise<EventEmitter[]> {
     const denormalizedMaterializedLeaderboardAggregate =
       this.normalizer.denormalize(
-        LeaderboardV3Document,
+        LeaderboardAggregateDocument,
         materializedAggregate,
         { id: tournamentId },
-      )?.leaderboardV3;
+      )?.leaderboardAggregate;
 
     const denormalizedLatestLeaderboardAggregate = this.normalizer.denormalize(
-      LeaderboardV3Document,
+      LeaderboardAggregateDocument,
       latestAggregate,
       { id: tournamentId },
-    )?.leaderboardV3;
+    )?.leaderboardAggregate;
 
     if (
       denormalizedMaterializedLeaderboardAggregate === undefined ||

@@ -1,7 +1,7 @@
 import {
   type AggregateRepository,
   type EventEmitter,
-  LeaderboardHoleByHoleDocument,
+  LeaderboardHoleByHoleAggregateDocument,
   type LeaderboardService,
   type Normalizer,
   type TourCode,
@@ -39,12 +39,12 @@ export class LeaderboardHoleByHoleEventProcessorServiceImpl extends AbstractEven
       );
 
     const normalizedLeaderboardHoleByHole = this.normalizer.normalize(
-      LeaderboardHoleByHoleDocument,
+      LeaderboardHoleByHoleAggregateDocument,
       {
         __typename: "Query",
-        leaderboardHoleByHole: leaderboardHoleByHole,
+        leaderboardHoleByHoleAggregate: leaderboardHoleByHole,
       },
-      { tournamentId: leaderboardHoleByHole.tournamentId },
+      { id: leaderboardHoleByHole.tournamentId },
     );
 
     return normalizedLeaderboardHoleByHole;
@@ -58,17 +58,17 @@ export class LeaderboardHoleByHoleEventProcessorServiceImpl extends AbstractEven
   ): Promise<EventEmitter[]> {
     const denormalizedMaterializedLeaderboardHoleByHoleAggregate =
       this.normalizer.denormalize(
-        LeaderboardHoleByHoleDocument,
+        LeaderboardHoleByHoleAggregateDocument,
         materializedAggregate,
-        { tournamentId: tournamentId },
-      )?.leaderboardHoleByHole;
+        { id: tournamentId },
+      )?.leaderboardHoleByHoleAggregate;
 
     const denormalizedLatestLeaderboardHoleByHoleAggregate =
       this.normalizer.denormalize(
-        LeaderboardHoleByHoleDocument,
+        LeaderboardHoleByHoleAggregateDocument,
         latestAggregate,
-        { tournamentId: tournamentId },
-      )?.leaderboardHoleByHole;
+        { id: tournamentId },
+      )?.leaderboardHoleByHoleAggregate;
 
     if (
       denormalizedMaterializedLeaderboardHoleByHoleAggregate === undefined ||

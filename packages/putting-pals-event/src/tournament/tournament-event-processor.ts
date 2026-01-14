@@ -3,7 +3,7 @@ import {
   type EventEmitter,
   type Normalizer,
   type TourCode,
-  TournamentDocument,
+  TournamentAggregateDocument,
   type TournamentService,
 } from "@putting-pals/putting-pals-api";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
@@ -31,10 +31,10 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
     );
 
     const normalizedTournament = this.normalizer.normalize(
-      TournamentDocument,
+      TournamentAggregateDocument,
       {
         __typename: "Query",
-        tournament: tournament,
+        tournamentAggregate: tournament,
       },
       { id: tournament.id },
     );
@@ -49,21 +49,23 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
     latestAggregate: object,
   ): Promise<EventEmitter[]> {
     const denormalizedMaterializedTournamentAggregate =
-      this.normalizer.denormalize(TournamentDocument, materializedAggregate, {
-        id: tournamentId,
-      })?.tournament;
+      this.normalizer.denormalize(
+        TournamentAggregateDocument,
+        materializedAggregate,
+        {
+          id: tournamentId,
+        },
+      )?.tournamentAggregate;
 
     const denormalizedLatestTournamentAggregate = this.normalizer.denormalize(
-      TournamentDocument,
+      TournamentAggregateDocument,
       latestAggregate,
       { id: tournamentId },
-    )?.tournament;
+    )?.tournamentAggregate;
 
     if (
       denormalizedMaterializedTournamentAggregate === undefined ||
-      denormalizedMaterializedTournamentAggregate === null ||
-      denormalizedLatestTournamentAggregate === undefined ||
-      denormalizedLatestTournamentAggregate === null
+      denormalizedLatestTournamentAggregate === undefined
     ) {
       return [];
     }
