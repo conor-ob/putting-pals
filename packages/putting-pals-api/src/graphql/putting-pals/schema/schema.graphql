@@ -26,7 +26,7 @@ extend enum TourCode {
 }
 
 extend type Query {
-  tournamentAggregate(id: ID!): Tournament! @client
-  leaderboardAggregate(id: ID!): LeaderboardV3! @client
-  leaderboardHoleByHoleAggregate(id: ID!): LeaderboardHoleByHole! @client
+  tournamentAggregate(id: ID!): Tournament!
+  leaderboardAggregate(id: ID!): LeaderboardV3!
+  leaderboardHoleByHoleAggregate(id: ID!): LeaderboardHoleByHole!
 }
