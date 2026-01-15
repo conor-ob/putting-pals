@@ -1,53 +1,6 @@
 query LeaderboardHoleByHole($tournamentId: ID!, $round: Int) {
   leaderboardHoleByHole(tournamentId: $tournamentId, round: $round) {
-    tournamentId
-    currentRound
-    rounds {
-      roundNumber
-      displayText
-    }
-    tournamentName
-    holeHeaders {
-      holeNumber
-      hole
-      par
-    }
-    courseHoleHeaders {
-      courseId
-      holeHeaders {
-        holeNumber
-        order
-        displayValue
-        par
-      }
-    }
-    courses {
-      id
-      courseName
-      courseCode
-      hostCourse
-      scoringLevel
-      enabled
-      features
-    }
-    playerData {
-      playerId
-      courseId
-      courseCode
-      scores {
-        holeNumber
-        par
-        yardage
-        sequenceNumber
-        score
-        status
-        roundScore
-      }
-      out
-      in
-      total
-      totalToPar
-    }
+    ...LeaderboardHoleByHoleFields
   }
 }
 

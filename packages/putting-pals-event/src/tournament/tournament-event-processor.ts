@@ -3,12 +3,14 @@ import {
   type EventEmitter,
   type Normalizer,
   type TourCode,
-  TournamentDocument,
+  TournamentAggregateDocument,
   type TournamentService,
 } from "@putting-pals/putting-pals-api";
+import type { Operation } from "fast-json-patch";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
 import { RoundStatusChanged } from "../event/events/round-status-changed";
 import { TournamentStatusChanged } from "../event/events/tournament-status-changed";
+import { matchesTournamentField } from "../patch/patch-utils";
 
 export class TournamentEventProcessorImpl extends AbstractEventProcessorService {
   constructor(
@@ -31,10 +33,10 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
     );
 
     const normalizedTournament = this.normalizer.normalize(
-      TournamentDocument,
+      TournamentAggregateDocument,
       {
         __typename: "Query",
-        tournament: tournament,
+        tournamentAggregate: tournament,
       },
       { id: tournament.id },
     );
@@ -49,21 +51,23 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
     latestAggregate: object,
   ): Promise<EventEmitter[]> {
     const denormalizedMaterializedTournamentAggregate =
-      this.normalizer.denormalize(TournamentDocument, materializedAggregate, {
-        id: tournamentId,
-      })?.tournament;
+      this.normalizer.denormalize(
+        TournamentAggregateDocument,
+        materializedAggregate,
+        {
+          id: tournamentId,
+        },
+      )?.tournamentAggregate;
 
     const denormalizedLatestTournamentAggregate = this.normalizer.denormalize(
-      TournamentDocument,
+      TournamentAggregateDocument,
       latestAggregate,
       { id: tournamentId },
-    )?.tournament;
+    )?.tournamentAggregate;
 
     if (
       denormalizedMaterializedTournamentAggregate === undefined ||
-      denormalizedMaterializedTournamentAggregate === null ||
-      denormalizedLatestTournamentAggregate === undefined ||
-      denormalizedLatestTournamentAggregate === null
+      denormalizedLatestTournamentAggregate === undefined
     ) {
       return [];
     }
@@ -82,5 +86,9 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
     ];
 
     return eventEmitters;
+  }
+
+  override excludePatch(patch: Operation): boolean {
+    return matchesTournamentField.matchesLooseField(patch.path, "weather");
   }
 }
