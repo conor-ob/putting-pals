@@ -6,9 +6,11 @@ import {
   TournamentAggregateDocument,
   type TournamentService,
 } from "@putting-pals/putting-pals-api";
+import type { Operation } from "fast-json-patch";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
 import { RoundStatusChanged } from "../event/events/round-status-changed";
 import { TournamentStatusChanged } from "../event/events/tournament-status-changed";
+import { matchesTournamentField } from "../patch/patch-utils";
 
 export class TournamentEventProcessorImpl extends AbstractEventProcessorService {
   constructor(
@@ -84,5 +86,9 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
     ];
 
     return eventEmitters;
+  }
+
+  override excludePatch(patch: Operation): boolean {
+    return matchesTournamentField.matchesLooseField(patch.path, "weather");
   }
 }

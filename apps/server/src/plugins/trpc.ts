@@ -106,7 +106,19 @@ function createContext() {
     leaderboardFeedRepository,
   );
 
-  const normalizer = new ApolloCacheNormalizer();
+  const normalizer = new ApolloCacheNormalizer({
+    typePolicies: {
+      LeaderboardHoleByHole: {
+        keyFields: ["tournamentId"],
+      },
+      PlayerRowHoleByHole: {
+        keyFields: ["playerId"],
+      },
+      CourseHoleHeader: {
+        keyFields: ["courseId"],
+      },
+    },
+  });
 
   const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
     tournamentResolver,

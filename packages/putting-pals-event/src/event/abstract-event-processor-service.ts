@@ -5,7 +5,7 @@ import type {
   LeaderboardEventProcessorService,
   TourCode,
 } from "@putting-pals/putting-pals-api";
-import patch from "fast-json-patch";
+import patch, { type Operation } from "fast-json-patch";
 
 export abstract class AbstractEventProcessorService
   implements LeaderboardEventProcessorService
@@ -45,7 +45,9 @@ export abstract class AbstractEventProcessorService
       false,
     ).newDocument;
 
-    const diff = patch.compare(materializedAggregate, latestAggregate);
+    const diff = patch
+      .compare(materializedAggregate, latestAggregate)
+      .filter((patch) => this.includePatch(patch) && !this.excludePatch(patch));
 
     if (diff.length > 0) {
       await this.aggregateRepository.createPatches(
@@ -161,4 +163,12 @@ export abstract class AbstractEventProcessorService
     materializedAggregate: object,
     latestAggregate: object,
   ): Promise<EventEmitter[]>;
+
+  protected includePatch(_: Operation): boolean {
+    return true;
+  }
+
+  protected excludePatch(_: Operation): boolean {
+    return false;
+  }
 }
