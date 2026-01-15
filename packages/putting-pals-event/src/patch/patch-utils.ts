@@ -1,7 +1,7 @@
 import type {
-  LeaderboardHoleByHoleQuery,
-  LeaderboardV3Query,
-  TournamentQuery,
+  LeaderboardAggregateQuery,
+  LeaderboardHoleByHoleAggregateQuery,
+  TournamentAggregateQuery,
 } from "@putting-pals/putting-pals-api";
 
 type NestedPaths<T, Prefix extends string = ""> = T extends readonly unknown[]
@@ -23,22 +23,43 @@ type NestedPaths<T, Prefix extends string = ""> = T extends readonly unknown[]
 function createFieldMatcher<T extends { readonly __typename: string }>(
   typename: T["__typename"],
 ) {
-  return function matchesField(path: string, field: NestedPaths<T>): boolean {
-    const pattern = new RegExp(`^/${typename}:[a-zA-Z0-9-]+/${field}$`);
+  function matchesField(
+    path: string,
+    field: NestedPaths<T>,
+    matchType: string,
+  ): boolean {
+    const pattern = new RegExp(
+      `^/${typename}:[a-zA-Z0-9-]+/${field}${matchType}`,
+    );
     return pattern.test(path);
+  }
+
+  return {
+    matchesLooseField(path: string, field: NestedPaths<T>): boolean {
+      return matchesField(path, field, "(?:/|$)");
+    },
+    matchesExactField(path: string, field: NestedPaths<T>): boolean {
+      return matchesField(path, field, "$");
+    },
   };
 }
 
 export const matchesTournamentField =
-  createFieldMatcher<NonNullable<TournamentQuery["tournament"]>>("Tournament");
+  createFieldMatcher<
+    NonNullable<TournamentAggregateQuery["tournamentAggregate"]>
+  >("Tournament");
 
 export const matchesPuttingPalsPlayerRowField = createFieldMatcher<
   Extract<
-    NonNullable<LeaderboardV3Query["leaderboardV3"]["players"][number]>,
+    NonNullable<
+      LeaderboardAggregateQuery["leaderboardAggregate"]["players"][number]
+    >,
     { __typename: "PuttingPalsPlayerRow" }
   >
 >("PuttingPalsPlayerRow");
 
 export const matchesLeaderboardHoleByHoleField = createFieldMatcher<
-  NonNullable<LeaderboardHoleByHoleQuery["leaderboardHoleByHole"]>
+  NonNullable<
+    LeaderboardHoleByHoleAggregateQuery["leaderboardHoleByHoleAggregate"]
+  >
 >("LeaderboardHoleByHole");
