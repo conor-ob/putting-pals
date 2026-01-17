@@ -6,19 +6,19 @@ import {
 } from "../../patch/patch-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class LeaderChanged extends AbstractEventEmitter {
+export class PlayerPositionChanged extends AbstractEventEmitter {
   override emit(): LeaderboardEventType[] {
     switch (this.tourCode) {
       case "P":
-        return this.getPuttingPalsLeaderChanged();
+        return this.getPuttingPalsPlayerPositionChanged();
       case "R":
-        return this.getPgaTourLeaderChanged();
+        return this.getPgaTourPlayerPositionChanged();
       default:
         throw new UnsupportedTourCodeError(this.tourCode);
     }
   }
 
-  private getPuttingPalsLeaderChanged(): LeaderboardEventType[] {
+  private getPuttingPalsPlayerPositionChanged(): LeaderboardEventType[] {
     const operations = this.operations.filter((operation) =>
       matchesPuttingPalsPlayerRowField.matchesExactField(
         operation.path,
@@ -26,20 +26,14 @@ export class LeaderChanged extends AbstractEventEmitter {
       ),
     );
 
-    for (const operation of operations) {
-      switch (operation.op) {
-        case "add":
-        case "replace":
-          if (operation.value === "1" || operation.value === "T1") {
-            return ["LeaderChanged"];
-          }
-      }
+    if (operations.length > 0) {
+      return ["PlayerPositionChanged"];
     }
 
     return [];
   }
 
-  private getPgaTourLeaderChanged(): LeaderboardEventType[] {
+  private getPgaTourPlayerPositionChanged(): LeaderboardEventType[] {
     const operations = this.operations.filter((operation) =>
       matchesPlayerRowV3Field.matchesExactField(
         operation.path,
@@ -47,20 +41,14 @@ export class LeaderChanged extends AbstractEventEmitter {
       ),
     );
 
-    for (const operation of operations) {
-      switch (operation.op) {
-        case "add":
-        case "replace":
-          if (operation.value === "1" || operation.value === "T1") {
-            return ["LeaderChanged"];
-          }
-      }
+    if (operations.length > 0) {
+      return ["PlayerPositionChanged"];
     }
 
     return [];
   }
 
   override getPriority(): number {
-    return EventPriority.LEADER_CHANGED_EVENT;
+    return EventPriority.PLAYER_POSITION_CHANGED_EVENT;
   }
 }

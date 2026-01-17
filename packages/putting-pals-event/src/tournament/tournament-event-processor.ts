@@ -10,7 +10,6 @@ import type { Operation } from "fast-json-patch";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
 import { RoundStatusChanged } from "../event/events/round-status-changed";
 import { TournamentStatusChanged } from "../event/events/tournament-status-changed";
-import { matchesTournamentField } from "../patch/patch-utils";
 
 export class TournamentEventProcessorImpl extends AbstractEventProcessorService {
   constructor(
@@ -46,49 +45,13 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
 
   override async createEventEmitters(
     tourCode: TourCode,
-    tournamentId: string,
-    materializedAggregate: object,
-    latestAggregate: object,
+    diff: Operation[],
   ): Promise<EventEmitter[]> {
-    const denormalizedMaterializedTournamentAggregate =
-      this.normalizer.denormalize(
-        TournamentAggregateDocument,
-        materializedAggregate,
-        {
-          id: tournamentId,
-        },
-      )?.tournamentAggregate;
-
-    const denormalizedLatestTournamentAggregate = this.normalizer.denormalize(
-      TournamentAggregateDocument,
-      latestAggregate,
-      { id: tournamentId },
-    )?.tournamentAggregate;
-
-    if (
-      denormalizedMaterializedTournamentAggregate === undefined ||
-      denormalizedLatestTournamentAggregate === undefined
-    ) {
-      return [];
-    }
-
     const eventEmitters: EventEmitter[] = [
-      new RoundStatusChanged(
-        tourCode,
-        denormalizedMaterializedTournamentAggregate,
-        denormalizedLatestTournamentAggregate,
-      ),
-      new TournamentStatusChanged(
-        tourCode,
-        denormalizedMaterializedTournamentAggregate,
-        denormalizedLatestTournamentAggregate,
-      ),
+      new RoundStatusChanged(tourCode, diff),
+      new TournamentStatusChanged(tourCode, diff),
     ];
 
     return eventEmitters;
-  }
-
-  override excludePatch(patch: Operation): boolean {
-    return matchesTournamentField.matchesLooseField(patch.path, "weather");
   }
 }

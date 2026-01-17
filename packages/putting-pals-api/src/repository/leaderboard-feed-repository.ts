@@ -1,5 +1,5 @@
 import type { TourCode } from "@putting-pals/putting-pals-api";
-import type { LeaderboardEvent } from "../event/types";
+import type { LeaderboardEventType } from "../event/types";
 
 export interface LeaderboardFeedRepository {
   getLeaderboardFeed(
@@ -10,8 +10,9 @@ export interface LeaderboardFeedRepository {
   ): Promise<
     {
       seq: number;
-      type: string;
-      feedItem: LeaderboardEvent;
+      type: LeaderboardEventType;
+      patchSeq: number;
+      prevPatchSeq: number;
       tourCode: TourCode;
       tournamentId: string;
       createdAt: Date;
@@ -24,6 +25,6 @@ export interface LeaderboardFeedRepository {
   createLeaderboardFeedItems(
     tourCode: TourCode,
     tournamentId: string,
-    events: LeaderboardEvent[],
+    events: LeaderboardEventType[],
   ): Promise<void>;
 }

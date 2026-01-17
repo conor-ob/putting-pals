@@ -1,5 +1,5 @@
 {
-  "id": "e0100026-2478-4265-9598-478fec3c7009",
+  "id": "115a9a4a-05b3-431f-9d5b-f8974af8530a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -262,9 +262,15 @@
           "primaryKey": false,
           "notNull": true
         },
-        "feed_item": {
-          "name": "feed_item",
-          "type": "jsonb",
+        "patch_seq": {
+          "name": "patch_seq",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "prev_patch_seq": {
+          "name": "prev_patch_seq",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         }

@@ -1,6 +1,5 @@
 import {
   type AggregateType,
-  type LeaderboardEvent,
   type LeaderboardEventType,
   type TourCode,
   TourCodeSchema,
@@ -95,7 +94,8 @@ export const leaderboardFeedTable = pgTable(
     ...tournamentIdentifierColumns,
     type: text("type").notNull().$type<LeaderboardEventType>(),
     seq: serial("seq").notNull(),
-    feedItem: jsonb("feed_item").notNull().$type<LeaderboardEvent>(),
+    patchSeq: integer("patch_seq").notNull(),
+    prevPatchSeq: integer("prev_patch_seq").notNull(),
   },
   (table) => [
     index("leaderboard_feed_tournament_idx").on(

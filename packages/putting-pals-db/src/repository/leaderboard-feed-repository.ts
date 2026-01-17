@@ -1,5 +1,5 @@
 import type {
-  LeaderboardEvent,
+  LeaderboardEventType,
   LeaderboardFeedRepository,
   TourCode,
 } from "@putting-pals/putting-pals-api";
@@ -22,8 +22,9 @@ export class LeaderboardFeedPostgresRepository
   ): Promise<
     {
       seq: number;
-      type: string;
-      feedItem: LeaderboardEvent;
+      type: LeaderboardEventType;
+      patchSeq: number;
+      prevPatchSeq: number;
       tourCode: TourCode;
       tournamentId: string;
       createdAt: Date;
@@ -44,20 +45,22 @@ export class LeaderboardFeedPostgresRepository
         ),
       )
       .orderBy(desc(leaderboardFeedTable.seq))
-      .limit(pageSize + 1);
+      .limit(pageSize + 1)
+      .then();
   }
 
   async createLeaderboardFeedItems(
     tourCode: TourCode,
     tournamentId: string,
-    events: LeaderboardEvent[],
+    events: LeaderboardEventType[],
   ): Promise<void> {
     await this.db.insert(leaderboardFeedTable).values(
       events.map((event) => ({
         tourCode,
         tournamentId,
-        type: event.__typename,
-        feedItem: event,
+        type: event,
+        patchSeq: 0,
+        prevPatchSeq: 0,
       })),
     );
   }

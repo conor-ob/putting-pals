@@ -1,25 +1,25 @@
 import type {
   LeaderboardEventType,
-  PlayerState,
+  LeaderboardPlayerIcon,
 } from "@putting-pals/putting-pals-api";
 import { matchesPlayerRowV3Field } from "../../patch/patch-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class PlayerWithdrawn extends AbstractEventEmitter {
+export class HotStreak extends AbstractEventEmitter {
   override emit(): LeaderboardEventType[] {
-    const playerStateOperations = this.operations.filter((operation) =>
+    const operations = this.operations.filter((operation) =>
       matchesPlayerRowV3Field.matchesExactField(
         operation.path,
-        "scoringData/playerState",
+        "scoringData/playerIcon",
       ),
     );
 
-    for (const playerStateOperation of playerStateOperations) {
-      switch (playerStateOperation.op) {
+    for (const operation of operations) {
+      switch (operation.op) {
         case "add":
         case "replace":
-          if ((playerStateOperation.value as PlayerState) === "WITHDRAWN") {
-            return ["PlayerWithdrawn"];
+          if ((operation.value as LeaderboardPlayerIcon) === "HOT_STREAK") {
+            return ["HotStreak"];
           }
       }
     }
@@ -28,6 +28,6 @@ export class PlayerWithdrawn extends AbstractEventEmitter {
   }
 
   override getPriority(): number {
-    return EventPriority.PLAYER_WITHDRAWN_EVENT;
+    return EventPriority.HOT_STREAK_EVENT;
   }
 }

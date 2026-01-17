@@ -1,6 +1,5 @@
 import type {
   FeedService,
-  LeaderboardEvent,
   LeaderboardFeedRepository,
   LeaderboardService,
   TourCode,
@@ -53,50 +52,49 @@ export class FeedServiceImpl implements FeedService {
     };
   }
 
-  // biome-ignore lint/correctness/noUnusedPrivateClassMembers: todo
-  private hydrate(
-    feedItem: LeaderboardEvent,
-    tournament: Awaited<ReturnType<TournamentService["getTournament"]>>,
-    leaderboard: Awaited<ReturnType<LeaderboardService["getLeaderboard"]>>,
-  ) {
-    switch (feedItem.__typename) {
-      case "LeaderChangedV1":
-        return {
-          ...feedItem,
-          before: {
-            players: feedItem.before.players.flatMap((player) => {
-              const playerMatch = leaderboard.players
-                .filter((p) => p.__typename === "PlayerRowV3")
-                .find((p) => p.player.id === player.player.id)?.player;
-              if (playerMatch === undefined) {
-                return [];
-              } else {
-                return playerMatch;
-              }
-            }),
-          },
-          after: {
-            players: feedItem.before.players.flatMap((player) => {
-              const playerMatch = leaderboard.players
-                .filter((p) => p.__typename === "PlayerRowV3")
-                .find((p) => p.player.id === player.player.id)?.player;
-              if (playerMatch === undefined) {
-                return [];
-              } else {
-                return playerMatch;
-              }
-            }),
-          },
-        };
-      case "TournamentStatusChangedV1":
-        return {
-          ...feedItem,
-          tournamentName: tournament.tournamentName,
-        };
-      default:
-        return feedItem;
-    }
-  }
+  // private hydrate(
+  //   feedItem: LeaderboardEventType,
+  //   tournament: Awaited<ReturnType<TournamentService["getTournament"]>>,
+  //   leaderboard: Awaited<ReturnType<LeaderboardService["getLeaderboard"]>>,
+  // ) {
+  //   switch (feedItem.__typename) {
+  //     case "LeaderChangedV1":
+  //       return {
+  //         ...feedItem,
+  //         before: {
+  //           players: feedItem.before.players.flatMap((player) => {
+  //             const playerMatch = leaderboard.players
+  //               .filter((p) => p.__typename === "PlayerRowV3")
+  //               .find((p) => p.player.id === player.player.id)?.player;
+  //             if (playerMatch === undefined) {
+  //               return [];
+  //             } else {
+  //               return playerMatch;
+  //             }
+  //           }),
+  //         },
+  //         after: {
+  //           players: feedItem.before.players.flatMap((player) => {
+  //             const playerMatch = leaderboard.players
+  //               .filter((p) => p.__typename === "PlayerRowV3")
+  //               .find((p) => p.player.id === player.player.id)?.player;
+  //             if (playerMatch === undefined) {
+  //               return [];
+  //             } else {
+  //               return playerMatch;
+  //             }
+  //           }),
+  //         },
+  //       };
+  //     case "TournamentStatusChangedV1":
+  //       return {
+  //         ...feedItem,
+  //         tournamentName: tournament.tournamentName,
+  //       };
+  //     default:
+  //       return feedItem;
+  //   }
+  // }
 
   private async resolveTournamentId(
     tourCode: TourCode,

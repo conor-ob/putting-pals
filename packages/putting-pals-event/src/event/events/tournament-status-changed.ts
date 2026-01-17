@@ -1,42 +1,51 @@
 import type {
-  LeaderboardEvent,
-  Tournament,
-  TournamentStatusChangedV1,
+  LeaderboardEventType,
+  TournamentStatus,
 } from "@putting-pals/putting-pals-api";
-import { assertNever } from "@putting-pals/putting-pals-utils";
+import { matchesTournamentField } from "../../patch/patch-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class TournamentStatusChanged extends AbstractEventEmitter<Tournament> {
-  override emit(): LeaderboardEvent[] {
+export class TournamentStatusChanged extends AbstractEventEmitter {
+  override emit(): LeaderboardEventType[] {
     if (
-      this.after.tournamentStatus === "NOT_STARTED" ||
-      this.after.tournamentStatus === this.before.tournamentStatus
+      this.operations.some((operation) =>
+        matchesTournamentField.matchesExactField(
+          operation.path,
+          "tournamentStatus",
+        ),
+      )
     ) {
-      return [];
+      return ["TournamentStatusChanged"];
     }
 
-    return [
-      {
-        __typename: "TournamentStatusChangedV1" as const,
-        before: {
-          tournamentStatus: this.before.tournamentStatus,
-        },
-        after: {
-          tournamentStatus: this.after.tournamentStatus,
-        },
-      } satisfies TournamentStatusChangedV1,
-    ];
+    return [];
   }
 
   override getPriority(): number {
-    switch (this.after.tournamentStatus) {
-      case "NOT_STARTED":
-      case "IN_PROGRESS":
-        return EventPriority.TOURNAMENT_STARTING_EVENT;
-      case "COMPLETED":
-        return EventPriority.TOURNAMENT_STOPPING_EVENT;
+    const tournamentStatusOperation = this.operations.find((operation) =>
+      matchesTournamentField.matchesExactField(
+        operation.path,
+        "tournamentStatus",
+      ),
+    );
+
+    if (!tournamentStatusOperation) {
+      return -1;
+    }
+
+    switch (tournamentStatusOperation.op) {
+      case "replace":
+        switch (tournamentStatusOperation.value as TournamentStatus) {
+          case "NOT_STARTED":
+          case "IN_PROGRESS":
+            return EventPriority.TOURNAMENT_STARTING_EVENT;
+          case "COMPLETED":
+            return EventPriority.TOURNAMENT_STOPPING_EVENT;
+          default:
+            return -1;
+        }
       default:
-        assertNever(this.after.tournamentStatus);
+        return -1;
     }
   }
 }

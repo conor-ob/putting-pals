@@ -1,5 +1,7 @@
 import type {
+  AggregatePatchRow,
   AggregateRepository,
+  AggregateRow,
   AggregateType,
   TourCode,
 } from "@putting-pals/putting-pals-api";
@@ -17,12 +19,9 @@ export class AggregatePostgresRepository implements AggregateRepository {
     tourCode: TourCode,
     tournamentId: string,
     type: AggregateType,
-  ): Promise<{ aggregate: object; patchSeq: number } | undefined> {
+  ): Promise<AggregateRow | undefined> {
     return this.db
-      .select({
-        aggregate: aggregateSnapshotTable.aggregate,
-        patchSeq: aggregateSnapshotTable.patchSeq,
-      })
+      .select()
       .from(aggregateSnapshotTable)
       .where(
         and(
@@ -57,9 +56,9 @@ export class AggregatePostgresRepository implements AggregateRepository {
     tournamentId: string,
     type: AggregateType,
     afterSeq: number,
-  ): Promise<Operation[]> {
+  ): Promise<AggregatePatchRow[]> {
     return this.db
-      .select({ patch: aggregatePatchTable.patch })
+      .select()
       .from(aggregatePatchTable)
       .where(
         and(
@@ -69,8 +68,7 @@ export class AggregatePostgresRepository implements AggregateRepository {
           gt(aggregatePatchTable.seq, afterSeq),
         ),
       )
-      .orderBy(asc(aggregatePatchTable.seq))
-      .then((results) => results.flatMap((result) => result.patch));
+      .orderBy(asc(aggregatePatchTable.seq));
   }
 
   async getPatchCount(

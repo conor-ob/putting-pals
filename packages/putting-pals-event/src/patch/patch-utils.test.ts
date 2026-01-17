@@ -52,71 +52,71 @@ suite("patch-utils", () => {
         });
       });
 
-      suite("currentRound", () => {
-        test.each([
-          ["/Tournament:R2025100/currentRound", true],
-          ["/Tournament:xyz/currentRound", true],
-          ["/Tournament:R2025100/currentRound/extra", false],
-          ["/Tournament/currentRound", false],
-        ])("path '%s' matches: %s", (path, expected) => {
-          expect(
-            matchesTournamentField.matchesExactField(path, "currentRound"),
-          ).toBe(expected);
-        });
-      });
+      // suite("currentRound", () => {
+      //   test.each([
+      //     ["/Tournament:R2025100/currentRound", true],
+      //     ["/Tournament:xyz/currentRound", true],
+      //     ["/Tournament:R2025100/currentRound/extra", false],
+      //     ["/Tournament/currentRound", false],
+      //   ])("path '%s' matches: %s", (path, expected) => {
+      //     expect(
+      //       matchesTournamentField.matchesExactField(path, "currentRound"),
+      //     ).toBe(expected);
+      //   });
+      // });
 
-      suite("nested weather field", () => {
-        test.each([
-          ["/Tournament:R2025100/weather", true],
-          ["/Tournament:R2025100/weather/tempF", false],
-          ["/Tournament:R2025100/weather/condition", false],
-          ["/Tournament/weather", false],
-        ])("path '%s' matches weather: %s", (path, expected) => {
-          expect(
-            matchesTournamentField.matchesExactField(path, "weather"),
-          ).toBe(expected);
-        });
-      });
+      // suite("nested weather field", () => {
+      //   test.each([
+      //     ["/Tournament:R2025100/weather", true],
+      //     ["/Tournament:R2025100/weather/tempF", false],
+      //     ["/Tournament:R2025100/weather/condition", false],
+      //     ["/Tournament/weather", false],
+      //   ])("path '%s' matches weather: %s", (path, expected) => {
+      //     expect(
+      //       matchesTournamentField.matchesExactField(path, "weather"),
+      //     ).toBe(expected);
+      //   });
+      // });
 
-      suite("deeply nested weather/tempF field", () => {
-        test.each([
-          ["/Tournament:R2025100/weather/tempF", true],
-          ["/Tournament:R2024014/weather/tempF", true],
-          ["/Tournament:R2025100/weather/tempF/extra", false],
-          ["/Tournament:R2025100/weather", false],
-          ["/Tournament:R2025100/weather/tempC", false],
-          ["/Tournament/weather/tempF", false],
-        ])("path '%s' matches weather/tempF: %s", (path, expected) => {
-          expect(
-            matchesTournamentField.matchesExactField(path, "weather/tempF"),
-          ).toBe(expected);
-        });
-      });
+      // suite("deeply nested weather/tempF field", () => {
+      //   test.each([
+      //     ["/Tournament:R2025100/weather/tempF", true],
+      //     ["/Tournament:R2024014/weather/tempF", true],
+      //     ["/Tournament:R2025100/weather/tempF/extra", false],
+      //     ["/Tournament:R2025100/weather", false],
+      //     ["/Tournament:R2025100/weather/tempC", false],
+      //     ["/Tournament/weather/tempF", false],
+      //   ])("path '%s' matches weather/tempF: %s", (path, expected) => {
+      //     expect(
+      //       matchesTournamentField.matchesExactField(path, "weather/tempF"),
+      //     ).toBe(expected);
+      //   });
+      // });
 
-      suite("beautyImageAsset nested fields", () => {
-        test.each([
-          ["/Tournament:R2025100/beautyImageAsset", true],
-          ["/Tournament:R2025100/beautyImageAsset/imageOrg", false],
-          ["/Tournament/beautyImageAsset", false],
-        ])("path '%s' matches beautyImageAsset: %s", (path, expected) => {
-          expect(
-            matchesTournamentField.matchesExactField(path, "beautyImageAsset"),
-          ).toBe(expected);
-        });
+      // suite("beautyImageAsset nested fields", () => {
+      //   test.each([
+      //     ["/Tournament:R2025100/beautyImageAsset", true],
+      //     ["/Tournament:R2025100/beautyImageAsset/imageOrg", false],
+      //     ["/Tournament/beautyImageAsset", false],
+      //   ])("path '%s' matches beautyImageAsset: %s", (path, expected) => {
+      //     expect(
+      //       matchesTournamentField.matchesExactField(path, "beautyImageAsset"),
+      //     ).toBe(expected);
+      //   });
 
-        test.each([
-          ["/Tournament:R2025100/beautyImageAsset/imageOrg", true],
-          ["/Tournament:R2025100/beautyImageAsset/imagePath", false],
-          ["/Tournament:R2025100/beautyImageAsset", false],
-        ])("path '%s' matches beautyImageAsset/imageOrg: %s", (path, expected) => {
-          expect(
-            matchesTournamentField.matchesExactField(
-              path,
-              "beautyImageAsset/imageOrg",
-            ),
-          ).toBe(expected);
-        });
-      });
+      //   test.each([
+      //     ["/Tournament:R2025100/beautyImageAsset/imageOrg", true],
+      //     ["/Tournament:R2025100/beautyImageAsset/imagePath", false],
+      //     ["/Tournament:R2025100/beautyImageAsset", false],
+      //   ])("path '%s' matches beautyImageAsset/imageOrg: %s", (path, expected) => {
+      //     expect(
+      //       matchesTournamentField.matchesExactField(
+      //         path,
+      //         "beautyImageAsset/imageOrg",
+      //       ),
+      //     ).toBe(expected);
+      //   });
+      // });
     });
 
     suite("matchesLooseField", () => {
@@ -142,35 +142,35 @@ suite("patch-utils", () => {
         });
       });
 
-      suite("weather", () => {
-        test.each([
-          ["/Tournament:R2025100/weather", true],
-          ["/Tournament:R2025100/weather/", true],
-          ["/Tournament:R2025100/weather/tempF", true],
-          ["/Tournament:R2025100/weather/condition", true],
-          ["/Tournament:R2025100/weather/logoAsset/imageOrg", true],
-          ["/Tournament:R2025100/beautyImageAsset", false],
-          ["/Tournament/weather", false],
-        ])("path '%s' matches weather loosely: %s", (path, expected) => {
-          expect(
-            matchesTournamentField.matchesLooseField(path, "weather"),
-          ).toBe(expected);
-        });
-      });
+      // suite("weather", () => {
+      //   test.each([
+      //     ["/Tournament:R2025100/weather", true],
+      //     ["/Tournament:R2025100/weather/", true],
+      //     ["/Tournament:R2025100/weather/tempF", true],
+      //     ["/Tournament:R2025100/weather/condition", true],
+      //     ["/Tournament:R2025100/weather/logoAsset/imageOrg", true],
+      //     ["/Tournament:R2025100/beautyImageAsset", false],
+      //     ["/Tournament/weather", false],
+      //   ])("path '%s' matches weather loosely: %s", (path, expected) => {
+      //     expect(
+      //       matchesTournamentField.matchesLooseField(path, "weather"),
+      //     ).toBe(expected);
+      //   });
+      // });
 
-      suite("weather/tempF (exact nested)", () => {
-        test.each([
-          ["/Tournament:R2025100/weather/tempF", true],
-          ["/Tournament:R2025100/weather/tempF/", true],
-          ["/Tournament:R2025100/weather/tempF/extra", true],
-          ["/Tournament:R2025100/weather", false],
-          ["/Tournament:R2025100/weather/tempC", false],
-        ])("path '%s' matches weather/tempF loosely: %s", (path, expected) => {
-          expect(
-            matchesTournamentField.matchesLooseField(path, "weather/tempF"),
-          ).toBe(expected);
-        });
-      });
+      // suite("weather/tempF (exact nested)", () => {
+      //   test.each([
+      //     ["/Tournament:R2025100/weather/tempF", true],
+      //     ["/Tournament:R2025100/weather/tempF/", true],
+      //     ["/Tournament:R2025100/weather/tempF/extra", true],
+      //     ["/Tournament:R2025100/weather", false],
+      //     ["/Tournament:R2025100/weather/tempC", false],
+      //   ])("path '%s' matches weather/tempF loosely: %s", (path, expected) => {
+      //     expect(
+      //       matchesTournamentField.matchesLooseField(path, "weather/tempF"),
+      //     ).toBe(expected);
+      //   });
+      // });
     });
   });
 
@@ -578,26 +578,26 @@ suite("patch-utils", () => {
       });
     });
 
-    suite("loose vs exact field behavior comparison", () => {
-      const testPath = "/Tournament:R2025100/weather/tempF";
+    // suite("loose vs exact field behavior comparison", () => {
+    //   const testPath = "/Tournament:R2025100/weather/tempF";
 
-      test("exact matches only the complete path", () => {
-        expect(
-          matchesTournamentField.matchesExactField(testPath, "weather/tempF"),
-        ).toBe(true);
-        expect(
-          matchesTournamentField.matchesExactField(testPath, "weather"),
-        ).toBe(false);
-      });
+    //   test("exact matches only the complete path", () => {
+    //     expect(
+    //       matchesTournamentField.matchesExactField(testPath, "weather/tempF"),
+    //     ).toBe(true);
+    //     expect(
+    //       matchesTournamentField.matchesExactField(testPath, "weather"),
+    //     ).toBe(false);
+    //   });
 
-      test("loose matches the field and any subpaths", () => {
-        expect(
-          matchesTournamentField.matchesLooseField(testPath, "weather/tempF"),
-        ).toBe(true);
-        expect(
-          matchesTournamentField.matchesLooseField(testPath, "weather"),
-        ).toBe(true);
-      });
-    });
+    //   test("loose matches the field and any subpaths", () => {
+    //     expect(
+    //       matchesTournamentField.matchesLooseField(testPath, "weather/tempF"),
+    //     ).toBe(true);
+    //     expect(
+    //       matchesTournamentField.matchesLooseField(testPath, "weather"),
+    //     ).toBe(true);
+    //   });
+    // });
   });
 });

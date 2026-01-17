@@ -2,7 +2,6 @@ export type { LeaderboardClient } from "./client/leaderboard-client";
 export type { ScheduleClient } from "./client/schedule-client";
 export type { TournamentClient } from "./client/tournament-client";
 export * from "./data/types";
-export * from "./db/types";
 export * from "./error/service-error";
 export * from "./event/types";
 export type { Sdk } from "./graphql/pga-tour/generated/graphql";
@@ -10,7 +9,9 @@ export { getSdk } from "./graphql/pga-tour/generated/graphql";
 export * from "./graphql/putting-pals/generated/graphql";
 export type { Normalizer } from "./normalize/normalizer";
 export type {
+  AggregatePatchRow,
   AggregateRepository,
+  AggregateRow,
   AggregateType,
 } from "./repository/aggregate-repository";
 export type { CompetitionRepository } from "./repository/competition-repository";

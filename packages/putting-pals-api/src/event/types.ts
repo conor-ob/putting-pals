@@ -1,24 +1,15 @@
-import type {
-  LeaderChangedV1,
-  PlayerDisqualifiedV1,
-  PlayerMissedCutV1,
-  PlayerWithdrawnV1,
-  RoundStatusChangedV1,
-  TournamentStatusChangedV1,
-} from "../db/types";
-
-export type LeaderboardEvent =
-  | LeaderChangedV1
-  | PlayerDisqualifiedV1
-  | PlayerMissedCutV1
-  | PlayerWithdrawnV1
-  | RoundStatusChangedV1
-  | TournamentStatusChangedV1;
-
-export type LeaderboardEventType = LeaderboardEvent["__typename"];
+export type LeaderboardEventType =
+  | "LeaderChanged"
+  | "HotStreak"
+  | "PlayerDisqualified"
+  | "PlayerMissedCut"
+  | "PlayerWithdrawn"
+  | "PlayerPositionChanged"
+  | "RoundStatusChanged"
+  | "TournamentStatusChanged"
+  | "TournamentWinner";
 
 export interface EventEmitter {
-  emit(): LeaderboardEvent[];
-
+  emit(): LeaderboardEventType[];
   getPriority(): number;
 }

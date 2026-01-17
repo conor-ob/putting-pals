@@ -11,7 +11,20 @@ query LeaderboardV3($id: ID!) {
 
 query TournamentAggregate($id: ID!) {
   tournamentAggregate(id: $id) {
-    ...TournamentFields
+    id
+    beautyImage
+    city
+    country
+    displayDate
+    roundDisplay
+    roundStatus
+    roundStatusColor
+    roundStatusDisplay
+    state
+    tournamentLocation
+    tournamentLogo
+    tournamentName
+    tournamentStatus
   }
 }
 

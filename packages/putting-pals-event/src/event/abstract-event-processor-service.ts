@@ -1,5 +1,6 @@
 import type {
   AggregateRepository,
+  AggregateRow,
   AggregateType,
   EventEmitter,
   LeaderboardEventProcessorService,
@@ -41,13 +42,11 @@ export abstract class AbstractEventProcessorService
 
     const materializedAggregate = patch.applyPatch(
       structuredClone(baseAggregate.aggregate),
-      patches,
+      patches.flatMap((patch) => patch.patch),
       false,
     ).newDocument;
 
-    const diff = patch
-      .compare(materializedAggregate, latestAggregate)
-      .filter((patch) => this.includePatch(patch) && !this.excludePatch(patch));
+    const diff = patch.compare(materializedAggregate, latestAggregate);
 
     if (diff.length > 0) {
       await this.aggregateRepository.createPatches(
@@ -63,12 +62,10 @@ export abstract class AbstractEventProcessorService
         baseAggregate.patchSeq,
       );
 
-      return this.createEventEmitters(
-        tourCode,
-        tournamentId,
-        materializedAggregate,
-        latestAggregate,
-      );
+      // const previousPatchSeq = patches[patches.length - 2]?.seq ?? 0;
+      // const patchSeq = patches[patches.length - 1]?.seq ?? 0;
+
+      return this.createEventEmitters(tourCode, diff);
     }
 
     return [];
@@ -109,7 +106,7 @@ export abstract class AbstractEventProcessorService
 
     const compactedAggregate = patch.applyPatch(
       structuredClone(baseAggregate.aggregate),
-      patches,
+      patches.flatMap((patch) => patch.patch),
       false,
     ).newDocument;
 
@@ -131,7 +128,7 @@ export abstract class AbstractEventProcessorService
   private getBaseAggregate(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<{ aggregate: object; patchSeq: number } | undefined> {
+  ): Promise<AggregateRow | undefined> {
     return this.aggregateRepository.getAggregate(
       tourCode,
       tournamentId,
@@ -159,16 +156,6 @@ export abstract class AbstractEventProcessorService
 
   protected abstract createEventEmitters(
     tourCode: TourCode,
-    tournamentId: string,
-    materializedAggregate: object,
-    latestAggregate: object,
+    diff: Operation[],
   ): Promise<EventEmitter[]>;
-
-  protected includePatch(_: Operation): boolean {
-    return true;
-  }
-
-  protected excludePatch(_: Operation): boolean {
-    return false;
-  }
 }

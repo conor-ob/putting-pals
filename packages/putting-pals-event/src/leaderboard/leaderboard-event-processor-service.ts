@@ -6,12 +6,12 @@ import {
   type Normalizer,
   type TourCode,
 } from "@putting-pals/putting-pals-api";
+import type { Operation } from "fast-json-patch";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
 import { LeaderChanged } from "../event/events/leader-changed";
 import { PlayerDisqualified } from "../event/events/player-disqualified";
 import { PlayerMissedCut } from "../event/events/player-missed-cut";
-import { PlayerPositionDecreased } from "../event/events/player-position-decreased";
-import { PlayerPositionIncreased } from "../event/events/player-position-increased";
+import { PlayerPositionChanged } from "../event/events/player-position-changed";
 import { PlayerWithdrawn } from "../event/events/player-withdrawn";
 import { TournamentWinner } from "../event/events/tournament-winner";
 
@@ -49,66 +49,15 @@ export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessor
 
   override async createEventEmitters(
     tourCode: TourCode,
-    tournamentId: string,
-    materializedAggregate: object,
-    latestAggregate: object,
+    diff: Operation[],
   ): Promise<EventEmitter[]> {
-    const denormalizedMaterializedLeaderboardAggregate =
-      this.normalizer.denormalize(
-        LeaderboardAggregateDocument,
-        materializedAggregate,
-        { id: tournamentId },
-      )?.leaderboardAggregate;
-
-    const denormalizedLatestLeaderboardAggregate = this.normalizer.denormalize(
-      LeaderboardAggregateDocument,
-      latestAggregate,
-      { id: tournamentId },
-    )?.leaderboardAggregate;
-
-    if (
-      denormalizedMaterializedLeaderboardAggregate === undefined ||
-      denormalizedLatestLeaderboardAggregate === undefined
-    ) {
-      return [];
-    }
-
     const eventEmitters: EventEmitter[] = [
-      new LeaderChanged(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerDisqualified(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerMissedCut(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerPositionDecreased(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerPositionIncreased(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerWithdrawn(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new TournamentWinner(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
+      new LeaderChanged(tourCode, diff),
+      new PlayerDisqualified(tourCode, diff),
+      new PlayerMissedCut(tourCode, diff),
+      new PlayerPositionChanged(tourCode, diff),
+      new PlayerWithdrawn(tourCode, diff),
+      new TournamentWinner(tourCode, diff),
     ];
 
     return eventEmitters;

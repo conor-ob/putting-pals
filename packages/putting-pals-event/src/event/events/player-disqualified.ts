@@ -1,25 +1,30 @@
 import type {
-  LeaderboardEvent,
-  PlayerDisqualifiedV1,
+  LeaderboardEventType,
+  PlayerState,
 } from "@putting-pals/putting-pals-api";
-import { EventPriority } from "../event-emitter";
-import { PlayerStateChanged } from "./player-state-changed";
+import { matchesPlayerRowV3Field } from "../../patch/patch-utils";
+import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class PlayerDisqualified extends PlayerStateChanged {
-  override emit(): LeaderboardEvent[] {
-    const players = this.getPlayersStateChanged("DISQUALIFIED");
-    if (players.length === 0) {
-      return [];
+export class PlayerDisqualified extends AbstractEventEmitter {
+  override emit(): LeaderboardEventType[] {
+    const playerStateOperations = this.operations.filter((operation) =>
+      matchesPlayerRowV3Field.matchesExactField(
+        operation.path,
+        "scoringData/playerState",
+      ),
+    );
+
+    for (const playerStateOperation of playerStateOperations) {
+      switch (playerStateOperation.op) {
+        case "add":
+        case "replace":
+          if ((playerStateOperation.value as PlayerState) === "DISQUALIFIED") {
+            return ["PlayerDisqualified"];
+          }
+      }
     }
 
-    return [
-      {
-        __typename: "PlayerDisqualifiedV1" as const,
-        players: players.map((player) => ({
-          id: player.player.id,
-        })),
-      } satisfies PlayerDisqualifiedV1,
-    ];
+    return [];
   }
 
   override getPriority(): number {

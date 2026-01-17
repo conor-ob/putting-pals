@@ -44,10 +44,25 @@ function createFieldMatcher<T extends { readonly __typename: string }>(
   };
 }
 
+export const matchesLeaderboardField =
+  createFieldMatcher<
+    NonNullable<LeaderboardAggregateQuery["leaderboardAggregate"]>
+  >("LeaderboardV3");
+
 export const matchesTournamentField =
   createFieldMatcher<
     NonNullable<TournamentAggregateQuery["tournamentAggregate"]>
   >("Tournament");
+
+export const matchesPlayerRowV3Field =
+  createFieldMatcher<
+    Extract<
+      NonNullable<
+        LeaderboardAggregateQuery["leaderboardAggregate"]["players"][number]
+      >,
+      { __typename: "PlayerRowV3" }
+    >
+  >("PlayerRowV3");
 
 export const matchesPuttingPalsPlayerRowField = createFieldMatcher<
   Extract<

@@ -23,7 +23,6 @@ import {
   ApolloCacheNormalizer,
   LeaderboardEventProcessorImpl,
   LeaderboardEventProcessorServiceImpl,
-  LeaderboardHoleByHoleEventProcessorServiceImpl,
   TournamentEventProcessorImpl,
 } from "@putting-pals/putting-pals-event";
 import {
@@ -133,12 +132,12 @@ function createContext() {
         normalizer,
         aggregateRepository,
       ),
-      new LeaderboardHoleByHoleEventProcessorServiceImpl(
-        tournamentService,
-        leaderboardService,
-        normalizer,
-        aggregateRepository,
-      ),
+      // new LeaderboardHoleByHoleEventProcessorServiceImpl(
+      //   tournamentService,
+      //   leaderboardService,
+      //   normalizer,
+      //   aggregateRepository,
+      // ),
     ],
     leaderboardFeedRepository,
   );

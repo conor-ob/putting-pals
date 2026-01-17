@@ -3,8 +3,6 @@ import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { trpc } from "~/providers/trpc/utils/trpc";
 import { useInfiniteQuery } from "~/providers/trpc/utils/use-infinite-query";
-import { RoundStatusChangedV1 } from "./feed-items/round-status-changed-v1";
-import { TournamentStatusChangedV1 } from "./feed-items/tournament-status-changed-v1";
 
 export function FeedPage() {
   const { tourCode } = useTourCode();
@@ -54,20 +52,11 @@ export function FeedPage() {
       data={feedItems}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => {
-        switch (item.feedItem.__typename) {
-          case "RoundStatusChangedV1":
-            return <RoundStatusChangedV1 item={item.feedItem} />;
-          case "TournamentStatusChangedV1":
-            return <TournamentStatusChangedV1 item={item.feedItem} />;
-          default:
-            return (
-              <View className="p-4">
-                <Text className="text-foreground">
-                  {`Unknown event type: ${item.feedItem}`}
-                </Text>
-              </View>
-            );
-        }
+        return (
+          <View className="p-4">
+            <Text className="text-foreground">{item.type}</Text>
+          </View>
+        );
       }}
       onEndReached={handleEndReached}
       onEndReachedThreshold={0.5}

@@ -1,2 +1,2 @@
 export { getDatabaseUrlSchema } from "./utils/schema-utils";
-export { assertNever } from "./utils/type-utils";
+export { assertNever, type RecursivePartial } from "./utils/type-utils";
