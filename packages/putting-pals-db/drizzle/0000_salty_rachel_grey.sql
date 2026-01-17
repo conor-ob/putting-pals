@@ -18,7 +18,6 @@ CREATE TABLE "aggregate_snapshot" (
 	"tour_code" text NOT NULL,
 	"tournament_id" text NOT NULL,
 	"type" text NOT NULL,
-	"patch_seq" integer DEFAULT 0 NOT NULL,
 	"aggregate" jsonb NOT NULL
 );
 --> statement-breakpoint
@@ -31,8 +30,8 @@ CREATE TABLE "leaderboard_feed" (
 	"tournament_id" text NOT NULL,
 	"type" text NOT NULL,
 	"seq" serial NOT NULL,
-	"patch_seq" integer NOT NULL,
-	"prev_patch_seq" integer NOT NULL
+	"prev_seq" integer NOT NULL,
+	"next_seq" integer NOT NULL
 );
 --> statement-breakpoint
 CREATE INDEX "aggregate_patch_tournament_type_seq_idx" ON "aggregate_patch" USING btree ("tour_code","tournament_id","type","seq");--> statement-breakpoint

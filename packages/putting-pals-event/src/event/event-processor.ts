@@ -32,7 +32,14 @@ export class LeaderboardEventProcessorImpl
     const events = eventEmitters
       .flat()
       .sort((a, b) => a.getPriority() - b.getPriority())
-      .flatMap((eventEmitter) => eventEmitter.emit());
+      .flatMap((eventEmitter) => {
+        return {
+          type: eventEmitter.emit(),
+          prevPatchSeq: eventEmitter.getPrevPatchSeq(),
+          nextPatchSeq: eventEmitter.getNextPatchSeq(),
+        };
+      })
+      .filter((event) => event.type.length > 0);
 
     if (events.length > 0) {
       await this.leaderboardFeedRepository.createLeaderboardFeedItems(

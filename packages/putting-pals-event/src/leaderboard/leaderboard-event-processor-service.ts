@@ -8,6 +8,7 @@ import {
 } from "@putting-pals/putting-pals-api";
 import type { Operation } from "fast-json-patch";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
+import { CutLineChanged } from "../event/events/cut-line-changed";
 import { LeaderChanged } from "../event/events/leader-changed";
 import { PlayerDisqualified } from "../event/events/player-disqualified";
 import { PlayerMissedCut } from "../event/events/player-missed-cut";
@@ -50,14 +51,17 @@ export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessor
   override async createEventEmitters(
     tourCode: TourCode,
     diff: Operation[],
+    prevPatchSeq: number,
+    nextPatchSeq: number,
   ): Promise<EventEmitter[]> {
     const eventEmitters: EventEmitter[] = [
-      new LeaderChanged(tourCode, diff),
-      new PlayerDisqualified(tourCode, diff),
-      new PlayerMissedCut(tourCode, diff),
-      new PlayerPositionChanged(tourCode, diff),
-      new PlayerWithdrawn(tourCode, diff),
-      new TournamentWinner(tourCode, diff),
+      new CutLineChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
+      new LeaderChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
+      new PlayerDisqualified(tourCode, diff, prevPatchSeq, nextPatchSeq),
+      new PlayerMissedCut(tourCode, diff, prevPatchSeq, nextPatchSeq),
+      new PlayerPositionChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
+      new PlayerWithdrawn(tourCode, diff, prevPatchSeq, nextPatchSeq),
+      new TournamentWinner(tourCode, diff, prevPatchSeq, nextPatchSeq),
     ];
 
     return eventEmitters;

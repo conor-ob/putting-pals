@@ -52,16 +52,31 @@ export class LeaderboardFeedPostgresRepository
   async createLeaderboardFeedItems(
     tourCode: TourCode,
     tournamentId: string,
-    events: LeaderboardEventType[],
+    events: {
+      type: LeaderboardEventType[];
+      prevPatchSeq: number;
+      nextPatchSeq: number;
+    }[],
   ): Promise<void> {
-    await this.db.insert(leaderboardFeedTable).values(
-      events.map((event) => ({
-        tourCode,
-        tournamentId,
-        type: event,
-        patchSeq: 0,
-        prevPatchSeq: 0,
-      })),
-    );
+    const values = events.map((event) => ({
+      tourCode,
+      tournamentId,
+      // biome-ignore lint/style/noNonNullAssertion: todo
+      type: event.type[0]!,
+      prevSeq: event.prevPatchSeq,
+      nextSeq: event.nextPatchSeq,
+    }));
+    await this.db
+      .insert(leaderboardFeedTable)
+      .values(
+        values.map((value) => ({
+          tourCode,
+          tournamentId,
+          type: value.type,
+          prevSeq: value.prevSeq,
+          nextSeq: value.nextSeq,
+        })),
+      )
+      .onConflictDoNothing();
   }
 }

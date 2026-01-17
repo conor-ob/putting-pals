@@ -11,7 +11,6 @@ export type { Normalizer } from "./normalize/normalizer";
 export type {
   AggregatePatchRow,
   AggregateRepository,
-  AggregateRow,
   AggregateType,
 } from "./repository/aggregate-repository";
 export type { CompetitionRepository } from "./repository/competition-repository";

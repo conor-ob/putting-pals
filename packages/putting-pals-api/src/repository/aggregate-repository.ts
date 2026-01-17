@@ -11,18 +11,6 @@ export type AggregateType =
   | LeaderboardV3["__typename"]
   | LeaderboardHoleByHole["__typename"];
 
-export type AggregateRow = {
-  type: AggregateType;
-  patchSeq: number;
-  aggregate: object;
-  tourCode: TourCode;
-  tournamentId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date | null;
-  id: string;
-};
-
 export type AggregatePatchRow = {
   seq: number;
   patch: Operation[];
@@ -39,40 +27,25 @@ export interface AggregateRepository {
     tourCode: TourCode,
     tournamentId: string,
     type: AggregateType,
-  ): Promise<AggregateRow | undefined>;
+  ): Promise<object | undefined>;
 
   createAggregate(
     tourCode: TourCode,
     tournamentId: string,
     type: AggregateType,
     aggregate: object,
-    patchSeq?: number,
   ): Promise<void>;
 
   getPatches(
     tourCode: TourCode,
     tournamentId: string,
     type: AggregateType,
-    afterSeq: number,
   ): Promise<AggregatePatchRow[]>;
 
-  getPatchCount(
+  createPatch(
     tourCode: TourCode,
     tournamentId: string,
     type: AggregateType,
-    afterSeq: number,
-  ): Promise<number>;
-
-  getMaxPatchSeq(
-    tourCode: TourCode,
-    tournamentId: string,
-    type: AggregateType,
-  ): Promise<number>;
-
-  createPatches(
-    tourCode: TourCode,
-    tournamentId: string,
-    type: AggregateType,
-    patches: Operation[],
-  ): Promise<void>;
+    operations: Operation[],
+  ): Promise<AggregatePatchRow | undefined>;
 }

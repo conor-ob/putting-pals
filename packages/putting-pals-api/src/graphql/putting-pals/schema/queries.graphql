@@ -30,11 +30,78 @@ query TournamentAggregate($id: ID!) {
 
 query LeaderboardAggregate($id: ID!) {
   leaderboardAggregate(id: $id) {
-    ...LeaderboardV3Fields
+    id
     players {
-      ...PlayerRowV3Fields
       ...PuttingPalsPlayerRowFields
-      ...InformationRowFields
+      ... on PlayerRowV3 {
+        id
+        leaderboardSortOrder
+        player {
+          id
+          firstName
+          lastName
+          shortName
+          displayName
+          abbreviations
+          abbreviationsAccessibilityText
+          amateur
+          country
+          countryFlag
+        }
+        scoringData {
+          groupNumber
+          currentRound
+          backNine
+          playerState
+          teeTime
+          totalStrokes
+          totalStrokesSort
+          total
+          totalSort
+          thru
+          thruSort
+          score
+          scoreSort
+          position
+          playerIcon
+        }
+      }
+      ... on InformationRow {
+        id
+        leaderboardSortOrder
+        displayText
+        mobileDisplayText
+        sponsorName
+      }
+    }
+    winner {
+      id
+      firstName
+      lastName
+      totalStrokes
+      totalScore
+      countryFlag
+      countryName
+      purse
+      winnerIcon {
+        type
+        title
+        label
+        color
+      }
+    }
+    messages {
+      messageText
+      messageIcon
+      messageLink
+      webViewLink
+      externalLink
+      platforms
+      timing
+    }
+    isPlayoffActive
+    cutLineProbabilities {
+      projectedCutLine
     }
   }
 }

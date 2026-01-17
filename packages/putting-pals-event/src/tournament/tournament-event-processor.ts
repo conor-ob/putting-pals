@@ -46,10 +46,12 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
   override async createEventEmitters(
     tourCode: TourCode,
     diff: Operation[],
+    prevPatchSeq: number,
+    nextPatchSeq: number,
   ): Promise<EventEmitter[]> {
     const eventEmitters: EventEmitter[] = [
-      new RoundStatusChanged(tourCode, diff),
-      new TournamentStatusChanged(tourCode, diff),
+      new RoundStatusChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
+      new TournamentStatusChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
     ];
 
     return eventEmitters;

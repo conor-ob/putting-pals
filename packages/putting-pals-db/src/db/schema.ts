@@ -54,7 +54,6 @@ export const aggregateSnapshotTable = pgTable(
     ...timestampColumns,
     ...tournamentIdentifierColumns,
     type: text("type").notNull().$type<AggregateType>(),
-    patchSeq: integer("patch_seq").notNull().default(0),
     aggregate: jsonb("aggregate").notNull().$type<object>(),
   },
   (table) => [
@@ -94,8 +93,8 @@ export const leaderboardFeedTable = pgTable(
     ...tournamentIdentifierColumns,
     type: text("type").notNull().$type<LeaderboardEventType>(),
     seq: serial("seq").notNull(),
-    patchSeq: integer("patch_seq").notNull(),
-    prevPatchSeq: integer("prev_patch_seq").notNull(),
+    prevSeq: integer("prev_seq").notNull(),
+    nextSeq: integer("next_seq").notNull(),
   },
   (table) => [
     index("leaderboard_feed_tournament_idx").on(

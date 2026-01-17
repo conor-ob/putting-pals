@@ -25,6 +25,10 @@ export interface LeaderboardFeedRepository {
   createLeaderboardFeedItems(
     tourCode: TourCode,
     tournamentId: string,
-    events: LeaderboardEventType[],
+    events: {
+      type: LeaderboardEventType[];
+      prevPatchSeq: number;
+      nextPatchSeq: number;
+    }[],
   ): Promise<void>;
 }

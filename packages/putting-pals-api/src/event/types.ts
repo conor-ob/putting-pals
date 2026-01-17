@@ -1,4 +1,5 @@
 export type LeaderboardEventType =
+  | "CutLineChanged"
   | "LeaderChanged"
   | "HotStreak"
   | "PlayerDisqualified"
@@ -12,4 +13,6 @@ export type LeaderboardEventType =
 export interface EventEmitter {
   emit(): LeaderboardEventType[];
   getPriority(): number;
+  getPrevPatchSeq(): number;
+  getNextPatchSeq(): number;
 }
