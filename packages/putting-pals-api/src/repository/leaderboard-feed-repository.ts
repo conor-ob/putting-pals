@@ -1,4 +1,4 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { AggregateType, TourCode } from "@putting-pals/putting-pals-api";
 import type { LeaderboardEventType } from "../event/types";
 
 export interface LeaderboardFeedRepository {
@@ -29,6 +29,7 @@ export interface LeaderboardFeedRepository {
       type: LeaderboardEventType[];
       prevPatchSeq: number;
       nextPatchSeq: number;
+      aggregateType: AggregateType;
     }[],
   ): Promise<void>;
 }

@@ -1,4 +1,5 @@
 import type {
+  AggregateType,
   LeaderboardEventType,
   LeaderboardFeedRepository,
   TourCode,
@@ -54,6 +55,7 @@ export class LeaderboardFeedPostgresRepository
     tournamentId: string,
     events: {
       type: LeaderboardEventType[];
+      aggregateType: AggregateType;
       prevPatchSeq: number;
       nextPatchSeq: number;
     }[],
@@ -62,7 +64,8 @@ export class LeaderboardFeedPostgresRepository
       tourCode,
       tournamentId,
       // biome-ignore lint/style/noNonNullAssertion: todo
-      type: event.type[0]!,
+      event: event.type[0]!,
+      aggregateType: event.aggregateType,
       prevSeq: event.prevPatchSeq,
       nextSeq: event.nextPatchSeq,
     }));
@@ -72,7 +75,8 @@ export class LeaderboardFeedPostgresRepository
         values.map((value) => ({
           tourCode,
           tournamentId,
-          type: value.type,
+          type: value.aggregateType,
+          event: value.event,
           prevSeq: value.prevSeq,
           nextSeq: value.nextSeq,
         })),

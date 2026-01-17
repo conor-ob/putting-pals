@@ -2,35 +2,31 @@ import type {
   LeaderboardEventType,
   RoundStatus,
 } from "@putting-pals/putting-pals-api";
+import type { Operation } from "fast-json-patch";
 import { matchesTournamentField } from "../../patch/patch-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class RoundStatusChanged extends AbstractEventEmitter {
-  override emit(): LeaderboardEventType[] {
-    if (
-      this.operations.some((operation) =>
-        matchesTournamentField.matchesExactField(operation.path, "roundStatus"),
-      )
-    ) {
-      return ["RoundStatusChanged"];
+  override matches(operation: Operation): boolean {
+    if (operation.op !== "add" && operation.op !== "replace") {
+      return false;
     }
 
-    return [];
+    return matchesTournamentField.matchesExactField(
+      operation.path,
+      "roundStatus",
+    );
+  }
+
+  override getEventType(): LeaderboardEventType {
+    return "RoundStatusChanged";
   }
 
   override getPriority(): number {
-    const roundStatusOperation = this.operations.find((operation) =>
-      matchesTournamentField.matchesExactField(operation.path, "roundStatus"),
-    );
-
-    if (!roundStatusOperation) {
-      return -1;
-    }
-
-    switch (roundStatusOperation.op) {
+    switch (this.operation.op) {
       case "add":
       case "replace":
-        switch (roundStatusOperation.value as RoundStatus) {
+        switch (this.operation.value as RoundStatus) {
           case "UPCOMING":
           case "GROUPINGS_OFFICIAL":
           case "IN_PROGRESS":

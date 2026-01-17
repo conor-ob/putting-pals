@@ -1,4 +1,5 @@
 import type {
+  AggregateType,
   EventEmitter,
   LeaderboardEventType,
   TourCode,
@@ -8,19 +9,35 @@ import type { Operation } from "fast-json-patch";
 export abstract class AbstractEventEmitter implements EventEmitter {
   constructor(
     protected readonly tourCode: TourCode,
-    protected readonly operations: Operation[],
+    protected readonly operation: Operation,
+    protected readonly aggregateType: AggregateType,
     protected readonly prevPatchSeq: number,
     protected readonly nextPatchSeq: number,
   ) {
     this.tourCode = tourCode;
-    this.operations = operations;
+    this.operation = operation;
+    this.aggregateType = aggregateType;
     this.prevPatchSeq = prevPatchSeq;
     this.nextPatchSeq = nextPatchSeq;
   }
 
-  abstract emit(): LeaderboardEventType[];
+  emit(): LeaderboardEventType[] {
+    if (this.matches(this.operation)) {
+      return [this.getEventType()];
+    } else {
+      return [];
+    }
+  }
+
+  abstract matches(operation: Operation): boolean;
+
+  abstract getEventType(): LeaderboardEventType;
 
   abstract getPriority(): number;
+
+  getAggregateType(): AggregateType {
+    return this.aggregateType;
+  }
 
   getPrevPatchSeq(): number {
     return this.prevPatchSeq;

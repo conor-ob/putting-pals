@@ -1,3 +1,5 @@
+import type { AggregateType } from "../repository/aggregate-repository";
+
 export type LeaderboardEventType =
   | "CutLineChanged"
   | "LeaderChanged"
@@ -13,6 +15,7 @@ export type LeaderboardEventType =
 export interface EventEmitter {
   emit(): LeaderboardEventType[];
   getPriority(): number;
+  getAggregateType(): AggregateType;
   getPrevPatchSeq(): number;
   getNextPatchSeq(): number;
 }

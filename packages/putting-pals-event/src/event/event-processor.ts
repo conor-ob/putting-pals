@@ -37,6 +37,7 @@ export class LeaderboardEventProcessorImpl
           type: eventEmitter.emit(),
           prevPatchSeq: eventEmitter.getPrevPatchSeq(),
           nextPatchSeq: eventEmitter.getNextPatchSeq(),
+          aggregateType: eventEmitter.getAggregateType(),
         };
       })
       .filter((event) => event.type.length > 0);

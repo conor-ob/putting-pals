@@ -44,14 +44,14 @@ export abstract class AbstractEventProcessorService
       false,
     ).newDocument;
 
-    const diff = patch.compare(materializedAggregate, latestAggregate);
+    const operations = patch.compare(materializedAggregate, latestAggregate);
 
-    if (diff.length > 0) {
+    if (operations.length > 0) {
       const newPatch = await this.aggregateRepository.createPatch(
         tourCode,
         tournamentId,
         this.aggregateType,
-        diff,
+        operations,
       );
 
       const prevPatchSeq = patches[patches.length - 1]?.seq ?? 0;
@@ -59,7 +59,7 @@ export abstract class AbstractEventProcessorService
 
       return this.createEventEmitters(
         tourCode,
-        diff,
+        operations,
         prevPatchSeq,
         nextPatchSeq,
       );
@@ -99,7 +99,7 @@ export abstract class AbstractEventProcessorService
 
   protected abstract createEventEmitters(
     tourCode: TourCode,
-    diff: Operation[],
+    operations: Operation[],
     prevPatchSeq: number,
     nextPatchSeq: number,
   ): Promise<EventEmitter[]>;

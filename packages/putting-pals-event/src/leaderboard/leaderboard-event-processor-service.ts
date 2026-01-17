@@ -50,20 +50,60 @@ export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessor
 
   override async createEventEmitters(
     tourCode: TourCode,
-    diff: Operation[],
+    operations: Operation[],
     prevPatchSeq: number,
     nextPatchSeq: number,
   ): Promise<EventEmitter[]> {
-    const eventEmitters: EventEmitter[] = [
-      new CutLineChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
-      new LeaderChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
-      new PlayerDisqualified(tourCode, diff, prevPatchSeq, nextPatchSeq),
-      new PlayerMissedCut(tourCode, diff, prevPatchSeq, nextPatchSeq),
-      new PlayerPositionChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
-      new PlayerWithdrawn(tourCode, diff, prevPatchSeq, nextPatchSeq),
-      new TournamentWinner(tourCode, diff, prevPatchSeq, nextPatchSeq),
-    ];
-
-    return eventEmitters;
+    return operations.flatMap((operation) => [
+      new CutLineChanged(
+        tourCode,
+        operation,
+        "LeaderboardV3",
+        prevPatchSeq,
+        nextPatchSeq,
+      ),
+      new LeaderChanged(
+        tourCode,
+        operation,
+        "LeaderboardV3",
+        prevPatchSeq,
+        nextPatchSeq,
+      ),
+      new PlayerDisqualified(
+        tourCode,
+        operation,
+        "LeaderboardV3",
+        prevPatchSeq,
+        nextPatchSeq,
+      ),
+      new PlayerMissedCut(
+        tourCode,
+        operation,
+        "LeaderboardV3",
+        prevPatchSeq,
+        nextPatchSeq,
+      ),
+      new PlayerPositionChanged(
+        tourCode,
+        operation,
+        "LeaderboardV3",
+        prevPatchSeq,
+        nextPatchSeq,
+      ),
+      new PlayerWithdrawn(
+        tourCode,
+        operation,
+        "LeaderboardV3",
+        prevPatchSeq,
+        nextPatchSeq,
+      ),
+      new TournamentWinner(
+        tourCode,
+        operation,
+        "LeaderboardV3",
+        prevPatchSeq,
+        nextPatchSeq,
+      ),
+    ]);
   }
 }

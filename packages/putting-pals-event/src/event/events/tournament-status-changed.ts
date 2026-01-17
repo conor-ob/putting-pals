@@ -2,40 +2,30 @@ import type {
   LeaderboardEventType,
   TournamentStatus,
 } from "@putting-pals/putting-pals-api";
+import type { Operation } from "fast-json-patch";
 import { matchesTournamentField } from "../../patch/patch-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class TournamentStatusChanged extends AbstractEventEmitter {
-  override emit(): LeaderboardEventType[] {
-    if (
-      this.operations.some((operation) =>
-        matchesTournamentField.matchesExactField(
-          operation.path,
-          "tournamentStatus",
-        ),
-      )
-    ) {
-      return ["TournamentStatusChanged"];
+  override matches(operation: Operation): boolean {
+    if (operation.op !== "add" && operation.op !== "replace") {
+      return false;
     }
 
-    return [];
+    return matchesTournamentField.matchesExactField(
+      operation.path,
+      "tournamentStatus",
+    );
+  }
+
+  override getEventType(): LeaderboardEventType {
+    return "TournamentStatusChanged";
   }
 
   override getPriority(): number {
-    const tournamentStatusOperation = this.operations.find((operation) =>
-      matchesTournamentField.matchesExactField(
-        operation.path,
-        "tournamentStatus",
-      ),
-    );
-
-    if (!tournamentStatusOperation) {
-      return -1;
-    }
-
-    switch (tournamentStatusOperation.op) {
+    switch (this.operation.op) {
       case "replace":
-        switch (tournamentStatusOperation.value as TournamentStatus) {
+        switch (this.operation.value as TournamentStatus) {
           case "NOT_STARTED":
           case "IN_PROGRESS":
             return EventPriority.TOURNAMENT_STARTING_EVENT;

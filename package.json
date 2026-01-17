@@ -10,6 +10,7 @@
     "codegen": "turbo codegen",
     "db:generate": "turbo db:generate",
     "db:migrate": "turbo db:migrate",
+    "db:push": "turbo db:push",
     "db:studio": "turbo db:studio",
     "build": "turbo build",
     "format": "biome format .",

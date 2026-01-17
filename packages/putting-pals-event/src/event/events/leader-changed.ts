@@ -1,5 +1,6 @@
 import type { LeaderboardEventType } from "@putting-pals/putting-pals-api";
 import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
+import type { Operation } from "fast-json-patch";
 import {
   matchesPlayerRowV3Field,
   matchesPuttingPalsPlayerRowField,
@@ -7,57 +8,53 @@ import {
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class LeaderChanged extends AbstractEventEmitter {
-  override emit(): LeaderboardEventType[] {
+  override matches(operation: Operation): boolean {
     switch (this.tourCode) {
       case "P":
-        return this.getPuttingPalsLeaderChanged();
+        return this.getPuttingPalsLeaderChanged(operation);
       case "R":
-        return this.getPgaTourLeaderChanged();
+        return this.getPgaTourLeaderChanged(operation);
       default:
         throw new UnsupportedTourCodeError(this.tourCode);
     }
   }
 
-  private getPuttingPalsLeaderChanged(): LeaderboardEventType[] {
-    const operations = this.operations.filter((operation) =>
-      matchesPuttingPalsPlayerRowField.matchesExactField(
-        operation.path,
-        "scoringData/position",
-      ),
-    );
-
-    for (const operation of operations) {
-      switch (operation.op) {
-        case "add":
-        case "replace":
-          if (operation.value === "1" || operation.value === "T1") {
-            return ["LeaderChanged"];
-          }
-      }
+  private getPuttingPalsLeaderChanged(operation: Operation): boolean {
+    if (operation.op !== "add" && operation.op !== "replace") {
+      return false;
     }
 
-    return [];
+    const match = matchesPuttingPalsPlayerRowField.matchesExactField(
+      operation.path,
+      "scoringData/position",
+    );
+
+    if (!match) {
+      return false;
+    }
+
+    return operation.value === "1" || operation.value === "T1";
   }
 
-  private getPgaTourLeaderChanged(): LeaderboardEventType[] {
-    const operations = this.operations.filter((operation) =>
-      matchesPlayerRowV3Field.matchesExactField(
-        operation.path,
-        "scoringData/position",
-      ),
-    );
-
-    for (const operation of operations) {
-      switch (operation.op) {
-        case "add":
-        case "replace":
-          if (operation.value === "1" || operation.value === "T1") {
-            return ["LeaderChanged"];
-          }
-      }
+  private getPgaTourLeaderChanged(operation: Operation): boolean {
+    if (operation.op !== "add" && operation.op !== "replace") {
+      return false;
     }
 
-    return [];
+    const match = matchesPlayerRowV3Field.matchesExactField(
+      operation.path,
+      "scoringData/position",
+    );
+
+    if (!match) {
+      return false;
+    }
+
+    return operation.value === "1" || operation.value === "T1";
+  }
+
+  override getEventType(): LeaderboardEventType {
+    return "LeaderChanged";
   }
 
   override getPriority(): number {

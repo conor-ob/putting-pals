@@ -31,7 +31,7 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
       tournamentId,
     );
 
-    const normalizedTournament = this.normalizer.normalize(
+    return this.normalizer.normalize(
       TournamentAggregateDocument,
       {
         __typename: "Query",
@@ -39,21 +39,29 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
       },
       { id: tournament.id },
     );
-
-    return normalizedTournament;
   }
 
   override async createEventEmitters(
     tourCode: TourCode,
-    diff: Operation[],
+    operations: Operation[],
     prevPatchSeq: number,
     nextPatchSeq: number,
   ): Promise<EventEmitter[]> {
-    const eventEmitters: EventEmitter[] = [
-      new RoundStatusChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
-      new TournamentStatusChanged(tourCode, diff, prevPatchSeq, nextPatchSeq),
-    ];
-
-    return eventEmitters;
+    return operations.flatMap((operation) => [
+      new RoundStatusChanged(
+        tourCode,
+        operation,
+        "Tournament",
+        prevPatchSeq,
+        nextPatchSeq,
+      ),
+      new TournamentStatusChanged(
+        tourCode,
+        operation,
+        "Tournament",
+        prevPatchSeq,
+        nextPatchSeq,
+      ),
+    ]);
   }
 }

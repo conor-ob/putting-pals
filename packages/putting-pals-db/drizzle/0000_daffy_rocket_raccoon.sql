@@ -29,6 +29,7 @@ CREATE TABLE "leaderboard_feed" (
 	"tour_code" text NOT NULL,
 	"tournament_id" text NOT NULL,
 	"type" text NOT NULL,
+	"event" text NOT NULL,
 	"seq" serial NOT NULL,
 	"prev_seq" integer NOT NULL,
 	"next_seq" integer NOT NULL

@@ -2,29 +2,26 @@ import type {
   LeaderboardEventType,
   LeaderboardPlayerIcon,
 } from "@putting-pals/putting-pals-api";
+import type { Operation } from "fast-json-patch";
 import { matchesPlayerRowV3Field } from "../../patch/patch-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class HotStreak extends AbstractEventEmitter {
-  override emit(): LeaderboardEventType[] {
-    const operations = this.operations.filter((operation) =>
-      matchesPlayerRowV3Field.matchesExactField(
-        operation.path,
-        "scoringData/playerIcon",
-      ),
-    );
-
-    for (const operation of operations) {
-      switch (operation.op) {
-        case "add":
-        case "replace":
-          if ((operation.value as LeaderboardPlayerIcon) === "HOT_STREAK") {
-            return ["HotStreak"];
-          }
-      }
+  override matches(operation: Operation): boolean {
+    if (operation.op !== "add" && operation.op !== "replace") {
+      return false;
     }
 
-    return [];
+    const match = matchesPlayerRowV3Field.matchesExactField(
+      operation.path,
+      "scoringData/playerIcon",
+    );
+
+    return match && (operation.value as LeaderboardPlayerIcon) === "HOT_STREAK";
+  }
+
+  override getEventType(): LeaderboardEventType {
+    return "HotStreak";
   }
 
   override getPriority(): number {
