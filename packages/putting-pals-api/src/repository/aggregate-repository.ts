@@ -13,7 +13,7 @@ export type AggregateType =
 
 export type AggregatePatchRow = {
   seq: number;
-  patch: Operation[];
+  operations: Operation[];
   tourCode: TourCode;
   tournamentId: string;
   type: AggregateType;
@@ -34,6 +34,7 @@ export interface AggregateRepository {
     tournamentId: string,
     type: AggregateType,
     aggregate: object,
+    patchSeq: number,
   ): Promise<void>;
 
   getPatches(

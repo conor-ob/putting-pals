@@ -44,24 +44,11 @@ export class TournamentEventProcessorImpl extends AbstractEventProcessorService 
   override async createEventEmitters(
     tourCode: TourCode,
     operations: Operation[],
-    prevPatchSeq: number,
-    nextPatchSeq: number,
+    patchSeq: number,
   ): Promise<EventEmitter[]> {
     return operations.flatMap((operation) => [
-      new RoundStatusChanged(
-        tourCode,
-        operation,
-        "Tournament",
-        prevPatchSeq,
-        nextPatchSeq,
-      ),
-      new TournamentStatusChanged(
-        tourCode,
-        operation,
-        "Tournament",
-        prevPatchSeq,
-        nextPatchSeq,
-      ),
+      new RoundStatusChanged(tourCode, operation, "Tournament", patchSeq),
+      new TournamentStatusChanged(tourCode, operation, "Tournament", patchSeq),
     ]);
   }
 }

@@ -35,8 +35,7 @@ export class LeaderboardEventProcessorImpl
       .flatMap((eventEmitter) => {
         return {
           type: eventEmitter.emit(),
-          prevPatchSeq: eventEmitter.getPrevPatchSeq(),
-          nextPatchSeq: eventEmitter.getNextPatchSeq(),
+          patchSeq: eventEmitter.getPatchSeq(),
           aggregateType: eventEmitter.getAggregateType(),
         };
       })

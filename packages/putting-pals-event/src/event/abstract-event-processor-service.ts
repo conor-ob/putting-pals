@@ -28,7 +28,7 @@ export abstract class AbstractEventProcessorService
     ]);
 
     if (baseAggregate === undefined) {
-      await this.createAggregate(tourCode, tournamentId, latestAggregate);
+      await this.createAggregate(tourCode, tournamentId, latestAggregate, 0);
       return [];
     }
 
@@ -40,7 +40,7 @@ export abstract class AbstractEventProcessorService
 
     const materializedAggregate = patch.applyPatch(
       structuredClone(baseAggregate),
-      patches.flatMap((patch) => patch.patch),
+      patches.flatMap((patch) => patch.operations),
       false,
     ).newDocument;
 
@@ -54,15 +54,9 @@ export abstract class AbstractEventProcessorService
         operations,
       );
 
-      const prevPatchSeq = patches[patches.length - 1]?.seq ?? 0;
-      const nextPatchSeq = newPatch?.seq ?? 0;
+      const patchSeq = newPatch?.seq ?? 0;
 
-      return this.createEventEmitters(
-        tourCode,
-        operations,
-        prevPatchSeq,
-        nextPatchSeq,
-      );
+      return this.createEventEmitters(tourCode, operations, patchSeq);
     }
 
     return [];
@@ -83,12 +77,14 @@ export abstract class AbstractEventProcessorService
     tourCode: TourCode,
     tournamentId: string,
     aggregate: object,
+    patchSeq: number,
   ): Promise<void> {
     return this.aggregateRepository.createAggregate(
       tourCode,
       tournamentId,
       this.aggregateType,
       aggregate,
+      patchSeq,
     );
   }
 
@@ -100,7 +96,6 @@ export abstract class AbstractEventProcessorService
   protected abstract createEventEmitters(
     tourCode: TourCode,
     operations: Operation[],
-    prevPatchSeq: number,
-    nextPatchSeq: number,
+    patchSeq: number,
   ): Promise<EventEmitter[]>;
 }

@@ -38,12 +38,14 @@ export class AggregatePostgresRepository implements AggregateRepository {
     tournamentId: string,
     type: AggregateType,
     aggregate: object,
+    patchSeq: number = 0,
   ): Promise<void> {
     await this.db.insert(aggregateSnapshotTable).values({
       tourCode,
       tournamentId,
       type,
       aggregate,
+      patchSeq,
     });
   }
 
@@ -71,15 +73,10 @@ export class AggregatePostgresRepository implements AggregateRepository {
     type: AggregateType,
     operations: Operation[],
   ): Promise<AggregatePatchRow | undefined> {
-    const [result] = await this.db
+    return this.db
       .insert(aggregatePatchTable)
-      .values({
-        tourCode,
-        tournamentId,
-        type,
-        patch: operations,
-      })
-      .returning();
-    return result;
+      .values({ tourCode, tournamentId, type, operations })
+      .returning()
+      .then(([result]) => result);
   }
 }

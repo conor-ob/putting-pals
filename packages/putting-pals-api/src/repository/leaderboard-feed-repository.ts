@@ -10,9 +10,9 @@ export interface LeaderboardFeedRepository {
   ): Promise<
     {
       seq: number;
-      type: LeaderboardEventType;
+      event: LeaderboardEventType;
+      type: AggregateType;
       patchSeq: number;
-      prevPatchSeq: number;
       tourCode: TourCode;
       tournamentId: string;
       createdAt: Date;
@@ -27,8 +27,7 @@ export interface LeaderboardFeedRepository {
     tournamentId: string,
     events: {
       type: LeaderboardEventType[];
-      prevPatchSeq: number;
-      nextPatchSeq: number;
+      patchSeq: number;
       aggregateType: AggregateType;
     }[],
   ): Promise<void>;

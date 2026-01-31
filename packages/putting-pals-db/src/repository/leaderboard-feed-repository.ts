@@ -23,9 +23,9 @@ export class LeaderboardFeedPostgresRepository
   ): Promise<
     {
       seq: number;
-      type: LeaderboardEventType;
+      event: LeaderboardEventType;
+      type: AggregateType;
       patchSeq: number;
-      prevPatchSeq: number;
       tourCode: TourCode;
       tournamentId: string;
       createdAt: Date;
@@ -46,8 +46,7 @@ export class LeaderboardFeedPostgresRepository
         ),
       )
       .orderBy(desc(leaderboardFeedTable.seq))
-      .limit(pageSize + 1)
-      .then();
+      .limit(pageSize + 1);
   }
 
   async createLeaderboardFeedItems(
@@ -56,8 +55,7 @@ export class LeaderboardFeedPostgresRepository
     events: {
       type: LeaderboardEventType[];
       aggregateType: AggregateType;
-      prevPatchSeq: number;
-      nextPatchSeq: number;
+      patchSeq: number;
     }[],
   ): Promise<void> {
     const values = events.map((event) => ({
@@ -66,8 +64,7 @@ export class LeaderboardFeedPostgresRepository
       // biome-ignore lint/style/noNonNullAssertion: todo
       event: event.type[0]!,
       aggregateType: event.aggregateType,
-      prevSeq: event.prevPatchSeq,
-      nextSeq: event.nextPatchSeq,
+      patchSeq: event.patchSeq,
     }));
     await this.db
       .insert(leaderboardFeedTable)
@@ -77,8 +74,7 @@ export class LeaderboardFeedPostgresRepository
           tournamentId,
           type: value.aggregateType,
           event: value.event,
-          prevSeq: value.prevSeq,
-          nextSeq: value.nextSeq,
+          patchSeq: value.patchSeq,
         })),
       )
       .onConflictDoNothing();

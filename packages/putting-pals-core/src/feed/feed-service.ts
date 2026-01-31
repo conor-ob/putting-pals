@@ -1,33 +1,28 @@
 import type {
+  AggregateRepository,
+  AggregateType,
   FeedService,
+  LeaderboardEventType,
   LeaderboardFeedRepository,
-  LeaderboardService,
   TourCode,
   TournamentResolver,
-  TournamentService,
 } from "@putting-pals/putting-pals-api";
 
 const PAGE_SIZE = 20;
 
 export class FeedServiceImpl implements FeedService {
   constructor(
-    private readonly tournamentService: TournamentService,
-    private readonly leaderboardService: LeaderboardService,
     private readonly tournamentResolver: TournamentResolver,
     private readonly leaderboardFeedRepository: LeaderboardFeedRepository,
+    private readonly aggregateRepository: AggregateRepository,
   ) {
-    this.tournamentService = tournamentService;
-    this.leaderboardService = leaderboardService;
     this.tournamentResolver = tournamentResolver;
     this.leaderboardFeedRepository = leaderboardFeedRepository;
+    this.aggregateRepository = aggregateRepository;
   }
 
   async getFeed(tourCode: TourCode, id?: string, cursor?: number) {
     const tournamentId = await this.resolveTournamentId(tourCode, id);
-    const [_tournament, _leaderboard] = await Promise.all([
-      this.tournamentService.getTournament(tourCode, tournamentId),
-      this.leaderboardService.getLeaderboard(tourCode, tournamentId),
-    ]);
 
     const items = await this.leaderboardFeedRepository.getLeaderboardFeed(
       tourCode,
@@ -43,13 +38,52 @@ export class FeedServiceImpl implements FeedService {
       : undefined;
 
     return {
-      // items: feedItems.map((item) => ({
-      //   ...item,
-      //   feedItem: this.hydrate(item.feedItem, tournament, leaderboard),
-      // })),
-      items: feedItems,
+      items: await this.hydrate(tourCode, tournamentId, feedItems),
       nextCursor,
     };
+  }
+
+  private async hydrate(
+    tourCode: TourCode,
+    tournamentId: string,
+    feedItems: {
+      seq: number;
+      event: LeaderboardEventType;
+      type: AggregateType;
+      patchSeq: number;
+      tourCode: TourCode;
+      tournamentId: string;
+      createdAt: Date;
+      updatedAt: Date;
+      deletedAt: Date | null;
+      id: string;
+    }[],
+  ) {
+    const [tournament, leaderboard] = await Promise.all([
+      this.aggregateRepository.getAggregate(
+        tourCode,
+        tournamentId,
+        "Tournament",
+      ),
+      this.aggregateRepository.getAggregate(
+        tourCode,
+        tournamentId,
+        "LeaderboardV3",
+      ),
+    ]);
+
+    const tournamentPatches = await this.aggregateRepository.getPatches(
+      tourCode,
+      tournamentId,
+      "Tournament",
+    );
+    const leaderboardPatches = await this.aggregateRepository.getPatches(
+      tourCode,
+      tournamentId,
+      "LeaderboardV3",
+    );
+
+    return feedItems;
   }
 
   // private hydrate(

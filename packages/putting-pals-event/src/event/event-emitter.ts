@@ -11,14 +11,12 @@ export abstract class AbstractEventEmitter implements EventEmitter {
     protected readonly tourCode: TourCode,
     protected readonly operation: Operation,
     protected readonly aggregateType: AggregateType,
-    protected readonly prevPatchSeq: number,
-    protected readonly nextPatchSeq: number,
+    protected readonly patchSeq: number,
   ) {
     this.tourCode = tourCode;
     this.operation = operation;
     this.aggregateType = aggregateType;
-    this.prevPatchSeq = prevPatchSeq;
-    this.nextPatchSeq = nextPatchSeq;
+    this.patchSeq = patchSeq;
   }
 
   emit(): LeaderboardEventType[] {
@@ -39,12 +37,8 @@ export abstract class AbstractEventEmitter implements EventEmitter {
     return this.aggregateType;
   }
 
-  getPrevPatchSeq(): number {
-    return this.prevPatchSeq;
-  }
-
-  getNextPatchSeq(): number {
-    return this.nextPatchSeq;
+  getPatchSeq(): number {
+    return this.patchSeq;
   }
 }
 

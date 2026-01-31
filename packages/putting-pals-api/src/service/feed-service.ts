@@ -1,4 +1,4 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { AggregateType, TourCode } from "@putting-pals/putting-pals-api";
 import type { LeaderboardEventType } from "../event/types";
 
 export interface FeedService {
@@ -9,7 +9,8 @@ export interface FeedService {
   ): Promise<{
     items: {
       seq: number;
-      type: LeaderboardEventType;
+      event: LeaderboardEventType;
+      type: AggregateType;
       tourCode: TourCode;
       tournamentId: string;
       createdAt: Date;

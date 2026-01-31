@@ -16,6 +16,5 @@ export interface EventEmitter {
   emit(): LeaderboardEventType[];
   getPriority(): number;
   getAggregateType(): AggregateType;
-  getPrevPatchSeq(): number;
-  getNextPatchSeq(): number;
+  getPatchSeq(): number;
 }
