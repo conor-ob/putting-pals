@@ -1,3 +1,4 @@
+import { assertNever } from "@putting-pals/putting-pals-utils";
 import { useCallback, useMemo } from "react";
 import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
@@ -59,7 +60,11 @@ export function FeedPage() {
             return <RoundStatusChangedV1 item={item.payload} />;
           case "TournamentStatusChangedV1":
             return <TournamentStatusChangedV1 item={item.payload} />;
-          default:
+          case "HotStreakV1":
+          case "LeaderChangedV1":
+          case "PlayerDisqualifiedV1":
+          case "PlayerMissedCutV1":
+          case "PlayerWithdrawnV1":
             return (
               <View className="p-4">
                 <Text className="text-foreground">
@@ -67,6 +72,8 @@ export function FeedPage() {
                 </Text>
               </View>
             );
+          default:
+            assertNever(item.payload);
         }
       }}
       onEndReached={handleEndReached}

@@ -1,3 +1,4 @@
+import { assertNever } from "@putting-pals/putting-pals-utils";
 import { Text, View } from "react-native";
 import { RoundStatusBadge } from "~/components/round-status-badge";
 import { RoundStatusLabel } from "~/components/round-status-label";
@@ -51,7 +52,7 @@ function getRoundStatusChangedText(
     case "OFFICIAL":
       return `${getRoundNumberText(roundDisplay)} scores are official`;
     default:
-      return `${getRoundNumberText(roundDisplay)} has been updated`;
+      assertNever(roundStatus);
   }
 }
 

@@ -8,7 +8,6 @@ export * from "./event/types";
 export type { Sdk } from "./graphql/pga-tour/generated/graphql";
 export { getSdk } from "./graphql/pga-tour/generated/graphql";
 export * from "./graphql/putting-pals/generated/graphql";
-export type { Normalizer } from "./normalize/normalizer";
 export type { CompetitionRepository } from "./repository/competition-repository";
 export type { LeaderboardFeedRepository } from "./repository/leaderboard-feed-repository";
 export type {

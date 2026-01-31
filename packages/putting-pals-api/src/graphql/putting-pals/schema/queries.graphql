@@ -8,26 +8,3 @@ query LeaderboardV3($id: ID!) {
     }
   }
 }
-
-query TournamentAggregate($id: ID!) {
-  tournamentAggregate(id: $id) {
-    ...TournamentFields
-  }
-}
-
-query LeaderboardAggregate($id: ID!) {
-  leaderboardAggregate(id: $id) {
-    ...LeaderboardV3Fields
-    players {
-      ...PlayerRowV3Fields
-      ...PuttingPalsPlayerRowFields
-      ...InformationRowFields
-    }
-  }
-}
-
-query LeaderboardHoleByHoleAggregate($id: ID!) {
-  leaderboardHoleByHoleAggregate(id: $id) {
-    ...LeaderboardHoleByHoleFields
-  }
-}

@@ -24,9 +24,3 @@ extend union LeaderboardRowV3 = PuttingPalsPlayerRow
 extend enum TourCode {
   P
 }
-
-extend type Query {
-  tournamentAggregate(id: ID!): Tournament!
-  leaderboardAggregate(id: ID!): LeaderboardV3!
-  leaderboardHoleByHoleAggregate(id: ID!): LeaderboardHoleByHole!
-}
