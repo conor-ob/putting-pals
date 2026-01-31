@@ -31,6 +31,9 @@ export class LeaderboardServiceImpl implements LeaderboardService {
       case "P":
         return this.getPuttingPalsLeaderboardById(tournamentId);
       case "R":
+      case "S":
+      case "H":
+      case "Y":
         return this.getPgaTourLeaderboardById(tournamentId);
       default:
         throw new UnsupportedTourCodeError(tourCode);

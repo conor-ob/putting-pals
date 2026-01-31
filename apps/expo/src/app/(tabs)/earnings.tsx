@@ -1,3 +1,3 @@
-import { EarningsPage } from "~/features/earnings/earnings-page";
+// import { EarningsPage } from "~/features/earnings/earnings-page";
 
-export default EarningsPage;
+// export default EarningsPage;
