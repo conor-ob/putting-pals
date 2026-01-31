@@ -27,7 +27,10 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
       case "P":
         return this.getPuttingPalsScheduleYears();
       case "R":
-        return this.getPgaTourScheduleYears();
+      case "S":
+      case "H":
+      case "Y":
+        return this.getPgaTourScheduleYears(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
@@ -36,7 +39,7 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
   private async getPuttingPalsScheduleYears(): Promise<ScheduleYears> {
     const [pgaTourScheduleYears, puttingPalsHistoricalSchedule] =
       await Promise.all([
-        this.getPgaTourScheduleYears(),
+        this.getPgaTourScheduleYears("R"),
         this.getPuttingPalsHistoricalSchedule(),
       ]);
     return {
@@ -64,7 +67,9 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
     return tournaments;
   }
 
-  private async getPgaTourScheduleYears(): Promise<ScheduleYears> {
-    return this.scheduleClient.getScheduleYears();
+  private async getPgaTourScheduleYears(
+    tourCode: TourCode,
+  ): Promise<ScheduleYears> {
+    return this.scheduleClient.getScheduleYears(tourCode);
   }
 }

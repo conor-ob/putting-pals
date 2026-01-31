@@ -27,14 +27,20 @@ export class TournamentResolverImpl implements TournamentResolver {
       case "P":
         return this.getCurrentPuttingPalsTournamentId();
       case "R":
-        return this.getCurrentPgaTourTournamentId();
+      case "S":
+      case "H":
+      case "Y":
+        return this.getCurrentPgaTourTournamentId(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
   }
 
-  private async getCurrentPgaTourTournamentId(): Promise<string> {
-    const tournamentId = await this.pgaTourWebScraper.getCurrentTournamentId();
+  private async getCurrentPgaTourTournamentId(
+    tourCode: TourCode,
+  ): Promise<string> {
+    const tournamentId =
+      await this.pgaTourWebScraper.getCurrentTournamentId(tourCode);
     if (tournamentId === undefined) {
       throw new NotFoundError("Failed to get current PGA TOUR tournament id");
     }
