@@ -10,7 +10,7 @@ export function TournamentStatusChangedV1({
 }) {
   return (
     <View className="p-4">
-      <Text className="text-foreground">{`{item.tournamentName} ${item.after.tournamentStatus === "COMPLETED" ? "has finished" : "has started"}`}</Text>
+      <Text className="text-foreground">{`{item.tournamentName} ${item.next.tournamentStatus === "COMPLETED" ? "has finished" : "has started"}`}</Text>
     </View>
   );
 }

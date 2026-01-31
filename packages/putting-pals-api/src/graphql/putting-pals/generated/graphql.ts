@@ -116,6 +116,7 @@ export type AdConfig = {
   readonly tournamentSection?: Maybe<AdTagConfig>;
   readonly training?: Maybe<AdTagConfig>;
   readonly university?: Maybe<AdTagConfig>;
+  readonly universityRanking?: Maybe<AdTagConfig>;
   readonly watch?: Maybe<AdTagConfig>;
   readonly webPlayerStories?: Maybe<AdTagConfig>;
   readonly webTopicStories?: Maybe<AdTagConfig>;
@@ -683,6 +684,7 @@ export type CourseHoleHeader = {
 
 export type CourseHoleStats = {
   readonly __typename: 'CourseHoleStats';
+  /** @deprecated Use paceOfPlay field instead */
   readonly averagePaceOfPlay?: Maybe<Scalars['String']['output']>;
   readonly birdies?: Maybe<Scalars['Int']['output']>;
   readonly bogeys?: Maybe<Scalars['Int']['output']>;
@@ -696,6 +698,7 @@ export type CourseHoleStats = {
   readonly holePickleGreenLeftToRightAsset: ImageAsset;
   /** @deprecated Use broadcast api indication instead of this. */
   readonly live: Scalars['Boolean']['output'];
+  readonly paceOfPlay?: Maybe<CourseHoleStatsPaceData>;
   readonly parValue: Scalars['String']['output'];
   readonly pars?: Maybe<Scalars['Int']['output']>;
   readonly pinGreen: PointOfInterestCoords;
@@ -704,6 +707,20 @@ export type CourseHoleStats = {
   readonly scoringAverageDiff: Scalars['String']['output'];
   readonly scoringDiffTendency: ScoringTendency;
   readonly yards: Scalars['Int']['output'];
+};
+
+export type CourseHoleStatsPaceData = {
+  readonly __typename: 'CourseHoleStatsPaceData';
+  readonly approachRank?: Maybe<Scalars['String']['output']>;
+  readonly approachTime?: Maybe<Scalars['String']['output']>;
+  readonly averageHoleRank?: Maybe<Scalars['String']['output']>;
+  readonly averageHoleTime?: Maybe<Scalars['String']['output']>;
+  readonly offTeeRank?: Maybe<Scalars['String']['output']>;
+  readonly offTeeTime?: Maybe<Scalars['String']['output']>;
+  readonly overallRank?: Maybe<Scalars['String']['output']>;
+  readonly overallTime?: Maybe<Scalars['String']['output']>;
+  readonly puttingRank?: Maybe<Scalars['String']['output']>;
+  readonly puttingTime?: Maybe<Scalars['String']['output']>;
 };
 
 export type CourseInfo = {
@@ -778,9 +795,11 @@ export type CourseRound = {
   readonly holeStats: ReadonlyArray<HoleStat>;
   readonly live: Scalars['Boolean']['output'];
   readonly paceOfPlayDescription?: Maybe<Scalars['String']['output']>;
+  readonly paceOfPlayHeader: Scalars['String']['output'];
   readonly paceOfPlayLabelTitle?: Maybe<Scalars['String']['output']>;
   readonly roundHeader: Scalars['String']['output'];
   readonly roundNum?: Maybe<Scalars['Int']['output']>;
+  readonly scoringHeader: Scalars['String']['output'];
 };
 
 export type CourseStat = {
@@ -2282,6 +2301,30 @@ export type HoleStrokeType =
   | 'PROVISIONAL'
   | 'STROKE';
 
+export type HoleStrokeV4 = {
+  readonly __typename: 'HoleStrokeV4';
+  readonly ballPath?: Maybe<BallPath>;
+  readonly distance: Scalars['String']['output'];
+  readonly distanceRemaining: Scalars['String']['output'];
+  readonly finalStroke: Scalars['Boolean']['output'];
+  readonly fromLocation: Scalars['String']['output'];
+  readonly fromLocationCode: Scalars['String']['output'];
+  readonly green: ShotLinkCoordWrapperV4;
+  readonly groupShowMarker: Scalars['Boolean']['output'];
+  readonly markerText: Scalars['String']['output'];
+  readonly overview: ShotLinkCoordWrapperV4;
+  readonly playByPlay: Scalars['String']['output'];
+  readonly playByPlayLabel: Scalars['String']['output'];
+  readonly player?: Maybe<TspStrokePlayer>;
+  readonly radarData?: Maybe<RadarData>;
+  readonly showMarker: Scalars['Boolean']['output'];
+  readonly strokeNumber: Scalars['Int']['output'];
+  readonly strokeType: HoleStrokeType;
+  readonly toLocation: Scalars['String']['output'];
+  readonly toLocationCode: Scalars['String']['output'];
+  readonly videoId?: Maybe<Scalars['String']['output']>;
+};
+
 export type HomePageLeadLayout =
   | 'HALF_HERO'
   | 'HALF_HERO_STACK'
@@ -3344,6 +3387,8 @@ export type Mutation = {
   readonly updateScorecardV2?: Maybe<LeaderboardDrawerV2>;
   readonly updateShotCommentary?: Maybe<ShotCommentary>;
   readonly updateShotDetailsCompressedV3?: Maybe<ShotDetailsCompressedV3>;
+  /**   V4 Shot Details Mutation - Uses simplified coordinates */
+  readonly updateShotDetailsV4Compressed?: Maybe<ShotDetailsV4Compressed>;
   readonly updateTGLMatch?: Maybe<TglMatch>;
   readonly updateTSPPlayoffShotDetails: TeamShotDetails;
   readonly updateTSPPlayoffShotDetailsCompressed: TeamShotDetailsCompressed;
@@ -3608,6 +3653,16 @@ export type MutationUpdateShotCommentaryArgs = {
 
 
 export type MutationUpdateShotDetailsCompressedV3Args = {
+  holes: ReadonlyArray<Scalars['Int']['input']>;
+  isUs: Scalars['Boolean']['input'];
+  playerId: Scalars['String']['input'];
+  round: Scalars['Int']['input'];
+  tourcast: Scalars['Boolean']['input'];
+  tournamentId: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateShotDetailsV4CompressedArgs = {
   holes: ReadonlyArray<Scalars['Int']['input']>;
   isUs: Scalars['Boolean']['input'];
   playerId: Scalars['String']['input'];
@@ -5625,6 +5680,12 @@ export type PointOfInterestCoords = {
   readonly leftToRightCoords: StrokeCoordinates;
 };
 
+export type PointOfInterestCoordsV4 = {
+  readonly __typename: 'PointOfInterestCoordsV4';
+  readonly bottomToTopCoords: StrokeCoordinatesV4;
+  readonly leftToRightCoords: StrokeCoordinatesV4;
+};
+
 export type PowerRankings = {
   readonly __typename: 'PowerRankings';
   readonly ascendingOrder: Scalars['Boolean']['output'];
@@ -6051,6 +6112,8 @@ export type Query = {
   readonly searchPlayers: ReadonlyArray<Player>;
   readonly shotDetailsCompressedV3: ShotDetailsCompressedV3;
   readonly shotDetailsV3: ShotDetails;
+  /**   V4 Shot Details Query - Uses simplified coordinates and ImageAsset hole pickles (compressed only) */
+  readonly shotDetailsV4Compressed: ShotDetailsV4Compressed;
   readonly signatureStandings: SignatureStandings;
   readonly sponsoredArticles: ReadonlyArray<NewsArticle>;
   readonly sponsoredArticlesV2: SponsoredArticles;
@@ -6943,6 +7006,14 @@ export type QueryShotDetailsCompressedV3Args = {
 
 
 export type QueryShotDetailsV3Args = {
+  includeRadar?: InputMaybe<Scalars['Boolean']['input']>;
+  playerId: Scalars['ID']['input'];
+  round: Scalars['Int']['input'];
+  tournamentId: Scalars['ID']['input'];
+};
+
+
+export type QueryShotDetailsV4CompressedArgs = {
   includeRadar?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
   round: Scalars['Int']['input'];
@@ -8389,6 +8460,29 @@ export type ShotDetailHole = {
   readonly yardage: Scalars['Int']['output'];
 };
 
+export type ShotDetailHoleV4 = {
+  readonly __typename: 'ShotDetailHoleV4';
+  readonly displayHoleNumber: Scalars['String']['output'];
+  readonly enhancedPickle?: Maybe<HolePickle>;
+  readonly fairwayCenter: StrokeCoordinatesV4;
+  readonly green: Scalars['Boolean']['output'];
+  readonly holeNumber: Scalars['Int']['output'];
+  readonly holePickleBottomToTopAsset: ImageAsset;
+  readonly holePickleGreenBottomToTopAsset: ImageAsset;
+  readonly holePickleGreenLeftToRightAsset: ImageAsset;
+  readonly holePickleLeftToRightAsset: ImageAsset;
+  readonly par: Scalars['Int']['output'];
+  readonly pinGreen: PointOfInterestCoordsV4;
+  readonly pinOverview: PointOfInterestCoordsV4;
+  readonly rank?: Maybe<Scalars['String']['output']>;
+  readonly score: Scalars['String']['output'];
+  readonly status: HoleScoreStatus;
+  readonly strokes: ReadonlyArray<HoleStrokeV4>;
+  readonly teeGreen: PointOfInterestCoordsV4;
+  readonly teeOverview: PointOfInterestCoordsV4;
+  readonly yardage: Scalars['Int']['output'];
+};
+
 export type ShotDetailVideo = {
   readonly __typename: 'ShotDetailVideo';
   readonly duration: Scalars['Int']['output'];
@@ -8438,16 +8532,49 @@ export type ShotDetailsDisplayType =
   | 'NONE'
   | 'PLAY_BY_PLAY';
 
+export type ShotDetailsV4 = {
+  readonly __typename: 'ShotDetailsV4';
+  readonly displayType: ShotDetailsDisplayType;
+  readonly groupPlayers: ReadonlyArray<Scalars['String']['output']>;
+  readonly holePickleType: HolePickleType;
+  readonly holes: ReadonlyArray<ShotDetailHoleV4>;
+  readonly id: Scalars['ID']['output'];
+  readonly lineColor: Scalars['String']['output'];
+  readonly message: Scalars['String']['output'];
+  readonly playerId: Scalars['ID']['output'];
+  readonly round: Scalars['Int']['output'];
+  readonly textColor?: Maybe<Scalars['String']['output']>;
+  readonly tournamentId: Scalars['ID']['output'];
+};
+
+export type ShotDetailsV4Compressed = {
+  readonly __typename: 'ShotDetailsV4Compressed';
+  readonly id: Scalars['ID']['output'];
+  readonly payload: Scalars['String']['output'];
+};
+
 export type ShotLinkCoordWrapper = {
   readonly __typename: 'ShotLinkCoordWrapper';
   readonly bottomToTopCoords: ShotLinkCoordinates;
   readonly leftToRightCoords: ShotLinkCoordinates;
 };
 
+export type ShotLinkCoordWrapperV4 = {
+  readonly __typename: 'ShotLinkCoordWrapperV4';
+  readonly bottomToTopCoords: ShotLinkCoordinatesV4;
+  readonly leftToRightCoords: ShotLinkCoordinatesV4;
+};
+
 export type ShotLinkCoordinates = {
   readonly __typename: 'ShotLinkCoordinates';
   readonly fromCoords: StrokeCoordinates;
   readonly toCoords: StrokeCoordinates;
+};
+
+export type ShotLinkCoordinatesV4 = {
+  readonly __typename: 'ShotLinkCoordinatesV4';
+  readonly fromCoords: StrokeCoordinatesV4;
+  readonly toCoords: StrokeCoordinatesV4;
 };
 
 export type SignatureEventsRankLogos = {
@@ -8771,6 +8898,19 @@ export type StrokeCoordinates = {
   readonly z: Scalars['Float']['output'];
 };
 
+/**
+ *   V4 Shot Details Types - Simplified coordinates without z/enhanced fields
+ *  Note: ImageAsset type is already defined elsewhere in schema
+ */
+export type StrokeCoordinatesV4 = {
+  readonly __typename: 'StrokeCoordinatesV4';
+  readonly tourcastX: Scalars['Float']['output'];
+  readonly tourcastY: Scalars['Float']['output'];
+  readonly tourcastZ: Scalars['Float']['output'];
+  readonly x: Scalars['Float']['output'];
+  readonly y: Scalars['Float']['output'];
+};
+
 export type StrokesGainedStats = {
   readonly __typename: 'StrokesGainedStats';
   readonly graph: Scalars['Boolean']['output'];
@@ -8839,6 +8979,8 @@ export type Subscription = {
   readonly onUpdateShotCommentary?: Maybe<ShotCommentary>;
   /**    V2 version that only sends updated holes */
   readonly onUpdateShotDetailsCompressedV3?: Maybe<ShotDetailsCompressedV3>;
+  /**   V4 Shot Details Subscription - Uses simplified coordinates */
+  readonly onUpdateShotDetailsV4Compressed?: Maybe<ShotDetailsV4Compressed>;
   readonly onUpdateTGLMatch?: Maybe<TglMatch>;
   readonly onUpdateTSPPlayoffShotDetails?: Maybe<TeamShotDetails>;
   readonly onUpdateTSPPlayoffShotDetailsCompressed?: Maybe<TeamShotDetailsCompressed>;
@@ -9056,6 +9198,11 @@ export type SubscriptionOnUpdateShotDetailsCompressedV3Args = {
 };
 
 
+export type SubscriptionOnUpdateShotDetailsV4CompressedArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
 export type SubscriptionOnUpdateTglMatchArgs = {
   id: Scalars['ID']['input'];
 };
@@ -9153,6 +9300,7 @@ export type SummaryRow = {
   readonly bogeys?: Maybe<Scalars['Int']['output']>;
   readonly doubleBogey?: Maybe<Scalars['Int']['output']>;
   readonly eagles?: Maybe<Scalars['Int']['output']>;
+  readonly paceOfPlay?: Maybe<CourseHoleStatsPaceData>;
   readonly par: Scalars['Int']['output'];
   readonly pars?: Maybe<Scalars['Int']['output']>;
   readonly rowType: SummaryRowType;
