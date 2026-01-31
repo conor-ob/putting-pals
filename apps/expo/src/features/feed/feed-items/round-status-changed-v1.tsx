@@ -6,7 +6,7 @@ import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
 export function RoundStatusChangedV1({
   item,
 }: {
-  item: RouterOutputs["feed"]["get"]["items"][number]["feedItem"] & {
+  item: RouterOutputs["feed"]["get"]["items"][number]["payload"] & {
     __typename: "RoundStatusChangedV1";
   };
 }) {

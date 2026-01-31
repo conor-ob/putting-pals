@@ -1,94 +1,38 @@
-import {
-  type AggregateRepository,
-  type EventEmitter,
-  type Normalizer,
-  type TourCode,
-  TournamentAggregateDocument,
-  type TournamentService,
+import type {
+  EventEmitter,
+  LeaderboardSnapshotRepository,
+  TourCode,
+  Tournament,
+  TournamentService,
 } from "@putting-pals/putting-pals-api";
-import type { Operation } from "fast-json-patch";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
 import { RoundStatusChanged } from "../event/events/round-status-changed";
 import { TournamentStatusChanged } from "../event/events/tournament-status-changed";
-import { matchesTournamentField } from "../patch/patch-utils";
 
-export class TournamentEventProcessorImpl extends AbstractEventProcessorService {
+export class TournamentEventProcessorImpl extends AbstractEventProcessorService<Tournament> {
   constructor(
     private readonly tournamentService: TournamentService,
-    private readonly normalizer: Normalizer,
-    aggregateRepository: AggregateRepository,
+    snapshotRepository: LeaderboardSnapshotRepository,
   ) {
-    super("Tournament", aggregateRepository);
-    this.tournamentService = tournamentService;
-    this.normalizer = normalizer;
+    super("Tournament", snapshotRepository);
   }
 
-  override async getLatestAggregate(
+  protected override async getNextSnapshot(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<object> {
-    const tournament = await this.tournamentService.getTournament(
-      tourCode,
-      tournamentId,
-    );
-
-    const normalizedTournament = this.normalizer.normalize(
-      TournamentAggregateDocument,
-      {
-        __typename: "Query",
-        tournamentAggregate: tournament,
-      },
-      { id: tournament.id },
-    );
-
-    return normalizedTournament;
+  ): Promise<Tournament> {
+    return await this.tournamentService.getTournament(tourCode, tournamentId);
   }
 
-  override async createEventEmitters(
+  protected override async createEventEmitters(
     tourCode: TourCode,
-    tournamentId: string,
-    materializedAggregate: object,
-    latestAggregate: object,
+    _tournamentId: string,
+    prevSnapshot: Tournament,
+    nextSnapshot: Tournament,
   ): Promise<EventEmitter[]> {
-    const denormalizedMaterializedTournamentAggregate =
-      this.normalizer.denormalize(
-        TournamentAggregateDocument,
-        materializedAggregate,
-        {
-          id: tournamentId,
-        },
-      )?.tournamentAggregate;
-
-    const denormalizedLatestTournamentAggregate = this.normalizer.denormalize(
-      TournamentAggregateDocument,
-      latestAggregate,
-      { id: tournamentId },
-    )?.tournamentAggregate;
-
-    if (
-      denormalizedMaterializedTournamentAggregate === undefined ||
-      denormalizedLatestTournamentAggregate === undefined
-    ) {
-      return [];
-    }
-
-    const eventEmitters: EventEmitter[] = [
-      new RoundStatusChanged(
-        tourCode,
-        denormalizedMaterializedTournamentAggregate,
-        denormalizedLatestTournamentAggregate,
-      ),
-      new TournamentStatusChanged(
-        tourCode,
-        denormalizedMaterializedTournamentAggregate,
-        denormalizedLatestTournamentAggregate,
-      ),
+    return [
+      new RoundStatusChanged(tourCode, prevSnapshot, nextSnapshot),
+      new TournamentStatusChanged(tourCode, prevSnapshot, nextSnapshot),
     ];
-
-    return eventEmitters;
-  }
-
-  override excludePatch(patch: Operation): boolean {
-    return matchesTournamentField.matchesLooseField(patch.path, "weather");
   }
 }

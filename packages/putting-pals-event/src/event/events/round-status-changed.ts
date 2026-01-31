@@ -1,5 +1,5 @@
 import type {
-  LeaderboardEvent,
+  LeaderboardFeed,
   RoundStatusChangedV1,
   Tournament,
 } from "@putting-pals/putting-pals-api";
@@ -7,7 +7,7 @@ import { assertNever } from "@putting-pals/putting-pals-utils";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class RoundStatusChanged extends AbstractEventEmitter<Tournament> {
-  override emit(): LeaderboardEvent[] {
+  override emit(): LeaderboardFeed[] {
     if (
       this.after.roundStatus === "UPCOMING" ||
       this.after.roundStatus === this.before.roundStatus

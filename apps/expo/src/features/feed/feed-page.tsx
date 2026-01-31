@@ -54,16 +54,16 @@ export function FeedPage() {
       data={feedItems}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => {
-        switch (item.feedItem.__typename) {
+        switch (item.payload.__typename) {
           case "RoundStatusChangedV1":
-            return <RoundStatusChangedV1 item={item.feedItem} />;
+            return <RoundStatusChangedV1 item={item.payload} />;
           case "TournamentStatusChangedV1":
-            return <TournamentStatusChangedV1 item={item.feedItem} />;
+            return <TournamentStatusChangedV1 item={item.payload} />;
           default:
             return (
               <View className="p-4">
                 <Text className="text-foreground">
-                  {`Unknown event type: ${item.feedItem}`}
+                  {`Unknown event type: ${item.payload.__typename}`}
                 </Text>
               </View>
             );

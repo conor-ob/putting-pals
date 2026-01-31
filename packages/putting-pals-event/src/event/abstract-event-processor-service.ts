@@ -1,174 +1,95 @@
 import type {
-  AggregateRepository,
-  AggregateType,
   EventEmitter,
   LeaderboardEventProcessorService,
+  LeaderboardSnapshot,
+  LeaderboardSnapshotRepository,
   TourCode,
 } from "@putting-pals/putting-pals-api";
-import patch, { type Operation } from "fast-json-patch";
 
-export abstract class AbstractEventProcessorService
-  implements LeaderboardEventProcessorService
+export abstract class AbstractEventProcessorService<
+  T extends LeaderboardSnapshot,
+> implements LeaderboardEventProcessorService
 {
   constructor(
-    private readonly aggregateType: AggregateType,
-    private readonly aggregateRepository: AggregateRepository,
+    private readonly snapshotType: T["__typename"],
+    private readonly snapshotRepository: LeaderboardSnapshotRepository,
   ) {
-    this.aggregateType = aggregateType;
-    this.aggregateRepository = aggregateRepository;
+    this.snapshotType = snapshotType;
+    this.snapshotRepository = snapshotRepository;
   }
 
   async processEvent(
     tourCode: TourCode,
     tournamentId: string,
   ): Promise<EventEmitter[]> {
-    const [baseAggregate, latestAggregate] = await Promise.all([
-      this.getBaseAggregate(tourCode, tournamentId),
-      this.getLatestAggregate(tourCode, tournamentId),
+    const [prevSnapshot, nextSnapshot] = await Promise.all([
+      this.getPrevSnapshot(tourCode, tournamentId),
+      this.getNextSnapshot(tourCode, tournamentId),
     ]);
 
-    if (baseAggregate === undefined) {
-      await this.createAggregate(tourCode, tournamentId, latestAggregate);
+    if (prevSnapshot === undefined) {
+      await this.createSnapshot(tourCode, tournamentId, nextSnapshot);
       return [];
     }
 
-    const patches = await this.aggregateRepository.getPatches(
+    const eventEmitters = await this.createEventEmitters(
       tourCode,
       tournamentId,
-      this.aggregateType,
-      baseAggregate.patchSeq,
+      prevSnapshot,
+      nextSnapshot,
     );
 
-    const materializedAggregate = patch.applyPatch(
-      structuredClone(baseAggregate.aggregate),
-      patches,
-      false,
-    ).newDocument;
-
-    const diff = patch
-      .compare(materializedAggregate, latestAggregate)
-      .filter((patch) => this.includePatch(patch) && !this.excludePatch(patch));
-
-    if (diff.length > 0) {
-      await this.aggregateRepository.createPatches(
-        tourCode,
-        tournamentId,
-        this.aggregateType,
-        diff,
-      );
-
-      await this.maybeCompactAggregate(
-        tourCode,
-        tournamentId,
-        baseAggregate.patchSeq,
-      );
-
-      return this.createEventEmitters(
-        tourCode,
-        tournamentId,
-        materializedAggregate,
-        latestAggregate,
-      );
+    if (eventEmitters.length > 0) {
+      await this.updateSnapshot(tourCode, tournamentId, nextSnapshot);
     }
 
-    return [];
+    return eventEmitters;
   }
 
-  private async maybeCompactAggregate(
+  private getPrevSnapshot(
     tourCode: TourCode,
     tournamentId: string,
-    currentPatchSeq: number,
+  ): Promise<T | undefined> {
+    return this.snapshotRepository.getSnapshot(
+      tourCode,
+      tournamentId,
+      this.snapshotType,
+    ) as Promise<T | undefined>;
+  }
+
+  private createSnapshot(
+    tourCode: TourCode,
+    tournamentId: string,
+    snapshot: T,
   ): Promise<void> {
-    const patchCount = await this.aggregateRepository.getPatchCount(
+    return this.snapshotRepository.createSnapshot(
       tourCode,
       tournamentId,
-      this.aggregateType,
-      currentPatchSeq,
-    );
-
-    if (patchCount < 100) {
-      return;
-    }
-
-    const baseAggregate = await this.aggregateRepository.getAggregate(
-      tourCode,
-      tournamentId,
-      this.aggregateType,
-    );
-
-    if (!baseAggregate) {
-      return;
-    }
-
-    const patches = await this.aggregateRepository.getPatches(
-      tourCode,
-      tournamentId,
-      this.aggregateType,
-      baseAggregate.patchSeq,
-    );
-
-    const compactedAggregate = patch.applyPatch(
-      structuredClone(baseAggregate.aggregate),
-      patches,
-      false,
-    ).newDocument;
-
-    const maxPatchSeq = await this.aggregateRepository.getMaxPatchSeq(
-      tourCode,
-      tournamentId,
-      this.aggregateType,
-    );
-
-    await this.aggregateRepository.createAggregate(
-      tourCode,
-      tournamentId,
-      this.aggregateType,
-      compactedAggregate,
-      maxPatchSeq,
+      snapshot,
     );
   }
 
-  private getBaseAggregate(
+  private updateSnapshot(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<{ aggregate: object; patchSeq: number } | undefined> {
-    return this.aggregateRepository.getAggregate(
-      tourCode,
-      tournamentId,
-      this.aggregateType,
-    );
-  }
-
-  private createAggregate(
-    tourCode: TourCode,
-    tournamentId: string,
-    aggregate: object,
+    snapshot: T,
   ): Promise<void> {
-    return this.aggregateRepository.createAggregate(
+    return this.snapshotRepository.updateSnapshot(
       tourCode,
       tournamentId,
-      this.aggregateType,
-      aggregate,
+      snapshot,
     );
   }
 
-  protected abstract getLatestAggregate(
+  protected abstract getNextSnapshot(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<object>;
+  ): Promise<T>;
 
   protected abstract createEventEmitters(
     tourCode: TourCode,
     tournamentId: string,
-    materializedAggregate: object,
-    latestAggregate: object,
+    prevSnapshot: T,
+    nextSnapshot: T,
   ): Promise<EventEmitter[]>;
-
-  protected includePatch(_: Operation): boolean {
-    return true;
-  }
-
-  protected excludePatch(_: Operation): boolean {
-    return false;
-  }
 }

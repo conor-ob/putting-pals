@@ -1,12 +1,12 @@
 import type {
-  LeaderboardEvent,
+  LeaderboardFeed,
   PlayerDisqualifiedV1,
 } from "@putting-pals/putting-pals-api";
 import { EventPriority } from "../event-emitter";
 import { PlayerStateChanged } from "./player-state-changed";
 
 export class PlayerDisqualified extends PlayerStateChanged {
-  override emit(): LeaderboardEvent[] {
+  override emit(): LeaderboardFeed[] {
     const players = this.getPlayersStateChanged("DISQUALIFIED");
     if (players.length === 0) {
       return [];

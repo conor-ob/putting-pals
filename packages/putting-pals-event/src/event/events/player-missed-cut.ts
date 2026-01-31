@@ -1,12 +1,12 @@
 import type {
-  LeaderboardEvent,
+  LeaderboardFeed,
   PlayerMissedCutV1,
 } from "@putting-pals/putting-pals-api";
 import { EventPriority } from "../event-emitter";
 import { PlayerStateChanged } from "./player-state-changed";
 
 export class PlayerMissedCut extends PlayerStateChanged {
-  override emit(): LeaderboardEvent[] {
+  override emit(): LeaderboardFeed[] {
     const players = this.getPlayersStateChanged("CUT");
     if (players.length === 0) {
       return [];

@@ -1,12 +1,12 @@
 import type {
-  LeaderboardEvent,
+  LeaderboardFeed,
   LeaderboardHoleByHole,
 } from "@putting-pals/putting-pals-api";
 import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class BirdieStreak extends AbstractEventEmitter<LeaderboardHoleByHole> {
-  override emit(): LeaderboardEvent[] {
+  override emit(): LeaderboardFeed[] {
     switch (this.tourCode) {
       case "P":
         return [];

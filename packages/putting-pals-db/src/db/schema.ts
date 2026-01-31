@@ -1,21 +1,21 @@
 import {
-  type AggregateType,
-  type LeaderboardEvent,
-  type LeaderboardEventType,
+  type LeaderboardFeed,
+  type LeaderboardFeedType,
+  type LeaderboardSnapshot,
+  type LeaderboardSnapshotType,
   type TourCode,
   TourCodeSchema,
 } from "@putting-pals/putting-pals-api";
 import {
   index,
-  integer,
   jsonb,
   pgTable,
   serial,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
-import type { Operation } from "fast-json-patch";
 
 const identifierColumns = {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -48,41 +48,20 @@ const tournamentIdentifierColumns = {
   tournamentId: text("tournament_id").notNull(),
 };
 
-export const aggregateSnapshotTable = pgTable(
-  "aggregate_snapshot",
+export const leaderboardSnapshotTable = pgTable(
+  "leaderboard_snapshot",
   {
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
-    type: text("type").notNull().$type<AggregateType>(),
-    patchSeq: integer("patch_seq").notNull().default(0),
-    aggregate: jsonb("aggregate").notNull().$type<object>(),
+    type: text("type").notNull().$type<LeaderboardSnapshotType>(),
+    payload: jsonb("payload").notNull().$type<LeaderboardSnapshot>(),
   },
   (table) => [
-    index("aggregate_snapshot_tournament_type_idx").on(
+    uniqueIndex("leaderboard_snapshot_tournament_idx").on(
       table.tourCode,
       table.tournamentId,
       table.type,
-    ),
-  ],
-);
-
-export const aggregatePatchTable = pgTable(
-  "aggregate_patch",
-  {
-    ...identifierColumns,
-    ...timestampColumns,
-    ...tournamentIdentifierColumns,
-    type: text("type").notNull().$type<AggregateType>(),
-    seq: serial("seq").notNull(),
-    patch: jsonb("patch").notNull().$type<Operation[]>(),
-  },
-  (table) => [
-    index("aggregate_patch_tournament_type_seq_idx").on(
-      table.tourCode,
-      table.tournamentId,
-      table.type,
-      table.seq,
     ),
   ],
 );
@@ -93,15 +72,15 @@ export const leaderboardFeedTable = pgTable(
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
-    type: text("type").notNull().$type<LeaderboardEventType>(),
-    seq: serial("seq").notNull(),
-    feedItem: jsonb("feed_item").notNull().$type<LeaderboardEvent>(),
+    type: text("type").notNull().$type<LeaderboardFeedType>(),
+    payload: jsonb("payload").notNull().$type<LeaderboardFeed>(),
+    sequence: serial("sequence").notNull(),
   },
   (table) => [
     index("leaderboard_feed_tournament_idx").on(
       table.tourCode,
       table.tournamentId,
     ),
-    index("leaderboard_feed_seq_idx").on(table.seq),
+    index("leaderboard_feed_sequence_idx").on(table.sequence),
   ],
 );

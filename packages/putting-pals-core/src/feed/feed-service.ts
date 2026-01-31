@@ -1,6 +1,6 @@
 import type {
   FeedService,
-  LeaderboardEvent,
+  LeaderboardFeed,
   LeaderboardFeedRepository,
   LeaderboardService,
   TourCode,
@@ -40,7 +40,7 @@ export class FeedServiceImpl implements FeedService {
     const hasMore = items.length > PAGE_SIZE;
     const feedItems = hasMore ? items.slice(0, -1) : items;
     const nextCursor = hasMore
-      ? feedItems[feedItems.length - 1]?.seq
+      ? feedItems[feedItems.length - 1]?.sequence
       : undefined;
 
     return {
@@ -55,7 +55,7 @@ export class FeedServiceImpl implements FeedService {
 
   // biome-ignore lint/correctness/noUnusedPrivateClassMembers: todo
   private hydrate(
-    feedItem: LeaderboardEvent,
+    feedItem: LeaderboardFeed,
     tournament: Awaited<ReturnType<TournamentService["getTournament"]>>,
     leaderboard: Awaited<ReturnType<LeaderboardService["getLeaderboard"]>>,
   ) {

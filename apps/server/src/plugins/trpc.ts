@@ -15,15 +15,13 @@ import {
 } from "@putting-pals/putting-pals-core";
 import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
-  AggregatePostgresRepository,
   createDatabaseConnection,
   LeaderboardFeedPostgresRepository,
+  LeaderboardSnapshotPostgresRepository,
 } from "@putting-pals/putting-pals-db";
 import {
-  ApolloCacheNormalizer,
   LeaderboardEventProcessorImpl,
   LeaderboardEventProcessorServiceImpl,
-  LeaderboardHoleByHoleEventProcessorServiceImpl,
   TournamentEventProcessorImpl,
 } from "@putting-pals/putting-pals-event";
 import {
@@ -97,7 +95,8 @@ function createContext() {
   const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
     database,
   );
-  const aggregateRepository = new AggregatePostgresRepository(database);
+  const leaderboardSnapshotRepository =
+    new LeaderboardSnapshotPostgresRepository(database);
 
   const feedService = new FeedServiceImpl(
     tournamentService,
@@ -106,38 +105,16 @@ function createContext() {
     leaderboardFeedRepository,
   );
 
-  const normalizer = new ApolloCacheNormalizer({
-    typePolicies: {
-      LeaderboardHoleByHole: {
-        keyFields: ["tournamentId"],
-      },
-      PlayerRowHoleByHole: {
-        keyFields: ["playerId"],
-      },
-      CourseHoleHeader: {
-        keyFields: ["courseId"],
-      },
-    },
-  });
-
   const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
     tournamentResolver,
     [
       new TournamentEventProcessorImpl(
         tournamentService,
-        normalizer,
-        aggregateRepository,
+        leaderboardSnapshotRepository,
       ),
       new LeaderboardEventProcessorServiceImpl(
         leaderboardService,
-        normalizer,
-        aggregateRepository,
-      ),
-      new LeaderboardHoleByHoleEventProcessorServiceImpl(
-        tournamentService,
-        leaderboardService,
-        normalizer,
-        aggregateRepository,
+        leaderboardSnapshotRepository,
       ),
     ],
     leaderboardFeedRepository,

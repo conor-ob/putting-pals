@@ -4,7 +4,7 @@ import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
 export function TournamentStatusChangedV1({
   item,
 }: {
-  item: RouterOutputs["feed"]["get"]["items"][number]["feedItem"] & {
+  item: RouterOutputs["feed"]["get"]["items"][number]["payload"] & {
     __typename: "TournamentStatusChangedV1";
   };
 }) {

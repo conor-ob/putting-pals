@@ -17,11 +17,8 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@apollo/client": "4.0.12",
     "@putting-pals/putting-pals-api": "workspace:*",
-    "@putting-pals/putting-pals-utils": "workspace:*",
-    "fast-json-patch": "^3.1.1",
-    "rxjs": "7.8.2"
+    "@putting-pals/putting-pals-utils": "workspace:*"
   },
   "devDependencies": {
     "@graphql-typed-document-node/core": "^3.2.0",

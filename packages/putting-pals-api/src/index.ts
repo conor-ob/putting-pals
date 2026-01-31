@@ -9,12 +9,14 @@ export type { Sdk } from "./graphql/pga-tour/generated/graphql";
 export { getSdk } from "./graphql/pga-tour/generated/graphql";
 export * from "./graphql/putting-pals/generated/graphql";
 export type { Normalizer } from "./normalize/normalizer";
-export type {
-  AggregateRepository,
-  AggregateType,
-} from "./repository/aggregate-repository";
 export type { CompetitionRepository } from "./repository/competition-repository";
 export type { LeaderboardFeedRepository } from "./repository/leaderboard-feed-repository";
+export type {
+  LeaderboardSnapshot,
+  LeaderboardSnapshotRepository,
+  LeaderboardSnapshotType,
+  LeaderboardSnapshotTypeMap,
+} from "./repository/leaderboard-snapshot-repository";
 export type { CompetitionService } from "./service/competition-service";
 export type { FeedService } from "./service/feed-service";
 export type { LeaderboardEventProcessor } from "./service/leaderboard-event-processor";

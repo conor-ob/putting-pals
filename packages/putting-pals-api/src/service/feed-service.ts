@@ -1,5 +1,5 @@
 import type { TourCode } from "@putting-pals/putting-pals-api";
-import type { LeaderboardEvent } from "../event/types";
+import type { LeaderboardFeed } from "../event/types";
 
 export interface FeedService {
   getFeed(
@@ -8,9 +8,9 @@ export interface FeedService {
     cursor?: number,
   ): Promise<{
     items: {
-      seq: number;
+      sequence: number;
       type: string;
-      feedItem: LeaderboardEvent;
+      payload: LeaderboardFeed;
       tourCode: TourCode;
       tournamentId: string;
       createdAt: Date;

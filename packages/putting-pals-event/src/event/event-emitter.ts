@@ -1,6 +1,6 @@
 import type {
   EventEmitter,
-  LeaderboardEvent,
+  LeaderboardFeed,
   TourCode,
 } from "@putting-pals/putting-pals-api";
 
@@ -15,7 +15,7 @@ export abstract class AbstractEventEmitter<T> implements EventEmitter {
     this.after = after;
   }
 
-  abstract emit(): LeaderboardEvent[];
+  abstract emit(): LeaderboardFeed[];
 
   abstract getPriority(): number;
 }

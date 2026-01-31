@@ -1,10 +1,9 @@
-import {
-  type AggregateRepository,
-  type EventEmitter,
-  LeaderboardAggregateDocument,
-  type LeaderboardService,
-  type Normalizer,
-  type TourCode,
+import type {
+  EventEmitter,
+  LeaderboardService,
+  LeaderboardSnapshotRepository,
+  LeaderboardV3,
+  TourCode,
 } from "@putting-pals/putting-pals-api";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
 import { LeaderChanged } from "../event/events/leader-changed";
@@ -15,102 +14,35 @@ import { PlayerPositionIncreased } from "../event/events/player-position-increas
 import { PlayerWithdrawn } from "../event/events/player-withdrawn";
 import { TournamentWinner } from "../event/events/tournament-winner";
 
-export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessorService {
+export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessorService<LeaderboardV3> {
   constructor(
     private readonly leaderboardService: LeaderboardService,
-    private readonly normalizer: Normalizer,
-    aggregateRepository: AggregateRepository,
+    snapshotRepository: LeaderboardSnapshotRepository,
   ) {
-    super("LeaderboardV3", aggregateRepository);
-    this.leaderboardService = leaderboardService;
-    this.normalizer = normalizer;
+    super("LeaderboardV3", snapshotRepository);
   }
 
-  override async getLatestAggregate(
+  protected override async getNextSnapshot(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<object> {
-    const leaderboard = await this.leaderboardService.getLeaderboard(
-      tourCode,
-      tournamentId,
-    );
-
-    const normalizedLeaderboard = this.normalizer.normalize(
-      LeaderboardAggregateDocument,
-      {
-        __typename: "Query",
-        leaderboardAggregate: leaderboard,
-      },
-      { id: leaderboard.id },
-    );
-
-    return normalizedLeaderboard;
+  ): Promise<LeaderboardV3> {
+    return await this.leaderboardService.getLeaderboard(tourCode, tournamentId);
   }
 
-  override async createEventEmitters(
+  protected override async createEventEmitters(
     tourCode: TourCode,
-    tournamentId: string,
-    materializedAggregate: object,
-    latestAggregate: object,
+    _tournamentId: string,
+    prevSnapshot: LeaderboardV3,
+    nextSnapshot: LeaderboardV3,
   ): Promise<EventEmitter[]> {
-    const denormalizedMaterializedLeaderboardAggregate =
-      this.normalizer.denormalize(
-        LeaderboardAggregateDocument,
-        materializedAggregate,
-        { id: tournamentId },
-      )?.leaderboardAggregate;
-
-    const denormalizedLatestLeaderboardAggregate = this.normalizer.denormalize(
-      LeaderboardAggregateDocument,
-      latestAggregate,
-      { id: tournamentId },
-    )?.leaderboardAggregate;
-
-    if (
-      denormalizedMaterializedLeaderboardAggregate === undefined ||
-      denormalizedLatestLeaderboardAggregate === undefined
-    ) {
-      return [];
-    }
-
-    const eventEmitters: EventEmitter[] = [
-      new LeaderChanged(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerDisqualified(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerMissedCut(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerPositionDecreased(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerPositionIncreased(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new PlayerWithdrawn(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
-      new TournamentWinner(
-        tourCode,
-        denormalizedMaterializedLeaderboardAggregate,
-        denormalizedLatestLeaderboardAggregate,
-      ),
+    return [
+      new LeaderChanged(tourCode, prevSnapshot, nextSnapshot),
+      new PlayerDisqualified(tourCode, prevSnapshot, nextSnapshot),
+      new PlayerMissedCut(tourCode, prevSnapshot, nextSnapshot),
+      new PlayerPositionDecreased(tourCode, prevSnapshot, nextSnapshot),
+      new PlayerPositionIncreased(tourCode, prevSnapshot, nextSnapshot),
+      new PlayerWithdrawn(tourCode, prevSnapshot, nextSnapshot),
+      new TournamentWinner(tourCode, prevSnapshot, nextSnapshot),
     ];
-
-    return eventEmitters;
   }
 }

@@ -7,7 +7,7 @@ import type {
   TournamentStatusChangedV1,
 } from "../db/types";
 
-export type LeaderboardEvent =
+export type LeaderboardFeed =
   | LeaderChangedV1
   | PlayerDisqualifiedV1
   | PlayerMissedCutV1
@@ -15,10 +15,10 @@ export type LeaderboardEvent =
   | RoundStatusChangedV1
   | TournamentStatusChangedV1;
 
-export type LeaderboardEventType = LeaderboardEvent["__typename"];
+export type LeaderboardFeedType = LeaderboardFeed["__typename"];
 
 export interface EventEmitter {
-  emit(): LeaderboardEvent[];
+  emit(): LeaderboardFeed[];
 
   getPriority(): number;
 }
