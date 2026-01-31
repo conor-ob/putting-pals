@@ -1,4 +1,5 @@
 import type {
+  HotStreakV1,
   LeaderChangedV1,
   PlayerDisqualifiedV1,
   PlayerMissedCutV1,
@@ -8,6 +9,7 @@ import type {
 } from "../db/types";
 
 export type LeaderboardFeed =
+  | HotStreakV1
   | LeaderChangedV1
   | PlayerDisqualifiedV1
   | PlayerMissedCutV1

@@ -6,7 +6,7 @@ import { AbstractEventEmitter } from "../event-emitter";
 
 export abstract class PlayerStateChanged extends AbstractEventEmitter<LeaderboardV3> {
   protected getPlayersStateChanged(playerState: PlayerState) {
-    const playersWithExpectedState = this.getPlayers(this.after).filter(
+    const playersWithExpectedState = this.getPlayers(this.next).filter(
       (player) => player.scoringData.playerState === playerState,
     );
 
@@ -14,10 +14,10 @@ export abstract class PlayerStateChanged extends AbstractEventEmitter<Leaderboar
       return [];
     }
 
-    const playersBefore = this.getPlayers(this.before);
+    const prevPlayers = this.getPlayers(this.prev);
     return playersWithExpectedState.filter(
       (playerWithExpectedState) =>
-        playersBefore.find(
+        prevPlayers.find(
           (p) => p.player.id === playerWithExpectedState.player.id,
         )?.scoringData.playerState !==
         playerWithExpectedState.scoringData.playerState,

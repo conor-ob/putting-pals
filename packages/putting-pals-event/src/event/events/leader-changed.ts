@@ -23,19 +23,19 @@ export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
   }
 
   private getPgaTourLeaderChanged(): LeaderboardFeed[] {
-    const leadersBefore = this.getLeaders(this.before);
-    const leadersAfter = this.getLeaders(this.after);
+    const prevLeaders = this.getLeaders(this.prev);
+    const nextLeaders = this.getLeaders(this.next);
 
-    const leaderIdsBefore = leadersBefore
+    const prevLeaderIds = prevLeaders
       .map((leader) => leader.player.id)
       .sort((a, b) => a.localeCompare(b));
-    const leaderIdsAfter = leadersAfter
+    const nextLeaderIds = nextLeaders
       .map((leader) => leader.player.id)
       .sort((a, b) => a.localeCompare(b));
 
     if (
-      leaderIdsBefore.length === leaderIdsAfter.length &&
-      leaderIdsBefore.every((id, i) => id === leaderIdsAfter[i])
+      prevLeaderIds.length === nextLeaderIds.length &&
+      prevLeaderIds.every((id, i) => id === nextLeaderIds[i])
     ) {
       return [];
     }
@@ -43,8 +43,8 @@ export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
     return [
       {
         __typename: "LeaderChangedV1" as const,
-        before: {
-          players: leadersBefore.map((row) => ({
+        prev: {
+          players: prevLeaders.map((row) => ({
             __typename: "PlayerRowV3" as const,
             player: {
               id: row.player.id,
@@ -60,8 +60,8 @@ export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
             },
           })),
         },
-        after: {
-          players: leadersAfter.map((row) => ({
+        next: {
+          players: nextLeaders.map((row) => ({
             __typename: "PlayerRowV3" as const,
             player: {
               id: row.player.id,

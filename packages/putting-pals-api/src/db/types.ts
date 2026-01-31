@@ -10,8 +10,8 @@ type Event<TName extends string, T> = {
 
 type ChangeEvent<TName extends string, T> = {
   __typename: TName;
-  before: T;
-  after: T;
+  prev: T;
+  next: T;
 };
 
 export type RoundStatusChangedV1 = ChangeEvent<
@@ -85,6 +85,15 @@ export type PlayerMissedCutV1 = Event<
 
 export type PlayerWithdrawnV1 = Event<
   "PlayerWithdrawnV1",
+  {
+    players: {
+      id: string;
+    }[];
+  }
+>;
+
+export type HotStreakV1 = Event<
+  "HotStreakV1",
   {
     players: {
       id: string;

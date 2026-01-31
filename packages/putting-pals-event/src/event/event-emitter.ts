@@ -7,12 +7,12 @@ import type {
 export abstract class AbstractEventEmitter<T> implements EventEmitter {
   constructor(
     protected readonly tourCode: TourCode,
-    protected readonly before: T,
-    protected readonly after: T,
+    protected readonly prev: T,
+    protected readonly next: T,
   ) {
     this.tourCode = tourCode;
-    this.before = before;
-    this.after = after;
+    this.prev = prev;
+    this.next = next;
   }
 
   abstract emit(): LeaderboardFeed[];
@@ -28,7 +28,7 @@ export const EventPriority = {
   PLAYER_POSITION_DECREASED_EVENT: 4,
   PLAYER_POSITION_INCREASED_EVENT: 5,
   PLAYER_MISSED_CUT_EVENT: 6,
-  BIRDIE_STREAK_EVENT: 7,
+  HOT_STREAK_EVENT: 7,
   LEADER_CHANGED_EVENT: 8,
   ROUND_STOPPING_EVENT: 9,
   TOURNAMENT_STOPPING_EVENT: 10,

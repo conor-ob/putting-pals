@@ -9,8 +9,8 @@ import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 export class RoundStatusChanged extends AbstractEventEmitter<Tournament> {
   override emit(): LeaderboardFeed[] {
     if (
-      this.after.roundStatus === "UPCOMING" ||
-      this.after.roundStatus === this.before.roundStatus
+      this.next.roundStatus === "UPCOMING" ||
+      this.next.roundStatus === this.prev.roundStatus
     ) {
       return [];
     }
@@ -18,24 +18,24 @@ export class RoundStatusChanged extends AbstractEventEmitter<Tournament> {
     return [
       {
         __typename: "RoundStatusChangedV1" as const,
-        before: {
-          roundDisplay: this.before.roundDisplay,
-          roundStatus: this.before.roundStatus,
-          roundStatusColor: this.before.roundStatusColor,
-          roundStatusDisplay: this.before.roundStatusDisplay,
+        prev: {
+          roundDisplay: this.prev.roundDisplay,
+          roundStatus: this.prev.roundStatus,
+          roundStatusColor: this.prev.roundStatusColor,
+          roundStatusDisplay: this.prev.roundStatusDisplay,
         },
-        after: {
-          roundDisplay: this.after.roundDisplay,
-          roundStatus: this.after.roundStatus,
-          roundStatusColor: this.after.roundStatusColor,
-          roundStatusDisplay: this.after.roundStatusDisplay,
+        next: {
+          roundDisplay: this.next.roundDisplay,
+          roundStatus: this.next.roundStatus,
+          roundStatusColor: this.next.roundStatusColor,
+          roundStatusDisplay: this.next.roundStatusDisplay,
         },
       } satisfies RoundStatusChangedV1,
     ];
   }
 
   override getPriority(): number {
-    switch (this.after.roundStatus) {
+    switch (this.next.roundStatus) {
       case "UPCOMING":
       case "GROUPINGS_OFFICIAL":
       case "IN_PROGRESS":
@@ -45,7 +45,7 @@ export class RoundStatusChanged extends AbstractEventEmitter<Tournament> {
       case "OFFICIAL":
         return EventPriority.ROUND_STOPPING_EVENT;
       default:
-        assertNever(this.after.roundStatus);
+        assertNever(this.next.roundStatus);
     }
   }
 }

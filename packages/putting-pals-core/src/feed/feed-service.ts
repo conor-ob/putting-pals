@@ -63,8 +63,8 @@ export class FeedServiceImpl implements FeedService {
       case "LeaderChangedV1":
         return {
           ...feedItem,
-          before: {
-            players: feedItem.before.players.flatMap((player) => {
+          prev: {
+            players: feedItem.prev.players.flatMap((player) => {
               const playerMatch = leaderboard.players
                 .filter((p) => p.__typename === "PlayerRowV3")
                 .find((p) => p.player.id === player.player.id)?.player;
@@ -75,8 +75,8 @@ export class FeedServiceImpl implements FeedService {
               }
             }),
           },
-          after: {
-            players: feedItem.before.players.flatMap((player) => {
+          next: {
+            players: feedItem.next.players.flatMap((player) => {
               const playerMatch = leaderboard.players
                 .filter((p) => p.__typename === "PlayerRowV3")
                 .find((p) => p.player.id === player.player.id)?.player;
