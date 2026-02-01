@@ -3,34 +3,32 @@ import type {
   ScheduleClient,
   ScheduleUpcoming,
   ScheduleYears,
+  TourCode,
 } from "@putting-pals/putting-pals-api";
 import { GraphQlClient } from "./graphql-client";
-
 export class ScheduleGraphQlClient
   extends GraphQlClient
   implements ScheduleClient
 {
-  async getScheduleYears(): Promise<ScheduleYears> {
+  async getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     return this.sdk
-      .ScheduleYears({ tourCode: "R" })
+      .ScheduleYears({ tourCode: tourCode as Exclude<TourCode, "P"> })
       .then((data) => data.scheduleYears);
   }
 
-  async getSchedule(year?: string): Promise<Schedule> {
-    return this.sdk
-      .Schedule({ tourCode: "R", year })
-      .then((data) => data.schedule);
+  async getSchedule(tourCode: TourCode, year?: string): Promise<Schedule> {
+    return this.sdk.Schedule({ tourCode, year }).then((data) => data.schedule);
   }
 
-  async getCompleteSchedule(): Promise<readonly Schedule[]> {
+  async getCompleteSchedule(tourCode: TourCode): Promise<readonly Schedule[]> {
     return this.sdk
-      .CompleteSchedule({ tourCode: "R" })
+      .CompleteSchedule({ tourCode: tourCode as Exclude<TourCode, "P"> })
       .then((data) => data.completeSchedule);
   }
 
-  async getUpcomingSchedule(): Promise<ScheduleUpcoming> {
+  async getUpcomingSchedule(tourCode: TourCode): Promise<ScheduleUpcoming> {
     return this.sdk
-      .UpcomingSchedule({ tourCode: "R" })
+      .UpcomingSchedule({ tourCode })
       .then((data) => data.upcomingSchedule);
   }
 }

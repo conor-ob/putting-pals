@@ -13,7 +13,7 @@ async function sendEvent() {
     ],
   });
 
-  const supportedTourCodes = ["P", "R"] as const;
+  const supportedTourCodes = ["P", "R", "S", "H", "Y"] as const;
   await Promise.all(
     supportedTourCodes.map((tourCode) =>
       client.event.processEvent.mutate({

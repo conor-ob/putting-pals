@@ -41,9 +41,27 @@ export function SchedulePage() {
         }}
       />
       <Button
-        title="PGA Tour"
+        title="PGA TOUR"
         onPress={() => {
           setTourCode("R");
+        }}
+      />
+      <Button
+        title="PGA TOUR Champions"
+        onPress={() => {
+          setTourCode("S");
+        }}
+      />
+      <Button
+        title="Korn Ferry Tour"
+        onPress={() => {
+          setTourCode("H");
+        }}
+      />
+      <Button
+        title="PGA TOUR Americas"
+        onPress={() => {
+          setTourCode("Y");
         }}
       />
       <FlashList

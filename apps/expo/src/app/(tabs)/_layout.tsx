@@ -31,7 +31,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="earnings"
         options={{
           title: "Earnings",
@@ -39,7 +39,7 @@ export default function TabLayout() {
             <FontAwesome size={28} name="money" color={color} />
           ),
         }}
-      />
+      /> */}
     </Tabs>
   );
 }

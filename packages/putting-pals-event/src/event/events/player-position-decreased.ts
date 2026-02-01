@@ -11,6 +11,9 @@ export class PlayerPositionDecreased extends AbstractEventEmitter<LeaderboardV3>
       case "P":
         return [];
       case "R":
+      case "S":
+      case "H":
+      case "Y":
         return [];
       default:
         throw new UnsupportedTourCodeError(this.tourCode);

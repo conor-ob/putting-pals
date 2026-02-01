@@ -26,7 +26,10 @@ export class ScheduleServiceImpl implements ScheduleService {
       case "P":
         return this.getPuttingPalsSchedule(year);
       case "R":
-        return this.getPgaTourSchedule(year);
+      case "S":
+      case "H":
+      case "Y":
+        return this.getPgaTourSchedule(tourCode, year);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
@@ -37,7 +40,10 @@ export class ScheduleServiceImpl implements ScheduleService {
       case "P":
         return this.getPuttingPalsUpcomingSchedule();
       case "R":
-        return this.getPgaTourUpcomingSchedule();
+      case "S":
+      case "H":
+      case "Y":
+        return this.getPgaTourUpcomingSchedule(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
@@ -67,7 +73,7 @@ export class ScheduleServiceImpl implements ScheduleService {
     const puttingPalsTournamentIds = this.competitionService
       .getCompetitions()
       .map((competition) => competition.tournamentId);
-    const pgaTourSchedule = await this.getPgaTourSchedule(year);
+    const pgaTourSchedule = await this.getPgaTourSchedule("R", year);
     return pgaTourSchedule
       .filter((season) => {
         const pgaTourTournamentIds = [
@@ -88,13 +94,14 @@ export class ScheduleServiceImpl implements ScheduleService {
   }
 
   private async getPgaTourSchedule(
+    tourCode: TourCode,
     year?: string,
   ): Promise<readonly Schedule[]> {
     if (year) {
-      const schedule = await this.scheduleClient.getSchedule(year);
+      const schedule = await this.scheduleClient.getSchedule(tourCode, year);
       return [transformSchedule(schedule)];
     } else {
-      const schedules = await this.scheduleClient.getCompleteSchedule();
+      const schedules = await this.scheduleClient.getCompleteSchedule(tourCode);
       return schedules.map(transformSchedule);
     }
   }
@@ -103,7 +110,7 @@ export class ScheduleServiceImpl implements ScheduleService {
     const competitionIds = this.competitionService
       .getCompetitions()
       .map((competition) => competition.tournamentId);
-    const pgaTourUpcomingSchedule = await this.getPgaTourUpcomingSchedule();
+    const pgaTourUpcomingSchedule = await this.getPgaTourUpcomingSchedule("R");
     const upcomingTournaments = pgaTourUpcomingSchedule.tournaments.filter(
       (tournament) => competitionIds.includes(tournament.id),
     );
@@ -141,8 +148,11 @@ export class ScheduleServiceImpl implements ScheduleService {
     };
   }
 
-  private async getPgaTourUpcomingSchedule(): Promise<ScheduleUpcoming> {
-    const upcomingSchedule = await this.scheduleClient.getUpcomingSchedule();
+  private async getPgaTourUpcomingSchedule(
+    tourCode: TourCode,
+  ): Promise<ScheduleUpcoming> {
+    const upcomingSchedule =
+      await this.scheduleClient.getUpcomingSchedule(tourCode);
     return {
       ...upcomingSchedule,
       tournaments: upcomingSchedule.tournaments.map(
