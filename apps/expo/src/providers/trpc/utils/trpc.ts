@@ -29,6 +29,13 @@ export const queryClient = new QueryClient({
       refetchOnReconnect: false,
       // Only refetch on mount if data is stale
       refetchOnMount: true,
+      // Cache for 30 seconds
+      staleTime: 1000 * 30,
+      // Retry 3 times
+      retry: 3,
+      // retry(failureCount, _error) {
+      //   return failureCount <= 3;
+      // },
     },
   },
 });
