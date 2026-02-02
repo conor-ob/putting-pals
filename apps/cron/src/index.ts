@@ -1,4 +1,3 @@
-import { supportedTours } from "@putting-pals/putting-pals-api";
 import type { AppRouter } from "@putting-pals/putting-pals-trpc";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import superjson from "superjson";
@@ -14,6 +13,7 @@ async function sendEvent() {
     ],
   });
 
+  const supportedTours = await client.tour.getTours.query();
   await Promise.all(
     supportedTours.map((tour) =>
       client.event.processEvent.mutate({

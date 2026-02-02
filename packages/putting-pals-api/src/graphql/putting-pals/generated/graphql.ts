@@ -9792,6 +9792,7 @@ export type TourCategories = {
 
 export type TourCode =
   | 'C'
+  | 'D'
   | 'E'
   | 'H'
   | 'I'
@@ -13223,7 +13224,7 @@ export const TeeTimesFeatureSchema = z.enum(['GROUPINGS', 'GROUP_TRACKER']);
 
 export const ToughestRoundSchema = z.enum(['ALL', 'FOUR', 'ONE', 'THREE', 'TWO']);
 
-export const TourCodeSchema = z.enum(['C', 'E', 'H', 'I', 'M', 'P', 'R', 'S', 'U', 'Y']);
+export const TourCodeSchema = z.enum(['C', 'D', 'E', 'H', 'I', 'M', 'P', 'R', 'S', 'U', 'Y']);
 
 export const TourCupTypeSchema = z.enum(['OFFICIAL', 'OFFICIAL_AND_PROJECTED', 'PROJECTED']);
 

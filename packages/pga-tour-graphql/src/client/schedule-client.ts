@@ -12,7 +12,7 @@ export class ScheduleGraphQlClient
 {
   async getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     return this.sdk
-      .ScheduleYears({ tourCode: tourCode as Exclude<TourCode, "P"> })
+      .ScheduleYears({ tourCode: tourCode as Exclude<TourCode, "D" | "P"> })
       .then((data) => data.scheduleYears);
   }
 
@@ -22,7 +22,7 @@ export class ScheduleGraphQlClient
 
   async getCompleteSchedule(tourCode: TourCode): Promise<readonly Schedule[]> {
     return this.sdk
-      .CompleteSchedule({ tourCode: tourCode as Exclude<TourCode, "P"> })
+      .CompleteSchedule({ tourCode: tourCode as Exclude<TourCode, "D" | "P"> })
       .then((data) => data.completeSchedule);
   }
 

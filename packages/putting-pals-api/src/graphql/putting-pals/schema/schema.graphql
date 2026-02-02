@@ -22,5 +22,6 @@ type PuttingPalsPlayerRow {
 extend union LeaderboardRowV3 = PuttingPalsPlayerRow
 
 extend enum TourCode {
+  D
   P
 }

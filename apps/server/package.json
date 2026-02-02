@@ -18,6 +18,7 @@
     "@mgcrea/pino-pretty-compact": "^1.4.2",
     "@putting-pals/pga-tour-graphql": "workspace:*",
     "@putting-pals/pga-tour-scaper": "workspace:*",
+    "@putting-pals/putting-pals-api": "workspace:*",
     "@putting-pals/putting-pals-core": "workspace:*",
     "@putting-pals/putting-pals-data": "workspace:*",
     "@putting-pals/putting-pals-db": "workspace:*",

@@ -1,7 +1,6 @@
 export type { LeaderboardClient } from "./client/leaderboard-client";
 export type { ScheduleClient } from "./client/schedule-client";
 export type { TournamentClient } from "./client/tournament-client";
-export * from "./data/tours";
 export * from "./data/types";
 export * from "./db/types";
 export * from "./error/service-error";
@@ -22,6 +21,10 @@ export type {
   LeaderboardSnapshotTypeMap,
 } from "./repository/leaderboard-snapshot-repository";
 export type { CompetitionService } from "./service/competition-service";
+export type {
+  FeatureFlag,
+  FeatureFlagService,
+} from "./service/feature-flag-service";
 export type { FeedService } from "./service/feed-service";
 export type { LeaderboardEventProcessor } from "./service/leaderboard-event-processor";
 export type { LeaderboardEventProcessorService } from "./service/leaderboard-event-processor-service";
