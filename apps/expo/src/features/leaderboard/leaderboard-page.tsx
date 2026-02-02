@@ -40,7 +40,7 @@ export function LeaderboardPage() {
       {tournament && <TournamentHeader tournament={tournament} />}
       <TourCodeSwitcher />
       <FlashList
-        data={leaderboard?.players.toSorted(
+        data={[...(leaderboard?.players ?? [])].sort(
           (a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder,
         )}
         keyExtractor={(item) => item.id}

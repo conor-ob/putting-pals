@@ -8,7 +8,7 @@
     "build": "vite build",
     "typecheck": "tsc --noEmit true",
     "test": "vitest",
-    "dev": "vite",
+    "dev": "vite --host",
     "start": "node dist/index.js"
   },
   "dependencies": {
