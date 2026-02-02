@@ -213,6 +213,9 @@ importers:
       uniwind:
         specifier: ^1.2.2
         version: 1.2.7(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.18)
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
     devDependencies:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*

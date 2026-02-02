@@ -9,6 +9,7 @@ import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import { Platform } from "react-native";
 import superjson from "superjson";
+import { env } from "~/env/schema";
 
 /**
  * Inference helper for inputs.
@@ -97,13 +98,13 @@ const trpcClient = createTRPCClient<AppRouter>({
     httpBatchStreamLink({
       url: Platform.select({
         web:
-          process.env.NODE_ENV === "production"
+          env.NODE_ENV === "production"
             ? "api/trpc"
-            : "http://localhost:4000/trpc",
+            : `${env.EXPO_PUBLIC_SERVER_URL}/trpc`,
         default:
-          process.env.NODE_ENV === "production"
-            ? "https://puttingpals.up.railway.app/api/trpc"
-            : "http://localhost:4000/trpc", // TODO: needs IP address
+          env.NODE_ENV === "production"
+            ? `${env.EXPO_PUBLIC_SERVER_URL}/api/trpc`
+            : `${env.EXPO_PUBLIC_SERVER_URL}/trpc`, // TODO: needs IP address
       }),
       transformer: superjson,
     }),
