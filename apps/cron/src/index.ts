@@ -1,3 +1,4 @@
+import { supportedTours } from "@putting-pals/putting-pals-api";
 import type { AppRouter } from "@putting-pals/putting-pals-trpc";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import superjson from "superjson";
@@ -13,11 +14,10 @@ async function sendEvent() {
     ],
   });
 
-  const supportedTourCodes = ["P", "R", "S", "H", "Y"] as const;
   await Promise.all(
-    supportedTourCodes.map((tourCode) =>
+    supportedTours.map((tour) =>
       client.event.processEvent.mutate({
-        tourCode,
+        tourCode: tour.tourCode,
         type: "leaderboard/detect-change",
       }),
     ),

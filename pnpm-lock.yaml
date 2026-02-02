@@ -68,6 +68,9 @@ importers:
 
   apps/cron:
     dependencies:
+      '@putting-pals/putting-pals-api':
+        specifier: workspace:*
+        version: link:../../packages/putting-pals-api
       '@trpc/client':
         specifier: 'catalog:'
         version: 11.9.0(@trpc/server@11.9.0(typescript@5.9.3))(typescript@5.9.3)

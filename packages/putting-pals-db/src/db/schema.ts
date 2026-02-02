@@ -48,6 +48,18 @@ const tournamentIdentifierColumns = {
   tournamentId: text("tournament_id").notNull(),
 };
 
+export const activeTournamentTable = pgTable(
+  "active_tournament",
+  {
+    ...identifierColumns,
+    ...timestampColumns,
+    ...tournamentIdentifierColumns,
+  },
+  (table) => [
+    uniqueIndex("active_tournament_tour_code_idx").on(table.tourCode),
+  ],
+);
+
 export const leaderboardSnapshotTable = pgTable(
   "leaderboard_snapshot",
   {

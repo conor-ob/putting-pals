@@ -1,3 +1,4 @@
+import { TourCodeSchema } from "@putting-pals/putting-pals-api";
 import z from "zod";
 
 export const LeaderboardOutputSchema = z.object({
@@ -63,3 +64,10 @@ export const TournamentOutputSchema = z.object({
   tournamentName: z.string(),
   tournamentStatus: z.enum(["NOT_STARTED", "IN_PROGRESS", "COMPLETED"]),
 });
+
+export const TourOutputSchema = z.array(
+  z.object({
+    tourCode: TourCodeSchema,
+    tourName: z.string(),
+  }),
+);

@@ -15,6 +15,7 @@ import {
 } from "@putting-pals/putting-pals-core";
 import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
+  ActiveTournamentPostgresRepository,
   createDatabaseConnection,
   LeaderboardFeedPostgresRepository,
   LeaderboardSnapshotPostgresRepository,
@@ -67,10 +68,22 @@ function createContext() {
   const pgaTourWebScraper = new PgaTourCheerioWebScraper();
 
   const competitionService = new CompetitionServiceImpl(competitionRepository);
+
+  const database = createDatabaseConnection();
+  const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
+    database,
+  );
+  const leaderboardSnapshotRepository =
+    new LeaderboardSnapshotPostgresRepository(database);
+  const activeTournamentRepository = new ActiveTournamentPostgresRepository(
+    database,
+  );
+
   const tournamentResolver = new TournamentResolverImpl(
     tournamentClient,
     pgaTourWebScraper,
     competitionService,
+    activeTournamentRepository,
   );
   const tournamentService = new TournamentServiceImpl(
     tournamentClient,
@@ -90,13 +103,6 @@ function createContext() {
     competitionService,
     tournamentService,
   );
-
-  const database = createDatabaseConnection();
-  const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
-    database,
-  );
-  const leaderboardSnapshotRepository =
-    new LeaderboardSnapshotPostgresRepository(database);
 
   const feedService = new FeedServiceImpl(
     tournamentService,

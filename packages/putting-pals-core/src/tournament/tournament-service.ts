@@ -27,7 +27,7 @@ export class TournamentServiceImpl implements TournamentService {
     id?: string,
   ): Promise<string> {
     if (id === undefined) {
-      return this.tournamentResolver.getCurrentTournamentId(tourCode);
+      return this.tournamentResolver.getActiveTournamentId(tourCode);
     }
     return id;
   }

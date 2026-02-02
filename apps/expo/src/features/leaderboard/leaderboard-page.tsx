@@ -1,7 +1,8 @@
 import { FlashList } from "@shopify/flash-list";
-import { Button, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { TournamentHeader } from "~/components/tournament-header";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
+import { TourCodeSwitcher } from "~/providers/tour-code/tour-code-switcher";
 import { trpc } from "~/providers/trpc/utils/trpc";
 import { useQuery } from "~/providers/trpc/utils/use-query";
 import { useLocalStorage } from "~/storage/use-local-storage";
@@ -10,7 +11,7 @@ import { PlayerRowV3 } from "./player-row-v3";
 import { PuttingPalsPlayerRow } from "./putting-pals-player-row";
 
 export function LeaderboardPage() {
-  const { tourCode, setTourCode } = useTourCode();
+  const { tourCode } = useTourCode();
   const { data: tournament, error: tournamentError } = useQuery(
     trpc.tournament.getById.queryOptions({ tourCode }),
   );
@@ -37,36 +38,7 @@ export function LeaderboardPage() {
   return (
     <ScrollView className="p-4 gap-4">
       {tournament && <TournamentHeader tournament={tournament} />}
-      <Button
-        title="Putting Pals"
-        onPress={() => {
-          setTourCode("P");
-        }}
-      />
-      <Button
-        title="PGA TOUR"
-        onPress={() => {
-          setTourCode("R");
-        }}
-      />
-      <Button
-        title="PGA TOUR Champions"
-        onPress={() => {
-          setTourCode("S");
-        }}
-      />
-      <Button
-        title="Korn Ferry Tour"
-        onPress={() => {
-          setTourCode("H");
-        }}
-      />
-      <Button
-        title="PGA TOUR Americas"
-        onPress={() => {
-          setTourCode("Y");
-        }}
-      />
+      <TourCodeSwitcher />
       <FlashList
         data={leaderboard?.players.toSorted(
           (a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder,

@@ -103,7 +103,7 @@ export class FeedServiceImpl implements FeedService {
     id?: string,
   ): Promise<string> {
     if (id === undefined) {
-      return await this.tournamentResolver.getCurrentTournamentId(tourCode);
+      return await this.tournamentResolver.getActiveTournamentId(tourCode);
     }
     return id;
   }

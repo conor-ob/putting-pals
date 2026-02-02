@@ -1,12 +1,13 @@
 import { FlashList } from "@shopify/flash-list";
-import { Button, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { Text } from "~/components/ui/text";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
+import { TourCodeSwitcher } from "~/providers/tour-code/tour-code-switcher";
 import { trpc } from "~/providers/trpc/utils/trpc";
 import { useQuery } from "~/providers/trpc/utils/use-query";
 
 export function SchedulePage() {
-  const { tourCode, setTourCode } = useTourCode();
+  const { tourCode } = useTourCode();
 
   const { data: scheduleYears, error: scheduleYearsError } = useQuery(
     trpc.schedule.getScheduleYears.queryOptions({ tourCode }),
@@ -34,36 +35,7 @@ export function SchedulePage() {
 
   return (
     <ScrollView className="p-4 gap-4">
-      <Button
-        title="Putting Pals"
-        onPress={() => {
-          setTourCode("P");
-        }}
-      />
-      <Button
-        title="PGA TOUR"
-        onPress={() => {
-          setTourCode("R");
-        }}
-      />
-      <Button
-        title="PGA TOUR Champions"
-        onPress={() => {
-          setTourCode("S");
-        }}
-      />
-      <Button
-        title="Korn Ferry Tour"
-        onPress={() => {
-          setTourCode("H");
-        }}
-      />
-      <Button
-        title="PGA TOUR Americas"
-        onPress={() => {
-          setTourCode("Y");
-        }}
-      />
+      <TourCodeSwitcher />
       <FlashList
         data={[
           ...(schedule?.flatMap((season) =>

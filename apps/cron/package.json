@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
+    "@putting-pals/putting-pals-api": "workspace:*",
     "@trpc/client": "catalog:",
     "dotenv": "catalog:",
     "superjson": "catalog:",

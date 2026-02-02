@@ -21,7 +21,7 @@ export class LeaderboardEventProcessorImpl
 
   async processEvent(tourCode: TourCode): Promise<void> {
     const tournamentId =
-      await this.tournamentResolver.getCurrentTournamentId(tourCode);
+      await this.tournamentResolver.getActiveTournamentId(tourCode);
 
     const eventEmitters = await Promise.all(
       this.leaderboardEventProcessorServices.map((eventProcessorService) =>
