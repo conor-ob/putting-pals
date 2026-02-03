@@ -8,4 +8,14 @@ export const TournamentIdInputSchema = z
   // .startsWith("R", "Tournament id must start with R")
   .length(8, "Tournament id must be 8 characters long");
 
+export const TournamentInputSchema = z.object({
+  tourCode: TourCodeInputSchema,
+  id: TournamentIdInputSchema.optional(),
+});
+
+export const LeaderboardInputSchema = z.object({
+  tourCode: TourCodeInputSchema,
+  id: TournamentIdInputSchema.optional(),
+});
+
 export const EventTypeInputSchema = z.enum(["leaderboard/detect-change"]);
