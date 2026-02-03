@@ -1,1 +1,1 @@
-export { CompetitionRepositoryImpl } from "./repository/competition-repository";
+export { injectDependencies } from "./module/dependencies";

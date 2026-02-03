@@ -1,31 +1,8 @@
-import {
-  LeaderboardGraphQlClient,
-  ScheduleGraphQlClient,
-  TournamentGraphQlClient,
-} from "@putting-pals/pga-tour-graphql";
-import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
-import {
-  CompetitionServiceImpl,
-  FeatureFlagServiceImpl,
-  FeedServiceImpl,
-  LeaderboardEventProcessorImpl,
-  LeaderboardEventProcessorServiceImpl,
-  LeaderboardServiceImpl,
-  ScheduleServiceImpl,
-  ScheduleYearsServiceImpl,
-  TournamentEventProcessorImpl,
-  TournamentResolverImpl,
-  TournamentServiceImpl,
-  TourServiceImpl,
-} from "@putting-pals/putting-pals-core";
-import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
-import {
-  ActiveTournamentPostgresRepository,
-  createDatabaseConnection,
-  FeatureFlagPostgresRepository,
-  LeaderboardFeedPostgresRepository,
-  LeaderboardSnapshotPostgresRepository,
-} from "@putting-pals/putting-pals-db";
+import { injectDependencies as injectPgaTourGraphQlDependencies } from "@putting-pals/pga-tour-graphql";
+import { injectDependencies as injectPgaTourScraperDependencies } from "@putting-pals/pga-tour-scaper";
+import { injectDependencies as injectCoreDependencies } from "@putting-pals/putting-pals-core";
+import { injectDependencies as injectDataDependencies } from "@putting-pals/putting-pals-data";
+import { injectDependencies as injectDatabaseDependencies } from "@putting-pals/putting-pals-db";
 import {
   type AppRouter,
   appRouter,
@@ -61,86 +38,30 @@ export default function (fastify: FastifyInstance) {
 }
 
 function createContext() {
-  const tournamentClient = new TournamentGraphQlClient();
-  const leaderboardClient = new LeaderboardGraphQlClient();
-  const scheduleClient = new ScheduleGraphQlClient();
-  const competitionRepository = new CompetitionRepositoryImpl();
-
-  const pgaTourWebScraper = new PgaTourCheerioWebScraper();
-
-  const competitionService = new CompetitionServiceImpl(competitionRepository);
-
-  const database = createDatabaseConnection();
-  const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
-    database,
+  const dataDependencies = injectDataDependencies();
+  const databaseDependencies = injectDatabaseDependencies();
+  const pgaTourGraphQlDependencies = injectPgaTourGraphQlDependencies();
+  const pgaTourScraperDependencies = injectPgaTourScraperDependencies();
+  const coreDependencies = injectCoreDependencies(
+    dataDependencies.competitionRepository,
+    databaseDependencies.activeTournamentRepository,
+    databaseDependencies.leaderboardFeedRepository,
+    databaseDependencies.leaderboardSnapshotRepository,
+    databaseDependencies.featureFlagRepository,
+    pgaTourGraphQlDependencies.leaderboardClient,
+    pgaTourGraphQlDependencies.scheduleClient,
+    pgaTourGraphQlDependencies.tournamentClient,
+    pgaTourScraperDependencies.pgaTourWebScraper,
   );
-  const leaderboardSnapshotRepository =
-    new LeaderboardSnapshotPostgresRepository(database);
-  const activeTournamentRepository = new ActiveTournamentPostgresRepository(
-    database,
-  );
-
-  const tournamentResolver = new TournamentResolverImpl(
-    tournamentClient,
-    pgaTourWebScraper,
-    competitionService,
-    activeTournamentRepository,
-  );
-  const tournamentService = new TournamentServiceImpl(
-    tournamentClient,
-    tournamentResolver,
-  );
-  const leaderboardService = new LeaderboardServiceImpl(
-    leaderboardClient,
-    tournamentResolver,
-    competitionService,
-  );
-  const scheduleService = new ScheduleServiceImpl(
-    scheduleClient,
-    competitionService,
-  );
-  const scheduleYearsService = new ScheduleYearsServiceImpl(
-    scheduleClient,
-    competitionService,
-    tournamentService,
-  );
-
-  const feedService = new FeedServiceImpl(
-    tournamentService,
-    leaderboardService,
-    tournamentResolver,
-    leaderboardFeedRepository,
-  );
-
-  const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
-    tournamentResolver,
-    [
-      new TournamentEventProcessorImpl(
-        tournamentService,
-        leaderboardSnapshotRepository,
-      ),
-      new LeaderboardEventProcessorServiceImpl(
-        leaderboardService,
-        leaderboardSnapshotRepository,
-      ),
-    ],
-    leaderboardFeedRepository,
-  );
-
-  const featureFlagRepository = new FeatureFlagPostgresRepository(database);
-  const featureFlagService = new FeatureFlagServiceImpl(featureFlagRepository);
-
-  const tourService = new TourServiceImpl(featureFlagService);
 
   return createTrpcContext({
-    tournamentService,
-    competitionService,
-    leaderboardService,
-    leaderboardEventProcessor,
-    feedService,
-    scheduleService,
-    scheduleYearsService,
-    featureFlagService,
-    tourService,
+    tournamentService: coreDependencies.tournamentService,
+    competitionService: coreDependencies.competitionService,
+    leaderboardService: coreDependencies.leaderboardService,
+    leaderboardEventProcessor: coreDependencies.leaderboardEventProcessor,
+    feedService: coreDependencies.feedService,
+    scheduleService: coreDependencies.scheduleService,
+    scheduleYearsService: coreDependencies.scheduleYearsService,
+    tourService: coreDependencies.tourService,
   });
 }

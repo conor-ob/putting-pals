@@ -9,7 +9,6 @@
 
 import type {
   CompetitionService,
-  FeatureFlagService,
   FeedService,
   LeaderboardEventProcessor,
   LeaderboardService,
@@ -43,7 +42,6 @@ export function createTrpcContext({
   feedService,
   scheduleService,
   scheduleYearsService,
-  featureFlagService,
   tourService,
 }: {
   tournamentService: TournamentService;
@@ -53,7 +51,6 @@ export function createTrpcContext({
   feedService: FeedService;
   scheduleService: ScheduleService;
   scheduleYearsService: ScheduleYearsService;
-  featureFlagService: FeatureFlagService;
   tourService: TourService;
 }) {
   return {
@@ -64,7 +61,6 @@ export function createTrpcContext({
     feedService,
     scheduleService,
     scheduleYearsService,
-    featureFlagService,
     tourService,
   };
 }

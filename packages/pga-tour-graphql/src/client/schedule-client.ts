@@ -3,14 +3,15 @@ import type {
   Schedule,
   ScheduleUpcoming,
   ScheduleYears,
+  Sdk,
   TourCode,
 } from "@putting-pals/putting-pals-schema";
-import { GraphQlClient } from "./graphql-client";
 
-export class ScheduleGraphQlClient
-  extends GraphQlClient
-  implements ScheduleClient
-{
+export class ScheduleGraphQlClient implements ScheduleClient {
+  constructor(private readonly sdk: Sdk) {
+    this.sdk = sdk;
+  }
+
   async getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     return this.sdk
       .ScheduleYears({ tourCode: tourCode as Exclude<TourCode, "D" | "P"> })

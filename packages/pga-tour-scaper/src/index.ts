@@ -1,1 +1,1 @@
-export { PgaTourCheerioWebScraper } from "./scraper/scraper";
+export { injectDependencies } from "./module/dependencies";

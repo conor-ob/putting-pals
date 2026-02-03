@@ -4,14 +4,18 @@ import type {
 } from "@putting-pals/putting-pals-core";
 import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { and, desc, eq, isNull, lt } from "drizzle-orm";
-import { leaderboardFeedTable } from "../db/schema";
+import type { leaderboardFeedTable } from "../db/schema";
 import type { Database } from "../db/types";
 
 export class LeaderboardFeedPostgresRepository
   implements LeaderboardFeedRepository
 {
-  constructor(private readonly db: Database) {
+  constructor(
+    private readonly db: Database,
+    private readonly table: typeof leaderboardFeedTable,
+  ) {
     this.db = db;
+    this.table = table;
   }
 
   async getLeaderboardFeed(
@@ -34,16 +38,16 @@ export class LeaderboardFeedPostgresRepository
   > {
     return this.db
       .select()
-      .from(leaderboardFeedTable)
+      .from(this.table)
       .where(
         and(
-          eq(leaderboardFeedTable.tourCode, tourCode),
-          eq(leaderboardFeedTable.tournamentId, tournamentId),
-          isNull(leaderboardFeedTable.deletedAt),
-          cursor ? lt(leaderboardFeedTable.sequence, cursor) : undefined,
+          eq(this.table.tourCode, tourCode),
+          eq(this.table.tournamentId, tournamentId),
+          isNull(this.table.deletedAt),
+          cursor ? lt(this.table.sequence, cursor) : undefined,
         ),
       )
-      .orderBy(desc(leaderboardFeedTable.sequence))
+      .orderBy(desc(this.table.sequence))
       .limit(pageSize + 1);
   }
 
@@ -52,7 +56,7 @@ export class LeaderboardFeedPostgresRepository
     tournamentId: string,
     events: LeaderboardFeedEvent[],
   ): Promise<void> {
-    await this.db.insert(leaderboardFeedTable).values(
+    await this.db.insert(this.table).values(
       events.map((event) => ({
         tourCode,
         tournamentId,

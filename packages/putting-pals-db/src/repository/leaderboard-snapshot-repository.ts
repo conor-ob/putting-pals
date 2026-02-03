@@ -6,13 +6,19 @@ import type {
 } from "@putting-pals/putting-pals-core";
 import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { and, eq } from "drizzle-orm";
-import { leaderboardSnapshotTable } from "../db/schema";
+import type { leaderboardSnapshotTable } from "../db/schema";
 import type { Database } from "../db/types";
 
 export class LeaderboardSnapshotPostgresRepository
   implements LeaderboardSnapshotRepository
 {
-  constructor(protected readonly db: Database) {}
+  constructor(
+    private readonly db: Database,
+    private readonly table: typeof leaderboardSnapshotTable,
+  ) {
+    this.db = db;
+    this.table = table;
+  }
 
   async getSnapshot<T extends LeaderboardSnapshotType>(
     tourCode: TourCode,
@@ -21,12 +27,12 @@ export class LeaderboardSnapshotPostgresRepository
   ): Promise<LeaderboardSnapshotTypeMap[T] | undefined> {
     return await this.db
       .select()
-      .from(leaderboardSnapshotTable)
+      .from(this.table)
       .where(
         and(
-          eq(leaderboardSnapshotTable.tourCode, tourCode),
-          eq(leaderboardSnapshotTable.tournamentId, tournamentId),
-          eq(leaderboardSnapshotTable.type, type),
+          eq(this.table.tourCode, tourCode),
+          eq(this.table.tournamentId, tournamentId),
+          eq(this.table.type, type),
         ),
       )
       .limit(1)
@@ -40,7 +46,7 @@ export class LeaderboardSnapshotPostgresRepository
     tournamentId: string,
     snapshot: LeaderboardSnapshot,
   ): Promise<void> {
-    await this.db.insert(leaderboardSnapshotTable).values({
+    await this.db.insert(this.table).values({
       tourCode,
       tournamentId,
       type: snapshot.__typename,
@@ -54,13 +60,13 @@ export class LeaderboardSnapshotPostgresRepository
     snapshot: LeaderboardSnapshot,
   ): Promise<void> {
     await this.db
-      .update(leaderboardSnapshotTable)
+      .update(this.table)
       .set({ payload: snapshot })
       .where(
         and(
-          eq(leaderboardSnapshotTable.tourCode, tourCode),
-          eq(leaderboardSnapshotTable.tournamentId, tournamentId),
-          eq(leaderboardSnapshotTable.type, snapshot.__typename),
+          eq(this.table.tourCode, tourCode),
+          eq(this.table.tournamentId, tournamentId),
+          eq(this.table.type, snapshot.__typename),
         ),
       );
   }
