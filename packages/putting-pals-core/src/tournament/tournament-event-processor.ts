@@ -1,4 +1,4 @@
-import type { TourCode, Tournament } from "../../../putting-pals-schema/src";
+import type { TourCode, Tournament } from "@putting-pals/putting-pals-schema";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
 import type { EventEmitter } from "../event/domain/types";
 import { RoundStatusChanged } from "../event/events/round-status-changed";

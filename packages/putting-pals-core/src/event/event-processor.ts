@@ -1,4 +1,4 @@
-import type { TourCode } from "../../../putting-pals-schema/src";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import type { LeaderboardFeedRepository } from "../feed/interfaces/outbound/leaderboard-feed-repository";
 import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
 import type { LeaderboardEventProcessor } from "./interfaces/inbound/leaderboard-event-processor";

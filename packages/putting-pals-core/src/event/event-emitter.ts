@@ -1,4 +1,4 @@
-import type { TourCode } from "../../../putting-pals-schema/src";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import type { EventEmitter, LeaderboardFeed } from "./domain/types";
 
 export abstract class AbstractEventEmitter<T> implements EventEmitter {

@@ -5,7 +5,7 @@ import type {
   PuttingPalsPlayer,
   PuttingPalsPlayerRow,
   PuttingPalsPlayerScoringData,
-} from "../../../putting-pals-schema/src";
+} from "@putting-pals/putting-pals-schema";
 
 export function aggregateLeaderboard(
   leaderboard: LeaderboardV3,

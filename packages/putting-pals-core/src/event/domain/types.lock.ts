@@ -1,9 +1,9 @@
-import { expectTypeOf } from "vitest";
 import type {
   RoundStatus,
   RoundStatusColor,
   TournamentStatus,
-} from "../../../../putting-pals-schema/src";
+} from "@putting-pals/putting-pals-schema";
+import { expectTypeOf } from "vitest";
 import type { LeaderboardFeed } from "./types";
 
 type Locked = {

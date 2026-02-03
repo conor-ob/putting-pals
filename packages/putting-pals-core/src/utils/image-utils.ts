@@ -1,4 +1,4 @@
-import type { ImageAsset } from "../../../putting-pals-schema/src";
+import type { ImageAsset } from "@putting-pals/putting-pals-schema";
 
 export function getImageUrl(
   imageAsset: ImageAsset,

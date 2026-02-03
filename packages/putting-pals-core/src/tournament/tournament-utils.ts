@@ -1,5 +1,5 @@
+import type { Tournament } from "@putting-pals/putting-pals-schema";
 import { formatISO, parse } from "date-fns";
-import type { Tournament } from "../../../putting-pals-schema/src";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
 export function transformTournament(tournament: Tournament): Tournament {
