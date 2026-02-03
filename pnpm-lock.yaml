@@ -324,6 +324,9 @@ importers:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*
         version: link:../putting-pals-api
+      '@putting-pals/putting-pals-core':
+        specifier: workspace:*
+        version: link:../putting-pals-core
       graphql:
         specifier: 'catalog:'
         version: 16.12.0

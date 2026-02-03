@@ -1,11 +1,18 @@
 export { CompetitionServiceImpl } from "./competition/competition-service";
 export { LeaderboardEventProcessorImpl } from "./event/event-processor";
 export { FeedServiceImpl } from "./feed/feed-service";
+export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leaderboard-service";
+export type { LeaderboardClient } from "./leaderboard/interfaces/outbound/leaderboard-client";
 export { LeaderboardEventProcessorServiceImpl } from "./leaderboard/leaderboard-event-processor-service";
 export { LeaderboardServiceImpl } from "./leaderboard/leaderboard-service";
+export type { ScheduleService } from "./schedule/interfaces/inbound/schedule-service";
+export type { ScheduleYearsService } from "./schedule/interfaces/inbound/schedule-years-service";
+export type { ScheduleClient } from "./schedule/interfaces/outbound/schedule-client";
 export { ScheduleServiceImpl } from "./schedule/schedule-service";
 export { ScheduleYearsServiceImpl } from "./schedule/schedule-years-service";
 export { StatsService } from "./stats/stats-service";
+export type { TournamentService } from "./tournament/interfaces/inbound/tournament-service";
+export type { TournamentClient } from "./tournament/interfaces/outbound/tournament-client";
 export { TournamentEventProcessorImpl } from "./tournament/tournament-event-processor";
 export { TournamentResolverImpl } from "./tournament/tournament-resolver";
 export { TournamentServiceImpl } from "./tournament/tournament-service";

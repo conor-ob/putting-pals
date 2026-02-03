@@ -1,12 +1,12 @@
 import type {
   CompetitionService,
   Schedule,
-  ScheduleClient,
-  ScheduleService,
   ScheduleUpcoming,
   TourCode,
 } from "@putting-pals/putting-pals-api";
 import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
+import type { ScheduleService } from "./interfaces/inbound/schedule-service";
+import type { ScheduleClient } from "./interfaces/outbound/schedule-client";
 import {
   transformSchedule,
   transformScheduleTournament,

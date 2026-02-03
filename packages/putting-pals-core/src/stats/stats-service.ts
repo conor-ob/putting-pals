@@ -1,8 +1,8 @@
 import type {
   CompetitionService,
   Competitor,
-  TournamentService,
 } from "@putting-pals/putting-pals-api";
+import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
 
 export class StatsService {
   constructor(

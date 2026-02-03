@@ -12,11 +12,13 @@ import type {
   FeatureFlagService,
   FeedService,
   LeaderboardEventProcessor,
+} from "@putting-pals/putting-pals-api";
+import type {
   LeaderboardService,
   ScheduleService,
   ScheduleYearsService,
   TournamentService,
-} from "@putting-pals/putting-pals-api";
+} from "@putting-pals/putting-pals-core";
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import z, { ZodError } from "zod";

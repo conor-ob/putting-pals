@@ -2,11 +2,11 @@ import type {
   FeedService,
   LeaderboardFeed,
   LeaderboardFeedRepository,
-  LeaderboardService,
   TourCode,
-  TournamentResolver,
-  TournamentService,
 } from "@putting-pals/putting-pals-api";
+import type { LeaderboardService } from "../leaderboard/interfaces/inbound/leaderboard-service";
+import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
+import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
 
 const PAGE_SIZE = 20;
 

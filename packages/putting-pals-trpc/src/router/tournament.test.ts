@@ -3,11 +3,13 @@ import type {
   FeatureFlagService,
   FeedService,
   LeaderboardEventProcessor,
+} from "@putting-pals/putting-pals-api";
+import type {
   LeaderboardService,
   ScheduleService,
   ScheduleYearsService,
   TournamentService,
-} from "@putting-pals/putting-pals-api";
+} from "@putting-pals/putting-pals-core";
 import { TRPCError } from "@trpc/server";
 import { expect, suite, test, vi } from "vitest";
 import { ZodError } from "zod";

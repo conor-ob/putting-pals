@@ -4,14 +4,14 @@ import type {
   CompetitionService,
   PgaTourWebScraper,
   TourCode,
-  TournamentClient,
-  TournamentResolver,
 } from "@putting-pals/putting-pals-api";
 import {
   NotFoundError,
   UnsupportedTourCodeError,
 } from "@putting-pals/putting-pals-api";
 import { differenceInMinutes } from "date-fns";
+import type { TournamentResolver } from "./interfaces/inbound/tournament-resolver";
+import type { TournamentClient } from "./interfaces/outbound/tournament-client";
 import { parseStartDate } from "./tournament-utils";
 
 export class TournamentResolverImpl implements TournamentResolver {

@@ -1,9 +1,3 @@
-query LeaderboardHoleByHole($tournamentId: ID!, $round: Int) {
-  leaderboardHoleByHole(tournamentId: $tournamentId, round: $round) {
-    ...LeaderboardHoleByHoleFields
-  }
-}
-
 query ScheduleYears($tourCode: TourCode!) {
   scheduleYears(tourCode: $tourCode) {
     years {

@@ -1,6 +1,5 @@
 import type {
   EventEmitter,
-  LeaderboardService,
   LeaderboardSnapshotRepository,
   LeaderboardV3,
   TourCode,
@@ -13,6 +12,7 @@ import { PlayerPositionDecreased } from "../event/events/player-position-decreas
 import { PlayerPositionIncreased } from "../event/events/player-position-increased";
 import { PlayerWithdrawn } from "../event/events/player-withdrawn";
 import { TournamentWinner } from "../event/events/tournament-winner";
+import type { LeaderboardService } from "./interfaces/inbound/leaderboard-service";
 
 export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessorService<LeaderboardV3> {
   constructor(

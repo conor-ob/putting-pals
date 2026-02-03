@@ -3,11 +3,11 @@ import type {
   LeaderboardSnapshotRepository,
   TourCode,
   Tournament,
-  TournamentService,
 } from "@putting-pals/putting-pals-api";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
 import { RoundStatusChanged } from "../event/events/round-status-changed";
 import { TournamentStatusChanged } from "../event/events/tournament-status-changed";
+import type { TournamentService } from "./interfaces/inbound/tournament-service";
 
 export class TournamentEventProcessorImpl extends AbstractEventProcessorService<Tournament> {
   constructor(

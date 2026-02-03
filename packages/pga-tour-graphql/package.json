@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@putting-pals/putting-pals-api": "workspace:*",
+    "@putting-pals/putting-pals-core": "workspace:*",
     "graphql": "catalog:",
     "graphql-request": "catalog:"
   },

@@ -3,8 +3,8 @@ import type {
   LeaderboardEventProcessorService,
   LeaderboardFeedRepository,
   TourCode,
-  TournamentResolver,
 } from "@putting-pals/putting-pals-api";
+import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
 
 export class LeaderboardEventProcessorImpl
   implements LeaderboardEventProcessor

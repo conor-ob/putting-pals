@@ -1,10 +1,10 @@
 import type {
   Schedule,
-  ScheduleClient,
   ScheduleUpcoming,
   ScheduleYears,
   TourCode,
 } from "@putting-pals/putting-pals-api";
+import type { ScheduleClient } from "@putting-pals/putting-pals-core";
 import { GraphQlClient } from "./graphql-client";
 
 export class ScheduleGraphQlClient

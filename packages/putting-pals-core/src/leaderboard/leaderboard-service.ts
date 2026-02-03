@@ -1,13 +1,12 @@
 import type {
   CompetitionService,
-  LeaderboardClient,
-  LeaderboardHoleByHole,
-  LeaderboardService,
   LeaderboardV3,
   TourCode,
-  TournamentResolver,
 } from "@putting-pals/putting-pals-api";
 import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
+import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
+import type { LeaderboardService } from "./interfaces/inbound/leaderboard-service";
+import type { LeaderboardClient } from "./interfaces/outbound/leaderboard-client";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 import { transformLeaderboard } from "./leaderboard-utils";
 
@@ -38,13 +37,6 @@ export class LeaderboardServiceImpl implements LeaderboardService {
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
-  }
-
-  getLeaderboardHoleByHole(
-    id: string,
-    round: number,
-  ): Promise<LeaderboardHoleByHole> {
-    return this.leaderboardClient.getLeaderboardHoleByHole(id, round);
   }
 
   private async resolveTournamentId(
