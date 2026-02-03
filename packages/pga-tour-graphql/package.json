@@ -18,12 +18,12 @@
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
     "@putting-pals/putting-pals-schema": "workspace:*",
-    "graphql": "catalog:",
     "graphql-request": "catalog:"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
+    "graphql": "catalog:",
     "typescript": "catalog:"
   }
 }

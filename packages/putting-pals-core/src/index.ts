@@ -12,7 +12,6 @@ export type {
 export type { FeedService } from "./feed/interfaces/inbound/feed-service";
 export type { LeaderboardFeedRepository } from "./feed/interfaces/outbound/leaderboard-feed-repository";
 export type { FeatureFlagKey } from "./flag/domain/types";
-export type { FeatureFlagService } from "./flag/interfaces/inbound/feature-flag-service";
 export type { FeatureFlagRepository } from "./flag/interfaces/outbound/feature-flag-repository";
 export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leaderboard-service";
 export type { LeaderboardClient } from "./leaderboard/interfaces/outbound/leaderboard-client";
