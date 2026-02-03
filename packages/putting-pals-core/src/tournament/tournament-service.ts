@@ -1,5 +1,5 @@
 import type { TourCode, Tournament } from "@putting-pals/putting-pals-api";
-import { NotFoundError } from "@putting-pals/putting-pals-api";
+import { NotFoundError } from "../error/service-error";
 import type { TournamentResolver } from "./interfaces/inbound/tournament-resolver";
 import type { TournamentService } from "./interfaces/inbound/tournament-service";
 import type { TournamentClient } from "./interfaces/outbound/tournament-client";

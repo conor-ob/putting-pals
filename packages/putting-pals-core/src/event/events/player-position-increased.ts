@@ -2,7 +2,7 @@ import type {
   LeaderboardFeed,
   LeaderboardV3,
 } from "@putting-pals/putting-pals-api";
-import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
+import { UnsupportedTourCodeError } from "../../error/service-error";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class PlayerPositionIncreased extends AbstractEventEmitter<LeaderboardV3> {

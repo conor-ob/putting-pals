@@ -4,12 +4,12 @@ import type {
   PgaTourWebScraper,
   TourCode,
 } from "@putting-pals/putting-pals-api";
+import { differenceInMinutes } from "date-fns";
+import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import {
   NotFoundError,
   UnsupportedTourCodeError,
-} from "@putting-pals/putting-pals-api";
-import { differenceInMinutes } from "date-fns";
-import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
+} from "../error/service-error";
 import type { TournamentResolver } from "./interfaces/inbound/tournament-resolver";
 import type { TournamentClient } from "./interfaces/outbound/tournament-client";
 import { parseStartDate } from "./tournament-utils";

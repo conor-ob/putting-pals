@@ -1,6 +1,7 @@
 export { CompetitionServiceImpl } from "./competition/competition-service";
 export type { CompetitionService } from "./competition/interfaces/inbound/competition-service";
 export type { CompetitionRepository } from "./competition/interfaces/outbound/competition-repository";
+export * from "./error/service-error";
 export { LeaderboardEventProcessorImpl } from "./event/event-processor";
 export { FeedServiceImpl } from "./feed/feed-service";
 export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leaderboard-service";

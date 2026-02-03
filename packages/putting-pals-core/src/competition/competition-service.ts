@@ -1,5 +1,5 @@
 import type { Competition } from "@putting-pals/putting-pals-api";
-import { NotFoundError } from "@putting-pals/putting-pals-api";
+import { NotFoundError } from "../error/service-error";
 import type { CompetitionService } from "./interfaces/inbound/competition-service";
 import type { CompetitionRepository } from "./interfaces/outbound/competition-repository";
 

@@ -1,6 +1,5 @@
 export * from "./data/types";
 export * from "./db/types";
-export * from "./error/service-error";
 export * from "./event/types";
 export type { Sdk } from "./graphql/pga-tour/generated/graphql";
 export { getSdk } from "./graphql/pga-tour/generated/graphql";
