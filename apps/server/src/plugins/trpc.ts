@@ -11,9 +11,12 @@ import type {
 import {
   CompetitionServiceImpl,
   FeedServiceImpl,
+  LeaderboardEventProcessorImpl,
+  LeaderboardEventProcessorServiceImpl,
   LeaderboardServiceImpl,
   ScheduleServiceImpl,
   ScheduleYearsServiceImpl,
+  TournamentEventProcessorImpl,
   TournamentResolverImpl,
   TournamentServiceImpl,
 } from "@putting-pals/putting-pals-core";
@@ -24,11 +27,6 @@ import {
   LeaderboardFeedPostgresRepository,
   LeaderboardSnapshotPostgresRepository,
 } from "@putting-pals/putting-pals-db";
-import {
-  LeaderboardEventProcessorImpl,
-  LeaderboardEventProcessorServiceImpl,
-  TournamentEventProcessorImpl,
-} from "@putting-pals/putting-pals-event";
 import {
   type AppRouter,
   appRouter,

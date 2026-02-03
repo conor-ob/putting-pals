@@ -6,6 +6,7 @@ import type {
   TourCode,
 } from "@putting-pals/putting-pals-api";
 import { GraphQlClient } from "./graphql-client";
+
 export class ScheduleGraphQlClient
   extends GraphQlClient
   implements ScheduleClient

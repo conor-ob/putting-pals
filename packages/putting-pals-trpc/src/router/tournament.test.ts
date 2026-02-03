@@ -1,5 +1,6 @@
 import type {
   CompetitionService,
+  FeatureFlagService,
   FeedService,
   LeaderboardEventProcessor,
   LeaderboardService,
@@ -26,6 +27,7 @@ suite("tournamentRouter", () => {
         feedService: vi.fn() as unknown as FeedService,
         scheduleService: vi.fn() as unknown as ScheduleService,
         scheduleYearsService: vi.fn() as unknown as ScheduleYearsService,
+        featureFlagService: vi.fn() as unknown as FeatureFlagService,
       }),
     );
 

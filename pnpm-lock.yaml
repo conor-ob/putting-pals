@@ -272,9 +272,6 @@ importers:
       '@putting-pals/putting-pals-db':
         specifier: workspace:*
         version: link:../../packages/putting-pals-db
-      '@putting-pals/putting-pals-event':
-        specifier: workspace:*
-        version: link:../../packages/putting-pals-event
       '@putting-pals/putting-pals-trpc':
         specifier: workspace:*
         version: link:../../packages/putting-pals-trpc
@@ -495,28 +492,6 @@ importers:
       drizzle-kit:
         specifier: ^0.31.8
         version: 0.31.8
-      typescript:
-        specifier: 'catalog:'
-        version: 5.9.3
-
-  packages/putting-pals-event:
-    dependencies:
-      '@putting-pals/putting-pals-api':
-        specifier: workspace:*
-        version: link:../putting-pals-api
-      '@putting-pals/putting-pals-utils':
-        specifier: workspace:*
-        version: link:../putting-pals-utils
-    devDependencies:
-      '@graphql-typed-document-node/core':
-        specifier: ^3.2.0
-        version: 3.2.0(graphql@16.12.0)
-      '@total-typescript/tsconfig':
-        specifier: 'catalog:'
-        version: 1.0.4
-      '@types/node':
-        specifier: 'catalog:'
-        version: 24.10.9
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
