@@ -1,8 +1,3 @@
-import { injectDependencies as injectPgaTourGraphQlDependencies } from "@putting-pals/pga-tour-graphql";
-import { injectDependencies as injectPgaTourScraperDependencies } from "@putting-pals/pga-tour-scaper";
-import { injectDependencies as injectCoreDependencies } from "@putting-pals/putting-pals-core";
-import { injectDependencies as injectDataDependencies } from "@putting-pals/putting-pals-data";
-import { injectDependencies as injectDatabaseDependencies } from "@putting-pals/putting-pals-db";
 import {
   type AppRouter,
   appRouter,
@@ -25,7 +20,17 @@ export default function (fastify: FastifyInstance) {
         res: _res,
         info: _info,
       }: CreateFastifyContextOptions) {
-        return createContext();
+        return createTrpcContext({
+          competitionService: fastify.dependencies.competitionService,
+          feedService: fastify.dependencies.feedService,
+          leaderboardEventProcessor:
+            fastify.dependencies.leaderboardEventProcessor,
+          leaderboardService: fastify.dependencies.leaderboardService,
+          scheduleService: fastify.dependencies.scheduleService,
+          scheduleYearsService: fastify.dependencies.scheduleYearsService,
+          tourService: fastify.dependencies.tourService,
+          tournamentService: fastify.dependencies.tournamentService,
+        });
       },
       onError({ path, type, error }) {
         fastify.log.error(
@@ -34,34 +39,5 @@ export default function (fastify: FastifyInstance) {
         );
       },
     } satisfies FastifyTRPCPluginOptions<AppRouter>["trpcOptions"],
-  });
-}
-
-function createContext() {
-  const dataDependencies = injectDataDependencies();
-  const databaseDependencies = injectDatabaseDependencies();
-  const pgaTourGraphQlDependencies = injectPgaTourGraphQlDependencies();
-  const pgaTourScraperDependencies = injectPgaTourScraperDependencies();
-  const coreDependencies = injectCoreDependencies(
-    dataDependencies.competitionRepository,
-    databaseDependencies.activeTournamentRepository,
-    databaseDependencies.leaderboardFeedRepository,
-    databaseDependencies.leaderboardSnapshotRepository,
-    databaseDependencies.featureFlagRepository,
-    pgaTourGraphQlDependencies.leaderboardClient,
-    pgaTourGraphQlDependencies.scheduleClient,
-    pgaTourGraphQlDependencies.tournamentClient,
-    pgaTourScraperDependencies.pgaTourWebScraper,
-  );
-
-  return createTrpcContext({
-    tournamentService: coreDependencies.tournamentService,
-    competitionService: coreDependencies.competitionService,
-    leaderboardService: coreDependencies.leaderboardService,
-    leaderboardEventProcessor: coreDependencies.leaderboardEventProcessor,
-    feedService: coreDependencies.feedService,
-    scheduleService: coreDependencies.scheduleService,
-    scheduleYearsService: coreDependencies.scheduleYearsService,
-    tourService: coreDependencies.tourService,
   });
 }

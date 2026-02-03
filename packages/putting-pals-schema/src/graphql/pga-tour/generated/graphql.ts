@@ -338,6 +338,14 @@ type ApiBioRank = {
   readonly statName: Scalars['String']['output'];
 };
 
+type ApiBrazeFragment = {
+  readonly __typename: 'BrazeFragment';
+  readonly ctaLink?: Maybe<Scalars['String']['output']>;
+  readonly ctaText?: Maybe<Scalars['String']['output']>;
+  readonly feedType?: Maybe<Scalars['String']['output']>;
+  readonly sectionTitle?: Maybe<Scalars['String']['output']>;
+};
+
 type ApiBroadcastAudioStream = {
   readonly __typename: 'BroadcastAudioStream';
   readonly channelTitle: Scalars['String']['output'];
@@ -601,7 +609,7 @@ type ApiContentFragmentType = {
   readonly path: Scalars['String']['output'];
 };
 
-type ApiContentFragments = ApiDropdownFragment | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopZigZag | ApiMediaGallery | ApiOddsToWinTracker | ApiTglBoxScoreFragment | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
+type ApiContentFragments = ApiBrazeFragment | ApiDropdownFragment | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopUserProfile | ApiKopZigZag | ApiMediaGallery | ApiOddsToWinTracker | ApiTglBoxScoreFragment | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
 
 type ApiContentFragmentsCompressed = {
   readonly __typename: 'ContentFragmentsCompressed';
@@ -2548,7 +2556,7 @@ type ApiKitOfParts = {
   readonly fragments: ReadonlyArray<ApiKopFragment>;
 };
 
-type ApiKopFragment = ApiHomepageNews | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopZigZag | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
+type ApiKopFragment = ApiBrazeFragment | ApiHomepageNews | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopUserProfile | ApiKopZigZag | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
 
 type ApiKopHeader = {
   readonly __typename: 'KopHeader';
@@ -2593,6 +2601,11 @@ type ApiKopSubheader = {
 type ApiKopUpcomingTournament = {
   readonly __typename: 'KopUpcomingTournament';
   readonly title: Scalars['String']['output'];
+};
+
+type ApiKopUserProfile = {
+  readonly __typename: 'KopUserProfile';
+  readonly displayUserProfile?: Maybe<Scalars['Boolean']['output']>;
 };
 
 type ApiKopZigZag = {
@@ -7715,7 +7728,7 @@ type ApiRyderCupContentFragment = {
   readonly totalLength: Scalars['Int']['output'];
 };
 
-type ApiRyderCupContentFragments = ApiBroadcastTableFragment | ApiContentFragmentTabs | ApiContentStory | ApiContentVideoCarousel | ApiCourseInfo | ApiDropdownFragment | ApiEventHub | ApiEventHubTable | ApiFutureVenuesFragment | ApiFutureVenuesTableFragment | ApiGenericContent | ApiHeroCarousel | ApiHistoryInfo | ApiHistoryScore | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiHomepageScoring | ApiHospitalityCard | ApiImageBlock | ApiJumpToSection | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopZigZag | ApiMatchCard | ApiMediaGallery | ApiMessageBanner | ApiOddsToWinTracker | ApiRcProducts | ApiRolexClock | ApiRyderCupCourseModel | ApiRyderCupLatestNewsSection | ApiRyderCupPlayerBios | ApiSecondaryHero | ApiTeamRankings | ApiThreeUpPhoto | ApiThreeUpStats | ApiTicketSectionContainer | ApiTwoColumn | ApiVideoHero;
+type ApiRyderCupContentFragments = ApiBroadcastTableFragment | ApiContentFragmentTabs | ApiContentStory | ApiContentVideoCarousel | ApiCourseInfo | ApiDropdownFragment | ApiEventHub | ApiEventHubTable | ApiFutureVenuesFragment | ApiFutureVenuesTableFragment | ApiGenericContent | ApiHeroCarousel | ApiHistoryInfo | ApiHistoryScore | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiHomepageScoring | ApiHospitalityCard | ApiImageBlock | ApiJumpToSection | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopUserProfile | ApiKopZigZag | ApiMatchCard | ApiMediaGallery | ApiMessageBanner | ApiOddsToWinTracker | ApiRcProducts | ApiRolexClock | ApiRyderCupCourseModel | ApiRyderCupLatestNewsSection | ApiRyderCupPlayerBios | ApiSecondaryHero | ApiTeamRankings | ApiThreeUpPhoto | ApiThreeUpStats | ApiTicketSectionContainer | ApiTwoColumn | ApiVideoHero;
 
 type ApiRyderCupContentPlayer = {
   readonly __typename: 'RyderCupContentPlayer';
@@ -9677,6 +9690,9 @@ type ApiTeeTimesV2 = {
 
 type ApiThreeUpPhoto = {
   readonly __typename: 'ThreeUpPhoto';
+  readonly photoFour?: Maybe<Scalars['String']['output']>;
+  readonly photoFourAccessibilityText?: Maybe<Scalars['String']['output']>;
+  readonly photoFourUrl?: Maybe<Scalars['String']['output']>;
   readonly photoOne?: Maybe<Scalars['String']['output']>;
   readonly photoOneAccessibilityText?: Maybe<Scalars['String']['output']>;
   readonly photoOneCtaTarget?: Maybe<Scalars['String']['output']>;

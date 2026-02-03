@@ -35,33 +35,33 @@ import { onError } from "../error/error-handler";
  * @see https://trpc.io/docs/server/context
  */
 export function createTrpcContext({
-  tournamentService,
   competitionService,
-  leaderboardService,
-  leaderboardEventProcessor,
   feedService,
+  leaderboardEventProcessor,
+  leaderboardService,
   scheduleService,
   scheduleYearsService,
   tourService,
+  tournamentService,
 }: {
-  tournamentService: TournamentService;
   competitionService: CompetitionService;
-  leaderboardService: LeaderboardService;
-  leaderboardEventProcessor: LeaderboardEventProcessor;
   feedService: FeedService;
+  leaderboardEventProcessor: LeaderboardEventProcessor;
+  leaderboardService: LeaderboardService;
   scheduleService: ScheduleService;
   scheduleYearsService: ScheduleYearsService;
   tourService: TourService;
+  tournamentService: TournamentService;
 }) {
   return {
-    tournamentService,
     competitionService,
-    leaderboardService,
-    leaderboardEventProcessor,
     feedService,
+    leaderboardEventProcessor,
+    leaderboardService,
     scheduleService,
     scheduleYearsService,
     tourService,
+    tournamentService,
   };
 }
 

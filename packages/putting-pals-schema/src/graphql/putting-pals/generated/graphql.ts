@@ -338,6 +338,14 @@ export type BioRank = {
   readonly statName: Scalars['String']['output'];
 };
 
+export type BrazeFragment = {
+  readonly __typename: 'BrazeFragment';
+  readonly ctaLink?: Maybe<Scalars['String']['output']>;
+  readonly ctaText?: Maybe<Scalars['String']['output']>;
+  readonly feedType?: Maybe<Scalars['String']['output']>;
+  readonly sectionTitle?: Maybe<Scalars['String']['output']>;
+};
+
 export type BroadcastAudioStream = {
   readonly __typename: 'BroadcastAudioStream';
   readonly channelTitle: Scalars['String']['output'];
@@ -601,7 +609,7 @@ export type ContentFragmentType = {
   readonly path: Scalars['String']['output'];
 };
 
-export type ContentFragments = DropdownFragment | HomepageLead | HomepageNews | HomepageProgramStanding | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopZigZag | MediaGallery | OddsToWinTracker | TglBoxScoreFragment | ThreeUpPhoto | ThreeUpStats | TwoColumn | VideoHero;
+export type ContentFragments = BrazeFragment | DropdownFragment | HomepageLead | HomepageNews | HomepageProgramStanding | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopUserProfile | KopZigZag | MediaGallery | OddsToWinTracker | TglBoxScoreFragment | ThreeUpPhoto | ThreeUpStats | TwoColumn | VideoHero;
 
 export type ContentFragmentsCompressed = {
   readonly __typename: 'ContentFragmentsCompressed';
@@ -2548,7 +2556,7 @@ export type KitOfParts = {
   readonly fragments: ReadonlyArray<KopFragment>;
 };
 
-export type KopFragment = HomepageNews | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopZigZag | ThreeUpPhoto | ThreeUpStats | TwoColumn | VideoHero;
+export type KopFragment = BrazeFragment | HomepageNews | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopUserProfile | KopZigZag | ThreeUpPhoto | ThreeUpStats | TwoColumn | VideoHero;
 
 export type KopHeader = {
   readonly __typename: 'KopHeader';
@@ -2593,6 +2601,11 @@ export type KopSubheader = {
 export type KopUpcomingTournament = {
   readonly __typename: 'KopUpcomingTournament';
   readonly title: Scalars['String']['output'];
+};
+
+export type KopUserProfile = {
+  readonly __typename: 'KopUserProfile';
+  readonly displayUserProfile?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type KopZigZag = {
@@ -7739,7 +7752,7 @@ export type RyderCupContentFragment = {
   readonly totalLength: Scalars['Int']['output'];
 };
 
-export type RyderCupContentFragments = BroadcastTableFragment | ContentFragmentTabs | ContentStory | ContentVideoCarousel | CourseInfo | DropdownFragment | EventHub | EventHubTable | FutureVenuesFragment | FutureVenuesTableFragment | GenericContent | HeroCarousel | HistoryInfo | HistoryScore | HomepageLead | HomepageNews | HomepageProgramStanding | HomepageScoring | HospitalityCard | ImageBlock | JumpToSection | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopZigZag | MatchCard | MediaGallery | MessageBanner | OddsToWinTracker | RcProducts | RolexClock | RyderCupCourseModel | RyderCupLatestNewsSection | RyderCupPlayerBios | SecondaryHero | TeamRankings | ThreeUpPhoto | ThreeUpStats | TicketSectionContainer | TwoColumn | VideoHero;
+export type RyderCupContentFragments = BroadcastTableFragment | ContentFragmentTabs | ContentStory | ContentVideoCarousel | CourseInfo | DropdownFragment | EventHub | EventHubTable | FutureVenuesFragment | FutureVenuesTableFragment | GenericContent | HeroCarousel | HistoryInfo | HistoryScore | HomepageLead | HomepageNews | HomepageProgramStanding | HomepageScoring | HospitalityCard | ImageBlock | JumpToSection | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopUserProfile | KopZigZag | MatchCard | MediaGallery | MessageBanner | OddsToWinTracker | RcProducts | RolexClock | RyderCupCourseModel | RyderCupLatestNewsSection | RyderCupPlayerBios | SecondaryHero | TeamRankings | ThreeUpPhoto | ThreeUpStats | TicketSectionContainer | TwoColumn | VideoHero;
 
 export type RyderCupContentPlayer = {
   readonly __typename: 'RyderCupContentPlayer';
@@ -9701,6 +9714,9 @@ export type TeeTimesV2 = {
 
 export type ThreeUpPhoto = {
   readonly __typename: 'ThreeUpPhoto';
+  readonly photoFour?: Maybe<Scalars['String']['output']>;
+  readonly photoFourAccessibilityText?: Maybe<Scalars['String']['output']>;
+  readonly photoFourUrl?: Maybe<Scalars['String']['output']>;
   readonly photoOne?: Maybe<Scalars['String']['output']>;
   readonly photoOneAccessibilityText?: Maybe<Scalars['String']['output']>;
   readonly photoOneCtaTarget?: Maybe<Scalars['String']['output']>;
