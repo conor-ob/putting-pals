@@ -1,8 +1,8 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
   ActiveTournament,
   ActiveTournamentRepository,
 } from "@putting-pals/putting-pals-core";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { eq } from "drizzle-orm";
 import { activeTournamentTable } from "../db/schema";
 import type { Database } from "../db/types";

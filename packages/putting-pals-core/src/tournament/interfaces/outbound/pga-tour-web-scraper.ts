@@ -1,4 +1,4 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { TourCode } from "../../../../../putting-pals-schema/src";
 
 export interface PgaTourWebScraper {
   getActiveTournamentId(tourCode: TourCode): Promise<string | undefined>;

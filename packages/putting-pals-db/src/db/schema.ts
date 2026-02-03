@@ -1,10 +1,13 @@
-import { type TourCode, TourCodeSchema } from "@putting-pals/putting-pals-api";
 import type {
   LeaderboardFeed,
   LeaderboardFeedType,
   LeaderboardSnapshot,
   LeaderboardSnapshotType,
 } from "@putting-pals/putting-pals-core";
+import {
+  type TourCode,
+  TourCodeSchema,
+} from "@putting-pals/putting-pals-schema";
 import {
   index,
   jsonb,

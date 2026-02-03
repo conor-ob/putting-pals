@@ -1,4 +1,4 @@
-import type { LeaderboardV3, TourCode } from "@putting-pals/putting-pals-api";
+import type { LeaderboardV3, TourCode } from "../../../putting-pals-schema/src";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
 import type { EventEmitter } from "../event/domain/types";
 import { LeaderChanged } from "../event/events/leader-changed";

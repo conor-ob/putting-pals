@@ -1,9 +1,9 @@
+import { parseISO } from "date-fns";
 import type {
   ScheduleYears,
   TourCode,
   Tournament,
-} from "@putting-pals/putting-pals-api";
-import { parseISO } from "date-fns";
+} from "../../../putting-pals-schema/src";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import { UnsupportedTourCodeError } from "../error/service-error";
 import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";

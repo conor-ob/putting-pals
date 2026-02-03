@@ -1,10 +1,10 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
   LeaderboardSnapshot,
   LeaderboardSnapshotRepository,
   LeaderboardSnapshotType,
   LeaderboardSnapshotTypeMap,
 } from "@putting-pals/putting-pals-core";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { and, eq } from "drizzle-orm";
 import { leaderboardSnapshotTable } from "../db/schema";
 import type { Database } from "../db/types";

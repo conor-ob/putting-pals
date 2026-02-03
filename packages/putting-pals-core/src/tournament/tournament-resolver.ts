@@ -1,5 +1,5 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
 import { differenceInMinutes } from "date-fns";
+import type { TourCode } from "../../../putting-pals-schema/src";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import {
   NotFoundError,

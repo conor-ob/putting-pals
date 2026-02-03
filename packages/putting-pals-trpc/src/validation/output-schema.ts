@@ -3,7 +3,7 @@ import {
   RoundStatusSchema,
   TourCodeSchema,
   TournamentStatusSchema,
-} from "@putting-pals/putting-pals-api";
+} from "@putting-pals/putting-pals-schema";
 import z from "zod";
 
 export const LeaderboardOutputSchema = z.object({

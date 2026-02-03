@@ -1,4 +1,4 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 

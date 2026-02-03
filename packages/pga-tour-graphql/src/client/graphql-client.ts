@@ -1,5 +1,5 @@
-import type { Sdk } from "@putting-pals/putting-pals-api";
-import { getSdk } from "@putting-pals/putting-pals-api";
+import type { Sdk } from "@putting-pals/putting-pals-schema";
+import { getSdk } from "@putting-pals/putting-pals-schema";
 import { GraphQLClient } from "graphql-request";
 
 export class GraphQlClient {

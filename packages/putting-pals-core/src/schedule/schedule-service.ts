@@ -2,7 +2,7 @@ import type {
   Schedule,
   ScheduleUpcoming,
   TourCode,
-} from "@putting-pals/putting-pals-api";
+} from "../../../putting-pals-schema/src";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import { UnsupportedTourCodeError } from "../error/service-error";
 import type { ScheduleService } from "./interfaces/inbound/schedule-service";

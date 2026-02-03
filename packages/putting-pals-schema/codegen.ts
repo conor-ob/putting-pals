@@ -52,7 +52,6 @@ const config: CodegenConfig = {
         fragmentVariablePrefix: "Api",
         documentVariablePrefix: "Api",
         documentMode: "documentNode",
-        // documentNodeImport: "@graphql-typed-document-node/core",
       },
     },
     "src/graphql/putting-pals/generated/graphql.ts": {
@@ -61,13 +60,7 @@ const config: CodegenConfig = {
         "src/graphql/putting-pals/schema/**/*.graphql",
         "src/graphql/shared/schema/**/*.graphql",
       ],
-      plugins: [
-        "typescript",
-        "typescript-operations",
-        "typed-document-node",
-        "typescript-validation-schema",
-      ],
-      documentTransforms: [addTypenameSelectionDocumentTransform],
+      plugins: ["typescript", "typescript-validation-schema"],
       config: {
         ...sharedConfig,
         schema: "zodv4",

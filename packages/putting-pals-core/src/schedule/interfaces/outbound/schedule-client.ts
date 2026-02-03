@@ -3,7 +3,7 @@ import type {
   ScheduleUpcoming,
   ScheduleYears,
   TourCode,
-} from "@putting-pals/putting-pals-api";
+} from "../../../../../putting-pals-schema/src";
 
 export interface ScheduleClient {
   getScheduleYears(tourCode: TourCode): Promise<ScheduleYears>;

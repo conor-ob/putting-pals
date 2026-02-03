@@ -1,8 +1,8 @@
+import type { CompetitionRepository } from "@putting-pals/putting-pals-core";
 import {
   type Competition,
   CompetitionSchema,
-} from "@putting-pals/putting-pals-api";
-import type { CompetitionRepository } from "@putting-pals/putting-pals-core";
+} from "@putting-pals/putting-pals-schema";
 import mastersTournament2021 from "./data/2021/01-masters-tournament";
 import pgaChampionship2021 from "./data/2021/02-pga-championship";
 import usOpen2021 from "./data/2021/03-us-open";

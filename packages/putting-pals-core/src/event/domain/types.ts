@@ -19,7 +19,7 @@ import type {
   RoundStatus,
   RoundStatusColor,
   TournamentStatus,
-} from "@putting-pals/putting-pals-api";
+} from "../../../../putting-pals-schema/src";
 
 type Event<TName extends string, T> = {
   __typename: TName;

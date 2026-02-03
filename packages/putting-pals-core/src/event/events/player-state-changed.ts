@@ -1,7 +1,7 @@
 import type {
   LeaderboardV3,
   PlayerState,
-} from "@putting-pals/putting-pals-api";
+} from "../../../../putting-pals-schema/src";
 import { AbstractEventEmitter } from "../event-emitter";
 
 export abstract class PlayerStateChanged extends AbstractEventEmitter<LeaderboardV3> {

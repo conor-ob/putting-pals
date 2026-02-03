@@ -214,9 +214,9 @@ importers:
         specifier: 'catalog:'
         version: 4.3.6
     devDependencies:
-      '@putting-pals/putting-pals-api':
+      '@putting-pals/putting-pals-schema':
         specifier: workspace:*
-        version: link:../../packages/putting-pals-api
+        version: link:../../packages/putting-pals-schema
       '@putting-pals/putting-pals-trpc':
         specifier: workspace:*
         version: link:../../packages/putting-pals-trpc
@@ -260,9 +260,6 @@ importers:
       '@putting-pals/pga-tour-scaper':
         specifier: workspace:*
         version: link:../../packages/pga-tour-scaper
-      '@putting-pals/putting-pals-api':
-        specifier: workspace:*
-        version: link:../../packages/putting-pals-api
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../../packages/putting-pals-core
@@ -272,6 +269,9 @@ importers:
       '@putting-pals/putting-pals-db':
         specifier: workspace:*
         version: link:../../packages/putting-pals-db
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../../packages/putting-pals-schema
       '@putting-pals/putting-pals-trpc':
         specifier: workspace:*
         version: link:../../packages/putting-pals-trpc
@@ -321,12 +321,12 @@ importers:
 
   packages/pga-tour-graphql:
     dependencies:
-      '@putting-pals/putting-pals-api':
-        specifier: workspace:*
-        version: link:../putting-pals-api
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
       graphql:
         specifier: 'catalog:'
         version: 16.12.0
@@ -346,12 +346,12 @@ importers:
 
   packages/pga-tour-scaper:
     dependencies:
-      '@putting-pals/putting-pals-api':
-        specifier: workspace:*
-        version: link:../putting-pals-api
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
       cheerio:
         specifier: ^1.1.2
         version: 1.2.0
@@ -366,66 +366,11 @@ importers:
         specifier: 'catalog:'
         version: 5.9.3
 
-  packages/putting-pals-api:
-    dependencies:
-      graphql-request:
-        specifier: 'catalog:'
-        version: 7.4.0(graphql@16.12.0)
-      zod:
-        specifier: 'catalog:'
-        version: 4.3.6
-    devDependencies:
-      '@graphql-codegen/cli':
-        specifier: 'catalog:'
-        version: 6.1.1(@types/node@24.10.9)(graphql@16.12.0)(typescript@5.9.3)
-      '@graphql-codegen/client-preset':
-        specifier: ^5.2.2
-        version: 5.2.2(graphql@16.12.0)
-      '@graphql-codegen/typed-document-node':
-        specifier: ^6.1.5
-        version: 6.1.5(graphql@16.12.0)
-      '@graphql-codegen/typescript':
-        specifier: 'catalog:'
-        version: 5.0.7(graphql@16.12.0)
-      '@graphql-codegen/typescript-graphql-request':
-        specifier: ^6.4.0
-        version: 6.4.0(graphql-request@7.4.0(graphql@16.12.0))(graphql-tag@2.12.6(graphql@16.12.0))(graphql@16.12.0)
-      '@graphql-codegen/typescript-operations':
-        specifier: ^5.0.7
-        version: 5.0.7(graphql@16.12.0)
-      '@graphql-typed-document-node/core':
-        specifier: ^3.2.0
-        version: 3.2.0(graphql@16.12.0)
-      '@putting-pals/putting-pals-utils':
-        specifier: workspace:*
-        version: link:../putting-pals-utils
-      '@total-typescript/tsconfig':
-        specifier: 'catalog:'
-        version: 1.0.4
-      '@types/node':
-        specifier: 'catalog:'
-        version: 24.10.9
-      graphql:
-        specifier: ^16.12.0
-        version: 16.12.0
-      graphql-codegen-typescript-validation-schema:
-        specifier: ^0.18.1
-        version: 0.18.1(graphql@16.12.0)(zod@4.3.6)
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: 'catalog:'
-        version: 5.9.3
-      vitest:
-        specifier: 'catalog:'
-        version: 4.0.18(@types/node@24.10.9)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2)
-
   packages/putting-pals-core:
     dependencies:
-      '@putting-pals/putting-pals-api':
+      '@putting-pals/putting-pals-schema':
         specifier: workspace:*
-        version: link:../putting-pals-api
+        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
@@ -451,12 +396,12 @@ importers:
 
   packages/putting-pals-data:
     dependencies:
-      '@putting-pals/putting-pals-api':
-        specifier: workspace:*
-        version: link:../putting-pals-api
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
     devDependencies:
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
@@ -470,12 +415,12 @@ importers:
 
   packages/putting-pals-db:
     dependencies:
-      '@putting-pals/putting-pals-api':
-        specifier: workspace:*
-        version: link:../putting-pals-api
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
@@ -508,14 +453,63 @@ importers:
         specifier: 'catalog:'
         version: 5.9.3
 
+  packages/putting-pals-schema:
+    dependencies:
+      graphql-request:
+        specifier: 'catalog:'
+        version: 7.4.0(graphql@16.12.0)
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
+    devDependencies:
+      '@graphql-codegen/cli':
+        specifier: 'catalog:'
+        version: 6.1.1(@types/node@24.10.9)(graphql@16.12.0)(typescript@5.9.3)
+      '@graphql-codegen/client-preset':
+        specifier: ^5.2.2
+        version: 5.2.2(graphql@16.12.0)
+      '@graphql-codegen/typescript':
+        specifier: 'catalog:'
+        version: 5.0.7(graphql@16.12.0)
+      '@graphql-codegen/typescript-graphql-request':
+        specifier: ^6.4.0
+        version: 6.4.0(graphql-request@7.4.0(graphql@16.12.0))(graphql-tag@2.12.6(graphql@16.12.0))(graphql@16.12.0)
+      '@graphql-codegen/typescript-operations':
+        specifier: ^5.0.7
+        version: 5.0.7(graphql@16.12.0)
+      '@putting-pals/putting-pals-utils':
+        specifier: workspace:*
+        version: link:../putting-pals-utils
+      '@total-typescript/tsconfig':
+        specifier: 'catalog:'
+        version: 1.0.4
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.10.9
+      graphql:
+        specifier: ^16.12.0
+        version: 16.12.0
+      graphql-codegen-typescript-validation-schema:
+        specifier: ^0.18.1
+        version: 0.18.1(graphql@16.12.0)(zod@4.3.6)
+      tsx:
+        specifier: ^4.21.0
+        version: 4.21.0
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      vitest:
+        specifier: 'catalog:'
+        version: 4.0.18(@types/node@24.10.9)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2)
+
   packages/putting-pals-trpc:
     dependencies:
-      '@putting-pals/putting-pals-api':
-        specifier: workspace:*
-        version: link:../putting-pals-api
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
+      '@putting-pals/putting-pals-schema':
+        specifier: workspace:*
+        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
@@ -9362,7 +9356,7 @@ snapshots:
     dependencies:
       graphql: 16.12.0
       lodash.sortby: 4.7.0
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   '@graphql-tools/executor-common@0.0.4(graphql@16.12.0)':
     dependencies:
@@ -9556,7 +9550,7 @@ snapshots:
   '@graphql-tools/optimize@2.0.0(graphql@16.12.0)':
     dependencies:
       graphql: 16.12.0
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   '@graphql-tools/relay-operation-optimizer@6.5.18(graphql@16.12.0)':
     dependencies:
@@ -9573,7 +9567,7 @@ snapshots:
       '@ardatan/relay-compiler': 12.0.3(graphql@16.12.0)
       '@graphql-tools/utils': 11.0.0(graphql@16.12.0)
       graphql: 16.12.0
-      tslib: 2.6.3
+      tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
 
@@ -10660,7 +10654,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 24.10.9
+      '@types/node': 25.2.0
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -11141,7 +11135,7 @@ snapshots:
   camel-case@4.1.2:
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   camelcase-keys@6.2.2:
     dependencies:
@@ -11160,7 +11154,7 @@ snapshots:
   capital-case@1.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
       upper-case-first: 2.0.2
 
   chai@6.2.2: {}
@@ -11204,7 +11198,7 @@ snapshots:
       path-case: 3.0.4
       sentence-case: 3.0.4
       snake-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   chardet@0.7.0: {}
 
@@ -11394,7 +11388,7 @@ snapshots:
   constant-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
       upper-case: 2.0.2
 
   convert-source-map@2.0.0: {}
@@ -11575,7 +11569,7 @@ snapshots:
   dot-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   dot-prop@9.0.0:
     dependencies:
@@ -12376,7 +12370,7 @@ snapshots:
   graphql-tag@2.12.6(graphql@16.12.0):
     dependencies:
       graphql: 16.12.0
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   graphql-ws@6.0.7(graphql@16.12.0)(ws@8.19.0):
     dependencies:
@@ -12415,7 +12409,7 @@ snapshots:
   header-case@2.0.4:
     dependencies:
       capital-case: 1.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   help-me@5.0.0: {}
 
@@ -12633,7 +12627,7 @@ snapshots:
 
   is-lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   is-map@2.0.3: {}
 
@@ -12702,7 +12696,7 @@ snapshots:
 
   is-upper-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   is-weakmap@2.0.2: {}
 
@@ -13048,11 +13042,11 @@ snapshots:
 
   lower-case-first@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   lru-cache@10.4.3: {}
 
@@ -13369,7 +13363,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   node-domexception@1.0.0: {}
 
@@ -13530,7 +13524,7 @@ snapshots:
   param-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   parent-module@1.0.1:
     dependencies:
@@ -13571,12 +13565,12 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   path-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   path-exists@4.0.0: {}
 
@@ -14247,7 +14241,7 @@ snapshots:
   sentence-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
       upper-case-first: 2.0.2
 
   serialize-error@2.1.0: {}
@@ -14371,7 +14365,7 @@ snapshots:
   snake-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   sonic-boom@4.2.0:
     dependencies:
@@ -14414,7 +14408,7 @@ snapshots:
 
   sponge-case@1.0.1:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   sprintf-js@1.0.3: {}
 
@@ -14586,7 +14580,7 @@ snapshots:
 
   swap-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   sync-fetch@0.6.0:
     dependencies:
@@ -14678,7 +14672,7 @@ snapshots:
 
   title-case@3.0.3:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   tmp@0.0.33:
     dependencies:
@@ -14876,11 +14870,11 @@ snapshots:
 
   upper-case-first@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   upper-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.8.1
 
   urlpattern-polyfill@10.1.0: {}
 

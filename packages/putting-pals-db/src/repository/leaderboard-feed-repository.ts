@@ -1,8 +1,8 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
 import type {
   LeaderboardFeed,
   LeaderboardFeedRepository,
 } from "@putting-pals/putting-pals-core";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { and, desc, eq, isNull, lt } from "drizzle-orm";
 import { leaderboardFeedTable } from "../db/schema";
 import type { Database } from "../db/types";

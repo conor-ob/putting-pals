@@ -2,7 +2,7 @@ import type {
   LeaderboardV3,
   TourCode,
   Tournament,
-} from "@putting-pals/putting-pals-api";
+} from "../../../../../putting-pals-schema/src";
 
 export type LeaderboardSnapshot = LeaderboardV3 | Tournament;
 

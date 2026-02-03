@@ -1,4 +1,7 @@
-import type { TourCode, Tournament } from "@putting-pals/putting-pals-api";
+import type {
+  TourCode,
+  Tournament,
+} from "../../../../../putting-pals-schema/src";
 
 export interface TournamentService {
   getTournament(tourCode: TourCode, id?: string): Promise<Tournament>;

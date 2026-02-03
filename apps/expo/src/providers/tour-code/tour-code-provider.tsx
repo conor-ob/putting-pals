@@ -1,4 +1,4 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { createContext, type ReactNode, useContext } from "react";
 import { useLocalStorage } from "~/storage/use-local-storage";
 import { trpc } from "../trpc/utils/trpc";

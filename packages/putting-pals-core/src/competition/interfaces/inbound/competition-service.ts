@@ -1,4 +1,4 @@
-import type { Competition } from "@putting-pals/putting-pals-api";
+import type { Competition } from "../../../../../putting-pals-schema/src";
 
 export interface CompetitionService {
   getCompetition(id: string): Competition;

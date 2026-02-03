@@ -52,7 +52,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@putting-pals/putting-pals-api": "workspace:*",
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-trpc": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
     "@trpc/server": "catalog:",
