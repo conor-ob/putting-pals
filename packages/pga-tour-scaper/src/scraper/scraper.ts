@@ -1,7 +1,5 @@
-import type {
-  PgaTourWebScraper,
-  TourCode,
-} from "@putting-pals/putting-pals-api";
+import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { PgaTourWebScraper } from "@putting-pals/putting-pals-core";
 import * as cheerio from "cheerio";
 
 type NextDataProps = {

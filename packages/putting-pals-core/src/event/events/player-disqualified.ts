@@ -1,7 +1,4 @@
-import type {
-  LeaderboardFeed,
-  PlayerDisqualifiedV1,
-} from "@putting-pals/putting-pals-api";
+import type { LeaderboardFeed, PlayerDisqualifiedV1 } from "../domain/types";
 import { EventPriority } from "../event-emitter";
 import { PlayerStateChanged } from "./player-state-changed";
 

@@ -2,7 +2,7 @@ import type {
   LeaderboardV3,
   TourCode,
   Tournament,
-} from "../graphql/putting-pals/generated/graphql";
+} from "@putting-pals/putting-pals-api";
 
 export type LeaderboardSnapshot = LeaderboardV3 | Tournament;
 

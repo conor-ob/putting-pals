@@ -6,7 +6,7 @@ import { useQuery } from "../trpc/utils/use-query";
 
 interface TourCodeContextType {
   tourCode: TourCode;
-  tours: { tourCode: TourCode; tourName: string }[];
+  tours: readonly { tourCode: TourCode; tourName: string }[];
   setTourCode: (tourCode: TourCode) => void;
 }
 

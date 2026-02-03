@@ -1,12 +1,10 @@
-import type {
-  FeedService,
-  LeaderboardFeed,
-  LeaderboardFeedRepository,
-  TourCode,
-} from "@putting-pals/putting-pals-api";
+import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { LeaderboardFeed } from "../event/domain/types";
 import type { LeaderboardService } from "../leaderboard/interfaces/inbound/leaderboard-service";
 import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
 import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
+import type { FeedService } from "./interfaces/inbound/feed-service";
+import type { LeaderboardFeedRepository } from "./interfaces/outbound/leaderboard-feed-repository";
 
 const PAGE_SIZE = 20;
 

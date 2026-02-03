@@ -1,8 +1,5 @@
-import type {
-  HotStreakV1,
-  LeaderboardFeed,
-  LeaderboardV3,
-} from "@putting-pals/putting-pals-api";
+import type { LeaderboardV3 } from "@putting-pals/putting-pals-api";
+import type { HotStreakV1, LeaderboardFeed } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class HotStreak extends AbstractEventEmitter<LeaderboardV3> {

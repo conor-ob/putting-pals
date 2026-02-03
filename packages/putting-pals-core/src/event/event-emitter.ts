@@ -1,8 +1,5 @@
-import type {
-  EventEmitter,
-  LeaderboardFeed,
-  TourCode,
-} from "@putting-pals/putting-pals-api";
+import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { EventEmitter, LeaderboardFeed } from "./domain/types";
 
 export abstract class AbstractEventEmitter<T> implements EventEmitter {
   constructor(

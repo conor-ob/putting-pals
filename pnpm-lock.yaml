@@ -349,6 +349,9 @@ importers:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*
         version: link:../putting-pals-api
+      '@putting-pals/putting-pals-core':
+        specifier: workspace:*
+        version: link:../putting-pals-core
       cheerio:
         specifier: ^1.1.2
         version: 1.2.0
@@ -470,6 +473,9 @@ importers:
       '@putting-pals/putting-pals-api':
         specifier: workspace:*
         version: link:../putting-pals-api
+      '@putting-pals/putting-pals-core':
+        specifier: workspace:*
+        version: link:../putting-pals-core
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils

@@ -1,10 +1,10 @@
-import { expectTypeOf } from "vitest";
-import type { LeaderboardFeed } from "../event/types";
 import type {
   RoundStatus,
   RoundStatusColor,
   TournamentStatus,
-} from "../graphql/putting-pals/generated/graphql";
+} from "@putting-pals/putting-pals-api";
+import { expectTypeOf } from "vitest";
+import type { LeaderboardFeed } from "./types";
 
 type Locked = {
   HotStreakV1: {

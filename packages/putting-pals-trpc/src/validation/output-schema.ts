@@ -63,9 +63,11 @@ export const TournamentOutputSchema = z.object({
   tournamentStatus: TournamentStatusSchema,
 });
 
-export const TourOutputSchema = z.array(
-  z.object({
-    tourCode: TourCodeSchema,
-    tourName: z.string(),
-  }),
-);
+export const TourOutputSchema = z
+  .array(
+    z.object({
+      tourCode: TourCodeSchema,
+      tourName: z.string(),
+    }),
+  )
+  .readonly();

@@ -1,9 +1,6 @@
-import type {
-  LeaderboardFeed,
-  RoundStatusChangedV1,
-  Tournament,
-} from "@putting-pals/putting-pals-api";
+import type { Tournament } from "@putting-pals/putting-pals-api";
 import { assertNever } from "@putting-pals/putting-pals-utils";
+import type { LeaderboardFeed, RoundStatusChangedV1 } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class RoundStatusChanged extends AbstractEventEmitter<Tournament> {

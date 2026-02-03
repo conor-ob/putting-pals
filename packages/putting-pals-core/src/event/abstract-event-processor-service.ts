@@ -1,10 +1,10 @@
+import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { EventEmitter } from "./domain/types";
+import type { LeaderboardEventProcessorService } from "./interfaces/inbound/leaderboard-event-processor-service";
 import type {
-  EventEmitter,
-  LeaderboardEventProcessorService,
   LeaderboardSnapshot,
   LeaderboardSnapshotRepository,
-  TourCode,
-} from "@putting-pals/putting-pals-api";
+} from "./interfaces/outbound/leaderboard-snapshot-repository";
 
 export abstract class AbstractEventProcessorService<
   T extends LeaderboardSnapshot,

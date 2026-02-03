@@ -1,9 +1,9 @@
+import type { Tournament } from "@putting-pals/putting-pals-api";
+import { assertNever } from "@putting-pals/putting-pals-utils";
 import type {
   LeaderboardFeed,
-  Tournament,
   TournamentStatusChangedV1,
-} from "@putting-pals/putting-pals-api";
-import { assertNever } from "@putting-pals/putting-pals-utils";
+} from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class TournamentStatusChanged extends AbstractEventEmitter<Tournament> {

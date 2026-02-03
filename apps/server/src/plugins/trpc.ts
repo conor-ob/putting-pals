@@ -7,7 +7,7 @@ import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
 import type {
   FeatureFlag,
   FeatureFlagService,
-} from "@putting-pals/putting-pals-api";
+} from "@putting-pals/putting-pals-core";
 import {
   CompetitionServiceImpl,
   FeedServiceImpl,
@@ -19,6 +19,7 @@ import {
   TournamentEventProcessorImpl,
   TournamentResolverImpl,
   TournamentServiceImpl,
+  TourServiceImpl,
 } from "@putting-pals/putting-pals-core";
 import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
@@ -131,6 +132,8 @@ function createContext() {
 
   const featureFlagService = new FeatureFlagServiceImpl();
 
+  const tourService = new TourServiceImpl(featureFlagService);
+
   return createTrpcContext({
     tournamentService,
     competitionService,
@@ -140,6 +143,7 @@ function createContext() {
     scheduleService,
     scheduleYearsService,
     featureFlagService,
+    tourService,
   });
 }
 

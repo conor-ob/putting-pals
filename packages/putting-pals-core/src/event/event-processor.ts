@@ -1,10 +1,8 @@
-import type {
-  LeaderboardEventProcessor,
-  LeaderboardEventProcessorService,
-  LeaderboardFeedRepository,
-  TourCode,
-} from "@putting-pals/putting-pals-api";
+import type { TourCode } from "@putting-pals/putting-pals-api";
+import type { LeaderboardFeedRepository } from "../feed/interfaces/outbound/leaderboard-feed-repository";
 import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
+import type { LeaderboardEventProcessor } from "./interfaces/inbound/leaderboard-event-processor";
+import type { LeaderboardEventProcessorService } from "./interfaces/inbound/leaderboard-event-processor-service";
 
 export class LeaderboardEventProcessorImpl
   implements LeaderboardEventProcessor

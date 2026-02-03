@@ -1,14 +1,13 @@
 import type {
+  CompetitionService,
   FeatureFlagService,
   FeedService,
   LeaderboardEventProcessor,
-} from "@putting-pals/putting-pals-api";
-import type {
-  CompetitionService,
   LeaderboardService,
   ScheduleService,
   ScheduleYearsService,
   TournamentService,
+  TourService,
 } from "@putting-pals/putting-pals-core";
 import { TRPCError } from "@trpc/server";
 import { expect, suite, test, vi } from "vitest";
@@ -30,6 +29,7 @@ suite("tournamentRouter", () => {
         scheduleService: vi.fn() as unknown as ScheduleService,
         scheduleYearsService: vi.fn() as unknown as ScheduleYearsService,
         featureFlagService: vi.fn() as unknown as FeatureFlagService,
+        tourService: vi.fn() as unknown as TourService,
       }),
     );
 

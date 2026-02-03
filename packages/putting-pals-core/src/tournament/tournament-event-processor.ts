@@ -1,12 +1,9 @@
-import type {
-  EventEmitter,
-  LeaderboardSnapshotRepository,
-  TourCode,
-  Tournament,
-} from "@putting-pals/putting-pals-api";
+import type { TourCode, Tournament } from "@putting-pals/putting-pals-api";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
+import type { EventEmitter } from "../event/domain/types";
 import { RoundStatusChanged } from "../event/events/round-status-changed";
 import { TournamentStatusChanged } from "../event/events/tournament-status-changed";
+import type { LeaderboardSnapshotRepository } from "../event/interfaces/outbound/leaderboard-snapshot-repository";
 import type { TournamentService } from "./interfaces/inbound/tournament-service";
 
 export class TournamentEventProcessorImpl extends AbstractEventProcessorService<Tournament> {

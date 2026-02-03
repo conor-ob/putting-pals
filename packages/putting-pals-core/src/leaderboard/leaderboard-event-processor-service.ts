@@ -1,10 +1,6 @@
-import type {
-  EventEmitter,
-  LeaderboardSnapshotRepository,
-  LeaderboardV3,
-  TourCode,
-} from "@putting-pals/putting-pals-api";
+import type { LeaderboardV3, TourCode } from "@putting-pals/putting-pals-api";
 import { AbstractEventProcessorService } from "../event/abstract-event-processor-service";
+import type { EventEmitter } from "../event/domain/types";
 import { LeaderChanged } from "../event/events/leader-changed";
 import { PlayerDisqualified } from "../event/events/player-disqualified";
 import { PlayerMissedCut } from "../event/events/player-missed-cut";
@@ -12,6 +8,7 @@ import { PlayerPositionDecreased } from "../event/events/player-position-decreas
 import { PlayerPositionIncreased } from "../event/events/player-position-increased";
 import { PlayerWithdrawn } from "../event/events/player-withdrawn";
 import { TournamentWinner } from "../event/events/tournament-winner";
+import type { LeaderboardSnapshotRepository } from "../event/interfaces/outbound/leaderboard-snapshot-repository";
 import type { LeaderboardService } from "./interfaces/inbound/leaderboard-service";
 
 export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessorService<LeaderboardV3> {

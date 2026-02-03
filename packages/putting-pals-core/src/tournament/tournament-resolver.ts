@@ -1,9 +1,4 @@
-import type {
-  ActiveTournament,
-  ActiveTournamentRepository,
-  PgaTourWebScraper,
-  TourCode,
-} from "@putting-pals/putting-pals-api";
+import type { TourCode } from "@putting-pals/putting-pals-api";
 import { differenceInMinutes } from "date-fns";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import {
@@ -11,6 +6,11 @@ import {
   UnsupportedTourCodeError,
 } from "../error/service-error";
 import type { TournamentResolver } from "./interfaces/inbound/tournament-resolver";
+import type {
+  ActiveTournament,
+  ActiveTournamentRepository,
+} from "./interfaces/outbound/active-tournament-repository";
+import type { PgaTourWebScraper } from "./interfaces/outbound/pga-tour-web-scraper";
 import type { TournamentClient } from "./interfaces/outbound/tournament-client";
 import { parseStartDate } from "./tournament-utils";
 

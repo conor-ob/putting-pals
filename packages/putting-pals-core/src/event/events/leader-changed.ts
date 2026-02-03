@@ -1,9 +1,6 @@
-import type {
-  LeaderboardFeed,
-  LeaderboardV3,
-  LeaderChangedV1,
-} from "@putting-pals/putting-pals-api";
+import type { LeaderboardV3 } from "@putting-pals/putting-pals-api";
 import { UnsupportedTourCodeError } from "../../error/service-error";
+import type { LeaderboardFeed, LeaderChangedV1 } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {

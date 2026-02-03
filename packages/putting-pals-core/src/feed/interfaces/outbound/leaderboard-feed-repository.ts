@@ -1,5 +1,5 @@
 import type { TourCode } from "@putting-pals/putting-pals-api";
-import type { LeaderboardFeed } from "../event/types";
+import type { LeaderboardFeed } from "../../../event/domain/types";
 
 export interface LeaderboardFeedRepository {
   getLeaderboardFeed(

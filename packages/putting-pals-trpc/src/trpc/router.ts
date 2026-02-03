@@ -8,16 +8,15 @@
  */
 
 import type {
+  CompetitionService,
   FeatureFlagService,
   FeedService,
   LeaderboardEventProcessor,
-} from "@putting-pals/putting-pals-api";
-import type {
-  CompetitionService,
   LeaderboardService,
   ScheduleService,
   ScheduleYearsService,
   TournamentService,
+  TourService,
 } from "@putting-pals/putting-pals-core";
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
@@ -45,6 +44,7 @@ export function createTrpcContext({
   scheduleService,
   scheduleYearsService,
   featureFlagService,
+  tourService,
 }: {
   tournamentService: TournamentService;
   competitionService: CompetitionService;
@@ -54,6 +54,7 @@ export function createTrpcContext({
   scheduleService: ScheduleService;
   scheduleYearsService: ScheduleYearsService;
   featureFlagService: FeatureFlagService;
+  tourService: TourService;
 }) {
   return {
     tournamentService,
@@ -64,6 +65,7 @@ export function createTrpcContext({
     scheduleService,
     scheduleYearsService,
     featureFlagService,
+    tourService,
   };
 }
 

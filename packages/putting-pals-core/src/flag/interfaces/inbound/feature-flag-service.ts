@@ -1,4 +1,4 @@
-export type FeatureFlag = "enable-dp-world-tour";
+import type { FeatureFlag } from "../../domain/types";
 
 export interface FeatureFlagService {
   isFeatureFlagEnabled(flag: FeatureFlag): boolean;
