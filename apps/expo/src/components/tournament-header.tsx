@@ -4,13 +4,13 @@ import { TournamentLogo } from "~/components/tournament-logo";
 import { TournamentName } from "~/components/tournament-name";
 import { TournamentStatus } from "~/components/tournament-status";
 import { cn } from "~/lib/utils";
-import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
+import type { Tournament } from "~/providers/trpc/types";
 
 export function TournamentHeader({
   className,
   tournament,
   ...props
-}: { tournament: RouterOutputs["tournament"]["getById"] } & ViewProps) {
+}: { tournament: Tournament } & ViewProps) {
   return (
     <View
       className={cn("flex flex-row items-center gap-4", className)}

@@ -1,12 +1,10 @@
 import { Text, View } from "react-native";
-import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
+import type { TournamentStatusChangedV1 as TournamentStatusChangedV1Type } from "~/providers/trpc/types";
 
 export function TournamentStatusChangedV1({
   item,
 }: {
-  item: RouterOutputs["feed"]["get"]["items"][number]["payload"] & {
-    __typename: "TournamentStatusChangedV1";
-  };
+  item: TournamentStatusChangedV1Type;
 }) {
   return (
     <View className="p-4">

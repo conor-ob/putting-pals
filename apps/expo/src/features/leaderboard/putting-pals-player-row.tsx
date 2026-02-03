@@ -1,14 +1,11 @@
 import { View } from "react-native";
-import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
+import type { PuttingPalsPlayerRow as PuttingPalsPlayerRowType } from "~/providers/trpc/types";
 import { NameColumn, PositionColumn, ScoreColumn } from "./leaderboard-columns";
 
 export function PuttingPalsPlayerRow({
   row,
 }: {
-  row: Extract<
-    RouterOutputs["leaderboard"]["getById"]["players"][number],
-    { __typename: "PuttingPalsPlayerRow" }
-  >;
+  row: PuttingPalsPlayerRowType;
 }) {
   return (
     <View className="flex flex-row items-center">

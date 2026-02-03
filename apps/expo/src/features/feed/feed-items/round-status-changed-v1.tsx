@@ -2,14 +2,15 @@ import { assertNever } from "@putting-pals/putting-pals-utils";
 import { Text, View } from "react-native";
 import { RoundStatusBadge } from "~/components/round-status-badge";
 import { RoundStatusLabel } from "~/components/round-status-label";
-import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
+import type {
+  RoundStatus,
+  RoundStatusChangedV1 as RoundStatusChangedV1Type,
+} from "~/providers/trpc/types";
 
 export function RoundStatusChangedV1({
   item,
 }: {
-  item: RouterOutputs["feed"]["get"]["items"][number]["payload"] & {
-    __typename: "RoundStatusChangedV1";
-  };
+  item: RoundStatusChangedV1Type;
 }) {
   return (
     <View className="flex flex-col gap-2 p-4">
@@ -36,7 +37,7 @@ export function RoundStatusChangedV1({
 
 function getRoundStatusChangedText(
   roundDisplay: string,
-  roundStatus: RouterOutputs["tournament"]["getById"]["roundStatus"],
+  roundStatus: RoundStatus,
 ) {
   switch (roundStatus) {
     case "UPCOMING":
