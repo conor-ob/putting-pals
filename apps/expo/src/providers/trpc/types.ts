@@ -33,7 +33,7 @@ export type PuttingPalsPlayerRow = Extract<
 export type RoundStatus = RouterOutputs["tournament"]["getById"]["roundStatus"];
 
 export type RoundStatusChangedV1 =
-  RouterOutputs["feed"]["get"]["items"][number]["payload"] & {
+  RouterOutputs["feed"]["get"]["events"][number]["payload"] & {
     __typename: "RoundStatusChangedV1";
   };
 
@@ -45,6 +45,6 @@ export type TourCode = RouterOutputs["tour"]["getTours"][number]["tourCode"];
 export type Tournament = RouterOutputs["tournament"]["getById"];
 
 export type TournamentStatusChangedV1 =
-  RouterOutputs["feed"]["get"]["items"][number]["payload"] & {
+  RouterOutputs["feed"]["get"]["events"][number]["payload"] & {
     __typename: "TournamentStatusChangedV1";
   };

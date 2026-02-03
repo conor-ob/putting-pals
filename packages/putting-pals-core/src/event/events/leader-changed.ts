@@ -1,10 +1,10 @@
 import type { LeaderboardV3 } from "@putting-pals/putting-pals-schema";
 import { UnsupportedTourCodeError } from "../../error/service-error";
-import type { LeaderboardFeed, LeaderChangedV1 } from "../domain/types";
+import type { LeaderboardFeedEvent, LeaderChangedV1 } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
-  override emit(): LeaderboardFeed[] {
+  override emit(): LeaderboardFeedEvent[] {
     switch (this.tourCode) {
       case "P":
         return [];
@@ -22,7 +22,7 @@ export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
     return EventPriority.LEADER_CHANGED_EVENT;
   }
 
-  private getPgaTourLeaderChanged(): LeaderboardFeed[] {
+  private getPgaTourLeaderChanged(): LeaderboardFeedEvent[] {
     const prevLeaders = this.getLeaders(this.prev);
     const nextLeaders = this.getLeaders(this.next);
 

@@ -1,5 +1,5 @@
 import type { TourCode } from "@putting-pals/putting-pals-schema";
-import type { LeaderboardFeed } from "../event/domain/types";
+import type { LeaderboardFeedEvent } from "../event/domain/types";
 import type { LeaderboardService } from "../leaderboard/interfaces/inbound/leaderboard-service";
 import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
 import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
@@ -36,24 +36,24 @@ export class FeedServiceImpl implements FeedService {
     );
 
     const hasMore = items.length > PAGE_SIZE;
-    const feedItems = hasMore ? items.slice(0, -1) : items;
+    const feedEvents = hasMore ? items.slice(0, -1) : items;
     const nextCursor = hasMore
-      ? feedItems[feedItems.length - 1]?.sequence
+      ? feedEvents[feedEvents.length - 1]?.sequence
       : undefined;
 
     return {
-      // items: feedItems.map((item) => ({
+      // events: feedEvents.map((item) => ({
       //   ...item,
       //   feedItem: this.hydrate(item.feedItem, tournament, leaderboard),
       // })),
-      items: feedItems,
+      events: feedEvents,
       nextCursor,
     };
   }
 
   // biome-ignore lint/correctness/noUnusedPrivateClassMembers: todo
   private hydrate(
-    feedItem: LeaderboardFeed,
+    feedItem: LeaderboardFeedEvent,
     tournament: Awaited<ReturnType<TournamentService["getTournament"]>>,
     leaderboard: Awaited<ReturnType<LeaderboardService["getLeaderboard"]>>,
   ) {

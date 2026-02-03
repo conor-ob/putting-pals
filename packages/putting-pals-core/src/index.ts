@@ -2,10 +2,7 @@ export { CompetitionServiceImpl } from "./competition/competition-service";
 export type { CompetitionService } from "./competition/interfaces/inbound/competition-service";
 export type { CompetitionRepository } from "./competition/interfaces/outbound/competition-repository";
 export * from "./error/service-error";
-export type {
-  LeaderboardFeed,
-  LeaderboardFeedType,
-} from "./event/domain/types";
+export type { LeaderboardFeedEvent } from "./event/domain/types";
 export { LeaderboardEventProcessorImpl } from "./event/event-processor";
 export type { LeaderboardEventProcessor } from "./event/interfaces/inbound/leaderboard-event-processor";
 export type {
@@ -17,8 +14,10 @@ export type {
 export { FeedServiceImpl } from "./feed/feed-service";
 export type { FeedService } from "./feed/interfaces/inbound/feed-service";
 export type { LeaderboardFeedRepository } from "./feed/interfaces/outbound/leaderboard-feed-repository";
-export type { FeatureFlag } from "./flag/domain/types";
+export type { FeatureFlagKey } from "./flag/domain/types";
+export { FeatureFlagServiceImpl } from "./flag/feature-flag-service";
 export type { FeatureFlagService } from "./flag/interfaces/inbound/feature-flag-service";
+export type { FeatureFlagRepository } from "./flag/interfaces/outbound/feature-flag-repository";
 export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leaderboard-service";
 export type { LeaderboardClient } from "./leaderboard/interfaces/outbound/leaderboard-client";
 export { LeaderboardEventProcessorServiceImpl } from "./leaderboard/leaderboard-event-processor-service";

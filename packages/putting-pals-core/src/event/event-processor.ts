@@ -33,7 +33,7 @@ export class LeaderboardEventProcessorImpl
       .flatMap((eventEmitter) => eventEmitter.emit());
 
     if (events.length > 0) {
-      await this.leaderboardFeedRepository.createLeaderboardFeedItems(
+      await this.leaderboardFeedRepository.createLeaderboardFeedEvents(
         tourCode,
         tournamentId,
         events,

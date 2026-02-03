@@ -1,13 +1,13 @@
 import type { Tournament } from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils";
 import type {
-  LeaderboardFeed,
+  LeaderboardFeedEvent,
   TournamentStatusChangedV1,
 } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class TournamentStatusChanged extends AbstractEventEmitter<Tournament> {
-  override emit(): LeaderboardFeed[] {
+  override emit(): LeaderboardFeedEvent[] {
     if (
       this.next.tournamentStatus === "NOT_STARTED" ||
       this.next.tournamentStatus === this.prev.tournamentStatus

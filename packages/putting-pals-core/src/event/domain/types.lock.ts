@@ -4,7 +4,7 @@ import type {
   TournamentStatus,
 } from "@putting-pals/putting-pals-schema";
 import { expectTypeOf } from "vitest";
-import type { LeaderboardFeed } from "./types";
+import type { LeaderboardFeedEvent } from "./types";
 
 type Locked = {
   HotStreakV1: {
@@ -127,11 +127,11 @@ type Locked = {
 type Versions = keyof Locked;
 
 /* 🔒 Exact version set */
-expectTypeOf<LeaderboardFeed["__typename"]>().toEqualTypeOf<Versions>();
+expectTypeOf<LeaderboardFeedEvent["__typename"]>().toEqualTypeOf<Versions>();
 
 /* 🔒 Exact shape per version */
 type ByVersion<V extends Versions> = Extract<
-  LeaderboardFeed,
+  LeaderboardFeedEvent,
   { __typename: V }
 >;
 

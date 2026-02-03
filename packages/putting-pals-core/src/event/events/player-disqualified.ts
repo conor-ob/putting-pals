@@ -1,9 +1,12 @@
-import type { LeaderboardFeed, PlayerDisqualifiedV1 } from "../domain/types";
+import type {
+  LeaderboardFeedEvent,
+  PlayerDisqualifiedV1,
+} from "../domain/types";
 import { EventPriority } from "../event-emitter";
 import { PlayerStateChanged } from "./player-state-changed";
 
 export class PlayerDisqualified extends PlayerStateChanged {
-  override emit(): LeaderboardFeed[] {
+  override emit(): LeaderboardFeedEvent[] {
     const players = this.getPlayersStateChanged("DISQUALIFIED");
     if (players.length === 0) {
       return [];

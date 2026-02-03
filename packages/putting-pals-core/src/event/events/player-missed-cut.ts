@@ -1,9 +1,9 @@
-import type { LeaderboardFeed, PlayerMissedCutV1 } from "../domain/types";
+import type { LeaderboardFeedEvent, PlayerMissedCutV1 } from "../domain/types";
 import { EventPriority } from "../event-emitter";
 import { PlayerStateChanged } from "./player-state-changed";
 
 export class PlayerMissedCut extends PlayerStateChanged {
-  override emit(): LeaderboardFeed[] {
+  override emit(): LeaderboardFeedEvent[] {
     const players = this.getPlayersStateChanged("CUT");
     if (players.length === 0) {
       return [];

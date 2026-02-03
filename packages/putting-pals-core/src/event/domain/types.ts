@@ -4,7 +4,7 @@ import type {
   TournamentStatus,
 } from "@putting-pals/putting-pals-schema";
 
-export type LeaderboardFeed =
+export type LeaderboardFeedEvent =
   | HotStreakV1
   | LeaderChangedV1
   | PlayerDisqualifiedV1
@@ -13,11 +13,8 @@ export type LeaderboardFeed =
   | RoundStatusChangedV1
   | TournamentStatusChangedV1;
 
-export type LeaderboardFeedType = LeaderboardFeed["__typename"];
-
 export interface EventEmitter {
-  emit(): LeaderboardFeed[];
-
+  emit(): LeaderboardFeedEvent[];
   getPriority(): number;
 }
 

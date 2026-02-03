@@ -1,9 +1,9 @@
 import type { LeaderboardV3 } from "@putting-pals/putting-pals-schema";
-import type { HotStreakV1, LeaderboardFeed } from "../domain/types";
+import type { HotStreakV1, LeaderboardFeedEvent } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class HotStreak extends AbstractEventEmitter<LeaderboardV3> {
-  override emit(): LeaderboardFeed[] {
+  override emit(): LeaderboardFeedEvent[] {
     const prevHotStreakPlayers = this.getHotStreakPlayers(this.prev);
     const nextHotStreakPlayers = this.getHotStreakPlayers(this.next);
 

@@ -4,12 +4,9 @@ import {
   TournamentGraphQlClient,
 } from "@putting-pals/pga-tour-graphql";
 import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
-import type {
-  FeatureFlag,
-  FeatureFlagService,
-} from "@putting-pals/putting-pals-core";
 import {
   CompetitionServiceImpl,
+  FeatureFlagServiceImpl,
   FeedServiceImpl,
   LeaderboardEventProcessorImpl,
   LeaderboardEventProcessorServiceImpl,
@@ -25,6 +22,7 @@ import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
 import {
   ActiveTournamentPostgresRepository,
   createDatabaseConnection,
+  FeatureFlagPostgresRepository,
   LeaderboardFeedPostgresRepository,
   LeaderboardSnapshotPostgresRepository,
 } from "@putting-pals/putting-pals-db";
@@ -39,7 +37,6 @@ import type {
 } from "@trpc/server/adapters/fastify";
 import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
 import type { FastifyInstance } from "fastify";
-import { env } from "~/env/schema";
 
 export default function (fastify: FastifyInstance) {
   fastify.register(fastifyTRPCPlugin, {
@@ -130,7 +127,8 @@ function createContext() {
     leaderboardFeedRepository,
   );
 
-  const featureFlagService = new FeatureFlagServiceImpl();
+  const featureFlagRepository = new FeatureFlagPostgresRepository(database);
+  const featureFlagService = new FeatureFlagServiceImpl(featureFlagRepository);
 
   const tourService = new TourServiceImpl(featureFlagService);
 
@@ -145,15 +143,4 @@ function createContext() {
     featureFlagService,
     tourService,
   });
-}
-
-class FeatureFlagServiceImpl implements FeatureFlagService {
-  isFeatureFlagEnabled(flag: FeatureFlag): boolean {
-    switch (flag) {
-      case "enable-dp-world-tour":
-        return env.FF_ENABLE_DP_WORLD_TOUR;
-      default:
-        return false;
-    }
-  }
 }

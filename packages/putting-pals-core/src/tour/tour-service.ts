@@ -35,7 +35,11 @@ export class TourServiceImpl implements TourService {
       },
     ];
 
-    if (this.featureFlagService.isFeatureFlagEnabled("enable-dp-world-tour")) {
+    const isDpWorldTourEnabled =
+      await this.featureFlagService.isFeatureFlagEnabled(
+        "enable-dp-world-tour",
+      );
+    if (isDpWorldTourEnabled) {
       return allSupportedTours;
     } else {
       return allSupportedTours.filter((tour) => tour.tourCode !== "D");

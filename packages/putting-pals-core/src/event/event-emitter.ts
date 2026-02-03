@@ -1,5 +1,5 @@
 import type { TourCode } from "@putting-pals/putting-pals-schema";
-import type { EventEmitter, LeaderboardFeed } from "./domain/types";
+import type { EventEmitter, LeaderboardFeedEvent } from "./domain/types";
 
 export abstract class AbstractEventEmitter<T> implements EventEmitter {
   constructor(
@@ -12,7 +12,7 @@ export abstract class AbstractEventEmitter<T> implements EventEmitter {
     this.next = next;
   }
 
-  abstract emit(): LeaderboardFeed[];
+  abstract emit(): LeaderboardFeedEvent[];
 
   abstract getPriority(): number;
 }

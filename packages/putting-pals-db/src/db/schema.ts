@@ -1,14 +1,14 @@
 import type {
-  LeaderboardFeed,
-  LeaderboardFeedType,
+  FeatureFlagKey,
+  LeaderboardFeedEvent,
   LeaderboardSnapshot,
-  LeaderboardSnapshotType,
 } from "@putting-pals/putting-pals-core";
 import {
   type TourCode,
   TourCodeSchema,
 } from "@putting-pals/putting-pals-schema";
 import {
+  boolean,
   index,
   jsonb,
   pgTable,
@@ -58,8 +58,19 @@ export const activeTournamentTable = pgTable(
     ...tournamentIdentifierColumns,
   },
   (table) => [
-    uniqueIndex("active_tournament_tour_code_idx").on(table.tourCode),
+    uniqueIndex("active_tournament_tour_code_uniq").on(table.tourCode),
   ],
+);
+
+export const featureFlagTable = pgTable(
+  "feature_flag",
+  {
+    ...identifierColumns,
+    ...timestampColumns,
+    flagKey: text("flag_key").notNull().$type<FeatureFlagKey>(),
+    enabled: boolean("enabled").notNull().default(false),
+  },
+  (table) => [uniqueIndex("feature_flag_flag_key_uniq").on(table.flagKey)],
 );
 
 export const leaderboardSnapshotTable = pgTable(
@@ -68,11 +79,11 @@ export const leaderboardSnapshotTable = pgTable(
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
-    type: text("type").notNull().$type<LeaderboardSnapshotType>(),
+    type: text("type").notNull().$type<LeaderboardSnapshot["__typename"]>(),
     payload: jsonb("payload").notNull().$type<LeaderboardSnapshot>(),
   },
   (table) => [
-    uniqueIndex("leaderboard_snapshot_tournament_idx").on(
+    uniqueIndex("leaderboard_snapshot_tour_code_tournament_id_type_uniq").on(
       table.tourCode,
       table.tournamentId,
       table.type,
@@ -86,12 +97,12 @@ export const leaderboardFeedTable = pgTable(
     ...identifierColumns,
     ...timestampColumns,
     ...tournamentIdentifierColumns,
-    type: text("type").notNull().$type<LeaderboardFeedType>(),
-    payload: jsonb("payload").notNull().$type<LeaderboardFeed>(),
+    type: text("type").notNull().$type<LeaderboardFeedEvent["__typename"]>(),
+    payload: jsonb("payload").notNull().$type<LeaderboardFeedEvent>(),
     sequence: serial("sequence").notNull(),
   },
   (table) => [
-    index("leaderboard_feed_tournament_idx").on(
+    index("leaderboard_feed_tour_code_tournament_id_idx").on(
       table.tourCode,
       table.tournamentId,
     ),

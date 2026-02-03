@@ -27,13 +27,13 @@ export function FeedPage() {
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("feedError", feedError);
 
-  const feedItems = useMemo(
-    () => feedData?.pages.flatMap((page) => page.items) ?? [],
+  const feedEvents = useMemo(
+    () => feedData?.pages.flatMap((page) => page.events) ?? [],
     [feedData],
   );
 
   // biome-ignore lint/suspicious/noConsole: testing
-  console.log("feedItems", feedItems);
+  console.log("feedEvents", feedEvents);
 
   const handleEndReached = useCallback(() => {
     if (hasNextPage && !isFetchingNextPage) {
@@ -52,7 +52,7 @@ export function FeedPage() {
 
   return (
     <FlatList
-      data={feedItems}
+      data={feedEvents}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => {
         switch (item.payload.__typename) {

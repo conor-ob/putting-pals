@@ -1,10 +1,10 @@
 import type { LeaderboardV3 } from "@putting-pals/putting-pals-schema";
 import { UnsupportedTourCodeError } from "../../error/service-error";
-import type { LeaderboardFeed } from "../domain/types";
+import type { LeaderboardFeedEvent } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class PlayerPositionIncreased extends AbstractEventEmitter<LeaderboardV3> {
-  override emit(): LeaderboardFeed[] {
+  override emit(): LeaderboardFeedEvent[] {
     switch (this.tourCode) {
       case "P":
         return [];

@@ -1,1 +1,1 @@
-export type FeatureFlag = "enable-dp-world-tour";
+export type FeatureFlagKey = "enable-dp-world-tour";
