@@ -3,7 +3,7 @@ import type {
   LeaderboardFeedRepository,
 } from "@putting-pals/putting-pals-core";
 import type { TourCode } from "@putting-pals/putting-pals-schema";
-import { and, desc, eq, isNull, lt } from "drizzle-orm";
+import { and, desc, eq, lt } from "drizzle-orm";
 import type { leaderboardFeedTable } from "../db/schema";
 import type { Database } from "../db/types";
 
@@ -26,14 +26,12 @@ export class LeaderboardFeedPostgresRepository
   ): Promise<
     {
       sequence: number;
-      type: string;
-      payload: LeaderboardFeedEvent;
       tourCode: TourCode;
       tournamentId: string;
+      type: string;
+      payload: LeaderboardFeedEvent;
       createdAt: Date;
       updatedAt: Date;
-      deletedAt: Date | null;
-      id: string;
     }[]
   > {
     return this.db
@@ -43,7 +41,6 @@ export class LeaderboardFeedPostgresRepository
         and(
           eq(this.table.tourCode, tourCode),
           eq(this.table.tournamentId, tournamentId),
-          isNull(this.table.deletedAt),
           cursor ? lt(this.table.sequence, cursor) : undefined,
         ),
       )

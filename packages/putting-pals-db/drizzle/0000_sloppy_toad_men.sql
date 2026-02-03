@@ -2,28 +2,23 @@ CREATE TABLE "active_tournament" (
 	"tour_code" text PRIMARY KEY NOT NULL,
 	"tournament_id" text NOT NULL,
 	"created_at" timestamp (3) with time zone DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) with time zone DEFAULT now() NOT NULL,
-	"deleted_at" timestamp (3) with time zone
+	"updated_at" timestamp (3) with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "feature_flag" (
 	"flag_key" text PRIMARY KEY NOT NULL,
 	"enabled" boolean DEFAULT false NOT NULL,
 	"created_at" timestamp (3) with time zone DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) with time zone DEFAULT now() NOT NULL,
-	"deleted_at" timestamp (3) with time zone
+	"updated_at" timestamp (3) with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "leaderboard_feed" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"sequence" serial PRIMARY KEY NOT NULL,
 	"tour_code" text NOT NULL,
 	"tournament_id" text NOT NULL,
 	"type" text NOT NULL,
 	"payload" jsonb NOT NULL,
-	"sequence" serial NOT NULL,
-	"created_at" timestamp (3) with time zone DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) with time zone DEFAULT now() NOT NULL,
-	"deleted_at" timestamp (3) with time zone
+	"created_at" timestamp (3) with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "leaderboard_snapshot" (
@@ -33,9 +28,7 @@ CREATE TABLE "leaderboard_snapshot" (
 	"payload" jsonb NOT NULL,
 	"created_at" timestamp (3) with time zone DEFAULT now() NOT NULL,
 	"updated_at" timestamp (3) with time zone DEFAULT now() NOT NULL,
-	"deleted_at" timestamp (3) with time zone,
 	CONSTRAINT "leaderboard_snapshot_tour_code_tournament_id_type_pk" PRIMARY KEY("tour_code","tournament_id","type")
 );
 --> statement-breakpoint
-CREATE INDEX "leaderboard_feed_tour_code_tournament_id_idx" ON "leaderboard_feed" USING btree ("tour_code","tournament_id");--> statement-breakpoint
-CREATE INDEX "leaderboard_feed_sequence_idx" ON "leaderboard_feed" USING btree ("sequence");
+CREATE INDEX "leaderboard_feed_tour_code_tournament_id_sequence_idx" ON "leaderboard_feed" USING btree ("tour_code","tournament_id","sequence");

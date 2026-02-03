@@ -13,20 +13,19 @@ import {
   serial,
   text,
   timestamp,
-  uuid,
 } from "drizzle-orm/pg-core";
 
-const identifierColumns = {
-  id: uuid("id").primaryKey().defaultRandom(),
-};
-
-const timestampColumns = {
+const createdAtColumn = {
   createdAt: timestamp("created_at", {
     withTimezone: true,
     precision: 3,
   })
     .notNull()
     .defaultNow(),
+};
+
+const timestampColumns = {
+  ...createdAtColumn,
   updatedAt: timestamp("updated_at", {
     withTimezone: true,
     precision: 3,
@@ -34,10 +33,6 @@ const timestampColumns = {
     .notNull()
     .defaultNow()
     .$onUpdate(() => new Date()),
-  deletedAt: timestamp("deleted_at", {
-    withTimezone: true,
-    precision: 3,
-  }),
 };
 
 const tournamentIdentifierColumns = {
@@ -46,13 +41,13 @@ const tournamentIdentifierColumns = {
 };
 
 export const activeTournamentTable = pgTable("active_tournament", {
-  tourCode: text("tour_code").primaryKey().notNull().$type<TourCode>(),
+  tourCode: text("tour_code").primaryKey().$type<TourCode>(),
   tournamentId: text("tournament_id").notNull(),
   ...timestampColumns,
 });
 
 export const featureFlagTable = pgTable("feature_flag", {
-  flagKey: text("flag_key").primaryKey().notNull().$type<FeatureFlagKey>(),
+  flagKey: text("flag_key").primaryKey().$type<FeatureFlagKey>(),
   enabled: boolean("enabled").notNull().default(false),
   ...timestampColumns,
 });
@@ -73,18 +68,17 @@ export const leaderboardSnapshotTable = pgTable(
 export const leaderboardFeedTable = pgTable(
   "leaderboard_feed",
   {
-    ...identifierColumns,
+    sequence: serial("sequence").primaryKey(),
     ...tournamentIdentifierColumns,
     type: text("type").notNull().$type<LeaderboardFeedEvent["__typename"]>(),
     payload: jsonb("payload").notNull().$type<LeaderboardFeedEvent>(),
-    sequence: serial("sequence").notNull(),
-    ...timestampColumns,
+    ...createdAtColumn,
   },
   (table) => [
-    index("leaderboard_feed_tour_code_tournament_id_idx").on(
+    index("leaderboard_feed_tour_code_tournament_id_sequence_idx").on(
       table.tourCode,
       table.tournamentId,
+      table.sequence,
     ),
-    index("leaderboard_feed_sequence_idx").on(table.sequence),
   ],
 );

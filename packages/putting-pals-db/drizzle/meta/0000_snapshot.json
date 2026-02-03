@@ -1,5 +1,5 @@
 {
-  "id": "9f0dab21-3025-4e0b-8af5-e1656e129b28",
+  "id": "c42fa19c-9cc2-4793-9578-474fd0539a02",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -33,12 +33,6 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
-        },
-        "deleted_at": {
-          "name": "deleted_at",
-          "type": "timestamp (3) with time zone",
-          "primaryKey": false,
-          "notNull": false
         }
       },
       "indexes": {},
@@ -79,12 +73,6 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
-        },
-        "deleted_at": {
-          "name": "deleted_at",
-          "type": "timestamp (3) with time zone",
-          "primaryKey": false,
-          "notNull": false
         }
       },
       "indexes": {},
@@ -99,12 +87,11 @@
       "name": "leaderboard_feed",
       "schema": "",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
+        "sequence": {
+          "name": "sequence",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "tour_code": {
           "name": "tour_code",
@@ -130,36 +117,17 @@
           "primaryKey": false,
           "notNull": true
         },
-        "sequence": {
-          "name": "sequence",
-          "type": "serial",
-          "primaryKey": false,
-          "notNull": true
-        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp (3) with time zone",
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp (3) with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "deleted_at": {
-          "name": "deleted_at",
-          "type": "timestamp (3) with time zone",
-          "primaryKey": false,
-          "notNull": false
         }
       },
       "indexes": {
-        "leaderboard_feed_tour_code_tournament_id_idx": {
-          "name": "leaderboard_feed_tour_code_tournament_id_idx",
+        "leaderboard_feed_tour_code_tournament_id_sequence_idx": {
+          "name": "leaderboard_feed_tour_code_tournament_id_sequence_idx",
           "columns": [
             {
               "expression": "tour_code",
@@ -172,16 +140,7 @@
               "isExpression": false,
               "asc": true,
               "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "leaderboard_feed_sequence_idx": {
-          "name": "leaderboard_feed_sequence_idx",
-          "columns": [
+            },
             {
               "expression": "sequence",
               "isExpression": false,
@@ -243,12 +202,6 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
-        },
-        "deleted_at": {
-          "name": "deleted_at",
-          "type": "timestamp (3) with time zone",
-          "primaryKey": false,
-          "notNull": false
         }
       },
       "indexes": {},

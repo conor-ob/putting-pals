@@ -10,14 +10,12 @@ export interface LeaderboardFeedRepository {
   ): Promise<
     {
       sequence: number;
-      type: string;
-      payload: LeaderboardFeedEvent;
       tourCode: TourCode;
       tournamentId: string;
+      type: string;
+      payload: LeaderboardFeedEvent;
       createdAt: Date;
       updatedAt: Date;
-      deletedAt: Date | null;
-      id: string;
     }[]
   >;
 

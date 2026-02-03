@@ -9,14 +9,12 @@ export interface FeedService {
   ): Promise<{
     events: {
       sequence: number;
-      type: string;
-      payload: LeaderboardFeedEvent;
       tourCode: TourCode;
       tournamentId: string;
+      type: string;
+      payload: LeaderboardFeedEvent;
       createdAt: Date;
       updatedAt: Date;
-      deletedAt: Date | null;
-      id: string;
     }[];
     nextCursor?: number;
   }>;
