@@ -9,7 +9,6 @@ export type {
   ActiveTournament,
   ActiveTournamentRepository,
 } from "./repository/active-tournament-repository";
-export type { CompetitionRepository } from "./repository/competition-repository";
 export type { LeaderboardFeedRepository } from "./repository/leaderboard-feed-repository";
 export type {
   LeaderboardSnapshot,
@@ -17,7 +16,6 @@ export type {
   LeaderboardSnapshotType,
   LeaderboardSnapshotTypeMap,
 } from "./repository/leaderboard-snapshot-repository";
-export type { CompetitionService } from "./service/competition-service";
 export type {
   FeatureFlag,
   FeatureFlagService,

@@ -8,12 +8,12 @@
  */
 
 import type {
-  CompetitionService,
   FeatureFlagService,
   FeedService,
   LeaderboardEventProcessor,
 } from "@putting-pals/putting-pals-api";
 import type {
+  CompetitionService,
   LeaderboardService,
   ScheduleService,
   ScheduleYearsService,

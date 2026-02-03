@@ -1,9 +1,7 @@
-import type {
-  Competition,
-  CompetitionRepository,
-  CompetitionService,
-} from "@putting-pals/putting-pals-api";
+import type { Competition } from "@putting-pals/putting-pals-api";
 import { NotFoundError } from "@putting-pals/putting-pals-api";
+import type { CompetitionService } from "./interfaces/inbound/competition-service";
+import type { CompetitionRepository } from "./interfaces/outbound/competition-repository";
 
 export class CompetitionServiceImpl implements CompetitionService {
   constructor(private readonly competitionRepository: CompetitionRepository) {

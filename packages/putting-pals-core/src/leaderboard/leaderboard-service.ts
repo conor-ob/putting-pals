@@ -1,9 +1,6 @@
-import type {
-  CompetitionService,
-  LeaderboardV3,
-  TourCode,
-} from "@putting-pals/putting-pals-api";
+import type { LeaderboardV3, TourCode } from "@putting-pals/putting-pals-api";
 import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
+import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
 import type { LeaderboardService } from "./interfaces/inbound/leaderboard-service";
 import type { LeaderboardClient } from "./interfaces/outbound/leaderboard-client";
