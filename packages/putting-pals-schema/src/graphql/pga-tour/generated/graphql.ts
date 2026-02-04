@@ -11165,262 +11165,6 @@ type ApiYtVideoStoryType =
   | 'PLAYER_STORIES'
   | 'TOPIC_STORIES';
 
-type ApiLeaderboardV3QueryVariables = Exact<{
-  leaderboardV3Id: Scalars['ID']['input'];
-}>;
-
-
-type ApiLeaderboardV3Query = {
-  readonly __typename: 'Query',
-  readonly leaderboardV3: {
-    readonly __typename: 'LeaderboardV3',
-    readonly id: string,
-    readonly tournamentId: string,
-    readonly leaderboardRoundHeader: string,
-    readonly formatType: ApiFormatType,
-    readonly timezone: string,
-    readonly tourcastURL?: string | null,
-    readonly tourcastURLWeb?: string | null,
-    readonly tourcastURI?: string | null,
-    readonly tournamentStatus: ApiTournamentStatus,
-    readonly isPlayoffActive: boolean,
-    readonly scorecardEnabled: boolean,
-    readonly profileEnabled: boolean,
-    readonly subEvent: boolean,
-    readonly standingsEnabled: boolean,
-    readonly standingsHeader: string,
-    readonly hideSov: boolean,
-    readonly disableOdds: boolean,
-    readonly disableBettingProfileColumn: boolean,
-    readonly disableLeaderboard: boolean,
-    readonly players: ReadonlyArray<
-      | {
-        readonly __typename: 'InformationRow',
-        readonly id: string,
-        readonly leaderboardSortOrder: number,
-        readonly displayText: string,
-        readonly mobileDisplayText: string,
-        readonly sponsorName?: string | null
-      }
-      | {
-        readonly __typename: 'PlayerRowV3',
-        readonly id: string,
-        readonly leaderboardSortOrder: number,
-        readonly player: {
-          readonly __typename: 'Player',
-          readonly id: string,
-          readonly firstName: string,
-          readonly lastName: string,
-          readonly shortName: string,
-          readonly displayName: string,
-          readonly abbreviations: string,
-          readonly abbreviationsAccessibilityText: string,
-          readonly amateur: boolean,
-          readonly country: string,
-          readonly countryFlag: string,
-          readonly lineColor: string,
-          readonly seed?: string | null,
-          readonly status?: string | null,
-          readonly tourBound?: boolean | null,
-          readonly bettingProfile?: string | null,
-          readonly playerBioOverrideLink?: string | null,
-          readonly assets?: ReadonlyArray<{
-            readonly __typename: 'TourBoundAsset',
-            readonly tourBoundLogo?: string | null,
-            readonly tourBoundLogoDark?: string | null
-          }> | null
-        },
-        readonly scoringData: {
-          readonly __typename: 'LeaderboardScoringDataV3',
-          readonly groupNumber: number,
-          readonly currentRound: number,
-          readonly backNine: boolean,
-          readonly playerState: ApiPlayerState,
-          readonly teeTime?: number | null,
-          readonly totalStrokes: string,
-          readonly totalStrokesSort?: number | null,
-          readonly total: string,
-          readonly totalSort: number,
-          readonly thru: string,
-          readonly thruSort: number,
-          readonly score: string,
-          readonly scoreSort: number,
-          readonly movementDirection: ApiLeaderboardMovement,
-          readonly movementAmount: string,
-          readonly movementSort?: number | null,
-          readonly position: string,
-          readonly rounds: ReadonlyArray<string>,
-          readonly roundDisplaySort?: ReadonlyArray<number | null> | null,
-          readonly roundHeader: string,
-          readonly roundStatus: string,
-          readonly courseId: string,
-          readonly official: string,
-          readonly officialSort: number,
-          readonly projected: string,
-          readonly projectedSort: number,
-          readonly rankingMovement: ApiCupRankMovementDirection,
-          readonly rankingMovementAmount: string,
-          readonly rankingMovementAmountSort: number,
-          readonly rankLogoLight?: string | null,
-          readonly rankLogoDark?: string | null,
-          readonly tooltipText?: string | null,
-          readonly tooltipTitle?: string | null,
-          readonly oddsToWin?: string | null,
-          readonly oddsSwing?: ApiOddsSwing | null,
-          readonly oddsOptionId?: string | null,
-          readonly oddsSort?: number | null,
-          readonly hasStoryContent: boolean,
-          readonly storyContentRound?: number | null,
-          readonly storyContentRounds: ReadonlyArray<number>,
-          readonly playerIcon?: ApiLeaderboardPlayerIcon | null
-        }
-      }
-    >,
-    readonly winner?: {
-      readonly __typename: 'Winner',
-      readonly id: string,
-      readonly firstName: string,
-      readonly lastName: string,
-      readonly totalStrokes: number,
-      readonly totalScore: string,
-      readonly countryFlag: string,
-      readonly countryName: string,
-      readonly purse?: string | null,
-      readonly displayPoints: boolean,
-      readonly displayPurse: boolean,
-      readonly points?: string | null,
-      readonly seed?: string | null,
-      readonly pointsLabel?: string | null,
-      readonly winnerIcon?: {
-        readonly __typename: 'WinnerIcon',
-        readonly type: ApiWinnerIconType,
-        readonly title: string,
-        readonly label: string,
-        readonly color: string
-      } | null,
-      readonly roundScores?: ReadonlyArray<{
-        readonly __typename: 'WinnerRoundScore',
-        readonly label: string,
-        readonly total: string
-      }> | null
-    } | null,
-    readonly winners?: ReadonlyArray<{
-      readonly __typename: 'Winner',
-      readonly id: string,
-      readonly firstName: string,
-      readonly lastName: string,
-      readonly totalStrokes: number,
-      readonly totalScore: string,
-      readonly countryFlag: string,
-      readonly countryName: string,
-      readonly purse?: string | null,
-      readonly displayPoints: boolean,
-      readonly displayPurse: boolean,
-      readonly points?: string | null,
-      readonly seed?: string | null,
-      readonly pointsLabel?: string | null
-    }> | null,
-    readonly courses: ReadonlyArray<{
-      readonly __typename: 'Course',
-      readonly id: string,
-      readonly courseName: string,
-      readonly courseCode: string,
-      readonly hostCourse: boolean,
-      readonly scoringLevel: ApiScoringLevel,
-      readonly enabled?: boolean | null,
-      readonly features?: ReadonlyArray<ApiTeeTimesFeature> | null
-    }>,
-    readonly messages: ReadonlyArray<{
-      readonly __typename: 'LeaderboardMessage',
-      readonly messageText: string,
-      readonly messageIcon: ApiLeaderboardMessageIcon,
-      readonly messageLink?: string | null,
-      readonly webViewLink?: string | null,
-      readonly externalLink?: boolean | null,
-      readonly platforms: ReadonlyArray<ApiPlatform>,
-      readonly timing?: number | null
-    }>,
-    readonly rounds: ReadonlyArray<{
-      readonly __typename: 'LBRound',
-      readonly roundNumber: number,
-      readonly displayText: string
-    }>,
-    readonly leaderboardFeatures?: ReadonlyArray<{
-      readonly __typename: 'FeatureItem',
-      readonly name: string,
-      readonly new: boolean,
-      readonly tooltipText?: string | null,
-      readonly tooltipTitle?: string | null,
-      readonly fieldStatType?: ApiFieldStatType | null,
-      readonly leaderboardFeatures?: ApiLeaderboardFeature | null,
-      readonly sponsor?: {
-        readonly __typename: 'FeatureSponsor',
-        readonly sponsorLogo: string,
-        readonly sponsorLogoDark: string,
-        readonly sponsorText: string,
-        readonly sponsorLogoAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly imageOrg: string,
-          readonly imagePath: string,
-          readonly assetType?: string | null,
-          readonly deliveryType?: string | null,
-          readonly fallbackImage?: string | null
-        },
-        readonly sponsorLogoDarkAsset: {
-          readonly __typename: 'ImageAsset',
-          readonly imageOrg: string,
-          readonly imagePath: string,
-          readonly assetType?: string | null,
-          readonly deliveryType?: string | null,
-          readonly fallbackImage?: string | null
-        }
-      } | null
-    }> | null,
-    readonly cutLineProbabilities?: {
-      readonly __typename: 'CutLineInfo',
-      readonly projectedCutLine: string,
-      readonly probableCutLine: string,
-      readonly sponsorName?: string | null,
-      readonly lastUpdated: number,
-      readonly new?: boolean | null,
-      readonly sponsorLogo?: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      } | null,
-      readonly possibleCutLines: ReadonlyArray<{
-        readonly __typename: 'CutLinePossibility',
-        readonly score: string,
-        readonly probability: number,
-        readonly displayProbability: string
-      }>
-    } | null,
-    readonly bubblePill?: {
-      readonly __typename: 'BubblePill',
-      readonly pillText: string,
-      readonly iconLight: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      },
-      readonly iconDark: {
-        readonly __typename: 'ImageAsset',
-        readonly imageOrg: string,
-        readonly imagePath: string,
-        readonly assetType?: string | null,
-        readonly deliveryType?: string | null,
-        readonly fallbackImage?: string | null
-      }
-    } | null
-  }
-};
-
 type ApiLeaderboardV3FieldsFragment = {
   readonly __typename: 'LeaderboardV3',
   readonly id: string,
@@ -11667,65 +11411,6 @@ type ApiInformationRowFieldsFragment = {
   readonly displayText: string,
   readonly mobileDisplayText: string,
   readonly sponsorName?: string | null
-};
-
-type ApiLeaderboardHoleByHoleFieldsFragment = {
-  readonly __typename: 'LeaderboardHoleByHole',
-  readonly tournamentId: string,
-  readonly currentRound: number,
-  readonly tournamentName: string,
-  readonly rounds: ReadonlyArray<{
-    readonly __typename: 'LBRound',
-    readonly roundNumber: number,
-    readonly displayText: string
-  }>,
-  readonly holeHeaders: ReadonlyArray<{
-    readonly __typename: 'HoleHeader',
-    readonly holeNumber: number,
-    readonly hole: string,
-    readonly par: string
-  }>,
-  readonly courseHoleHeaders: ReadonlyArray<{
-    readonly __typename: 'CourseHoleHeader',
-    readonly courseId: string,
-    readonly holeHeaders: ReadonlyArray<{
-      readonly __typename: 'HoleHeaderV2',
-      readonly holeNumber?: number | null,
-      readonly order: number,
-      readonly displayValue: string,
-      readonly par: string
-    }>
-  }>,
-  readonly courses: ReadonlyArray<{
-    readonly __typename: 'Course',
-    readonly id: string,
-    readonly courseName: string,
-    readonly courseCode: string,
-    readonly hostCourse: boolean,
-    readonly scoringLevel: ApiScoringLevel,
-    readonly enabled?: boolean | null,
-    readonly features?: ReadonlyArray<ApiTeeTimesFeature> | null
-  }>,
-  readonly playerData: ReadonlyArray<{
-    readonly __typename: 'PlayerRowHoleByHole',
-    readonly playerId: string,
-    readonly courseId: string,
-    readonly courseCode: string,
-    readonly out?: string | null,
-    readonly in?: string | null,
-    readonly total?: string | null,
-    readonly totalToPar: string,
-    readonly scores: ReadonlyArray<{
-      readonly __typename: 'HoleScore',
-      readonly holeNumber: number,
-      readonly par: number,
-      readonly yardage: number,
-      readonly sequenceNumber: number,
-      readonly score: string,
-      readonly status: ApiHoleScoreStatus,
-      readonly roundScore: string
-    }>
-  }>
 };
 
 type ApiScheduleTournamentFieldsFragment = {
@@ -12239,6 +11924,262 @@ type ApiTournamentFieldsFragment = {
       readonly fallbackImage?: string | null
     }
   } | null
+};
+
+type ApiLeaderboardV3QueryVariables = Exact<{
+  leaderboardV3Id: Scalars['ID']['input'];
+}>;
+
+
+type ApiLeaderboardV3Query = {
+  readonly __typename: 'Query',
+  readonly leaderboardV3: {
+    readonly __typename: 'LeaderboardV3',
+    readonly id: string,
+    readonly tournamentId: string,
+    readonly leaderboardRoundHeader: string,
+    readonly formatType: ApiFormatType,
+    readonly timezone: string,
+    readonly tourcastURL?: string | null,
+    readonly tourcastURLWeb?: string | null,
+    readonly tourcastURI?: string | null,
+    readonly tournamentStatus: ApiTournamentStatus,
+    readonly isPlayoffActive: boolean,
+    readonly scorecardEnabled: boolean,
+    readonly profileEnabled: boolean,
+    readonly subEvent: boolean,
+    readonly standingsEnabled: boolean,
+    readonly standingsHeader: string,
+    readonly hideSov: boolean,
+    readonly disableOdds: boolean,
+    readonly disableBettingProfileColumn: boolean,
+    readonly disableLeaderboard: boolean,
+    readonly players: ReadonlyArray<
+      | {
+        readonly __typename: 'InformationRow',
+        readonly id: string,
+        readonly leaderboardSortOrder: number,
+        readonly displayText: string,
+        readonly mobileDisplayText: string,
+        readonly sponsorName?: string | null
+      }
+      | {
+        readonly __typename: 'PlayerRowV3',
+        readonly id: string,
+        readonly leaderboardSortOrder: number,
+        readonly player: {
+          readonly __typename: 'Player',
+          readonly id: string,
+          readonly firstName: string,
+          readonly lastName: string,
+          readonly shortName: string,
+          readonly displayName: string,
+          readonly abbreviations: string,
+          readonly abbreviationsAccessibilityText: string,
+          readonly amateur: boolean,
+          readonly country: string,
+          readonly countryFlag: string,
+          readonly lineColor: string,
+          readonly seed?: string | null,
+          readonly status?: string | null,
+          readonly tourBound?: boolean | null,
+          readonly bettingProfile?: string | null,
+          readonly playerBioOverrideLink?: string | null,
+          readonly assets?: ReadonlyArray<{
+            readonly __typename: 'TourBoundAsset',
+            readonly tourBoundLogo?: string | null,
+            readonly tourBoundLogoDark?: string | null
+          }> | null
+        },
+        readonly scoringData: {
+          readonly __typename: 'LeaderboardScoringDataV3',
+          readonly groupNumber: number,
+          readonly currentRound: number,
+          readonly backNine: boolean,
+          readonly playerState: ApiPlayerState,
+          readonly teeTime?: number | null,
+          readonly totalStrokes: string,
+          readonly totalStrokesSort?: number | null,
+          readonly total: string,
+          readonly totalSort: number,
+          readonly thru: string,
+          readonly thruSort: number,
+          readonly score: string,
+          readonly scoreSort: number,
+          readonly movementDirection: ApiLeaderboardMovement,
+          readonly movementAmount: string,
+          readonly movementSort?: number | null,
+          readonly position: string,
+          readonly rounds: ReadonlyArray<string>,
+          readonly roundDisplaySort?: ReadonlyArray<number | null> | null,
+          readonly roundHeader: string,
+          readonly roundStatus: string,
+          readonly courseId: string,
+          readonly official: string,
+          readonly officialSort: number,
+          readonly projected: string,
+          readonly projectedSort: number,
+          readonly rankingMovement: ApiCupRankMovementDirection,
+          readonly rankingMovementAmount: string,
+          readonly rankingMovementAmountSort: number,
+          readonly rankLogoLight?: string | null,
+          readonly rankLogoDark?: string | null,
+          readonly tooltipText?: string | null,
+          readonly tooltipTitle?: string | null,
+          readonly oddsToWin?: string | null,
+          readonly oddsSwing?: ApiOddsSwing | null,
+          readonly oddsOptionId?: string | null,
+          readonly oddsSort?: number | null,
+          readonly hasStoryContent: boolean,
+          readonly storyContentRound?: number | null,
+          readonly storyContentRounds: ReadonlyArray<number>,
+          readonly playerIcon?: ApiLeaderboardPlayerIcon | null
+        }
+      }
+    >,
+    readonly winner?: {
+      readonly __typename: 'Winner',
+      readonly id: string,
+      readonly firstName: string,
+      readonly lastName: string,
+      readonly totalStrokes: number,
+      readonly totalScore: string,
+      readonly countryFlag: string,
+      readonly countryName: string,
+      readonly purse?: string | null,
+      readonly displayPoints: boolean,
+      readonly displayPurse: boolean,
+      readonly points?: string | null,
+      readonly seed?: string | null,
+      readonly pointsLabel?: string | null,
+      readonly winnerIcon?: {
+        readonly __typename: 'WinnerIcon',
+        readonly type: ApiWinnerIconType,
+        readonly title: string,
+        readonly label: string,
+        readonly color: string
+      } | null,
+      readonly roundScores?: ReadonlyArray<{
+        readonly __typename: 'WinnerRoundScore',
+        readonly label: string,
+        readonly total: string
+      }> | null
+    } | null,
+    readonly winners?: ReadonlyArray<{
+      readonly __typename: 'Winner',
+      readonly id: string,
+      readonly firstName: string,
+      readonly lastName: string,
+      readonly totalStrokes: number,
+      readonly totalScore: string,
+      readonly countryFlag: string,
+      readonly countryName: string,
+      readonly purse?: string | null,
+      readonly displayPoints: boolean,
+      readonly displayPurse: boolean,
+      readonly points?: string | null,
+      readonly seed?: string | null,
+      readonly pointsLabel?: string | null
+    }> | null,
+    readonly courses: ReadonlyArray<{
+      readonly __typename: 'Course',
+      readonly id: string,
+      readonly courseName: string,
+      readonly courseCode: string,
+      readonly hostCourse: boolean,
+      readonly scoringLevel: ApiScoringLevel,
+      readonly enabled?: boolean | null,
+      readonly features?: ReadonlyArray<ApiTeeTimesFeature> | null
+    }>,
+    readonly messages: ReadonlyArray<{
+      readonly __typename: 'LeaderboardMessage',
+      readonly messageText: string,
+      readonly messageIcon: ApiLeaderboardMessageIcon,
+      readonly messageLink?: string | null,
+      readonly webViewLink?: string | null,
+      readonly externalLink?: boolean | null,
+      readonly platforms: ReadonlyArray<ApiPlatform>,
+      readonly timing?: number | null
+    }>,
+    readonly rounds: ReadonlyArray<{
+      readonly __typename: 'LBRound',
+      readonly roundNumber: number,
+      readonly displayText: string
+    }>,
+    readonly leaderboardFeatures?: ReadonlyArray<{
+      readonly __typename: 'FeatureItem',
+      readonly name: string,
+      readonly new: boolean,
+      readonly tooltipText?: string | null,
+      readonly tooltipTitle?: string | null,
+      readonly fieldStatType?: ApiFieldStatType | null,
+      readonly leaderboardFeatures?: ApiLeaderboardFeature | null,
+      readonly sponsor?: {
+        readonly __typename: 'FeatureSponsor',
+        readonly sponsorLogo: string,
+        readonly sponsorLogoDark: string,
+        readonly sponsorText: string,
+        readonly sponsorLogoAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        },
+        readonly sponsorLogoDarkAsset: {
+          readonly __typename: 'ImageAsset',
+          readonly imageOrg: string,
+          readonly imagePath: string,
+          readonly assetType?: string | null,
+          readonly deliveryType?: string | null,
+          readonly fallbackImage?: string | null
+        }
+      } | null
+    }> | null,
+    readonly cutLineProbabilities?: {
+      readonly __typename: 'CutLineInfo',
+      readonly projectedCutLine: string,
+      readonly probableCutLine: string,
+      readonly sponsorName?: string | null,
+      readonly lastUpdated: number,
+      readonly new?: boolean | null,
+      readonly sponsorLogo?: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      } | null,
+      readonly possibleCutLines: ReadonlyArray<{
+        readonly __typename: 'CutLinePossibility',
+        readonly score: string,
+        readonly probability: number,
+        readonly displayProbability: string
+      }>
+    } | null,
+    readonly bubblePill?: {
+      readonly __typename: 'BubblePill',
+      readonly pillText: string,
+      readonly iconLight: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      },
+      readonly iconDark: {
+        readonly __typename: 'ImageAsset',
+        readonly imageOrg: string,
+        readonly imagePath: string,
+        readonly assetType?: string | null,
+        readonly deliveryType?: string | null,
+        readonly fallbackImage?: string | null
+      }
+    } | null
+  }
 };
 
 type ApiScheduleYearsQueryVariables = Exact<{
@@ -12920,7 +12861,6 @@ type ApiTournamentsQuery = {
 export const ApiLeaderboardV3FieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LeaderboardV3Fields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"LeaderboardV3"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentId"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardRoundHeader"}},{"kind":"Field","name":{"kind":"Name","value":"formatType"}},{"kind":"Field","name":{"kind":"Name","value":"timezone"}},{"kind":"Field","name":{"kind":"Name","value":"winner"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalScore"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"countryName"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"displayPoints"}},{"kind":"Field","name":{"kind":"Name","value":"displayPurse"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"pointsLabel"}},{"kind":"Field","name":{"kind":"Name","value":"winnerIcon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"color"}}]}},{"kind":"Field","name":{"kind":"Name","value":"roundScores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"total"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"winners"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalScore"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"countryName"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"displayPoints"}},{"kind":"Field","name":{"kind":"Name","value":"displayPurse"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"pointsLabel"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"messages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"messageText"}},{"kind":"Field","name":{"kind":"Name","value":"messageIcon"}},{"kind":"Field","name":{"kind":"Name","value":"messageLink"}},{"kind":"Field","name":{"kind":"Name","value":"webViewLink"}},{"kind":"Field","name":{"kind":"Name","value":"externalLink"}},{"kind":"Field","name":{"kind":"Name","value":"platforms"}},{"kind":"Field","name":{"kind":"Name","value":"timing"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURL"}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURLWeb"}},{"kind":"Field","name":{"kind":"Name","value":"tourcastURI"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundNumber"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"isPlayoffActive"}},{"kind":"Field","name":{"kind":"Name","value":"scorecardEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"profileEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"subEvent"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardFeatures"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"new"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipText"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipTitle"}},{"kind":"Field","name":{"kind":"Name","value":"fieldStatType"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardFeatures"}},{"kind":"Field","name":{"kind":"Name","value":"sponsor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogo"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoDark"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"standingsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"standingsHeader"}},{"kind":"Field","name":{"kind":"Name","value":"hideSov"}},{"kind":"Field","name":{"kind":"Name","value":"disableOdds"}},{"kind":"Field","name":{"kind":"Name","value":"disableBettingProfileColumn"}},{"kind":"Field","name":{"kind":"Name","value":"cutLineProbabilities"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"projectedCutLine"}},{"kind":"Field","name":{"kind":"Name","value":"probableCutLine"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorLogo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sponsorName"}},{"kind":"Field","name":{"kind":"Name","value":"lastUpdated"}},{"kind":"Field","name":{"kind":"Name","value":"possibleCutLines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"probability"}},{"kind":"Field","name":{"kind":"Name","value":"displayProbability"}}]}},{"kind":"Field","name":{"kind":"Name","value":"new"}}]}},{"kind":"Field","name":{"kind":"Name","value":"disableLeaderboard"}},{"kind":"Field","name":{"kind":"Name","value":"bubblePill"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"iconLight"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"iconDark"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"pillText"}}]}}]}}]} as unknown as DocumentNode;
 export const ApiPlayerRowV3FieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PlayerRowV3Fields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PlayerRowV3"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardSortOrder"}},{"kind":"Field","name":{"kind":"Name","value":"player"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"shortName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"abbreviations"}},{"kind":"Field","name":{"kind":"Name","value":"abbreviationsAccessibilityText"}},{"kind":"Field","name":{"kind":"Name","value":"amateur"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"countryFlag"}},{"kind":"Field","name":{"kind":"Name","value":"lineColor"}},{"kind":"Field","name":{"kind":"Name","value":"seed"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"tourBound"}},{"kind":"Field","name":{"kind":"Name","value":"assets"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TourBoundAsset"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"tourBoundLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tourBoundLogoDark"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bettingProfile"}},{"kind":"Field","name":{"kind":"Name","value":"playerBioOverrideLink"}}]}},{"kind":"Field","name":{"kind":"Name","value":"scoringData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"groupNumber"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"backNine"}},{"kind":"Field","name":{"kind":"Name","value":"playerState"}},{"kind":"Field","name":{"kind":"Name","value":"teeTime"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokes"}},{"kind":"Field","name":{"kind":"Name","value":"totalStrokesSort"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"totalSort"}},{"kind":"Field","name":{"kind":"Name","value":"thru"}},{"kind":"Field","name":{"kind":"Name","value":"thruSort"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"scoreSort"}},{"kind":"Field","name":{"kind":"Name","value":"movementDirection"}},{"kind":"Field","name":{"kind":"Name","value":"movementAmount"}},{"kind":"Field","name":{"kind":"Name","value":"movementSort"}},{"kind":"Field","name":{"kind":"Name","value":"position"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplaySort"}},{"kind":"Field","name":{"kind":"Name","value":"roundHeader"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"official"}},{"kind":"Field","name":{"kind":"Name","value":"officialSort"}},{"kind":"Field","name":{"kind":"Name","value":"projected"}},{"kind":"Field","name":{"kind":"Name","value":"projectedSort"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovement"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovementAmount"}},{"kind":"Field","name":{"kind":"Name","value":"rankingMovementAmountSort"}},{"kind":"Field","name":{"kind":"Name","value":"rankLogoLight"}},{"kind":"Field","name":{"kind":"Name","value":"rankLogoDark"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipText"}},{"kind":"Field","name":{"kind":"Name","value":"tooltipTitle"}},{"kind":"Field","name":{"kind":"Name","value":"oddsToWin"}},{"kind":"Field","name":{"kind":"Name","value":"oddsSwing"}},{"kind":"Field","name":{"kind":"Name","value":"oddsOptionId"}},{"kind":"Field","name":{"kind":"Name","value":"oddsSort"}},{"kind":"Field","name":{"kind":"Name","value":"hasStoryContent"}},{"kind":"Field","name":{"kind":"Name","value":"storyContentRound"}},{"kind":"Field","name":{"kind":"Name","value":"storyContentRounds"}},{"kind":"Field","name":{"kind":"Name","value":"playerIcon"}}]}}]}}]} as unknown as DocumentNode;
 export const ApiInformationRowFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"InformationRowFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"InformationRow"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardSortOrder"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}},{"kind":"Field","name":{"kind":"Name","value":"mobileDisplayText"}},{"kind":"Field","name":{"kind":"Name","value":"sponsorName"}}]}}]} as unknown as DocumentNode;
-export const ApiLeaderboardHoleByHoleFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LeaderboardHoleByHoleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"LeaderboardHoleByHole"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentId"}},{"kind":"Field","name":{"kind":"Name","value":"currentRound"}},{"kind":"Field","name":{"kind":"Name","value":"rounds"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundNumber"}},{"kind":"Field","name":{"kind":"Name","value":"displayText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"holeHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"hole"}},{"kind":"Field","name":{"kind":"Name","value":"par"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courseHoleHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"holeHeaders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"order"}},{"kind":"Field","name":{"kind":"Name","value":"displayValue"}},{"kind":"Field","name":{"kind":"Name","value":"par"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"hostCourse"}},{"kind":"Field","name":{"kind":"Name","value":"scoringLevel"}},{"kind":"Field","name":{"kind":"Name","value":"enabled"}},{"kind":"Field","name":{"kind":"Name","value":"features"}}]}},{"kind":"Field","name":{"kind":"Name","value":"playerData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"playerId"}},{"kind":"Field","name":{"kind":"Name","value":"courseId"}},{"kind":"Field","name":{"kind":"Name","value":"courseCode"}},{"kind":"Field","name":{"kind":"Name","value":"scores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"holeNumber"}},{"kind":"Field","name":{"kind":"Name","value":"par"}},{"kind":"Field","name":{"kind":"Name","value":"yardage"}},{"kind":"Field","name":{"kind":"Name","value":"sequenceNumber"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"roundScore"}}]}},{"kind":"Field","name":{"kind":"Name","value":"out"}},{"kind":"Field","name":{"kind":"Name","value":"in"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"totalToPar"}}]}}]}}]} as unknown as DocumentNode;
 export const ApiScheduleTournamentFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"startDate"}},{"kind":"Field","name":{"kind":"Name","value":"dateAccessibilityText"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state"}},{"kind":"Field","name":{"kind":"Name","value":"stateCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"countryCode"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"champion"}},{"kind":"Field","name":{"kind":"Name","value":"championId"}},{"kind":"Field","name":{"kind":"Name","value":"champions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"playerId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"championEarnings"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImage"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardTakeover"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"sequenceNumber"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsURL"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingHeading"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingValue"}},{"kind":"Field","name":{"kind":"Name","value":"display"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentCategoryInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"logoLight"}},{"kind":"Field","name":{"kind":"Name","value":"logoLightAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"logoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterAttractionId"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterScheme"}},{"kind":"Field","name":{"kind":"Name","value":"iosTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"useTournamentSiteURL"}}]}}]} as unknown as DocumentNode;
 export const ApiScheduleMonthFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"startDate"}},{"kind":"Field","name":{"kind":"Name","value":"dateAccessibilityText"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state"}},{"kind":"Field","name":{"kind":"Name","value":"stateCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"countryCode"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"champion"}},{"kind":"Field","name":{"kind":"Name","value":"championId"}},{"kind":"Field","name":{"kind":"Name","value":"champions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"playerId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"championEarnings"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImage"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardTakeover"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"sequenceNumber"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsURL"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingHeading"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingValue"}},{"kind":"Field","name":{"kind":"Name","value":"display"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentCategoryInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"logoLight"}},{"kind":"Field","name":{"kind":"Name","value":"logoLightAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"logoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterAttractionId"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterScheme"}},{"kind":"Field","name":{"kind":"Name","value":"iosTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"useTournamentSiteURL"}}]}}]} as unknown as DocumentNode;
 export const ApiScheduleFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Schedule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"tour"}},{"kind":"Field","name":{"kind":"Name","value":"seasonYear"}},{"kind":"Field","name":{"kind":"Name","value":"completed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"upcoming"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleMonthFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"filters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleTournamentFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleTournament"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"startDate"}},{"kind":"Field","name":{"kind":"Name","value":"dateAccessibilityText"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentName"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogo"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentLogoAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state"}},{"kind":"Field","name":{"kind":"Name","value":"stateCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"countryCode"}},{"kind":"Field","name":{"kind":"Name","value":"courseName"}},{"kind":"Field","name":{"kind":"Name","value":"champion"}},{"kind":"Field","name":{"kind":"Name","value":"championId"}},{"kind":"Field","name":{"kind":"Name","value":"champions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"playerId"}}]}},{"kind":"Field","name":{"kind":"Name","value":"championEarnings"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImage"}},{"kind":"Field","name":{"kind":"Name","value":"beautyImageAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"status"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundDisplay"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatus"}},{"kind":"Field","name":{"kind":"Name","value":"roundStatusColor"}},{"kind":"Field","name":{"kind":"Name","value":"leaderboardTakeover"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tournamentStatus"}},{"kind":"Field","name":{"kind":"Name","value":"sortDate"}},{"kind":"Field","name":{"kind":"Name","value":"sequenceNumber"}},{"kind":"Field","name":{"kind":"Name","value":"purse"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsURL"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingHeading"}},{"kind":"Field","name":{"kind":"Name","value":"tourStandingValue"}},{"kind":"Field","name":{"kind":"Name","value":"display"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentCategoryInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"logoLight"}},{"kind":"Field","name":{"kind":"Name","value":"logoLightAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"logoDark"}},{"kind":"Field","name":{"kind":"Name","value":"logoDarkAsset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"imageOrg"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"assetType"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryType"}},{"kind":"Field","name":{"kind":"Name","value":"fallbackImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketmasterAttractionId"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"androidTicketmasterScheme"}},{"kind":"Field","name":{"kind":"Name","value":"iosTicketmasterApiKey"}},{"kind":"Field","name":{"kind":"Name","value":"ticketsEnabled"}},{"kind":"Field","name":{"kind":"Name","value":"tournamentSiteURL"}},{"kind":"Field","name":{"kind":"Name","value":"useTournamentSiteURL"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ScheduleMonthFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ScheduleMonth"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"month"}},{"kind":"Field","name":{"kind":"Name","value":"monthSort"}},{"kind":"Field","name":{"kind":"Name","value":"tournaments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"ScheduleTournamentFields"}}]}}]}}]} as unknown as DocumentNode;

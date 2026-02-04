@@ -1,4 +1,7 @@
-import type { ScheduleClient } from "@putting-pals/putting-pals-core";
+import {
+  type ScheduleClient,
+  UnsupportedTourCodeError,
+} from "@putting-pals/putting-pals-core";
 import type {
   Schedule,
   ScheduleUpcoming,
@@ -14,7 +17,7 @@ export class ScheduleGraphQlClient implements ScheduleClient {
 
   async getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     return this.sdk
-      .ScheduleYears({ tourCode: tourCode as Exclude<TourCode, "D" | "P"> })
+      .ScheduleYears({ tourCode: this.validateTourCode(tourCode) })
       .then((data) => data.scheduleYears);
   }
 
@@ -24,7 +27,7 @@ export class ScheduleGraphQlClient implements ScheduleClient {
 
   async getCompleteSchedule(tourCode: TourCode): Promise<readonly Schedule[]> {
     return this.sdk
-      .CompleteSchedule({ tourCode: tourCode as Exclude<TourCode, "D" | "P"> })
+      .CompleteSchedule({ tourCode: this.validateTourCode(tourCode) })
       .then((data) => data.completeSchedule);
   }
 
@@ -32,5 +35,12 @@ export class ScheduleGraphQlClient implements ScheduleClient {
     return this.sdk
       .UpcomingSchedule({ tourCode })
       .then((data) => data.upcomingSchedule);
+  }
+
+  private validateTourCode(tourCode: TourCode) {
+    if (tourCode === "D" || tourCode === "L" || tourCode === "P") {
+      throw new UnsupportedTourCodeError(tourCode);
+    }
+    return tourCode;
   }
 }

@@ -8,7 +8,7 @@ export class TourServiceImpl implements TourService {
   }
 
   async getTours(): Promise<readonly Tour[]> {
-    const allSupportedTours = [
+    const allTours = [
       {
         tourCode: "P" as const,
         tourName: "Putting Pals Tour",
@@ -22,12 +22,16 @@ export class TourServiceImpl implements TourService {
         tourName: "DP World Tour",
       },
       {
-        tourCode: "S" as const,
-        tourName: "PGA TOUR Champions",
+        tourCode: "L" as const,
+        tourName: "LIV Golf Tour",
       },
       {
         tourCode: "H" as const,
         tourName: "Korn Ferry Tour",
+      },
+      {
+        tourCode: "S" as const,
+        tourName: "PGA TOUR Champions",
       },
       {
         tourCode: "Y" as const,
@@ -35,14 +39,19 @@ export class TourServiceImpl implements TourService {
       },
     ];
 
-    const isDpWorldTourEnabled =
-      await this.featureFlagService.isFeatureFlagEnabled(
-        "enable-dp-world-tour",
-      );
-    if (isDpWorldTourEnabled) {
-      return allSupportedTours;
-    } else {
-      return allSupportedTours.filter((tour) => tour.tourCode !== "D");
-    }
+    const [isDpWorldTourEnabled, isLivGolfTourEnabled] = await Promise.all([
+      this.featureFlagService.isFeatureFlagEnabled("enable-dp-world-tour"),
+      this.featureFlagService.isFeatureFlagEnabled("enable-liv-golf-tour"),
+    ]);
+
+    return allTours.filter((tour) => {
+      if (tour.tourCode === "D") {
+        return isDpWorldTourEnabled;
+      } else if (tour.tourCode === "L") {
+        return isLivGolfTourEnabled;
+      } else {
+        return true;
+      }
+    });
   }
 }
