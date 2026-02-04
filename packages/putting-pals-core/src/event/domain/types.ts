@@ -18,6 +18,11 @@ export interface EventEmitter {
   getPriority(): number;
 }
 
+export interface ProcessEventResult {
+  emitters: EventEmitter[];
+  commitSnapshot: () => Promise<void>;
+}
+
 type Event<TName extends string, T> = {
   __typename: TName;
 } & T;

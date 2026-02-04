@@ -21,18 +21,19 @@ export class LeaderboardEventProcessorImpl
     const tournamentId =
       await this.tournamentResolver.getActiveTournamentId(tourCode);
 
-    const eventEmitters = await Promise.all(
+    const results = await Promise.all(
       this.leaderboardEventProcessorServices.map((eventProcessorService) =>
         eventProcessorService.processEvent(tourCode, tournamentId),
       ),
     );
 
-    const events = eventEmitters
-      .flat()
+    const events = results
+      .flatMap((result) => result.emitters)
       .sort((a, b) => a.getPriority() - b.getPriority())
       .flatMap((eventEmitter) => eventEmitter.emit());
 
     if (events.length > 0) {
+      await Promise.all(results.map((result) => result.commitSnapshot()));
       await this.leaderboardFeedRepository.createLeaderboardFeedEvents(
         tourCode,
         tournamentId,
