@@ -9,7 +9,6 @@ import {
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import { Platform } from "react-native";
 import superjson from "superjson";
-import { env } from "~/env/schema";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -88,12 +87,12 @@ const trpcClient = createTRPCClient<AppRouter>({
   links: [
     httpLink({
       url:
-        env.NODE_ENV === "production"
+        process.env.NODE_ENV === "production"
           ? Platform.select({
               web: "api/trpc",
-              default: `${env.EXPO_PUBLIC_SERVER_URL}/api/trpc`,
+              default: `${process.env.EXPO_PUBLIC_SERVER_URL}/api/trpc`,
             })
-          : `${env.EXPO_PUBLIC_SERVER_URL}/trpc`,
+          : `${process.env.EXPO_PUBLIC_SERVER_URL}/trpc`,
       transformer: superjson,
     }),
   ],
