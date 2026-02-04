@@ -1,32 +1,34 @@
+import { assertNever } from "@putting-pals/putting-pals-utils";
 import { Text, View } from "react-native";
 import { RoundStatusBadge } from "~/components/round-status-badge";
 import { RoundStatusLabel } from "~/components/round-status-label";
-import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
+import type {
+  RoundStatus,
+  RoundStatusChangedV1 as RoundStatusChangedV1Type,
+} from "~/providers/trpc/types";
 
 export function RoundStatusChangedV1({
   item,
 }: {
-  item: RouterOutputs["feed"]["get"]["items"][number]["feedItem"] & {
-    __typename: "RoundStatusChangedV1";
-  };
+  item: RoundStatusChangedV1Type;
 }) {
   return (
     <View className="flex flex-col gap-2 p-4">
       <View className="flex flex-row items-center gap-1.5">
-        <RoundStatusBadge color={item.after.roundStatusColor}>
-          {item.after.roundDisplay}
+        <RoundStatusBadge color={item.next.roundStatusColor}>
+          {item.next.roundDisplay}
         </RoundStatusBadge>
         <RoundStatusLabel
           className="line-clamp-1"
-          color={item.after.roundStatusColor}
+          color={item.next.roundStatusColor}
         >
-          {item.after.roundStatusDisplay}
+          {item.next.roundStatusDisplay}
         </RoundStatusLabel>
       </View>
       <Text className="text-foreground">
         {getRoundStatusChangedText(
-          item.after.roundDisplay,
-          item.after.roundStatus,
+          item.next.roundDisplay,
+          item.next.roundStatus,
         )}
       </Text>
     </View>
@@ -35,7 +37,7 @@ export function RoundStatusChangedV1({
 
 function getRoundStatusChangedText(
   roundDisplay: string,
-  roundStatus: RouterOutputs["tournament"]["getById"]["roundStatus"],
+  roundStatus: RoundStatus,
 ) {
   switch (roundStatus) {
     case "UPCOMING":
@@ -51,7 +53,7 @@ function getRoundStatusChangedText(
     case "OFFICIAL":
       return `${getRoundNumberText(roundDisplay)} scores are official`;
     default:
-      return `${getRoundNumberText(roundDisplay)} has been updated`;
+      assertNever(roundStatus);
   }
 }
 

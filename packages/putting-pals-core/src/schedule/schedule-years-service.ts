@@ -1,15 +1,15 @@
 import type {
-  CompetitionService,
-  ScheduleClient,
   ScheduleYears,
-  ScheduleYearsService,
   TourCode,
   Tournament,
-  TournamentService,
-} from "@putting-pals/putting-pals-api";
-import { UnsupportedTourCodeError } from "@putting-pals/putting-pals-api";
+} from "@putting-pals/putting-pals-schema";
 import { parseISO } from "date-fns";
+import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
+import { UnsupportedTourCodeError } from "../error/service-error";
+import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
 import { parseStartDate } from "../tournament/tournament-utils";
+import type { ScheduleYearsService } from "./interfaces/inbound/schedule-years-service";
+import type { ScheduleClient } from "./interfaces/outbound/schedule-client";
 
 export class ScheduleYearsServiceImpl implements ScheduleYearsService {
   constructor(

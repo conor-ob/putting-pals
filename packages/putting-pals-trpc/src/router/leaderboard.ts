@@ -1,15 +1,6 @@
-import z from "zod";
 import { publicProcedure, router } from "../trpc/router";
-import {
-  TourCodeInputSchema,
-  TournamentIdInputSchema,
-} from "../validation/input-schema";
+import { LeaderboardInputSchema } from "../validation/input-schema";
 import { LeaderboardOutputSchema } from "../validation/output-schema";
-
-const LeaderboardInputSchema = z.object({
-  tourCode: TourCodeInputSchema,
-  id: TournamentIdInputSchema.optional(),
-});
 
 export const leaderboardRouter = router({
   getById: publicProcedure

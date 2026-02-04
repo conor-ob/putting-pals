@@ -1,15 +1,8 @@
 import { View } from "react-native";
-import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
+import type { PlayerRowV3 as PlayerRowV3Type } from "~/providers/trpc/types";
 import { NameColumn, PositionColumn, ScoreColumn } from "./leaderboard-columns";
 
-export function PlayerRowV3({
-  row,
-}: {
-  row: Extract<
-    RouterOutputs["leaderboard"]["getById"]["players"][number],
-    { __typename: "PlayerRowV3" }
-  >;
-}) {
+export function PlayerRowV3({ row }: { row: PlayerRowV3Type }) {
   return (
     <View className="flex flex-row items-center">
       <PositionColumn>{row.scoringData.position}</PositionColumn>

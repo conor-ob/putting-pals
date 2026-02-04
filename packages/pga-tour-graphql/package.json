@@ -16,13 +16,14 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-api": "workspace:*",
-    "graphql": "catalog:",
+    "@putting-pals/putting-pals-core": "workspace:*",
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "graphql-request": "catalog:"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
+    "graphql": "catalog:",
     "typescript": "catalog:"
   }
 }

@@ -1,3 +1,4 @@
+import { assertNever } from "@putting-pals/putting-pals-utils";
 import { useCallback, useMemo } from "react";
 import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
@@ -26,13 +27,13 @@ export function FeedPage() {
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("feedError", feedError);
 
-  const feedItems = useMemo(
-    () => feedData?.pages.flatMap((page) => page.items) ?? [],
+  const feedEvents = useMemo(
+    () => feedData?.pages.flatMap((page) => page.events) ?? [],
     [feedData],
   );
 
   // biome-ignore lint/suspicious/noConsole: testing
-  console.log("feedItems", feedItems);
+  console.log("feedEvents", feedEvents);
 
   const handleEndReached = useCallback(() => {
     if (hasNextPage && !isFetchingNextPage) {
@@ -51,22 +52,28 @@ export function FeedPage() {
 
   return (
     <FlatList
-      data={feedItems}
-      keyExtractor={(item) => item.id}
+      data={feedEvents}
+      keyExtractor={(item) => item.sequence.toString()}
       renderItem={({ item }) => {
-        switch (item.feedItem.__typename) {
+        switch (item.payload.__typename) {
           case "RoundStatusChangedV1":
-            return <RoundStatusChangedV1 item={item.feedItem} />;
+            return <RoundStatusChangedV1 item={item.payload} />;
           case "TournamentStatusChangedV1":
-            return <TournamentStatusChangedV1 item={item.feedItem} />;
-          default:
+            return <TournamentStatusChangedV1 item={item.payload} />;
+          case "HotStreakV1":
+          case "LeaderChangedV1":
+          case "PlayerDisqualifiedV1":
+          case "PlayerMissedCutV1":
+          case "PlayerWithdrawnV1":
             return (
               <View className="p-4">
                 <Text className="text-foreground">
-                  {`Unknown event type: ${item.feedItem}`}
+                  {`Unknown event type: ${item.payload.__typename}`}
                 </Text>
               </View>
             );
+          default:
+            assertNever(item.payload);
         }
       }}
       onEndReached={handleEndReached}

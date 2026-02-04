@@ -13,11 +13,11 @@ async function sendEvent() {
     ],
   });
 
-  const supportedTourCodes = ["P", "R", "S", "H", "Y"] as const;
+  const supportedTours = await client.tour.getTours.query();
   await Promise.all(
-    supportedTourCodes.map((tourCode) =>
+    supportedTours.map((tour) =>
       client.event.processEvent.mutate({
-        tourCode,
+        tourCode: tour.tourCode,
         type: "leaderboard/detect-change",
       }),
     ),

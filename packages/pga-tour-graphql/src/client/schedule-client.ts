@@ -1,18 +1,20 @@
+import type { ScheduleClient } from "@putting-pals/putting-pals-core";
 import type {
   Schedule,
-  ScheduleClient,
   ScheduleUpcoming,
   ScheduleYears,
+  Sdk,
   TourCode,
-} from "@putting-pals/putting-pals-api";
-import { GraphQlClient } from "./graphql-client";
-export class ScheduleGraphQlClient
-  extends GraphQlClient
-  implements ScheduleClient
-{
+} from "@putting-pals/putting-pals-schema";
+
+export class ScheduleGraphQlClient implements ScheduleClient {
+  constructor(private readonly sdk: Sdk) {
+    this.sdk = sdk;
+  }
+
   async getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     return this.sdk
-      .ScheduleYears({ tourCode: tourCode as Exclude<TourCode, "P"> })
+      .ScheduleYears({ tourCode: tourCode as Exclude<TourCode, "D" | "P"> })
       .then((data) => data.scheduleYears);
   }
 
@@ -22,7 +24,7 @@ export class ScheduleGraphQlClient
 
   async getCompleteSchedule(tourCode: TourCode): Promise<readonly Schedule[]> {
     return this.sdk
-      .CompleteSchedule({ tourCode: tourCode as Exclude<TourCode, "P"> })
+      .CompleteSchedule({ tourCode: tourCode as Exclude<TourCode, "D" | "P"> })
       .then((data) => data.completeSchedule);
   }
 

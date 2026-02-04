@@ -1,12 +1,12 @@
 import { Text, View, type ViewProps } from "react-native";
 import { cn } from "~/lib/utils";
-import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
+import type { Tournament } from "~/providers/trpc/types";
 
 export function TournamentInfo({
   className,
   tournament,
   ...props
-}: { tournament: RouterOutputs["tournament"]["getById"] } & ViewProps) {
+}: { tournament: Tournament } & ViewProps) {
   // TODO: carousel
   return (
     <View className={cn("", className)} {...props}>

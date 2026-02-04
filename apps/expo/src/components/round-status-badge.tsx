@@ -4,7 +4,7 @@ import type { View, ViewProps } from "react-native";
 import { Badge } from "~/components/ui/badge";
 import { Text } from "~/components/ui/text";
 import { cn } from "~/lib/utils";
-import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
+import type { RoundStatusColor } from "~/providers/trpc/types";
 
 const roundStatusBadgeVariants = cva("px-1.5 py-0.25", {
   variants: {
@@ -14,10 +14,7 @@ const roundStatusBadgeVariants = cva("px-1.5 py-0.25", {
       GREEN: "bg-pga-green",
       RED: "bg-pga-red",
       YELLOW: "bg-pga-yellow",
-    } satisfies Record<
-      RouterOutputs["tournament"]["getById"]["roundStatusColor"],
-      string
-    >,
+    } satisfies Record<RoundStatusColor, string>,
   },
   defaultVariants: {
     color: "GRAY",
@@ -32,10 +29,7 @@ const roundStatusBadgeTextVariants = cva("text-xs font-semibold uppercase", {
       GREEN: "text-white",
       RED: "text-white",
       YELLOW: "text-black",
-    } satisfies Record<
-      RouterOutputs["tournament"]["getById"]["roundStatusColor"],
-      string
-    >,
+    } satisfies Record<RoundStatusColor, string>,
   },
   defaultVariants: {
     color: "GRAY",

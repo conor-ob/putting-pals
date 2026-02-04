@@ -1,12 +1,10 @@
-import type {
-  FeedService,
-  LeaderboardEvent,
-  LeaderboardFeedRepository,
-  LeaderboardService,
-  TourCode,
-  TournamentResolver,
-  TournamentService,
-} from "@putting-pals/putting-pals-api";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
+import type { LeaderboardFeedEvent } from "../event/domain/types";
+import type { LeaderboardService } from "../leaderboard/interfaces/inbound/leaderboard-service";
+import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
+import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
+import type { FeedService } from "./interfaces/inbound/feed-service";
+import type { LeaderboardFeedRepository } from "./interfaces/outbound/leaderboard-feed-repository";
 
 const PAGE_SIZE = 20;
 
@@ -38,24 +36,24 @@ export class FeedServiceImpl implements FeedService {
     );
 
     const hasMore = items.length > PAGE_SIZE;
-    const feedItems = hasMore ? items.slice(0, -1) : items;
+    const feedEvents = hasMore ? items.slice(0, -1) : items;
     const nextCursor = hasMore
-      ? feedItems[feedItems.length - 1]?.seq
+      ? feedEvents[feedEvents.length - 1]?.sequence
       : undefined;
 
     return {
-      // items: feedItems.map((item) => ({
+      // events: feedEvents.map((item) => ({
       //   ...item,
       //   feedItem: this.hydrate(item.feedItem, tournament, leaderboard),
       // })),
-      items: feedItems,
+      events: feedEvents,
       nextCursor,
     };
   }
 
   // biome-ignore lint/correctness/noUnusedPrivateClassMembers: todo
   private hydrate(
-    feedItem: LeaderboardEvent,
+    feedItem: LeaderboardFeedEvent,
     tournament: Awaited<ReturnType<TournamentService["getTournament"]>>,
     leaderboard: Awaited<ReturnType<LeaderboardService["getLeaderboard"]>>,
   ) {
@@ -63,8 +61,8 @@ export class FeedServiceImpl implements FeedService {
       case "LeaderChangedV1":
         return {
           ...feedItem,
-          before: {
-            players: feedItem.before.players.flatMap((player) => {
+          prev: {
+            players: feedItem.prev.players.flatMap((player) => {
               const playerMatch = leaderboard.players
                 .filter((p) => p.__typename === "PlayerRowV3")
                 .find((p) => p.player.id === player.player.id)?.player;
@@ -75,8 +73,8 @@ export class FeedServiceImpl implements FeedService {
               }
             }),
           },
-          after: {
-            players: feedItem.before.players.flatMap((player) => {
+          next: {
+            players: feedItem.next.players.flatMap((player) => {
               const playerMatch = leaderboard.players
                 .filter((p) => p.__typename === "PlayerRowV3")
                 .find((p) => p.player.id === player.player.id)?.player;
@@ -103,7 +101,7 @@ export class FeedServiceImpl implements FeedService {
     id?: string,
   ): Promise<string> {
     if (id === undefined) {
-      return await this.tournamentResolver.getCurrentTournamentId(tourCode);
+      return await this.tournamentResolver.getActiveTournamentId(tourCode);
     }
     return id;
   }

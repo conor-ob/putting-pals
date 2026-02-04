@@ -1,26 +1,14 @@
-import type {
-  LeaderboardClient,
-  LeaderboardHoleByHole,
-  LeaderboardV3,
-} from "@putting-pals/putting-pals-api";
-import { GraphQlClient } from "./graphql-client";
+import type { LeaderboardClient } from "@putting-pals/putting-pals-core";
+import type { LeaderboardV3, Sdk } from "@putting-pals/putting-pals-schema";
 
-export class LeaderboardGraphQlClient
-  extends GraphQlClient
-  implements LeaderboardClient
-{
+export class LeaderboardGraphQlClient implements LeaderboardClient {
+  constructor(private readonly sdk: Sdk) {
+    this.sdk = sdk;
+  }
+
   async getLeaderboard(id: string): Promise<LeaderboardV3> {
     return this.sdk
       .LeaderboardV3({ leaderboardV3Id: id })
       .then((data) => data.leaderboardV3);
-  }
-
-  async getLeaderboardHoleByHole(
-    id: string,
-    round: number,
-  ): Promise<LeaderboardHoleByHole> {
-    return this.sdk
-      .LeaderboardHoleByHole({ tournamentId: id, round })
-      .then((data) => data.leaderboardHoleByHole);
   }
 }

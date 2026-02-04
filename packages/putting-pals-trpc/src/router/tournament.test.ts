@@ -6,7 +6,8 @@ import type {
   ScheduleService,
   ScheduleYearsService,
   TournamentService,
-} from "@putting-pals/putting-pals-api";
+  TourService,
+} from "@putting-pals/putting-pals-core";
 import { TRPCError } from "@trpc/server";
 import { expect, suite, test, vi } from "vitest";
 import { ZodError } from "zod";
@@ -26,6 +27,7 @@ suite("tournamentRouter", () => {
         feedService: vi.fn() as unknown as FeedService,
         scheduleService: vi.fn() as unknown as ScheduleService,
         scheduleYearsService: vi.fn() as unknown as ScheduleYearsService,
+        tourService: vi.fn() as unknown as TourService,
       }),
     );
 

@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import type { TextProps } from "react-native";
 import { Text } from "~/components/ui/text";
 import { cn } from "~/lib/utils";
-import type { RouterOutputs } from "~/providers/trpc/utils/trpc";
+import type { RoundStatusColor } from "~/providers/trpc/types";
 
 const roundStatusLabelVariants = cva(
   // "inline-flex items-center gap-x-1.5 rounded-sm px-1.5 py-0.5 text-sm font-bold uppercase leading-tight tracking-tight transition-colors",
@@ -16,10 +16,7 @@ const roundStatusLabelVariants = cva(
         GREEN: "text-pga-green",
         RED: "text-pga-red",
         YELLOW: "text-pga-yellow",
-      } satisfies Record<
-        RouterOutputs["tournament"]["getById"]["roundStatusColor"],
-        string
-      >,
+      } satisfies Record<RoundStatusColor, string>,
     },
     defaultVariants: {
       color: "GRAY",

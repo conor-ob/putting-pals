@@ -1,32 +1,4 @@
 import {
-  LeaderboardGraphQlClient,
-  ScheduleGraphQlClient,
-  TournamentGraphQlClient,
-} from "@putting-pals/pga-tour-graphql";
-import { PgaTourCheerioWebScraper } from "@putting-pals/pga-tour-scaper";
-import {
-  CompetitionServiceImpl,
-  FeedServiceImpl,
-  LeaderboardServiceImpl,
-  ScheduleServiceImpl,
-  ScheduleYearsServiceImpl,
-  TournamentResolverImpl,
-  TournamentServiceImpl,
-} from "@putting-pals/putting-pals-core";
-import { CompetitionRepositoryImpl } from "@putting-pals/putting-pals-data";
-import {
-  AggregatePostgresRepository,
-  createDatabaseConnection,
-  LeaderboardFeedPostgresRepository,
-} from "@putting-pals/putting-pals-db";
-import {
-  ApolloCacheNormalizer,
-  LeaderboardEventProcessorImpl,
-  LeaderboardEventProcessorServiceImpl,
-  LeaderboardHoleByHoleEventProcessorServiceImpl,
-  TournamentEventProcessorImpl,
-} from "@putting-pals/putting-pals-event";
-import {
   type AppRouter,
   appRouter,
   createTrpcContext,
@@ -48,7 +20,17 @@ export default function (fastify: FastifyInstance) {
         res: _res,
         info: _info,
       }: CreateFastifyContextOptions) {
-        return createContext();
+        return createTrpcContext({
+          competitionService: fastify.dependencies.competitionService,
+          feedService: fastify.dependencies.feedService,
+          leaderboardEventProcessor:
+            fastify.dependencies.leaderboardEventProcessor,
+          leaderboardService: fastify.dependencies.leaderboardService,
+          scheduleService: fastify.dependencies.scheduleService,
+          scheduleYearsService: fastify.dependencies.scheduleYearsService,
+          tourService: fastify.dependencies.tourService,
+          tournamentService: fastify.dependencies.tournamentService,
+        });
       },
       onError({ path, type, error }) {
         fastify.log.error(
@@ -57,99 +39,5 @@ export default function (fastify: FastifyInstance) {
         );
       },
     } satisfies FastifyTRPCPluginOptions<AppRouter>["trpcOptions"],
-  });
-}
-
-function createContext() {
-  const tournamentClient = new TournamentGraphQlClient();
-  const leaderboardClient = new LeaderboardGraphQlClient();
-  const scheduleClient = new ScheduleGraphQlClient();
-  const competitionRepository = new CompetitionRepositoryImpl();
-
-  const pgaTourWebScraper = new PgaTourCheerioWebScraper();
-
-  const competitionService = new CompetitionServiceImpl(competitionRepository);
-  const tournamentResolver = new TournamentResolverImpl(
-    tournamentClient,
-    pgaTourWebScraper,
-    competitionService,
-  );
-  const tournamentService = new TournamentServiceImpl(
-    tournamentClient,
-    tournamentResolver,
-  );
-  const leaderboardService = new LeaderboardServiceImpl(
-    leaderboardClient,
-    tournamentResolver,
-    competitionService,
-  );
-  const scheduleService = new ScheduleServiceImpl(
-    scheduleClient,
-    competitionService,
-  );
-  const scheduleYearsService = new ScheduleYearsServiceImpl(
-    scheduleClient,
-    competitionService,
-    tournamentService,
-  );
-
-  const database = createDatabaseConnection();
-  const leaderboardFeedRepository = new LeaderboardFeedPostgresRepository(
-    database,
-  );
-  const aggregateRepository = new AggregatePostgresRepository(database);
-
-  const feedService = new FeedServiceImpl(
-    tournamentService,
-    leaderboardService,
-    tournamentResolver,
-    leaderboardFeedRepository,
-  );
-
-  const normalizer = new ApolloCacheNormalizer({
-    typePolicies: {
-      LeaderboardHoleByHole: {
-        keyFields: ["tournamentId"],
-      },
-      PlayerRowHoleByHole: {
-        keyFields: ["playerId"],
-      },
-      CourseHoleHeader: {
-        keyFields: ["courseId"],
-      },
-    },
-  });
-
-  const leaderboardEventProcessor = new LeaderboardEventProcessorImpl(
-    tournamentResolver,
-    [
-      new TournamentEventProcessorImpl(
-        tournamentService,
-        normalizer,
-        aggregateRepository,
-      ),
-      new LeaderboardEventProcessorServiceImpl(
-        leaderboardService,
-        normalizer,
-        aggregateRepository,
-      ),
-      new LeaderboardHoleByHoleEventProcessorServiceImpl(
-        tournamentService,
-        leaderboardService,
-        normalizer,
-        aggregateRepository,
-      ),
-    ],
-    leaderboardFeedRepository,
-  );
-
-  return createTrpcContext({
-    tournamentService,
-    competitionService,
-    leaderboardService,
-    leaderboardEventProcessor,
-    feedService,
-    scheduleService,
-    scheduleYearsService,
   });
 }

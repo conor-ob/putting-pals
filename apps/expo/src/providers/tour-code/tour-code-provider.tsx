@@ -1,9 +1,12 @@
-import type { TourCode } from "@putting-pals/putting-pals-api";
 import { createContext, type ReactNode, useContext } from "react";
+import type { Tour, TourCode } from "~/providers/trpc/types";
 import { useLocalStorage } from "~/storage/use-local-storage";
+import { trpc } from "../trpc/utils/trpc";
+import { useQuery } from "../trpc/utils/use-query";
 
 interface TourCodeContextType {
   tourCode: TourCode;
+  tours: readonly Tour[];
   setTourCode: (tourCode: TourCode) => void;
 }
 
@@ -16,9 +19,11 @@ export function TourCodeProvider({ children }: { children: ReactNode }) {
     "putting-pals:app:tour-code:v1",
   );
 
+  const { data: tours } = useQuery(trpc.tour.getTours.queryOptions());
+
   return (
     <TourCodeContext.Provider
-      value={{ tourCode: tourCode ?? "P", setTourCode }}
+      value={{ tourCode: tourCode ?? "P", tours: tours ?? [], setTourCode }}
     >
       {children}
     </TourCodeContext.Provider>

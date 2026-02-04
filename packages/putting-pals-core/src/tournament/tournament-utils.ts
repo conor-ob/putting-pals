@@ -1,4 +1,4 @@
-import type { Tournament } from "@putting-pals/putting-pals-api";
+import type { Tournament } from "@putting-pals/putting-pals-schema";
 import { formatISO, parse } from "date-fns";
 import { stripParenthesizedYear } from "../utils/string-utils";
 

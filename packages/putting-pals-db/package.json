@@ -20,7 +20,8 @@
     "dev": "drizzle-kit studio"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-api": "workspace:*",
+    "@putting-pals/putting-pals-core": "workspace:*",
+    "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "catalog:",
@@ -32,7 +33,6 @@
     "@types/node": "catalog:",
     "@types/pg": "^8.16.0",
     "drizzle-kit": "^0.31.8",
-    "fast-json-patch": "^3.1.1",
     "typescript": "catalog:"
   }
 }

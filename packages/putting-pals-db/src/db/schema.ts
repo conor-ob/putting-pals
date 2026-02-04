@@ -1,33 +1,31 @@
+import type {
+  FeatureFlagKey,
+  LeaderboardFeedEvent,
+  LeaderboardSnapshot,
+} from "@putting-pals/putting-pals-core";
+import type { TourCode } from "@putting-pals/putting-pals-schema";
 import {
-  type AggregateType,
-  type LeaderboardEvent,
-  type LeaderboardEventType,
-  type TourCode,
-  TourCodeSchema,
-} from "@putting-pals/putting-pals-api";
-import {
+  boolean,
   index,
-  integer,
   jsonb,
   pgTable,
+  primaryKey,
   serial,
   text,
   timestamp,
-  uuid,
 } from "drizzle-orm/pg-core";
-import type { Operation } from "fast-json-patch";
 
-const identifierColumns = {
-  id: uuid("id").primaryKey().defaultRandom(),
-};
-
-const timestampColumns = {
+const createdAtColumn = {
   createdAt: timestamp("created_at", {
     withTimezone: true,
     precision: 3,
   })
     .notNull()
     .defaultNow(),
+};
+
+const timestampColumns = {
+  ...createdAtColumn,
   updatedAt: timestamp("updated_at", {
     withTimezone: true,
     precision: 3,
@@ -35,73 +33,52 @@ const timestampColumns = {
     .notNull()
     .defaultNow()
     .$onUpdate(() => new Date()),
-  deletedAt: timestamp("deleted_at", {
-    withTimezone: true,
-    precision: 3,
-  }),
 };
 
 const tournamentIdentifierColumns = {
-  tourCode: text("tour_code", {
-    enum: [...TourCodeSchema.options] as [TourCode, ...TourCode[]],
-  }).notNull(),
+  tourCode: text("tour_code").notNull().$type<TourCode>(),
   tournamentId: text("tournament_id").notNull(),
 };
 
-export const aggregateSnapshotTable = pgTable(
-  "aggregate_snapshot",
-  {
-    ...identifierColumns,
-    ...timestampColumns,
-    ...tournamentIdentifierColumns,
-    type: text("type").notNull().$type<AggregateType>(),
-    patchSeq: integer("patch_seq").notNull().default(0),
-    aggregate: jsonb("aggregate").notNull().$type<object>(),
-  },
-  (table) => [
-    index("aggregate_snapshot_tournament_type_idx").on(
-      table.tourCode,
-      table.tournamentId,
-      table.type,
-    ),
-  ],
-);
+export const activeTournamentTable = pgTable("active_tournament", {
+  tourCode: text("tour_code").primaryKey().$type<TourCode>(),
+  tournamentId: text("tournament_id").notNull(),
+  ...timestampColumns,
+});
 
-export const aggregatePatchTable = pgTable(
-  "aggregate_patch",
+export const featureFlagTable = pgTable("feature_flag", {
+  flagKey: text("flag_key").primaryKey().$type<FeatureFlagKey>(),
+  enabled: boolean("enabled").notNull().default(false),
+  ...timestampColumns,
+});
+
+export const leaderboardSnapshotTable = pgTable(
+  "leaderboard_snapshot",
   {
-    ...identifierColumns,
-    ...timestampColumns,
     ...tournamentIdentifierColumns,
-    type: text("type").notNull().$type<AggregateType>(),
-    seq: serial("seq").notNull(),
-    patch: jsonb("patch").notNull().$type<Operation[]>(),
+    type: text("type").notNull().$type<LeaderboardSnapshot["__typename"]>(),
+    payload: jsonb("payload").notNull().$type<LeaderboardSnapshot>(),
+    ...timestampColumns,
   },
   (table) => [
-    index("aggregate_patch_tournament_type_seq_idx").on(
-      table.tourCode,
-      table.tournamentId,
-      table.type,
-      table.seq,
-    ),
+    primaryKey({ columns: [table.tourCode, table.tournamentId, table.type] }),
   ],
 );
 
 export const leaderboardFeedTable = pgTable(
   "leaderboard_feed",
   {
-    ...identifierColumns,
-    ...timestampColumns,
+    sequence: serial("sequence").primaryKey(),
     ...tournamentIdentifierColumns,
-    type: text("type").notNull().$type<LeaderboardEventType>(),
-    seq: serial("seq").notNull(),
-    feedItem: jsonb("feed_item").notNull().$type<LeaderboardEvent>(),
+    type: text("type").notNull().$type<LeaderboardFeedEvent["__typename"]>(),
+    payload: jsonb("payload").notNull().$type<LeaderboardFeedEvent>(),
+    ...createdAtColumn,
   },
   (table) => [
-    index("leaderboard_feed_tournament_idx").on(
+    index("leaderboard_feed_tour_code_tournament_id_sequence_idx").on(
       table.tourCode,
       table.tournamentId,
+      table.sequence,
     ),
-    index("leaderboard_feed_seq_idx").on(table.seq),
   ],
 );

@@ -1,3 +1,9 @@
+import {
+  RoundStatusColorSchema,
+  RoundStatusSchema,
+  TourCodeSchema,
+  TournamentStatusSchema,
+} from "@putting-pals/putting-pals-schema";
 import z from "zod";
 
 export const LeaderboardOutputSchema = z.object({
@@ -49,17 +55,19 @@ export const TournamentOutputSchema = z.object({
   id: z.string(),
   displayDate: z.string(),
   roundDisplay: z.string(),
-  roundStatus: z.enum([
-    "COMPLETE",
-    "GROUPINGS_OFFICIAL",
-    "IN_PROGRESS",
-    "OFFICIAL",
-    "SUSPENDED",
-    "UPCOMING",
-  ]),
-  roundStatusColor: z.enum(["BLUE", "GRAY", "GREEN", "RED", "YELLOW"]),
+  roundStatus: RoundStatusSchema,
+  roundStatusColor: RoundStatusColorSchema,
   roundStatusDisplay: z.string(),
   tournamentLogo: z.array(z.string()).readonly(),
   tournamentName: z.string(),
-  tournamentStatus: z.enum(["NOT_STARTED", "IN_PROGRESS", "COMPLETED"]),
+  tournamentStatus: TournamentStatusSchema,
 });
+
+export const TourOutputSchema = z
+  .array(
+    z.object({
+      tourCode: TourCodeSchema,
+      tourName: z.string(),
+    }),
+  )
+  .readonly();
