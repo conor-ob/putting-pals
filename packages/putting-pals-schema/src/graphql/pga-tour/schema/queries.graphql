@@ -1,9 +1,0 @@
-query LeaderboardV3($leaderboardV3Id: ID!) {
-  leaderboardV3(id: $leaderboardV3Id) {
-    ...LeaderboardV3Fields
-    players {
-      ...PlayerRowV3Fields
-      ...InformationRowFields
-    }
-  }
-}

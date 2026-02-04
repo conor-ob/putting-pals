@@ -1,3 +1,11 @@
+type PuttingPalsPlayerRow {
+  id: ID!
+  leaderboardSortOrder: Int!
+  player: PuttingPalsPlayer!
+  scoringData: PuttingPalsPlayerScoringData!
+  picks: [ID!]!
+}
+
 type PuttingPalsPlayer {
   id: ID!
   countryFlag: String!
@@ -11,17 +19,10 @@ type PuttingPalsPlayerScoringData {
   totalSort: Int!
 }
 
-type PuttingPalsPlayerRow {
-  id: ID!
-  leaderboardSortOrder: Int!
-  player: PuttingPalsPlayer!
-  scoringData: PuttingPalsPlayerScoringData!
-  picks: [ID!]!
-}
-
 extend union LeaderboardRowV3 = PuttingPalsPlayerRow
 
 extend enum TourCode {
   D
+  L
   P
 }
