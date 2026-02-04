@@ -48,8 +48,7 @@
     "superjson": "catalog:",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18",
-    "uniwind": "^1.2.2",
-    "zod": "catalog:"
+    "uniwind": "^1.2.2"
   },
   "devDependencies": {
     "@putting-pals/putting-pals-trpc": "workspace:*",
