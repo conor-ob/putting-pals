@@ -8,3 +8,6 @@ const envSchema = z.object({
 });
 
 export const env = envSchema.parse(process.env);
+
+// biome-ignore lint/suspicious/noConsole: testing
+console.log("env", env);
