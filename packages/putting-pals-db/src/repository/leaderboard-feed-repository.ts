@@ -31,7 +31,6 @@ export class LeaderboardFeedPostgresRepository
       type: string;
       payload: LeaderboardFeedEvent;
       createdAt: Date;
-      updatedAt: Date;
     }[]
   > {
     return this.db

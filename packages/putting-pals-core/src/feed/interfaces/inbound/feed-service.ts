@@ -14,7 +14,6 @@ export interface FeedService {
       type: string;
       payload: LeaderboardFeedEvent;
       createdAt: Date;
-      updatedAt: Date;
     }[];
     nextCursor?: number;
   }>;

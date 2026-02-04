@@ -15,7 +15,6 @@ export interface LeaderboardFeedRepository {
       type: string;
       payload: LeaderboardFeedEvent;
       createdAt: Date;
-      updatedAt: Date;
     }[]
   >;
 

@@ -1,12 +1,12 @@
 import { createContext, type ReactNode, useContext } from "react";
-import type { TourCode } from "~/providers/trpc/types";
+import type { Tour, TourCode } from "~/providers/trpc/types";
 import { useLocalStorage } from "~/storage/use-local-storage";
 import { trpc } from "../trpc/utils/trpc";
 import { useQuery } from "../trpc/utils/use-query";
 
 interface TourCodeContextType {
   tourCode: TourCode;
-  tours: readonly { tourCode: TourCode; tourName: string }[];
+  tours: readonly Tour[];
   setTourCode: (tourCode: TourCode) => void;
 }
 

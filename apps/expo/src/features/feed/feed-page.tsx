@@ -53,7 +53,7 @@ export function FeedPage() {
   return (
     <FlatList
       data={feedEvents}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.sequence.toString()}
       renderItem={({ item }) => {
         switch (item.payload.__typename) {
           case "RoundStatusChangedV1":

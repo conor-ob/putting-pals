@@ -12,10 +12,6 @@ const envSchema = z.object({
     .pipe(z.number()),
   ORIGIN: z.url(),
   DATABASE_URL: getDatabaseUrlSchema(),
-  FF_ENABLE_DP_WORLD_TOUR: z
-    .string()
-    .transform((s) => s === "true")
-    .pipe(z.boolean()),
   CI: z
     .string()
     .default("false")
