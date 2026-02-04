@@ -1,5 +1,5 @@
 import type { TourCode } from "@putting-pals/putting-pals-schema";
-import type { EventEmitter } from "./domain/types";
+import type { EventEmitter, ProcessEventResult } from "./domain/types";
 import type { LeaderboardEventProcessorService } from "./interfaces/inbound/leaderboard-event-processor-service";
 import type {
   LeaderboardSnapshot,
@@ -21,7 +21,7 @@ export abstract class AbstractEventProcessorService<
   async processEvent(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<EventEmitter[]> {
+  ): Promise<ProcessEventResult> {
     const [prevSnapshot, nextSnapshot] = await Promise.all([
       this.getPrevSnapshot(tourCode, tournamentId),
       this.getNextSnapshot(tourCode, tournamentId),
@@ -29,7 +29,7 @@ export abstract class AbstractEventProcessorService<
 
     if (prevSnapshot === undefined) {
       await this.createSnapshot(tourCode, tournamentId, nextSnapshot);
-      return [];
+      return { emitters: [], commitSnapshot: async () => {} };
     }
 
     const eventEmitters = await this.createEventEmitters(
@@ -39,11 +39,11 @@ export abstract class AbstractEventProcessorService<
       nextSnapshot,
     );
 
-    if (eventEmitters.length > 0) {
-      await this.updateSnapshot(tourCode, tournamentId, nextSnapshot);
-    }
-
-    return eventEmitters;
+    return {
+      emitters: eventEmitters,
+      commitSnapshot: () =>
+        this.updateSnapshot(tourCode, tournamentId, nextSnapshot),
+    };
   }
 
   private getPrevSnapshot(
