@@ -37,7 +37,10 @@ COPY --from=pruner /app/out/full/ .
 ARG EXPO_PUBLIC_SERVER_URL
 ENV EXPO_PUBLIC_SERVER_URL=$EXPO_PUBLIC_SERVER_URL
 
-RUN turbo build --filter=@putting-pals/expo
+# Debug: verify the env var is set
+RUN echo "Building with EXPO_PUBLIC_SERVER_URL=$EXPO_PUBLIC_SERVER_URL"
+
+RUN turbo build --filter=@putting-pals/expo --force
 RUN --mount=type=cache,id=s/e4878a57-e3e0-4333-8010-4214a23d4cb3-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm prune --prod --no-optional
 RUN rm -rf ./**/*/src
 
