@@ -7,7 +7,7 @@ const envSchema = z.object({
   EXPO_PUBLIC_SERVER_URL: z.url(),
 });
 
-export const env = envSchema.parse(process.env);
-
 // biome-ignore lint/suspicious/noConsole: testing
-console.log("env", env);
+console.log("process.env", process.env);
+
+export const env = envSchema.parse(process.env);
