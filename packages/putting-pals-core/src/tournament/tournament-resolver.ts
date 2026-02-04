@@ -27,7 +27,14 @@ export class TournamentResolverImpl implements TournamentResolver {
     this.activeTournamentRepository = activeTournamentRepository;
   }
 
-  async getActiveTournamentId(tourCode: TourCode): Promise<string> {
+  async getActiveTournamentId(
+    tourCode: TourCode,
+    id?: string,
+  ): Promise<string> {
+    if (id !== undefined) {
+      return id;
+    }
+
     const activeTournament = await this.getCachedActiveTournamentId(tourCode);
 
     if (

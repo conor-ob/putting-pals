@@ -25,7 +25,10 @@ export class LeaderboardServiceImpl implements LeaderboardService {
     tourCode: TourCode,
     id?: string,
   ): Promise<LeaderboardV3> {
-    const tournamentId = await this.resolveTournamentId(tourCode, id);
+    const tournamentId = await this.tournamentResolver.getActiveTournamentId(
+      tourCode,
+      id,
+    );
     switch (tourCode) {
       case "P":
         return this.getPuttingPalsLeaderboardById(tournamentId);
@@ -37,16 +40,6 @@ export class LeaderboardServiceImpl implements LeaderboardService {
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
-  }
-
-  private async resolveTournamentId(
-    tourCode: TourCode,
-    id?: string,
-  ): Promise<string> {
-    if (id === undefined) {
-      return await this.tournamentResolver.getActiveTournamentId(tourCode);
-    }
-    return id;
   }
 
   private async getPuttingPalsLeaderboardById(

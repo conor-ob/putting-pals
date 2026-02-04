@@ -22,7 +22,10 @@ export class FeedServiceImpl implements FeedService {
   }
 
   async getFeed(tourCode: TourCode, id?: string, cursor?: number) {
-    const tournamentId = await this.resolveTournamentId(tourCode, id);
+    const tournamentId = await this.tournamentResolver.getActiveTournamentId(
+      tourCode,
+      id,
+    );
     const [_tournament, _leaderboard] = await Promise.all([
       this.tournamentService.getTournament(tourCode, tournamentId),
       this.leaderboardService.getLeaderboard(tourCode, tournamentId),
@@ -94,15 +97,5 @@ export class FeedServiceImpl implements FeedService {
       default:
         return feedItem;
     }
-  }
-
-  private async resolveTournamentId(
-    tourCode: TourCode,
-    id?: string,
-  ): Promise<string> {
-    if (id === undefined) {
-      return await this.tournamentResolver.getActiveTournamentId(tourCode);
-    }
-    return id;
   }
 }

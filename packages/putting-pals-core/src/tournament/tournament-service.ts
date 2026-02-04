@@ -15,18 +15,11 @@ export class TournamentServiceImpl implements TournamentService {
   }
 
   async getTournament(tourCode: TourCode, id?: string): Promise<Tournament> {
-    const tournamentId = await this.resolveTournamentId(tourCode, id);
+    const tournamentId = await this.tournamentResolver.getActiveTournamentId(
+      tourCode,
+      id,
+    );
     return this.getTournamentById(tournamentId);
-  }
-
-  private async resolveTournamentId(
-    tourCode: TourCode,
-    id?: string,
-  ): Promise<string> {
-    if (id === undefined) {
-      return this.tournamentResolver.getActiveTournamentId(tourCode);
-    }
-    return id;
   }
 
   async getTournaments(ids: string[]): Promise<Tournament[]> {
