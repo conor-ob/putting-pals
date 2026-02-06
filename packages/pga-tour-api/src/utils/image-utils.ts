@@ -1,7 +1,7 @@
-import type { ImageAsset } from "../tournament/domain/types";
+import type { ApiImageAsset } from "../generated/graphql";
 
 export function getImageUrl(
-  imageAsset: ImageAsset,
+  imageAsset: ApiImageAsset,
   imageFormat: "jpg" | "png",
   imageAdjustment?: string,
 ): string {

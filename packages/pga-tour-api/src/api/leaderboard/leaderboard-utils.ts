@@ -1,4 +1,4 @@
-import type { LeaderboardV3 } from "./domain/types";
+import type { LeaderboardV3 } from "@putting-pals/putting-pals-core";
 import { getCountryFlag } from "./leaderboard-flag-utils";
 
 export function transformLeaderboard(

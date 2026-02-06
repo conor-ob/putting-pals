@@ -15,12 +15,20 @@ export type { FeedService } from "./feed/interfaces/inbound/feed-service";
 export type { LeaderboardFeedRepository } from "./feed/interfaces/outbound/leaderboard-feed-repository";
 export type { FeatureFlagKey } from "./flag/domain/types";
 export type { FeatureFlagRepository } from "./flag/interfaces/outbound/feature-flag-repository";
-export type { LeaderboardV3 } from "./leaderboard/domain/types";
+export type {
+  LeaderboardV3,
+  PlayerRowV3,
+  PuttingPalsPlayer,
+  PuttingPalsPlayerRow,
+  PuttingPalsPlayerScoringData,
+} from "./leaderboard/domain/types";
 export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leaderboard-service";
 export type { LeaderboardClient } from "./leaderboard/interfaces/outbound/leaderboard-client";
 export { injectDependencies } from "./module/dependencies";
 export type {
   Schedule,
+  ScheduleMonth,
+  ScheduleTournament,
   ScheduleUpcoming,
   ScheduleYears,
 } from "./schedule/domain/types";
@@ -38,9 +46,9 @@ export {
 } from "./tournament/domain/schemas";
 export type { Tournament } from "./tournament/domain/types";
 export type { TournamentService } from "./tournament/interfaces/inbound/tournament-service";
+export type { ActiveTournamentClient } from "./tournament/interfaces/outbound/active-tournament-client";
 export type {
   ActiveTournament,
   ActiveTournamentRepository,
 } from "./tournament/interfaces/outbound/active-tournament-repository";
-export type { PgaTourWebScraper } from "./tournament/interfaces/outbound/pga-tour-web-scraper";
 export type { TournamentClient } from "./tournament/interfaces/outbound/tournament-client";

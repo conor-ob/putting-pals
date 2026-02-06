@@ -1,7 +1,7 @@
 import type { LeaderboardFeedEvent } from "../event/domain/types";
 import type { LeaderboardService } from "../leaderboard/interfaces/inbound/leaderboard-service";
 import type { TourCode } from "../tour/domain/types";
-import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
+import type { ActiveTournamentService } from "../tournament/interfaces/inbound/active-tournament-service";
 import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
 import type { FeedService } from "./interfaces/inbound/feed-service";
 import type { LeaderboardFeedRepository } from "./interfaces/outbound/leaderboard-feed-repository";
@@ -12,20 +12,18 @@ export class FeedServiceImpl implements FeedService {
   constructor(
     private readonly tournamentService: TournamentService,
     private readonly leaderboardService: LeaderboardService,
-    private readonly tournamentResolver: TournamentResolver,
+    private readonly activeTournamentService: ActiveTournamentService,
     private readonly leaderboardFeedRepository: LeaderboardFeedRepository,
   ) {
     this.tournamentService = tournamentService;
     this.leaderboardService = leaderboardService;
-    this.tournamentResolver = tournamentResolver;
+    this.activeTournamentService = activeTournamentService;
     this.leaderboardFeedRepository = leaderboardFeedRepository;
   }
 
   async getFeed(tourCode: TourCode, id?: string, cursor?: number) {
-    const tournamentId = await this.tournamentResolver.getActiveTournamentId(
-      tourCode,
-      id,
-    );
+    const tournamentId =
+      await this.activeTournamentService.getActiveTournamentId(tourCode, id);
     const [_tournament, _leaderboard] = await Promise.all([
       this.tournamentService.getTournament(tourCode, tournamentId),
       this.leaderboardService.getLeaderboard(tourCode, tournamentId),

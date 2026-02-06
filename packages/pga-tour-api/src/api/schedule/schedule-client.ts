@@ -5,10 +5,10 @@ import type {
   ScheduleYears,
   TourCode,
 } from "@putting-pals/putting-pals-core";
-import type { Sdk } from "../generated/graphql";
-import { mapDomainToApiTourCode } from "../utils/tour-code";
+import type { Sdk } from "../../generated/graphql";
+import { mapDomainToApiTourCode } from "../../utils/tour-code";
 
-export class ScheduleGraphQlClient implements ScheduleClient {
+export class PgaTourApiScheduleClient implements ScheduleClient {
   constructor(private readonly sdk: Sdk) {
     this.sdk = sdk;
   }
@@ -23,7 +23,7 @@ export class ScheduleGraphQlClient implements ScheduleClient {
     return this.sdk.Schedule({ tourCode, year }).then((data) => data.schedule);
   }
 
-  async getCompleteSchedule(tourCode: TourCode): Promise<readonly Schedule[]> {
+  async getCompleteSchedule(tourCode: TourCode): Promise<Schedule[]> {
     return this.sdk
       .CompleteSchedule({ tourCode: mapDomainToApiTourCode(tourCode) })
       .then((data) => data.completeSchedule);

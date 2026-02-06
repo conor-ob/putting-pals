@@ -20,12 +20,12 @@ import { ScheduleServiceImpl } from "../schedule/schedule-service";
 import { ScheduleYearsServiceImpl } from "../schedule/schedule-years-service";
 import type { TourService } from "../tour/interfaces/inbound/tour-service";
 import { TourServiceImpl } from "../tour/tour-service";
+import { ActiveTournamentServiceImpl } from "../tournament/active-tournament-service";
 import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
+import type { ActiveTournamentClient } from "../tournament/interfaces/outbound/active-tournament-client";
 import type { ActiveTournamentRepository } from "../tournament/interfaces/outbound/active-tournament-repository";
-import type { PgaTourWebScraper } from "../tournament/interfaces/outbound/pga-tour-web-scraper";
 import type { TournamentClient } from "../tournament/interfaces/outbound/tournament-client";
 import { TournamentEventProcessorImpl } from "../tournament/tournament-event-processor";
-import { TournamentResolverImpl } from "../tournament/tournament-resolver";
 import { TournamentServiceImpl } from "../tournament/tournament-service";
 
 export function injectDependencies(
@@ -34,10 +34,17 @@ export function injectDependencies(
   leaderboardFeedRepository: LeaderboardFeedRepository,
   leaderboardSnapshotRepository: LeaderboardSnapshotRepository,
   featureFlagRepository: FeatureFlagRepository,
-  leaderboardClient: LeaderboardClient,
-  scheduleClient: ScheduleClient,
-  tournamentClient: TournamentClient,
-  pgaTourWebScraper: PgaTourWebScraper,
+  pgaTourApiActiveTournamentClient: ActiveTournamentClient,
+  pgaTourApiLeaderboardClient: LeaderboardClient,
+  pgaTourApiScheduleClient: ScheduleClient,
+  pgaTourApiTournamentClient: TournamentClient,
+  espnSportsApiActiveTournamentClient: ActiveTournamentClient,
+  espnSportsApiLeaderboardClient: LeaderboardClient,
+  espnSportsApiScheduleClient: ScheduleClient,
+  espnSportsApiTournamentClient: TournamentClient,
+  puttingPalsApiActiveTournamentClient: ActiveTournamentClient,
+  puttingPalsApiLeaderboardClient: LeaderboardClient,
+  puttingPalsApiScheduleClient: ScheduleClient,
 ): {
   competitionService: CompetitionService;
   feedService: FeedService;
@@ -49,20 +56,22 @@ export function injectDependencies(
   tourService: TourService;
 } {
   const competitionService = new CompetitionServiceImpl(competitionRepository);
-  const tournamentResolver = new TournamentResolverImpl(
-    tournamentClient,
-    pgaTourWebScraper,
-    competitionService,
+  const activeTournamentService = new ActiveTournamentServiceImpl(
+    pgaTourApiActiveTournamentClient,
+    puttingPalsApiActiveTournamentClient,
+    espnSportsApiActiveTournamentClient,
     activeTournamentRepository,
   );
   const tournamentService = new TournamentServiceImpl(
-    tournamentClient,
-    tournamentResolver,
+    pgaTourApiTournamentClient,
+    espnSportsApiTournamentClient,
+    activeTournamentService,
   );
   const leaderboardService = new LeaderboardServiceImpl(
-    leaderboardClient,
-    tournamentResolver,
-    competitionService,
+    puttingPalsApiLeaderboardClient,
+    pgaTourApiLeaderboardClient,
+    espnSportsApiLeaderboardClient,
+    activeTournamentService,
   );
   const featureFlagService = new FeatureFlagServiceImpl(featureFlagRepository);
   return {
@@ -70,11 +79,11 @@ export function injectDependencies(
     feedService: new FeedServiceImpl(
       tournamentService,
       leaderboardService,
-      tournamentResolver,
+      activeTournamentService,
       leaderboardFeedRepository,
     ),
     leaderboardEventProcessor: new LeaderboardEventProcessorImpl(
-      tournamentResolver,
+      activeTournamentService,
       [
         new TournamentEventProcessorImpl(
           tournamentService,
@@ -89,13 +98,14 @@ export function injectDependencies(
     ),
     leaderboardService: leaderboardService,
     scheduleService: new ScheduleServiceImpl(
-      scheduleClient,
-      competitionService,
+      puttingPalsApiScheduleClient,
+      pgaTourApiScheduleClient,
+      espnSportsApiScheduleClient,
     ),
     scheduleYearsService: new ScheduleYearsServiceImpl(
-      scheduleClient,
-      competitionService,
-      tournamentService,
+      puttingPalsApiScheduleClient,
+      pgaTourApiScheduleClient,
+      espnSportsApiScheduleClient,
     ),
     tournamentService: tournamentService,
     tourService: new TourServiceImpl(featureFlagService),

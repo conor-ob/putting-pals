@@ -1,9 +1,9 @@
 import type {
-  PgaTourWebScraper,
+  ActiveTournamentClient,
   TourCode,
 } from "@putting-pals/putting-pals-core";
 import * as cheerio from "cheerio";
-import { mapDomainToApiTourCode } from "../utils/tour-code";
+import { mapDomainToApiTourCode } from "../../utils/tour-code";
 
 type NextDataProps = {
   props: {
@@ -19,7 +19,9 @@ type NextDataProps = {
   };
 };
 
-export class PgaTourCheerioWebScraper implements PgaTourWebScraper {
+export class PgaTourWebScraperActiveTournamentClient
+  implements ActiveTournamentClient
+{
   async getActiveTournamentId(tourCode: TourCode): Promise<string | undefined> {
     const response = await fetch("https://www.pgatour.com/leaderboard");
     const text = await response.text();

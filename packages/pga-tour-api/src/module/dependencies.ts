@@ -1,21 +1,21 @@
 import type {
+  ActiveTournamentClient,
   LeaderboardClient,
-  PgaTourWebScraper,
   ScheduleClient,
   TournamentClient,
 } from "@putting-pals/putting-pals-core";
 import { GraphQLClient } from "graphql-request";
-import { LeaderboardGraphQlClient } from "../client/leaderboard-client";
-import { ScheduleGraphQlClient } from "../client/schedule-client";
-import { TournamentGraphQlClient } from "../client/tournament-client";
+import { PgaTourApiLeaderboardClient } from "../api/leaderboard/leaderboard-client";
+import { PgaTourApiScheduleClient } from "../api/schedule/schedule-client";
+import { PgaTourWebScraperActiveTournamentClient } from "../api/tournament/active-tournament-client";
+import { PgaTourApiTournamentClient } from "../api/tournament/tournament-client";
 import { getSdk } from "../generated/graphql";
-import { PgaTourCheerioWebScraper } from "../scraper/scraper";
 
 export function injectDependencies(): {
   leaderboardClient: LeaderboardClient;
   scheduleClient: ScheduleClient;
   tournamentClient: TournamentClient;
-  pgaTourWebScraper: PgaTourWebScraper;
+  activeTournamentClient: ActiveTournamentClient;
 } {
   const client = new GraphQLClient("https://orchestrator.pgatour.com/graphql", {
     headers: {
@@ -26,9 +26,9 @@ export function injectDependencies(): {
   });
   const sdk = getSdk(client);
   return {
-    leaderboardClient: new LeaderboardGraphQlClient(sdk),
-    scheduleClient: new ScheduleGraphQlClient(sdk),
-    tournamentClient: new TournamentGraphQlClient(sdk),
-    pgaTourWebScraper: new PgaTourCheerioWebScraper(),
+    leaderboardClient: new PgaTourApiLeaderboardClient(sdk),
+    scheduleClient: new PgaTourApiScheduleClient(sdk),
+    tournamentClient: new PgaTourApiTournamentClient(sdk),
+    activeTournamentClient: new PgaTourWebScraperActiveTournamentClient(),
   };
 }

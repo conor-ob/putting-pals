@@ -2,9 +2,10 @@ import type {
   LeaderboardClient,
   LeaderboardV3,
 } from "@putting-pals/putting-pals-core";
-import type { Sdk } from "../generated/graphql";
+import type { Sdk } from "../../generated/graphql";
+import { transformLeaderboard } from "./leaderboard-utils";
 
-export class LeaderboardGraphQlClient implements LeaderboardClient {
+export class PgaTourApiLeaderboardClient implements LeaderboardClient {
   constructor(private readonly sdk: Sdk) {
     this.sdk = sdk;
   }
@@ -13,6 +14,6 @@ export class LeaderboardGraphQlClient implements LeaderboardClient {
   async getLeaderboard(id: string): Promise<LeaderboardV3> {
     return this.sdk
       .LeaderboardV3({ leaderboardV3Id: id })
-      .then((data) => data.leaderboardV3);
+      .then((data) => transformLeaderboard(data.leaderboardV3));
   }
 }

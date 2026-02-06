@@ -1,15 +1,15 @@
 import { formatISO, parse } from "date-fns";
-import { stripParenthesizedYear } from "../utils/string-utils";
-import type { Tournament } from "./domain/types";
+import type { ApiTournament } from "../../generated/graphql";
+import { stripParenthesizedYear } from "../../utils/string-utils";
 
-export function transformTournament(tournament: Tournament): Tournament {
+export function transformTournament(tournament: ApiTournament): ApiTournament {
   return {
     ...tournament,
     tournamentName: stripParenthesizedYear(tournament.tournamentName),
   };
 }
 
-export function parseStartDate(tournament: Tournament): string {
+export function parseStartDate(tournament: ApiTournament): string {
   const startDate = tournament.displayDate.replace(/\s+-\s+\d+/, "");
   const parsedStartDate = parse(startDate, "MMM d, yyyy", new Date());
   return formatISO(parsedStartDate);

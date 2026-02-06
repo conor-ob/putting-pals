@@ -21,6 +21,7 @@ export class StatsService {
           competition.competitors.length > 0,
       );
     const tournaments = await this.tournamentService.getTournaments(
+      "pga-tour",
       competitions.map((competition) => competition.tournamentId),
     );
 

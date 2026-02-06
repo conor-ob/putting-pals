@@ -14,11 +14,13 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
     "codegen": "graphql-codegen --config codegen.ts",
-    "typecheck": "tsc --noEmit true"
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest"
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
     "cheerio": "^1.1.2",
+    "date-fns": "^4.1.0",
     "zod": "catalog:"
   },
   "devDependencies": {
@@ -28,6 +30,7 @@
     "@graphql-codegen/typescript-graphql-request": "^6.4.0",
     "@graphql-codegen/typescript-operations": "^5.0.7",
     "@putting-pals/putting-pals-utils": "workspace:*",
+    "@total-typescript/shoehorn": "^0.1.2",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "graphql": "catalog:",
