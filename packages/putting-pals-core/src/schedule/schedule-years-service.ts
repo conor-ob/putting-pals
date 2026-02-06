@@ -16,10 +16,12 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
     private readonly scheduleClient: ScheduleClient,
     private readonly competitionService: CompetitionService,
     private readonly tournamentService: TournamentService,
+    private readonly espnScheduleClient: ScheduleClient,
   ) {
     this.scheduleClient = scheduleClient;
     this.competitionService = competitionService;
     this.tournamentService = tournamentService;
+    this.espnScheduleClient = espnScheduleClient;
   }
 
   getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
@@ -31,6 +33,9 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
       case "H":
       case "Y":
         return this.getPgaTourScheduleYears(tourCode);
+      case "D":
+      case "L":
+        return this.espnScheduleClient.getScheduleYears(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }

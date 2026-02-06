@@ -1,3 +1,4 @@
+import { injectDependencies as injectEspnRestApiDependencies } from "@putting-pals/espn-rest-api";
 import { injectDependencies as injectPgaTourGraphQlDependencies } from "@putting-pals/pga-tour-graphql";
 import { injectDependencies as injectPgaTourScraperDependencies } from "@putting-pals/pga-tour-scaper";
 import { injectDependencies as injectCoreDependencies } from "@putting-pals/putting-pals-core";
@@ -16,6 +17,7 @@ export default function (fastify: FastifyInstance) {
   const databaseDependencies = injectDatabaseDependencies();
   const pgaTourGraphQlDependencies = injectPgaTourGraphQlDependencies();
   const pgaTourScraperDependencies = injectPgaTourScraperDependencies();
+  const espnRestApiDependencies = injectEspnRestApiDependencies();
   const coreDependencies = injectCoreDependencies(
     dataDependencies.competitionRepository,
     databaseDependencies.activeTournamentRepository,
@@ -26,6 +28,7 @@ export default function (fastify: FastifyInstance) {
     pgaTourGraphQlDependencies.scheduleClient,
     pgaTourGraphQlDependencies.tournamentClient,
     pgaTourScraperDependencies.pgaTourWebScraper,
+    espnRestApiDependencies.espnScheduleClient,
   );
 
   fastify.decorate("dependencies", coreDependencies);

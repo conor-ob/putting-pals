@@ -16,12 +16,17 @@ export class ScheduleServiceImpl implements ScheduleService {
   constructor(
     private readonly scheduleClient: ScheduleClient,
     private readonly competitionService: CompetitionService,
+    private readonly espnScheduleClient: ScheduleClient,
   ) {
     this.scheduleClient = scheduleClient;
     this.competitionService = competitionService;
+    this.espnScheduleClient = espnScheduleClient;
   }
 
-  getSchedule(tourCode: TourCode, year?: string): Promise<readonly Schedule[]> {
+  async getSchedule(
+    tourCode: TourCode,
+    year?: string,
+  ): Promise<readonly Schedule[]> {
     switch (tourCode) {
       case "P":
         return this.getPuttingPalsSchedule(year);
@@ -30,6 +35,9 @@ export class ScheduleServiceImpl implements ScheduleService {
       case "H":
       case "Y":
         return this.getPgaTourSchedule(tourCode, year);
+      case "D":
+      case "L":
+        return this.getEspnSchedule(tourCode, year);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
@@ -44,9 +52,18 @@ export class ScheduleServiceImpl implements ScheduleService {
       case "H":
       case "Y":
         return this.getPgaTourUpcomingSchedule(tourCode);
+      case "D":
+      case "L":
+        return this.getEspnUpcomingSchedule(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
+  }
+
+  private async getEspnUpcomingSchedule(
+    tourCode: TourCode,
+  ): Promise<ScheduleUpcoming> {
+    return this.espnScheduleClient.getUpcomingSchedule(tourCode);
   }
 
   private async getPuttingPalsSchedule(
@@ -91,6 +108,23 @@ export class ScheduleServiceImpl implements ScheduleService {
         completed: filterScheduleMonths(season.completed),
         upcoming: filterScheduleMonths(season.upcoming),
       }));
+  }
+
+  private async getEspnSchedule(
+    tourCode: TourCode,
+    year?: string,
+  ): Promise<readonly Schedule[]> {
+    if (year) {
+      const schedule = await this.espnScheduleClient.getSchedule(
+        tourCode,
+        year,
+      );
+      return [transformSchedule(schedule)];
+    } else {
+      const schedules =
+        await this.espnScheduleClient.getCompleteSchedule(tourCode);
+      return schedules.map(transformSchedule);
+    }
   }
 
   private async getPgaTourSchedule(

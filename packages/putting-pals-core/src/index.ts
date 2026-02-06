@@ -14,6 +14,7 @@ export type { LeaderboardFeedRepository } from "./feed/interfaces/outbound/leade
 export type { FeatureFlagKey } from "./flag/domain/types";
 export type { FeatureFlagRepository } from "./flag/interfaces/outbound/feature-flag-repository";
 export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leaderboard-service";
+export type { EspnLeaderboardClient } from "./leaderboard/interfaces/outbound/espn-leaderboard-client";
 export type { LeaderboardClient } from "./leaderboard/interfaces/outbound/leaderboard-client";
 export { injectDependencies } from "./module/dependencies";
 export type { ScheduleService } from "./schedule/interfaces/inbound/schedule-service";

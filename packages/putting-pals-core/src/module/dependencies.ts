@@ -38,6 +38,7 @@ export function injectDependencies(
   scheduleClient: ScheduleClient,
   tournamentClient: TournamentClient,
   pgaTourWebScraper: PgaTourWebScraper,
+  espnScheduleClient: ScheduleClient,
 ): {
   competitionService: CompetitionService;
   feedService: FeedService;
@@ -91,11 +92,13 @@ export function injectDependencies(
     scheduleService: new ScheduleServiceImpl(
       scheduleClient,
       competitionService,
+      espnScheduleClient,
     ),
     scheduleYearsService: new ScheduleYearsServiceImpl(
       scheduleClient,
       competitionService,
       tournamentService,
+      espnScheduleClient,
     ),
     tournamentService: tournamentService,
     tourService: new TourServiceImpl(featureFlagService),
