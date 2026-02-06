@@ -1,5 +1,5 @@
 {
-  "name": "@putting-pals/putting-pals-data",
+  "name": "@putting-pals/putting-pals-api",
   "version": "0.0.0",
   "type": "module",
   "private": true,

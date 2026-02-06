@@ -1,5 +1,5 @@
 {
-  "name": "@putting-pals/pga-tour-scaper",
+  "name": "@putting-pals/espn-sports-api",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -16,8 +16,7 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-core": "workspace:*",
-    "cheerio": "^1.1.2"
+    "@putting-pals/putting-pals-core": "workspace:*"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",

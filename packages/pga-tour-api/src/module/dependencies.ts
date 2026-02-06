@@ -1,18 +1,21 @@
 import type {
   LeaderboardClient,
+  PgaTourWebScraper,
   ScheduleClient,
   TournamentClient,
 } from "@putting-pals/putting-pals-core";
-import { getSdk } from "@putting-pals/putting-pals-schema";
 import { GraphQLClient } from "graphql-request";
 import { LeaderboardGraphQlClient } from "../client/leaderboard-client";
 import { ScheduleGraphQlClient } from "../client/schedule-client";
 import { TournamentGraphQlClient } from "../client/tournament-client";
+import { getSdk } from "../generated/graphql";
+import { PgaTourCheerioWebScraper } from "../scraper/scraper";
 
 export function injectDependencies(): {
   leaderboardClient: LeaderboardClient;
   scheduleClient: ScheduleClient;
   tournamentClient: TournamentClient;
+  pgaTourWebScraper: PgaTourWebScraper;
 } {
   const client = new GraphQLClient("https://orchestrator.pgatour.com/graphql", {
     headers: {
@@ -26,5 +29,6 @@ export function injectDependencies(): {
     leaderboardClient: new LeaderboardGraphQlClient(sdk),
     scheduleClient: new ScheduleGraphQlClient(sdk),
     tournamentClient: new TournamentGraphQlClient(sdk),
+    pgaTourWebScraper: new PgaTourCheerioWebScraper(),
   };
 }

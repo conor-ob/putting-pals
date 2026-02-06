@@ -2,7 +2,7 @@ import type {
   Tournament,
   TournamentClient,
 } from "@putting-pals/putting-pals-core";
-import type { Sdk } from "@putting-pals/putting-pals-schema";
+import type { Sdk } from "../generated/graphql";
 
 export class TournamentGraphQlClient implements TournamentClient {
   constructor(private readonly sdk: Sdk) {

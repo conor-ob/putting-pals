@@ -2,7 +2,7 @@ import type {
   LeaderboardClient,
   LeaderboardV3,
 } from "@putting-pals/putting-pals-core";
-import type { Sdk } from "@putting-pals/putting-pals-schema";
+import type { Sdk } from "../generated/graphql";
 
 export class LeaderboardGraphQlClient implements LeaderboardClient {
   constructor(private readonly sdk: Sdk) {
