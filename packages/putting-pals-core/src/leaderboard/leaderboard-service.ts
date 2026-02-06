@@ -1,10 +1,8 @@
-import type {
-  LeaderboardV3,
-  TourCode,
-} from "@putting-pals/putting-pals-schema";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import { UnsupportedTourCodeError } from "../error/service-error";
+import type { TourCode } from "../tour/domain/types";
 import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
+import type { LeaderboardV3 } from "./domain/types";
 import type { LeaderboardService } from "./interfaces/inbound/leaderboard-service";
 import type { LeaderboardClient } from "./interfaces/outbound/leaderboard-client";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
@@ -30,12 +28,12 @@ export class LeaderboardServiceImpl implements LeaderboardService {
       id,
     );
     switch (tourCode) {
-      case "P":
+      case "putting-pals-tour":
         return this.getPuttingPalsLeaderboardById(tournamentId);
-      case "R":
-      case "S":
-      case "H":
-      case "Y":
+      case "pga-tour":
+      case "pga-tour-champions":
+      case "pga-tour-americas":
+      case "korn-ferry-tour":
         return this.getPgaTourLeaderboardById(tournamentId);
       default:
         throw new UnsupportedTourCodeError(tourCode);

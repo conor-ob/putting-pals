@@ -1,9 +1,9 @@
+import { stripParenthesizedYear } from "../utils/string-utils";
 import type {
   Schedule,
   ScheduleMonth,
   ScheduleTournament,
-} from "@putting-pals/putting-pals-schema";
-import { stripParenthesizedYear } from "../utils/string-utils";
+} from "./domain/types";
 
 export function transformSchedule(schedule: Schedule): Schedule {
   return {

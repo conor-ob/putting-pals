@@ -1,4 +1,4 @@
-import type { Competitor } from "@putting-pals/putting-pals-schema";
+import type { Competitor } from "../competition/domain/types";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
 

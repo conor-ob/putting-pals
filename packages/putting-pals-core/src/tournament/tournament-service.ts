@@ -1,5 +1,6 @@
-import type { TourCode, Tournament } from "@putting-pals/putting-pals-schema";
 import { NotFoundError } from "../error/service-error";
+import type { TourCode } from "../tour/domain/types";
+import type { Tournament } from "./domain/types";
 import type { TournamentResolver } from "./interfaces/inbound/tournament-resolver";
 import type { TournamentService } from "./interfaces/inbound/tournament-service";
 import type { TournamentClient } from "./interfaces/outbound/tournament-client";

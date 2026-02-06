@@ -1,14 +1,12 @@
 import {
+  type Schedule,
   type ScheduleClient,
+  type ScheduleUpcoming,
+  type ScheduleYears,
+  type TourCode,
   UnsupportedTourCodeError,
 } from "@putting-pals/putting-pals-core";
-import type {
-  Schedule,
-  ScheduleUpcoming,
-  ScheduleYears,
-  Sdk,
-  TourCode,
-} from "@putting-pals/putting-pals-schema";
+import type { Sdk } from "@putting-pals/putting-pals-schema";
 
 export class ScheduleGraphQlClient implements ScheduleClient {
   constructor(private readonly sdk: Sdk) {
@@ -38,9 +36,25 @@ export class ScheduleGraphQlClient implements ScheduleClient {
   }
 
   private validateTourCode(tourCode: TourCode) {
-    if (tourCode === "D" || tourCode === "L" || tourCode === "P") {
+    if (
+      tourCode === "dp-world-tour" ||
+      tourCode === "liv-golf-tour" ||
+      tourCode === "putting-pals-tour"
+    ) {
       throw new UnsupportedTourCodeError(tourCode);
     }
-    return tourCode;
+
+    switch (tourCode) {
+      case "pga-tour":
+        return "R";
+      case "pga-tour-champions":
+        return "S";
+      case "korn-ferry-tour":
+        return "H";
+      case "pga-tour-americas":
+        return "Y";
+      default:
+        throw new UnsupportedTourCodeError(tourCode);
+    }
   }
 }

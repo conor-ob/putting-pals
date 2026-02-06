@@ -1,10 +1,10 @@
-import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { differenceInMinutes } from "date-fns";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import {
   NotFoundError,
   UnsupportedTourCodeError,
 } from "../error/service-error";
+import type { TourCode } from "../tour/domain/types";
 import type { TournamentResolver } from "./interfaces/inbound/tournament-resolver";
 import type {
   ActiveTournament,
@@ -63,12 +63,12 @@ export class TournamentResolverImpl implements TournamentResolver {
     tourCode: TourCode,
   ): Promise<string> {
     switch (tourCode) {
-      case "P":
+      case "putting-pals-tour":
         return this.getActivePuttingPalsTournamentId(tourCode);
-      case "R":
-      case "S":
-      case "H":
-      case "Y":
+      case "pga-tour":
+      case "pga-tour-champions":
+      case "pga-tour-americas":
+      case "korn-ferry-tour":
         return this.getActivePgaTourTournamentId(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);

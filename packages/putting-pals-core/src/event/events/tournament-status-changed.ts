@@ -1,5 +1,5 @@
-import type { Tournament } from "@putting-pals/putting-pals-schema";
 import { assertNever } from "@putting-pals/putting-pals-utils";
+import type { Tournament } from "../../tournament/domain/types";
 import type {
   LeaderboardFeedEvent,
   TournamentStatusChangedV1,

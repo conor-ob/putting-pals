@@ -1,10 +1,7 @@
-import type {
-  Schedule,
-  ScheduleUpcoming,
-  TourCode,
-} from "@putting-pals/putting-pals-schema";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import { UnsupportedTourCodeError } from "../error/service-error";
+import type { TourCode } from "../tour/domain/types";
+import type { Schedule, ScheduleUpcoming } from "./domain/types";
 import type { ScheduleService } from "./interfaces/inbound/schedule-service";
 import type { ScheduleClient } from "./interfaces/outbound/schedule-client";
 import {
@@ -21,14 +18,14 @@ export class ScheduleServiceImpl implements ScheduleService {
     this.competitionService = competitionService;
   }
 
-  getSchedule(tourCode: TourCode, year?: string): Promise<readonly Schedule[]> {
+  getSchedule(tourCode: TourCode, year?: string): Promise<Schedule[]> {
     switch (tourCode) {
-      case "P":
+      case "putting-pals-tour":
         return this.getPuttingPalsSchedule(year);
-      case "R":
-      case "S":
-      case "H":
-      case "Y":
+      case "pga-tour":
+      case "pga-tour-champions":
+      case "pga-tour-americas":
+      case "korn-ferry-tour":
         return this.getPgaTourSchedule(tourCode, year);
       default:
         throw new UnsupportedTourCodeError(tourCode);
@@ -37,21 +34,19 @@ export class ScheduleServiceImpl implements ScheduleService {
 
   getUpcomingSchedule(tourCode: TourCode): Promise<ScheduleUpcoming> {
     switch (tourCode) {
-      case "P":
+      case "putting-pals-tour":
         return this.getPuttingPalsUpcomingSchedule();
-      case "R":
-      case "S":
-      case "H":
-      case "Y":
+      case "pga-tour":
+      case "pga-tour-champions":
+      case "pga-tour-americas":
+      case "korn-ferry-tour":
         return this.getPgaTourUpcomingSchedule(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
   }
 
-  private async getPuttingPalsSchedule(
-    year?: string,
-  ): Promise<readonly Schedule[]> {
+  private async getPuttingPalsSchedule(year?: string): Promise<Schedule[]> {
     function filterScheduleMonths(
       months: ReturnType<typeof transformSchedule>["completed" | "upcoming"],
     ) {
@@ -73,7 +68,7 @@ export class ScheduleServiceImpl implements ScheduleService {
     const puttingPalsTournamentIds = this.competitionService
       .getCompetitions()
       .map((competition) => competition.tournamentId);
-    const pgaTourSchedule = await this.getPgaTourSchedule("R", year);
+    const pgaTourSchedule = await this.getPgaTourSchedule("pga-tour", year);
     return pgaTourSchedule
       .filter((season) => {
         const pgaTourTournamentIds = [
@@ -96,7 +91,7 @@ export class ScheduleServiceImpl implements ScheduleService {
   private async getPgaTourSchedule(
     tourCode: TourCode,
     year?: string,
-  ): Promise<readonly Schedule[]> {
+  ): Promise<Schedule[]> {
     if (year) {
       const schedule = await this.scheduleClient.getSchedule(tourCode, year);
       return [transformSchedule(schedule)];
@@ -110,7 +105,8 @@ export class ScheduleServiceImpl implements ScheduleService {
     const competitionIds = this.competitionService
       .getCompetitions()
       .map((competition) => competition.tournamentId);
-    const pgaTourUpcomingSchedule = await this.getPgaTourUpcomingSchedule("R");
+    const pgaTourUpcomingSchedule =
+      await this.getPgaTourUpcomingSchedule("pga-tour");
     const upcomingTournaments = pgaTourUpcomingSchedule.tournaments.filter(
       (tournament) => competitionIds.includes(tournament.id),
     );

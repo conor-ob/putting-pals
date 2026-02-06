@@ -1,9 +1,9 @@
+import type { TourCode } from "../../../tour/domain/types";
 import type {
   Schedule,
   ScheduleUpcoming,
   ScheduleYears,
-  TourCode,
-} from "@putting-pals/putting-pals-schema";
+} from "../../domain/types";
 
 export interface ScheduleClient {
   getScheduleYears(tourCode: TourCode): Promise<ScheduleYears>;

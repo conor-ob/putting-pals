@@ -30,7 +30,3 @@ export const CompetitionSchema = z
       runnerUpPayout: runnerUpPayout,
     };
   });
-
-export type Competitor = z.infer<typeof CompetitorSchema>;
-
-export type Competition = z.infer<typeof CompetitionSchema>;

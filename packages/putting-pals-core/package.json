@@ -17,9 +17,9 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
-    "date-fns": "^4.1.0"
+    "date-fns": "^4.1.0",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@total-typescript/shoehorn": "^0.1.2",

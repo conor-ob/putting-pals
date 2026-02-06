@@ -14,7 +14,7 @@ const puttingPalsSchema = "src/graphql/putting-pals/schema/schema.graphql";
 const sharedConfig = {
   addTypename: true,
   enumsAsTypes: true,
-  immutableTypes: true,
+  // immutableTypes: true,
   nonOptionalTypename: true,
   printFieldsOnNewLines: true,
   useTypeImports: true,

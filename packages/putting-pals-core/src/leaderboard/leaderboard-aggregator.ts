@@ -1,11 +1,11 @@
+import type { Competition } from "../competition/domain/types";
 import type {
-  Competition,
   LeaderboardV3,
   PlayerRowV3,
   PuttingPalsPlayer,
   PuttingPalsPlayerRow,
   PuttingPalsPlayerScoringData,
-} from "@putting-pals/putting-pals-schema";
+} from "./domain/types";
 
 export function aggregateLeaderboard(
   leaderboard: LeaderboardV3,

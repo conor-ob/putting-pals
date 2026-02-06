@@ -23,7 +23,11 @@ export function TourCodeProvider({ children }: { children: ReactNode }) {
 
   return (
     <TourCodeContext.Provider
-      value={{ tourCode: tourCode ?? "P", tours: tours ?? [], setTourCode }}
+      value={{
+        tourCode: tourCode ?? "putting-pals-tour",
+        tours: tours ?? [],
+        setTourCode,
+      }}
     >
       {children}
     </TourCodeContext.Provider>

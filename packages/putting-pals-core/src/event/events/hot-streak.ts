@@ -1,4 +1,4 @@
-import type { LeaderboardV3 } from "@putting-pals/putting-pals-schema";
+import type { LeaderboardV3 } from "../../leaderboard/domain/types";
 import type { HotStreakV1, LeaderboardFeedEvent } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 

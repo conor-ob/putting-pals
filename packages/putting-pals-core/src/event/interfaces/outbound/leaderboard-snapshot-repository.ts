@@ -1,8 +1,6 @@
-import type {
-  LeaderboardV3,
-  TourCode,
-  Tournament,
-} from "@putting-pals/putting-pals-schema";
+import type { LeaderboardV3 } from "../../../leaderboard/domain/types";
+import type { TourCode } from "../../../tour/domain/types";
+import type { Tournament } from "../../../tournament/domain/types";
 
 export type LeaderboardSnapshot = LeaderboardV3 | Tournament;
 

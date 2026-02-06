@@ -263,9 +263,6 @@ importers:
       '@putting-pals/putting-pals-db':
         specifier: workspace:*
         version: link:../../packages/putting-pals-db
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../../packages/putting-pals-schema
       '@putting-pals/putting-pals-trpc':
         specifier: workspace:*
         version: link:../../packages/putting-pals-trpc
@@ -343,9 +340,6 @@ importers:
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
       cheerio:
         specifier: ^1.1.2
         version: 1.2.0
@@ -362,15 +356,15 @@ importers:
 
   packages/putting-pals-core:
     dependencies:
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
     devDependencies:
       '@total-typescript/shoehorn':
         specifier: ^0.1.2
@@ -393,9 +387,6 @@ importers:
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
     devDependencies:
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
@@ -412,9 +403,6 @@ importers:
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
@@ -501,9 +489,6 @@ importers:
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
-      '@putting-pals/putting-pals-schema':
-        specifier: workspace:*
-        version: link:../putting-pals-schema
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils

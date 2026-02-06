@@ -1,4 +1,4 @@
-import type { ImageAsset } from "@putting-pals/putting-pals-schema";
+import type { ImageAsset } from "../tournament/domain/types";
 
 export function getImageUrl(
   imageAsset: ImageAsset,

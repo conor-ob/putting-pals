@@ -1,13 +1,11 @@
-import type {
-  ScheduleYears,
-  TourCode,
-  Tournament,
-} from "@putting-pals/putting-pals-schema";
 import { parseISO } from "date-fns";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import { UnsupportedTourCodeError } from "../error/service-error";
+import type { TourCode } from "../tour/domain/types";
+import type { Tournament } from "../tournament/domain/types";
 import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
 import { parseStartDate } from "../tournament/tournament-utils";
+import type { ScheduleYears } from "./domain/types";
 import type { ScheduleYearsService } from "./interfaces/inbound/schedule-years-service";
 import type { ScheduleClient } from "./interfaces/outbound/schedule-client";
 
@@ -24,12 +22,12 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
 
   getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     switch (tourCode) {
-      case "P":
+      case "putting-pals-tour":
         return this.getPuttingPalsScheduleYears();
-      case "R":
-      case "S":
-      case "H":
-      case "Y":
+      case "pga-tour":
+      case "pga-tour-champions":
+      case "pga-tour-americas":
+      case "korn-ferry-tour":
         return this.getPgaTourScheduleYears(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);
@@ -39,7 +37,7 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
   private async getPuttingPalsScheduleYears(): Promise<ScheduleYears> {
     const [pgaTourScheduleYears, puttingPalsHistoricalSchedule] =
       await Promise.all([
-        this.getPgaTourScheduleYears("R"),
+        this.getPgaTourScheduleYears("pga-tour"),
         this.getPuttingPalsHistoricalSchedule(),
       ]);
     return {

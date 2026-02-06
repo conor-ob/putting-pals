@@ -33,7 +33,7 @@ suite("tournamentRouter", () => {
 
     try {
       await caller.tournament.getById({
-        tourCode: "P",
+        tourCode: "putting-pals-tour",
         id: "123",
       });
     } catch (error) {
