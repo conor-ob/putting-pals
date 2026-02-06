@@ -37,7 +37,7 @@ export const TournamentSchema = z.object({
   roundStatus: RoundStatusSchema,
   roundStatusColor: RoundStatusColorSchema,
   roundStatusDisplay: z.string(),
-  tournamentLogo: z.array(z.string()).readonly(),
+  tournamentLogo: z.array(z.string()),
   tournamentName: z.string(),
   tournamentStatus: TournamentStatusSchema,
 });

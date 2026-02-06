@@ -58,9 +58,7 @@ export class PuttingPalsApiScheduleClient implements ScheduleClient {
     };
   }
 
-  private async getPuttingPalsHistoricalSchedule(): Promise<
-    readonly Tournament[]
-  > {
+  private async getPuttingPalsHistoricalSchedule(): Promise<Tournament[]> {
     const competitions = this.competitionRepository.getCompetitions();
     const tournamentIds = competitions.map(
       (competition) => competition.tournamentId,
