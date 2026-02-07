@@ -48,6 +48,7 @@ This will start the Fastify server and Expo app
   - [ ] implement servic worker reload https://github.com/ccssmnn/tilly/blob/main/src/app/sw.ts https://github.com/ccssmnn/tilly/blob/main/src/app/lib/service-worker.ts
 - [ ] expo lint config
 - [ ] revert to caddy:alpine image for expo app
+- [ ] ESPN news feed cron job https://site.web.api.espn.com/apis/site/v2/sports/golf/eur/news?region=us&lang=en&contentorigin=espn&limit=3
 
 ## Docs
 

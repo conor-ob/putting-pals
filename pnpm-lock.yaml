@@ -315,6 +315,9 @@ importers:
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
     devDependencies:
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
