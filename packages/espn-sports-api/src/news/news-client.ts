@@ -12,5 +12,5 @@ export class EspnSportsApiNewsClient {
     return ApiNewsSchema.parse(data);
   }
 
-  getNewsArticle(id: number) {}
+  getNewsArticle(_id: number) {}
 }

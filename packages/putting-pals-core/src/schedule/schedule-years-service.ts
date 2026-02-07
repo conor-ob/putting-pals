@@ -17,15 +17,15 @@ export class ScheduleYearsServiceImpl implements ScheduleYearsService {
 
   getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     switch (tourCode) {
-      case "putting-pals-tour":
+      case "pal":
         return this.puttingPalsApiScheduleClient.getScheduleYears(tourCode);
-      case "pga-tour":
-      case "korn-ferry-tour":
-      case "pga-tour-champions":
-      case "pga-tour-americas":
+      case "pga":
+      case "dev":
+      case "snr":
+      case "pam":
         return this.pgaTourApiScheduleClient.getScheduleYears(tourCode);
-      case "dp-world-tour":
-      case "liv-golf-tour":
+      case "eur":
+      case "liv":
         return this.espnSportsApiScheduleClient.getScheduleYears(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);

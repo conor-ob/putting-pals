@@ -17,7 +17,7 @@ export class ScheduleServiceImpl implements ScheduleService {
 
   async getSchedule(tourCode: TourCode, year?: string): Promise<Schedule[]> {
     switch (tourCode) {
-      case "putting-pals-tour": {
+      case "pal": {
         if (year === undefined) {
           return this.puttingPalsApiScheduleClient.getCompleteSchedule(
             tourCode,
@@ -29,10 +29,10 @@ export class ScheduleServiceImpl implements ScheduleService {
         );
         return [schedule];
       }
-      case "pga-tour":
-      case "korn-ferry-tour":
-      case "pga-tour-champions":
-      case "pga-tour-americas": {
+      case "pga":
+      case "dev":
+      case "snr":
+      case "pam": {
         if (year === undefined) {
           return this.pgaTourApiScheduleClient.getCompleteSchedule(tourCode);
         }
@@ -42,8 +42,8 @@ export class ScheduleServiceImpl implements ScheduleService {
         );
         return [schedule];
       }
-      case "dp-world-tour":
-      case "liv-golf-tour": {
+      case "eur":
+      case "liv": {
         if (year === undefined) {
           return this.espnSportsApiScheduleClient.getCompleteSchedule(tourCode);
         }
@@ -60,15 +60,15 @@ export class ScheduleServiceImpl implements ScheduleService {
 
   getUpcomingSchedule(tourCode: TourCode): Promise<ScheduleUpcoming> {
     switch (tourCode) {
-      case "putting-pals-tour":
+      case "pal":
         return this.puttingPalsApiScheduleClient.getUpcomingSchedule(tourCode);
-      case "pga-tour":
-      case "korn-ferry-tour":
-      case "pga-tour-champions":
-      case "pga-tour-americas":
+      case "pga":
+      case "dev":
+      case "snr":
+      case "pam":
         return this.pgaTourApiScheduleClient.getUpcomingSchedule(tourCode);
-      case "dp-world-tour":
-      case "liv-golf-tour":
+      case "eur":
+      case "liv":
         return this.espnSportsApiScheduleClient.getUpcomingSchedule(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);

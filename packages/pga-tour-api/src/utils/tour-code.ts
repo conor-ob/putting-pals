@@ -6,13 +6,13 @@ import type { ApiTourCode } from "../generated/graphql";
 
 export function mapDomainToApiTourCode(tourCode: TourCode): ApiTourCode {
   switch (tourCode) {
-    case "pga-tour":
+    case "pga":
       return "R";
-    case "korn-ferry-tour":
+    case "dev":
       return "H";
-    case "pga-tour-champions":
+    case "snr":
       return "S";
-    case "pga-tour-americas":
+    case "pam":
       return "Y";
     default:
       throw new UnsupportedTourCodeError(tourCode);

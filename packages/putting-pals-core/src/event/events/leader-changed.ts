@@ -6,12 +6,12 @@ import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
   override emit(): LeaderboardFeedEvent[] {
     switch (this.tourCode) {
-      case "putting-pals-tour":
+      case "pal":
         return [];
-      case "pga-tour":
-      case "pga-tour-champions":
-      case "pga-tour-americas":
-      case "korn-ferry-tour":
+      case "pga":
+      case "snr":
+      case "pam":
+      case "dev":
         return this.getPgaTourLeaderChanged();
       default:
         throw new UnsupportedTourCodeError(this.tourCode);

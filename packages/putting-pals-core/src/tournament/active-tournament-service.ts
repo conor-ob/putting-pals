@@ -67,19 +67,19 @@ export class ActiveTournamentServiceImpl implements ActiveTournamentService {
     tourCode: TourCode,
   ): Promise<string | undefined> {
     switch (tourCode) {
-      case "putting-pals-tour":
+      case "pal":
         return this.puttingPalsApiActiveTournamentClient.getActiveTournamentId(
           tourCode,
         );
-      case "pga-tour":
-      case "korn-ferry-tour":
-      case "pga-tour-champions":
-      case "pga-tour-americas":
+      case "pga":
+      case "dev":
+      case "snr":
+      case "pam":
         return this.pgaTourApiActiveTournamentClient.getActiveTournamentId(
           tourCode,
         );
-      case "dp-world-tour":
-      case "liv-golf-tour":
+      case "eur":
+      case "liv":
         return this.espnSportsApiActiveTournamentClient.getActiveTournamentId(
           tourCode,
         );

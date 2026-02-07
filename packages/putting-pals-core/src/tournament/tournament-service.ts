@@ -20,14 +20,14 @@ export class TournamentServiceImpl implements TournamentService {
     const tournamentId =
       await this.activeTournamentService.getActiveTournamentId(tourCode, id);
     switch (tourCode) {
-      case "putting-pals-tour":
-      case "pga-tour":
-      case "korn-ferry-tour":
-      case "pga-tour-champions":
-      case "pga-tour-americas":
+      case "pal":
+      case "pga":
+      case "dev":
+      case "snr":
+      case "pam":
         return this.pgaTourApiTournamentClient.getTournament(tournamentId);
-      case "dp-world-tour":
-      case "liv-golf-tour":
+      case "eur":
+      case "liv":
         return this.espnSportsApiTournamentClient.getTournament(tournamentId);
       default:
         throw new UnsupportedTourCodeError(tourCode);
@@ -39,14 +39,14 @@ export class TournamentServiceImpl implements TournamentService {
     ids: string[],
   ): Promise<Tournament[]> {
     switch (tourCode) {
-      case "putting-pals-tour":
-      case "pga-tour":
-      case "korn-ferry-tour":
-      case "pga-tour-champions":
-      case "pga-tour-americas":
+      case "pal":
+      case "pga":
+      case "dev":
+      case "snr":
+      case "pam":
         return this.pgaTourApiTournamentClient.getTournaments(ids);
-      case "dp-world-tour":
-      case "liv-golf-tour":
+      case "eur":
+      case "liv":
         return this.espnSportsApiTournamentClient.getTournaments(ids);
       default:
         throw new UnsupportedTourCodeError(tourCode);

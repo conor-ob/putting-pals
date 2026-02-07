@@ -1,13 +1,13 @@
 import z from "zod";
 
 export const TourCodeSchema = z.enum([
-  "putting-pals-tour",
-  "pga-tour",
-  "dp-world-tour",
-  "liv-golf-tour",
-  "korn-ferry-tour",
-  "pga-tour-champions",
-  "pga-tour-americas",
+  "pal",
+  "pga",
+  "eur",
+  "liv",
+  "dev",
+  "snr",
+  "pam",
 ]);
 
 export const TourSchema = z.object({

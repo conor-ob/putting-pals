@@ -42,7 +42,7 @@ export class PuttingPalsApiScheduleClient implements ScheduleClient {
   private async getPuttingPalsScheduleYears(): Promise<ScheduleYears> {
     const [pgaTourScheduleYears, puttingPalsHistoricalSchedule] =
       await Promise.all([
-        this.getPgaTourScheduleYears("pga-tour"),
+        this.getPgaTourScheduleYears("pga"),
         this.getPuttingPalsHistoricalSchedule(),
       ]);
     return {
@@ -94,7 +94,7 @@ export class PuttingPalsApiScheduleClient implements ScheduleClient {
     const puttingPalsTournamentIds = this.competitionRepository
       .getCompetitions()
       .map((competition) => competition.tournamentId);
-    const pgaTourSchedule = await this.getPgaTourSchedule("pga-tour", year);
+    const pgaTourSchedule = await this.getPgaTourSchedule("pga", year);
     return pgaTourSchedule
       .filter((season) => {
         const pgaTourTournamentIds = [
@@ -136,7 +136,7 @@ export class PuttingPalsApiScheduleClient implements ScheduleClient {
       .getCompetitions()
       .map((competition) => competition.tournamentId);
     const pgaTourUpcomingSchedule =
-      await this.getPgaTourUpcomingSchedule("pga-tour");
+      await this.getPgaTourUpcomingSchedule("pga");
     const upcomingTournaments = pgaTourUpcomingSchedule.tournaments.filter(
       (tournament) => competitionIds.includes(tournament.id),
     );

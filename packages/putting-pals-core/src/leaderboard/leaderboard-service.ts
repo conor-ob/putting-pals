@@ -25,17 +25,17 @@ export class LeaderboardServiceImpl implements LeaderboardService {
     const tournamentId =
       await this.activeTournamentService.getActiveTournamentId(tourCode, id);
     switch (tourCode) {
-      case "putting-pals-tour":
+      case "pal":
         return this.puttingPalsApiLeaderboardClient.getLeaderboard(
           tournamentId,
         );
-      case "pga-tour":
-      case "korn-ferry-tour":
-      case "pga-tour-champions":
-      case "pga-tour-americas":
+      case "pga":
+      case "dev":
+      case "snr":
+      case "pam":
         return this.pgaTourApiLeaderboardClient.getLeaderboard(tournamentId);
-      case "dp-world-tour":
-      case "liv-golf-tour":
+      case "eur":
+      case "liv":
         return this.espnSportsApiLeaderboardClient.getLeaderboard(tournamentId);
       default:
         throw new UnsupportedTourCodeError(tourCode);

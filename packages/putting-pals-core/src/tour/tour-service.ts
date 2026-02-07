@@ -10,31 +10,31 @@ export class TourServiceImpl implements TourService {
   async getTours(): Promise<Tour[]> {
     const allTours = [
       {
-        tourCode: "putting-pals-tour" as const,
+        tourCode: "pal" as const,
         tourName: "Putting Pals Tour" as const,
       },
       {
-        tourCode: "pga-tour" as const,
+        tourCode: "pga" as const,
         tourName: "PGA TOUR" as const,
       },
       {
-        tourCode: "dp-world-tour" as const,
+        tourCode: "eur" as const,
         tourName: "DP World Tour" as const,
       },
       {
-        tourCode: "liv-golf-tour" as const,
+        tourCode: "liv" as const,
         tourName: "LIV Golf Tour" as const,
       },
       {
-        tourCode: "korn-ferry-tour" as const,
+        tourCode: "dev" as const,
         tourName: "Korn Ferry Tour" as const,
       },
       {
-        tourCode: "pga-tour-champions" as const,
+        tourCode: "snr" as const,
         tourName: "PGA TOUR Champions" as const,
       },
       {
-        tourCode: "pga-tour-americas" as const,
+        tourCode: "pam" as const,
         tourName: "PGA TOUR Americas" as const,
       },
     ];
@@ -45,9 +45,9 @@ export class TourServiceImpl implements TourService {
     ]);
 
     return allTours.filter((tour) => {
-      if (tour.tourCode === "dp-world-tour") {
+      if (tour.tourCode === "eur") {
         return isDpWorldTourEnabled;
-      } else if (tour.tourCode === "liv-golf-tour") {
+      } else if (tour.tourCode === "liv") {
         return isLivGolfTourEnabled;
       } else {
         return true;

@@ -6,15 +6,15 @@ import type { ApiTourCode } from "../tour/domain/types";
 
 export function mapDomainToApiTourCode(tourCode: TourCode): ApiTourCode {
   switch (tourCode) {
-    case "pga-tour":
+    case "pga":
       return "pga";
-    case "dp-world-tour":
+    case "eur":
       return "eur";
-    case "liv-golf-tour":
+    case "liv":
       return "liv";
-    case "korn-ferry-tour":
+    case "dev":
       return "ntw";
-    case "pga-tour-champions":
+    case "snr":
       return "champions-tour";
     default:
       throw new UnsupportedTourCodeError(tourCode);

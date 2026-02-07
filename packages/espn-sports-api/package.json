@@ -13,8 +13,7 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "typecheck": "tsc --noEmit true",
-    "test": "vitest"
+    "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
     "@putting-pals/iso-countries": "workspace:*",
