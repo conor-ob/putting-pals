@@ -6,11 +6,8 @@ import {
   type ScheduleYears,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
-import { ApiScheduleSchema } from "../domain/schemas";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
-
-// https://www.espn.com/golf/schedule/_/tour/eur?_xhr=pageContent
-// https://www.espn.com/golf/schedule/_/tour/eur/season/2026?_xhr=pageContent
+import { ApiScheduleSchema } from "./domain/schemas";
 
 export class EspnSportsApiScheduleClient implements ScheduleClient {
   async getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
