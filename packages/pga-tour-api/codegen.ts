@@ -1,25 +1,6 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
 import { addTypenameSelectionDocumentTransform } from "@graphql-codegen/client-preset";
 
-const sharedConfig = {
-  addTypename: true,
-  enumsAsTypes: true,
-  // immutableTypes: true,
-  nonOptionalTypename: true,
-  printFieldsOnNewLines: true,
-  useTypeImports: true,
-  scalars: {
-    AWSDateTime: {
-      input: "string",
-      output: "string",
-    },
-    AWSTimestamp: {
-      input: "number",
-      output: "number",
-    },
-  },
-};
-
 const config: CodegenConfig = {
   generates: {
     "src/generated/graphql.ts": {
@@ -40,7 +21,22 @@ const config: CodegenConfig = {
       ],
       documentTransforms: [addTypenameSelectionDocumentTransform],
       config: {
-        ...sharedConfig,
+        addTypename: true,
+        enumsAsTypes: true,
+        // immutableTypes: true,
+        nonOptionalTypename: true,
+        printFieldsOnNewLines: true,
+        useTypeImports: true,
+        scalars: {
+          AWSDateTime: {
+            input: "string",
+            output: "string",
+          },
+          AWSTimestamp: {
+            input: "number",
+            output: "number",
+          },
+        },
         // noExport: true,
         typesPrefix: "Api",
         fragmentPrefix: "Api",

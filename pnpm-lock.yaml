@@ -337,9 +337,6 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
-      zod:
-        specifier: 'catalog:'
-        version: 4.3.6
     devDependencies:
       '@graphql-codegen/cli':
         specifier: 'catalog:'
@@ -359,9 +356,6 @@ importers:
       '@putting-pals/putting-pals-utils':
         specifier: workspace:*
         version: link:../putting-pals-utils
-      '@total-typescript/shoehorn':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@total-typescript/tsconfig':
         specifier: 'catalog:'
         version: 1.0.4
@@ -371,15 +365,9 @@ importers:
       graphql:
         specifier: 'catalog:'
         version: 16.12.0
-      graphql-codegen-typescript-validation-schema:
-        specifier: ^0.18.1
-        version: 0.18.1(graphql@16.12.0)(zod@4.3.6)
       graphql-request:
         specifier: 'catalog:'
         version: 7.4.0(graphql@16.12.0)
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -3122,9 +3110,6 @@ packages:
     peerDependencies:
       graphql: ^16.0.0
 
-  '@total-typescript/shoehorn@0.1.2':
-    resolution: {integrity: sha512-p7nNZbOZIofpDNyP0u1BctFbjxD44Qc+oO5jufgQdFdGIXJLc33QRloJpq7k5T59CTgLWfQSUxsuqLcmeurYRw==}
-
   '@total-typescript/tsconfig@1.0.4':
     resolution: {integrity: sha512-fO4ctMPGz1kOFOQ4RCPBRBfMy3gDn+pegUfrGyUFRMv/Rd0ZM3/SHH3hFCYG4u6bPLG8OlmOGcBLDexvyr3A5w==}
 
@@ -4674,15 +4659,6 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
-
-  graphlib@2.1.8:
-    resolution: {integrity: sha512-jcLLfkpoVGmH7/InMC/1hIvOPSUh38oJtGhvrOFGzioE1DZ+0YW16RgmOJhHiuWTvGiJQ9Z1Ik43JvkRPRvE+A==}
-
-  graphql-codegen-typescript-validation-schema@0.18.1:
-    resolution: {integrity: sha512-c6e1Bm3NjUgCaDVQgOpa2mVzmqPjd1FHrmt0jgtQtctnU2mrIYn7TkLVA9qWBwduk2Vz8vqx0uUxStGCpAmEPw==}
-    peerDependencies:
-      graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-      zod: ^3.25.0 || ^4.0.0
 
   graphql-config@5.1.5:
     resolution: {integrity: sha512-mG2LL1HccpU8qg5ajLROgdsBzx/o2M6kgI3uAmoaXiSH9PCUbtIyLomLqUtCFaAeG2YCFsl0M5cfQ9rKmDoMVA==}
@@ -10497,8 +10473,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@total-typescript/shoehorn@0.1.2': {}
-
   '@total-typescript/tsconfig@1.0.4': {}
 
   '@trpc/client@11.9.0(@trpc/server@11.9.0(typescript@5.9.3))(typescript@5.9.3)':
@@ -12261,22 +12235,6 @@ snapshots:
   graceful-fs@4.2.10: {}
 
   graceful-fs@4.2.11: {}
-
-  graphlib@2.1.8:
-    dependencies:
-      lodash: 4.17.23
-
-  graphql-codegen-typescript-validation-schema@0.18.1(graphql@16.12.0)(zod@4.3.6):
-    dependencies:
-      '@graphql-codegen/plugin-helpers': 6.1.0(graphql@16.12.0)
-      '@graphql-codegen/schema-ast': 5.0.0(graphql@16.12.0)
-      '@graphql-codegen/visitor-plugin-common': 6.2.2(graphql@16.12.0)
-      '@graphql-tools/utils': 10.11.0(graphql@16.12.0)
-      graphlib: 2.1.8
-      graphql: 16.12.0
-      zod: 4.3.6
-    transitivePeerDependencies:
-      - encoding
 
   graphql-config@5.1.5(@types/node@24.10.11)(graphql@16.12.0)(typescript@5.9.3):
     dependencies:

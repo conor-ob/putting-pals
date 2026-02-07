@@ -20,8 +20,7 @@
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
     "cheerio": "^1.1.2",
-    "date-fns": "^4.1.0",
-    "zod": "catalog:"
+    "date-fns": "^4.1.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "catalog:",
@@ -30,13 +29,10 @@
     "@graphql-codegen/typescript-graphql-request": "^6.4.0",
     "@graphql-codegen/typescript-operations": "^5.0.7",
     "@putting-pals/putting-pals-utils": "workspace:*",
-    "@total-typescript/shoehorn": "^0.1.2",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "graphql": "catalog:",
-    "graphql-codegen-typescript-validation-schema": "^0.18.1",
     "graphql-request": "catalog:",
-    "tsx": "^4.21.0",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }
