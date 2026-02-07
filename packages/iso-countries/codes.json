@@ -1,0 +1,53 @@
+[
+  {
+    "__typename": "Country",
+    "alpha2": "GB",
+    "alpha3": "GBR",
+    "ioc": "GBR",
+    "name": "United Kingdom",
+    "alias": ["UK"]
+  },
+  {
+    "__typename": "Subdivision",
+    "alpha2": "GB-ENG",
+    "alpha3": "ENG",
+    "ioc": "ENG",
+    "name": "England"
+  },
+  {
+    "__typename": "Subdivision",
+    "alpha2": "GB-NIR",
+    "alpha3": "NIR",
+    "ioc": "NIR",
+    "name": "Northern Ireland"
+  },
+  {
+    "__typename": "Subdivision",
+    "alpha2": "GB-WLS",
+    "alpha3": "WLS",
+    "ioc": "WAL",
+    "name": "Wales"
+  },
+  {
+    "__typename": "Subdivision",
+    "alpha2": "GB-SCT",
+    "alpha3": "SCT",
+    "ioc": "SCO",
+    "name": "Scotland"
+  },
+  {
+    "__typename": "Country",
+    "alpha2": "IE",
+    "alpha3": "IRL",
+    "ioc": "IRL",
+    "name": "Ireland"
+  },
+  {
+    "__typename": "Country",
+    "alpha2": "TR",
+    "alpha3": "TUR",
+    "ioc": "TUR",
+    "name": "Türkiye",
+    "alias": ["Turkey"]
+  }
+]

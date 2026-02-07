@@ -18,8 +18,17 @@ runs:
 
     - name: Copy env
       shell: bash
-      run: cp ./apps/server/.env.example ./apps/server/.env
+      run: |
+        set -e
+        cp ./apps/cron/.env.example ./apps/cron/.env
+        cp ./apps/server/.env.example ./apps/server/.env
+        cp ./apps/expo/.env.example ./apps/expo/.env
+        cp ./packages/putting-pals-db/.env.example ./packages/putting-pals-db/.env
 
     - name: Install deps
       shell: bash
       run: pnpm install --frozen-lockfile
+
+    - name: Run codegen
+      shell: bash
+      run: pnpm codegen
