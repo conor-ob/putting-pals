@@ -1,8 +1,8 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { CountrySchema } from "./src/domain/schemas";
+import { EntitySchema } from "./src/domain/schemas";
 
-const raw = CountrySchema.array().parse(
+const raw = EntitySchema.array().parse(
   JSON.parse(fs.readFileSync("codes.json", "utf8")),
 );
 
@@ -13,8 +13,8 @@ const norm = (s: string) =>
     .replace(/[\u0300-\u036f]/g, "");
 
 const idx = {
-  alpha2: {} as Record<string, number>,
-  alpha3: {} as Record<string, number>,
+  iso2: {} as Record<string, number>,
+  iso3: {} as Record<string, number>,
   ioc: {} as Record<string, number>,
   name: {} as Record<string, number>,
   alias: {} as Record<string, number>,
@@ -23,8 +23,8 @@ const idx = {
 raw.forEach((c, i) => {
   switch (c.__typename) {
     case "Country":
-      idx.alpha2[c.alpha2] = i;
-      idx.alpha3[c.alpha3] = i;
+      idx.iso2[c.iso2] = i;
+      idx.iso3[c.iso3] = i;
       if (c.ioc) idx.ioc[c.ioc] = i;
       idx.name[norm(c.name)] = i;
       c.alias?.forEach((n) => {
@@ -32,13 +32,13 @@ raw.forEach((c, i) => {
       });
       break;
     case "Subdivision":
-      idx.alpha2[c.alpha2] = i;
-      idx.alpha3[c.alpha3] = i;
+      idx.iso2[c.iso2] = i;
+      idx.iso3[c.iso3] = i;
       idx.ioc[c.ioc] = i;
       idx.name[norm(c.name)] = i;
       break;
     case "State":
-      idx.alpha2[c.alpha2] = i;
+      idx.iso2[c.iso2] = i;
       idx.name[norm(c.name)] = i;
       break;
   }

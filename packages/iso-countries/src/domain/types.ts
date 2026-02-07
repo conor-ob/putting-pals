@@ -1,4 +1,4 @@
 import type z from "zod";
-import type { CountrySchema } from "./schemas";
+import type { EntitySchema } from "./schemas";
 
-export type Country = z.infer<typeof CountrySchema>;
+export type Entity = z.infer<typeof EntitySchema>;

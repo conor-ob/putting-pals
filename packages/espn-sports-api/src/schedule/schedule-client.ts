@@ -90,21 +90,27 @@ function groupEventsByMonth(events: ApiEvent[]) {
           .split(",")
           .map((s) => s.trim());
         const state = resolve(stateOrCountry ? `US-${stateOrCountry}` : "");
+        let countryCode = "";
+        let countryName = "";
         let stateCode = "";
         let stateName = "";
         if (state?.__typename === "State") {
-          stateCode = state.alpha2;
+          stateCode = state.iso2.replace("US-", "");
           stateName = state.name;
-        }
-        const country = resolve(stateOrCountry ?? "");
-        let countryCode = "";
-        let countryName = "";
-        if (
-          country?.__typename === "Country" ||
-          country?.__typename === "Subdivision"
-        ) {
-          countryCode = country.ioc ?? "";
-          countryName = country.name;
+          const parent = resolve(state.parent);
+          if (parent?.__typename === "Country") {
+            countryCode = parent.ioc ?? "";
+            countryName = parent.name;
+          }
+        } else {
+          const country = resolve(stateOrCountry ?? "");
+          if (
+            country?.__typename === "Country" ||
+            country?.__typename === "Subdivision"
+          ) {
+            countryCode = country.ioc ?? "";
+            countryName = country.name;
+          }
         }
         return {
           __typename: "ScheduleTournament" as const,

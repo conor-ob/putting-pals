@@ -14,7 +14,7 @@ suite("country-code-resolver", () => {
         expect(result?.ioc).toBe(expectedCode);
         break;
       case "State":
-        expect(result?.alpha2).toBe(expectedCode);
+        expect(result?.iso2).toBe(expectedCode);
         break;
       default:
         expect(result).toBeNull();
@@ -27,7 +27,7 @@ suite("country-code-resolver", () => {
     expect(result).not.toBeNull();
     expect(result?.__typename).toBe("State");
     expect(result?.name).toBe("California");
-    expect(result?.alpha2).toBe("US-CA");
+    expect(result?.iso2).toBe("US-CA");
   });
 
   test("resolve('CA') returns Canada country, not California", () => {
@@ -35,6 +35,6 @@ suite("country-code-resolver", () => {
     expect(result).not.toBeNull();
     expect(result?.__typename).toBe("Country");
     expect(result?.name).toBe("Canada");
-    expect(result?.alpha2).toBe("CA");
+    expect(result?.iso2).toBe("CA");
   });
 });

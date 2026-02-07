@@ -1,4 +1,4 @@
-import type { Country } from "../domain/types";
+import type { Entity } from "../domain/types";
 import { COUNTRIES, INDEX } from "../generated/codes";
 
 export const norm = (s: string) =>
@@ -7,10 +7,10 @@ export const norm = (s: string) =>
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "");
 
-export function resolve(v: string): Country | null {
+export function resolve(v: string): Entity | null {
   const i =
-    INDEX.alpha2[v as keyof typeof INDEX.alpha2] ??
-    INDEX.alpha3[v as keyof typeof INDEX.alpha3] ??
+    INDEX.iso2[v as keyof typeof INDEX.iso2] ??
+    INDEX.iso3[v as keyof typeof INDEX.iso3] ??
     INDEX.ioc[v as keyof typeof INDEX.ioc] ??
     INDEX.name[norm(v) as keyof typeof INDEX.name] ??
     INDEX.alias?.[norm(v) as keyof typeof INDEX.alias];
