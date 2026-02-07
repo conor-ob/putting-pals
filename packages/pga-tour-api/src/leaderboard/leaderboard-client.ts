@@ -2,7 +2,7 @@ import type {
   LeaderboardClient,
   LeaderboardV3,
 } from "@putting-pals/putting-pals-core";
-import type { Sdk } from "../../generated/graphql";
+import type { Sdk } from "../generated/graphql";
 import { transformLeaderboard } from "./leaderboard-utils";
 
 export class PgaTourApiLeaderboardClient implements LeaderboardClient {

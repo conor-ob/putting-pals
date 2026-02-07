@@ -2,8 +2,8 @@ import type {
   ActiveTournamentClient,
   TourCode,
 } from "@putting-pals/putting-pals-core";
-import { ApiActiveTournamentSchema } from "../../domain/schemas";
-import { mapDomainToApiTourCode } from "../../utils/tour-code";
+import { ApiActiveTournamentSchema } from "../domain/schemas";
+import { mapDomainToApiTourCode } from "../utils/tour-code";
 
 // https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=all&region=us&lang=en&event=${tempId}
 // https://site.api.espn.com/apis/site/v2/sports/golf/eur/scoreboard

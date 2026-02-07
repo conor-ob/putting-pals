@@ -3,7 +3,7 @@ import type {
   TourCode,
 } from "@putting-pals/putting-pals-core";
 import * as cheerio from "cheerio";
-import { mapDomainToApiTourCode } from "../../utils/tour-code";
+import { mapDomainToApiTourCode } from "../utils/tour-code";
 
 type NextDataProps = {
   props: {

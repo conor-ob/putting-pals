@@ -1,6 +1,6 @@
 import { formatISO, parse } from "date-fns";
-import type { ApiTournament } from "../../generated/graphql";
-import { stripParenthesizedYear } from "../../utils/string-utils";
+import type { ApiTournament } from "../generated/graphql";
+import { stripParenthesizedYear } from "../utils/string-utils";
 
 export function transformTournament(tournament: ApiTournament): ApiTournament {
   return {

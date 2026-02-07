@@ -4,10 +4,10 @@ import type {
   ScheduleClient,
   TournamentClient,
 } from "@putting-pals/putting-pals-core";
-import { EspnSportsApiLeaderboardClient } from "../api/leaderboard/leaderboard-client";
-import { EspnSportsApiScheduleClient } from "../api/schedule/schedule-client";
-import { EspnSportsApiActiveTournamentClient } from "../api/tournament/active-tournament-client";
-import { EspnSportsApiTournamentClient } from "../api/tournament/tournament-client";
+import { EspnSportsApiLeaderboardClient } from "../leaderboard/leaderboard-client";
+import { EspnSportsApiScheduleClient } from "../schedule/schedule-client";
+import { EspnSportsApiActiveTournamentClient } from "../tournament/active-tournament-client";
+import { EspnSportsApiTournamentClient } from "../tournament/tournament-client";
 
 export function injectDependencies(): {
   leaderboardClient: LeaderboardClient;

@@ -3,7 +3,7 @@ import type {
   ScheduleMonth,
   ScheduleTournament,
 } from "@putting-pals/putting-pals-core";
-import { stripParenthesizedYear } from "../../utils/string-utils";
+import { stripParenthesizedYear } from "../utils/string-utils";
 
 export function transformSchedule(schedule: Schedule): Schedule {
   return {

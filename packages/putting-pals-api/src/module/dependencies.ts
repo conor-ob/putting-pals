@@ -5,10 +5,10 @@ import type {
   ScheduleClient,
   TournamentClient,
 } from "@putting-pals/putting-pals-core";
-import { PuttingPalsApiLeaderboardClient } from "../api/leaderboard/leaderboard-client";
-import { PuttingPalsApiScheduleClient } from "../api/schedule/schedule-client";
-import { PuttingPalsApiActiveTournamentClient } from "../api/tournament/active-tournament-client";
+import { PuttingPalsApiLeaderboardClient } from "../leaderboard/leaderboard-client";
 import { CompetitionRepositoryImpl } from "../repository/competition-repository";
+import { PuttingPalsApiScheduleClient } from "../schedule/schedule-client";
+import { PuttingPalsApiActiveTournamentClient } from "../tournament/active-tournament-client";
 
 export function injectDependencies(
   pgaTourApiLeaderboardClient: LeaderboardClient,

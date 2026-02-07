@@ -5,8 +5,8 @@ import type {
   ScheduleYears,
   TourCode,
 } from "@putting-pals/putting-pals-core";
-import type { Sdk } from "../../generated/graphql";
-import { mapDomainToApiTourCode } from "../../utils/tour-code";
+import type { Sdk } from "../generated/graphql";
+import { mapDomainToApiTourCode } from "../utils/tour-code";
 
 export class PgaTourApiScheduleClient implements ScheduleClient {
   constructor(private readonly sdk: Sdk) {

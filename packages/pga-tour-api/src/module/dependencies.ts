@@ -5,11 +5,11 @@ import type {
   TournamentClient,
 } from "@putting-pals/putting-pals-core";
 import { GraphQLClient } from "graphql-request";
-import { PgaTourApiLeaderboardClient } from "../api/leaderboard/leaderboard-client";
-import { PgaTourApiScheduleClient } from "../api/schedule/schedule-client";
-import { PgaTourWebScraperActiveTournamentClient } from "../api/tournament/active-tournament-client";
-import { PgaTourApiTournamentClient } from "../api/tournament/tournament-client";
 import { getSdk } from "../generated/graphql";
+import { PgaTourApiLeaderboardClient } from "../leaderboard/leaderboard-client";
+import { PgaTourApiScheduleClient } from "../schedule/schedule-client";
+import { PgaTourWebScraperActiveTournamentClient } from "../tournament/active-tournament-client";
+import { PgaTourApiTournamentClient } from "../tournament/tournament-client";
 
 export function injectDependencies(): {
   leaderboardClient: LeaderboardClient;
