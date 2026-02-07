@@ -11,7 +11,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "AX",
     "alpha3": "ALA",
-    "ioc": "",
     "name": "Aland"
   },
   {
@@ -60,7 +59,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "AQ",
     "alpha3": "ATA",
-    "ioc": "",
     "name": "Antarctica"
   },
   {
@@ -214,7 +212,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "BV",
     "alpha3": "BVT",
-    "ioc": "",
     "name": "Bouvet Island"
   },
   {
@@ -228,7 +225,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "IO",
     "alpha3": "IOT",
-    "ioc": "",
     "name": "British Indian Ocean Territory"
   },
   {
@@ -326,14 +322,12 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "CX",
     "alpha3": "CXR",
-    "ioc": "",
     "name": "Christmas Island"
   },
   {
     "__typename": "Country",
     "alpha2": "CC",
     "alpha3": "CCK",
-    "ioc": "",
     "name": "Cocos (Keeling) Islands"
   },
   {
@@ -403,7 +397,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "CW",
     "alpha3": "CUW",
-    "ioc": "",
     "name": "Curaçao"
   },
   {
@@ -550,7 +543,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "TF",
     "alpha3": "ATF",
-    "ioc": "",
     "name": "French Southern Lands"
   },
   {
@@ -641,7 +633,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "GG",
     "alpha3": "GGY",
-    "ioc": "",
     "name": "Guernsey"
   },
   {
@@ -676,7 +667,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "HM",
     "alpha3": "HMD",
-    "ioc": "",
     "name": "Heard and McDonald Islands"
   },
   {
@@ -746,7 +736,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "IM",
     "alpha3": "IMN",
-    "ioc": "",
     "name": "Isle of Man"
   },
   {
@@ -781,7 +770,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "JE",
     "alpha3": "JEY",
-    "ioc": "",
     "name": "Jersey"
   },
   {
@@ -1222,7 +1210,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "PN",
     "alpha3": "PCN",
-    "ioc": "",
     "name": "Pitcairn"
   },
   {
@@ -1285,7 +1272,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "BL",
     "alpha3": "BLM",
-    "ioc": "",
     "name": "Saint Barthélemy"
   },
   {
@@ -1313,7 +1299,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "MF",
     "alpha3": "MAF",
-    "ioc": "",
     "name": "Saint Martin (French part)"
   },
   {
@@ -1397,7 +1382,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "SX",
     "alpha3": "SXM",
-    "ioc": "",
     "name": "Sint Maarten"
   },
   {
@@ -1439,14 +1423,12 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "GS",
     "alpha3": "SGS",
-    "ioc": "",
     "name": "South Georgia and South Sandwich Islands"
   },
   {
     "__typename": "Country",
     "alpha2": "SS",
     "alpha3": "SSD",
-    "ioc": "",
     "name": "South Sudan"
   },
   {
@@ -1481,7 +1463,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "SJ",
     "alpha3": "SJM",
-    "ioc": "",
     "name": "Svalbard and Jan Mayen Islands"
   },
   {
@@ -1558,7 +1539,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "TK",
     "alpha3": "TKL",
-    "ioc": "",
     "name": "Tokelau"
   },
   {
@@ -1676,7 +1656,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "UM",
     "alpha3": "UMI",
-    "ioc": "",
     "name": "United States Minor Outlying Islands"
   },
   {
@@ -1684,7 +1663,265 @@ export const COUNTRIES = [
     "alpha2": "US",
     "alpha3": "USA",
     "ioc": "USA",
-    "name": "United States of America"
+    "name": "United States of America",
+    "alias": [
+      "United States"
+    ]
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-AL",
+    "name": "Alabama"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-AK",
+    "name": "Alaska"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-AZ",
+    "name": "Arizona"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-AR",
+    "name": "Arkansas"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-CA",
+    "name": "California"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-CO",
+    "name": "Colorado"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-CT",
+    "name": "Connecticut"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-DE",
+    "name": "Delaware"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-DC",
+    "name": "District of Columbia"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-FL",
+    "name": "Florida"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-GA",
+    "name": "Georgia"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-HI",
+    "name": "Hawaii"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-ID",
+    "name": "Idaho"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-IL",
+    "name": "Illinois"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-IN",
+    "name": "Indiana"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-IA",
+    "name": "Iowa"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-KS",
+    "name": "Kansas"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-KY",
+    "name": "Kentucky"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-LA",
+    "name": "Louisiana"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-ME",
+    "name": "Maine"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MD",
+    "name": "Maryland"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MA",
+    "name": "Massachusetts"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MI",
+    "name": "Michigan"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MN",
+    "name": "Minnesota"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MS",
+    "name": "Mississippi"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MO",
+    "name": "Missouri"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MT",
+    "name": "Montana"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NE",
+    "name": "Nebraska"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NV",
+    "name": "Nevada"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NH",
+    "name": "New Hampshire"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NJ",
+    "name": "New Jersey"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NM",
+    "name": "New Mexico"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NY",
+    "name": "New York"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NC",
+    "name": "North Carolina"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-ND",
+    "name": "North Dakota"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-OH",
+    "name": "Ohio"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-OK",
+    "name": "Oklahoma"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-OR",
+    "name": "Oregon"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-PA",
+    "name": "Pennsylvania"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-RI",
+    "name": "Rhode Island"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-SC",
+    "name": "South Carolina"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-SD",
+    "name": "South Dakota"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-TN",
+    "name": "Tennessee"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-TX",
+    "name": "Texas"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-UT",
+    "name": "Utah"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-VT",
+    "name": "Vermont"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-VA",
+    "name": "Virginia"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-WA",
+    "name": "Washington"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-WV",
+    "name": "West Virginia"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-WI",
+    "name": "Wisconsin"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-WY",
+    "name": "Wyoming"
   },
   {
     "__typename": "Country",
@@ -1711,7 +1948,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "VA",
     "alpha3": "VAT",
-    "ioc": "",
     "name": "Vatican City"
   },
   {
@@ -1753,7 +1989,6 @@ export const COUNTRIES = [
     "__typename": "Country",
     "alpha2": "EH",
     "alpha3": "ESH",
-    "ioc": "",
     "name": "Western Sahara"
   },
   {
@@ -2021,19 +2256,70 @@ export const INDEX = {
     "GB-SCT": 237,
     "UM": 238,
     "US": 239,
-    "UY": 240,
-    "UZ": 241,
-    "VU": 242,
-    "VA": 243,
-    "VE": 244,
-    "VN": 245,
-    "VG": 246,
-    "VI": 247,
-    "WF": 248,
-    "EH": 249,
-    "YE": 250,
-    "ZM": 251,
-    "ZW": 252
+    "US-AL": 240,
+    "US-AK": 241,
+    "US-AZ": 242,
+    "US-AR": 243,
+    "US-CA": 244,
+    "US-CO": 245,
+    "US-CT": 246,
+    "US-DE": 247,
+    "US-DC": 248,
+    "US-FL": 249,
+    "US-GA": 250,
+    "US-HI": 251,
+    "US-ID": 252,
+    "US-IL": 253,
+    "US-IN": 254,
+    "US-IA": 255,
+    "US-KS": 256,
+    "US-KY": 257,
+    "US-LA": 258,
+    "US-ME": 259,
+    "US-MD": 260,
+    "US-MA": 261,
+    "US-MI": 262,
+    "US-MN": 263,
+    "US-MS": 264,
+    "US-MO": 265,
+    "US-MT": 266,
+    "US-NE": 267,
+    "US-NV": 268,
+    "US-NH": 269,
+    "US-NJ": 270,
+    "US-NM": 271,
+    "US-NY": 272,
+    "US-NC": 273,
+    "US-ND": 274,
+    "US-OH": 275,
+    "US-OK": 276,
+    "US-OR": 277,
+    "US-PA": 278,
+    "US-RI": 279,
+    "US-SC": 280,
+    "US-SD": 281,
+    "US-TN": 282,
+    "US-TX": 283,
+    "US-UT": 284,
+    "US-VT": 285,
+    "US-VA": 286,
+    "US-WA": 287,
+    "US-WV": 288,
+    "US-WI": 289,
+    "US-WY": 290,
+    "UY": 291,
+    "UZ": 292,
+    "VU": 293,
+    "VA": 294,
+    "VE": 295,
+    "VN": 296,
+    "VG": 297,
+    "VI": 298,
+    "WF": 299,
+    "EH": 300,
+    "YE": 301,
+    "ZM": 302,
+    "ZW": 303
   },
   "alpha3": {
     "AFG": 0,
@@ -2276,23 +2562,22 @@ export const INDEX = {
     "SCT": 237,
     "UMI": 238,
     "USA": 239,
-    "URY": 240,
-    "UZB": 241,
-    "VUT": 242,
-    "VAT": 243,
-    "VEN": 244,
-    "VNM": 245,
-    "VGB": 246,
-    "VIR": 247,
-    "WLF": 248,
-    "ESH": 249,
-    "YEM": 250,
-    "ZMB": 251,
-    "ZWE": 252
+    "URY": 291,
+    "UZB": 292,
+    "VUT": 293,
+    "VAT": 294,
+    "VEN": 295,
+    "VNM": 296,
+    "VGB": 297,
+    "VIR": 298,
+    "WLF": 299,
+    "ESH": 300,
+    "YEM": 301,
+    "ZMB": 302,
+    "ZWE": 303
   },
   "ioc": {
     "AFG": 0,
-    "": 249,
     "ALB": 2,
     "ALG": 3,
     "ASA": 4,
@@ -2511,17 +2796,17 @@ export const INDEX = {
     "WAL": 236,
     "SCO": 237,
     "USA": 239,
-    "URU": 240,
-    "UZB": 241,
-    "VAN": 242,
-    "VEN": 244,
-    "VIE": 245,
-    "IVB": 246,
-    "ISV": 247,
-    "WAF": 248,
-    "YEM": 250,
-    "ZAM": 251,
-    "ZIM": 252
+    "URU": 291,
+    "UZB": 292,
+    "VAN": 293,
+    "VEN": 295,
+    "VIE": 296,
+    "IVB": 297,
+    "ISV": 298,
+    "WAF": 299,
+    "YEM": 301,
+    "ZAM": 302,
+    "ZIM": 303
   },
   "name": {
     "afghanistan": 0,
@@ -2605,7 +2890,7 @@ export const INDEX = {
     "french southern lands": 78,
     "gabon": 79,
     "gambia": 80,
-    "georgia": 81,
+    "georgia": 250,
     "germany": 82,
     "ghana": 83,
     "gibraltar": 84,
@@ -2764,22 +3049,73 @@ export const INDEX = {
     "scotland": 237,
     "united states minor outlying islands": 238,
     "united states of america": 239,
-    "uruguay": 240,
-    "uzbekistan": 241,
-    "vanuatu": 242,
-    "vatican city": 243,
-    "venezuela": 244,
-    "vietnam": 245,
-    "virgin islands, british": 246,
-    "virgin islands, u.s.": 247,
-    "wallis and futuna islands": 248,
-    "western sahara": 249,
-    "yemen": 250,
-    "zambia": 251,
-    "zimbabwe": 252
+    "alabama": 240,
+    "alaska": 241,
+    "arizona": 242,
+    "arkansas": 243,
+    "california": 244,
+    "colorado": 245,
+    "connecticut": 246,
+    "delaware": 247,
+    "district of columbia": 248,
+    "florida": 249,
+    "hawaii": 251,
+    "idaho": 252,
+    "illinois": 253,
+    "indiana": 254,
+    "iowa": 255,
+    "kansas": 256,
+    "kentucky": 257,
+    "louisiana": 258,
+    "maine": 259,
+    "maryland": 260,
+    "massachusetts": 261,
+    "michigan": 262,
+    "minnesota": 263,
+    "mississippi": 264,
+    "missouri": 265,
+    "montana": 266,
+    "nebraska": 267,
+    "nevada": 268,
+    "new hampshire": 269,
+    "new jersey": 270,
+    "new mexico": 271,
+    "new york": 272,
+    "north carolina": 273,
+    "north dakota": 274,
+    "ohio": 275,
+    "oklahoma": 276,
+    "oregon": 277,
+    "pennsylvania": 278,
+    "rhode island": 279,
+    "south carolina": 280,
+    "south dakota": 281,
+    "tennessee": 282,
+    "texas": 283,
+    "utah": 284,
+    "vermont": 285,
+    "virginia": 286,
+    "washington": 287,
+    "west virginia": 288,
+    "wisconsin": 289,
+    "wyoming": 290,
+    "uruguay": 291,
+    "uzbekistan": 292,
+    "vanuatu": 293,
+    "vatican city": 294,
+    "venezuela": 295,
+    "vietnam": 296,
+    "virgin islands, british": 297,
+    "virgin islands, u.s.": 298,
+    "wallis and futuna islands": 299,
+    "western sahara": 300,
+    "yemen": 301,
+    "zambia": 302,
+    "zimbabwe": 303
   },
   "alias": {
     "turkey": 226,
-    "uk": 233
+    "uk": 233,
+    "united states": 239
   }
 } as const

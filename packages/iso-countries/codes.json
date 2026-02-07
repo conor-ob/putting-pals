@@ -10,7 +10,6 @@
     "__typename": "Country",
     "alpha2": "AX",
     "alpha3": "ALA",
-    "ioc": "",
     "name": "Aland"
   },
   {
@@ -59,7 +58,6 @@
     "__typename": "Country",
     "alpha2": "AQ",
     "alpha3": "ATA",
-    "ioc": "",
     "name": "Antarctica"
   },
   {
@@ -213,7 +211,6 @@
     "__typename": "Country",
     "alpha2": "BV",
     "alpha3": "BVT",
-    "ioc": "",
     "name": "Bouvet Island"
   },
   {
@@ -227,7 +224,6 @@
     "__typename": "Country",
     "alpha2": "IO",
     "alpha3": "IOT",
-    "ioc": "",
     "name": "British Indian Ocean Territory"
   },
   {
@@ -325,14 +321,12 @@
     "__typename": "Country",
     "alpha2": "CX",
     "alpha3": "CXR",
-    "ioc": "",
     "name": "Christmas Island"
   },
   {
     "__typename": "Country",
     "alpha2": "CC",
     "alpha3": "CCK",
-    "ioc": "",
     "name": "Cocos (Keeling) Islands"
   },
   {
@@ -402,7 +396,6 @@
     "__typename": "Country",
     "alpha2": "CW",
     "alpha3": "CUW",
-    "ioc": "",
     "name": "Curaçao"
   },
   {
@@ -549,7 +542,6 @@
     "__typename": "Country",
     "alpha2": "TF",
     "alpha3": "ATF",
-    "ioc": "",
     "name": "French Southern Lands"
   },
   {
@@ -640,7 +632,6 @@
     "__typename": "Country",
     "alpha2": "GG",
     "alpha3": "GGY",
-    "ioc": "",
     "name": "Guernsey"
   },
   {
@@ -675,7 +666,6 @@
     "__typename": "Country",
     "alpha2": "HM",
     "alpha3": "HMD",
-    "ioc": "",
     "name": "Heard and McDonald Islands"
   },
   {
@@ -745,7 +735,6 @@
     "__typename": "Country",
     "alpha2": "IM",
     "alpha3": "IMN",
-    "ioc": "",
     "name": "Isle of Man"
   },
   {
@@ -780,7 +769,6 @@
     "__typename": "Country",
     "alpha2": "JE",
     "alpha3": "JEY",
-    "ioc": "",
     "name": "Jersey"
   },
   {
@@ -1221,7 +1209,6 @@
     "__typename": "Country",
     "alpha2": "PN",
     "alpha3": "PCN",
-    "ioc": "",
     "name": "Pitcairn"
   },
   {
@@ -1284,7 +1271,6 @@
     "__typename": "Country",
     "alpha2": "BL",
     "alpha3": "BLM",
-    "ioc": "",
     "name": "Saint Barthélemy"
   },
   {
@@ -1312,7 +1298,6 @@
     "__typename": "Country",
     "alpha2": "MF",
     "alpha3": "MAF",
-    "ioc": "",
     "name": "Saint Martin (French part)"
   },
   {
@@ -1396,7 +1381,6 @@
     "__typename": "Country",
     "alpha2": "SX",
     "alpha3": "SXM",
-    "ioc": "",
     "name": "Sint Maarten"
   },
   {
@@ -1438,14 +1422,12 @@
     "__typename": "Country",
     "alpha2": "GS",
     "alpha3": "SGS",
-    "ioc": "",
     "name": "South Georgia and South Sandwich Islands"
   },
   {
     "__typename": "Country",
     "alpha2": "SS",
     "alpha3": "SSD",
-    "ioc": "",
     "name": "South Sudan"
   },
   {
@@ -1480,7 +1462,6 @@
     "__typename": "Country",
     "alpha2": "SJ",
     "alpha3": "SJM",
-    "ioc": "",
     "name": "Svalbard and Jan Mayen Islands"
   },
   {
@@ -1557,7 +1538,6 @@
     "__typename": "Country",
     "alpha2": "TK",
     "alpha3": "TKL",
-    "ioc": "",
     "name": "Tokelau"
   },
   {
@@ -1671,7 +1651,6 @@
     "__typename": "Country",
     "alpha2": "UM",
     "alpha3": "UMI",
-    "ioc": "",
     "name": "United States Minor Outlying Islands"
   },
   {
@@ -1679,7 +1658,263 @@
     "alpha2": "US",
     "alpha3": "USA",
     "ioc": "USA",
-    "name": "United States of America"
+    "name": "United States of America",
+    "alias": ["United States"]
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-AL",
+    "name": "Alabama"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-AK",
+    "name": "Alaska"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-AZ",
+    "name": "Arizona"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-AR",
+    "name": "Arkansas"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-CA",
+    "name": "California"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-CO",
+    "name": "Colorado"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-CT",
+    "name": "Connecticut"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-DE",
+    "name": "Delaware"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-DC",
+    "name": "District of Columbia"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-FL",
+    "name": "Florida"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-GA",
+    "name": "Georgia"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-HI",
+    "name": "Hawaii"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-ID",
+    "name": "Idaho"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-IL",
+    "name": "Illinois"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-IN",
+    "name": "Indiana"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-IA",
+    "name": "Iowa"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-KS",
+    "name": "Kansas"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-KY",
+    "name": "Kentucky"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-LA",
+    "name": "Louisiana"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-ME",
+    "name": "Maine"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MD",
+    "name": "Maryland"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MA",
+    "name": "Massachusetts"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MI",
+    "name": "Michigan"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MN",
+    "name": "Minnesota"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MS",
+    "name": "Mississippi"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MO",
+    "name": "Missouri"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-MT",
+    "name": "Montana"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NE",
+    "name": "Nebraska"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NV",
+    "name": "Nevada"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NH",
+    "name": "New Hampshire"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NJ",
+    "name": "New Jersey"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NM",
+    "name": "New Mexico"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NY",
+    "name": "New York"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-NC",
+    "name": "North Carolina"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-ND",
+    "name": "North Dakota"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-OH",
+    "name": "Ohio"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-OK",
+    "name": "Oklahoma"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-OR",
+    "name": "Oregon"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-PA",
+    "name": "Pennsylvania"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-RI",
+    "name": "Rhode Island"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-SC",
+    "name": "South Carolina"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-SD",
+    "name": "South Dakota"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-TN",
+    "name": "Tennessee"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-TX",
+    "name": "Texas"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-UT",
+    "name": "Utah"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-VT",
+    "name": "Vermont"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-VA",
+    "name": "Virginia"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-WA",
+    "name": "Washington"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-WV",
+    "name": "West Virginia"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-WI",
+    "name": "Wisconsin"
+  },
+  {
+    "__typename": "State",
+    "alpha2": "US-WY",
+    "name": "Wyoming"
   },
   {
     "__typename": "Country",
@@ -1706,7 +1941,6 @@
     "__typename": "Country",
     "alpha2": "VA",
     "alpha3": "VAT",
-    "ioc": "",
     "name": "Vatican City"
   },
   {
@@ -1748,7 +1982,6 @@
     "__typename": "Country",
     "alpha2": "EH",
     "alpha3": "ESH",
-    "ioc": "",
     "name": "Western Sahara"
   },
   {

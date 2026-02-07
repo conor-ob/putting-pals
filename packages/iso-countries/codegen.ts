@@ -21,13 +21,27 @@ const idx = {
 };
 
 raw.forEach((c, i) => {
-  idx.alpha2[c.alpha2] = i;
-  idx.alpha3[c.alpha3] = i;
-  idx.ioc[c.ioc] = i;
-  idx.name[norm(c.name)] = i;
-  c.alias?.forEach((n) => {
-    idx.alias[norm(n)] = i;
-  });
+  switch (c.__typename) {
+    case "Country":
+      idx.alpha2[c.alpha2] = i;
+      idx.alpha3[c.alpha3] = i;
+      if (c.ioc) idx.ioc[c.ioc] = i;
+      idx.name[norm(c.name)] = i;
+      c.alias?.forEach((n) => {
+        idx.alias[norm(n)] = i;
+      });
+      break;
+    case "Subdivision":
+      idx.alpha2[c.alpha2] = i;
+      idx.alpha3[c.alpha3] = i;
+      idx.ioc[c.ioc] = i;
+      idx.name[norm(c.name)] = i;
+      break;
+    case "State":
+      idx.alpha2[c.alpha2] = i;
+      idx.name[norm(c.name)] = i;
+      break;
+  }
 });
 
 const out = `

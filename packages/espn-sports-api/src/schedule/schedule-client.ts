@@ -89,15 +89,31 @@ function groupEventsByMonth(events: ApiEvent[]) {
         const [city, stateOrCountry] = (location ?? "")
           .split(",")
           .map((s) => s.trim());
-        const countryInfo = resolve(stateOrCountry ?? "");
+        const state = resolve(stateOrCountry ? `US-${stateOrCountry}` : "");
+        let stateCode = "";
+        let stateName = "";
+        if (state?.__typename === "State") {
+          stateCode = state.alpha2;
+          stateName = state.name;
+        }
+        const country = resolve(stateOrCountry ?? "");
+        let countryCode = "";
+        let countryName = "";
+        if (
+          country?.__typename === "Country" ||
+          country?.__typename === "Subdivision"
+        ) {
+          countryCode = country.ioc ?? "";
+          countryName = country.name;
+        }
         return {
           __typename: "ScheduleTournament" as const,
           champion: "",
           championId: "",
           champions: [],
           city: city ?? "",
-          country: stateOrCountry ?? "",
-          countryCode: countryInfo?.ioc ?? "",
+          country: countryName,
+          countryCode: countryCode,
           courseName: courseName ?? "",
           date: event.startDate,
           dateAccessibilityText: "",
@@ -105,8 +121,8 @@ function groupEventsByMonth(events: ApiEvent[]) {
           id: event.link.substring(event.link.lastIndexOf("=") + 1),
           sequenceNumber: 0,
           startDate: 0,
-          state: stateOrCountry ?? "",
-          stateCode: stateOrCountry ?? "",
+          state: stateName,
+          stateCode: stateCode,
           ticketsEnabled: false,
           tournamentLogo: "",
           tournamentLogoAsset: {
