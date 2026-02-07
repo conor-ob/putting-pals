@@ -1,6 +1,6 @@
-import { createContext, type ReactNode, useContext } from "react";
+import { router, usePathname } from "expo-router";
+import { createContext, type ReactNode, useCallback, useContext } from "react";
 import type { Tour, TourCode } from "~/providers/trpc/types";
-import { useLocalStorage } from "~/storage/use-local-storage";
 import { trpc } from "../trpc/utils/trpc";
 import { useQuery } from "../trpc/utils/use-query";
 
@@ -14,17 +14,34 @@ const TourCodeContext = createContext<TourCodeContextType | undefined>(
   undefined,
 );
 
-export function TourCodeProvider({ children }: { children: ReactNode }) {
-  const { value: tourCode, setValue: setTourCode } = useLocalStorage(
-    "putting-pals:app:tour-code:v1",
-  );
+interface TourCodeProviderProps {
+  tourCode: TourCode;
+  children: ReactNode;
+}
 
+export function TourCodeProvider({
+  tourCode,
+  children,
+}: TourCodeProviderProps) {
+  const pathname = usePathname();
   const { data: tours } = useQuery(trpc.tour.getTours.queryOptions());
+
+  const setTourCode = useCallback(
+    (newTourCode: TourCode) => {
+      const segments = pathname.split("/").filter(Boolean);
+      if (segments.length > 0) {
+        segments[0] = newTourCode;
+        const newPath = `/${segments.join("/")}`;
+        router.replace(newPath as never);
+      }
+    },
+    [pathname],
+  );
 
   return (
     <TourCodeContext.Provider
       value={{
-        tourCode: tourCode ?? "putting-pals-tour",
+        tourCode,
         tours: tours ?? [],
         setTourCode,
       }}

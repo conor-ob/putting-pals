@@ -6,7 +6,6 @@ type LocalStorageTypes = {
   [
     key: `putting-pals:leaderboard:favourites:v1:${TourCode}:${string}`
   ]: string[];
-  "putting-pals:app:tour-code:v1": TourCode;
 };
 
 type LocalStorageKey = keyof LocalStorageTypes;
