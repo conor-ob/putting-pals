@@ -1,75 +1,34 @@
-import type {
-  ScheduleYears,
-  TourCode,
-  Tournament,
-} from "@putting-pals/putting-pals-schema";
-import { parseISO } from "date-fns";
-import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import { UnsupportedTourCodeError } from "../error/service-error";
-import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
-import { parseStartDate } from "../tournament/tournament-utils";
+import type { TourCode } from "../tour/domain/types";
+import type { ScheduleYears } from "./domain/types";
 import type { ScheduleYearsService } from "./interfaces/inbound/schedule-years-service";
 import type { ScheduleClient } from "./interfaces/outbound/schedule-client";
 
 export class ScheduleYearsServiceImpl implements ScheduleYearsService {
   constructor(
-    private readonly scheduleClient: ScheduleClient,
-    private readonly competitionService: CompetitionService,
-    private readonly tournamentService: TournamentService,
+    private readonly puttingPalsApiScheduleClient: ScheduleClient,
+    private readonly pgaTourApiScheduleClient: ScheduleClient,
+    private readonly espnSportsApiScheduleClient: ScheduleClient,
   ) {
-    this.scheduleClient = scheduleClient;
-    this.competitionService = competitionService;
-    this.tournamentService = tournamentService;
+    this.puttingPalsApiScheduleClient = puttingPalsApiScheduleClient;
+    this.pgaTourApiScheduleClient = pgaTourApiScheduleClient;
+    this.espnSportsApiScheduleClient = espnSportsApiScheduleClient;
   }
 
   getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     switch (tourCode) {
-      case "P":
-        return this.getPuttingPalsScheduleYears();
-      case "R":
-      case "S":
-      case "H":
-      case "Y":
-        return this.getPgaTourScheduleYears(tourCode);
+      case "pal":
+        return this.puttingPalsApiScheduleClient.getScheduleYears(tourCode);
+      case "pga":
+      case "dev":
+      case "snr":
+      case "pam":
+        return this.pgaTourApiScheduleClient.getScheduleYears(tourCode);
+      case "eur":
+      case "liv":
+        return this.espnSportsApiScheduleClient.getScheduleYears(tourCode);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
-  }
-
-  private async getPuttingPalsScheduleYears(): Promise<ScheduleYears> {
-    const [pgaTourScheduleYears, puttingPalsHistoricalSchedule] =
-      await Promise.all([
-        this.getPgaTourScheduleYears("R"),
-        this.getPuttingPalsHistoricalSchedule(),
-      ]);
-    return {
-      ...pgaTourScheduleYears,
-      years: pgaTourScheduleYears.years.filter((year) => {
-        return puttingPalsHistoricalSchedule.some((tournament) => {
-          return (
-            parseISO(parseStartDate(tournament)).getFullYear() ===
-            Number(year.queryValue)
-          );
-        });
-      }),
-    };
-  }
-
-  private async getPuttingPalsHistoricalSchedule(): Promise<
-    readonly Tournament[]
-  > {
-    const competitions = this.competitionService.getCompetitions();
-    const tournamentIds = competitions.map(
-      (competition) => competition.tournamentId,
-    );
-    const tournaments =
-      await this.tournamentService.getTournaments(tournamentIds);
-    return tournaments;
-  }
-
-  private async getPgaTourScheduleYears(
-    tourCode: TourCode,
-  ): Promise<ScheduleYears> {
-    return this.scheduleClient.getScheduleYears(tourCode);
   }
 }

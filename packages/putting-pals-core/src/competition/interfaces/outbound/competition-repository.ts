@@ -1,4 +1,4 @@
-import type { Competition } from "@putting-pals/putting-pals-schema";
+import type { Competition } from "../../domain/types";
 
 export interface CompetitionRepository {
   getCompetition(id: string): Competition | undefined;

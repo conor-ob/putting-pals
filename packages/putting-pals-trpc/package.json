@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
-    "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
     "@trpc/server": "catalog:",
     "superjson": "catalog:",

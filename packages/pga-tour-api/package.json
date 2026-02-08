@@ -1,0 +1,40 @@
+{
+  "name": "@putting-pals/pga-tour-api",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "typecheck": "tsc --noEmit true",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@putting-pals/putting-pals-core": "workspace:*",
+    "cheerio": "^1.1.2",
+    "date-fns": "^4.1.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "catalog:",
+    "@graphql-codegen/client-preset": "^5.2.2",
+    "@graphql-codegen/typescript": "catalog:",
+    "@graphql-codegen/typescript-graphql-request": "^6.4.0",
+    "@graphql-codegen/typescript-operations": "^5.0.7",
+    "@putting-pals/putting-pals-utils": "workspace:*",
+    "@total-typescript/shoehorn": "^0.1.2",
+    "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
+    "graphql": "catalog:",
+    "graphql-request": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

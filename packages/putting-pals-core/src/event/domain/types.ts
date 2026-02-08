@@ -2,7 +2,7 @@ import type {
   RoundStatus,
   RoundStatusColor,
   TournamentStatus,
-} from "@putting-pals/putting-pals-schema";
+} from "../../tournament/domain/types";
 
 export type LeaderboardFeedEvent =
   | HotStreakV1

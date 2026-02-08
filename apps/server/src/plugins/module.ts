@@ -1,7 +1,7 @@
-import { injectDependencies as injectPgaTourGraphQlDependencies } from "@putting-pals/pga-tour-graphql";
-import { injectDependencies as injectPgaTourScraperDependencies } from "@putting-pals/pga-tour-scaper";
+import { injectDependencies as injectEspnSportsApiDependencies } from "@putting-pals/espn-sports-api";
+import { injectDependencies as injectPgaTourApiDependencies } from "@putting-pals/pga-tour-api";
+import { injectDependencies as injectPuttingPalsApiDependencies } from "@putting-pals/putting-pals-api";
 import { injectDependencies as injectCoreDependencies } from "@putting-pals/putting-pals-core";
-import { injectDependencies as injectDataDependencies } from "@putting-pals/putting-pals-data";
 import { injectDependencies as injectDatabaseDependencies } from "@putting-pals/putting-pals-db";
 import type { FastifyInstance } from "fastify";
 
@@ -12,20 +12,31 @@ declare module "fastify" {
 }
 
 export default function (fastify: FastifyInstance) {
-  const dataDependencies = injectDataDependencies();
   const databaseDependencies = injectDatabaseDependencies();
-  const pgaTourGraphQlDependencies = injectPgaTourGraphQlDependencies();
-  const pgaTourScraperDependencies = injectPgaTourScraperDependencies();
+  const pgaTourApiDependencies = injectPgaTourApiDependencies();
+  const puttingPalsApiDependencies = injectPuttingPalsApiDependencies(
+    pgaTourApiDependencies.leaderboardClient,
+    pgaTourApiDependencies.tournamentClient,
+    pgaTourApiDependencies.scheduleClient,
+  );
+  const espnSportsApiDependencies = injectEspnSportsApiDependencies();
   const coreDependencies = injectCoreDependencies(
-    dataDependencies.competitionRepository,
+    puttingPalsApiDependencies.competitionRepository,
     databaseDependencies.activeTournamentRepository,
     databaseDependencies.leaderboardFeedRepository,
     databaseDependencies.leaderboardSnapshotRepository,
     databaseDependencies.featureFlagRepository,
-    pgaTourGraphQlDependencies.leaderboardClient,
-    pgaTourGraphQlDependencies.scheduleClient,
-    pgaTourGraphQlDependencies.tournamentClient,
-    pgaTourScraperDependencies.pgaTourWebScraper,
+    pgaTourApiDependencies.activeTournamentClient,
+    pgaTourApiDependencies.leaderboardClient,
+    pgaTourApiDependencies.scheduleClient,
+    pgaTourApiDependencies.tournamentClient,
+    espnSportsApiDependencies.activeTournamentClient,
+    espnSportsApiDependencies.leaderboardClient,
+    espnSportsApiDependencies.scheduleClient,
+    espnSportsApiDependencies.tournamentClient,
+    puttingPalsApiDependencies.activeTournamentClient,
+    puttingPalsApiDependencies.leaderboardClient,
+    puttingPalsApiDependencies.scheduleClient,
   );
 
   fastify.decorate("dependencies", coreDependencies);

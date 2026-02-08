@@ -1,6 +1,6 @@
-import type { TourCode } from "@putting-pals/putting-pals-schema";
+import type z from "zod";
+import type { TourCodeSchema, TourSchema } from "./schemas";
 
-export type Tour = {
-  tourCode: TourCode;
-  tourName: string;
-};
+export type Tour = z.infer<typeof TourSchema>;
+
+export type TourCode = z.infer<typeof TourCodeSchema>;

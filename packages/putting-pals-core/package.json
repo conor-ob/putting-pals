@@ -13,16 +13,14 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "typecheck": "tsc --noEmit true",
-    "test": "vitest"
+    "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@putting-pals/putting-pals-schema": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
-    "date-fns": "^4.1.0"
+    "date-fns": "^4.1.0",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@total-typescript/shoehorn": "^0.1.2",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:",

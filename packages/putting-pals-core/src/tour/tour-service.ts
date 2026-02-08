@@ -7,35 +7,35 @@ export class TourServiceImpl implements TourService {
     this.featureFlagService = featureFlagService;
   }
 
-  async getTours(): Promise<readonly Tour[]> {
+  async getTours(): Promise<Tour[]> {
     const allTours = [
       {
-        tourCode: "P" as const,
-        tourName: "Putting Pals Tour",
+        tourCode: "pal" as const,
+        tourName: "Putting Pals Tour" as const,
       },
       {
-        tourCode: "R" as const,
-        tourName: "PGA TOUR",
+        tourCode: "pga" as const,
+        tourName: "PGA TOUR" as const,
       },
       {
-        tourCode: "D" as const,
-        tourName: "DP World Tour",
+        tourCode: "eur" as const,
+        tourName: "DP World Tour" as const,
       },
       {
-        tourCode: "L" as const,
-        tourName: "LIV Golf Tour",
+        tourCode: "liv" as const,
+        tourName: "LIV Golf Tour" as const,
       },
       {
-        tourCode: "H" as const,
-        tourName: "Korn Ferry Tour",
+        tourCode: "dev" as const,
+        tourName: "Korn Ferry Tour" as const,
       },
       {
-        tourCode: "S" as const,
-        tourName: "PGA TOUR Champions",
+        tourCode: "snr" as const,
+        tourName: "PGA TOUR Champions" as const,
       },
       {
-        tourCode: "Y" as const,
-        tourName: "PGA TOUR Americas",
+        tourCode: "pam" as const,
+        tourName: "PGA TOUR Americas" as const,
       },
     ];
 
@@ -45,9 +45,9 @@ export class TourServiceImpl implements TourService {
     ]);
 
     return allTours.filter((tour) => {
-      if (tour.tourCode === "D") {
+      if (tour.tourCode === "eur") {
         return isDpWorldTourEnabled;
-      } else if (tour.tourCode === "L") {
+      } else if (tour.tourCode === "liv") {
         return isLivGolfTourEnabled;
       } else {
         return true;

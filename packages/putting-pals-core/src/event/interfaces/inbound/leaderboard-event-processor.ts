@@ -1,4 +1,4 @@
-import type { TourCode } from "@putting-pals/putting-pals-schema";
+import type { TourCode } from "../../../tour/domain/types";
 
 export interface LeaderboardEventProcessor {
   processEvent(tourCode: TourCode): Promise<void>;

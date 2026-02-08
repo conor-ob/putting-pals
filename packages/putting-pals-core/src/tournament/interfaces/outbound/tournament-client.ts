@@ -1,5 +1,6 @@
-import type { Tournament } from "@putting-pals/putting-pals-schema";
+import type { Tournament } from "../../domain/types";
 
 export interface TournamentClient {
-  getTournaments(ids: string[]): Promise<readonly Tournament[]>;
+  getTournament(id: string): Promise<Tournament>;
+  getTournaments(ids: string[]): Promise<Tournament[]>;
 }

@@ -1,6 +1,6 @@
-import type { TourCode } from "@putting-pals/putting-pals-schema";
 import type { LeaderboardFeedRepository } from "../feed/interfaces/outbound/leaderboard-feed-repository";
-import type { TournamentResolver } from "../tournament/interfaces/inbound/tournament-resolver";
+import type { TourCode } from "../tour/domain/types";
+import type { ActiveTournamentService } from "../tournament/interfaces/inbound/active-tournament-service";
 import type { LeaderboardEventProcessor } from "./interfaces/inbound/leaderboard-event-processor";
 import type { LeaderboardEventProcessorService } from "./interfaces/inbound/leaderboard-event-processor-service";
 
@@ -8,18 +8,18 @@ export class LeaderboardEventProcessorImpl
   implements LeaderboardEventProcessor
 {
   constructor(
-    private readonly tournamentResolver: TournamentResolver,
+    private readonly activeTournamentService: ActiveTournamentService,
     private readonly leaderboardEventProcessorServices: LeaderboardEventProcessorService[],
     private readonly leaderboardFeedRepository: LeaderboardFeedRepository,
   ) {
-    this.tournamentResolver = tournamentResolver;
+    this.activeTournamentService = activeTournamentService;
     this.leaderboardEventProcessorServices = leaderboardEventProcessorServices;
     this.leaderboardFeedRepository = leaderboardFeedRepository;
   }
 
   async processEvent(tourCode: TourCode): Promise<void> {
     const tournamentId =
-      await this.tournamentResolver.getActiveTournamentId(tourCode);
+      await this.activeTournamentService.getActiveTournamentId(tourCode);
 
     const results = await Promise.all(
       this.leaderboardEventProcessorServices.map((eventProcessorService) =>

@@ -3,8 +3,8 @@ import type {
   LeaderboardSnapshotRepository,
   LeaderboardSnapshotType,
   LeaderboardSnapshotTypeMap,
+  TourCode,
 } from "@putting-pals/putting-pals-core";
-import type { TourCode } from "@putting-pals/putting-pals-schema";
 import { and, eq } from "drizzle-orm";
 import type { leaderboardSnapshotTable } from "../db/schema";
 import type { Database } from "../db/types";

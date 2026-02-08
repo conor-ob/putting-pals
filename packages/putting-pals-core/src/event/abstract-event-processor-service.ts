@@ -1,4 +1,4 @@
-import type { TourCode } from "@putting-pals/putting-pals-schema";
+import type { TourCode } from "../tour/domain/types";
 import type { EventEmitter, ProcessEventResult } from "./domain/types";
 import type { LeaderboardEventProcessorService } from "./interfaces/inbound/leaderboard-event-processor-service";
 import type {

@@ -2,8 +2,8 @@ import type {
   FeatureFlagKey,
   LeaderboardFeedEvent,
   LeaderboardSnapshot,
+  TourCode,
 } from "@putting-pals/putting-pals-core";
-import type { TourCode } from "@putting-pals/putting-pals-schema";
 import {
   boolean,
   index,

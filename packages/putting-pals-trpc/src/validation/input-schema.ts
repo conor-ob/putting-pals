@@ -1,4 +1,4 @@
-import { TourCodeSchema } from "@putting-pals/putting-pals-schema";
+import { TourCodeSchema } from "@putting-pals/putting-pals-core";
 import { z } from "zod";
 
 export const TourCodeInputSchema = TourCodeSchema;

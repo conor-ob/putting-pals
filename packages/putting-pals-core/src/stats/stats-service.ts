@@ -1,4 +1,4 @@
-import type { Competitor } from "@putting-pals/putting-pals-schema";
+import type { Competitor } from "../competition/domain/types";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
 import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
 
@@ -21,6 +21,7 @@ export class StatsService {
           competition.competitors.length > 0,
       );
     const tournaments = await this.tournamentService.getTournaments(
+      "pga",
       competitions.map((competition) => competition.tournamentId),
     );
 

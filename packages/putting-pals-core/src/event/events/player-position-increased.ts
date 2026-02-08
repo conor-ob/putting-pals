@@ -1,17 +1,17 @@
-import type { LeaderboardV3 } from "@putting-pals/putting-pals-schema";
 import { UnsupportedTourCodeError } from "../../error/service-error";
+import type { LeaderboardV3 } from "../../leaderboard/domain/types";
 import type { LeaderboardFeedEvent } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
 export class PlayerPositionIncreased extends AbstractEventEmitter<LeaderboardV3> {
   override emit(): LeaderboardFeedEvent[] {
     switch (this.tourCode) {
-      case "P":
+      case "pal":
         return [];
-      case "R":
-      case "S":
-      case "H":
-      case "Y":
+      case "pga":
+      case "snr":
+      case "pam":
+      case "dev":
         return [];
       default:
         throw new UnsupportedTourCodeError(this.tourCode);
