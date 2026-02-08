@@ -1,4 +1,4 @@
-import { router, usePathname } from "expo-router";
+import { router, usePathname, useSegments } from "expo-router";
 import { createContext, type ReactNode, useCallback, useContext } from "react";
 import type { Tour, TourCode } from "~/providers/trpc/types";
 import { trpc } from "../trpc/utils/trpc";
@@ -14,28 +14,29 @@ const TourCodeContext = createContext<TourCodeContextType | undefined>(
   undefined,
 );
 
-interface TourCodeProviderProps {
-  tourCode: TourCode;
-  children: ReactNode;
-}
-
 export function TourCodeProvider({
   tourCode,
   children,
-}: TourCodeProviderProps) {
+}: {
+  tourCode: TourCode;
+  children: ReactNode;
+}) {
+  const segments = useSegments<"/[tour]">();
   const pathname = usePathname();
   const { data: tours } = useQuery(trpc.tour.getTours.queryOptions());
 
   const setTourCode = useCallback(
     (newTourCode: TourCode) => {
-      const segments = pathname.split("/").filter(Boolean);
-      if (segments.length > 0) {
-        segments[0] = newTourCode;
-        const newPath = `/${segments.join("/")}`;
-        router.replace(newPath as never);
+      if (segments.length > 0 && segments[0] === "[tour]") {
+        const pathSegments = pathname.split("/").filter(Boolean);
+        if (pathSegments.length > 0) {
+          pathSegments[0] = newTourCode;
+          const newPath = `/${pathSegments.join("/")}`;
+          router.replace(newPath as never);
+        }
       }
     },
-    [pathname],
+    [segments, pathname],
   );
 
   return (

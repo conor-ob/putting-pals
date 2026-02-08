@@ -3,11 +3,9 @@ import { DEFAULT_TOUR_CODE } from "~/constants/tour";
 import { TourCodeProvider } from "~/providers/tour-code/tour-code-provider";
 import type { TourCode } from "~/providers/trpc/types";
 
-export default function TourCodeLayout() {
-  const { tourCode: tourCodeParam } = useLocalSearchParams<{
-    tourCode: TourCode;
-  }>();
-  const tourCode = tourCodeParam ?? DEFAULT_TOUR_CODE;
+export default function TourLayout() {
+  const { tour: tourCodeParam } = useLocalSearchParams<"/[tour]">();
+  const tourCode = (tourCodeParam as TourCode) ?? DEFAULT_TOUR_CODE;
 
   return (
     <TourCodeProvider tourCode={tourCode}>
