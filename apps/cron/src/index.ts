@@ -63,7 +63,7 @@ async function sendEvent() {
   });
 
   const supportedTours = await client.tour.getTours.query();
-  await Promise.allSettled(
+  const results = await Promise.allSettled(
     supportedTours.map((tour) =>
       client.event.processEvent
         .mutate({
@@ -80,12 +80,29 @@ async function sendEvent() {
         }),
     ),
   );
+
+  const rejected = results.filter((result) => result.status === "rejected");
+  if (rejected.length > 0) {
+    throw new AggregateError(
+      rejected.map((r) => r.reason),
+      `Failed to process events: ${rejected.length} tour(s) failed`,
+    );
+  }
 }
 
 sendEvent()
   .then(() => process.exit(0))
   .catch((err) => {
-    // biome-ignore lint/suspicious/noConsole: error logging
-    console.error(err);
+    if (err instanceof AggregateError) {
+      // biome-ignore lint/suspicious/noConsole: error logging
+      console.error(err.message);
+      for (const e of err.errors) {
+        // biome-ignore lint/suspicious/noConsole: error logging
+        console.error(e);
+      }
+    } else {
+      // biome-ignore lint/suspicious/noConsole: error logging
+      console.error(err);
+    }
     process.exit(1);
   });
