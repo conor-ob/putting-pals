@@ -1,5 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { assertNever } from "@putting-pals/putting-pals-utils";
 import { EntitySchema } from "./src/domain/schemas";
 
 const raw = EntitySchema.array().parse(
@@ -21,26 +22,24 @@ const idx = {
 };
 
 raw.forEach((c, i) => {
+  idx.iso2[c.iso2] = i;
+  idx.name[norm(c.name)] = i;
+  c.alias?.forEach((n) => {
+    idx.alias[norm(n)] = i;
+  });
   switch (c.__typename) {
     case "Country":
-      idx.iso2[c.iso2] = i;
       idx.iso3[c.iso3] = i;
       if (c.ioc) idx.ioc[c.ioc] = i;
-      idx.name[norm(c.name)] = i;
-      c.alias?.forEach((n) => {
-        idx.alias[norm(n)] = i;
-      });
       break;
     case "Subdivision":
-      idx.iso2[c.iso2] = i;
       idx.iso3[c.iso3] = i;
       idx.ioc[c.ioc] = i;
-      idx.name[norm(c.name)] = i;
       break;
     case "State":
-      idx.iso2[c.iso2] = i;
-      idx.name[norm(c.name)] = i;
       break;
+    default:
+      assertNever(c);
   }
 });
 

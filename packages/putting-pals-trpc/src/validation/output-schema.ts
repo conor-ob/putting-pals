@@ -52,6 +52,7 @@ export const LeaderboardOutputSchema = z.object({
 export const TournamentOutputSchema = z.object({
   id: z.string(),
   displayDate: z.string(),
+  countryCode: z.string().length(3),
   roundDisplay: z.string(),
   roundStatus: RoundStatusSchema,
   roundStatusColor: RoundStatusColorSchema,

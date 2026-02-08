@@ -18,6 +18,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@putting-pals/putting-pals-utils": "workspace:*",
     "zod": "catalog:"
   },
   "devDependencies": {

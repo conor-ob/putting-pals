@@ -11,7 +11,7 @@ export function TournamentInfo({
   return (
     <View className={cn("", className)} {...props}>
       <Text className="text-base text-muted-foreground font-medium leading-tight tracking-tight">
-        {tournament.displayDate}
+        {tournament.schedule.displayDate}
       </Text>
     </View>
   );

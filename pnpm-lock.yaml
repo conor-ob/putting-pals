@@ -340,6 +340,9 @@ importers:
 
   packages/iso-countries:
     dependencies:
+      '@putting-pals/putting-pals-utils':
+        specifier: workspace:*
+        version: link:../putting-pals-utils
       zod:
         specifier: 'catalog:'
         version: 4.3.6
@@ -362,6 +365,9 @@ importers:
 
   packages/pga-tour-api:
     dependencies:
+      '@putting-pals/iso-countries':
+        specifier: workspace:*
+        version: link:../iso-countries
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core

@@ -16,10 +16,10 @@ export function TournamentHeader({
       className={cn("flex flex-row items-center gap-4", className)}
       {...props}
     >
-      <TournamentLogo source={tournament.tournamentLogo[0]} />
+      <TournamentLogo source={tournament.images.logo} />
       <View className="flex flex-col gap-1">
         <TournamentStatus tournament={tournament} />
-        <TournamentName>{tournament.tournamentName}</TournamentName>
+        <TournamentName>{tournament.name}</TournamentName>
         <TournamentInfo tournament={tournament} />
       </View>
     </View>

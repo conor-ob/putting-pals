@@ -15,22 +15,22 @@ export function TournamentStatus({
         className={cn("flex flex-row items-center gap-1.5", className)}
         {...props}
       >
-        <RoundStatusBadge color={tournament.roundStatusColor}>
-          {tournament.roundDisplay}
+        <RoundStatusBadge color={tournament.status.roundStatusColor}>
+          {tournament.status.roundDisplay}
         </RoundStatusBadge>
         <RoundStatusLabel
           className="line-clamp-1"
-          color={tournament.roundStatusColor}
+          color={tournament.status.roundStatusColor}
         >
-          {tournament.roundStatusDisplay}
+          {tournament.status.roundStatusDisplay}
         </RoundStatusLabel>
       </View>
     );
   } else {
     return (
       <View className={className} {...props}>
-        <RoundStatusBadge color={tournament.roundStatusColor}>
-          {tournament.roundStatusDisplay}
+        <RoundStatusBadge color={tournament.status.roundStatusColor}>
+          {tournament.status.roundStatusDisplay}
         </RoundStatusBadge>
       </View>
     );
@@ -39,11 +39,11 @@ export function TournamentStatus({
 
 function isTournamentInProgress(tournament: Tournament) {
   const isNotStarted =
-    tournament.tournamentStatus === "NOT_STARTED" &&
-    tournament.roundStatus === "UPCOMING";
+    tournament.status.tournamentStatus === "NOT_STARTED" &&
+    tournament.status.roundStatus === "UPCOMING";
   const isCompleted =
-    tournament.tournamentStatus === "COMPLETED" &&
-    tournament.roundStatus === "OFFICIAL";
+    tournament.status.tournamentStatus === "COMPLETED" &&
+    tournament.status.roundStatus === "OFFICIAL";
 
   return !isNotStarted && !isCompleted;
 }
