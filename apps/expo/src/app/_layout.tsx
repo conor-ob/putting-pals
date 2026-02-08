@@ -11,7 +11,7 @@ export default function Layout() {
       <TrpcProvider>
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="[tourCode]" options={{ headerShown: false }} />
+          <Stack.Screen name="[tour]" options={{ headerShown: false }} />
         </Stack>
       </TrpcProvider>
     </ThemeProvider>
