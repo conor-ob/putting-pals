@@ -1,4 +1,3 @@
-
 export const COUNTRIES = [
   {
     "__typename": "Country",

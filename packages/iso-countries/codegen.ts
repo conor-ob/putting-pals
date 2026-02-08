@@ -44,8 +44,7 @@ raw.forEach((c, i) => {
   }
 });
 
-const out = `
-export const COUNTRIES = ${JSON.stringify(raw, null, 2)} as const
+const out = `export const COUNTRIES = ${JSON.stringify(raw, null, 2)} as const
 
 export const INDEX = ${JSON.stringify(idx, null, 2)} as const
 `;
