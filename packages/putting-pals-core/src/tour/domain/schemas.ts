@@ -13,10 +13,10 @@ export const TourCodeSchema = z.enum([
 export const TourSchema = z.object({
   tourCode: TourCodeSchema,
   tourName: z.enum([
-    "Putting Pals Tour",
+    "Putting Pals",
     "PGA TOUR",
     "DP World Tour",
-    "LIV Golf Tour",
+    "LIV Golf",
     "Korn Ferry Tour",
     "PGA TOUR Champions",
     "PGA TOUR Americas",

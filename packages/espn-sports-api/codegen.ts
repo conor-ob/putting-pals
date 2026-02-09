@@ -20,6 +20,7 @@ raw.forEach((c, i) => {
 
 const out = `export const TOURNAMENTS = ${JSON.stringify(raw, null, 2)} as const
 
-export const INDEX = ${JSON.stringify(idx, null, 2)} as const`;
+export const INDEX = ${JSON.stringify(idx, null, 2)} as const
+`;
 
 fs.writeFileSync(path.join("src", "generated", "tournaments.ts"), out);
