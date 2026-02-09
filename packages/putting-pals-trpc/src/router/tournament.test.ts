@@ -34,7 +34,7 @@ suite("tournamentRouter", () => {
     try {
       await caller.tournament.getById({
         tourCode: "pal",
-        id: "123",
+        id: 123 as never,
       });
     } catch (error) {
       expect(error).toBeInstanceOf(TRPCError);
