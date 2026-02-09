@@ -5,13 +5,18 @@ import {
   type TourCode,
   type Tournament,
   type TournamentClient,
+  type TournamentStatus,
 } from "@putting-pals/putting-pals-core";
-import { ApiScheduleSchema } from "../schedule/domain/schemas";
-import type { ApiEvent } from "../schedule/domain/types";
+import type { EspnSportsApi } from "../api/EspnSportsApi";
+import type { TourScheduleEvent } from "../schedule/domain/types";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 import { ApiTournamentSeasonSchema } from "./domain/schemas";
 
 export class EspnSportsApiTournamentClient implements TournamentClient {
+  constructor(private readonly espnSportsApi: EspnSportsApi) {
+    this.espnSportsApi = espnSportsApi;
+  }
+
   async getTournament(tourCode: TourCode, id: string): Promise<Tournament> {
     const apiTourCode = mapDomainToApiTourCode(tourCode);
     const tournamentSeasonResponse = await fetch(
@@ -25,12 +30,13 @@ export class EspnSportsApiTournamentClient implements TournamentClient {
       throw new NotFoundError(`Season for tournament ${id} not found`);
     }
 
-    const scheduleResponse = await fetch(
-      `https://www.espn.com/golf/schedule/_/tour/${apiTourCode}/season/${season}?_xhr=pageContent`,
+    const tourSchedule = await this.espnSportsApi.getTourSchedule(
+      tourCode,
+      season,
     );
-    const scheduleData = await scheduleResponse.json();
-    const schedule = ApiScheduleSchema.parse(scheduleData);
-    const tournament = schedule.events.find((e) => e.link.endsWith(id));
+    const tournament = tourSchedule.seasons
+      .flatMap((s) => s.events ?? [])
+      .find((e) => e.id === id);
     if (tournament === undefined) {
       throw new NotFoundError(`Tournament ${id} not found`);
     }
@@ -49,7 +55,7 @@ export class EspnSportsApiTournamentClient implements TournamentClient {
     return {
       __typename: "Tournament",
       id: id,
-      name: tournament.name,
+      name: tournament.label,
       images: {
         logo: `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`,
         cover: `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`,
@@ -66,7 +72,7 @@ export class EspnSportsApiTournamentClient implements TournamentClient {
         roundStatus: "OFFICIAL",
         roundStatusColor: "GREEN",
         roundStatusDisplay: "Official",
-        tournamentStatus: "COMPLETED",
+        tournamentStatus: mapTournamentStatus(tournament.status),
       },
     };
   }
@@ -76,9 +82,31 @@ export class EspnSportsApiTournamentClient implements TournamentClient {
   }
 }
 
-function getTournamentLocation(tournament: ApiEvent): Tournament["location"] {
-  const venue = tournament.locations[0]?.venue;
-  const [_courseName, location] = (venue?.fullName ?? "")
+function mapTournamentStatus(status: string): TournamentStatus {
+  switch (status) {
+    case "pre":
+      return "NOT_STARTED";
+    case "post":
+      return "COMPLETED";
+    default:
+      return "IN_PROGRESS";
+  }
+}
+
+function getTournamentLocation(
+  tournament: TourScheduleEvent,
+): Tournament["location"] {
+  const locationString = tournament.locations?.[0];
+  if (locationString === undefined) {
+    return {
+      __typename: "Country",
+      city: "TBD",
+      country: "TBD",
+      countryCode: "TBD",
+      displayLocation: "TBD",
+    };
+  }
+  const [_courseName, location] = locationString
     .split("-")
     .map((s) => s.trim());
   const [city, stateOrCountry] = (location ?? "")

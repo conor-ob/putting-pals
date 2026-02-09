@@ -44,3 +44,42 @@ export const ApiScheduleYearsSchema = z.object({
   tourScheduleName: z.string(),
   seasonYear: z.string(),
 });
+
+export const TourScheduleEventSchema = z.object({
+  id: z.string(),
+  label: z.string(),
+  detail: z.string(),
+  startDate: z.string(),
+  endDate: z.string(),
+  link: z.url(),
+  isMajor: z.boolean(),
+  locations: z.array(z.string()).optional(),
+  status: z.string(),
+  fullStatus: z.object({
+    type: z.object({
+      id: z.string(),
+      name: z.string(),
+      state: z.string(),
+      completed: z.boolean(),
+      description: z.string(),
+    }),
+  }),
+});
+
+export const TourScheduleSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  shortName: z.string(),
+  slug: z.string(),
+  defaultSeason: z.number(),
+  currentSeason: z.number(),
+  seasons: z.array(
+    z.object({
+      year: z.number(),
+      startDate: z.string(),
+      endDate: z.string(),
+      displayName: z.string(),
+      events: z.array(TourScheduleEventSchema).optional(),
+    }),
+  ),
+});
