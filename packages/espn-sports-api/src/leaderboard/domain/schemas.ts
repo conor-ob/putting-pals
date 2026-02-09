@@ -95,7 +95,7 @@ export const ApiLeaderboardSchema = z.object({
               status: z.object({
                 displayValue: z.string(),
                 period: z.number(),
-                teeTime: z.string(),
+                teeTime: z.string().optional(),
                 startHole: z.number(),
                 thru: z.number(),
                 playoff: z.boolean(),

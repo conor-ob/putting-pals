@@ -27,16 +27,23 @@ export class LeaderboardServiceImpl implements LeaderboardService {
     switch (tourCode) {
       case "pal":
         return this.puttingPalsApiLeaderboardClient.getLeaderboard(
+          tourCode,
           tournamentId,
         );
       case "pga":
       case "dev":
       case "snr":
       case "pam":
-        return this.pgaTourApiLeaderboardClient.getLeaderboard(tournamentId);
+        return this.pgaTourApiLeaderboardClient.getLeaderboard(
+          tourCode,
+          tournamentId,
+        );
       case "eur":
       case "liv":
-        return this.espnSportsApiLeaderboardClient.getLeaderboard(tournamentId);
+        return this.espnSportsApiLeaderboardClient.getLeaderboard(
+          tourCode,
+          tournamentId,
+        );
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }
