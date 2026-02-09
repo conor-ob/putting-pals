@@ -55,10 +55,10 @@ export class EspnSportsApiTournamentClient implements TournamentClient {
     const location = getTournamentLocation(tournament);
     const logo =
       // biome-ignore lint/suspicious/noExplicitAny: todo
-      (TOURNAMENTS[INDEX[id as keyof typeof INDEX]] as any).logo ?? undefined;
+      (TOURNAMENTS[INDEX[id as keyof typeof INDEX]] as any)?.logo ?? undefined;
     const cover =
       // biome-ignore lint/suspicious/noExplicitAny: todo
-      (TOURNAMENTS[INDEX[id as keyof typeof INDEX]] as any).cover ?? undefined;
+      (TOURNAMENTS[INDEX[id as keyof typeof INDEX]] as any)?.cover ?? undefined;
     return {
       __typename: "Tournament",
       id: id,
