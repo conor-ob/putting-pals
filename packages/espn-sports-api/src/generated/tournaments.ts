@@ -4,6 +4,14 @@ export const TOURNAMENTS = [
     "logo": "https://images.livgolf.com/image/private/t_ratio1_1-size10-f_webp-c_fill/prd/lgnko2xhixoies9ntdnl"
   },
   {
+    "id": "401805587",
+    "logo": "https://images.livgolf.com/image/private/t_ratio1_1-size10-f_webp-c_fill/v1769094838/prd/oj20ndnsxola5jywfczj"
+  },
+  {
+    "id": "401806356",
+    "logo": "https://images.livgolf.com/image/private/t_ratio1_1-size10-f_webp-c_fill/prd/wuhxhp2sut57kjfctohe"
+  },
+  {
     "id": "401807532",
     "logo": "https://images.livgolf.com/image/private/t_ratio1_1-size10-f_webp-c_fill/prd/yjxwjdurbtzbur4ui2zx",
     "cover": "https://images.livgolf.com/image/private/t_ratio1_1-size40-f_webp-c_fill/prd/ferb4wbecr12jqdmcxdx"
@@ -11,6 +19,10 @@ export const TOURNAMENTS = [
   {
     "id": "401824806",
     "logo": "https://images.livgolf.com/image/private/t_ratio1_1-size10-f_webp-c_fill/v1763664867/prd/ieqzcq5kyuqinxpl6yho"
+  },
+  {
+    "id": "401805795",
+    "logo": "https://images.livgolf.com/image/private/t_ratio1_1-size10-f_webp-c_fill/prd/r9slom6vzq1ca1k1s0zz"
   },
   {
     "id": "401822682",
@@ -24,8 +36,11 @@ export const TOURNAMENTS = [
 
 export const INDEX = {
   "401804701": 0,
-  "401807532": 1,
-  "401822682": 3,
-  "401822684": 4,
-  "401824806": 2
+  "401805587": 1,
+  "401805795": 5,
+  "401806356": 2,
+  "401807532": 3,
+  "401822682": 6,
+  "401822684": 7,
+  "401824806": 4
 } as const
