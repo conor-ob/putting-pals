@@ -83,67 +83,69 @@ export const ApiLeaderboardSchema = z.object({
               shortDetail: z.string(),
             }),
           }),
-          competitors: z.array(
-            z.object({
-              id: z.string(),
-              uid: z.string(),
-              movement: z.number(),
-              earnings: z.number(),
-              sortOrder: z.number(),
-              amateur: z.boolean(),
-              featured: z.boolean(),
-              status: z.object({
-                displayValue: z.string(),
-                period: z.number(),
-                teeTime: z.string().optional(),
-                startHole: z.number(),
-                thru: z.number(),
-                playoff: z.boolean(),
-                behindCurrentRound: z.boolean(),
-                detail: z.string(),
-                type: z.object({
-                  id: z.string(),
-                  name: z.string(),
-                  state: z.string(),
-                  description: z.string(),
-                  detail: z.string(),
-                  shortDetail: z.string(),
-                }),
-                position: z.object({
-                  id: z.string(),
-                  displayName: z.string(),
-                  isTie: z.boolean(),
-                }),
-              }),
-              score: z.object({
-                value: z.number(),
-                displayValue: z.string(),
-              }),
-              athlete: z.object({
+          competitors: z
+            .array(
+              z.object({
                 id: z.string(),
                 uid: z.string(),
-                guid: z.string(),
-                displayName: z.string(),
-                shortName: z.string(),
-                lastName: z.string(),
+                movement: z.number(),
+                earnings: z.number(),
+                sortOrder: z.number(),
                 amateur: z.boolean(),
-                flag: z.object({
-                  href: z.url(),
-                  alt: z.string(),
+                featured: z.boolean(),
+                status: z.object({
+                  displayValue: z.string(),
+                  period: z.number(),
+                  teeTime: z.string().optional(),
+                  startHole: z.number(),
+                  thru: z.number(),
+                  playoff: z.boolean(),
+                  behindCurrentRound: z.boolean(),
+                  detail: z.string(),
+                  type: z.object({
+                    id: z.string(),
+                    name: z.string(),
+                    state: z.string(),
+                    description: z.string(),
+                    detail: z.string(),
+                    shortDetail: z.string(),
+                  }),
+                  position: z.object({
+                    id: z.string(),
+                    displayName: z.string(),
+                    isTie: z.boolean(),
+                  }),
                 }),
-                birthplace: z
-                  .object({
-                    countryAbbreviation: z.string(),
-                  })
-                  .optional(),
-                headshot: z
-                  .object({
-                    href: z.string(),
-                  })
-                  .optional(),
+                score: z.object({
+                  value: z.number(),
+                  displayValue: z.string(),
+                }),
+                athlete: z.object({
+                  id: z.string(),
+                  uid: z.string(),
+                  guid: z.string(),
+                  displayName: z.string(),
+                  shortName: z.string(),
+                  lastName: z.string(),
+                  amateur: z.boolean(),
+                  flag: z.object({
+                    href: z.url(),
+                    alt: z.string(),
+                  }),
+                  birthplace: z
+                    .object({
+                      countryAbbreviation: z.string(),
+                    })
+                    .optional(),
+                  headshot: z
+                    .object({
+                      href: z.string(),
+                    })
+                    .optional(),
+                }),
               }),
-            }),
-          ),
+            )
+            .optional(),
         }),
       ),
       courses: z.array(

@@ -8,6 +8,7 @@ import {
   type TournamentStatus,
 } from "@putting-pals/putting-pals-core";
 import type { EspnSportsApi } from "../api/EspnSportsApi";
+import { INDEX, TOURNAMENTS } from "../generated/tournaments";
 import type { TourScheduleEvent } from "../schedule/domain/types";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 import { ApiTournamentSeasonSchema } from "./domain/schemas";
@@ -52,13 +53,23 @@ export class EspnSportsApiTournamentClient implements TournamentClient {
     //   throw new NotFoundError(`Tournament ${id} not found`);
     // }
     const location = getTournamentLocation(tournament);
+    const logo =
+      // biome-ignore lint/suspicious/noExplicitAny: todo
+      (TOURNAMENTS[INDEX[id as keyof typeof INDEX]] as any).logo ?? undefined;
+    const cover =
+      // biome-ignore lint/suspicious/noExplicitAny: todo
+      (TOURNAMENTS[INDEX[id as keyof typeof INDEX]] as any).cover ?? undefined;
     return {
       __typename: "Tournament",
       id: id,
       name: tournament.label,
       images: {
-        logo: `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`,
-        cover: `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`,
+        logo:
+          logo ??
+          `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`,
+        cover:
+          cover ??
+          `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`,
       },
       schedule: {
         startDate: tournament.startDate,
