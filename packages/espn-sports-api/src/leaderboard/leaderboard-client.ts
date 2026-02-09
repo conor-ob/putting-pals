@@ -21,13 +21,9 @@ export class EspnSportsApiLeaderboardClient implements LeaderboardClient {
       throw new NotFoundError(`Leaderboard for tournament ${id} not found`);
     }
 
-    const competitors = event.competitions.find(
-      (competition) => competition.id === id,
-    )?.competitors;
-
-    if (competitors === undefined) {
-      throw new NotFoundError(`Competitors for tournament ${id} not found`);
-    }
+    const competitors =
+      event.competitions.find((competition) => competition.id === id)
+        ?.competitors ?? [];
 
     return {
       __typename: "LeaderboardV3" as const,

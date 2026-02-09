@@ -37,7 +37,9 @@ export function LeaderboardPage() {
 
   return (
     <ScrollView className="p-4 gap-4">
-      {tournament && <TournamentHeader tournament={tournament} />}
+      {tournament && (
+        <TournamentHeader tournament={tournament} className="mb-4" />
+      )}
       <TourCodeSwitcher />
       <FlashList
         data={[...(leaderboard?.players ?? [])].sort(

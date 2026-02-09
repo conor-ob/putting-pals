@@ -1,5 +1,5 @@
 import type { AppRouter } from "@putting-pals/putting-pals-trpc";
-import { createTRPCClient, httpBatchLink, retryLink } from "@trpc/client";
+import { createTRPCClient, httpLink, retryLink } from "@trpc/client";
 import superjson from "superjson";
 import { env } from "./env/schema";
 
@@ -55,7 +55,7 @@ async function sendEvent() {
           return Math.min(1000 * 2 ** attemptIndex, 30000);
         },
       }),
-      httpBatchLink({
+      httpLink({
         url: `${env.SERVER_URL}/trpc`,
         transformer: superjson,
       }),
