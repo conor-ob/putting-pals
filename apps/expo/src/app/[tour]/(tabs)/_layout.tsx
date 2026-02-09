@@ -1,11 +1,17 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs } from "expo-router";
 
-export default function TabLayout() {
+export default function Layout() {
   return (
-    <Tabs>
+    <Tabs initialRouteName="leaderboard">
       <Tabs.Screen
         name="index"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="leaderboard"
         options={{
           title: "Leaderboard",
           tabBarIcon: ({ color }) => (
