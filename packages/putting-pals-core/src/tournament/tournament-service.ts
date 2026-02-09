@@ -25,10 +25,16 @@ export class TournamentServiceImpl implements TournamentService {
       case "dev":
       case "snr":
       case "pam":
-        return this.pgaTourApiTournamentClient.getTournament(tournamentId);
+        return this.pgaTourApiTournamentClient.getTournament(
+          tourCode,
+          tournamentId,
+        );
       case "eur":
       case "liv":
-        return this.espnSportsApiTournamentClient.getTournament(tournamentId);
+        return this.espnSportsApiTournamentClient.getTournament(
+          tourCode,
+          tournamentId,
+        );
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }

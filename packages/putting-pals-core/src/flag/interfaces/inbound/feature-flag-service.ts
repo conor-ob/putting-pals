@@ -1,5 +1,8 @@
 import type { FeatureFlagKey } from "../../domain/types";
 
 export interface FeatureFlagService {
-  isFeatureFlagEnabled(flag: FeatureFlagKey): Promise<boolean>;
+  isFeatureFlagEnabled(
+    flag: FeatureFlagKey,
+    defaultValue: boolean,
+  ): Promise<boolean>;
 }

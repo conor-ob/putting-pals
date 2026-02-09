@@ -11,7 +11,7 @@ export class TourServiceImpl implements TourService {
     const allTours = [
       {
         tourCode: "pal" as const,
-        tourName: "Putting Pals Tour" as const,
+        tourName: "Putting Pals" as const,
       },
       {
         tourCode: "pga" as const,
@@ -23,7 +23,7 @@ export class TourServiceImpl implements TourService {
       },
       {
         tourCode: "liv" as const,
-        tourName: "LIV Golf Tour" as const,
+        tourName: "LIV Golf" as const,
       },
       {
         tourCode: "dev" as const,
@@ -40,8 +40,14 @@ export class TourServiceImpl implements TourService {
     ];
 
     const [isDpWorldTourEnabled, isLivGolfTourEnabled] = await Promise.all([
-      this.featureFlagService.isFeatureFlagEnabled("enable-dp-world-tour"),
-      this.featureFlagService.isFeatureFlagEnabled("enable-liv-golf-tour"),
+      this.featureFlagService.isFeatureFlagEnabled(
+        "enable-dp-world-tour",
+        true,
+      ),
+      this.featureFlagService.isFeatureFlagEnabled(
+        "enable-liv-golf-tour",
+        true,
+      ),
     ]);
 
     return allTours.filter((tour) => {

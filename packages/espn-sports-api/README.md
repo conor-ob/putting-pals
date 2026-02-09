@@ -16,12 +16,14 @@ https://site.web.api.espn.com/apis/site/v2/sports/golf/eur/tourschedule?region=u
 
 ## Scoreboard
 
+https://site.web.api.espn.com/apis/personalized/v2/scoreboard/header?sport=golf&league=pga&region=us&lang=en&contentorigin=espn&configuration=STREAM_MENU&platform=web&features=sfb-all%2Ccutl&buyWindow=1m&showAirings=buy%2Clive%2Creplay&showZipLookup=true&tz=America%2FNew_York&postalCode=d01&playabilitySource=playbackId
 https://site.api.espn.com/apis/site/v2/sports/golf/eur/scoreboard
 
 ## Tournament
 
 - GET current tournament / leaderboard
 https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=eur
+https://site.web.api.espn.com/apis/personalized/v2/scoreboard/header?sport=golf&league=eur&event=401822682
 
 ## News
 

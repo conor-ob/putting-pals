@@ -13,6 +13,7 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
+    "codegen": "tsx codegen.ts",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
+    "tsx": "^4.21.0",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }

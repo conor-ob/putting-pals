@@ -44,7 +44,7 @@ export {
   RoundStatusSchema,
   TournamentStatusSchema,
 } from "./tournament/domain/schemas";
-export type { Tournament } from "./tournament/domain/types";
+export type { Tournament, TournamentStatus } from "./tournament/domain/types";
 export type { TournamentService } from "./tournament/interfaces/inbound/tournament-service";
 export type { ActiveTournamentClient } from "./tournament/interfaces/outbound/active-tournament-client";
 export type {

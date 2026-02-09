@@ -7,11 +7,17 @@ import type {
   TourCode,
 } from "@putting-pals/putting-pals-core";
 import { format, parseISO } from "date-fns";
+import type { EspnSportsApi } from "../api/EspnSportsApi";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 import { ApiScheduleSchema, ApiScheduleYearsSchema } from "./domain/schemas";
 import type { ApiEvent } from "./domain/types";
 
 export class EspnSportsApiScheduleClient implements ScheduleClient {
+  // biome-ignore lint/correctness/noUnusedPrivateClassMembers: todo
+  constructor(private readonly espnSportsApi: EspnSportsApi) {
+    this.espnSportsApi = espnSportsApi;
+  }
+
   async getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
     const apiTourCode = mapDomainToApiTourCode(tourCode);
     const response = await fetch(

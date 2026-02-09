@@ -5,6 +5,11 @@ export const ScheduleTournamentSchema = z.object({
   date: z.string(),
   startDate: z.number(),
   dateAccessibilityText: z.string(),
+  country: z.string(),
+  countryCode: z.string().length(3),
+  state: z.string(),
+  stateCode: z.string().length(2),
+  city: z.string(),
   status: z
     .object({
       roundStatusDisplay: z.string(),

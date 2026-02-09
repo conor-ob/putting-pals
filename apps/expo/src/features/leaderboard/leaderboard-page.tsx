@@ -1,4 +1,5 @@
 import { FlashList } from "@shopify/flash-list";
+import { useLocalSearchParams } from "expo-router";
 import { ScrollView } from "react-native";
 import { TournamentHeader } from "~/components/tournament-header";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
@@ -12,8 +13,9 @@ import { PuttingPalsPlayerRow } from "./putting-pals-player-row";
 
 export function LeaderboardPage() {
   const { tourCode } = useTourCode();
+  const { id } = useLocalSearchParams<{ id?: string }>();
   const { data: tournament, error: tournamentError } = useQuery(
-    trpc.tournament.getById.queryOptions({ tourCode }),
+    trpc.tournament.getById.queryOptions({ tourCode, id }),
   );
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("tournament.data", tournament);
@@ -21,7 +23,7 @@ export function LeaderboardPage() {
   console.log("tournament.error", tournamentError);
 
   const { data: leaderboard, error: leaderboardError } = useQuery(
-    trpc.leaderboard.getById.queryOptions({ tourCode }),
+    trpc.leaderboard.getById.queryOptions({ tourCode, id }),
   );
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("leaderboard.data", leaderboard);
@@ -37,7 +39,9 @@ export function LeaderboardPage() {
 
   return (
     <ScrollView className="p-4 gap-4">
-      {tournament && <TournamentHeader tournament={tournament} />}
+      {tournament && (
+        <TournamentHeader tournament={tournament} className="mb-4" />
+      )}
       <TourCodeSwitcher />
       <FlashList
         data={[...(leaderboard?.players ?? [])].sort(

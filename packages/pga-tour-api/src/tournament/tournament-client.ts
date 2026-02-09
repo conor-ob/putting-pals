@@ -1,5 +1,6 @@
 import {
   NotFoundError,
+  type TourCode,
   type Tournament,
   type TournamentClient,
 } from "@putting-pals/putting-pals-core";
@@ -11,7 +12,7 @@ export class PgaTourApiTournamentClient implements TournamentClient {
     this.sdk = sdk;
   }
 
-  async getTournament(id: string): Promise<Tournament> {
+  async getTournament(_tourCode: TourCode, id: string): Promise<Tournament> {
     const tournaments = await this.getTournaments([id]);
     const tournament = tournaments.find((t) => t.id === id);
     if (tournament === undefined) {

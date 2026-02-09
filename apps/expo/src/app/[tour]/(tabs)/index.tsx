@@ -1,3 +1,5 @@
-import { LeaderboardPage } from "~/features/leaderboard/leaderboard-page";
+import { Redirect } from "expo-router";
 
-export default LeaderboardPage;
+export default function Index() {
+  return <Redirect href="./leaderboard" />;
+}

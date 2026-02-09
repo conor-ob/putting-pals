@@ -3,10 +3,8 @@ import {
   type CompetitionRepository,
   NotFoundError,
   type TourCode,
-  type Tournament,
   type TournamentClient,
 } from "@putting-pals/putting-pals-core";
-import { formatISO, parse } from "date-fns";
 
 export class PuttingPalsApiActiveTournamentClient
   implements ActiveTournamentClient
@@ -52,7 +50,7 @@ export class PuttingPalsApiActiveTournamentClient
     const tournaments =
       await this.pgaTourApiTournamentClient.getTournaments(competitionIds);
     const activeTournament = [...tournaments].sort((a, b) =>
-      parseStartDate(b).localeCompare(parseStartDate(a)),
+      b.schedule.startDate.localeCompare(a.schedule.startDate),
     )[0];
 
     if (activeTournament === undefined) {
@@ -61,11 +59,4 @@ export class PuttingPalsApiActiveTournamentClient
 
     return activeTournament.id;
   }
-}
-
-// TODO: pga tour api should parse and domain Tournament should have start date
-export function parseStartDate(tournament: Tournament): string {
-  const startDate = tournament.displayDate.replace(/\s+-\s+\d+/, "");
-  const parsedStartDate = parse(startDate, "MMM d, yyyy", new Date());
-  return formatISO(parsedStartDate);
 }

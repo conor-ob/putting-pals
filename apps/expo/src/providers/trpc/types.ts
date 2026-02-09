@@ -30,7 +30,8 @@ export type PuttingPalsPlayerRow = Extract<
   { __typename: "PuttingPalsPlayerRow" }
 >;
 
-export type RoundStatus = RouterOutputs["tournament"]["getById"]["roundStatus"];
+export type RoundStatus =
+  RouterOutputs["tournament"]["getById"]["status"]["roundStatus"];
 
 export type RoundStatusChangedV1 =
   RouterOutputs["feed"]["get"]["events"][number]["payload"] & {
@@ -38,7 +39,7 @@ export type RoundStatusChangedV1 =
   };
 
 export type RoundStatusColor =
-  RouterOutputs["tournament"]["getById"]["roundStatusColor"];
+  RouterOutputs["tournament"]["getById"]["status"]["roundStatusColor"];
 
 export type Tour = RouterOutputs["tour"]["getTours"][number];
 

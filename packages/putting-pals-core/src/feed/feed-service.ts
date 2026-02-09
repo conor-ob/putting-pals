@@ -90,7 +90,7 @@ export class FeedServiceImpl implements FeedService {
       case "TournamentStatusChangedV1":
         return {
           ...feedItem,
-          tournamentName: tournament.tournamentName,
+          tournamentName: tournament.name,
         };
       default:
         return feedItem;

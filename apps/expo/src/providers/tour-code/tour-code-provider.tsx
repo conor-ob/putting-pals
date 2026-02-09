@@ -1,4 +1,4 @@
-import { router, usePathname, useSegments } from "expo-router";
+import { useRouter, useSegments } from "expo-router";
 import { createContext, type ReactNode, useCallback, useContext } from "react";
 import type { Tour, TourCode } from "~/providers/trpc/types";
 import { useLocalStorage } from "~/storage/use-local-storage";
@@ -22,26 +22,31 @@ export function TourCodeProvider({
   tourCode: TourCode;
   children: ReactNode;
 }) {
-  const segments = useSegments<"/[tour]">();
-  const pathname = usePathname();
+  const router = useRouter();
+  const segments = useSegments();
+  const { data: tours } = useQuery(trpc.tour.getTours.queryOptions());
   const { setValue: saveTourCode } = useLocalStorage(
     "putting-pals:app:tour-code:v1",
   );
-  const { data: tours } = useQuery(trpc.tour.getTours.queryOptions());
 
   const setTourCode = useCallback(
     async (newTourCode: TourCode) => {
-      if (segments.length > 0 && segments[0] === "[tour]") {
-        const pathSegments = pathname.split("/").filter(Boolean);
-        if (pathSegments.length > 0) {
-          pathSegments[0] = newTourCode;
-          const newPath = `/${pathSegments.join("/")}`;
-          await saveTourCode(newTourCode);
-          router.replace(newPath as never);
-        }
-      }
+      const newPath = segments
+        .map((s) => {
+          if (s === "[tour]") {
+            return newTourCode;
+          }
+          return s;
+        })
+        .filter((s) => !s.startsWith("_"))
+        .filter((s) => !s.startsWith("("))
+        .filter((s) => !s.startsWith("["))
+        .join("/");
+
+      await saveTourCode(newTourCode);
+      router.replace(`/${newPath}` as never);
     },
-    [segments, pathname, saveTourCode],
+    [router, segments, saveTourCode],
   );
 
   return (

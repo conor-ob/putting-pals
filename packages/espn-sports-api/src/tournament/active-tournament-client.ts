@@ -2,19 +2,17 @@ import type {
   ActiveTournamentClient,
   TourCode,
 } from "@putting-pals/putting-pals-core";
-import { mapDomainToApiTourCode } from "../utils/tour-code";
-import { ApiActiveTournamentSchema } from "./domain/schemas";
+import type { EspnSportsApi } from "../api/EspnSportsApi";
 
 export class EspnSportsApiActiveTournamentClient
   implements ActiveTournamentClient
 {
+  constructor(private readonly espnSportsApi: EspnSportsApi) {
+    this.espnSportsApi = espnSportsApi;
+  }
+
   async getActiveTournamentId(tourCode: TourCode): Promise<string | undefined> {
-    const apiTourCode = mapDomainToApiTourCode(tourCode);
-    const response = await fetch(
-      `https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=${apiTourCode}`,
-    );
-    const data = await response.json();
-    const responseData = ApiActiveTournamentSchema.parse(data);
-    return responseData.events[0]?.id;
+    const leaderboard = await this.espnSportsApi.getLeaderboard(tourCode);
+    return leaderboard.events[0]?.id;
   }
 }

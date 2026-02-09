@@ -12,6 +12,8 @@ export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
       case "snr":
       case "pam":
       case "dev":
+      case "eur":
+      case "liv":
         return this.getPgaTourLeaderChanged();
       default:
         throw new UnsupportedTourCodeError(this.tourCode);
