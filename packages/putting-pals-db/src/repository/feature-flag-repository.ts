@@ -15,7 +15,10 @@ export class FeatureFlagPostgresRepository implements FeatureFlagRepository {
     this.table = table;
   }
 
-  async isFeatureFlagEnabled(flag: FeatureFlagKey): Promise<boolean> {
+  async isFeatureFlagEnabled(
+    flag: FeatureFlagKey,
+    defaultValue: boolean,
+  ): Promise<boolean> {
     const featureFlag = await this.db
       .select()
       .from(this.table)
@@ -24,15 +27,16 @@ export class FeatureFlagPostgresRepository implements FeatureFlagRepository {
       .then(([row]) => row);
 
     if (featureFlag === undefined) {
-      await this.db
+      const newFeatureFlag = await this.db
         .insert(this.table)
         .values({
           flagKey: flag,
-          enabled: false,
+          enabled: defaultValue,
         })
-        .returning();
+        .returning()
+        .then(([row]) => row);
 
-      return false;
+      return newFeatureFlag?.enabled ?? defaultValue;
     }
 
     return featureFlag.enabled;

@@ -7,7 +7,10 @@ export class FeatureFlagServiceImpl implements FeatureFlagService {
     this.featureFlagRepository = featureFlagRepository;
   }
 
-  async isFeatureFlagEnabled(flag: FeatureFlagKey): Promise<boolean> {
-    return this.featureFlagRepository.isFeatureFlagEnabled(flag);
+  async isFeatureFlagEnabled(
+    flag: FeatureFlagKey,
+    defaultValue: boolean,
+  ): Promise<boolean> {
+    return this.featureFlagRepository.isFeatureFlagEnabled(flag, defaultValue);
   }
 }

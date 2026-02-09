@@ -40,8 +40,14 @@ export class TourServiceImpl implements TourService {
     ];
 
     const [isDpWorldTourEnabled, isLivGolfTourEnabled] = await Promise.all([
-      this.featureFlagService.isFeatureFlagEnabled("enable-dp-world-tour"),
-      this.featureFlagService.isFeatureFlagEnabled("enable-liv-golf-tour"),
+      this.featureFlagService.isFeatureFlagEnabled(
+        "enable-dp-world-tour",
+        true,
+      ),
+      this.featureFlagService.isFeatureFlagEnabled(
+        "enable-liv-golf-tour",
+        true,
+      ),
     ]);
 
     return allTours.filter((tour) => {
