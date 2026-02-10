@@ -17,7 +17,7 @@ export function injectDependencies(): {
   activeTournamentClient: ActiveTournamentClient;
 } {
   const espnSportsApi = new EspnSportsApi(
-    "https://site.web.api.espn.com/apis/site/v2/sports/golf",
+    "https://site.api.espn.com/apis/site/v2/sports/golf",
   );
   return {
     leaderboardClient: new EspnSportsApiLeaderboardClient(espnSportsApi),

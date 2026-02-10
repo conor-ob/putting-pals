@@ -29,6 +29,8 @@ export function injectDependencies(): {
     leaderboardClient: new PgaTourApiLeaderboardClient(sdk),
     scheduleClient: new PgaTourApiScheduleClient(sdk),
     tournamentClient: new PgaTourApiTournamentClient(sdk),
-    activeTournamentClient: new PgaTourWebScraperActiveTournamentClient(),
+    activeTournamentClient: new PgaTourWebScraperActiveTournamentClient(
+      "https://www.pgatour.com",
+    ),
   };
 }
