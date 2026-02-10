@@ -10,7 +10,13 @@ import { TourScheduleSchema } from "../schedule/domain/schemas";
 import type { TourSchedule } from "../schedule/domain/types";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 
-export class EspnSportsApi {
+export interface EspnSportsApi {
+  getLeaderboard(tourCode: TourCode, id?: string): Promise<ApiLeaderboard>;
+  getTourSchedule(tourCode: TourCode, season?: number): Promise<TourSchedule>;
+  getNews(tourCode: TourCode): Promise<News>;
+}
+
+export class EspnSportsApiImpl implements EspnSportsApi {
   constructor(private readonly baseUrl: string) {
     this.baseUrl = baseUrl;
   }
