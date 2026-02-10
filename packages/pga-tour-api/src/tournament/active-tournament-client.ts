@@ -22,8 +22,14 @@ type NextDataProps = {
 export class PgaTourWebScraperActiveTournamentClient
   implements ActiveTournamentClient
 {
+  constructor(private readonly baseUrl: string) {
+    this.baseUrl = baseUrl;
+  }
+
   async getActiveTournamentId(tourCode: TourCode): Promise<string | undefined> {
-    const response = await fetch("https://www.pgatour.com/leaderboard");
+    const response = await fetch(`${this.baseUrl}/leaderboard`, {
+      method: "GET",
+    });
     const text = await response.text();
     const $ = cheerio.load(text);
     const nextDataScript = $("#__NEXT_DATA__").html();
