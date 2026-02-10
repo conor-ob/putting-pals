@@ -7,7 +7,7 @@ import {
   type TournamentClient,
   type TournamentStatus,
 } from "@putting-pals/putting-pals-core";
-import type { EspnSportsApi } from "../api/EspnSportsApi";
+import type { EspnSportsApi } from "../api/espn-sports-api";
 import type { TourScheduleEvent } from "../schedule/domain/types";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 import { ApiTournamentSeasonSchema } from "./domain/schemas";

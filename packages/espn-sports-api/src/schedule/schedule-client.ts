@@ -7,7 +7,7 @@ import type {
   TourCode,
 } from "@putting-pals/putting-pals-core";
 import { format, parseISO } from "date-fns";
-import type { EspnSportsApi } from "../api/EspnSportsApi";
+import type { EspnSportsApi } from "../api/espn-sports-api";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 import { ApiScheduleSchema, ApiScheduleYearsSchema } from "./domain/schemas";
 import type { ApiEvent } from "./domain/types";

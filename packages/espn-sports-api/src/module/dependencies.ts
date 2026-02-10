@@ -4,7 +4,7 @@ import type {
   ScheduleClient,
   TournamentClient,
 } from "@putting-pals/putting-pals-core";
-import { EspnSportsApi } from "../api/EspnSportsApi";
+import { EspnSportsApiImpl } from "../api/espn-sports-api";
 import { EspnSportsApiLeaderboardClient } from "../leaderboard/leaderboard-client";
 import { EspnSportsApiScheduleClient } from "../schedule/schedule-client";
 import { EspnSportsApiActiveTournamentClient } from "../tournament/active-tournament-client";
@@ -16,7 +16,7 @@ export function injectDependencies(): {
   tournamentClient: TournamentClient;
   activeTournamentClient: ActiveTournamentClient;
 } {
-  const espnSportsApi = new EspnSportsApi(
+  const espnSportsApi = new EspnSportsApiImpl(
     "https://site.api.espn.com/apis/site/v2/sports/golf",
   );
   return {
