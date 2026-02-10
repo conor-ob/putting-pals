@@ -1,6 +1,6 @@
 {
   "extends": "//",
   "files": {
-    "includes": ["**", "!src/generated/tournaments.ts"]
+    "includes": ["**", "!src/generated/"]
   }
 }

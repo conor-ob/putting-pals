@@ -42,6 +42,7 @@ export type { TourService } from "./tour/interfaces/inbound/tour-service";
 export {
   RoundStatusColorSchema,
   RoundStatusSchema,
+  TournamentSchema,
   TournamentStatusSchema,
 } from "./tournament/domain/schemas";
 export type { Tournament, TournamentStatus } from "./tournament/domain/types";

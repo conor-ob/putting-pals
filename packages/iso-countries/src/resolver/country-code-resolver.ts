@@ -1,5 +1,5 @@
 import type { Entity } from "../domain/types";
-import { COUNTRIES, INDEX } from "../generated/codes";
+import { COUNTRIES, INDEX } from "../generated/countries";
 
 export const norm = (s: string) =>
   s

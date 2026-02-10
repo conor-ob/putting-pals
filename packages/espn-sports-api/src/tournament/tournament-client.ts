@@ -8,10 +8,10 @@ import {
   type TournamentStatus,
 } from "@putting-pals/putting-pals-core";
 import type { EspnSportsApi } from "../api/EspnSportsApi";
-import { INDEX, TOURNAMENTS } from "../generated/tournaments";
 import type { TourScheduleEvent } from "../schedule/domain/types";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 import { ApiTournamentSeasonSchema } from "./domain/schemas";
+import { resolve as resolveTournamentData } from "./tournament-data-resolver";
 
 export class EspnSportsApiTournamentClient implements TournamentClient {
   constructor(private readonly espnSportsApi: EspnSportsApi) {
@@ -53,23 +53,20 @@ export class EspnSportsApiTournamentClient implements TournamentClient {
     //   throw new NotFoundError(`Tournament ${id} not found`);
     // }
     const location = getTournamentLocation(tournament);
+    const tournamentData = resolveTournamentData(id);
     const logo =
-      // biome-ignore lint/suspicious/noExplicitAny: todo
-      (TOURNAMENTS[INDEX[id as keyof typeof INDEX]] as any)?.logo ?? undefined;
+      tournamentData?.images?.logo ??
+      `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`;
     const cover =
-      // biome-ignore lint/suspicious/noExplicitAny: todo
-      (TOURNAMENTS[INDEX[id as keyof typeof INDEX]] as any)?.cover ?? undefined;
+      tournamentData?.images?.cover ??
+      `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`;
     return {
       __typename: "Tournament",
       id: id,
       name: tournament.label,
       images: {
-        logo:
-          logo ??
-          `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`,
-        cover:
-          cover ??
-          `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`,
+        logo: logo,
+        cover: cover,
       },
       schedule: {
         startDate: tournament.startDate,

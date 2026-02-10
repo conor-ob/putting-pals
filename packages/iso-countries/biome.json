@@ -1,6 +1,6 @@
 {
   "extends": "//",
   "files": {
-    "includes": ["**", "!src/generated/codes.ts"]
+    "includes": ["**", "!src/generated/"]
   }
 }
