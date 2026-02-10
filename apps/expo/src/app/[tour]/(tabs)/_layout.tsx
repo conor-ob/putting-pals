@@ -14,15 +14,6 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="[id]"
-        options={{
-          title: "Leaderboard",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="trophy" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="feed"
         options={{
           title: "Feed",
