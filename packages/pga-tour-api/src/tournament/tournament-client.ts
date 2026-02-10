@@ -1,19 +1,27 @@
 import {
+  AbstractTournamentClient,
   NotFoundError,
   type TourCode,
   type Tournament,
-  type TournamentClient,
 } from "@putting-pals/putting-pals-core";
-import type { Sdk } from "../generated/graphql";
+import type { ApiTournament, Sdk } from "../generated/graphql";
 import { transformTournament } from "./tournament-utils";
 
-export class PgaTourApiTournamentClient implements TournamentClient {
+export class PgaTourApiTournamentClient extends AbstractTournamentClient<ApiTournament> {
   constructor(private readonly sdk: Sdk) {
+    super();
     this.sdk = sdk;
   }
 
-  async getTournament(_tourCode: TourCode, id: string): Promise<Tournament> {
-    const tournaments = await this.getTournaments([id]);
+  override async getTournamentsRemote(ids: string[]): Promise<ApiTournament[]> {
+    return this.sdk.Tournaments({ ids }).then((data) => data.tournaments);
+  }
+
+  override async getTournamentRemote(
+    _tourCode: TourCode,
+    id: string,
+  ): Promise<ApiTournament> {
+    const tournaments = await this.getTournamentsRemote([id]);
     const tournament = tournaments.find((t) => t.id === id);
     if (tournament === undefined) {
       throw new NotFoundError(`Tournament ${id} not found`);
@@ -21,9 +29,7 @@ export class PgaTourApiTournamentClient implements TournamentClient {
     return tournament;
   }
 
-  async getTournaments(ids: string[]): Promise<Tournament[]> {
-    return this.sdk
-      .Tournaments({ ids })
-      .then((data) => data.tournaments.map(transformTournament));
+  override mapTournament(tournament: ApiTournament): Tournament {
+    return transformTournament(tournament);
   }
 }
