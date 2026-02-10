@@ -1,6 +1,11 @@
 import type { AppRouter } from "@putting-pals/putting-pals-trpc";
 import { QueryClient } from "@tanstack/react-query";
-import { createTRPCClient, httpLink, TRPCClientError } from "@trpc/client";
+import {
+  createTRPCClient,
+  httpBatchLink,
+  httpBatchStreamLink,
+  TRPCClientError,
+} from "@trpc/client";
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import { Platform } from "react-native";
 import superjson from "superjson";
@@ -73,20 +78,17 @@ export const queryClient = new QueryClient({
   },
 });
 
-// const httpLink = Platform.select({
-//   web: httpBatchStreamLink,
-//   default: httpBatchLink,
-// });
+const httpLink = Platform.select({
+  web: httpBatchStreamLink,
+  default: httpBatchLink,
+});
 
 const trpcClient = createTRPCClient<AppRouter>({
   links: [
     httpLink({
       url:
         process.env.NODE_ENV === "production"
-          ? Platform.select({
-              web: "api/trpc",
-              default: `${process.env.EXPO_PUBLIC_SERVER_URL}/api/trpc`,
-            })
+          ? `${process.env.EXPO_PUBLIC_SERVER_URL}/api/trpc`
           : `${process.env.EXPO_PUBLIC_SERVER_URL}/trpc`,
       transformer: superjson,
     }),
