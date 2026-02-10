@@ -1,28 +1,39 @@
 import {
-  type LeaderboardClient,
+  AbstractLeaderboardClient,
   type LeaderboardV3,
   NotFoundError,
   type TourCode,
   type TournamentStatus,
 } from "@putting-pals/putting-pals-core";
 import type { EspnSportsApi } from "../api/espn-sports-api";
+import type { ApiLeaderboardEvent } from "./domain/types";
 
-export class EspnSportsApiLeaderboardClient implements LeaderboardClient {
+export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<ApiLeaderboardEvent> {
   constructor(private readonly espnSportsApi: EspnSportsApi) {
+    super();
     this.espnSportsApi = espnSportsApi;
   }
 
-  async getLeaderboard(tourCode: TourCode, id: string): Promise<LeaderboardV3> {
-    const event = (
-      await this.espnSportsApi.getLeaderboard(tourCode, id)
-    ).events.find((event) => event.id === id);
+  override async getLeaderboardRemote(
+    tourCode: TourCode,
+    id: string,
+  ): Promise<ApiLeaderboardEvent> {
+    const apiLeaderboard = await this.espnSportsApi.getLeaderboard(
+      tourCode,
+      id,
+    );
+    const event = apiLeaderboard.events.find((event) => event.id === id);
 
     if (event === undefined) {
       throw new NotFoundError(`Leaderboard for tournament ${id} not found`);
     }
 
+    return event;
+  }
+
+  override mapLeaderboard(event: ApiLeaderboardEvent): LeaderboardV3 {
     const competitors =
-      event.competitions.find((competition) => competition.id === id)
+      event.competitions.find((competition) => competition.id === event.id)
         ?.competitors ?? [];
 
     return {
@@ -48,17 +59,18 @@ export class EspnSportsApiLeaderboardClient implements LeaderboardClient {
           scoreSort: 0,
         },
       })),
-      tournamentStatus: mapTournamentStatus(event.status.type.state),
+      tournamentStatus: this.mapTournamentStatus(event.status.type.state),
     };
   }
-}
-function mapTournamentStatus(status: string): TournamentStatus {
-  switch (status) {
-    case "pre":
-      return "NOT_STARTED";
-    case "post":
-      return "COMPLETED";
-    default:
-      return "IN_PROGRESS";
+
+  private mapTournamentStatus(status: string): TournamentStatus {
+    switch (status) {
+      case "pre":
+        return "NOT_STARTED";
+      case "post":
+        return "COMPLETED";
+      default:
+        return "IN_PROGRESS";
+    }
   }
 }

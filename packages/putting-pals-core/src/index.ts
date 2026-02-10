@@ -23,6 +23,7 @@ export type {
   PuttingPalsPlayerScoringData,
 } from "./leaderboard/domain/types";
 export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leaderboard-service";
+export { AbstractLeaderboardClient } from "./leaderboard/interfaces/outbound/abstract-leaderboard-client";
 export type { LeaderboardClient } from "./leaderboard/interfaces/outbound/leaderboard-client";
 export { injectDependencies } from "./module/dependencies";
 export type {

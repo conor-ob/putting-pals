@@ -1,23 +1,27 @@
-import type {
-  LeaderboardClient,
-  LeaderboardV3,
-  TourCode,
+import {
+  AbstractLeaderboardClient,
+  type LeaderboardV3,
+  type TourCode,
 } from "@putting-pals/putting-pals-core";
-import type { Sdk } from "../generated/graphql";
+import type { ApiLeaderboardV3, Sdk } from "../generated/graphql";
 import { transformLeaderboard } from "./leaderboard-utils";
 
-export class PgaTourApiLeaderboardClient implements LeaderboardClient {
+export class PgaTourApiLeaderboardClient extends AbstractLeaderboardClient<ApiLeaderboardV3> {
   constructor(private readonly sdk: Sdk) {
+    super();
     this.sdk = sdk;
   }
 
-  // TODO: return type should be pga tour graphql type to ensure all fields are present then mapped to core types
-  async getLeaderboard(
+  override async getLeaderboardRemote(
     _tourCode: TourCode,
     id: string,
-  ): Promise<LeaderboardV3> {
+  ): Promise<ApiLeaderboardV3> {
     return this.sdk
       .LeaderboardV3({ leaderboardV3Id: id })
-      .then((data) => transformLeaderboard(data.leaderboardV3));
+      .then((data) => data.leaderboardV3);
+  }
+
+  override mapLeaderboard(leaderboard: ApiLeaderboardV3): LeaderboardV3 {
+    return transformLeaderboard(leaderboard);
   }
 }
