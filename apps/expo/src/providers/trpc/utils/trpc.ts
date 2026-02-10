@@ -89,7 +89,7 @@ const trpcClient = createTRPCClient<AppRouter>({
       url:
         process.env.NODE_ENV === "production"
           ? Platform.select({
-              web: "api/trpc",
+              web: "/api/trpc",
               default: `${process.env.EXPO_PUBLIC_SERVER_URL}/api/trpc`,
             })
           : `${process.env.EXPO_PUBLIC_SERVER_URL}/trpc`,
