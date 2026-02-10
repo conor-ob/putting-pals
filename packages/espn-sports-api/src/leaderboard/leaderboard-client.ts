@@ -5,7 +5,7 @@ import {
   type TourCode,
   type TournamentStatus,
 } from "@putting-pals/putting-pals-core";
-import type { EspnSportsApi } from "../api/EspnSportsApi";
+import type { EspnSportsApi } from "../api/espn-sports-api";
 
 export class EspnSportsApiLeaderboardClient implements LeaderboardClient {
   constructor(private readonly espnSportsApi: EspnSportsApi) {

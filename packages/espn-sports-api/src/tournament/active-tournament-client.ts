@@ -2,7 +2,7 @@ import type {
   ActiveTournamentClient,
   TourCode,
 } from "@putting-pals/putting-pals-core";
-import type { EspnSportsApi } from "../api/EspnSportsApi";
+import type { EspnSportsApi } from "../api/espn-sports-api";
 
 export class EspnSportsApiActiveTournamentClient
   implements ActiveTournamentClient
