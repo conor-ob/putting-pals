@@ -1,10 +1,7 @@
-import type {
-  LeaderboardV3,
-  PlayerState,
-} from "../../leaderboard/domain/types";
+import type { Leaderboard, PlayerState } from "../../leaderboard/domain/types";
 import { AbstractEventEmitter } from "../event-emitter";
 
-export abstract class PlayerStateChanged extends AbstractEventEmitter<LeaderboardV3> {
+export abstract class PlayerStateChanged extends AbstractEventEmitter<Leaderboard> {
   protected getPlayersStateChanged(playerState: PlayerState) {
     const playersWithExpectedState = this.getPlayers(this.next).filter(
       (player) => player.scoringData.playerState === playerState,
@@ -24,9 +21,7 @@ export abstract class PlayerStateChanged extends AbstractEventEmitter<Leaderboar
     );
   }
 
-  private getPlayers(leaderboard: LeaderboardV3) {
-    return leaderboard.players.filter(
-      (row) => row.__typename === "PlayerRowV3",
-    );
+  private getPlayers(leaderboard: Leaderboard) {
+    return leaderboard.players.filter((row) => row.__typename === "PlayerRow");
   }
 }

@@ -1,6 +1,6 @@
 import type { TourCode } from "../../../tour/domain/types";
-import type { LeaderboardV3 } from "../../domain/types";
+import type { Leaderboard } from "../../domain/types";
 
 export interface LeaderboardService {
-  getLeaderboard(tourCode: TourCode, id?: string): Promise<LeaderboardV3>;
+  getLeaderboard(tourCode: TourCode, id?: string): Promise<Leaderboard>;
 }

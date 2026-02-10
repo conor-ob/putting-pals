@@ -20,9 +20,9 @@ export type InformationRow = Extract<
   { __typename: "InformationRow" }
 >;
 
-export type PlayerRowV3 = Extract<
+export type PlayerRow = Extract<
   RouterOutputs["leaderboard"]["getById"]["players"][number],
-  { __typename: "PlayerRowV3" }
+  { __typename: "PlayerRow" }
 >;
 
 export type PuttingPalsPlayerRow = Extract<

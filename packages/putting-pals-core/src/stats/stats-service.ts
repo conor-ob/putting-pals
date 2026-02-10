@@ -44,7 +44,7 @@ export class StatsService {
     //     activeCompetitions[0].tournamentId,
     //   );
     //   const competitors = leaderboard.rows
-    //     .filter((row) => row.__typename === "PuttingPalsPlayerRowV3")
+    //     .filter((row) => row.__typename === "PuttingPalsPlayerRow")
     //     .sort((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder);
     //   const winnerId = leaderboard.rows[0]?.id;
     //   const runnerUpId = leaderboard.rows[1]?.id;

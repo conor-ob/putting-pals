@@ -1,9 +1,9 @@
 import { UnsupportedTourCodeError } from "../../error/service-error";
-import type { LeaderboardV3 } from "../../leaderboard/domain/types";
+import type { Leaderboard } from "../../leaderboard/domain/types";
 import type { LeaderboardFeedEvent, LeaderChangedV1 } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
+export class LeaderChanged extends AbstractEventEmitter<Leaderboard> {
   override emit(): LeaderboardFeedEvent[] {
     switch (this.tourCode) {
       case "pal":
@@ -47,7 +47,7 @@ export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
         __typename: "LeaderChangedV1" as const,
         prev: {
           players: prevLeaders.map((row) => ({
-            __typename: "PlayerRowV3" as const,
+            __typename: "PlayerRow" as const,
             player: {
               id: row.player.id,
             },
@@ -64,7 +64,7 @@ export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
         },
         next: {
           players: nextLeaders.map((row) => ({
-            __typename: "PlayerRowV3" as const,
+            __typename: "PlayerRow" as const,
             player: {
               id: row.player.id,
             },
@@ -83,9 +83,9 @@ export class LeaderChanged extends AbstractEventEmitter<LeaderboardV3> {
     ];
   }
 
-  private getLeaders(leaderboard: LeaderboardV3) {
+  private getLeaders(leaderboard: Leaderboard) {
     return leaderboard.players
-      .filter((row) => row.__typename === "PlayerRowV3")
+      .filter((row) => row.__typename === "PlayerRow")
       .filter(
         (row) =>
           row.scoringData.position === "1" || row.scoringData.position === "T1",

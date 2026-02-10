@@ -65,7 +65,7 @@ export class FeedServiceImpl implements FeedService {
           prev: {
             players: feedItem.prev.players.flatMap((player) => {
               const playerMatch = leaderboard.players
-                .filter((p) => p.__typename === "PlayerRowV3")
+                .filter((p) => p.__typename === "PlayerRow")
                 .find((p) => p.player.id === player.player.id)?.player;
               if (playerMatch === undefined) {
                 return [];
@@ -77,7 +77,7 @@ export class FeedServiceImpl implements FeedService {
           next: {
             players: feedItem.next.players.flatMap((player) => {
               const playerMatch = leaderboard.players
-                .filter((p) => p.__typename === "PlayerRowV3")
+                .filter((p) => p.__typename === "PlayerRow")
                 .find((p) => p.player.id === player.player.id)?.player;
               if (playerMatch === undefined) {
                 return [];

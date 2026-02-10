@@ -9,29 +9,29 @@ import { PlayerWithdrawn } from "../event/events/player-withdrawn";
 import { TournamentWinner } from "../event/events/tournament-winner";
 import type { LeaderboardSnapshotRepository } from "../event/interfaces/outbound/leaderboard-snapshot-repository";
 import type { TourCode } from "../tour/domain/types";
-import type { LeaderboardV3 } from "./domain/types";
+import type { Leaderboard } from "./domain/types";
 import type { LeaderboardService } from "./interfaces/inbound/leaderboard-service";
 
-export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessorService<LeaderboardV3> {
+export class LeaderboardEventProcessorServiceImpl extends AbstractEventProcessorService<Leaderboard> {
   constructor(
     private readonly leaderboardService: LeaderboardService,
     snapshotRepository: LeaderboardSnapshotRepository,
   ) {
-    super("LeaderboardV3", snapshotRepository);
+    super("Leaderboard", snapshotRepository);
   }
 
   protected override async getNextSnapshot(
     tourCode: TourCode,
     tournamentId: string,
-  ): Promise<LeaderboardV3> {
+  ): Promise<Leaderboard> {
     return await this.leaderboardService.getLeaderboard(tourCode, tournamentId);
   }
 
   protected override async createEventEmitters(
     tourCode: TourCode,
     _tournamentId: string,
-    prevSnapshot: LeaderboardV3,
-    nextSnapshot: LeaderboardV3,
+    prevSnapshot: Leaderboard,
+    nextSnapshot: Leaderboard,
   ): Promise<EventEmitter[]> {
     return [
       new LeaderChanged(tourCode, prevSnapshot, nextSnapshot),

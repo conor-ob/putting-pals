@@ -16,8 +16,8 @@ export type { LeaderboardFeedRepository } from "./feed/interfaces/outbound/leade
 export type { FeatureFlagKey } from "./flag/domain/types";
 export type { FeatureFlagRepository } from "./flag/interfaces/outbound/feature-flag-repository";
 export type {
-  LeaderboardV3,
-  PlayerRowV3,
+  Leaderboard,
+  PlayerRow,
   PuttingPalsPlayer,
   PuttingPalsPlayerRow,
   PuttingPalsPlayerScoringData,

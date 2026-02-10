@@ -1,8 +1,8 @@
-import type { LeaderboardV3 } from "../../../leaderboard/domain/types";
+import type { Leaderboard } from "../../../leaderboard/domain/types";
 import type { TourCode } from "../../../tour/domain/types";
 import type { Tournament } from "../../../tournament/domain/types";
 
-export type LeaderboardSnapshot = LeaderboardV3 | Tournament;
+export type LeaderboardSnapshot = Leaderboard | Tournament;
 
 export type LeaderboardSnapshotType = LeaderboardSnapshot["__typename"];
 

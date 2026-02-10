@@ -1,17 +1,19 @@
-import type { LeaderboardV3 } from "@putting-pals/putting-pals-core";
+import type { Leaderboard } from "@putting-pals/putting-pals-core";
 import type { ApiLeaderboardV3 } from "../generated/graphql";
 import { getCountryFlag } from "./leaderboard-flag-utils";
 
 export function transformLeaderboard(
   leaderboard: ApiLeaderboardV3,
-): LeaderboardV3 {
+): Leaderboard {
   return {
     ...leaderboard,
+    __typename: "Leaderboard",
     players: leaderboard.players.flatMap((row) => {
       switch (row.__typename) {
         case "PlayerRowV3":
           return {
             ...row,
+            __typename: "PlayerRow",
             player: {
               ...row.player,
               countryFlag: getCountryFlag({
@@ -21,6 +23,7 @@ export function transformLeaderboard(
             },
             scoringData: {
               ...row.scoringData,
+              __typename: "PlayerRowScoringData",
               totalSort: fixTotalSort(
                 row.scoringData.total,
                 row.scoringData.totalSort,

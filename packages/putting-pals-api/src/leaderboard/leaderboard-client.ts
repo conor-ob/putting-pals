@@ -1,14 +1,14 @@
 import {
   AbstractLeaderboardClient,
   type CompetitionRepository,
+  type Leaderboard,
   type LeaderboardClient,
-  type LeaderboardV3,
   NotFoundError,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 
-export class PuttingPalsApiLeaderboardClient extends AbstractLeaderboardClient<LeaderboardV3> {
+export class PuttingPalsApiLeaderboardClient extends AbstractLeaderboardClient<Leaderboard> {
   constructor(
     private readonly competitionRepository: CompetitionRepository,
     private readonly pgaTourApiLeaderboardClient: LeaderboardClient,
@@ -21,7 +21,7 @@ export class PuttingPalsApiLeaderboardClient extends AbstractLeaderboardClient<L
   override async getLeaderboardRemote(
     tourCode: TourCode,
     id: string,
-  ): Promise<LeaderboardV3> {
+  ): Promise<Leaderboard> {
     const leaderboard = await this.pgaTourApiLeaderboardClient.getLeaderboard(
       tourCode,
       id,
@@ -29,7 +29,7 @@ export class PuttingPalsApiLeaderboardClient extends AbstractLeaderboardClient<L
     return leaderboard;
   }
 
-  override mapLeaderboard(leaderboard: LeaderboardV3): LeaderboardV3 {
+  override mapLeaderboard(leaderboard: Leaderboard): Leaderboard {
     const competition = this.competitionRepository.getCompetition(
       leaderboard.id,
     );

@@ -1,6 +1,6 @@
 import {
   AbstractLeaderboardClient,
-  type LeaderboardV3,
+  type Leaderboard,
   NotFoundError,
   type TourCode,
   type TournamentStatus,
@@ -31,16 +31,16 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
     return event;
   }
 
-  override mapLeaderboard(event: ApiLeaderboardEvent): LeaderboardV3 {
+  override mapLeaderboard(event: ApiLeaderboardEvent): Leaderboard {
     const competitors =
       event.competitions.find((competition) => competition.id === event.id)
         ?.competitors ?? [];
 
     return {
-      __typename: "LeaderboardV3" as const,
+      __typename: "Leaderboard" as const,
       id: event.id,
       players: competitors.map((competitor) => ({
-        __typename: "PlayerRowV3" as const,
+        __typename: "PlayerRow" as const,
         id: competitor.id,
         leaderboardSortOrder: competitor.sortOrder,
         player: {

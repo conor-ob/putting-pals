@@ -1,6 +1,6 @@
 import {
   AbstractLeaderboardClient,
-  type LeaderboardV3,
+  type Leaderboard,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
 import type { ApiLeaderboardV3, Sdk } from "../generated/graphql";
@@ -21,7 +21,7 @@ export class PgaTourApiLeaderboardClient extends AbstractLeaderboardClient<ApiLe
       .then((data) => data.leaderboardV3);
   }
 
-  override mapLeaderboard(leaderboard: ApiLeaderboardV3): LeaderboardV3 {
+  override mapLeaderboard(leaderboard: ApiLeaderboardV3): Leaderboard {
     return transformLeaderboard(leaderboard);
   }
 }

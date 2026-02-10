@@ -1,20 +1,20 @@
 import type {
   Competition,
-  LeaderboardV3,
-  PlayerRowV3,
+  Leaderboard,
+  PlayerRow,
   PuttingPalsPlayer,
   PuttingPalsPlayerRow,
   PuttingPalsPlayerScoringData,
 } from "@putting-pals/putting-pals-core";
 
 export function aggregateLeaderboard(
-  leaderboard: LeaderboardV3,
+  leaderboard: Leaderboard,
   competition: Competition,
-): LeaderboardV3 {
+): Leaderboard {
   const competitors = competition.competitors
     .map((competitor) => {
       const playerRows = leaderboard.players.filter(
-        (it) => it.__typename === "PlayerRowV3",
+        (it) => it.__typename === "PlayerRow",
       );
       const picks = playerRows.filter((it) => competitor.picks.includes(it.id));
       const scoringAdjustedPicks = applyScoringRules({
@@ -154,16 +154,13 @@ function applyScoringRules({
   allPicks,
   scoringRules,
 }: {
-  picks: Extract<
-    LeaderboardV3["players"][number],
-    { __typename: "PlayerRowV3" }
-  >[];
+  picks: Extract<Leaderboard["players"][number], { __typename: "PlayerRow" }>[];
   allPicks: Extract<
-    LeaderboardV3["players"][number],
-    { __typename: "PlayerRowV3" }
+    Leaderboard["players"][number],
+    { __typename: "PlayerRow" }
   >[];
   scoringRules?: string;
-}): PlayerRowV3[] {
+}): PlayerRow[] {
   if (scoringRules === "MISSED_CUT") {
     return picks.map((playerRow) => {
       if (

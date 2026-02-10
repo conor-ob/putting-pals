@@ -19,7 +19,7 @@ type Locked = {
     prev: {
       players: (
         | {
-            __typename: "PlayerRowV3";
+            __typename: "PlayerRow";
             player: {
               id: string;
             };
@@ -49,7 +49,7 @@ type Locked = {
     next: {
       players: (
         | {
-            __typename: "PlayerRowV3";
+            __typename: "PlayerRow";
             player: {
               id: string;
             };
