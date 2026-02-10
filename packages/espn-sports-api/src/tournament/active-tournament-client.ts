@@ -44,7 +44,7 @@ export class EspnSportsApiActiveTournamentClient
     if (eventIndex === -1) {
       return undefined;
     } else if (eventIndex === 0) {
-      const seasons = schedule.seasons.sort((a, b) => b.year - a.year);
+      const seasons = schedule.seasons.sort((a, b) => a.year - b.year);
       const seasonIndex = seasons.findIndex(
         (s) => s.year === event.season.year,
       );
