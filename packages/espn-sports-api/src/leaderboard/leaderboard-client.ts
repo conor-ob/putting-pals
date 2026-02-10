@@ -40,9 +40,9 @@ export class EspnSportsApiLeaderboardClient implements LeaderboardClient {
         scoringData: {
           position: competitor.status.position.displayName,
           playerState: "ACTIVE",
-          total: competitor.status.detail,
+          total: competitor.status.detail ?? "-",
           totalSort: 0,
-          thru: competitor.status.thru.toString(),
+          thru: competitor.status.thru?.toString() ?? "-",
           thruSort: 0,
           score: competitor.score.displayValue,
           scoreSort: 0,
