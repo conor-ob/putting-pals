@@ -31,13 +31,13 @@ COPY --from=pruner /app/out/json/ .
 
 # First install the dependencies (as they change less often)
 # https://docs.railway.com/guides/dockerfiles#cache-mounts
-RUN --mount=type=cache,id=s/e82ec89d-d7a6-4b81-9f48-a61fde4ccdf2-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=s/dd6e32de-bd23-4ef2-8cf0-cce0137bfec8-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
 
 # Copy source code of isolated subworkspace
 COPY --from=pruner /app/out/full/ .
 
 RUN turbo build --filter=@putting-pals/cron
-RUN --mount=type=cache,id=s/e82ec89d-d7a6-4b81-9f48-a61fde4ccdf2-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm prune --prod --no-optional
+RUN --mount=type=cache,id=s/dd6e32de-bd23-4ef2-8cf0-cce0137bfec8-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm prune --prod --no-optional
 RUN rm -rf ./**/*/src
 
 # Final image
