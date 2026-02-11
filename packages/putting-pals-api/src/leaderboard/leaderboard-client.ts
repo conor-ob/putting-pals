@@ -1,30 +1,43 @@
 import {
+  AbstractLeaderboardClient,
   type CompetitionRepository,
+  type Leaderboard,
   type LeaderboardClient,
-  type LeaderboardV3,
   NotFoundError,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
 import { aggregateLeaderboard } from "./leaderboard-aggregator";
 
-export class PuttingPalsApiLeaderboardClient implements LeaderboardClient {
+export class PuttingPalsApiLeaderboardClient extends AbstractLeaderboardClient<Leaderboard> {
   constructor(
     private readonly competitionRepository: CompetitionRepository,
     private readonly pgaTourApiLeaderboardClient: LeaderboardClient,
   ) {
+    super();
     this.competitionRepository = competitionRepository;
     this.pgaTourApiLeaderboardClient = pgaTourApiLeaderboardClient;
   }
 
-  async getLeaderboard(tourCode: TourCode, id: string): Promise<LeaderboardV3> {
-    const competition = this.competitionRepository.getCompetition(id);
-    if (competition === undefined) {
-      throw new NotFoundError(`Competition with id=${id} not found`);
-    }
+  override async getLeaderboardRemote(
+    tourCode: TourCode,
+    id: string,
+  ): Promise<Leaderboard> {
     const leaderboard = await this.pgaTourApiLeaderboardClient.getLeaderboard(
       tourCode,
       id,
     );
+    return leaderboard;
+  }
+
+  override mapLeaderboard(leaderboard: Leaderboard): Leaderboard {
+    const competition = this.competitionRepository.getCompetition(
+      leaderboard.id,
+    );
+    if (competition === undefined) {
+      throw new NotFoundError(
+        `Competition with id=${leaderboard.id} not found`,
+      );
+    }
     return aggregateLeaderboard(leaderboard, competition);
   }
 }

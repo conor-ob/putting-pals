@@ -42,7 +42,7 @@ export const InformationRowSchema = z.object({
   displayText: z.string(),
 });
 
-export const PlayerRowV3ScoringDataSchema = z.object({
+export const PlayerRowScoringDataSchema = z.object({
   position: z.string(),
   playerIcon: z.enum(["HOT_STREAK"]).nullable().optional(),
   playerState: PlayerStateSchema,
@@ -55,8 +55,8 @@ export const PlayerRowV3ScoringDataSchema = z.object({
   scoreSort: z.number(),
 });
 
-export const PlayerRowV3Schema = z.object({
-  __typename: z.literal("PlayerRowV3"),
+export const PlayerRowSchema = z.object({
+  __typename: z.literal("PlayerRow"),
   id: z.string(),
   leaderboardSortOrder: z.number(),
   player: z.object({
@@ -64,17 +64,17 @@ export const PlayerRowV3Schema = z.object({
     displayName: z.string(),
     id: z.string(),
   }),
-  scoringData: PlayerRowV3ScoringDataSchema,
+  scoringData: PlayerRowScoringDataSchema,
 });
 
-export const LeaderboardV3Schema = z.object({
-  __typename: z.literal("LeaderboardV3"),
+export const LeaderboardSchema = z.object({
+  __typename: z.literal("Leaderboard"),
   id: z.string(),
   players: z.array(
     z.discriminatedUnion("__typename", [
       PuttingPalsPlayerRowSchema,
       InformationRowSchema,
-      PlayerRowV3Schema,
+      PlayerRowSchema,
     ]),
   ),
   tournamentStatus: TournamentStatusSchema,

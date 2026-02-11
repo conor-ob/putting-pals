@@ -1,8 +1,8 @@
-import type { LeaderboardV3 } from "../../leaderboard/domain/types";
+import type { Leaderboard } from "../../leaderboard/domain/types";
 import type { HotStreakV1, LeaderboardFeedEvent } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class HotStreak extends AbstractEventEmitter<LeaderboardV3> {
+export class HotStreak extends AbstractEventEmitter<Leaderboard> {
   override emit(): LeaderboardFeedEvent[] {
     const prevHotStreakPlayers = this.getHotStreakPlayers(this.prev);
     const nextHotStreakPlayers = this.getHotStreakPlayers(this.next);
@@ -26,9 +26,9 @@ export class HotStreak extends AbstractEventEmitter<LeaderboardV3> {
     ];
   }
 
-  private getHotStreakPlayers(leaderboard: LeaderboardV3) {
+  private getHotStreakPlayers(leaderboard: Leaderboard) {
     return leaderboard.players
-      .filter((row) => row.__typename === "PlayerRowV3")
+      .filter((row) => row.__typename === "PlayerRow")
       .filter((row) => row.scoringData.playerIcon === "HOT_STREAK");
   }
 

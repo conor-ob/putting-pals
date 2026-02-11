@@ -26,8 +26,8 @@ suite("error-handler", () => {
     }
   });
 
-  test("should throw TRPCError with NOT_IMPLEMENTED if cause is a TypeError", () => {
-    const typeError = new TypeError("GraphQL query not implemented");
+  test("should throw TRPCError with INTERNAL_SERVER_ERROR if cause is a TypeError", () => {
+    const typeError = new TypeError("Failed to fetch");
     const trpcError = new TRPCError({
       code: "INTERNAL_SERVER_ERROR",
       message: "Internal server error",
@@ -41,8 +41,8 @@ suite("error-handler", () => {
     } catch (error) {
       expect(error).toBeInstanceOf(TRPCError);
       const thrownError = error as TRPCError;
-      expect(thrownError.code).toBe("NOT_IMPLEMENTED");
-      expect(thrownError.message).toBe("GraphQL query not implemented");
+      expect(thrownError.code).toBe("INTERNAL_SERVER_ERROR");
+      expect(thrownError.message).toBe("Failed to fetch");
       expect(thrownError.cause).toBeInstanceOf(TypeError);
       expect(thrownError.cause).toBe(typeError);
     }

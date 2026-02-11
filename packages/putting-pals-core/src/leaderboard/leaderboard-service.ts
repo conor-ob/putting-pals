@@ -1,7 +1,7 @@
 import { UnsupportedTourCodeError } from "../error/service-error";
 import type { TourCode } from "../tour/domain/types";
 import type { ActiveTournamentService } from "../tournament/interfaces/inbound/active-tournament-service";
-import type { LeaderboardV3 } from "./domain/types";
+import type { Leaderboard } from "./domain/types";
 import type { LeaderboardService } from "./interfaces/inbound/leaderboard-service";
 import type { LeaderboardClient } from "./interfaces/outbound/leaderboard-client";
 
@@ -18,10 +18,7 @@ export class LeaderboardServiceImpl implements LeaderboardService {
     this.activeTournamentService = activeTournamentService;
   }
 
-  async getLeaderboard(
-    tourCode: TourCode,
-    id?: string,
-  ): Promise<LeaderboardV3> {
+  async getLeaderboard(tourCode: TourCode, id?: string): Promise<Leaderboard> {
     const tournamentId =
       await this.activeTournamentService.getActiveTournamentId(tourCode, id);
     switch (tourCode) {

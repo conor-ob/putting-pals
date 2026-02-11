@@ -1,9 +1,9 @@
 import { UnsupportedTourCodeError } from "../../error/service-error";
-import type { LeaderboardV3 } from "../../leaderboard/domain/types";
+import type { Leaderboard } from "../../leaderboard/domain/types";
 import type { LeaderboardFeedEvent } from "../domain/types";
 import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 
-export class TournamentWinner extends AbstractEventEmitter<LeaderboardV3> {
+export class TournamentWinner extends AbstractEventEmitter<Leaderboard> {
   override emit(): LeaderboardFeedEvent[] {
     switch (this.tourCode) {
       case "pal":

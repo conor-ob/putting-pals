@@ -8,7 +8,7 @@ import { trpc } from "~/providers/trpc/utils/trpc";
 import { useQuery } from "~/providers/trpc/utils/use-query";
 import { useLocalStorage } from "~/storage/use-local-storage";
 import { InformationRow } from "./information-row";
-import { PlayerRowV3 } from "./player-row-v3";
+import { PlayerRow } from "./player-row";
 import { PuttingPalsPlayerRow } from "./putting-pals-player-row";
 
 export function LeaderboardPage() {
@@ -50,8 +50,8 @@ export function LeaderboardPage() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
           switch (item.__typename) {
-            case "PlayerRowV3":
-              return <PlayerRowV3 row={item} />;
+            case "PlayerRow":
+              return <PlayerRow row={item} />;
             case "PuttingPalsPlayerRow":
               return <PuttingPalsPlayerRow row={item} />;
             case "InformationRow":

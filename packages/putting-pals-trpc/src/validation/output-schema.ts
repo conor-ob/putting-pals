@@ -30,7 +30,7 @@ export const LeaderboardOutputSchema = z.object({
         displayText: z.string(),
       }),
       z.object({
-        __typename: z.literal("PlayerRowV3"),
+        __typename: z.literal("PlayerRow"),
         id: z.string(),
         leaderboardSortOrder: z.number(),
         player: z.object({

@@ -1,8 +1,8 @@
 import { View } from "react-native";
-import type { PlayerRowV3 as PlayerRowV3Type } from "~/providers/trpc/types";
+import type { PlayerRow as PlayerRowType } from "~/providers/trpc/types";
 import { NameColumn, PositionColumn, ScoreColumn } from "./leaderboard-columns";
 
-export function PlayerRowV3({ row }: { row: PlayerRowV3Type }) {
+export function PlayerRow({ row }: { row: PlayerRowType }) {
   return (
     <View className="flex flex-row items-center">
       <PositionColumn>{row.scoringData.position}</PositionColumn>

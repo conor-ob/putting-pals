@@ -55,7 +55,7 @@ export type LeaderChangedV1 = ChangeEvent<
   {
     players: (
       | {
-          __typename: "PlayerRowV3";
+          __typename: "PlayerRow";
           player: {
             id: string;
           };

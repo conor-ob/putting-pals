@@ -16,13 +16,14 @@ export type { LeaderboardFeedRepository } from "./feed/interfaces/outbound/leade
 export type { FeatureFlagKey } from "./flag/domain/types";
 export type { FeatureFlagRepository } from "./flag/interfaces/outbound/feature-flag-repository";
 export type {
-  LeaderboardV3,
-  PlayerRowV3,
+  Leaderboard,
+  PlayerRow,
   PuttingPalsPlayer,
   PuttingPalsPlayerRow,
   PuttingPalsPlayerScoringData,
 } from "./leaderboard/domain/types";
 export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leaderboard-service";
+export { AbstractLeaderboardClient } from "./leaderboard/interfaces/outbound/abstract-leaderboard-client";
 export type { LeaderboardClient } from "./leaderboard/interfaces/outbound/leaderboard-client";
 export { injectDependencies } from "./module/dependencies";
 export type {
@@ -34,6 +35,7 @@ export type {
 } from "./schedule/domain/types";
 export type { ScheduleService } from "./schedule/interfaces/inbound/schedule-service";
 export type { ScheduleYearsService } from "./schedule/interfaces/inbound/schedule-years-service";
+export { AbstractScheduleClient } from "./schedule/interfaces/outbound/abstract-schedule-client";
 export type { ScheduleClient } from "./schedule/interfaces/outbound/schedule-client";
 export { StatsService } from "./stats/stats-service";
 export { TourCodeSchema } from "./tour/domain/schemas";
@@ -47,6 +49,7 @@ export {
 } from "./tournament/domain/schemas";
 export type { Tournament, TournamentStatus } from "./tournament/domain/types";
 export type { TournamentService } from "./tournament/interfaces/inbound/tournament-service";
+export { AbstractTournamentClient } from "./tournament/interfaces/outbound/abstract-tournament-client";
 export type { ActiveTournamentClient } from "./tournament/interfaces/outbound/active-tournament-client";
 export type {
   ActiveTournament,
