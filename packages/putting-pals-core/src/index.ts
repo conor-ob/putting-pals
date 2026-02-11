@@ -35,6 +35,7 @@ export type {
 } from "./schedule/domain/types";
 export type { ScheduleService } from "./schedule/interfaces/inbound/schedule-service";
 export type { ScheduleYearsService } from "./schedule/interfaces/inbound/schedule-years-service";
+export { AbstractScheduleClient } from "./schedule/interfaces/outbound/abstract-schedule-client";
 export type { ScheduleClient } from "./schedule/interfaces/outbound/schedule-client";
 export { StatsService } from "./stats/stats-service";
 export { TourCodeSchema } from "./tour/domain/schemas";

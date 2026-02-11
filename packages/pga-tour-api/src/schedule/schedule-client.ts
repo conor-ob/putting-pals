@@ -1,37 +1,75 @@
-import type {
-  Schedule,
-  ScheduleClient,
-  ScheduleUpcoming,
-  ScheduleYears,
-  TourCode,
+import {
+  AbstractScheduleClient,
+  type Schedule,
+  type ScheduleUpcoming,
+  type ScheduleYears,
+  type TourCode,
 } from "@putting-pals/putting-pals-core";
-import type { Sdk } from "../generated/graphql";
+import type {
+  ApiSchedule,
+  ApiScheduleUpcoming,
+  ApiScheduleYears,
+  Sdk,
+} from "../generated/graphql";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 
-export class PgaTourApiScheduleClient implements ScheduleClient {
+export class PgaTourApiScheduleClient extends AbstractScheduleClient<
+  ApiScheduleYears,
+  ApiSchedule,
+  ApiScheduleUpcoming
+> {
   constructor(private readonly sdk: Sdk) {
+    super();
     this.sdk = sdk;
   }
 
-  async getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
-    return this.sdk
-      .ScheduleYears({ tourCode: mapDomainToApiTourCode(tourCode) })
-      .then((data) => data.scheduleYears);
+  override async getScheduleYearsRemote(
+    tourCode: TourCode,
+  ): Promise<ApiScheduleYears> {
+    const data = await this.sdk.ScheduleYears({
+      tourCode: mapDomainToApiTourCode(tourCode),
+    });
+    return data.scheduleYears;
   }
 
-  async getSchedule(tourCode: TourCode, year?: string): Promise<Schedule> {
+  override mapScheduleYears(scheduleYears: ApiScheduleYears): ScheduleYears {
+    return scheduleYears;
+  }
+
+  override async getScheduleRemote(
+    tourCode: TourCode,
+    year?: string,
+  ): Promise<ApiSchedule> {
     return this.sdk.Schedule({ tourCode, year }).then((data) => data.schedule);
   }
 
-  async getCompleteSchedule(tourCode: TourCode): Promise<Schedule[]> {
+  override mapSchedule(schedule: ApiSchedule): Schedule {
+    return schedule;
+  }
+
+  override async getCompleteScheduleRemote(
+    tourCode: TourCode,
+  ): Promise<ApiSchedule[]> {
     return this.sdk
       .CompleteSchedule({ tourCode: mapDomainToApiTourCode(tourCode) })
       .then((data) => data.completeSchedule);
   }
 
-  async getUpcomingSchedule(tourCode: TourCode): Promise<ScheduleUpcoming> {
+  override mapCompleteSchedule(completeSchedule: ApiSchedule[]): Schedule[] {
+    return completeSchedule;
+  }
+
+  override async getUpcomingScheduleRemote(
+    tourCode: TourCode,
+  ): Promise<ApiScheduleUpcoming> {
     return this.sdk
       .UpcomingSchedule({ tourCode })
       .then((data) => data.upcomingSchedule);
+  }
+
+  override mapUpcomingSchedule(
+    upcomingSchedule: ApiScheduleUpcoming,
+  ): ScheduleUpcoming {
+    return upcomingSchedule;
   }
 }

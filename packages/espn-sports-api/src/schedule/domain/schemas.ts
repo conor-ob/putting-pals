@@ -66,6 +66,14 @@ export const TourScheduleEventSchema = z.object({
   }),
 });
 
+export const TourScheduleSeasonsSchema = z.object({
+  year: z.number(),
+  startDate: z.string(),
+  endDate: z.string(),
+  displayName: z.string(),
+  events: z.array(TourScheduleEventSchema).optional(),
+});
+
 export const TourScheduleSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -73,13 +81,5 @@ export const TourScheduleSchema = z.object({
   slug: z.string(),
   defaultSeason: z.number(),
   currentSeason: z.number(),
-  seasons: z.array(
-    z.object({
-      year: z.number(),
-      startDate: z.string(),
-      endDate: z.string(),
-      displayName: z.string(),
-      events: z.array(TourScheduleEventSchema).optional(),
-    }),
-  ),
+  seasons: z.array(TourScheduleSeasonsSchema),
 });
