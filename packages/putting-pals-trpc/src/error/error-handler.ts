@@ -13,8 +13,8 @@ export function onError(error: TRPCError) {
 
   if (cause instanceof TypeError) {
     throw new TRPCError({
-      code: "NOT_IMPLEMENTED",
-      message: "GraphQL query not implemented",
+      code: "INTERNAL_SERVER_ERROR",
+      message: cause.message,
       cause,
     });
   }
