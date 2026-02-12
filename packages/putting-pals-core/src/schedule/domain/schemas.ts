@@ -39,13 +39,3 @@ export const ScheduleSchema = z.object({
 export const ScheduleUpcomingSchema = z.object({
   tournaments: z.array(ScheduleTournamentSchema),
 });
-
-export const ScheduleYearsSchema = z.object({
-  years: z.array(
-    z.object({
-      default: z.boolean(),
-      displayValue: z.string(),
-      queryValue: z.string(),
-    }),
-  ),
-});

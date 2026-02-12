@@ -1,22 +1,8 @@
 import type { TourCode } from "../../../tour/domain/types";
-import type {
-  Schedule,
-  ScheduleUpcoming,
-  ScheduleYears,
-} from "../../domain/types";
+import type { Schedule, ScheduleUpcoming } from "../../domain/types";
 import type { ScheduleClient } from "./schedule-client";
 
-export abstract class AbstractScheduleClient<SY, S, SU>
-  implements ScheduleClient
-{
-  async getScheduleYears(tourCode: TourCode): Promise<ScheduleYears> {
-    const scheduleYears = await this.getScheduleYearsRemote(tourCode);
-    return this.mapScheduleYears(scheduleYears);
-  }
-
-  abstract getScheduleYearsRemote(tourCode: TourCode): Promise<SY>;
-  abstract mapScheduleYears(scheduleYear: SY): ScheduleYears;
-
+export abstract class AbstractScheduleClient<S, SU> implements ScheduleClient {
   async getSchedule(tourCode: TourCode, year?: string): Promise<Schedule> {
     const schedule = await this.getScheduleRemote(tourCode, year);
     return this.mapSchedule(schedule);

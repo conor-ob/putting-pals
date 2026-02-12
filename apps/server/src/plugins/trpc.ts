@@ -27,7 +27,7 @@ export default function (fastify: FastifyInstance) {
             fastify.dependencies.leaderboardEventProcessor,
           leaderboardService: fastify.dependencies.leaderboardService,
           scheduleService: fastify.dependencies.scheduleService,
-          scheduleYearsService: fastify.dependencies.scheduleYearsService,
+          seasonService: fastify.dependencies.seasonService,
           tourService: fastify.dependencies.tourService,
           tournamentService: fastify.dependencies.tournamentService,
           batchTournamentService: fastify.dependencies.batchTournamentService,

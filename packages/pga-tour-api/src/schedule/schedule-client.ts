@@ -2,38 +2,22 @@ import {
   AbstractScheduleClient,
   type Schedule,
   type ScheduleUpcoming,
-  type ScheduleYears,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
 import type {
   ApiSchedule,
   ApiScheduleUpcoming,
-  ApiScheduleYears,
   Sdk,
 } from "../generated/graphql";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 
 export class PgaTourApiScheduleClient extends AbstractScheduleClient<
-  ApiScheduleYears,
   ApiSchedule,
   ApiScheduleUpcoming
 > {
   constructor(private readonly sdk: Sdk) {
     super();
     this.sdk = sdk;
-  }
-
-  override async getScheduleYearsRemote(
-    tourCode: TourCode,
-  ): Promise<ApiScheduleYears> {
-    const data = await this.sdk.ScheduleYears({
-      tourCode: mapDomainToApiTourCode(tourCode),
-    });
-    return data.scheduleYears;
-  }
-
-  override mapScheduleYears(scheduleYears: ApiScheduleYears): ScheduleYears {
-    return scheduleYears;
   }
 
   override async getScheduleRemote(

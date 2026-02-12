@@ -5,7 +5,7 @@ import type {
   LeaderboardEventProcessor,
   LeaderboardService,
   ScheduleService,
-  ScheduleYearsService,
+  SeasonService,
   TournamentService,
   TourService,
 } from "@putting-pals/putting-pals-core";
@@ -28,7 +28,7 @@ suite("tournamentRouter", () => {
           vi.fn() as unknown as LeaderboardEventProcessor,
         feedService: vi.fn() as unknown as FeedService,
         scheduleService: vi.fn() as unknown as ScheduleService,
-        scheduleYearsService: vi.fn() as unknown as ScheduleYearsService,
+        seasonService: vi.fn() as unknown as SeasonService,
         tourService: vi.fn() as unknown as TourService,
       }),
     );

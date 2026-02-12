@@ -2,15 +2,14 @@ import z from "zod";
 import { publicProcedure, router } from "../trpc/router";
 import { TourCodeInputSchema } from "../validation/input-schema";
 
-export const scheduleRouter = router({
-  getByYear: publicProcedure
+export const seasonRouter = router({
+  get: publicProcedure
     .input(
       z.object({
         tourCode: TourCodeInputSchema,
-        year: z.string().optional(),
       }),
     )
     .query(async ({ ctx, input }) => {
-      return ctx.scheduleService.getSchedule(input.tourCode, input.year);
+      return ctx.seasonService.getSeasons(input.tourCode);
     }),
 });

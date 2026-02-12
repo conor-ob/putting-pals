@@ -9,13 +9,13 @@ import { useQuery } from "~/providers/trpc/utils/use-query";
 export function SchedulePage() {
   const { tourCode } = useTourCode();
 
-  const { data: scheduleYears, error: scheduleYearsError } = useQuery(
-    trpc.schedule.getScheduleYears.queryOptions({ tourCode }),
+  const { data: seasons, error: seasonsError } = useQuery(
+    trpc.season.get.queryOptions({ tourCode }),
   );
   // biome-ignore lint/suspicious/noConsole: testing
-  console.log("scheduleYears.data", scheduleYears);
+  console.log("seasons.data", seasons);
   // biome-ignore lint/suspicious/noConsole: testing
-  console.log("scheduleYears.error", scheduleYearsError);
+  console.log("seasons.error", seasonsError);
 
   const { data: schedule, error: scheduleError } = useQuery(
     trpc.schedule.getByYear.queryOptions({ tourCode }),
@@ -24,14 +24,6 @@ export function SchedulePage() {
   console.log("schedule.data", schedule);
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("schedule.error", scheduleError);
-
-  const { data: upcomingSchedule, error: upcomingScheduleError } = useQuery(
-    trpc.schedule.getUpcoming.queryOptions({ tourCode }),
-  );
-  // biome-ignore lint/suspicious/noConsole: testing
-  console.log("upcomingSchedule.data", upcomingSchedule);
-  // biome-ignore lint/suspicious/noConsole: testing
-  console.log("upcomingSchedule.error", upcomingScheduleError);
 
   return (
     <ScrollView className="p-4 gap-4">

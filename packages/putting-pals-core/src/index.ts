@@ -31,12 +31,14 @@ export type {
   ScheduleMonth,
   ScheduleTournament,
   ScheduleUpcoming,
-  ScheduleYears,
 } from "./schedule/domain/types";
 export type { ScheduleService } from "./schedule/interfaces/inbound/schedule-service";
-export type { ScheduleYearsService } from "./schedule/interfaces/inbound/schedule-years-service";
 export { AbstractScheduleClient } from "./schedule/interfaces/outbound/abstract-schedule-client";
 export type { ScheduleClient } from "./schedule/interfaces/outbound/schedule-client";
+export type { Season } from "./season/domain/types";
+export type { SeasonService } from "./season/interfaces/inbound/season-service";
+export { AbstractSeasonClient } from "./season/interfaces/outbound/abstract-season-client";
+export type { SeasonClient } from "./season/interfaces/outbound/season-client";
 export { StatsService } from "./stats/stats-service";
 export { TourCodeSchema } from "./tour/domain/schemas";
 export type { Tour, TourCode } from "./tour/domain/types";

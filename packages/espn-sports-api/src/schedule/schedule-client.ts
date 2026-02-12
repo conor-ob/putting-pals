@@ -4,41 +4,19 @@ import {
   NotFoundError,
   type Schedule,
   type ScheduleUpcoming,
-  type ScheduleYears,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
 import { format, parseISO } from "date-fns";
 import type { EspnSportsApi } from "../api/espn-sports-api";
-import type {
-  TourSchedule,
-  TourScheduleEvent,
-  TourScheduleSeason,
-} from "./domain/types";
+import type { TourScheduleEvent, TourScheduleSeason } from "./domain/types";
 
 export class EspnSportsApiScheduleClient extends AbstractScheduleClient<
-  TourSchedule,
   TourScheduleSeason,
   TourScheduleSeason
 > {
   constructor(private readonly espnSportsApi: EspnSportsApi) {
     super();
     this.espnSportsApi = espnSportsApi;
-  }
-
-  override async getScheduleYearsRemote(
-    tourCode: TourCode,
-  ): Promise<TourSchedule> {
-    return this.espnSportsApi.getTourSchedule(tourCode);
-  }
-
-  override mapScheduleYears(schedule: TourSchedule): ScheduleYears {
-    return {
-      years: schedule.seasons.map((season) => ({
-        default: season.year === schedule.currentSeason,
-        displayValue: season.displayName,
-        queryValue: season.year.toString(),
-      })),
-    };
   }
 
   override async getScheduleRemote(

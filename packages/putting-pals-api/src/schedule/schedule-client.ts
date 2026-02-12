@@ -1,28 +1,18 @@
 import type {
-  BatchTournamentClient,
   CompetitionRepository,
   Schedule,
   ScheduleClient,
   ScheduleUpcoming,
-  ScheduleYears,
   TourCode,
-  Tournament,
 } from "@putting-pals/putting-pals-core";
-import { parseISO } from "date-fns";
 
 export class PuttingPalsApiScheduleClient implements ScheduleClient {
   constructor(
     private readonly competitionRepository: CompetitionRepository,
-    private readonly pgaTourApiBatchTournamentClient: BatchTournamentClient,
     private readonly pgaTourApiScheduleClient: ScheduleClient,
   ) {
     this.competitionRepository = competitionRepository;
-    this.pgaTourApiBatchTournamentClient = pgaTourApiBatchTournamentClient;
     this.pgaTourApiScheduleClient = pgaTourApiScheduleClient;
-  }
-
-  getScheduleYears(_tourCode: TourCode): Promise<ScheduleYears> {
-    return this.getPuttingPalsScheduleYears();
   }
 
   async getSchedule(_tourCode: TourCode, year?: string): Promise<Schedule> {
@@ -37,41 +27,6 @@ export class PuttingPalsApiScheduleClient implements ScheduleClient {
 
   getUpcomingSchedule(_tourCode: TourCode): Promise<ScheduleUpcoming> {
     return this.getPuttingPalsUpcomingSchedule();
-  }
-
-  private async getPuttingPalsScheduleYears(): Promise<ScheduleYears> {
-    const [pgaTourScheduleYears, puttingPalsHistoricalSchedule] =
-      await Promise.all([
-        this.getPgaTourScheduleYears("pga"),
-        this.getPuttingPalsHistoricalSchedule(),
-      ]);
-    return {
-      ...pgaTourScheduleYears,
-      years: pgaTourScheduleYears.years.filter((year) => {
-        return puttingPalsHistoricalSchedule.some((tournament) => {
-          return (
-            parseISO(tournament.schedule.startDate).getFullYear() ===
-            Number(year.queryValue)
-          );
-        });
-      }),
-    };
-  }
-
-  private async getPuttingPalsHistoricalSchedule(): Promise<Tournament[]> {
-    const competitions = this.competitionRepository.getCompetitions();
-    const tournamentIds = competitions.map(
-      (competition) => competition.tournamentId,
-    );
-    const tournaments =
-      await this.pgaTourApiBatchTournamentClient.getTournaments(tournamentIds);
-    return tournaments;
-  }
-
-  private async getPgaTourScheduleYears(
-    tourCode: TourCode,
-  ): Promise<ScheduleYears> {
-    return this.pgaTourApiScheduleClient.getScheduleYears(tourCode);
   }
 
   private async getPuttingPalsSchedule(year?: string): Promise<Schedule[]> {

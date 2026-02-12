@@ -2,6 +2,7 @@ import { eventRouter } from "../router/event";
 import { feedRouter } from "../router/feed";
 import { leaderboardRouter } from "../router/leaderboard";
 import { scheduleRouter } from "../router/schedule";
+import { seasonRouter } from "../router/season";
 import { statsRouter } from "../router/stats";
 import { tourRouter } from "../router/tour";
 import { tournamentRouter } from "../router/tournament";
@@ -17,6 +18,7 @@ export const appRouter = router({
   feed: feedRouter,
   leaderboard: leaderboardRouter,
   schedule: scheduleRouter,
+  season: seasonRouter,
   stats: statsRouter,
   tour: tourRouter,
   tournament: tournamentRouter,
