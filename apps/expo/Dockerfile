@@ -6,8 +6,8 @@ RUN apk add --no-cache libc6-compat
 
 # Setup pnpm and turbo
 FROM alpine AS base
-RUN npm install -g pnpm turbo
-RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
+RUN npm install -g pnpm turbo \
+    && pnpm config set store-dir /root/.local/share/pnpm/store/v3
 
 # Prune projects to isolate subworkspace
 FROM base AS pruner
@@ -42,7 +42,7 @@ RUN pnpm prune --prod --no-optional
 RUN rm -rf ./**/*/src
 
 # Final image
-FROM caddy:latest AS runner
+FROM caddy:2-alpine AS runner
 
 WORKDIR /app
 
@@ -51,4 +51,4 @@ COPY --from=builder /app/apps/expo/dist /srv
 COPY apps/expo/Caddyfile /etc/caddy/Caddyfile
 
 RUN caddy fmt --overwrite /etc/caddy/Caddyfile
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile", "2>&1"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

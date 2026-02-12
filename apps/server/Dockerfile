@@ -6,8 +6,8 @@ RUN apk add --no-cache libc6-compat
 
 # Setup pnpm and turbo
 FROM alpine AS base
-RUN npm install -g pnpm turbo
-RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
+RUN npm install -g pnpm turbo \
+    && pnpm config set store-dir /root/.local/share/pnpm/store/v3
 
 # Prune projects to isolate subworkspace
 FROM base AS pruner

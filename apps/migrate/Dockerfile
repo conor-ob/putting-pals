@@ -9,8 +9,8 @@ RUN apk add --no-cache libc6-compat
 
 # Setup pnpm and turbo
 FROM alpine AS base
-RUN npm install -g pnpm turbo
-RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
+RUN npm install -g pnpm turbo \
+    && pnpm config set store-dir /root/.local/share/pnpm/store/v3
 
 # Prune projects to isolate subworkspace
 FROM base AS pruner
@@ -33,11 +33,14 @@ RUN pnpm install --frozen-lockfile
 # Copy full source for the isolated workspace
 COPY --from=pruner /app/out/full/ .
 
-# Final image
+# Runner stage (non-root for consistency with other app images)
 FROM base AS runner
+RUN addgroup --system --gid 1001 nodejs \
+    && adduser --system --uid 1001 nodejs
+USER nodejs
 
 WORKDIR /app
-COPY --from=deps /app .
+COPY --from=deps --chown=nodejs:nodejs /app .
 WORKDIR /app/packages/putting-pals-db
 
 ARG DATABASE_URL
