@@ -1,0 +1,61 @@
+# Reduce build context for Docker builds from repo root (e.g. -f apps/server/Dockerfile .)
+# Pruner stage only needs source, lockfile, and workspace manifests
+
+# Dependencies (reinstalled in builder)
+node_modules
+**/node_modules
+.pnpm-store
+**/.pnpm-store
+
+# Build / Turbo output (not needed for prune)
+.turbo
+**/.turbo
+dist
+**/dist
+out
+**/out
+build
+**/build
+.next
+**/.next
+web-build
+**/web-build
+.expo
+**/.expo
+
+# Git and IDE
+.git
+.github
+.gitignore
+**/.DS_Store
+.idea
+**/.idea
+.vscode
+**/.vscode
+
+# Env and secrets (never send to daemon)
+.env
+.env.*
+!.env.example
+
+# Logs and debug
+*.log
+coverage
+**/coverage
+
+# Native / keys (not needed for Node builds)
+ios
+android
+**/*.pem
+**/*.key
+**/*.jks
+**/*.p8
+**/*.p12
+**/*.mobileprovision
+**/*.orig.*
+
+# Misc
+*.tsbuildinfo
+.cache
+**/.cache
+**/vite.config.ts.timestamp-*
