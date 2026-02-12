@@ -1,50 +1,49 @@
 # https://fintlabs.medium.com/optimized-multi-stage-docker-builds-with-turborepo-and-pnpm-for-nodejs-microservices-in-a-monorepo-c686fdcf051f
 
-# Alpine image
+# Base Alpine image
 FROM node:22-alpine AS alpine
-RUN apk update
 RUN apk add --no-cache libc6-compat
 
-# Setup pnpm and turbo on the alpine base
+# Setup pnpm and turbo
 FROM alpine AS base
-RUN npm install pnpm turbo --global
+RUN npm install -g pnpm turbo
 RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
 
-# Prune projects
+# Prune projects to isolate subworkspace
 FROM base AS pruner
-
 WORKDIR /app
 COPY . .
 RUN turbo prune --scope=@putting-pals/cron --docker
 
-# Build the project
+# Build stage
 FROM base AS builder
 
 ARG SERVER_URL
 
 WORKDIR /app
 
-# Copy lockfile and package.json's of isolated subworkspace
+# Copy only lockfiles and pruned workspace manifests first
 COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
-# First install the dependencies (as they change less often)
-# https://docs.railway.com/guides/dockerfiles#cache-mounts
-RUN --mount=type=cache,id=s/dd6e32de-bd23-4ef2-8cf0-cce0137bfec8-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
+# Install dependencies (layer cached by Docker if lockfile unchanged)
+RUN pnpm install --frozen-lockfile
 
-# Copy source code of isolated subworkspace
+# Copy full source for the isolated workspace
 COPY --from=pruner /app/out/full/ .
 
+# Turbo codegen and build
 RUN turbo build --filter=@putting-pals/cron
-RUN --mount=type=cache,id=s/dd6e32de-bd23-4ef2-8cf0-cce0137bfec8-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm prune --prod --no-optional
+
+# Prune production dependencies
+RUN pnpm prune --prod --no-optional
 RUN rm -rf ./**/*/src
 
-# Final image
+# Runner stage
 FROM alpine AS runner
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nodejs
+RUN addgroup --system --gid 1001 nodejs \
+    && adduser --system --uid 1001 nodejs
 USER nodejs
 
 WORKDIR /app
