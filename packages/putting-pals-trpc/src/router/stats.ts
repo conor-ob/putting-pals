@@ -5,7 +5,7 @@ export const statsRouter = router({
   getEarnings: publicProcedure.query(async ({ ctx }) => {
     return new StatsService(
       ctx.competitionService,
-      ctx.tournamentService,
+      ctx.batchTournamentService,
     ).getEarnings();
   }),
 });

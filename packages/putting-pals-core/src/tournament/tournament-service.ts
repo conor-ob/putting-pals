@@ -39,23 +39,4 @@ export class TournamentServiceImpl implements TournamentService {
         throw new UnsupportedTourCodeError(tourCode);
     }
   }
-
-  async getTournaments(
-    tourCode: TourCode,
-    ids: string[],
-  ): Promise<Tournament[]> {
-    switch (tourCode) {
-      case "pal":
-      case "pga":
-      case "dev":
-      case "snr":
-      case "pam":
-        return this.pgaTourApiTournamentClient.getTournaments(ids);
-      case "eur":
-      case "liv":
-        return this.espnSportsApiTournamentClient.getTournaments(ids);
-      default:
-        throw new UnsupportedTourCodeError(tourCode);
-    }
-  }
 }

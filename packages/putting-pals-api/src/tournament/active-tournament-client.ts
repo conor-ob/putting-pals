@@ -1,9 +1,9 @@
 import {
   type ActiveTournamentClient,
+  type BatchTournamentClient,
   type CompetitionRepository,
   NotFoundError,
   type TourCode,
-  type TournamentClient,
 } from "@putting-pals/putting-pals-core";
 
 export class PuttingPalsApiActiveTournamentClient
@@ -11,10 +11,10 @@ export class PuttingPalsApiActiveTournamentClient
 {
   constructor(
     private readonly competitionRepository: CompetitionRepository,
-    private readonly pgaTourApiTournamentClient: TournamentClient,
+    private readonly pgaTourApiBatchTournamentClient: BatchTournamentClient,
   ) {
     this.competitionRepository = competitionRepository;
-    this.pgaTourApiTournamentClient = pgaTourApiTournamentClient;
+    this.pgaTourApiBatchTournamentClient = pgaTourApiBatchTournamentClient;
   }
 
   async getActiveTournamentId(
@@ -48,7 +48,7 @@ export class PuttingPalsApiActiveTournamentClient
       .map((competition) => competition.tournamentId);
 
     const tournaments =
-      await this.pgaTourApiTournamentClient.getTournaments(competitionIds);
+      await this.pgaTourApiBatchTournamentClient.getTournaments(competitionIds);
     const activeTournament = [...tournaments].sort((a, b) =>
       b.schedule.startDate.localeCompare(a.schedule.startDate),
     )[0];

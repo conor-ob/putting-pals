@@ -1,14 +1,14 @@
 import type { Competitor } from "../competition/domain/types";
 import type { CompetitionService } from "../competition/interfaces/inbound/competition-service";
-import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
+import type { BatchTournamentService } from "../tournament/interfaces/inbound/batch-tournament-service";
 
 export class StatsService {
   constructor(
     private readonly competitionService: CompetitionService,
-    private readonly tournamentService: TournamentService,
+    private readonly batchTournamentService: BatchTournamentService,
   ) {
     this.competitionService = competitionService;
-    this.tournamentService = tournamentService;
+    this.batchTournamentService = batchTournamentService;
   }
 
   async getEarnings() {
@@ -20,8 +20,8 @@ export class StatsService {
             competition.runnerUpId !== undefined) ||
           competition.competitors.length > 0,
       );
-    const tournaments = await this.tournamentService.getTournaments(
-      "pga",
+    const tournaments = await this.batchTournamentService.getTournaments(
+      "pal",
       competitions.map((competition) => competition.tournamentId),
     );
 

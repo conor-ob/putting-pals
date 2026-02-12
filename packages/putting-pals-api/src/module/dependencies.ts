@@ -1,9 +1,9 @@
 import type {
   ActiveTournamentClient,
+  BatchTournamentClient,
   CompetitionRepository,
   LeaderboardClient,
   ScheduleClient,
-  TournamentClient,
 } from "@putting-pals/putting-pals-core";
 import { PuttingPalsApiLeaderboardClient } from "../leaderboard/leaderboard-client";
 import { CompetitionRepositoryImpl } from "../repository/competition-repository";
@@ -12,7 +12,7 @@ import { PuttingPalsApiActiveTournamentClient } from "../tournament/active-tourn
 
 export function injectDependencies(
   pgaTourApiLeaderboardClient: LeaderboardClient,
-  pgaTourApiTournamentClient: TournamentClient,
+  pgaTourApiBatchTournamentClient: BatchTournamentClient,
   pgaTourApiScheduleClient: ScheduleClient,
 ): {
   competitionRepository: CompetitionRepository;
@@ -29,12 +29,12 @@ export function injectDependencies(
     ),
     scheduleClient: new PuttingPalsApiScheduleClient(
       competitionRepository,
-      pgaTourApiTournamentClient,
+      pgaTourApiBatchTournamentClient,
       pgaTourApiScheduleClient,
     ),
     activeTournamentClient: new PuttingPalsApiActiveTournamentClient(
       competitionRepository,
-      pgaTourApiTournamentClient,
+      pgaTourApiBatchTournamentClient,
     ),
   };
 }

@@ -2,7 +2,6 @@ import { resolve } from "@putting-pals/iso-countries";
 import {
   AbstractTournamentClient,
   NotFoundError,
-  NotImplementedError,
   type TourCode,
   type Tournament,
   type TournamentStatus,
@@ -15,12 +14,6 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Tour
   constructor(private readonly espnSportsApi: EspnSportsApi) {
     super();
     this.espnSportsApi = espnSportsApi;
-  }
-
-  override async getTournamentsRemote(
-    _ids: string[],
-  ): Promise<TourScheduleEvent[]> {
-    throw new NotImplementedError();
   }
 
   override async getTournamentRemote(

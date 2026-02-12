@@ -21,9 +21,12 @@ import { ScheduleYearsServiceImpl } from "../schedule/schedule-years-service";
 import type { TourService } from "../tour/interfaces/inbound/tour-service";
 import { TourServiceImpl } from "../tour/tour-service";
 import { ActiveTournamentServiceImpl } from "../tournament/active-tournament-service";
+import { BatchTournamentServiceImpl } from "../tournament/batch-tournament-service";
+import type { BatchTournamentService } from "../tournament/interfaces/inbound/batch-tournament-service";
 import type { TournamentService } from "../tournament/interfaces/inbound/tournament-service";
 import type { ActiveTournamentClient } from "../tournament/interfaces/outbound/active-tournament-client";
 import type { ActiveTournamentRepository } from "../tournament/interfaces/outbound/active-tournament-repository";
+import type { BatchTournamentClient } from "../tournament/interfaces/outbound/batch-tournament-client";
 import type { TournamentClient } from "../tournament/interfaces/outbound/tournament-client";
 import { TournamentEventProcessorImpl } from "../tournament/tournament-event-processor";
 import { TournamentServiceImpl } from "../tournament/tournament-service";
@@ -38,6 +41,7 @@ export function injectDependencies(
   pgaTourApiLeaderboardClient: LeaderboardClient,
   pgaTourApiScheduleClient: ScheduleClient,
   pgaTourApiTournamentClient: TournamentClient,
+  pgaTourApiBatchTournamentClient: BatchTournamentClient,
   espnSportsApiActiveTournamentClient: ActiveTournamentClient,
   espnSportsApiLeaderboardClient: LeaderboardClient,
   espnSportsApiScheduleClient: ScheduleClient,
@@ -53,6 +57,7 @@ export function injectDependencies(
   scheduleService: ScheduleService;
   scheduleYearsService: ScheduleYearsService;
   tournamentService: TournamentService;
+  batchTournamentService: BatchTournamentService;
   tourService: TourService;
 } {
   const competitionService = new CompetitionServiceImpl(competitionRepository);
@@ -66,6 +71,9 @@ export function injectDependencies(
     pgaTourApiTournamentClient,
     espnSportsApiTournamentClient,
     activeTournamentService,
+  );
+  const batchTournamentService = new BatchTournamentServiceImpl(
+    pgaTourApiBatchTournamentClient,
   );
   const leaderboardService = new LeaderboardServiceImpl(
     puttingPalsApiLeaderboardClient,
@@ -108,6 +116,7 @@ export function injectDependencies(
       espnSportsApiScheduleClient,
     ),
     tournamentService: tournamentService,
+    batchTournamentService: batchTournamentService,
     tourService: new TourServiceImpl(featureFlagService),
   };
 }

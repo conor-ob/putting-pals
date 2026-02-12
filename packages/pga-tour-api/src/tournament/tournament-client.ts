@@ -13,15 +13,13 @@ export class PgaTourApiTournamentClient extends AbstractTournamentClient<ApiTour
     this.sdk = sdk;
   }
 
-  override async getTournamentsRemote(ids: string[]): Promise<ApiTournament[]> {
-    return this.sdk.Tournaments({ ids }).then((data) => data.tournaments);
-  }
-
   override async getTournamentRemote(
     _tourCode: TourCode,
     id: string,
   ): Promise<ApiTournament> {
-    const tournaments = await this.getTournamentsRemote([id]);
+    const tournaments = await this.sdk
+      .Tournaments({ ids: [id] })
+      .then((data) => data.tournaments);
     const tournament = tournaments.find((t) => t.id === id);
     if (tournament === undefined) {
       throw new NotFoundError(`Tournament ${id} not found`);

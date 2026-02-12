@@ -1,4 +1,5 @@
 import type {
+  BatchTournamentClient,
   CompetitionRepository,
   Schedule,
   ScheduleClient,
@@ -6,18 +7,17 @@ import type {
   ScheduleYears,
   TourCode,
   Tournament,
-  TournamentClient,
 } from "@putting-pals/putting-pals-core";
 import { parseISO } from "date-fns";
 
 export class PuttingPalsApiScheduleClient implements ScheduleClient {
   constructor(
     private readonly competitionRepository: CompetitionRepository,
-    private readonly pgaTourApiTournamentClient: TournamentClient,
+    private readonly pgaTourApiBatchTournamentClient: BatchTournamentClient,
     private readonly pgaTourApiScheduleClient: ScheduleClient,
   ) {
     this.competitionRepository = competitionRepository;
-    this.pgaTourApiTournamentClient = pgaTourApiTournamentClient;
+    this.pgaTourApiBatchTournamentClient = pgaTourApiBatchTournamentClient;
     this.pgaTourApiScheduleClient = pgaTourApiScheduleClient;
   }
 
@@ -64,7 +64,7 @@ export class PuttingPalsApiScheduleClient implements ScheduleClient {
       (competition) => competition.tournamentId,
     );
     const tournaments =
-      await this.pgaTourApiTournamentClient.getTournaments(tournamentIds);
+      await this.pgaTourApiBatchTournamentClient.getTournaments(tournamentIds);
     return tournaments;
   }
 

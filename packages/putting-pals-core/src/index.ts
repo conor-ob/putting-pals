@@ -48,11 +48,14 @@ export {
   TournamentStatusSchema,
 } from "./tournament/domain/schemas";
 export type { Tournament, TournamentStatus } from "./tournament/domain/types";
+export type { BatchTournamentService } from "./tournament/interfaces/inbound/batch-tournament-service";
 export type { TournamentService } from "./tournament/interfaces/inbound/tournament-service";
+export { AbstractBatchTournamentClient } from "./tournament/interfaces/outbound/abstract-batch-tournament-client";
 export { AbstractTournamentClient } from "./tournament/interfaces/outbound/abstract-tournament-client";
 export type { ActiveTournamentClient } from "./tournament/interfaces/outbound/active-tournament-client";
 export type {
   ActiveTournament,
   ActiveTournamentRepository,
 } from "./tournament/interfaces/outbound/active-tournament-repository";
+export type { BatchTournamentClient } from "./tournament/interfaces/outbound/batch-tournament-client";
 export type { TournamentClient } from "./tournament/interfaces/outbound/tournament-client";
