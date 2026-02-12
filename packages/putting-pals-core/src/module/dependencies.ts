@@ -32,31 +32,23 @@ import { TournamentEventProcessorImpl } from "../tournament/tournament-event-pro
 import { TournamentServiceImpl } from "../tournament/tournament-service";
 
 export function injectDependencies(
-  repositoryDependencies: {
-    activeTournamentRepository: ActiveTournamentRepository;
-    leaderboardFeedRepository: LeaderboardFeedRepository;
-    leaderboardSnapshotRepository: LeaderboardSnapshotRepository;
-    competitionRepository: CompetitionRepository;
-    featureFlagRepository: FeatureFlagRepository;
-  },
-  pgaTourApiDependencies: {
-    activeTournamentClient: ActiveTournamentClient;
-    leaderboardClient: LeaderboardClient;
-    scheduleClient: ScheduleClient;
-    tournamentClient: TournamentClient;
-    batchTournamentClient: BatchTournamentClient;
-  },
-  espnSportsApiDependencies: {
-    activeTournamentClient: ActiveTournamentClient;
-    leaderboardClient: LeaderboardClient;
-    scheduleClient: ScheduleClient;
-    tournamentClient: TournamentClient;
-  },
-  puttingPalsApiDependencies: {
-    activeTournamentClient: ActiveTournamentClient;
-    leaderboardClient: LeaderboardClient;
-    scheduleClient: ScheduleClient;
-  },
+  competitionRepository: CompetitionRepository,
+  activeTournamentRepository: ActiveTournamentRepository,
+  leaderboardFeedRepository: LeaderboardFeedRepository,
+  leaderboardSnapshotRepository: LeaderboardSnapshotRepository,
+  featureFlagRepository: FeatureFlagRepository,
+  pgaTourApiActiveTournamentClient: ActiveTournamentClient,
+  pgaTourApiLeaderboardClient: LeaderboardClient,
+  pgaTourApiScheduleClient: ScheduleClient,
+  pgaTourApiTournamentClient: TournamentClient,
+  pgaTourApiBatchTournamentClient: BatchTournamentClient,
+  espnSportsApiActiveTournamentClient: ActiveTournamentClient,
+  espnSportsApiLeaderboardClient: LeaderboardClient,
+  espnSportsApiScheduleClient: ScheduleClient,
+  espnSportsApiTournamentClient: TournamentClient,
+  puttingPalsApiActiveTournamentClient: ActiveTournamentClient,
+  puttingPalsApiLeaderboardClient: LeaderboardClient,
+  puttingPalsApiScheduleClient: ScheduleClient,
 ): {
   competitionService: CompetitionService;
   feedService: FeedService;
@@ -68,64 +60,60 @@ export function injectDependencies(
   batchTournamentService: BatchTournamentService;
   tourService: TourService;
 } {
-  const competitionService = new CompetitionServiceImpl(
-    repositoryDependencies.competitionRepository,
-  );
+  const competitionService = new CompetitionServiceImpl(competitionRepository);
   const activeTournamentService = new ActiveTournamentServiceImpl(
-    pgaTourApiDependencies.activeTournamentClient,
-    puttingPalsApiDependencies.activeTournamentClient,
-    espnSportsApiDependencies.activeTournamentClient,
-    repositoryDependencies.activeTournamentRepository,
+    pgaTourApiActiveTournamentClient,
+    puttingPalsApiActiveTournamentClient,
+    espnSportsApiActiveTournamentClient,
+    activeTournamentRepository,
   );
   const tournamentService = new TournamentServiceImpl(
-    pgaTourApiDependencies.tournamentClient,
-    espnSportsApiDependencies.tournamentClient,
+    pgaTourApiTournamentClient,
+    espnSportsApiTournamentClient,
     activeTournamentService,
   );
   const batchTournamentService = new BatchTournamentServiceImpl(
-    pgaTourApiDependencies.batchTournamentClient,
+    pgaTourApiBatchTournamentClient,
   );
   const leaderboardService = new LeaderboardServiceImpl(
-    puttingPalsApiDependencies.leaderboardClient,
-    pgaTourApiDependencies.leaderboardClient,
-    espnSportsApiDependencies.leaderboardClient,
+    puttingPalsApiLeaderboardClient,
+    pgaTourApiLeaderboardClient,
+    espnSportsApiLeaderboardClient,
     activeTournamentService,
   );
-  const featureFlagService = new FeatureFlagServiceImpl(
-    repositoryDependencies.featureFlagRepository,
-  );
+  const featureFlagService = new FeatureFlagServiceImpl(featureFlagRepository);
   return {
     competitionService: competitionService,
     feedService: new FeedServiceImpl(
       tournamentService,
       leaderboardService,
       activeTournamentService,
-      repositoryDependencies.leaderboardFeedRepository,
+      leaderboardFeedRepository,
     ),
     leaderboardEventProcessor: new LeaderboardEventProcessorImpl(
       activeTournamentService,
       [
         new TournamentEventProcessorImpl(
           tournamentService,
-          repositoryDependencies.leaderboardSnapshotRepository,
+          leaderboardSnapshotRepository,
         ),
         new LeaderboardEventProcessorServiceImpl(
           leaderboardService,
-          repositoryDependencies.leaderboardSnapshotRepository,
+          leaderboardSnapshotRepository,
         ),
       ],
-      repositoryDependencies.leaderboardFeedRepository,
+      leaderboardFeedRepository,
     ),
     leaderboardService: leaderboardService,
     scheduleService: new ScheduleServiceImpl(
-      puttingPalsApiDependencies.scheduleClient,
-      pgaTourApiDependencies.scheduleClient,
-      espnSportsApiDependencies.scheduleClient,
+      puttingPalsApiScheduleClient,
+      pgaTourApiScheduleClient,
+      espnSportsApiScheduleClient,
     ),
     scheduleYearsService: new ScheduleYearsServiceImpl(
-      puttingPalsApiDependencies.scheduleClient,
-      pgaTourApiDependencies.scheduleClient,
-      espnSportsApiDependencies.scheduleClient,
+      puttingPalsApiScheduleClient,
+      pgaTourApiScheduleClient,
+      espnSportsApiScheduleClient,
     ),
     tournamentService: tournamentService,
     batchTournamentService: batchTournamentService,

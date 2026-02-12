@@ -21,33 +21,23 @@ export default function (fastify: FastifyInstance) {
   );
   const espnSportsApiDependencies = injectEspnSportsApiDependencies();
   const coreDependencies = injectCoreDependencies(
-    {
-      activeTournamentRepository:
-        databaseDependencies.activeTournamentRepository,
-      leaderboardFeedRepository: databaseDependencies.leaderboardFeedRepository,
-      leaderboardSnapshotRepository:
-        databaseDependencies.leaderboardSnapshotRepository,
-      competitionRepository: puttingPalsApiDependencies.competitionRepository,
-      featureFlagRepository: databaseDependencies.featureFlagRepository,
-    },
-    {
-      activeTournamentClient: pgaTourApiDependencies.activeTournamentClient,
-      leaderboardClient: pgaTourApiDependencies.leaderboardClient,
-      scheduleClient: pgaTourApiDependencies.scheduleClient,
-      tournamentClient: pgaTourApiDependencies.tournamentClient,
-      batchTournamentClient: pgaTourApiDependencies.batchTournamentClient,
-    },
-    {
-      activeTournamentClient: espnSportsApiDependencies.activeTournamentClient,
-      leaderboardClient: espnSportsApiDependencies.leaderboardClient,
-      scheduleClient: espnSportsApiDependencies.scheduleClient,
-      tournamentClient: espnSportsApiDependencies.tournamentClient,
-    },
-    {
-      activeTournamentClient: puttingPalsApiDependencies.activeTournamentClient,
-      leaderboardClient: puttingPalsApiDependencies.leaderboardClient,
-      scheduleClient: puttingPalsApiDependencies.scheduleClient,
-    },
+    puttingPalsApiDependencies.competitionRepository,
+    databaseDependencies.activeTournamentRepository,
+    databaseDependencies.leaderboardFeedRepository,
+    databaseDependencies.leaderboardSnapshotRepository,
+    databaseDependencies.featureFlagRepository,
+    pgaTourApiDependencies.activeTournamentClient,
+    pgaTourApiDependencies.leaderboardClient,
+    pgaTourApiDependencies.scheduleClient,
+    pgaTourApiDependencies.tournamentClient,
+    pgaTourApiDependencies.batchTournamentClient,
+    espnSportsApiDependencies.activeTournamentClient,
+    espnSportsApiDependencies.leaderboardClient,
+    espnSportsApiDependencies.scheduleClient,
+    espnSportsApiDependencies.tournamentClient,
+    puttingPalsApiDependencies.activeTournamentClient,
+    puttingPalsApiDependencies.leaderboardClient,
+    puttingPalsApiDependencies.scheduleClient,
   );
 
   fastify.decorate("dependencies", coreDependencies);
