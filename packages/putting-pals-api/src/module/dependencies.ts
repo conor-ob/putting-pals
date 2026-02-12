@@ -1,5 +1,6 @@
 import type {
   ActiveTournamentClient,
+  BatchTournamentClient,
   CompetitionRepository,
   LeaderboardClient,
   ScheduleClient,
@@ -9,15 +10,20 @@ import { PuttingPalsApiLeaderboardClient } from "../leaderboard/leaderboard-clie
 import { CompetitionRepositoryImpl } from "../repository/competition-repository";
 import { PuttingPalsApiScheduleClient } from "../schedule/schedule-client";
 import { PuttingPalsApiActiveTournamentClient } from "../tournament/active-tournament-client";
+import { PuttingPalsApiBatchTournamentClient } from "../tournament/batch-tournament-client";
+import { PuttingPalsApiTournamentClient } from "../tournament/tournament-client";
 
 export function injectDependencies(
   pgaTourApiLeaderboardClient: LeaderboardClient,
   pgaTourApiTournamentClient: TournamentClient,
+  pgaTourApiBatchTournamentClient: BatchTournamentClient,
   pgaTourApiScheduleClient: ScheduleClient,
 ): {
   competitionRepository: CompetitionRepository;
   leaderboardClient: LeaderboardClient;
   scheduleClient: ScheduleClient;
+  tournamentClient: TournamentClient;
+  batchTournamentClient: BatchTournamentClient;
   activeTournamentClient: ActiveTournamentClient;
 } {
   const competitionRepository = new CompetitionRepositoryImpl();
@@ -29,12 +35,18 @@ export function injectDependencies(
     ),
     scheduleClient: new PuttingPalsApiScheduleClient(
       competitionRepository,
-      pgaTourApiTournamentClient,
+      pgaTourApiBatchTournamentClient,
       pgaTourApiScheduleClient,
+    ),
+    tournamentClient: new PuttingPalsApiTournamentClient(
+      pgaTourApiTournamentClient,
+    ),
+    batchTournamentClient: new PuttingPalsApiBatchTournamentClient(
+      pgaTourApiBatchTournamentClient,
     ),
     activeTournamentClient: new PuttingPalsApiActiveTournamentClient(
       competitionRepository,
-      pgaTourApiTournamentClient,
+      pgaTourApiBatchTournamentClient,
     ),
   };
 }

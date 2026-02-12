@@ -30,6 +30,7 @@ export default function (fastify: FastifyInstance) {
           scheduleYearsService: fastify.dependencies.scheduleYearsService,
           tourService: fastify.dependencies.tourService,
           tournamentService: fastify.dependencies.tournamentService,
+          batchTournamentService: fastify.dependencies.batchTournamentService,
         });
       },
       onError({ path, type, error }) {

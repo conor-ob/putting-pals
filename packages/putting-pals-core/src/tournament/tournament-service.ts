@@ -7,10 +7,12 @@ import type { TournamentClient } from "./interfaces/outbound/tournament-client";
 
 export class TournamentServiceImpl implements TournamentService {
   constructor(
+    private readonly puttingPalsApiTournamentClient: TournamentClient,
     private readonly pgaTourApiTournamentClient: TournamentClient,
     private readonly espnSportsApiTournamentClient: TournamentClient,
     private readonly activeTournamentService: ActiveTournamentService,
   ) {
+    this.puttingPalsApiTournamentClient = puttingPalsApiTournamentClient;
     this.pgaTourApiTournamentClient = pgaTourApiTournamentClient;
     this.espnSportsApiTournamentClient = espnSportsApiTournamentClient;
     this.activeTournamentService = activeTournamentService;
@@ -21,6 +23,10 @@ export class TournamentServiceImpl implements TournamentService {
       await this.activeTournamentService.getActiveTournamentId(tourCode, id);
     switch (tourCode) {
       case "pal":
+        return this.puttingPalsApiTournamentClient.getTournament(
+          tourCode,
+          tournamentId,
+        );
       case "pga":
       case "dev":
       case "snr":
@@ -35,25 +41,6 @@ export class TournamentServiceImpl implements TournamentService {
           tourCode,
           tournamentId,
         );
-      default:
-        throw new UnsupportedTourCodeError(tourCode);
-    }
-  }
-
-  async getTournaments(
-    tourCode: TourCode,
-    ids: string[],
-  ): Promise<Tournament[]> {
-    switch (tourCode) {
-      case "pal":
-      case "pga":
-      case "dev":
-      case "snr":
-      case "pam":
-        return this.pgaTourApiTournamentClient.getTournaments(ids);
-      case "eur":
-      case "liv":
-        return this.espnSportsApiTournamentClient.getTournaments(ids);
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }

@@ -1,4 +1,5 @@
 import type {
+  BatchTournamentService,
   CompetitionService,
   FeedService,
   LeaderboardEventProcessor,
@@ -20,6 +21,7 @@ suite("tournamentRouter", () => {
     const caller = createCaller(
       createTrpcContext({
         tournamentService: vi.fn() as unknown as TournamentService,
+        batchTournamentService: vi.fn() as unknown as BatchTournamentService,
         competitionService: vi.fn() as unknown as CompetitionService,
         leaderboardService: vi.fn() as unknown as LeaderboardService,
         leaderboardEventProcessor:
