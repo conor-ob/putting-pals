@@ -30,7 +30,6 @@ export type {
   Schedule,
   ScheduleMonth,
   ScheduleTournament,
-  ScheduleUpcoming,
 } from "./schedule/domain/types";
 export type { ScheduleService } from "./schedule/interfaces/inbound/schedule-service";
 export { AbstractScheduleClient } from "./schedule/interfaces/outbound/abstract-schedule-client";

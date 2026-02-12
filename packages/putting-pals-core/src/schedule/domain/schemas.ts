@@ -35,7 +35,3 @@ export const ScheduleSchema = z.object({
   completed: z.array(ScheduleMonthSchema),
   upcoming: z.array(ScheduleMonthSchema),
 });
-
-export const ScheduleUpcomingSchema = z.object({
-  tournaments: z.array(ScheduleTournamentSchema),
-});

@@ -3,17 +3,13 @@ import {
   AbstractScheduleClient,
   NotFoundError,
   type Schedule,
-  type ScheduleUpcoming,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
 import { format, parseISO } from "date-fns";
 import type { EspnSportsApi } from "../api/espn-sports-api";
 import type { TourScheduleEvent, TourScheduleSeason } from "./domain/types";
 
-export class EspnSportsApiScheduleClient extends AbstractScheduleClient<
-  TourScheduleSeason,
-  TourScheduleSeason
-> {
+export class EspnSportsApiScheduleClient extends AbstractScheduleClient<TourScheduleSeason> {
   constructor(private readonly espnSportsApi: EspnSportsApi) {
     super();
     this.espnSportsApi = espnSportsApi;
@@ -37,41 +33,17 @@ export class EspnSportsApiScheduleClient extends AbstractScheduleClient<
     return season;
   }
 
-  override mapSchedule(season: TourScheduleSeason): Schedule {
-    return {
-      completed: this.groupEventsByMonth(
-        season.events?.filter((e) => e.status === "post") ?? [],
-      ),
-      upcoming: this.groupEventsByMonth(
-        season.events?.filter((e) => e.status !== "post") ?? [],
-      ),
-    };
-  }
-
-  override async getCompleteScheduleRemote(
-    tourCode: TourCode,
-  ): Promise<TourScheduleSeason[]> {
-    const schedule = await this.getScheduleRemote(tourCode);
-    return [schedule];
-  }
-
-  override mapCompleteSchedule(schedule: TourScheduleSeason[]): Schedule[] {
-    return schedule.map((season) => this.mapSchedule(season));
-  }
-
-  override async getUpcomingScheduleRemote(
-    tourCode: TourCode,
-  ): Promise<TourScheduleSeason> {
-    return this.getScheduleRemote(tourCode);
-  }
-
-  override mapUpcomingSchedule(schedule: TourScheduleSeason): ScheduleUpcoming {
-    const mappedSchedule = this.mapSchedule(schedule);
-    return {
-      tournaments: mappedSchedule.upcoming
-        .flatMap((month) => month.tournaments)
-        .slice(0, 3),
-    };
+  override mapSchedule(season: TourScheduleSeason): Schedule[] {
+    return [
+      {
+        completed: this.groupEventsByMonth(
+          season.events?.filter((e) => e.status === "post") ?? [],
+        ),
+        upcoming: this.groupEventsByMonth(
+          season.events?.filter((e) => e.status !== "post") ?? [],
+        ),
+      },
+    ];
   }
 
   private groupEventsByMonth(events: TourScheduleEvent[]) {

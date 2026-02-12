@@ -3,29 +3,59 @@ import type {
   ScheduleMonth,
   ScheduleTournament,
 } from "@putting-pals/putting-pals-core";
+import type {
+  ApiSchedule,
+  ApiScheduleMonth,
+  ApiScheduleTournament,
+} from "../generated/graphql";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
-export function transformSchedule(schedule: Schedule): Schedule {
+export function transformSchedule(
+  schedule: ApiSchedule,
+  upcomingTournaments: ApiScheduleTournament[],
+): Schedule {
   return {
     ...schedule,
-    completed: schedule.completed.map(transformScheduleMonth),
-    upcoming: schedule.upcoming.map(transformScheduleMonth),
+    completed: schedule.completed.map((scheduleMonth) =>
+      transformScheduleMonth(scheduleMonth, upcomingTournaments),
+    ),
+    upcoming: schedule.upcoming.map((scheduleMonth) =>
+      transformScheduleMonth(scheduleMonth, upcomingTournaments),
+    ),
   };
 }
 
 export function transformScheduleTournament(
-  tournament: ScheduleTournament,
+  tournament: ApiScheduleTournament,
+  upcomingTournaments: ApiScheduleTournament[],
 ): ScheduleTournament {
-  return {
-    ...tournament,
-    tournamentName: stripParenthesizedYear(tournament.tournamentName),
-  };
+  const upcomingTournament = upcomingTournaments.find(
+    (upcomingTournament) => upcomingTournament.id === tournament.id,
+  );
+
+  if (upcomingTournament !== undefined) {
+    return {
+      ...tournament,
+      status: upcomingTournament.status,
+      tournamentName: stripParenthesizedYear(tournament.tournamentName),
+    };
+  } else {
+    return {
+      ...tournament,
+      tournamentName: stripParenthesizedYear(tournament.tournamentName),
+    };
+  }
 }
 
-function transformScheduleMonth(scheduleMonth: ScheduleMonth): ScheduleMonth {
+function transformScheduleMonth(
+  scheduleMonth: ApiScheduleMonth,
+  upcomingTournaments: ApiScheduleTournament[],
+): ScheduleMonth {
   return {
     ...scheduleMonth,
     monthSort: scheduleMonth.monthSort,
-    tournaments: scheduleMonth.tournaments.map(transformScheduleTournament),
+    tournaments: scheduleMonth.tournaments.map((tournament) =>
+      transformScheduleTournament(tournament, upcomingTournaments),
+    ),
   };
 }
