@@ -7,11 +7,8 @@ import type { BatchTournamentClient } from "./interfaces/outbound/batch-tourname
 export class BatchTournamentServiceImpl implements BatchTournamentService {
   constructor(
     private readonly pgaTourApiBatchTournamentClient: BatchTournamentClient,
-    private readonly puttingPalsApiBatchTournamentClient: BatchTournamentClient,
   ) {
     this.pgaTourApiBatchTournamentClient = pgaTourApiBatchTournamentClient;
-    this.puttingPalsApiBatchTournamentClient =
-      puttingPalsApiBatchTournamentClient;
   }
 
   async getTournaments(
@@ -20,7 +17,6 @@ export class BatchTournamentServiceImpl implements BatchTournamentService {
   ): Promise<Tournament[]> {
     switch (tourCode) {
       case "pal":
-        return this.puttingPalsApiBatchTournamentClient.getTournaments(ids);
       case "pga":
       case "dev":
       case "snr":

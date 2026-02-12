@@ -53,8 +53,6 @@ export function injectDependencies(
     tournamentClient: TournamentClient;
   },
   puttingPalsApiDependencies: {
-    tournamentClient: TournamentClient;
-    batchTournamentClient: BatchTournamentClient;
     activeTournamentClient: ActiveTournamentClient;
     leaderboardClient: LeaderboardClient;
     scheduleClient: ScheduleClient;
@@ -80,14 +78,12 @@ export function injectDependencies(
     repositoryDependencies.activeTournamentRepository,
   );
   const tournamentService = new TournamentServiceImpl(
-    puttingPalsApiDependencies.tournamentClient,
     pgaTourApiDependencies.tournamentClient,
     espnSportsApiDependencies.tournamentClient,
     activeTournamentService,
   );
   const batchTournamentService = new BatchTournamentServiceImpl(
     pgaTourApiDependencies.batchTournamentClient,
-    puttingPalsApiDependencies.batchTournamentClient,
   );
   const leaderboardService = new LeaderboardServiceImpl(
     puttingPalsApiDependencies.leaderboardClient,

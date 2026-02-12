@@ -16,7 +16,6 @@ export default function (fastify: FastifyInstance) {
   const pgaTourApiDependencies = injectPgaTourApiDependencies();
   const puttingPalsApiDependencies = injectPuttingPalsApiDependencies(
     pgaTourApiDependencies.leaderboardClient,
-    pgaTourApiDependencies.tournamentClient,
     pgaTourApiDependencies.batchTournamentClient,
     pgaTourApiDependencies.scheduleClient,
   );
@@ -45,8 +44,6 @@ export default function (fastify: FastifyInstance) {
       tournamentClient: espnSportsApiDependencies.tournamentClient,
     },
     {
-      tournamentClient: puttingPalsApiDependencies.tournamentClient,
-      batchTournamentClient: puttingPalsApiDependencies.batchTournamentClient,
       activeTournamentClient: puttingPalsApiDependencies.activeTournamentClient,
       leaderboardClient: puttingPalsApiDependencies.leaderboardClient,
       scheduleClient: puttingPalsApiDependencies.scheduleClient,

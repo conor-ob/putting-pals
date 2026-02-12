@@ -7,12 +7,10 @@ import type { TournamentClient } from "./interfaces/outbound/tournament-client";
 
 export class TournamentServiceImpl implements TournamentService {
   constructor(
-    private readonly puttingPalsApiTournamentClient: TournamentClient,
     private readonly pgaTourApiTournamentClient: TournamentClient,
     private readonly espnSportsApiTournamentClient: TournamentClient,
     private readonly activeTournamentService: ActiveTournamentService,
   ) {
-    this.puttingPalsApiTournamentClient = puttingPalsApiTournamentClient;
     this.pgaTourApiTournamentClient = pgaTourApiTournamentClient;
     this.espnSportsApiTournamentClient = espnSportsApiTournamentClient;
     this.activeTournamentService = activeTournamentService;
@@ -23,10 +21,6 @@ export class TournamentServiceImpl implements TournamentService {
       await this.activeTournamentService.getActiveTournamentId(tourCode, id);
     switch (tourCode) {
       case "pal":
-        return this.puttingPalsApiTournamentClient.getTournament(
-          tourCode,
-          tournamentId,
-        );
       case "pga":
       case "dev":
       case "snr":
