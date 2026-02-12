@@ -29,17 +29,10 @@ export function SchedulePage() {
     <ScrollView className="p-4 gap-4">
       <TourCodeSwitcher />
       <FlashList
-        data={[
-          ...(schedule?.flatMap((season) =>
-            season.completed.flatMap((month) => month.tournaments),
-          ) ?? []),
-          ...(schedule?.flatMap((season) =>
-            season.upcoming.flatMap((month) => month.tournaments),
-          ) ?? []),
-        ]}
+        data={[...(schedule?.completed ?? []), ...(schedule?.upcoming ?? [])]}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
-          return <Text className="text-foreground">{item.tournamentName}</Text>;
+          return <Text className="text-foreground">{item.name}</Text>;
         }}
       />
     </ScrollView>

@@ -26,11 +26,7 @@ export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leader
 export { AbstractLeaderboardClient } from "./leaderboard/interfaces/outbound/abstract-leaderboard-client";
 export type { LeaderboardClient } from "./leaderboard/interfaces/outbound/leaderboard-client";
 export { injectDependencies } from "./module/dependencies";
-export type {
-  Schedule,
-  ScheduleMonth,
-  ScheduleTournament,
-} from "./schedule/domain/types";
+export type { Schedule } from "./schedule/domain/types";
 export type { ScheduleService } from "./schedule/interfaces/inbound/schedule-service";
 export { AbstractScheduleClient } from "./schedule/interfaces/outbound/abstract-schedule-client";
 export type { ScheduleClient } from "./schedule/interfaces/outbound/schedule-client";

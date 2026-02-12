@@ -8,7 +8,7 @@ import {
 } from "@putting-pals/putting-pals-core";
 
 type AggregateSchedule = {
-  pgaTourSchedule: Schedule[];
+  pgaTourSchedule: Schedule;
   competitions: Competition[];
 };
 
@@ -36,43 +36,18 @@ export class PuttingPalsApiScheduleClient extends AbstractScheduleClient<Aggrega
     };
   }
 
-  override mapSchedule(aggregateSchedule: AggregateSchedule): Schedule[] {
-    function filterScheduleMonths(months: Schedule["completed" | "upcoming"]) {
-      return months
-        .filter(
-          (month) =>
-            month.tournaments.filter((tournament) =>
-              puttingPalsTournamentIds.includes(tournament.id),
-            ).length > 0,
-        )
-        .map((month) => ({
-          ...month,
-          tournaments: month.tournaments.filter((tournament) =>
-            puttingPalsTournamentIds.includes(tournament.id),
-          ),
-        }));
-    }
-
+  override mapSchedule(aggregateSchedule: AggregateSchedule): Schedule {
     const puttingPalsTournamentIds = this.competitionRepository
       .getCompetitions()
       .map((competition) => competition.tournamentId);
     const pgaTourSchedule = aggregateSchedule.pgaTourSchedule;
-    return pgaTourSchedule
-      .filter((season) => {
-        const pgaTourTournamentIds = [
-          ...season.completed,
-          ...season.upcoming,
-        ].flatMap((month) =>
-          month.tournaments.map((tournament) => tournament.id),
-        );
-        return pgaTourTournamentIds.some((tournamentId) =>
-          puttingPalsTournamentIds.includes(tournamentId),
-        );
-      })
-      .map((season) => ({
-        ...season,
-        completed: filterScheduleMonths(season.completed),
-        upcoming: filterScheduleMonths(season.upcoming),
-      }));
+    return {
+      completed: pgaTourSchedule.completed.filter((tournament) =>
+        puttingPalsTournamentIds.includes(tournament.id),
+      ),
+      upcoming: pgaTourSchedule.upcoming.filter((tournament) =>
+        puttingPalsTournamentIds.includes(tournament.id),
+      ),
+    };
   }
 }

@@ -38,10 +38,15 @@ export class PgaTourApiScheduleClient extends AbstractScheduleClient<AggregateSc
     };
   }
 
-  override mapSchedule(aggregateSchedule: AggregateSchedule): Schedule[] {
-    return aggregateSchedule.schedule.map((schedule) =>
+  override mapSchedule(aggregateSchedule: AggregateSchedule): Schedule {
+    const transformedSchedule = aggregateSchedule.schedule.map((schedule) =>
       transformSchedule(schedule, aggregateSchedule.upcoming.tournaments),
     );
+
+    return {
+      completed: transformedSchedule.flatMap((schedule) => schedule.completed),
+      upcoming: transformedSchedule.flatMap((schedule) => schedule.upcoming),
+    };
   }
 
   private async getFullSchedule(

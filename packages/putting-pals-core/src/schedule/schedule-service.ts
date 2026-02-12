@@ -15,7 +15,7 @@ export class ScheduleServiceImpl implements ScheduleService {
     this.espnSportsApiScheduleClient = espnSportsApiScheduleClient;
   }
 
-  async getSchedule(tourCode: TourCode, year?: string): Promise<Schedule[]> {
+  async getSchedule(tourCode: TourCode, year?: string): Promise<Schedule> {
     switch (tourCode) {
       case "pal": {
         return this.puttingPalsApiScheduleClient.getSchedule(tourCode, year);
