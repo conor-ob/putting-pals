@@ -7,6 +7,7 @@ import {
 } from "@putting-pals/putting-pals-core";
 import { format, isSameMonth, parseISO } from "date-fns";
 import type { EspnSportsApi } from "../api/espn-sports-api";
+import type { ApiLeaderboardCompetition } from "../leaderboard/domain/types";
 import type { TourScheduleEvent } from "../schedule/domain/types";
 import {
   mapRoundStatus,
@@ -14,7 +15,12 @@ import {
 } from "../utils/tournament-status";
 import { resolve as resolveTournamentData } from "./tournament-data-resolver";
 
-export class EspnSportsApiTournamentClient extends AbstractTournamentClient<TourScheduleEvent> {
+type AggregatedTournament = {
+  tournament: TourScheduleEvent;
+  competition: ApiLeaderboardCompetition;
+};
+
+export class EspnSportsApiTournamentClient extends AbstractTournamentClient<AggregatedTournament> {
   constructor(private readonly espnSportsApi: EspnSportsApi) {
     super();
     this.espnSportsApi = espnSportsApi;
@@ -23,7 +29,7 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Tour
   override async getTournamentRemote(
     tourCode: TourCode,
     id: string,
-  ): Promise<TourScheduleEvent> {
+  ): Promise<AggregatedTournament> {
     const leaderboard = await this.espnSportsApi.getLeaderboard(tourCode, id);
 
     const season = leaderboard.events[0]?.season.year;
@@ -43,10 +49,23 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Tour
       throw new NotFoundError(`Tournament ${id} not found`);
     }
 
-    return tournament;
+    const competition = leaderboard.events[0]?.competitions.find(
+      (c) => c.id === id,
+    );
+    if (competition === undefined) {
+      throw new NotFoundError(`Competition for tournament ${id} not found`);
+    }
+
+    return {
+      tournament,
+      competition,
+    };
   }
 
-  override mapTournament(tournament: TourScheduleEvent): Tournament {
+  override mapTournament(
+    aggregatedTournament: AggregatedTournament,
+  ): Tournament {
+    const { tournament, competition } = aggregatedTournament;
     const location = this.getTournamentLocation(tournament);
     const tournamentData = resolveTournamentData(tournament.id);
     const logo =
@@ -72,7 +91,7 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Tour
       },
       location: location,
       courses: [],
-      status: mapRoundStatus(tournament.fullStatus.type.name),
+      status: mapRoundStatus(competition),
     };
   }
 

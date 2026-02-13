@@ -3,6 +3,7 @@ import {
   type Tournament,
   type TournamentStatus,
 } from "@putting-pals/putting-pals-core";
+import type { ApiLeaderboardCompetition } from "../leaderboard/domain/types";
 import type { TourScheduleEvent } from "../schedule/domain/types";
 
 export function mapTournamentStatus(
@@ -21,31 +22,71 @@ export function mapTournamentStatus(
 }
 
 export function mapRoundStatus(
-  status: TourScheduleEvent["fullStatus"]["type"]["name"],
+  competition: ApiLeaderboardCompetition,
 ): Tournament["status"] {
-  switch (status) {
-    case "STATUS_FINAL":
+  switch (competition.status.type.name) {
+    case "STATUS_SCHEDULED": {
+      if (
+        competition.competitors !== undefined &&
+        competition.competitors.length > 0
+      ) {
+        return {
+          roundDisplay: "R1",
+          roundStatus: "GROUPINGS_OFFICIAL",
+          roundStatusColor: "BLUE",
+          roundStatusDisplay: "Groupings Official",
+        };
+      } else {
+        return {
+          roundDisplay: "R1",
+          roundStatus: "UPCOMING",
+          roundStatusColor: "GRAY",
+          roundStatusDisplay: "Upcoming",
+        };
+      }
+    }
+    case "STATUS_IN_PROGRESS": {
+      const round = competition.status.period;
       return {
-        roundDisplay: "Official",
-        roundStatus: "OFFICIAL",
-        roundStatusColor: "GREEN",
-        roundStatusDisplay: "Official",
-      };
-    case "STATUS_IN_PROGRESS":
-      return {
-        roundDisplay: "In Progress",
+        roundDisplay: `R${round}`,
         roundStatus: "IN_PROGRESS",
         roundStatusColor: "RED",
         roundStatusDisplay: "In Progress",
       };
-    case "STATUS_SCHEDULED":
+    }
+    case "STATUS_PLAY_COMPLETE": {
+      const round = competition.status.period;
       return {
-        roundDisplay: "Upcoming",
+        roundDisplay: `R${round}`,
+        roundStatus: "COMPLETE",
+        roundStatusColor: "BLUE",
+        roundStatusDisplay: "Complete",
+      };
+    }
+    case "STATUS_FINAL": {
+      const round = competition.status.period;
+      return {
+        roundDisplay: `R${round}`,
+        roundStatus: "OFFICIAL",
+        roundStatusColor: "GREEN",
+        roundStatusDisplay: "Official",
+      };
+    }
+    case "STATUS_SUSPENDED": {
+      const round = competition.status.period;
+      return {
+        roundDisplay: `R${round}`,
+        roundStatus: "SUSPENDED",
+        roundStatusColor: "YELLOW",
+        roundStatusDisplay: "Suspended",
+      };
+    }
+    default:
+      return {
+        roundDisplay: "TBD",
         roundStatus: "UPCOMING",
         roundStatusColor: "GRAY",
-        roundStatusDisplay: "Upcoming",
+        roundStatusDisplay: "TBD",
       };
-    default:
-      throw new NotFoundError(`Unknown tournament status: ${status}`);
   }
 }
