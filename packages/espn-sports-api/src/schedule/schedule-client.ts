@@ -6,7 +6,9 @@ import {
   type TourCode,
   type Tournament,
 } from "@putting-pals/putting-pals-core";
+import { format, isSameMonth, parseISO } from "date-fns";
 import type { EspnSportsApi } from "../api/espn-sports-api";
+import { mapTournamentStatus } from "../utils/tournament-status";
 import type { TourScheduleEvent, TourScheduleSeason } from "./domain/types";
 
 export class EspnSportsApiScheduleClient extends AbstractScheduleClient<TourScheduleSeason> {
@@ -58,9 +60,10 @@ export class EspnSportsApiScheduleClient extends AbstractScheduleClient<TourSche
         cover: "",
       },
       schedule: {
+        status: mapTournamentStatus(event.status),
         startDate: event.startDate,
         endDate: event.endDate,
-        displayDate: event.startDate,
+        displayDate: this.formatDate(event.startDate, event.endDate),
       },
       location: this.getTournamentLocation(event),
       courses: [
@@ -75,7 +78,6 @@ export class EspnSportsApiScheduleClient extends AbstractScheduleClient<TourSche
         roundStatus: "OFFICIAL",
         roundStatusColor: "GREEN",
         roundStatusDisplay: "Official",
-        tournamentStatus: "COMPLETED",
       },
     };
   }
@@ -155,6 +157,16 @@ export class EspnSportsApiScheduleClient extends AbstractScheduleClient<TourSche
         countryCode: countryCode,
         displayLocation: `${city} • ${countryName}`,
       };
+    }
+  }
+
+  private formatDate(startDateIso: string, endDateIso: string): string {
+    const startDate = parseISO(startDateIso);
+    const endDate = parseISO(endDateIso);
+    if (isSameMonth(startDate, endDate)) {
+      return `${format(startDate, "MMM d")} - ${format(endDate, "d")}`;
+    } else {
+      return `${format(startDate, "MMM d")} - ${format(endDate, "MMM d")}`;
     }
   }
 }

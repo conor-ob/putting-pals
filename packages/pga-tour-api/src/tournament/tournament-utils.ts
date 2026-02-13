@@ -1,5 +1,8 @@
 import { resolve } from "@putting-pals/iso-countries";
-import type { Tournament } from "@putting-pals/putting-pals-core";
+import type {
+  Tournament,
+  TournamentStatus,
+} from "@putting-pals/putting-pals-core";
 import { NotFoundError } from "@putting-pals/putting-pals-core";
 import { formatISO, parse } from "date-fns";
 import { TournamentSchema } from "../../../putting-pals-core/src/tournament/domain/schemas";
@@ -16,11 +19,7 @@ export function transformTournament(tournament: ApiTournament): Tournament {
       logo: getImageUrl(tournament.tournamentLogoAsset[0]!, "png"),
       cover: getImageUrl(tournament.beautyImageAsset, "png"),
     },
-    schedule: {
-      startDate: parseStartDate(tournament),
-      endDate: parseEndDate(tournament),
-      displayDate: tournament.displayDate,
-    },
+    schedule: parseDate(tournament.tournamentStatus, tournament.displayDate),
     location: getTournamentLocation(tournament),
     courses: tournament.courses.map((course) => ({
       __typename: "Course",
@@ -32,22 +31,64 @@ export function transformTournament(tournament: ApiTournament): Tournament {
       roundStatus: tournament.roundStatus,
       roundStatusColor: tournament.roundStatusColor,
       roundStatusDisplay: tournament.roundStatusDisplay,
-      tournamentStatus: tournament.tournamentStatus,
     },
   } satisfies Tournament;
   return TournamentSchema.parse(transformedTournament);
 }
 
-export function parseStartDate(tournament: ApiTournament): string {
-  const startDate = tournament.displayDate.replace(/\s+-\s+\d+/, "");
-  const parsedStartDate = parse(startDate, "MMM d, yyyy", new Date());
-  return formatISO(parsedStartDate);
+/**
+ * Parses display date strings in two formats:
+ * - "Jan 29 - Feb 1, 2026" (different months: end date includes month)
+ * - "Jan 29 - 30, 2026" (same month: end date is day and year only)
+ */
+export function parseDate(
+  tournamentStatus: TournamentStatus,
+  displayDate: string,
+): {
+  status: TournamentStatus;
+  startDate: string;
+  endDate: string;
+  displayDate: string;
+} {
+  const parts = displayDate.split(" - ");
+  const startPart = parts[0]?.trim();
+  const endPart = parts[1]?.trim();
+  if (!startPart || !endPart) {
+    return {
+      status: tournamentStatus,
+      startDate: "",
+      endDate: "",
+      displayDate,
+    };
+  }
+  const yearMatch = displayDate.match(/,\s*(\d{4})\s*$/);
+  const year = yearMatch ? yearMatch[1] : String(new Date().getFullYear());
+
+  const startDateStr = `${startPart}, ${year}`;
+
+  // End part has month (e.g. "Feb 1, 2026") or same-month day only (e.g. "30, 2026")
+  const endHasMonth = /^[A-Za-z]{3}\s+\d+/.test(endPart);
+  const endDateStr = endHasMonth
+    ? endPart
+    : `${startPart.replace(/\s*\d+\s*$/, "").trim()} ${endPart}`;
+
+  const parsedStart = parse(startDateStr, "MMM d, yyyy", new Date());
+  const parsedEnd = parse(endDateStr, "MMM d, yyyy", new Date());
+  return {
+    status: tournamentStatus,
+    startDate: formatISO(parsedStart),
+    endDate: formatISO(parsedEnd),
+    displayDate,
+  };
 }
 
-export function parseEndDate(tournament: ApiTournament) {
-  const endDate = tournament.displayDate.replace(/\d+\s+-\s+/, "");
-  const parsedEndDate = parse(endDate, "MMM d, yyyy", new Date());
-  return formatISO(parsedEndDate);
+export function parseStartDate(tournament: ApiTournament): string {
+  return parseDate(tournament.tournamentStatus, tournament.displayDate)
+    .startDate;
+}
+
+export function parseEndDate(tournament: ApiTournament): string {
+  return parseDate(tournament.tournamentStatus, tournament.displayDate).endDate;
 }
 
 function getTournamentLocation(

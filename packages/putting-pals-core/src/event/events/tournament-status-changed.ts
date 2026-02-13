@@ -9,8 +9,8 @@ import { AbstractEventEmitter, EventPriority } from "../event-emitter";
 export class TournamentStatusChanged extends AbstractEventEmitter<Tournament> {
   override emit(): LeaderboardFeedEvent[] {
     if (
-      this.next.status.tournamentStatus === "NOT_STARTED" ||
-      this.next.status.tournamentStatus === this.prev.status.tournamentStatus
+      this.next.schedule.status === "NOT_STARTED" ||
+      this.next.schedule.status === this.prev.schedule.status
     ) {
       return [];
     }
@@ -19,24 +19,24 @@ export class TournamentStatusChanged extends AbstractEventEmitter<Tournament> {
       {
         __typename: "TournamentStatusChangedV1" as const,
         prev: {
-          tournamentStatus: this.prev.status.tournamentStatus,
+          tournamentStatus: this.prev.schedule.status,
         },
         next: {
-          tournamentStatus: this.next.status.tournamentStatus,
+          tournamentStatus: this.next.schedule.status,
         },
       } satisfies TournamentStatusChangedV1,
     ];
   }
 
   override getPriority(): number {
-    switch (this.next.status.tournamentStatus) {
+    switch (this.next.schedule.status) {
       case "NOT_STARTED":
       case "IN_PROGRESS":
         return EventPriority.TOURNAMENT_STARTING_EVENT;
       case "COMPLETED":
         return EventPriority.TOURNAMENT_STOPPING_EVENT;
       default:
-        assertNever(this.next.status.tournamentStatus);
+        assertNever(this.next.schedule.status);
     }
   }
 }

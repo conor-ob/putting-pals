@@ -1,13 +1,10 @@
 import type z from "zod";
 import type {
-  ImageAssetSchema,
   RoundStatusColorSchema,
   RoundStatusSchema,
   TournamentSchema,
   TournamentStatusSchema,
 } from "./schemas";
-
-export type ImageAsset = z.infer<typeof ImageAssetSchema>;
 
 export type RoundStatus = z.infer<typeof RoundStatusSchema>;
 

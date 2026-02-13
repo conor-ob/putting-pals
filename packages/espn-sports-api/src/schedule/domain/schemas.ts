@@ -9,7 +9,7 @@ export const TourScheduleEventSchema = z.object({
   link: z.url(),
   isMajor: z.boolean(),
   locations: z.array(z.string()).optional(),
-  status: z.string(),
+  status: z.enum(["pre", "in", "post"]),
   fullStatus: z.object({
     type: z.object({
       id: z.string(),

@@ -1,11 +1,5 @@
 import { z } from "zod";
 
-export const ImageAssetSchema = z.object({
-  imageOrg: z.string(),
-  fallbackImage: z.string(),
-  imagePath: z.string(),
-});
-
 export const RoundStatusSchema = z.enum([
   "COMPLETE",
   "GROUPINGS_OFFICIAL",
@@ -45,6 +39,7 @@ export const TournamentSchema = z.object({
     cover: z.url(),
   }),
   schedule: z.object({
+    status: TournamentStatusSchema,
     startDate: z.string(),
     endDate: z.string(),
     displayDate: z.string(),
@@ -71,6 +66,5 @@ export const TournamentSchema = z.object({
     roundStatus: RoundStatusSchema,
     roundStatusColor: RoundStatusColorSchema,
     roundStatusDisplay: z.string(),
-    tournamentStatus: TournamentStatusSchema,
   }),
 });

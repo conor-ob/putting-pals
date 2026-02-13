@@ -63,9 +63,10 @@ function mapTournament(tournament: ApiScheduleTournament): Tournament {
       cover: getImageUrl(tournament.beautyImageAsset!, "png"),
     },
     schedule: {
+      status: tournament.tournamentStatus,
       startDate: "",
       endDate: "",
-      displayDate: "",
+      displayDate: tournament.date,
     },
     location: getTournamentLocation(tournament),
     courses: [
@@ -129,6 +130,5 @@ function mapTournamentStatus(
     roundStatus: tournament.status?.roundStatus ?? "OFFICIAL",
     roundStatusColor: tournament.status?.roundStatusColor ?? "GREEN",
     roundStatusDisplay: tournament.status?.roundStatusDisplay ?? "",
-    tournamentStatus: tournament.tournamentStatus ?? "COMPLETED",
   };
 }

@@ -23,10 +23,9 @@ export class EspnSportsApiImpl implements EspnSportsApi {
 
   private async get(tourCode: TourCode, path: string): Promise<unknown> {
     const apiTourCode = mapDomainToApiTourCode(tourCode);
-    const response = await fetch(
-      `${this.baseUrl}/${path.replaceAll("{tourCode}", apiTourCode)}`,
-      { method: "GET" },
-    );
+    const url = `${this.baseUrl}/${path.replaceAll("{tourCode}", apiTourCode)}`;
+    console.log("url", url);
+    const response = await fetch(url, { method: "GET" });
     if (!response.ok) {
       const body = await response.text();
       throw new InternalServerError(
