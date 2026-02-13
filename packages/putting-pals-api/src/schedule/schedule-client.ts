@@ -23,11 +23,11 @@ export class PuttingPalsApiScheduleClient extends AbstractScheduleClient<Aggrega
   }
 
   override async getScheduleRemote(
-    _tourCode: TourCode,
+    tourCode: TourCode,
     year?: string,
   ): Promise<AggregateSchedule> {
     const [pgaTourSchedule, competitions] = await Promise.all([
-      this.pgaTourApiScheduleClient.getSchedule("pga", year),
+      this.pgaTourApiScheduleClient.getSchedule(tourCode, year),
       this.competitionRepository.getCompetitions(),
     ]);
     return {

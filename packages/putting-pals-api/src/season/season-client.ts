@@ -24,7 +24,7 @@ export class PuttingPalsApiSeasonClient extends AbstractSeasonClient<{
     this.pgaTourApiSeasonClient = pgaTourApiSeasonClient;
   }
 
-  override async getSeasonsRemote(_tourCode: TourCode): Promise<{
+  override async getSeasonsRemote(tourCode: TourCode): Promise<{
     pgaTourSeasons: Season[];
     puttingPalsBatchTournaments: Tournament[];
   }> {
@@ -33,7 +33,7 @@ export class PuttingPalsApiSeasonClient extends AbstractSeasonClient<{
       (competition) => competition.tournamentId,
     );
     const [pgaTourSeasons, puttingPalsBatchTournaments] = await Promise.all([
-      this.pgaTourApiSeasonClient.getSeasons("pga"),
+      this.pgaTourApiSeasonClient.getSeasons(tourCode),
       this.pgaTourApiBatchTournamentClient.getTournaments(tournamentIds),
     ]);
     return {

@@ -19,11 +19,11 @@ export class PuttingPalsApiLeaderboardClient extends AbstractLeaderboardClient<L
   }
 
   override async getLeaderboardRemote(
-    _tourCode: TourCode,
+    tourCode: TourCode,
     id: string,
   ): Promise<Leaderboard> {
     const leaderboard = await this.pgaTourApiLeaderboardClient.getLeaderboard(
-      "pga",
+      tourCode,
       id,
     );
     return leaderboard;
