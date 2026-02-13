@@ -4,13 +4,23 @@ import {
   NotFoundError,
   type TourCode,
   type Tournament,
-  type TournamentStatus,
 } from "@putting-pals/putting-pals-core";
+import { format, isSameMonth, parseISO } from "date-fns";
 import type { EspnSportsApi } from "../api/espn-sports-api";
+import type { ApiLeaderboardCompetition } from "../leaderboard/domain/types";
 import type { TourScheduleEvent } from "../schedule/domain/types";
+import {
+  mapRoundStatus,
+  mapTournamentStatus,
+} from "../utils/tournament-status";
 import { resolve as resolveTournamentData } from "./tournament-data-resolver";
 
-export class EspnSportsApiTournamentClient extends AbstractTournamentClient<TourScheduleEvent> {
+type AggregatedTournament = {
+  tournament: TourScheduleEvent;
+  competition: ApiLeaderboardCompetition;
+};
+
+export class EspnSportsApiTournamentClient extends AbstractTournamentClient<AggregatedTournament> {
   constructor(private readonly espnSportsApi: EspnSportsApi) {
     super();
     this.espnSportsApi = espnSportsApi;
@@ -19,7 +29,7 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Tour
   override async getTournamentRemote(
     tourCode: TourCode,
     id: string,
-  ): Promise<TourScheduleEvent> {
+  ): Promise<AggregatedTournament> {
     const leaderboard = await this.espnSportsApi.getLeaderboard(tourCode, id);
 
     const season = leaderboard.events[0]?.season.year;
@@ -39,10 +49,23 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Tour
       throw new NotFoundError(`Tournament ${id} not found`);
     }
 
-    return tournament;
+    const competition = leaderboard.events[0]?.competitions.find(
+      (c) => c.id === id,
+    );
+    if (competition === undefined) {
+      throw new NotFoundError(`Competition for tournament ${id} not found`);
+    }
+
+    return {
+      tournament,
+      competition,
+    };
   }
 
-  override mapTournament(tournament: TourScheduleEvent): Tournament {
+  override mapTournament(
+    aggregatedTournament: AggregatedTournament,
+  ): Tournament {
+    const { tournament, competition } = aggregatedTournament;
     const location = this.getTournamentLocation(tournament);
     const tournamentData = resolveTournamentData(tournament.id);
     const logo =
@@ -61,19 +84,14 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Tour
         cover: cover,
       },
       schedule: {
+        status: mapTournamentStatus(tournament.status),
         startDate: tournament.startDate,
         endDate: tournament.endDate,
-        displayDate: tournament.startDate,
+        displayDate: this.formatDate(tournament.startDate, tournament.endDate),
       },
       location: location,
       courses: [],
-      status: {
-        roundDisplay: "Official",
-        roundStatus: "OFFICIAL",
-        roundStatusColor: "GREEN",
-        roundStatusDisplay: "Official",
-        tournamentStatus: this.mapTournamentStatus(tournament.status),
-      },
+      status: mapRoundStatus(competition),
     };
   }
 
@@ -126,14 +144,13 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Tour
     };
   }
 
-  private mapTournamentStatus(status: string): TournamentStatus {
-    switch (status) {
-      case "pre":
-        return "NOT_STARTED";
-      case "post":
-        return "COMPLETED";
-      default:
-        return "IN_PROGRESS";
+  private formatDate(startDateIso: string, endDateIso: string): string {
+    const startDate = parseISO(startDateIso);
+    const endDate = parseISO(endDateIso);
+    if (isSameMonth(startDate, endDate)) {
+      return `${format(startDate, "MMM d")} - ${format(endDate, "d, yyyy")}`;
+    } else {
+      return `${format(startDate, "MMM d")} - ${format(endDate, "MMM d, yyyy")}`;
     }
   }
 }

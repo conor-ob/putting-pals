@@ -14,10 +14,11 @@ import type { LeaderboardClient } from "../leaderboard/interfaces/outbound/leade
 import { LeaderboardEventProcessorServiceImpl } from "../leaderboard/leaderboard-event-processor-service";
 import { LeaderboardServiceImpl } from "../leaderboard/leaderboard-service";
 import type { ScheduleService } from "../schedule/interfaces/inbound/schedule-service";
-import type { ScheduleYearsService } from "../schedule/interfaces/inbound/schedule-years-service";
 import type { ScheduleClient } from "../schedule/interfaces/outbound/schedule-client";
 import { ScheduleServiceImpl } from "../schedule/schedule-service";
-import { ScheduleYearsServiceImpl } from "../schedule/schedule-years-service";
+import type { SeasonService } from "../season/interfaces/inbound/season-service";
+import type { SeasonClient } from "../season/interfaces/outbound/season-client";
+import { SeasonServiceImpl } from "../season/season-service";
 import type { TourService } from "../tour/interfaces/inbound/tour-service";
 import { TourServiceImpl } from "../tour/tour-service";
 import { ActiveTournamentServiceImpl } from "../tournament/active-tournament-service";
@@ -39,15 +40,18 @@ export function injectDependencies(
   featureFlagRepository: FeatureFlagRepository,
   pgaTourApiActiveTournamentClient: ActiveTournamentClient,
   pgaTourApiLeaderboardClient: LeaderboardClient,
+  pgaTourApiSeasonClient: SeasonClient,
   pgaTourApiScheduleClient: ScheduleClient,
   pgaTourApiTournamentClient: TournamentClient,
   pgaTourApiBatchTournamentClient: BatchTournamentClient,
   espnSportsApiActiveTournamentClient: ActiveTournamentClient,
   espnSportsApiLeaderboardClient: LeaderboardClient,
+  espnSportsApiSeasonClient: SeasonClient,
   espnSportsApiScheduleClient: ScheduleClient,
   espnSportsApiTournamentClient: TournamentClient,
   puttingPalsApiActiveTournamentClient: ActiveTournamentClient,
   puttingPalsApiLeaderboardClient: LeaderboardClient,
+  puttingPalsApiSeasonClient: SeasonClient,
   puttingPalsApiScheduleClient: ScheduleClient,
 ): {
   competitionService: CompetitionService;
@@ -55,7 +59,7 @@ export function injectDependencies(
   leaderboardEventProcessor: LeaderboardEventProcessor;
   leaderboardService: LeaderboardService;
   scheduleService: ScheduleService;
-  scheduleYearsService: ScheduleYearsService;
+  seasonService: SeasonService;
   tournamentService: TournamentService;
   batchTournamentService: BatchTournamentService;
   tourService: TourService;
@@ -110,10 +114,10 @@ export function injectDependencies(
       pgaTourApiScheduleClient,
       espnSportsApiScheduleClient,
     ),
-    scheduleYearsService: new ScheduleYearsServiceImpl(
-      puttingPalsApiScheduleClient,
-      pgaTourApiScheduleClient,
-      espnSportsApiScheduleClient,
+    seasonService: new SeasonServiceImpl(
+      puttingPalsApiSeasonClient,
+      pgaTourApiSeasonClient,
+      espnSportsApiSeasonClient,
     ),
     tournamentService: tournamentService,
     batchTournamentService: batchTournamentService,

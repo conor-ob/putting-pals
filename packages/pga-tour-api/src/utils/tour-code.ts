@@ -6,6 +6,7 @@ import type { ApiTourCode } from "../generated/graphql";
 
 export function mapDomainToApiTourCode(tourCode: TourCode): ApiTourCode {
   switch (tourCode) {
+    case "pal":
     case "pga":
       return "R";
     case "dev":

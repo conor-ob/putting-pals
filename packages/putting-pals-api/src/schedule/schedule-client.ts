@@ -1,187 +1,53 @@
-import type {
-  BatchTournamentClient,
-  CompetitionRepository,
-  Schedule,
-  ScheduleClient,
-  ScheduleUpcoming,
-  ScheduleYears,
-  TourCode,
-  Tournament,
+import {
+  AbstractScheduleClient,
+  type Competition,
+  type CompetitionRepository,
+  type Schedule,
+  type ScheduleClient,
+  type TourCode,
 } from "@putting-pals/putting-pals-core";
-import { parseISO } from "date-fns";
 
-export class PuttingPalsApiScheduleClient implements ScheduleClient {
+type AggregateSchedule = {
+  pgaTourSchedule: Schedule;
+  competitions: Competition[];
+};
+
+export class PuttingPalsApiScheduleClient extends AbstractScheduleClient<AggregateSchedule> {
   constructor(
     private readonly competitionRepository: CompetitionRepository,
-    private readonly pgaTourApiBatchTournamentClient: BatchTournamentClient,
     private readonly pgaTourApiScheduleClient: ScheduleClient,
   ) {
+    super();
     this.competitionRepository = competitionRepository;
-    this.pgaTourApiBatchTournamentClient = pgaTourApiBatchTournamentClient;
     this.pgaTourApiScheduleClient = pgaTourApiScheduleClient;
   }
 
-  getScheduleYears(_tourCode: TourCode): Promise<ScheduleYears> {
-    return this.getPuttingPalsScheduleYears();
-  }
-
-  async getSchedule(_tourCode: TourCode, year?: string): Promise<Schedule> {
-    const schedule = await this.getPuttingPalsSchedule(year);
-    // biome-ignore lint/style/noNonNullAssertion: TODO
-    return schedule[0]!;
-  }
-
-  getCompleteSchedule(_tourCode: TourCode): Promise<Schedule[]> {
-    return this.getPuttingPalsSchedule();
-  }
-
-  getUpcomingSchedule(_tourCode: TourCode): Promise<ScheduleUpcoming> {
-    return this.getPuttingPalsUpcomingSchedule();
-  }
-
-  private async getPuttingPalsScheduleYears(): Promise<ScheduleYears> {
-    const [pgaTourScheduleYears, puttingPalsHistoricalSchedule] =
-      await Promise.all([
-        this.getPgaTourScheduleYears("pga"),
-        this.getPuttingPalsHistoricalSchedule(),
-      ]);
+  override async getScheduleRemote(
+    tourCode: TourCode,
+    year?: string,
+  ): Promise<AggregateSchedule> {
+    const [pgaTourSchedule, competitions] = await Promise.all([
+      this.pgaTourApiScheduleClient.getSchedule(tourCode, year),
+      this.competitionRepository.getCompetitions(),
+    ]);
     return {
-      ...pgaTourScheduleYears,
-      years: pgaTourScheduleYears.years.filter((year) => {
-        return puttingPalsHistoricalSchedule.some((tournament) => {
-          return (
-            parseISO(tournament.schedule.startDate).getFullYear() ===
-            Number(year.queryValue)
-          );
-        });
-      }),
+      pgaTourSchedule,
+      competitions,
     };
   }
 
-  private async getPuttingPalsHistoricalSchedule(): Promise<Tournament[]> {
-    const competitions = this.competitionRepository.getCompetitions();
-    const tournamentIds = competitions.map(
-      (competition) => competition.tournamentId,
-    );
-    const tournaments =
-      await this.pgaTourApiBatchTournamentClient.getTournaments(tournamentIds);
-    return tournaments;
-  }
-
-  private async getPgaTourScheduleYears(
-    tourCode: TourCode,
-  ): Promise<ScheduleYears> {
-    return this.pgaTourApiScheduleClient.getScheduleYears(tourCode);
-  }
-
-  private async getPuttingPalsSchedule(year?: string): Promise<Schedule[]> {
-    function filterScheduleMonths(months: Schedule["completed" | "upcoming"]) {
-      return months
-        .filter(
-          (month) =>
-            month.tournaments.filter((tournament) =>
-              puttingPalsTournamentIds.includes(tournament.id),
-            ).length > 0,
-        )
-        .map((month) => ({
-          ...month,
-          tournaments: month.tournaments.filter((tournament) =>
-            puttingPalsTournamentIds.includes(tournament.id),
-          ),
-        }));
-    }
-
+  override mapSchedule(aggregateSchedule: AggregateSchedule): Schedule {
     const puttingPalsTournamentIds = this.competitionRepository
       .getCompetitions()
       .map((competition) => competition.tournamentId);
-    const pgaTourSchedule = await this.getPgaTourSchedule("pga", year);
-    return pgaTourSchedule
-      .filter((season) => {
-        const pgaTourTournamentIds = [
-          ...season.completed,
-          ...season.upcoming,
-        ].flatMap((month) =>
-          month.tournaments.map((tournament) => tournament.id),
-        );
-        return pgaTourTournamentIds.some((tournamentId) =>
-          puttingPalsTournamentIds.includes(tournamentId),
-        );
-      })
-      .map((season) => ({
-        ...season,
-        completed: filterScheduleMonths(season.completed),
-        upcoming: filterScheduleMonths(season.upcoming),
-      }));
-  }
-
-  private async getPgaTourSchedule(
-    tourCode: TourCode,
-    year?: string,
-  ): Promise<Schedule[]> {
-    if (year) {
-      const schedule = await this.pgaTourApiScheduleClient.getSchedule(
-        tourCode,
-        year,
-      );
-      return [schedule];
-    } else {
-      const schedules =
-        await this.pgaTourApiScheduleClient.getCompleteSchedule(tourCode);
-      return schedules;
-    }
-  }
-
-  private async getPuttingPalsUpcomingSchedule(): Promise<ScheduleUpcoming> {
-    const competitionIds = this.competitionRepository
-      .getCompetitions()
-      .map((competition) => competition.tournamentId);
-    const pgaTourUpcomingSchedule =
-      await this.getPgaTourUpcomingSchedule("pga");
-    const upcomingTournaments = pgaTourUpcomingSchedule.tournaments.filter(
-      (tournament) => competitionIds.includes(tournament.id),
-    );
-
-    if (upcomingTournaments.length === 0) {
-      const puttingPalsCompleteSchedule = await this.getPuttingPalsSchedule();
-      return {
-        ...pgaTourUpcomingSchedule,
-        tournaments: puttingPalsCompleteSchedule
-          .flatMap((season) => season.upcoming)
-          .flatMap((month) => month.tournaments)
-          .slice(0, pgaTourUpcomingSchedule.tournaments.length)
-          .map((tournament) => {
-            if (tournament.status === undefined) {
-              return {
-                ...tournament,
-                status: {
-                  __typename: "ScheduleTournamentStatus" as const,
-                  leaderboardTakeover: false,
-                  roundDisplay: "",
-                  roundStatus: "UPCOMING",
-                  roundStatusColor: "GRAY",
-                  roundStatusDisplay: "Upcoming",
-                },
-              };
-            }
-            return tournament;
-          }),
-      };
-    }
-
+    const pgaTourSchedule = aggregateSchedule.pgaTourSchedule;
     return {
-      ...pgaTourUpcomingSchedule,
-      tournaments: upcomingTournaments,
-    };
-  }
-
-  private async getPgaTourUpcomingSchedule(
-    tourCode: TourCode,
-  ): Promise<ScheduleUpcoming> {
-    const upcomingSchedule =
-      await this.pgaTourApiScheduleClient.getUpcomingSchedule(tourCode);
-    return {
-      ...upcomingSchedule,
-      tournaments: upcomingSchedule.tournaments,
+      completed: pgaTourSchedule.completed.filter((tournament) =>
+        puttingPalsTournamentIds.includes(tournament.id),
+      ),
+      upcoming: pgaTourSchedule.upcoming.filter((tournament) =>
+        puttingPalsTournamentIds.includes(tournament.id),
+      ),
     };
   }
 }

@@ -14,7 +14,7 @@ import type {
   LeaderboardEventProcessor,
   LeaderboardService,
   ScheduleService,
-  ScheduleYearsService,
+  SeasonService,
   TournamentService,
   TourService,
 } from "@putting-pals/putting-pals-core";
@@ -41,7 +41,7 @@ export function createTrpcContext({
   leaderboardEventProcessor,
   leaderboardService,
   scheduleService,
-  scheduleYearsService,
+  seasonService,
   tourService,
   tournamentService,
   batchTournamentService,
@@ -51,7 +51,7 @@ export function createTrpcContext({
   leaderboardEventProcessor: LeaderboardEventProcessor;
   leaderboardService: LeaderboardService;
   scheduleService: ScheduleService;
-  scheduleYearsService: ScheduleYearsService;
+  seasonService: SeasonService;
   tourService: TourService;
   tournamentService: TournamentService;
   batchTournamentService: BatchTournamentService;
@@ -62,7 +62,7 @@ export function createTrpcContext({
     leaderboardEventProcessor,
     leaderboardService,
     scheduleService,
-    scheduleYearsService,
+    seasonService,
     tourService,
     tournamentService,
     batchTournamentService,

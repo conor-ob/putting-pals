@@ -39,10 +39,10 @@ export function TournamentStatus({
 
 function isTournamentInProgress(tournament: Tournament) {
   const isNotStarted =
-    tournament.status.tournamentStatus === "NOT_STARTED" &&
+    tournament.schedule.status === "NOT_STARTED" &&
     tournament.status.roundStatus === "UPCOMING";
   const isCompleted =
-    tournament.status.tournamentStatus === "COMPLETED" &&
+    tournament.schedule.status === "COMPLETED" &&
     tournament.status.roundStatus === "OFFICIAL";
 
   return !isNotStarted && !isCompleted;

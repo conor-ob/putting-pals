@@ -1,75 +1,74 @@
 import {
   AbstractScheduleClient,
   type Schedule,
-  type ScheduleUpcoming,
-  type ScheduleYears,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
 import type {
   ApiSchedule,
   ApiScheduleUpcoming,
-  ApiScheduleYears,
+  ApiTourCode,
   Sdk,
 } from "../generated/graphql";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
+import { transformSchedule } from "./schedule-transformer";
 
-export class PgaTourApiScheduleClient extends AbstractScheduleClient<
-  ApiScheduleYears,
-  ApiSchedule,
-  ApiScheduleUpcoming
-> {
+type AggregateSchedule = {
+  schedule: ApiSchedule[];
+  upcoming: ApiScheduleUpcoming;
+};
+
+export class PgaTourApiScheduleClient extends AbstractScheduleClient<AggregateSchedule> {
   constructor(private readonly sdk: Sdk) {
     super();
     this.sdk = sdk;
   }
 
-  override async getScheduleYearsRemote(
-    tourCode: TourCode,
-  ): Promise<ApiScheduleYears> {
-    const data = await this.sdk.ScheduleYears({
-      tourCode: mapDomainToApiTourCode(tourCode),
-    });
-    return data.scheduleYears;
-  }
-
-  override mapScheduleYears(scheduleYears: ApiScheduleYears): ScheduleYears {
-    return scheduleYears;
-  }
-
   override async getScheduleRemote(
     tourCode: TourCode,
     year?: string,
-  ): Promise<ApiSchedule> {
-    return this.sdk.Schedule({ tourCode, year }).then((data) => data.schedule);
+  ): Promise<AggregateSchedule> {
+    const apiTourCode = mapDomainToApiTourCode(tourCode);
+    const [aggregateSchedule, upcomingSchedule] = await Promise.all([
+      this.getFullSchedule(apiTourCode, year),
+      this.getUpcomingSchedule(apiTourCode),
+    ]);
+    return {
+      schedule: aggregateSchedule,
+      upcoming: upcomingSchedule,
+    };
   }
 
-  override mapSchedule(schedule: ApiSchedule): Schedule {
-    return schedule;
+  override mapSchedule(aggregateSchedule: AggregateSchedule): Schedule {
+    const transformedSchedule = aggregateSchedule.schedule.map((schedule) =>
+      transformSchedule(schedule, aggregateSchedule.upcoming.tournaments),
+    );
+
+    return {
+      completed: transformedSchedule.flatMap((schedule) => schedule.completed),
+      upcoming: transformedSchedule.flatMap((schedule) => schedule.upcoming),
+    };
   }
 
-  override async getCompleteScheduleRemote(
-    tourCode: TourCode,
+  private async getFullSchedule(
+    tourCode: ApiTourCode,
+    year?: string,
   ): Promise<ApiSchedule[]> {
-    return this.sdk
-      .CompleteSchedule({ tourCode: mapDomainToApiTourCode(tourCode) })
-      .then((data) => data.completeSchedule);
+    if (year === undefined) {
+      return this.sdk
+        .CompleteSchedule({ tourCode })
+        .then((data) => data.completeSchedule);
+    }
+    const schedule = await this.sdk
+      .Schedule({ tourCode, year })
+      .then((data) => data.schedule);
+    return [schedule];
   }
 
-  override mapCompleteSchedule(completeSchedule: ApiSchedule[]): Schedule[] {
-    return completeSchedule;
-  }
-
-  override async getUpcomingScheduleRemote(
-    tourCode: TourCode,
+  private async getUpcomingSchedule(
+    tourCode: ApiTourCode,
   ): Promise<ApiScheduleUpcoming> {
     return this.sdk
       .UpcomingSchedule({ tourCode })
       .then((data) => data.upcomingSchedule);
-  }
-
-  override mapUpcomingSchedule(
-    upcomingSchedule: ApiScheduleUpcoming,
-  ): ScheduleUpcoming {
-    return upcomingSchedule;
   }
 }

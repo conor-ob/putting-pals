@@ -28,16 +28,16 @@ export class MockEspnSportsApi implements EspnSportsApi {
     return Promise.resolve(leaderboard);
   }
 
-  getTourSchedule(_tourCode: TourCode, season?: number): Promise<TourSchedule> {
-    const schedule = this.mockData.schedules?.get(`${_tourCode}:${season}`);
+  getTourSchedule(tourCode: TourCode, season?: number): Promise<TourSchedule> {
+    const schedule = this.mockData.schedules?.get(`${tourCode}:${season}`);
     if (schedule === undefined) {
       return Promise.reject();
     }
     return Promise.resolve(schedule);
   }
 
-  getNews(_tourCode: TourCode): Promise<News> {
-    const news = this.mockData.news?.get(_tourCode);
+  getNews(tourCode: TourCode): Promise<News> {
+    const news = this.mockData.news?.get(tourCode);
     if (news === undefined) {
       return Promise.reject();
     }
