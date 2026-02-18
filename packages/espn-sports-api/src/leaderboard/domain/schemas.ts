@@ -64,10 +64,12 @@ export const ApiLeaderboardCompetitionSchema = z.object({
           shortName: z.string(),
           lastName: z.string(),
           amateur: z.boolean(),
-          flag: z.object({
-            href: z.url(),
-            alt: z.string(),
-          }),
+          flag: z
+            .object({
+              href: z.url(),
+              alt: z.string(),
+            })
+            .optional(),
           birthplace: z
             .object({
               countryAbbreviation: z.string(),
