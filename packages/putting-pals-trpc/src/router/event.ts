@@ -17,9 +17,11 @@ export const eventRouter = router({
     .mutation(async ({ ctx, input }) => {
       switch (input.type) {
         case "leaderboard/detect-change":
-          return await Promise.all([
-            ctx.leaderboardEventProcessor.processEvent(input.tourCode),
-          ]);
+          return await ctx.leaderboardEventProcessor.processEvent(
+            input.tourCode,
+          );
+        case "espn/infer-schema":
+          return await ctx.schemaInferenceObserver.inferSchema(input.tourCode);
         default:
           assertNever(input.type);
       }

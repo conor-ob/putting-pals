@@ -15,6 +15,7 @@ export type { FeedService } from "./feed/interfaces/inbound/feed-service";
 export type { LeaderboardFeedRepository } from "./feed/interfaces/outbound/leaderboard-feed-repository";
 export type { FeatureFlagKey } from "./flag/domain/types";
 export type { FeatureFlagRepository } from "./flag/interfaces/outbound/feature-flag-repository";
+export type { SchemaInferenceObserver } from "./inference/interfaces/inbound/schema-inference-observer";
 export type {
   Leaderboard,
   PlayerRow,

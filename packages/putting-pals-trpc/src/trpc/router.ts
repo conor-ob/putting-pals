@@ -14,6 +14,7 @@ import type {
   LeaderboardEventProcessor,
   LeaderboardService,
   ScheduleService,
+  SchemaInferenceObserver,
   SeasonService,
   TournamentService,
   TourService,
@@ -45,6 +46,7 @@ export function createTrpcContext({
   tourService,
   tournamentService,
   batchTournamentService,
+  schemaInferenceObserver,
 }: {
   competitionService: CompetitionService;
   feedService: FeedService;
@@ -55,6 +57,7 @@ export function createTrpcContext({
   tourService: TourService;
   tournamentService: TournamentService;
   batchTournamentService: BatchTournamentService;
+  schemaInferenceObserver: SchemaInferenceObserver;
 }) {
   return {
     competitionService,
@@ -66,6 +69,7 @@ export function createTrpcContext({
     tourService,
     tournamentService,
     batchTournamentService,
+    schemaInferenceObserver,
   };
 }
 

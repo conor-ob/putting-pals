@@ -5,6 +5,7 @@ import type {
   LeaderboardEventProcessor,
   LeaderboardService,
   ScheduleService,
+  SchemaInferenceObserver,
   SeasonService,
   TournamentService,
   TourService,
@@ -30,6 +31,7 @@ suite("tournamentRouter", () => {
         scheduleService: vi.fn() as unknown as ScheduleService,
         seasonService: vi.fn() as unknown as SeasonService,
         tourService: vi.fn() as unknown as TourService,
+        schemaInferenceObserver: vi.fn() as unknown as SchemaInferenceObserver,
       }),
     );
 
