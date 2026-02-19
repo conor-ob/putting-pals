@@ -10,12 +10,13 @@ type TypeName =
   | "null"
   | "undefined";
 
-export type FieldMeta = {
-  types: Record<TypeName, true>;
+export type InferredSchema = {
+  /** Which JSON types this node can be; only observed types are set */
+  types: Partial<Record<TypeName, true>>;
   optional: boolean;
   values?: Record<string, true>; // primitives only
-  children?: Record<string, FieldMeta>; // for objects
-  items?: FieldMeta; // for arrays
+  children?: Record<string, InferredSchema>; // for objects
+  items?: InferredSchema; // for arrays
 };
 
 export type InferenceTourCode = z.infer<typeof InferenceTourCodeSchema>;
