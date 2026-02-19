@@ -15,6 +15,13 @@
       "when": 1770162385172,
       "tag": "0001_add_updated_at_triggers",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1771529081776,
+      "tag": "0002_harsh_sway",
+      "breakpoints": true
     }
   ]
 }
