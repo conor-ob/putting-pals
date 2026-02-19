@@ -1,15 +1,19 @@
 import { assertNever } from "@putting-pals/putting-pals-utils";
+import patch from "fast-json-patch";
 import { InternalServerError } from "../error/service-error";
 import type { InferenceTourCode, InferenceType } from "./domain/types";
 import type { SchemaInferenceObserver } from "./interfaces/inbound/schema-inference-observer";
+import type { SchemaInferenceChangeRepository } from "./interfaces/outbound/schema-inference-change-repository";
 import type { SchemaInferenceRepository } from "./interfaces/outbound/schema-inference-repository";
-import { infer, merge } from "./schema-inference-utils";
+import { infer, merge, normalize } from "./schema-inference-utils";
 
 export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
   constructor(
     private readonly schemaInferenceRepository: SchemaInferenceRepository,
+    private readonly schemaInferenceChangeRepository: SchemaInferenceChangeRepository,
   ) {
     this.schemaInferenceRepository = schemaInferenceRepository;
+    this.schemaInferenceChangeRepository = schemaInferenceChangeRepository;
   }
 
   async inferSchema(
@@ -34,9 +38,10 @@ export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
     type: InferenceType,
     value: unknown,
   ): Promise<void> {
-    const nextInferredSchema = infer(value);
-    const prevInferredSchema =
-      await this.schemaInferenceRepository.getSchema(type);
+    const prevInferredSchema = await this.schemaInferenceRepository
+      .getSchema(type)
+      .then((schema) => (schema ? normalize(schema) : undefined));
+    const nextInferredSchema = normalize(infer(value));
 
     if (prevInferredSchema === undefined) {
       await this.schemaInferenceRepository.createSchema(
@@ -47,15 +52,24 @@ export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
       return;
     }
 
-    const mergedInferredSchema = merge(prevInferredSchema, nextInferredSchema);
-    if (mergedInferredSchema === undefined) {
-      return;
-    }
+    const diff = patch.compare(prevInferredSchema, nextInferredSchema);
+    if (diff.length > 0) {
+      await this.schemaInferenceChangeRepository.createChanges(diff);
 
-    await this.schemaInferenceRepository.updateSchema(
-      type,
-      mergedInferredSchema,
-    );
+      const mergedInferredSchema = merge(
+        prevInferredSchema,
+        nextInferredSchema,
+      );
+
+      if (mergedInferredSchema === undefined) {
+        return;
+      }
+
+      await this.schemaInferenceRepository.updateSchema(
+        type,
+        normalize(mergedInferredSchema),
+      );
+    }
   }
 
   private async getLeaderboard(tourCode: InferenceTourCode): Promise<unknown> {

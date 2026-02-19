@@ -2,6 +2,7 @@ import type {
   FeatureFlagKey,
   InferenceType,
   InferredSchema,
+  InferredSchemaChange,
   LeaderboardFeedEvent,
   LeaderboardSnapshot,
   TourCode,
@@ -88,5 +89,11 @@ export const leaderboardFeedTable = pgTable(
 export const inferredSchemaTable = pgTable("inferred_schema", {
   type: text("type").primaryKey().$type<InferenceType>(),
   payload: jsonb("payload").notNull().$type<InferredSchema>(),
+  ...timestampColumns,
+});
+
+export const inferredSchemaChangeTable = pgTable("inferred_schema_change", {
+  sequence: serial("sequence").primaryKey(),
+  payload: jsonb("payload").notNull().$type<InferredSchemaChange>(),
   ...timestampColumns,
 });

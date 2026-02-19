@@ -1,3 +1,4 @@
+import type { Operation } from "fast-json-patch";
 import type z from "zod";
 import type { InferenceTourCodeSchema, InferenceTypeSchema } from "./schemas";
 
@@ -22,3 +23,5 @@ export type InferredSchema = {
 export type InferenceTourCode = z.infer<typeof InferenceTourCodeSchema>;
 
 export type InferenceType = z.infer<typeof InferenceTypeSchema>;
+
+export type InferredSchemaChange = Operation;

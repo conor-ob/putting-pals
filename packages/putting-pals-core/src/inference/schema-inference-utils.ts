@@ -1,5 +1,39 @@
 import type { InferredSchema } from "./domain/types";
 
+/**
+ * Returns a deep copy of the schema with object keys sorted.
+ * Use before persisting so the same logical schema always serializes to the same JSON,
+ * and to avoid spurious updates when key order differs.
+ */
+export function normalize(schema: InferredSchema): InferredSchema {
+  const result: InferredSchema = {
+    types: sortKeys(schema.types) as InferredSchema["types"],
+    optional: schema.optional,
+  };
+  if (schema.values !== undefined) {
+    result.values = sortKeys(schema.values);
+  }
+  if (schema.children !== undefined) {
+    result.children = {};
+    for (const key of Object.keys(schema.children).sort()) {
+      const child = schema.children[key];
+      if (child !== undefined) result.children[key] = normalize(child);
+    }
+  }
+  if (schema.items !== undefined) {
+    result.items = normalize(schema.items);
+  }
+  return result;
+}
+
+function sortKeys<T>(obj: Record<string, T>): Record<string, T> {
+  const out: Record<string, T> = {};
+  for (const key of Object.keys(obj).sort()) {
+    out[key] = obj[key] as T;
+  }
+  return out;
+}
+
 export function infer(value: unknown): InferredSchema {
   if (value === null) {
     return { types: { null: true }, optional: false };
