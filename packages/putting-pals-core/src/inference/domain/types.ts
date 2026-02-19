@@ -11,7 +11,8 @@ type TypeName =
   | "undefined";
 
 export type InferredSchema = {
-  types: Record<TypeName, true>;
+  /** Which JSON types this node can be; only observed types are set */
+  types: Partial<Record<TypeName, true>>;
   optional: boolean;
   values?: Record<string, true>; // primitives only
   children?: Record<string, InferredSchema>; // for objects

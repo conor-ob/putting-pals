@@ -1,4 +1,3 @@
-import type z from "zod";
 import type { InferredSchema } from "./domain/types";
 
 export function infer(value: unknown): InferredSchema {
@@ -56,14 +55,17 @@ function mapValues(
   obj: object,
   fn: (value: unknown) => InferredSchema,
 ): Record<string, InferredSchema> {
-  const result = {};
-  for (const key in obj) {
-    result[key] = fn(obj[key]);
+  const result: Record<string, InferredSchema> = {};
+  for (const key of Object.keys(obj)) {
+    result[key] = fn((obj as Record<string, unknown>)[key]);
   }
   return result;
 }
 
-function union(a = {}, b = {}) {
+function union(
+  a: Record<string, true> = {},
+  b: Record<string, true> = {},
+): Record<string, true> {
   return { ...a, ...b };
 }
 
@@ -76,10 +78,13 @@ function maybeCollect(value: unknown): Record<string, true> | undefined {
   return undefined;
 }
 
-function unionLimited(a = {}, b = {}) {
-  const result = { ...a };
+function unionLimited(
+  a: Record<string, true> = {},
+  b: Record<string, true> = {},
+): Record<string, true> | undefined {
+  const result: Record<string, true> = { ...a };
 
-  for (const key in b) {
+  for (const key of Object.keys(b)) {
     result[key] = true;
   }
 
@@ -88,17 +93,23 @@ function unionLimited(a = {}, b = {}) {
   return result;
 }
 
-function mergeChildren(a = {}, b = {}) {
-  const result = {};
+function mergeChildren(
+  a: Record<string, InferredSchema> = {},
+  b: Record<string, InferredSchema> = {},
+): Record<string, InferredSchema> {
+  const result: Record<string, InferredSchema> = {};
   const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
 
   for (const key of keys) {
     if (a[key] && b[key]) {
-      result[key] = merge(a[key], b[key]);
+      const merged = merge(a[key], b[key]);
+      result[key] = merged ?? a[key] ?? b[key];
     } else if (a[key]) {
-      result[key] = { ...a[key], optional: true };
-    } else {
-      result[key] = { ...b[key], optional: true };
+      const base = a[key];
+      result[key] = { ...base, optional: true, types: base.types };
+    } else if (b[key]) {
+      const base = b[key];
+      result[key] = { ...base, optional: true, types: base.types };
     }
   }
 
