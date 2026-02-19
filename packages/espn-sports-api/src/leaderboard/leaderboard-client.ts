@@ -32,35 +32,78 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
   }
 
   override mapLeaderboard(event: ApiLeaderboardEvent): Leaderboard {
-    const competitors =
-      event.competitions.find((competition) => competition.id === event.id)
-        ?.competitors ?? [];
+    const competition = event.competitions.find(
+      (competition) => competition.id === event.id,
+    );
+    if (competition === undefined) {
+      throw new NotFoundError(
+        `Competition for tournament ${event.id} not found`,
+      );
+    }
+
+    const currentRound = competition.status.period;
+
+    const competitors = competition.competitors ?? [];
 
     return {
       __typename: "Leaderboard" as const,
       id: event.id,
-      players: competitors.map((competitor) => ({
-        __typename: "PlayerRow" as const,
-        id: competitor.id,
-        leaderboardSortOrder: competitor.sortOrder,
-        player: {
-          id: competitor.athlete.id,
-          displayName: competitor.athlete.displayName,
-          countryFlag: "TBD",
-        },
-        scoringData: {
-          position: competitor.status.position.displayName,
-          playerState: "ACTIVE",
-          total: competitor.status.detail ?? "-",
-          totalSort: 0,
-          thru: competitor.status.thru?.toString() ?? "-",
-          thruSort: 0,
-          score: competitor.score.displayValue,
-          scoreSort: 0,
-        },
-      })),
+      players: competitors.map((competitor) => {
+        const total = this.parseScore(competitor.score.displayValue);
+        const totalSort = this.parseScoreSort(total);
+        const score = this.parseScore(
+          competitor.linescores?.find(
+            (lineScore) => lineScore.period === currentRound,
+          )?.displayValue,
+        );
+        const scoreSort = this.parseScoreSort(score);
+        return {
+          __typename: "PlayerRow" as const,
+          id: competitor.id,
+          leaderboardSortOrder: competitor.sortOrder,
+          player: {
+            id: competitor.athlete.id,
+            displayName: competitor.athlete.displayName,
+            countryFlag: "TBD",
+          },
+          scoringData: {
+            position: competitor.status.position.displayName,
+            playerState: "ACTIVE",
+            total: total,
+            totalSort: totalSort,
+            thru: competitor.status.displayThru ?? "-",
+            thruSort: 0,
+            score: score,
+            scoreSort: scoreSort,
+          },
+        };
+      }),
       tournamentStatus: this.mapTournamentStatus(event.status.type.state),
     };
+  }
+
+  private parseScore(score?: string): string {
+    if (score === undefined) {
+      return "-";
+    }
+
+    if (score === "E" || score.startsWith("+") || score.startsWith("-")) {
+      return score;
+    }
+
+    return "-";
+  }
+
+  private parseScoreSort(score: string): number {
+    if (score === "E" || score === "-") {
+      return 0;
+    }
+
+    if (score.startsWith("+") || score.startsWith("-")) {
+      return parseInt(score, 10);
+    }
+
+    return 0;
   }
 
   private mapTournamentStatus(status: string): TournamentStatus {

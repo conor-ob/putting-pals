@@ -31,6 +31,7 @@ export const ApiLeaderboardCompetitionSchema = z.object({
         featured: z.boolean(),
         status: z.object({
           displayValue: z.string().optional(),
+          displayThru: z.string().optional(),
           period: z.number(),
           teeTime: z.string().optional(),
           startHole: z.number().optional(),
@@ -38,6 +39,7 @@ export const ApiLeaderboardCompetitionSchema = z.object({
           playoff: z.boolean().optional(),
           behindCurrentRound: z.boolean(),
           detail: z.string().optional(),
+          todayDetail: z.string().optional(),
           type: z.object({
             id: z.string(),
             name: z.string(),
@@ -56,6 +58,12 @@ export const ApiLeaderboardCompetitionSchema = z.object({
           value: z.number(),
           displayValue: z.string(),
         }),
+        linescores: z.array(
+          z.object({
+            period: z.number(),
+            displayValue: z.string().optional(),
+          }),
+        ),
         athlete: z.object({
           id: z.string(),
           uid: z.string(),
