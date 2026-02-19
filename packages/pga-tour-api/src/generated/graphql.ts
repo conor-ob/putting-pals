@@ -2592,8 +2592,10 @@ export type ApiKopStandingsList = {
 export type ApiKopSubheader = {
   __typename: 'KopSubheader';
   cta?: Maybe<ApiCallToAction>;
+  darkMobileImage?: Maybe<Scalars['String']['output']>;
   displayCta?: Maybe<Scalars['Boolean']['output']>;
   logo?: Maybe<Scalars['String']['output']>;
+  mobileImage?: Maybe<Scalars['String']['output']>;
   subHeaderText?: Maybe<Array<Maybe<ApiNewsArticleNode>>>;
   type?: Maybe<Scalars['String']['output']>;
 };
@@ -9690,6 +9692,14 @@ export type ApiTeeTimesV2 = {
 
 export type ApiThreeUpPhoto = {
   __typename: 'ThreeUpPhoto';
+  darkMobileImageFour?: Maybe<Scalars['String']['output']>;
+  darkMobileImageOne?: Maybe<Scalars['String']['output']>;
+  darkMobileImageThree?: Maybe<Scalars['String']['output']>;
+  darkMobileImageTwo?: Maybe<Scalars['String']['output']>;
+  mobileImageFour?: Maybe<Scalars['String']['output']>;
+  mobileImageOne?: Maybe<Scalars['String']['output']>;
+  mobileImageThree?: Maybe<Scalars['String']['output']>;
+  mobileImageTwo?: Maybe<Scalars['String']['output']>;
   photoFour?: Maybe<Scalars['String']['output']>;
   photoFourAccessibilityText?: Maybe<Scalars['String']['output']>;
   photoFourUrl?: Maybe<Scalars['String']['output']>;
