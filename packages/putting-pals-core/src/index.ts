@@ -23,7 +23,6 @@ export type {
   InferenceTourCode,
   InferenceType,
   InferredSchema,
-  InferredSchemaChange,
 } from "./inference/domain/types";
 export type { SchemaInferenceObserver } from "./inference/interfaces/inbound/schema-inference-observer";
 export type { SchemaInferenceRepository } from "./inference/interfaces/outbound/schema-inference-repository";

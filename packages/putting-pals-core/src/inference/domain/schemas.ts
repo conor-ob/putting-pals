@@ -5,6 +5,7 @@ export const InferenceTourCodeSchema = z.enum([
   "eur",
   "liv",
   "ntw",
+  "tgl",
   "lpga",
   "champions-tour",
 ]);
