@@ -2,8 +2,15 @@ import { assertNever } from "@putting-pals/putting-pals-utils";
 import { InternalServerError } from "../error/service-error";
 import type { InferenceTourCode, InferenceType } from "./domain/types";
 import type { SchemaInferenceObserver } from "./interfaces/inbound/schema-inference-observer";
+import type { SchemaInferenceRepository } from "./interfaces/outbound/schema-inference-repository";
 
 export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
+  constructor(
+    private readonly schemaInferenceRepository: SchemaInferenceRepository,
+  ) {
+    this.schemaInferenceRepository = schemaInferenceRepository;
+  }
+
   async inferSchema(
     tourCode: InferenceTourCode,
     type: InferenceType,
@@ -65,7 +72,7 @@ export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
   }
 }
 
-// function infer(value: unknown): FieldMeta {
+// function infer(value: unknown): InferredSchema {
 //   if (value === null) return { types: { null: true }, optional: false };
 
 //   if (Array.isArray(value))
@@ -89,17 +96,17 @@ export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
 //   };
 // }
 
-// function mergeAll(list: FieldMeta[]): FieldMeta | undefined {
-//   return list.reduce<FieldMeta | undefined>((acc, curr) => {
+// function mergeAll(list: InferredSchema[]): InferredSchema | undefined {
+//   return list.reduce<InferredSchema | undefined>((acc, curr) => {
 //     if (!acc) return curr;
 //     return merge(acc, curr) ?? acc;
 //   }, undefined);
 // }
 
 // function merge(
-//   a: FieldMeta | undefined,
-//   b: FieldMeta | undefined,
-// ): FieldMeta | undefined {
+//   a: InferredSchema | undefined,
+//   b: InferredSchema | undefined,
+// ): InferredSchema | undefined {
 //   if (!a) return b;
 //   if (!b) return a;
 //   const mergedItems =
@@ -117,8 +124,8 @@ export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
 
 // function mapValues(
 //   obj: object,
-//   fn: (value: unknown) => FieldMeta,
-// ): Record<string, FieldMeta> {
+//   fn: (value: unknown) => InferredSchema,
+// ): Record<string, InferredSchema> {
 //   const result = {};
 //   for (const key in obj) {
 //     result[key] = fn(obj[key]);

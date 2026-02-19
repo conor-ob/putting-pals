@@ -27,6 +27,7 @@ export default function (fastify: FastifyInstance) {
     databaseDependencies.leaderboardFeedRepository,
     databaseDependencies.leaderboardSnapshotRepository,
     databaseDependencies.featureFlagRepository,
+    databaseDependencies.schemaInferenceRepository,
     pgaTourApiDependencies.activeTournamentClient,
     pgaTourApiDependencies.leaderboardClient,
     pgaTourApiDependencies.seasonClient,
