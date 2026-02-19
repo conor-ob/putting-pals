@@ -1,1 +1,0 @@
-DROP TABLE "inferred_schema_change" CASCADE;
