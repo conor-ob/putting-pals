@@ -3,14 +3,12 @@ import type {
   FeatureFlagRepository,
   LeaderboardFeedRepository,
   LeaderboardSnapshotRepository,
-  SchemaInferenceChangeRepository,
   SchemaInferenceRepository,
 } from "@putting-pals/putting-pals-core";
 import { createDatabaseConnection } from "../db/connection";
 import {
   activeTournamentTable,
   featureFlagTable,
-  inferredSchemaChangeTable,
   inferredSchemaTable,
   leaderboardFeedTable,
   leaderboardSnapshotTable,
@@ -19,7 +17,6 @@ import { ActiveTournamentPostgresRepository } from "../repository/active-tournam
 import { FeatureFlagPostgresRepository } from "../repository/feature-flag-repository";
 import { LeaderboardFeedPostgresRepository } from "../repository/leaderboard-feed-repository";
 import { LeaderboardSnapshotPostgresRepository } from "../repository/leaderboard-snapshot-repository";
-import { SchemaInferenceChangePostgresRepository } from "../repository/schema-inference-change-repository";
 import { SchemaInferencePostgresRepository } from "../repository/schema-inference-repository";
 
 export function injectDependencies(): {
@@ -28,7 +25,6 @@ export function injectDependencies(): {
   leaderboardFeedRepository: LeaderboardFeedRepository;
   leaderboardSnapshotRepository: LeaderboardSnapshotRepository;
   schemaInferenceRepository: SchemaInferenceRepository;
-  schemaInferenceChangeRepository: SchemaInferenceChangeRepository;
 } {
   const database = createDatabaseConnection();
   return {
@@ -52,10 +48,5 @@ export function injectDependencies(): {
       database,
       inferredSchemaTable,
     ),
-    schemaInferenceChangeRepository:
-      new SchemaInferenceChangePostgresRepository(
-        database,
-        inferredSchemaChangeTable,
-      ),
   };
 }

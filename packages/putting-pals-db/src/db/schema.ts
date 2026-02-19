@@ -90,9 +90,3 @@ export const inferredSchemaTable = pgTable("inferred_schema", {
   payload: jsonb("payload").notNull().$type<InferredSchema>(),
   ...timestampColumns,
 });
-
-// export const inferredSchemaChangeTable = pgTable("inferred_schema_change", {
-//   sequence: serial("sequence").primaryKey(),
-//   payload: jsonb("payload").notNull().$type<InferredSchemaChange>(),
-//   ...timestampColumns,
-// });

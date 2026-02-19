@@ -2,18 +2,14 @@ import { assertNever } from "@putting-pals/putting-pals-utils";
 import { InternalServerError } from "../error/service-error";
 import type { InferenceTourCode, InferenceType } from "./domain/types";
 import type { SchemaInferenceObserver } from "./interfaces/inbound/schema-inference-observer";
-import type { SchemaInferenceChangeRepository } from "./interfaces/outbound/schema-inference-change-repository";
 import type { SchemaInferenceRepository } from "./interfaces/outbound/schema-inference-repository";
 import { infer, merge } from "./schema-inference-utils";
 
 export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
   constructor(
     private readonly schemaInferenceRepository: SchemaInferenceRepository,
-    // biome-ignore lint/correctness/noUnusedPrivateClassMembers: todo
-    private readonly schemaInferenceChangeRepository: SchemaInferenceChangeRepository,
   ) {
     this.schemaInferenceRepository = schemaInferenceRepository;
-    this.schemaInferenceChangeRepository = schemaInferenceChangeRepository;
   }
 
   async inferSchema(
@@ -38,9 +34,8 @@ export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
     type: InferenceType,
     value: unknown,
   ): Promise<void> {
-    const prevInferredSchema = await this.schemaInferenceRepository
-      .getSchema(type)
-      .then((schema) => (schema ? schema : undefined));
+    const prevInferredSchema =
+      await this.schemaInferenceRepository.getSchema(type);
     const nextInferredSchema = infer(value);
 
     if (prevInferredSchema === undefined) {
