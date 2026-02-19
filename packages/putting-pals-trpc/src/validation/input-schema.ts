@@ -16,8 +16,3 @@ export const LeaderboardInputSchema = z.object({
   tourCode: TourCodeInputSchema,
   id: TournamentIdInputSchema.optional(),
 });
-
-export const EventTypeInputSchema = z.enum([
-  "leaderboard/detect-change",
-  "espn/infer-schema",
-]);

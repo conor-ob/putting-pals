@@ -8,6 +8,48 @@ export class TourServiceImpl implements TourService {
   }
 
   async getTours(): Promise<Tour[]> {
+    // TODO
+    // const tourCodes = TourCodeSchema.options.map((tourCode) => {
+    //   switch (tourCode) {
+    //     case "pal":
+    //       return {
+    //         tourCode: "pal" as const,
+    //         tourName: "Putting Pals" as const,
+    //       };
+    //     case "pga":
+    //       return {
+    //         tourCode: "pga" as const,
+    //         tourName: "PGA TOUR" as const,
+    //       };
+    //     case "eur":
+    //       return {
+    //         tourCode: "eur" as const,
+    //         tourName: "DP World Tour" as const,
+    //       };
+    //     case "liv":
+    //       return {
+    //         tourCode: "liv" as const,
+    //         tourName: "LIV Golf" as const,
+    //       };
+    //     case "dev":
+    //       return {
+    //         tourCode: "dev" as const,
+    //         tourName: "Korn Ferry Tour" as const,
+    //       };
+    //     case "snr":
+    //       return {
+    //         tourCode: "snr" as const,
+    //         tourName: "PGA TOUR Champions" as const,
+    //       };
+    //     case "pam":
+    //       return {
+    //         tourCode: "pam" as const,
+    //         tourName: "PGA TOUR Americas" as const,
+    //       };
+    //     default:
+    //       assertNever(tourCode);
+    //   }
+    // });
     const allTours = [
       {
         tourCode: "pal" as const,

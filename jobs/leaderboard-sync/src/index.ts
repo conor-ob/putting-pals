@@ -65,11 +65,8 @@ async function sendEvent() {
   const supportedTours = await client.tour.getTours.query();
   const results = await Promise.allSettled(
     supportedTours.map((tour) =>
-      client.event.processEvent
-        .mutate({
-          tourCode: tour.tourCode,
-          type: "leaderboard/detect-change",
-        })
+      client.event.syncLeaderboard
+        .mutate({ tourCode: tour.tourCode })
         .catch((err) => {
           // biome-ignore lint/suspicious/noConsole: error logging
           console.error(

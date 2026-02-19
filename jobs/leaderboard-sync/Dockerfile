@@ -13,7 +13,7 @@ RUN npm install -g pnpm turbo \
 FROM base AS pruner
 WORKDIR /app
 COPY . .
-RUN turbo prune --scope=@putting-pals/cron --docker
+RUN turbo prune --scope=@putting-pals/leaderboard-sync --docker
 
 # Build stage
 FROM base AS builder
@@ -34,7 +34,7 @@ RUN pnpm install --frozen-lockfile
 COPY --from=pruner /app/out/full/ .
 
 # Turbo codegen and build
-RUN turbo build --filter=@putting-pals/cron
+RUN turbo build --filter=@putting-pals/leaderboard-sync
 
 # Prune production dependencies
 RUN pnpm prune --prod --no-optional
@@ -48,7 +48,7 @@ USER nodejs
 
 WORKDIR /app
 COPY --from=builder --chown=nodejs:nodejs /app .
-WORKDIR /app/apps/cron
+WORKDIR /app/jobs/leaderboard-sync
 
 ARG SERVER_URL
 

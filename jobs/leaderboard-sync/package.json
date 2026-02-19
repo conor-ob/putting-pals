@@ -1,5 +1,5 @@
 {
-  "name": "@putting-pals/cron",
+  "name": "@putting-pals/leaderboard-sync",
   "version": "0.0.0",
   "type": "module",
   "private": true,

@@ -62,19 +62,17 @@ async function sendEvent() {
     ],
   });
 
-  const espnTourCodes = ["eur"] as const;
+  const combinations = await client.event.inferSchemaSetup.query();
   const results = await Promise.allSettled(
-    espnTourCodes.map((tourCode) =>
-      client.event.processEvent
-        .mutate({
-          tourCode: tourCode,
-          type: "espn/infer-schema",
-        })
-        .catch((err) => {
-          // biome-ignore lint/suspicious/noConsole: error logging
-          console.error(`processEvent failed for tourCode=${tourCode}`, err);
-          throw err;
-        }),
+    combinations.map(({ tourCode, type }) =>
+      client.event.inferSchema.mutate({ tourCode, type }).catch((err) => {
+        // biome-ignore lint/suspicious/noConsole: error logging
+        console.error(
+          `inferSchema failed for tourCode=${tourCode} type=${type}`,
+          err,
+        );
+        throw err;
+      }),
     ),
   );
 
@@ -82,7 +80,7 @@ async function sendEvent() {
   if (rejected.length > 0) {
     throw new AggregateError(
       rejected.map((r) => r.reason),
-      `Failed to process events: ${rejected.length} tour(s) failed`,
+      `Failed to infer schema: ${rejected.length} tour(s) failed`,
     );
   }
 }
