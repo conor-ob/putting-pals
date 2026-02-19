@@ -20,9 +20,10 @@ runs:
       shell: bash
       run: |
         set -e
-        cp ./apps/cron/.env.example ./apps/cron/.env
         cp ./apps/server/.env.example ./apps/server/.env
         cp ./apps/expo/.env.example ./apps/expo/.env
+        cp ./jobs/espn-schema/.env.example ./jobs/espn-schema/.env
+        cp ./jobs/leaderboard-sync/.env.example ./jobs/leaderboard-sync/.env
         cp ./packages/putting-pals-db/.env.example ./packages/putting-pals-db/.env
 
     - name: Install deps

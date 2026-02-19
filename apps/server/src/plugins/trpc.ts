@@ -31,6 +31,7 @@ export default function (fastify: FastifyInstance) {
           tourService: fastify.dependencies.tourService,
           tournamentService: fastify.dependencies.tournamentService,
           batchTournamentService: fastify.dependencies.batchTournamentService,
+          schemaInferenceObserver: fastify.dependencies.schemaInferenceObserver,
         });
       },
       onError({ path, type, error }) {

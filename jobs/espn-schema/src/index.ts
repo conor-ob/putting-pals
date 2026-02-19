@@ -62,22 +62,17 @@ async function sendEvent() {
     ],
   });
 
-  const supportedTours = await client.tour.getTours.query();
+  const combinations = await client.event.inferSchemaSetup.query();
   const results = await Promise.allSettled(
-    supportedTours.map((tour) =>
-      client.event.processEvent
-        .mutate({
-          tourCode: tour.tourCode,
-          type: "leaderboard/detect-change",
-        })
-        .catch((err) => {
-          // biome-ignore lint/suspicious/noConsole: error logging
-          console.error(
-            `processEvent failed for tourCode=${tour.tourCode}`,
-            err,
-          );
-          throw err;
-        }),
+    combinations.map(({ tourCode, type }) =>
+      client.event.inferSchema.mutate({ tourCode, type }).catch((err) => {
+        // biome-ignore lint/suspicious/noConsole: error logging
+        console.error(
+          `inferSchema failed for tourCode=${tourCode} type=${type}`,
+          err,
+        );
+        throw err;
+      }),
     ),
   );
 
@@ -85,7 +80,7 @@ async function sendEvent() {
   if (rejected.length > 0) {
     throw new AggregateError(
       rejected.map((r) => r.reason),
-      `Failed to process events: ${rejected.length} tour(s) failed`,
+      `Failed to infer schema: ${rejected.length} tour(s) failed`,
     );
   }
 }

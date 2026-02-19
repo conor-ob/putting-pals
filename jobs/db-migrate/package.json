@@ -1,5 +1,5 @@
 {
-  "name": "@putting-pals/migrate",
+  "name": "@putting-pals/db-migrate",
   "version": "0.0.0",
   "private": true
 }

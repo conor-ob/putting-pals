@@ -9,6 +9,8 @@ import type { FeedService } from "../feed/interfaces/inbound/feed-service";
 import type { LeaderboardFeedRepository } from "../feed/interfaces/outbound/leaderboard-feed-repository";
 import { FeatureFlagServiceImpl } from "../flag/feature-flag-service";
 import type { FeatureFlagRepository } from "../flag/interfaces/outbound/feature-flag-repository";
+import type { SchemaInferenceObserver } from "../inference/interfaces/inbound/schema-inference-observer";
+import { SchemaInferenceObserverImpl } from "../inference/schema-inference-observer";
 import type { LeaderboardService } from "../leaderboard/interfaces/inbound/leaderboard-service";
 import type { LeaderboardClient } from "../leaderboard/interfaces/outbound/leaderboard-client";
 import { LeaderboardEventProcessorServiceImpl } from "../leaderboard/leaderboard-event-processor-service";
@@ -63,6 +65,7 @@ export function injectDependencies(
   tournamentService: TournamentService;
   batchTournamentService: BatchTournamentService;
   tourService: TourService;
+  schemaInferenceObserver: SchemaInferenceObserver;
 } {
   const competitionService = new CompetitionServiceImpl(competitionRepository);
   const activeTournamentService = new ActiveTournamentServiceImpl(
@@ -122,5 +125,6 @@ export function injectDependencies(
     tournamentService: tournamentService,
     batchTournamentService: batchTournamentService,
     tourService: new TourServiceImpl(featureFlagService),
+    schemaInferenceObserver: new SchemaInferenceObserverImpl(),
   };
 }
