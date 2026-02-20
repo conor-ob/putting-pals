@@ -1,4 +1,5 @@
 import { injectDependencies as injectEspnSportsApiDependencies } from "@putting-pals/espn-sports-api";
+import { injectDependencies as injectEuropeanTourApiDependencies } from "@putting-pals/european-tour-api";
 import { injectDependencies as injectPgaTourApiDependencies } from "@putting-pals/pga-tour-api";
 import { injectDependencies as injectPuttingPalsApiDependencies } from "@putting-pals/putting-pals-api";
 import { injectDependencies as injectCoreDependencies } from "@putting-pals/putting-pals-core";
@@ -21,6 +22,7 @@ export default function (fastify: FastifyInstance) {
     pgaTourApiDependencies.scheduleClient,
   );
   const espnSportsApiDependencies = injectEspnSportsApiDependencies();
+  const europeanTourApiDependencies = injectEuropeanTourApiDependencies();
   const coreDependencies = injectCoreDependencies(
     puttingPalsApiDependencies.competitionRepository,
     databaseDependencies.activeTournamentRepository,
@@ -34,6 +36,7 @@ export default function (fastify: FastifyInstance) {
     pgaTourApiDependencies.scheduleClient,
     pgaTourApiDependencies.tournamentClient,
     pgaTourApiDependencies.batchTournamentClient,
+    europeanTourApiDependencies.scheduleClient,
     espnSportsApiDependencies.activeTournamentClient,
     espnSportsApiDependencies.leaderboardClient,
     espnSportsApiDependencies.seasonClient,

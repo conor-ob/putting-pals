@@ -48,6 +48,7 @@ export function injectDependencies(
   pgaTourApiScheduleClient: ScheduleClient,
   pgaTourApiTournamentClient: TournamentClient,
   pgaTourApiBatchTournamentClient: BatchTournamentClient,
+  europeanTourApiScheduleClient: ScheduleClient,
   espnSportsApiActiveTournamentClient: ActiveTournamentClient,
   espnSportsApiLeaderboardClient: LeaderboardClient,
   espnSportsApiSeasonClient: SeasonClient,
@@ -118,6 +119,7 @@ export function injectDependencies(
       puttingPalsApiScheduleClient,
       pgaTourApiScheduleClient,
       espnSportsApiScheduleClient,
+      europeanTourApiScheduleClient,
     ),
     seasonService: new SeasonServiceImpl(
       puttingPalsApiSeasonClient,

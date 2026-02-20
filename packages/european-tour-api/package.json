@@ -1,0 +1,33 @@
+{
+  "name": "@putting-pals/european-tour-api",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit true"
+  },
+  "dependencies": {
+    "@putting-pals/iso-countries": "workspace:*",
+    "@putting-pals/putting-pals-core": "workspace:*",
+    "cheerio": "^1.1.2",
+    "date-fns": "^4.1.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@total-typescript/shoehorn": "^0.1.2",
+    "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

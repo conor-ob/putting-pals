@@ -17,6 +17,7 @@
     "@mgcrea/fastify-request-logger": "^1.9.1",
     "@mgcrea/pino-pretty-compact": "^1.4.2",
     "@putting-pals/espn-sports-api": "workspace:*",
+    "@putting-pals/european-tour-api": "workspace:*",
     "@putting-pals/pga-tour-api": "workspace:*",
     "@putting-pals/putting-pals-api": "workspace:*",
     "@putting-pals/putting-pals-core": "workspace:*",

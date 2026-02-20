@@ -30,9 +30,10 @@ export function LeaderboardPage() {
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("leaderboard.error", leaderboardError);
 
+  // TODO is this going to create an undefined key?
   // biome-ignore lint/correctness/noUnusedVariables: testing
   const { value: favourites, setValue: setFavourites } = useLocalStorage(
-    `putting-pals:leaderboard:favourites:v1:${tourCode}:${leaderboard?.id}`,
+    `putting-pals:leaderboard:favourites:v1:${tourCode}:${id ?? leaderboard?.id}`,
   );
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("favourites", favourites);
