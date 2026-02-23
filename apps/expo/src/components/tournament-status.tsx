@@ -9,7 +9,18 @@ export function TournamentStatus({
   tournament,
   ...props
 }: { tournament: Tournament } & ViewProps) {
-  if (isTournamentInProgress(tournament)) {
+  if (
+    tournament.schedule.status === "NOT_STARTED" &&
+    tournament.status.roundStatus === "UPCOMING"
+  ) {
+    return (
+      <View className={className} {...props}>
+        <RoundStatusBadge color={tournament.status.roundStatusColor}>
+          {tournament.status.roundStatusDisplay}
+        </RoundStatusBadge>
+      </View>
+    );
+  } else {
     return (
       <View
         className={cn("flex flex-row items-center gap-1.5", className)}
@@ -26,24 +37,5 @@ export function TournamentStatus({
         </RoundStatusLabel>
       </View>
     );
-  } else {
-    return (
-      <View className={className} {...props}>
-        <RoundStatusBadge color={tournament.status.roundStatusColor}>
-          {tournament.status.roundStatusDisplay}
-        </RoundStatusBadge>
-      </View>
-    );
   }
-}
-
-function isTournamentInProgress(tournament: Tournament) {
-  const isNotStarted =
-    tournament.schedule.status === "NOT_STARTED" &&
-    tournament.status.roundStatus === "UPCOMING";
-  const isCompleted =
-    tournament.schedule.status === "COMPLETED" &&
-    tournament.status.roundStatus === "OFFICIAL";
-
-  return !isNotStarted && !isCompleted;
 }
