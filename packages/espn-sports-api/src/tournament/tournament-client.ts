@@ -13,7 +13,6 @@ import {
   mapRoundStatus,
   mapTournamentStatus,
 } from "../utils/tournament-status";
-import { resolve as resolveTournamentData } from "./tournament-data-resolver";
 
 type AggregatedTournament = {
   tournament: TourScheduleEvent;
@@ -67,13 +66,8 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Aggr
   ): Tournament {
     const { tournament, competition } = aggregatedTournament;
     const location = this.getTournamentLocation(tournament);
-    const tournamentData = resolveTournamentData(tournament.id);
-    const logo =
-      tournamentData?.images?.logo ??
-      `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`;
-    const cover =
-      tournamentData?.images?.cover ??
-      `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`;
+    const logo = `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`;
+    const cover = `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`; // TODO cover image
 
     return {
       __typename: "Tournament",
