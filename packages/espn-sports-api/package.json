@@ -13,7 +13,6 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "codegen": "tsx codegen.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit true"
   },
@@ -27,7 +26,6 @@
     "@total-typescript/shoehorn": "^0.1.2",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
-    "tsx": "^4.21.0",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }
