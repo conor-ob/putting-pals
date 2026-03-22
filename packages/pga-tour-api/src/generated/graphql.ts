@@ -340,10 +340,13 @@ export type ApiBioRank = {
 
 export type ApiBrazeFragment = {
   __typename: 'BrazeFragment';
+  checkZipCode: Scalars['Boolean']['output'];
   ctaLink?: Maybe<Scalars['String']['output']>;
   ctaText?: Maybe<Scalars['String']['output']>;
   feedType?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
   sectionTitle?: Maybe<Scalars['String']['output']>;
+  sectionType?: Maybe<Scalars['String']['output']>;
 };
 
 export type ApiBroadcastAudioStream = {
@@ -609,7 +612,7 @@ export type ApiContentFragmentType = {
   path: Scalars['String']['output'];
 };
 
-export type ApiContentFragments = ApiBrazeFragment | ApiDropdownFragment | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopUserProfile | ApiKopZigZag | ApiMediaGallery | ApiOddsToWinTracker | ApiTglBoxScoreFragment | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
+export type ApiContentFragments = ApiBrazeFragment | ApiDropdownFragment | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopUserProfile | ApiKopZigZag | ApiLandingPageImageBlock | ApiMediaGallery | ApiOddsToWinTracker | ApiTglBoxScoreFragment | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
 
 export type ApiContentFragmentsCompressed = {
   __typename: 'ContentFragmentsCompressed';
@@ -1476,6 +1479,7 @@ export type ApiField = {
   lastUpdated?: Maybe<Scalars['AWSTimestamp']['output']>;
   message?: Maybe<Scalars['String']['output']>;
   players: Array<ApiPlayerField>;
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   standingsHeader: Scalars['String']['output'];
   tournamentName: Scalars['String']['output'];
 };
@@ -2632,6 +2636,19 @@ export type ApiLbRound = {
   roundNumber: Scalars['Int']['output'];
 };
 
+export type ApiLandingPageImageBlock = {
+  __typename: 'LandingPageImageBlock';
+  consentCategory?: Maybe<Scalars['String']['output']>;
+  cta?: Maybe<ApiCallToAction>;
+  deniedConsent: Scalars['Boolean']['output'];
+  image?: Maybe<Scalars['String']['output']>;
+  imageDark?: Maybe<Scalars['String']['output']>;
+  locationFallback: Scalars['Boolean']['output'];
+  mobileImage?: Maybe<Scalars['String']['output']>;
+  subTitle: Scalars['String']['output'];
+  title: Scalars['String']['output'];
+};
+
 export type ApiLeaderStat = {
   __typename: 'LeaderStat';
   country: Scalars['String']['output'];
@@ -2906,6 +2923,7 @@ export type ApiLeaderboardUpdateV3 = {
   leaderboardRoundHeader: Scalars['String']['output'];
   messages: Array<ApiLeaderboardMessage>;
   players: Array<ApiLeaderboardUpdateRowV3>;
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   rounds: Array<ApiLbRound>;
   subEvent: Scalars['Boolean']['output'];
   tournamentStatus: ApiTournamentStatus;
@@ -2965,6 +2983,7 @@ export type ApiLeaderboardV3 = {
   messages: Array<ApiLeaderboardMessage>;
   players: Array<ApiLeaderboardRowV3>;
   profileEnabled: Scalars['Boolean']['output'];
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   rounds: Array<ApiLbRound>;
   scorecardEnabled: Scalars['Boolean']['output'];
   standingsEnabled: Scalars['Boolean']['output'];
@@ -4745,6 +4764,7 @@ export type ApiPlayerDirectoryPlayer = {
   id: Scalars['ID']['output'];
   isActive: Scalars['Boolean']['output'];
   lastName: Scalars['String']['output'];
+  nameVariants: Array<Maybe<Scalars['String']['output']>>;
   playerBio: ApiPlayerDirectoryBio;
   shortName: Scalars['String']['output'];
 };
@@ -8257,6 +8277,7 @@ export type ApiScorecardUpdateV3 = {
   playerId: Scalars['String']['output'];
   playerState?: Maybe<ApiPlayerState>;
   profileEnabled: Scalars['Boolean']['output'];
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   roundScores: Array<ApiRoundScore>;
   teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
   tournamentName: Scalars['String']['output'];
@@ -8277,6 +8298,7 @@ export type ApiScorecardV3 = {
   player: ApiPlayer;
   playerState?: Maybe<ApiPlayerState>;
   profileEnabled: Scalars['Boolean']['output'];
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   roundScores: Array<ApiRoundScore>;
   standings?: Maybe<ApiScorecardStandings>;
   teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
@@ -9685,6 +9707,7 @@ export type ApiTeeTimesV2 = {
   hideSov: Scalars['Boolean']['output'];
   id: Scalars['ID']['output'];
   informationSections: Array<ApiInformationSection>;
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   rounds: Array<ApiTeeTimeRoundV2>;
   teeTimesFeatures: Array<ApiTeeTimesFeature>;
   timezone: Scalars['String']['output'];

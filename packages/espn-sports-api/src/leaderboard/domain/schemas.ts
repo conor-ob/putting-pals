@@ -142,14 +142,16 @@ export const ApiLeaderboardEventSchema = z.object({
       description: z.string(),
     }),
   }),
-  defendingChampion: z.object({
-    athlete: z.object({
-      id: z.string(),
+  defendingChampion: z
+    .object({
+      athlete: z.object({
+        id: z.string(),
+        displayName: z.string(),
+        amateur: z.boolean(),
+      }),
       displayName: z.string(),
-      amateur: z.boolean(),
-    }),
-    displayName: z.string(),
-  }),
+    })
+    .optional(),
   playoffType: z.object({
     id: z.number(),
     description: z.string(),
