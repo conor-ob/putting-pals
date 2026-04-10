@@ -168,7 +168,7 @@ function getShortName(tournamentId: string) {
 }
 
 function getScoringRules(tournamentId: string) {
-  if (tournamentId === "R2025026" || tournamentId === "R2025100") {
+  if (tournamentId === "R2025026" || tournamentId === "R2025100" || tournamentId === "R2026014") {
     return "MISSED_CUT";
   }
 
