@@ -50,9 +50,7 @@ const majorCompetitions2025 = [
   usOpen2025,
   theOpenChampionship2025,
 ];
-const majorCompetitions2026 = [
-  mastersTournament2026,
-];
+const majorCompetitions2026 = [mastersTournament2026];
 const competitions = [
   ...majorCompetitions2021,
   ...majorCompetitions2022,
@@ -168,7 +166,11 @@ function getShortName(tournamentId: string) {
 }
 
 function getScoringRules(tournamentId: string) {
-  if (tournamentId === "R2025026" || tournamentId === "R2025100" || tournamentId === "R2026014") {
+  if (
+    tournamentId === "R2025026" ||
+    tournamentId === "R2025100" ||
+    tournamentId === "R2026014"
+  ) {
     return "MISSED_CUT";
   }
 
