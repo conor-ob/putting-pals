@@ -56,6 +56,8 @@ export type ApiAdConfig = {
   groupStageStandings?: Maybe<ApiAdTagConfig>;
   groupstageStandings?: Maybe<ApiAdTagConfig>;
   homepage?: Maybe<ApiAdTagConfig>;
+  hotstreakLeaderboard?: Maybe<ApiAdTagConfig>;
+  hotstreakTop10?: Maybe<ApiAdTagConfig>;
   knockoutLeaderboard?: Maybe<ApiAdTagConfig>;
   leaderboard?: Maybe<ApiAdTagConfig>;
   leaderboardCutline?: Maybe<ApiAdTagConfig>;
@@ -3925,6 +3927,7 @@ export type ApiNewsArticleDetails = {
   /** @deprecated Use tournaments.tournamentName */
   tournamentName?: Maybe<Scalars['String']['output']>;
   tournaments?: Maybe<Array<ApiNewsArticleDetailsTournament>>;
+  trendingArticles: Array<ApiTrendingFeedItem>;
   url: Scalars['String']['output'];
 };
 
@@ -8722,6 +8725,7 @@ export type ApiStatCategory =
   | 'FACTS_AND_FIGURES'
   | 'MONEY_FINISHES'
   | 'OFF_TEE'
+  | 'PACE_OF_PLAY'
   | 'POINTS_RANKINGS'
   | 'PUTTING'
   | 'SCORING'
@@ -8738,6 +8742,7 @@ export type ApiStatCategoryConfig = {
 
 export type ApiStatCategoryConfigType =
   | 'ALL_TIME_RECORDS'
+  | 'PACE_OF_PLAY'
   | 'TRADITIONAL_STAT';
 
 export type ApiStatCategoryStat = {
@@ -9725,18 +9730,26 @@ export type ApiThreeUpPhoto = {
   mobileImageTwo?: Maybe<Scalars['String']['output']>;
   photoFour?: Maybe<Scalars['String']['output']>;
   photoFourAccessibilityText?: Maybe<Scalars['String']['output']>;
+  photoFourMobileAppUrl?: Maybe<Scalars['String']['output']>;
+  photoFourMobileWebUrl?: Maybe<Scalars['String']['output']>;
   photoFourUrl?: Maybe<Scalars['String']['output']>;
   photoOne?: Maybe<Scalars['String']['output']>;
   photoOneAccessibilityText?: Maybe<Scalars['String']['output']>;
   photoOneCtaTarget?: Maybe<Scalars['String']['output']>;
+  photoOneMobileAppUrl?: Maybe<Scalars['String']['output']>;
+  photoOneMobileWebUrl?: Maybe<Scalars['String']['output']>;
   photoOneUrl?: Maybe<Scalars['String']['output']>;
   photoThree?: Maybe<Scalars['String']['output']>;
   photoThreeAccessibilityText?: Maybe<Scalars['String']['output']>;
   photoThreeCtaTarget?: Maybe<Scalars['String']['output']>;
+  photoThreeMobileAppUrl?: Maybe<Scalars['String']['output']>;
+  photoThreeMobileWebUrl?: Maybe<Scalars['String']['output']>;
   photoThreeUrl?: Maybe<Scalars['String']['output']>;
   photoTwo?: Maybe<Scalars['String']['output']>;
   photoTwoAccessibilityText?: Maybe<Scalars['String']['output']>;
   photoTwoCtaTarget?: Maybe<Scalars['String']['output']>;
+  photoTwoMobileAppUrl?: Maybe<Scalars['String']['output']>;
+  photoTwoMobileWebUrl?: Maybe<Scalars['String']['output']>;
   photoTwoUrl?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
 };
@@ -10523,6 +10536,8 @@ export type ApiTournamentsPillConfig = {
   currentSeason: Scalars['Int']['output'];
 };
 
+export type ApiTrendingFeedItem = ApiNewsArticle | ApiVideo;
+
 export type ApiTspPlayer = {
   __typename: 'TspPlayer';
   abbreviations: Scalars['String']['output'];
@@ -10542,6 +10557,8 @@ export type ApiTspPlayer = {
   rankingMovement: ApiCupRankMovementDirection;
   rankingMovementAmount: Scalars['String']['output'];
   shortName: Scalars['String']['output'];
+  tooltipText?: Maybe<Scalars['String']['output']>;
+  tooltipTitle?: Maybe<Scalars['String']['output']>;
 };
 
 export type ApiTspPlayerHole = {
