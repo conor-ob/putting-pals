@@ -7,11 +7,12 @@ import {
   COMPETITORS,
   INDEX as COMPETITORS_INDEX,
   type CompetitorSlug,
+  CompetitorSlugs,
 } from "./src/generated/competitors";
 import {
   PLAYERS,
   INDEX as PLAYERS_INDEX,
-  type PlayerSlug,
+  PlayerSlugs,
 } from "./src/generated/players";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -45,7 +46,7 @@ function toSlug(displayName: string): string {
 }
 
 function generateCompetitors() {
-  const inputPath = path.join(packageRoot, "data/competitors.json");
+  const inputPath = path.join(packageRoot, "data/competitors/directory.json");
   const raw = CompetitorSchema.array().parse(
     JSON.parse(fs.readFileSync(inputPath, "utf8")),
   );
@@ -61,6 +62,12 @@ function generateCompetitors() {
 export const COMPETITORS = ${JSON.stringify(raw, null, 2)} as const
 
 export const INDEX = ${JSON.stringify(idx, null, 2)} as const
+
+export const CompetitorValues = ${JSON.stringify(
+    raw.map((it) => toSlug(it.displayName)),
+    null,
+    2,
+  )} as const
 
 export type CompetitorSlug = keyof typeof INDEX
 `;
@@ -102,6 +109,12 @@ export const PLAYERS = ${JSON.stringify(
 
 export const INDEX = ${JSON.stringify(idx, null, 2)} as const
 
+export const PlayerValues = ${JSON.stringify(
+    raw.players.map((it) => toSlug(it.displayName)),
+    null,
+    2,
+  )} as const
+
 export type PlayerSlug = keyof typeof INDEX
 `;
 
@@ -113,14 +126,17 @@ export type PlayerSlug = keyof typeof INDEX
 function generateCompetitions() {
   const inputPath = path.join(
     packageRoot,
-    "data/2026/01-masters-tournament.json",
+    "data/competitions/2026/01-masters-tournament.json",
   );
   const raw = z
     .object({
       tournamentId: z.string(),
-      competitors: z.record(
-        z.string<CompetitorSlug>(),
-        z.array(z.string<PlayerSlug>()),
+      paddyPowerId: z.string().nullable(),
+      winner: z.enum(CompetitorSlugs).nullable(),
+      runnerUp: z.enum(CompetitorSlugs).nullable(),
+      competitors: z.partialRecord(
+        z.enum(CompetitorSlugs),
+        z.array(z.enum(PlayerSlugs)),
       ),
     })
     .parse(JSON.parse(fs.readFileSync(inputPath, "utf8")));
@@ -131,7 +147,10 @@ function generateCompetitions() {
       return {
         ...COMPETITORS[COMPETITORS_INDEX[it[0] as CompetitorSlug]], // TODO remove cast
         picks: it[1].map((it) => {
-          return PLAYERS[PLAYERS_INDEX[it]];
+          return {
+            id: PLAYERS[PLAYERS_INDEX[it]],
+            slug: it,
+          };
         }),
       };
     }),
