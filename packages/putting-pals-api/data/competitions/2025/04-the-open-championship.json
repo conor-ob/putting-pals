@@ -1,0 +1,23 @@
+{
+  "tournamentId": "R2025100",
+  "paddyPowerId": null,
+  "scoringRules": "MISSED_CUT",
+  "winner": "john-hannaway",
+  "runnerUp": "conor-obrien",
+  "competitors": {
+    "david-hynes": ["rory-mcilroy", "shane-lowry", "padraig-harrington"],
+    "stephen-devine": ["rory-mcilroy", "ludvig-aberg", "dan-brown"],
+    "rob-joy": ["scottie-scheffler", "rory-mcilroy", "aldrich-potgieter"],
+    "aidan-walsh": ["jon-rahm", "tommy-fleetwood", "marco-penge"],
+    "conor-obrien": ["rory-mcilroy", "xander-schauffele", "brian-harman"],
+    "rob-keartland": ["jon-rahm", "tommy-fleetwood", "harris-english"],
+    "rich-byrne": ["scottie-scheffler", "rory-mcilroy", "tom-mckibbin"],
+    "phelim-oconnor": ["viktor-hovland", "matt-fitzpatrick", "jordan-spieth"],
+    "john-hannaway": ["scottie-scheffler", "ludvig-aberg", "harris-english"],
+    "karl-curran": ["rory-mcilroy", "matt-fitzpatrick", "justin-rose"],
+    "cameron-folens": ["jon-rahm", "tommy-fleetwood", "keegan-bradley"],
+    "brian-obrolchain": ["tommy-fleetwood", "shane-lowry", "corey-conners"],
+    "aimee-ohanlon": ["xander-schauffele", "matt-fitzpatrick", "justin-thomas"],
+    "niall-cronin": ["rory-mcilroy", "tommy-fleetwood", "keegan-bradley"]
+  }
+}
