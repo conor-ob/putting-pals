@@ -1,0 +1,25 @@
+{
+  "tournamentId": "R2026014",
+  "paddyPowerId": "12728576",
+  "scoringRules": "MISSED_CUT",
+  "winner": null,
+  "runnerUp": null,
+  "competitors": {
+    "rob-keartland": ["chris-gotterup", "jason-day", "jacob-bridgeman"],
+    "rob-joy": ["scottie-scheffler", "rory-mcilroy", "tom-mckibbin"],
+    "cameron-folens": ["cameron-young", "matt-fitzpatrick", "alex-noren"],
+    "aimee-ohanlon": ["scottie-scheffler", "cameron-young", "ryan-fox"],
+    "brian-obrolchain": ["ludvig-aberg", "matt-fitzpatrick", "carlos-ortiz"],
+    "stephen-devine": ["collin-morikawa", "si-woo-kim", "rasmus-hojgaard"],
+    "david-hynes": ["tommy-fleetwood", "shane-lowry", "max-homa"],
+    "john-hannaway": [
+      "aldrich-potgieter",
+      "bryson-dechambeau",
+      "scottie-scheffler"
+    ],
+    "rich-byrne": ["jon-rahm", "bryson-dechambeau", "wyndham-clark"],
+    "phelim-oconnor": ["michael-kim", "bryson-dechambeau", "rory-mcilroy"],
+    "aidan-walsh": ["patrick-reed", "chris-gotterup", "daniel-berger"],
+    "conor-obrien": ["scottie-scheffler", "viktor-hovland", "rasmus-hojgaard"]
+  }
+}
