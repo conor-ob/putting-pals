@@ -1,0 +1,30 @@
+{
+  "tournamentId": "R2025026",
+  "paddyPowerId": null,
+  "scoringRules": "MISSED_CUT",
+  "winner": "rich-byrne",
+  "runnerUp": "rob-joy",
+  "competitors": {
+    "stephen-devine": ["jon-rahm", "ben-griffin", "harris-english"],
+    "rob-joy": ["scottie-scheffler", "hideki-matsuyama", "ryan-fox"],
+    "conor-obrien": ["rory-mcilroy", "patrick-cantlay", "tony-finau"],
+    "david-hynes": ["rory-mcilroy", "shane-lowry", "tony-finau"],
+    "aidan-walsh": ["bryson-dechambeau", "jon-rahm", "cameron-young"],
+    "rich-byrne": ["scottie-scheffler", "jon-rahm", "cameron-young"],
+    "john-hannaway": ["scottie-scheffler", "jon-rahm", "akshay-bhatia"],
+    "brian-obrolchain": [
+      "scottie-scheffler",
+      "bryson-dechambeau",
+      "akshay-bhatia"
+    ],
+    "rob-keartland": [
+      "scottie-scheffler",
+      "bryson-dechambeau",
+      "cameron-young"
+    ],
+    "aimee-ohanlon": ["scottie-scheffler", "viktor-hovland", "harris-english"],
+    "phelim-oconnor": ["scottie-scheffler", "sepp-straka", "harris-english"],
+    "rory-coffey": ["bryson-dechambeau", "xander-schauffele", "aaron-rai"],
+    "cameron-folens": ["bryson-dechambeau", "shane-lowry", "harris-english"]
+  }
+}

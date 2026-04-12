@@ -1,0 +1,21 @@
+{
+  "tournamentId": "R2021033",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "rich-byrne",
+  "runnerUp": "david-hynes",
+  "competitors": {
+    "conor-obrien": ["daniel-berger", "tommy-fleetwood", "keegan-bradley"],
+    "rob-keartland": ["stewart-cink", "daniel-berger", "jordan-spieth"],
+    "stephen-devine": ["xander-schauffele", "viktor-hovland", "branden-grace"],
+    "cameron-folens": ["jordan-spieth", "shane-lowry", "si-woo-kim"],
+    "john-hannaway": ["tony-finau", "viktor-hovland", "robert-macintyre"],
+    "karl-curran": ["xander-schauffele", "webb-simpson", "lee-westwood"],
+    "phelim-oconnor": ["matt-jones", "jordan-spieth", "dustin-johnson"],
+    "aidan-walsh": ["jordan-spieth", "paul-casey", "matt-wallace"],
+    "ciaran-tighe": ["tommy-fleetwood", "patrick-reed", "shane-lowry"],
+    "rich-byrne": ["dustin-johnson", "shane-lowry", "justin-rose"],
+    "david-hynes": ["tommy-fleetwood", "tony-finau", "paul-casey"],
+    "rob-joy": ["matt-wallace", "will-zalatoris", "rory-mcilroy"]
+  }
+}

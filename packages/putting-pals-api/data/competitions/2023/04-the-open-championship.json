@@ -1,0 +1,19 @@
+{
+  "tournamentId": "R2023100",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "phelim-oconnor",
+  "runnerUp": "ciaran-tighe",
+  "competitors": {
+    "stephen-devine": ["rory-mcilroy", "matt-fitzpatrick", "si-woo-kim"],
+    "aimee-ohanlon": ["rory-mcilroy", "shane-lowry", "si-woo-kim"],
+    "aidan-walsh": ["scottie-scheffler", "rickie-fowler", "padraig-harrington"],
+    "phelim-oconnor": ["scottie-scheffler", "tommy-fleetwood", "byeong-hun-an"],
+    "david-hynes": ["padraig-harrington", "rickie-fowler", "tommy-fleetwood"],
+    "rob-keartland": ["seamus-power", "rory-mcilroy", "scottie-scheffler"],
+    "rich-byrne": ["rory-mcilroy", "dustin-johnson", "padraig-harrington"],
+    "ciaran-tighe": ["cameron-smith", "rickie-fowler", "matthew-jordan"],
+    "john-hannaway": ["si-woo-kim", "viktor-hovland", "jon-rahm"],
+    "cameron-folens": ["rory-mcilroy", "shane-lowry", "padraig-harrington"]
+  }
+}

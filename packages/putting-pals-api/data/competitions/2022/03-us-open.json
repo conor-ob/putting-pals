@@ -1,0 +1,26 @@
+{
+  "tournamentId": "R2022026",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "john-hannaway",
+  "runnerUp": "aidan-walsh",
+  "competitors": {
+    "conor-obrien": ["billy-horschel", "brooks-koepka", "tommy-fleetwood"],
+    "brian-obrolchain": ["rory-mcilroy", "harold-varner-iii", "seamus-power"],
+    "stephen-devine": ["rory-mcilroy", "justin-thomas", "luke-list"],
+    "cameron-folens": ["will-zalatoris", "cameron-young", "taylor-gooch"],
+    "david-hynes": ["tony-finau", "justin-rose", "seamus-power"],
+    "john-hannaway": [
+      "xander-schauffele",
+      "will-zalatoris",
+      "taylor-montgomery"
+    ],
+    "aidan-walsh": ["rory-mcilroy", "shane-lowry", "gary-woodland"],
+    "rob-keartland": ["rory-mcilroy", "xander-schauffele", "adri-arnaus"],
+    "rich-byrne": ["justin-thomas", "jon-rahm", "ryan-fox"],
+    "rob-joy": ["rory-mcilroy", "justin-thomas", "ryan-fox"],
+    "aimee-ohanlon": ["jordan-spieth", "tony-finau", "taylor-gooch"],
+    "phelim-oconnor": ["rory-mcilroy", "justin-rose", "tyrrell-hatton"],
+    "mark-byrne": ["rory-mcilroy", "tommy-fleetwood", "seamus-power"]
+  }
+}

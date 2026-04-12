@@ -1,0 +1,32 @@
+{
+  "tournamentId": "R2024033",
+  "paddyPowerId": "12593099",
+  "scoringRules": null,
+  "winner": "david-hynes",
+  "runnerUp": "aimee-ohanlon",
+  "competitors": {
+    "mark-byrne": ["rory-mcilroy", "ludvig-aberg", "rickie-fowler"],
+    "rich-byrne": ["scottie-scheffler", "xander-schauffele", "chris-kirk"],
+    "brian-obrolchain": [
+      "rory-mcilroy",
+      "bryson-dechambeau",
+      "christiaan-bezuidenhout"
+    ],
+    "rob-keartland": ["xander-schauffele", "jason-day", "sungjae-im"],
+    "john-hannaway": ["scottie-scheffler", "ludvig-aberg", "tiger-woods"],
+    "rob-joy": ["rory-mcilroy", "tony-finau", "sungjae-im"],
+    "niall-cronin": ["scottie-scheffler", "rory-mcilroy", "tiger-woods"],
+    "conor-obrien": [
+      "scottie-scheffler",
+      "rory-mcilroy",
+      "christiaan-bezuidenhout"
+    ],
+    "karl-curran": ["rory-mcilroy", "max-homa", "adam-scott"],
+    "aidan-walsh": ["rory-mcilroy", "max-homa", "taylor-pendrith"],
+    "stephen-devine": ["rory-mcilroy", "viktor-hovland", "sepp-straka"],
+    "david-hynes": ["tommy-fleetwood", "viktor-hovland", "tony-finau"],
+    "phelim-oconnor": ["rory-mcilroy", "ludvig-aberg", "tom-kim"],
+    "aimee-ohanlon": ["scottie-scheffler", "joaquin-niemann", "shane-lowry"],
+    "ciaran-tighe": ["ludvig-aberg", "tommy-fleetwood", "akshay-bhatia"]
+  }
+}

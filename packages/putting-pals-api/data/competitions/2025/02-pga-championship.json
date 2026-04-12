@@ -1,0 +1,22 @@
+{
+  "tournamentId": "R2025033",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "aimee-ohanlon",
+  "runnerUp": "rich-byrne",
+  "competitors": {
+    "stephen-devine": ["rory-mcilroy", "justin-thomas", "mackenzie-hughes"],
+    "aimee-ohanlon": ["scottie-scheffler", "justin-thomas", "jt-poston"],
+    "brian-obrolchain": ["rory-mcilroy", "justin-thomas", "harris-english"],
+    "aidan-walsh": ["rory-mcilroy", "bryson-dechambeau", "adam-scott"],
+    "rich-byrne": ["rory-mcilroy", "bryson-dechambeau", "harris-english"],
+    "cameron-folens": ["rory-mcilroy", "bryson-dechambeau", "rasmus-hojgaard"],
+    "rob-joy": ["rory-mcilroy", "ludvig-aberg", "rasmus-hojgaard"],
+    "conor-obrien": ["scottie-scheffler", "rory-mcilroy", "lucas-glover"],
+    "rob-keartland": ["tommy-fleetwood", "shane-lowry", "min-woo-lee"],
+    "david-hynes": ["viktor-hovland", "shane-lowry", "justin-rose"],
+    "john-hannaway": ["bryson-dechambeau", "ludvig-aberg", "max-homa"],
+    "rory-coffey": ["bryson-dechambeau", "justin-thomas", "keith-mitchell"],
+    "phelim-oconnor": ["bryson-dechambeau", "justin-thomas", "max-homa"]
+  }
+}

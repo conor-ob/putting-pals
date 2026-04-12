@@ -1,0 +1,20 @@
+{
+  "tournamentId": "R2021100",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "phelim-oconnor",
+  "runnerUp": "rob-keartland",
+  "competitors": {
+    "conor-obrien": ["adam-scott", "louis-oosthuizen", "paul-casey"],
+    "cameron-folens": ["jordan-spieth", "tyrrell-hatton", "richard-bland"],
+    "phelim-oconnor": ["martin-kaymer", "jon-rahm", "brooks-koepka"],
+    "stephen-devine": ["brooks-koepka", "louis-oosthuizen", "min-woo-lee"],
+    "rich-byrne": ["tyrrell-hatton", "branden-grace", "lucas-herbert"],
+    "rob-keartland": ["robert-macintyre", "rickie-fowler", "louis-oosthuizen"],
+    "aidan-walsh": ["sergio-garcia", "marc-leishman", "louis-oosthuizen"],
+    "david-hynes": ["ian-poulter", "tony-finau", "tommy-fleetwood"],
+    "john-hannaway": ["branden-grace", "shane-lowry", "robert-macintyre"],
+    "niall-cronin": ["shane-lowry", "tommy-fleetwood", "adam-scott"],
+    "rob-joy": ["jon-rahm", "rory-mcilroy", "matt-wallace"]
+  }
+}

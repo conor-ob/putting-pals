@@ -93,6 +93,17 @@ async function generatePlayers() {
     })
     .parse(playersJson);
 
+  const inputPath = path.join(packageRoot, "data/players/directory.json");
+  const rawHardcoded = z
+    .object({
+      id: z.string(),
+      displayName: z.string(),
+    })
+    .array()
+    .parse(JSON.parse(fs.readFileSync(inputPath, "utf8")));
+
+  raw.players.push(...rawHardcoded);
+
   const idx = {} as Record<string, number>;
 
   raw.players.forEach((c, i) => {

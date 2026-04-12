@@ -1,0 +1,34 @@
+{
+  "tournamentId": "R2024026",
+  "paddyPowerId": "12593221",
+  "scoringRules": null,
+  "winner": "brian-obrolchain",
+  "runnerUp": "david-hynes",
+  "competitors": {
+    "david-hynes": ["tommy-fleetwood", "tony-finau", "shane-lowry"],
+    "cameron-folens": ["scottie-scheffler", "collin-morikawa", "nick-dunlap"],
+    "aimee-ohanlon": ["scottie-scheffler", "collin-morikawa", "justin-rose"],
+    "john-hannaway": ["scottie-scheffler", "collin-morikawa", "justin-rose"],
+    "rob-joy": ["scottie-scheffler", "rory-mcilroy", "adam-hadwin"],
+    "phelim-oconnor": ["scottie-scheffler", "rory-mcilroy", "justin-rose"],
+    "rich-byrne": ["scottie-scheffler", "bryson-dechambeau", "billy-horschel"],
+    "conor-obrien": [
+      "xander-schauffele",
+      "matt-fitzpatrick",
+      "robert-macintyre"
+    ],
+    "brian-obrolchain": [
+      "collin-morikawa",
+      "bryson-dechambeau",
+      "thomas-detry"
+    ],
+    "stephen-devine": ["viktor-hovland", "sahith-theegala", "brian-harman"],
+    "aidan-walsh": ["tommy-fleetwood", "matt-fitzpatrick", "tom-kim"],
+    "karl-curran": [
+      "scottie-scheffler",
+      "matt-fitzpatrick",
+      "robert-macintyre"
+    ],
+    "ciaran-tighe": ["collin-morikawa", "tommy-fleetwood", "robert-macintyre"]
+  }
+}

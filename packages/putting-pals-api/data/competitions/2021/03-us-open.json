@@ -1,0 +1,25 @@
+{
+  "tournamentId": "R2021535",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "cameron-folens",
+  "runnerUp": "mark-byrne",
+  "competitors": {
+    "conor-obrien": ["viktor-hovland", "will-zalatoris", "adam-scott"],
+    "aidan-walsh": ["jon-rahm", "bryson-dechambeau", "wilco-nienaber"],
+    "mark-byrne": ["brooks-koepka", "louis-oosthuizen", "lee-westwood"],
+    "stephen-devine": ["tony-finau", "viktor-hovland", "stewart-cink"],
+    "david-hynes": ["lee-westwood", "shane-lowry", "patrick-reed"],
+    "cameron-folens": ["xander-schauffele", "brian-harman", "brooks-koepka"],
+    "rich-byrne": [
+      "xander-schauffele",
+      "collin-morikawa",
+      "christiaan-bezuidenhout"
+    ],
+    "phelim-oconnor": ["jason-kokrak", "gary-woodland", "jon-rahm"],
+    "john-hannaway": ["corey-conners", "scottie-scheffler", "viktor-hovland"],
+    "rob-joy": ["max-homa", "shane-lowry", "brooks-koepka"],
+    "karl-curran": ["brooks-koepka", "paul-casey", "adam-scott"],
+    "niall-cronin": ["justin-thomas", "phil-mickelson", "matt-fitzpatrick"]
+  }
+}

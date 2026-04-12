@@ -1,0 +1,20 @@
+{
+  "tournamentId": "R2023026",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "aidan-walsh",
+  "runnerUp": "rob-joy",
+  "competitors": {
+    "conor-obrien": ["max-homa", "justin-thomas", "adam-scott"],
+    "aimee-ohanlon": ["viktor-hovland", "collin-morikawa", "denny-mccarthy"],
+    "rich-byrne": ["scottie-scheffler", "brooks-koepka", "gary-woodland"],
+    "john-hannaway": ["scottie-scheffler", "viktor-hovland", "matt-kuchar"],
+    "phelim-oconnor": ["tommy-fleetwood", "justin-rose", "patrick-reed"],
+    "rob-joy": ["ryan-fox", "scottie-scheffler", "rory-mcilroy"],
+    "ciaran-tighe": ["phil-mickelson", "scottie-scheffler", "jon-rahm"],
+    "david-hynes": ["tommy-fleetwood", "adam-scott", "matt-fitzpatrick"],
+    "stephen-devine": ["viktor-hovland", "corey-conners", "russell-henley"],
+    "aidan-walsh": ["scottie-scheffler", "jon-rahm", "russell-henley"],
+    "cameron-folens": ["scottie-scheffler", "jon-rahm", "cam-davis"]
+  }
+}

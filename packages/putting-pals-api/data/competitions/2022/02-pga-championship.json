@@ -1,0 +1,30 @@
+{
+  "tournamentId": "R2022033",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "ciaran-tighe",
+  "runnerUp": "mark-byrne",
+  "competitors": {
+    "conor-obrien": ["adam-scott", "viktor-hovland", "rory-mcilroy"],
+    "brian-obrolchain": [
+      "scottie-scheffler",
+      "tommy-fleetwood",
+      "cameron-champ"
+    ],
+    "cormac-obrolchain": ["jason-day", "tiger-woods", "shane-lowry"],
+    "john-hannaway": ["shane-lowry", "corey-conners", "tommy-fleetwood"],
+    "aidan-walsh": ["rory-mcilroy", "jordan-spieth", "adam-scott"],
+    "rob-keartland": ["rory-mcilroy", "cameron-champ", "sam-burns"],
+    "phelim-oconnor": ["brooks-koepka", "adam-scott", "rory-mcilroy"],
+    "rich-byrne": ["adam-scott", "shane-lowry", "hideki-matsuyama"],
+    "stephen-devine": [
+      "scottie-scheffler",
+      "hideki-matsuyama",
+      "mackenzie-hughes"
+    ],
+    "rob-joy": ["cameron-smith", "tony-finau", "patrick-reed"],
+    "david-hynes": ["shane-lowry", "tommy-fleetwood", "tony-finau"],
+    "mark-byrne": ["gary-woodland", "will-zalatoris", "shane-lowry"],
+    "ciaran-tighe": ["max-homa", "shane-lowry", "tommy-fleetwood"]
+  }
+}

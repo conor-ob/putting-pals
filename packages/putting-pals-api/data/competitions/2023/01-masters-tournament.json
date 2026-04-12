@@ -1,0 +1,24 @@
+{
+  "tournamentId": "R2023014",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "brian-obrolchain",
+  "runnerUp": "phelim-oconnor",
+  "competitors": {
+    "aidan-walsh": ["rory-mcilroy", "jason-day", "kurt-kitayama"],
+    "aimee-ohanlon": ["scottie-scheffler", "tony-finau", "kurt-kitayama"],
+    "brian-obrolchain": ["jordan-spieth", "shane-lowry", "sahith-theegala"],
+    "cameron-folens": ["cameron-smith", "cameron-young", "cameron-champ"],
+    "conor-obrien": ["cameron-smith", "justin-thomas", "keegan-bradley"],
+    "ciaran-tighe": ["max-homa", "min-woo-lee", "tyrrell-hatton"],
+    "stephen-devine": ["rory-mcilroy", "min-woo-lee", "seamus-power"],
+    "david-hynes": ["tony-finau", "tommy-fleetwood", "seamus-power"],
+    "john-hannaway": ["tony-finau", "tommy-fleetwood", "si-woo-kim"],
+    "karl-curran": ["rory-mcilroy", "brooks-koepka", "kurt-kitayama"],
+    "mark-byrne": ["rory-mcilroy", "cameron-smith", "seamus-power"],
+    "phelim-oconnor": ["scottie-scheffler", "jon-rahm", "danny-willett"],
+    "rich-byrne": ["rory-mcilroy", "tony-finau", "kurt-kitayama"],
+    "rob-joy": ["rory-mcilroy", "collin-morikawa", "mito-pereira"],
+    "rob-keartland": ["rory-mcilroy", "corey-conners", "keith-mitchell"]
+  }
+}

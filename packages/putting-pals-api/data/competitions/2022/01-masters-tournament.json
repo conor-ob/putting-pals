@@ -1,0 +1,22 @@
+{
+  "tournamentId": "R2022014",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "rich-byrne",
+  "runnerUp": "john-hannaway",
+  "competitors": {
+    "conor-obrien": ["jon-rahm", "brooks-koepka", "robert-macintyre"],
+    "stephen-devine": ["scottie-scheffler", "si-woo-kim", "seamus-power"],
+    "john-hannaway": ["si-woo-kim", "scottie-scheffler", "tommy-fleetwood"],
+    "brian-obrolchain": ["kevin-kisner", "scottie-scheffler", "brooks-koepka"],
+    "ciaran-tighe": ["justin-thomas", "cameron-smith", "kevin-kisner"],
+    "aidan-walsh": ["shane-lowry", "bubba-watson", "daniel-berger"],
+    "rob-joy": ["tom-hoge", "viktor-hovland", "dustin-johnson"],
+    "rich-byrne": ["justin-thomas", "scottie-scheffler", "robert-macintyre"],
+    "rob-keartland": ["shane-lowry", "joaquin-niemann", "max-homa"],
+    "david-hynes": ["shane-lowry", "tommy-fleetwood", "billy-horschel"],
+    "phelim-oconnor": ["justin-thomas", "sergio-garcia", "tommy-fleetwood"],
+    "cameron-folens": ["corey-conners", "marc-leishman", "louis-oosthuizen"],
+    "mark-byrne": ["dustin-johnson", "collin-morikawa", "lee-westwood"]
+  }
+}

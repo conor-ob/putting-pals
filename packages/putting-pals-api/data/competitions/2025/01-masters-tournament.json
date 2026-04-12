@@ -1,0 +1,30 @@
+{
+  "tournamentId": "R2025014",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "rory-coffey",
+  "runnerUp": "brian-obrolchain",
+  "competitors": {
+    "brian-obrolchain": [
+      "scottie-scheffler",
+      "rory-mcilroy",
+      "rasmus-hojgaard"
+    ],
+    "cameron-folens": ["scottie-scheffler", "rory-mcilroy", "lucas-glover"],
+    "rich-byrne": ["scottie-scheffler", "robert-macintyre", "justin-rose"],
+    "rob-joy": ["rory-mcilroy", "justin-thomas", "sahith-theegala"],
+    "aidan-walsh": ["collin-morikawa", "min-woo-lee", "sepp-straka"],
+    "david-hynes": ["tommy-fleetwood", "shane-lowry", "tony-finau"],
+    "mark-byrne": ["scottie-scheffler", "collin-morikawa", "matt-fitzpatrick"],
+    "ciaran-tighe": ["scottie-scheffler", "ludvig-aberg", "aaron-rai"],
+    "niall-cronin": ["rory-mcilroy", "shane-lowry", "justin-rose"],
+    "karl-curran": ["rory-mcilroy", "shane-lowry", "keegan-bradley"],
+    "aimee-ohanlon": ["scottie-scheffler", "shane-lowry", "justin-rose"],
+    "conor-obrien": ["bryson-dechambeau", "xander-schauffele", "tom-kim"],
+    "stephen-devine": ["rory-mcilroy", "min-woo-lee", "sergio-garcia"],
+    "john-hannaway": ["joaquin-niemann", "viktor-hovland", "akshay-bhatia"],
+    "cian-moynihan": ["ludvig-aberg", "robert-macintyre", "tony-finau"],
+    "phelim-oconnor": ["scottie-scheffler", "cameron-smith", "patrick-reed"],
+    "rory-coffey": ["scottie-scheffler", "corey-conners", "patrick-reed"]
+  }
+}

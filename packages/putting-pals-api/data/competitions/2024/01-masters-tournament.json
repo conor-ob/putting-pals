@@ -1,0 +1,26 @@
+{
+  "tournamentId": "R2024014",
+  "paddyPowerId": "12571448",
+  "scoringRules": null,
+  "winner": "rich-byrne",
+  "runnerUp": "brian-obrolchain",
+  "competitors": {
+    "rob-joy": ["scottie-scheffler", "rory-mcilroy", "taylor-moore"],
+    "mark-byrne": ["tommy-fleetwood", "patrick-reed", "harris-english"],
+    "stephen-devine": ["xander-schauffele", "shane-lowry", "chris-kirk"],
+    "aimee-ohanlon": ["scottie-scheffler", "jordan-spieth", "chris-kirk"],
+    "ciaran-tighe": ["wyndham-clark", "min-woo-lee", "adam-scott"],
+    "phelim-oconnor": ["scottie-scheffler", "jon-rahm", "chris-kirk"],
+    "brian-obrolchain": ["scottie-scheffler", "rory-mcilroy", "chris-kirk"],
+    "niall-cronin": ["jon-rahm", "si-woo-kim", "adam-scott"],
+    "david-hynes": ["tony-finau", "max-homa", "si-woo-kim"],
+    "aidan-walsh": ["brooks-koepka", "hideki-matsuyama", "phil-mickelson"],
+    "cameron-folens": ["jon-rahm", "collin-morikawa", "justin-rose"],
+    "rob-keartland": ["scottie-scheffler", "brooks-koepka", "sepp-straka"],
+    "conor-obrien": ["rory-mcilroy", "dustin-johnson", "tom-kim"],
+    "john-hannaway": ["justin-thomas", "viktor-hovland", "rickie-fowler"],
+    "karl-curran": ["ludvig-aberg", "dustin-johnson", "rickie-fowler"],
+    "rich-byrne": ["scottie-scheffler", "xander-schauffele", "sepp-straka"],
+    "cian-moynihan": ["jon-rahm", "tony-finau", "sergio-garcia"]
+  }
+}

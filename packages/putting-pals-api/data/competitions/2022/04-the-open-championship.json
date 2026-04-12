@@ -1,0 +1,32 @@
+{
+  "tournamentId": "R2022100",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "rich-byrne",
+  "runnerUp": "brian-obrolchain",
+  "competitors": {
+    "conor-obrien": [
+      "xander-schauffele",
+      "matt-fitzpatrick",
+      "francesco-molinari"
+    ],
+    "john-hannaway": ["shane-lowry", "thomas-pieters", "robert-macintyre"],
+    "karl-curran": ["will-zalatoris", "seamus-power", "viktor-hovland"],
+    "rich-byrne": ["rory-mcilroy", "shane-lowry", "kevin-kisner"],
+    "brian-obrolchain": [
+      "rory-mcilroy",
+      "dylan-frittelli",
+      "xander-schauffele"
+    ],
+    "rob-joy": ["corey-conners", "collin-morikawa", "patrick-cantlay"],
+    "ciaran-tighe": ["robert-macintyre", "jon-rahm", "seamus-power"],
+    "aidan-walsh": ["xander-schauffele", "seamus-power", "tiger-woods"],
+    "rob-keartland": ["rory-mcilroy", "robert-macintyre", "billy-horschel"],
+    "cameron-folens": ["will-zalatoris", "joaquin-niemann", "robert-macintyre"],
+    "david-hynes": ["viktor-hovland", "collin-morikawa", "padraig-harrington"],
+    "aimee-ohanlon": ["rory-mcilroy", "louis-oosthuizen", "mito-pereira"],
+    "mark-byrne": ["paul-casey", "collin-morikawa", "shane-lowry"],
+    "stephen-devine": ["kevin-kisner", "xander-schauffele", "matt-fitzpatrick"],
+    "phelim-oconnor": ["jordan-smith", "xander-schauffele", "scottie-scheffler"]
+  }
+}

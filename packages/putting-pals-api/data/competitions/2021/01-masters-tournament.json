@@ -1,0 +1,24 @@
+{
+  "tournamentId": "R2021536",
+  "paddyPowerId": null,
+  "scoringRules": null,
+  "winner": "stephen-devine",
+  "runnerUp": "conor-obrien",
+  "competitors": {
+    "conor-obrien": ["cameron-smith", "scottie-scheffler", "corey-conners"],
+    "stephen-devine": ["jon-rahm", "collin-morikawa", "si-woo-kim"],
+    "rich-byrne": ["dustin-johnson", "rory-mcilroy", "ian-poulter"],
+    "brian-obrolchain": ["will-zalatoris", "patrick-cantlay", "sergio-garcia"],
+    "cameron-folens": ["justin-thomas", "shane-lowry", "matt-kuchar"],
+    "rob-joy": ["dustin-johnson", "rory-mcilroy", "victor-perez"],
+    "niall-cronin": ["francesco-molinari", "brooks-koepka", "justin-thomas"],
+    "phelim-oconnor": ["corey-conners", "bubba-watson", "justin-thomas"],
+    "karl-curran": ["brooks-koepka", "sergio-garcia", "justin-rose"],
+    "david-hynes": ["adam-scott", "tommy-fleetwood", "shane-lowry"],
+    "aidan-walsh": ["rory-mcilroy", "sergio-garcia", "justin-rose"],
+    "rob-keartland": ["dustin-johnson", "justin-thomas", "kevin-kisner"],
+    "ciaran-tighe": ["justin-thomas", "collin-morikawa", "matthew-wolff"],
+    "mark-byrne": ["cameron-smith", "bubba-watson", "louis-oosthuizen"],
+    "john-hannaway": ["collin-morikawa", "abraham-ancer", "cameron-smith"]
+  }
+}
