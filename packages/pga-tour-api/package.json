@@ -13,7 +13,7 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "codegen": "graphql-codegen --config codegen.ts",
+    "codegen": "graphql-codegen --config codegen.ts && tsx codegen.ts",
     "typecheck": "tsc --noEmit true",
     "test": "vitest"
   },
@@ -21,7 +21,8 @@
     "@putting-pals/iso-countries": "workspace:*",
     "@putting-pals/putting-pals-core": "workspace:*",
     "cheerio": "^1.1.2",
-    "date-fns": "^4.1.0"
+    "date-fns": "^4.1.0",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "catalog:",
@@ -35,6 +36,7 @@
     "@types/node": "catalog:",
     "graphql": "catalog:",
     "graphql-request": "catalog:",
+    "tsx": "^4.21.0",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }

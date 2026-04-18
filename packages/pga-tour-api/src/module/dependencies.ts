@@ -2,6 +2,7 @@ import type {
   ActiveTournamentClient,
   BatchTournamentClient,
   LeaderboardClient,
+  PlayerClient,
   ScheduleClient,
   SeasonClient,
   TournamentClient,
@@ -9,6 +10,7 @@ import type {
 import { GraphQLClient } from "graphql-request";
 import { getSdk } from "../generated/graphql";
 import { PgaTourApiLeaderboardClient } from "../leaderboard/leaderboard-client";
+import { PgaTourApiPlayerClient } from "../player/player-client";
 import { PgaTourApiScheduleClient } from "../schedule/schedule-client";
 import { PgaTourApiSeasonClient } from "../season/season-client";
 import { PgaTourWebScraperActiveTournamentClient } from "../tournament/active-tournament-client";
@@ -22,6 +24,7 @@ export function injectDependencies(): {
   tournamentClient: TournamentClient;
   batchTournamentClient: BatchTournamentClient;
   activeTournamentClient: ActiveTournamentClient;
+  playerClient: PlayerClient;
 } {
   const client = new GraphQLClient("https://orchestrator.pgatour.com/graphql", {
     headers: {
@@ -40,5 +43,6 @@ export function injectDependencies(): {
     activeTournamentClient: new PgaTourWebScraperActiveTournamentClient(
       "https://www.pgatour.com",
     ),
+    playerClient: new PgaTourApiPlayerClient(),
   };
 }

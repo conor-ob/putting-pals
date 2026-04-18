@@ -614,7 +614,7 @@ export type ApiContentFragmentType = {
   path: Scalars['String']['output'];
 };
 
-export type ApiContentFragments = ApiBrazeFragment | ApiDropdownFragment | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopUserProfile | ApiKopZigZag | ApiLandingPageImageBlock | ApiMediaGallery | ApiOddsToWinTracker | ApiTglBoxScoreFragment | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
+export type ApiContentFragments = ApiBrazeFragment | ApiDropdownFragment | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopUserProfile | ApiKopZigZag | ApiLandingPageImageBlock | ApiMediaGallery | ApiOddsToWinTracker | ApiRangePromoFragment | ApiTglBoxScoreFragment | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
 
 export type ApiContentFragmentsCompressed = {
   __typename: 'ContentFragmentsCompressed';
@@ -7537,6 +7537,11 @@ export type ApiRadarNormalizedTrajectoryV2 = {
   zFit?: Maybe<Array<Scalars['Float']['output']>>;
 };
 
+export type ApiRangePromoFragment = {
+  __typename: 'RangePromoFragment';
+  tournamentId: Scalars['String']['output'];
+};
+
 export type ApiRangeWeatherTemp = {
   __typename: 'RangeWeatherTemp';
   maxTempC: Scalars['String']['output'];
@@ -9379,6 +9384,7 @@ export type ApiTglTeam = {
 
 export type ApiTspLeaderboard = {
   __typename: 'TSPLeaderboard';
+  bubblePill?: Maybe<ApiBubblePill>;
   currentRound: Scalars['Int']['output'];
   currentRoundScoringFormat?: Maybe<Scalars['String']['output']>;
   disableOdds: Scalars['Boolean']['output'];
