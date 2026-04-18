@@ -3,10 +3,10 @@ name: ⚡️ CI
 on:
   push:
     branches:
-      - main
+      - legacy
   pull_request:
     branches:
-      - main
+      - legacy
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

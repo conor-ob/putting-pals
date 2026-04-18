@@ -18,6 +18,7 @@ import mastersTournament2025 from "./data/2025/mastersTournament";
 import pgaChampionship2025 from "./data/2025/pgaChampionship";
 import theOpenChampionship2025 from "./data/2025/theOpenChampionship";
 import usOpen2025 from "./data/2025/usOpen";
+import mastersTournament2026 from "./data/2026/mastersTournament";
 
 const majorCompetitions2021 = [
   mastersTournament2021,
@@ -49,12 +50,14 @@ const majorCompetitions2025 = [
   usOpen2025,
   theOpenChampionship2025,
 ];
+const majorCompetitions2026 = [mastersTournament2026];
 const competitions = [
   ...majorCompetitions2021,
   ...majorCompetitions2022,
   ...majorCompetitions2023,
   ...majorCompetitions2024,
   ...majorCompetitions2025,
+  ...majorCompetitions2026,
 ].map((it) => ({
   ...it,
   seasonId: getSeasonId(it.tournamentId),
@@ -127,6 +130,8 @@ function getSeasonId(tournamentId: string) {
     return "2024";
   } else if (tournamentId.startsWith("R2025")) {
     return "2025";
+  } else if (tournamentId.startsWith("R2026")) {
+    return "2026";
   } else {
     throw new Error("Invalid tournamentId");
   }
@@ -161,7 +166,11 @@ function getShortName(tournamentId: string) {
 }
 
 function getScoringRules(tournamentId: string) {
-  if (tournamentId === "R2025026" || tournamentId === "R2025100") {
+  if (
+    tournamentId === "R2025026" ||
+    tournamentId === "R2025100" ||
+    tournamentId === "R2026014"
+  ) {
     return "MISSED_CUT";
   }
 

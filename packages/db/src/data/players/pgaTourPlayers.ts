@@ -38,6 +38,10 @@ export const cameronSmith = "35891";
 
 export const cameronYoung = "57366";
 
+export const carlosOrtiz = "33667";
+
+export const chrisGotterup = "59095";
+
 export const chrisKirk = "30926";
 
 export const christiaanBezuidenhout = "45522";
@@ -69,6 +73,8 @@ export const harrisEnglish = "34099";
 export const hidekiMatsuyama = "32839";
 
 export const ianPoulter = "24138";
+
+export const jacobBridgeman = "60004";
 
 export const jasonDay = "28089";
 
@@ -129,6 +135,8 @@ export const matthewJordan = "55955";
 export const matthewWolff = "56278";
 
 export const maxHoma = "39977";
+
+export const michaelKim = "39975";
 
 export const minWooLee = "37378";
 

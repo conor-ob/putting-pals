@@ -27,7 +27,7 @@ export function getWeatherIconSvgUrl(
   if (mappedWeatherCondition === undefined) {
     return undefined;
   } else {
-    return `https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${mappedWeatherCondition}.svg`;
+    return `https://cdn.meteocons.com/3.0.0-next.6/svg/fill/${mappedWeatherCondition}.svg`;
   }
 }
 

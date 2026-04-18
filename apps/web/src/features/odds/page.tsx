@@ -19,7 +19,7 @@ type Runner = {
 };
 
 // TODO remove hardcoded id
-const tid = "R2025100";
+const tid = "R2026014";
 const cid = "12679628";
 
 export function OddsPage() {
