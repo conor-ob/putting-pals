@@ -51,10 +51,7 @@ const majorCompetitions2025 = [
   usOpen2025,
   theOpenChampionship2025,
 ];
-const majorCompetitions2026 = [
-  mastersTournament2026,
-  pgaChampionship2026
-];
+const majorCompetitions2026 = [mastersTournament2026, pgaChampionship2026];
 const competitions = [
   ...majorCompetitions2021,
   ...majorCompetitions2022,
