@@ -53,7 +53,7 @@ export function LeadboardPlayerRow({
             className={cn(
               "flex w-12 justify-center text-sm font-semibold tracking-tighter",
               totalSort < 0 && "text-red",
-              totalSort === 0 && "text-green",
+              totalSort === 0 && total !== "-" && "text-green",
             )}
           >
             {total}

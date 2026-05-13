@@ -34,11 +34,13 @@ export class CompetitionService {
               picks: scoringAdjustedPicks,
               position: "",
               total:
-                totalSort === 0
-                  ? "E"
-                  : totalSort > 0
-                    ? `+${totalSort}`
-                    : `${totalSort}`,
+                scoringAdjustedPicks.every((pick) => pick.scoringData.total === "-")
+                  ? "-"
+                  : totalSort === 0
+                    ? "E"
+                    : totalSort > 0
+                      ? `+${totalSort}`
+                      : `${totalSort}`,
               totalSort: totalSort,
             };
           })

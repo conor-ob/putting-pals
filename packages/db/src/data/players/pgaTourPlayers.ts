@@ -12,6 +12,8 @@ export const akshayBhatia = "56630";
 
 export const aldrichPotgieter = "63343";
 
+export const alexFitzpatrick = "55721";
+
 export const alexNoren = "27349";
 
 export const benGriffin = "54591";
@@ -133,6 +135,8 @@ export const mattWallace = "48887";
 export const matthewJordan = "55955";
 
 export const matthewWolff = "56278";
+
+export const maxGreyserman = "51977";
 
 export const maxHoma = "39977";
 
