@@ -91,6 +91,6 @@ export default {
     {
       ...davidHynes,
       picks: [mattFitzpatrick, tyrrellHatton, shaneLowry], // 20 + 45 + 60 = 125/1
-    }
+    },
   ],
 };
