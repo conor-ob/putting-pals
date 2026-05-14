@@ -58,6 +58,8 @@ export const danielBrown = "57259";
 
 export const dannyWillett = "32139";
 
+export const davidPuig = "61193";
+
 export const dennyMccarthy = "47993";
 
 export const dustinJohnson = "30925";
@@ -71,6 +73,8 @@ export const garyWoodland = "31323";
 export const haroldVarnerIII = "37189";
 
 export const harrisEnglish = "34099";
+
+export const harryHall = "57975";
 
 export const hidekiMatsuyama = "32839";
 
