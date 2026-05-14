@@ -2,6 +2,7 @@ import {
   aidanWalsh,
   aimeeOhanlon,
   brianObrolchain,
+  cameronFolens,
   conorObrien,
   davidHynes,
   johnHannaway,
@@ -55,6 +56,10 @@ export default {
     {
       ...markByrne,
       picks: [ludvigAberg, chrisGotterup, alexFitzpatrick], // 16 + 50 + 80 = 146/1
+    },
+    {
+      ...cameronFolens,
+      picks: [cameronYoung, mattFitzpatrick, coreyConners], // 12 + 20 + 110 = 142/1
     },
     {
       ...robJoy,
