@@ -545,6 +545,8 @@ export type CategoryPlayerStat = {
   color: StatColor;
   statName: Scalars['String']['output'];
   statValue: Scalars['String']['output'];
+  supportingData?: Maybe<Scalars['String']['output']>;
+  supportingDataColor?: Maybe<StatColor>;
 };
 
 export type CategoryStat = {
@@ -615,7 +617,7 @@ export type ContentFragmentType = {
   path: Scalars['String']['output'];
 };
 
-export type ContentFragments = BrazeFragment | DropdownFragment | HomepageLead | HomepageNews | HomepageProgramStanding | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopUserProfile | KopZigZag | LandingPageImageBlock | MediaGallery | OddsToWinTracker | TglBoxScoreFragment | ThreeUpPhoto | ThreeUpStats | TwoColumn | VideoHero;
+export type ContentFragments = BrazeFragment | DropdownFragment | HomepageLead | HomepageNews | HomepageProgramStanding | KopHeader | KopSignUp | KopStandingsList | KopSubheader | KopUpcomingTournament | KopUserProfile | KopZigZag | LandingPageImageBlock | MediaGallery | OddsToWinTracker | RangePromoFragment | TglBoxScoreFragment | ThreeUpPhoto | ThreeUpStats | TwoColumn | VideoHero;
 
 export type ContentFragmentsCompressed = {
   __typename?: 'ContentFragmentsCompressed';
@@ -3048,7 +3050,7 @@ export type ListItem = {
   segments: Array<Maybe<ListNodeItems>>;
 };
 
-export type ListNodeItems = NewsArticleContentSegment | NewsArticleParagraph | NewsArticlePlayerTournamentOdds | UnorderedListNode;
+export type ListNodeItems = ListItem | NewsArticleContentSegment | NewsArticleParagraph | NewsArticlePlayerTournamentOdds | UnorderedListNode;
 
 export enum LiveOverride {
   ForceOff = 'FORCE_OFF',
@@ -3927,6 +3929,7 @@ export type NewsArticleDetails = {
   cta?: Maybe<CallToAction>;
   datePublished: Scalars['AWSTimestamp']['output'];
   disableAds: Scalars['Boolean']['output'];
+  favoritePlayers?: Maybe<Array<NewsArticleFavoritePlayer>>;
   franchise: Scalars['String']['output'];
   franchiseDisplayName: Scalars['String']['output'];
   headline: Scalars['String']['output'];
@@ -3989,6 +3992,14 @@ export type NewsArticleEmbedded = {
   mobileHeight?: Maybe<Scalars['String']['output']>;
   scroll?: Maybe<Scalars['Boolean']['output']>;
   url?: Maybe<Scalars['String']['output']>;
+};
+
+export type NewsArticleFavoritePlayer = {
+  __typename?: 'NewsArticleFavoritePlayer';
+  countryCode: Scalars['String']['output'];
+  countryName: Scalars['String']['output'];
+  playerId: Scalars['String']['output'];
+  playerName: Scalars['String']['output'];
 };
 
 export type NewsArticleFormat = {
@@ -4069,7 +4080,7 @@ export type NewsArticleMetadataSegment = {
   value?: Maybe<Scalars['String']['output']>;
 };
 
-export type NewsArticleNode = ArticleOddsTableQuery | CerosEmbedPlugin | ExpertPicksNode | NewsArticleBlockQuote | NewsArticleDivider | NewsArticleEmbedded | NewsArticleHeader | NewsArticleHowToWatch | NewsArticleImage | NewsArticleInstagram | NewsArticleLineBreak | NewsArticleLink | NewsArticleOddsGraph | NewsArticleOddsParagraph | NewsArticleParagraph | NewsArticlePhotoGallery | NewsArticlePlayerComparison | NewsArticleScoreCard | NewsArticleStats | NewsArticleText | NewsArticleTweetNode | NewsArticleVideo | NewsArticleWeather | RelatedFactsNode | TglBoxScore | TableFragment | UnorderedListNode;
+export type NewsArticleNode = ArticleOddsTableQuery | CerosEmbedPlugin | ExpertPicksNode | NewsArticleBlockQuote | NewsArticleDivider | NewsArticleEmbedded | NewsArticleHeader | NewsArticleHowToWatch | NewsArticleImage | NewsArticleInstagram | NewsArticleLineBreak | NewsArticleLink | NewsArticleOddsGraph | NewsArticleOddsParagraph | NewsArticleParagraph | NewsArticlePhotoGallery | NewsArticlePlayerComparison | NewsArticleScoreCard | NewsArticleStats | NewsArticleText | NewsArticleTweetNode | NewsArticleVideo | NewsArticleWeather | RelatedFactsNode | TglBoxScore | TableFragment | TrendingModuleNode | UnorderedListNode;
 
 export type NewsArticleOddsGraph = {
   __typename?: 'NewsArticleOddsGraph';
@@ -4894,6 +4905,7 @@ export type PlayerHubArticleLink = {
   franchise: Scalars['String']['output'];
   franchiseDisplayName: Scalars['String']['output'];
   players?: Maybe<Array<ArticlePlayer>>;
+  publishDate?: Maybe<Scalars['AWSTimestamp']['output']>;
   /**   Optional sponsor for sponsored articles */
   sponsor?: Maybe<NewsArticleSponsor>;
   thumbnail?: Maybe<ImageAsset>;
@@ -7591,6 +7603,11 @@ export type RadarNormalizedTrajectoryV2 = {
   zFit?: Maybe<Array<Scalars['Float']['output']>>;
 };
 
+export type RangePromoFragment = {
+  __typename?: 'RangePromoFragment';
+  tournamentId: Scalars['String']['output'];
+};
+
 export type RangeWeatherTemp = {
   __typename?: 'RangeWeatherTemp';
   maxTempC: Scalars['String']['output'];
@@ -9455,6 +9472,7 @@ export type TglTeam = {
 
 export type TspLeaderboard = {
   __typename?: 'TSPLeaderboard';
+  bubblePill?: Maybe<BubblePill>;
   currentRound: Scalars['Int']['output'];
   currentRoundScoringFormat?: Maybe<Scalars['String']['output']>;
   disableOdds: Scalars['Boolean']['output'];
@@ -10620,6 +10638,11 @@ export type TournamentsPillConfig = {
 };
 
 export type TrendingFeedItem = NewsArticle | Video;
+
+export type TrendingModuleNode = {
+  __typename?: 'TrendingModuleNode';
+  title?: Maybe<Scalars['String']['output']>;
+};
 
 export type TspPlayer = {
   __typename?: 'TspPlayer';

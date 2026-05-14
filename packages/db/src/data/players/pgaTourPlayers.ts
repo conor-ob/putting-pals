@@ -12,6 +12,8 @@ export const akshayBhatia = "56630";
 
 export const aldrichPotgieter = "63343";
 
+export const alexFitzpatrick = "55721";
+
 export const alexNoren = "27349";
 
 export const benGriffin = "54591";
@@ -56,6 +58,8 @@ export const danielBrown = "57259";
 
 export const dannyWillett = "32139";
 
+export const davidPuig = "61193";
+
 export const dennyMccarthy = "47993";
 
 export const dustinJohnson = "30925";
@@ -69,6 +73,8 @@ export const garyWoodland = "31323";
 export const haroldVarnerIII = "37189";
 
 export const harrisEnglish = "34099";
+
+export const harryHall = "57975";
 
 export const hidekiMatsuyama = "32839";
 
@@ -133,6 +139,8 @@ export const mattWallace = "48887";
 export const matthewJordan = "55955";
 
 export const matthewWolff = "56278";
+
+export const maxGreyserman = "51977";
 
 export const maxHoma = "39977";
 

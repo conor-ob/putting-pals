@@ -19,6 +19,7 @@ import pgaChampionship2025 from "./data/2025/pgaChampionship";
 import theOpenChampionship2025 from "./data/2025/theOpenChampionship";
 import usOpen2025 from "./data/2025/usOpen";
 import mastersTournament2026 from "./data/2026/mastersTournament";
+import pgaChampionship2026 from "./data/2026/pgaChampionship";
 
 const majorCompetitions2021 = [
   mastersTournament2021,
@@ -50,7 +51,7 @@ const majorCompetitions2025 = [
   usOpen2025,
   theOpenChampionship2025,
 ];
-const majorCompetitions2026 = [mastersTournament2026];
+const majorCompetitions2026 = [mastersTournament2026, pgaChampionship2026];
 const competitions = [
   ...majorCompetitions2021,
   ...majorCompetitions2022,
@@ -169,7 +170,8 @@ function getScoringRules(tournamentId: string) {
   if (
     tournamentId === "R2025026" ||
     tournamentId === "R2025100" ||
-    tournamentId === "R2026014"
+    tournamentId === "R2026014" ||
+    tournamentId === "R2026033"
   ) {
     return "MISSED_CUT";
   }
