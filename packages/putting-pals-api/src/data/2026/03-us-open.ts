@@ -3,5 +3,6 @@ export default {
   paddyPowerId: undefined,
   winnerId: undefined,
   runnerUpId: undefined,
+  scoringRules: "MISSED_CUT",
   competitors: [],
 };

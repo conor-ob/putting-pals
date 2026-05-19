@@ -58,12 +58,14 @@ export const ApiLeaderboardCompetitionSchema = z.object({
           value: z.number(),
           displayValue: z.string(),
         }),
-        linescores: z.array(
-          z.object({
-            period: z.number(),
-            displayValue: z.string().optional(),
-          }),
-        ),
+        linescores: z
+          .array(
+            z.object({
+              period: z.number(),
+              displayValue: z.string().optional(),
+            }),
+          )
+          .optional(),
         athlete: z.object({
           id: z.string(),
           uid: z.string(),
@@ -176,7 +178,7 @@ export const ApiLeaderboardEventSchema = z.object({
       ),
       address: z.object({
         city: z.string(),
-        country: z.string(),
+        country: z.string().optional(),
       }),
     }),
   ),
