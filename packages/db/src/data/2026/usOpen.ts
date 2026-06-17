@@ -64,6 +64,6 @@ export default {
     {
       ...robKeartland,
       picks: [jonRahm, jordanSpieth, shaneLowry],
-    }
+    },
   ],
 };
