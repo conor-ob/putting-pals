@@ -178,6 +178,8 @@ export const russellHenley = "34098";
 
 export const ryanFox = "29936";
 
+export const ryanGerard = "59018";
+
 export const sahithTheegala = "51634";
 
 export const samBurns = "47504";
