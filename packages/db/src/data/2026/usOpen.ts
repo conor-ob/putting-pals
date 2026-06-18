@@ -2,6 +2,7 @@ import {
   aidanWalsh,
   aimeeOhanlon,
   brianObrolchain,
+  cameronFolens,
   conorObrien,
   davidHynes,
   johnHannaway,
@@ -13,6 +14,7 @@ import {
 import {
   aaronRai,
   adamScott,
+  alexNoren,
   cameronYoung,
   collinMorikawa,
   garyWoodland,
@@ -30,6 +32,7 @@ import {
   shaneLowry,
   tommyFleetwood,
   tyrrellHatton,
+  wyndhamClark,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
 
@@ -78,6 +81,10 @@ export default {
     {
       ...robJoy,
       picks: [scottieScheffler, roryMcilroy, jtPoston], // 5.5 + 11 + 110 = 126.5/1
+    },
+    {
+      ...cameronFolens,
+      picks: [scottieScheffler, wyndhamClark, alexNoren], // 5.5 + 40 + 80 = 125.5/1
     },
   ],
 };
