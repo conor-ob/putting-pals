@@ -61,7 +61,7 @@ export default {
     },
     {
       ...davidHynes,
-      picks: [collinMorikawa, justinRose, shaneLowry], // 35 + 40 + 60 = 135/1 
+      picks: [collinMorikawa, justinRose, shaneLowry], // 35 + 40 + 60 = 135/1
     },
     {
       ...aimeeOhanlon,
