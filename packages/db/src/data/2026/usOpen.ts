@@ -1,5 +1,7 @@
 import {
+  aidanWalsh,
   aimeeOhanlon,
+  brianObrolchain,
   conorObrien,
   davidHynes,
   johnHannaway,
@@ -12,6 +14,8 @@ import {
   aaronRai,
   adamScott,
   cameronYoung,
+  collinMorikawa,
+  garyWoodland,
   jacobBridgeman,
   jonRahm,
   jordanSpieth,
@@ -19,10 +23,12 @@ import {
   justinRose,
   mattFitzpatrick,
   rickieFowler,
+  robertMacIntyre,
   roryMcilroy,
   ryanGerard,
   scottieScheffler,
   shaneLowry,
+  tommyFleetwood,
   tyrrellHatton,
   xanderSchauffele,
 } from "../players/pgaTourPlayers";
@@ -38,6 +44,30 @@ export default {
       picks: [mattFitzpatrick, cameronYoung, jacobBridgeman], // 18 + 20 + 100 = 138/1
     },
     {
+      ...aidanWalsh,
+      picks: [mattFitzpatrick, tommyFleetwood, garyWoodland], // 18 + 20 + 100 = 138/1
+    },
+    {
+      ...phelimOconnor,
+      picks: [roryMcilroy, shaneLowry, adamScott], // 11 + 60 + 66 = 137/1
+    },
+    {
+      ...brianObrolchain,
+      picks: [xanderSchauffele, shaneLowry, robertMacIntyre], // 16 + 60 + 60 = 136/1
+    },
+    {
+      ...robKeartland,
+      picks: [jonRahm, jordanSpieth, shaneLowry], // 14 + 55 + 66 = 135/1
+    },
+    {
+      ...davidHynes,
+      picks: [collinMorikawa, justinRose, shaneLowry], // 35 + 40 + 60 = 135/1 
+    },
+    {
+      ...aimeeOhanlon,
+      picks: [scottieScheffler, xanderSchauffele, rickieFowler], // 5.5 + 16 + 110 = 131.5/1
+    },
+    {
       ...johnHannaway,
       picks: [scottieScheffler, shaneLowry, aaronRai], // 5.5 + 60 + 66 = 131.5/1
     },
@@ -48,22 +78,6 @@ export default {
     {
       ...robJoy,
       picks: [scottieScheffler, roryMcilroy, jtPoston], // 5.5 + 11 + 110 = 126.5/1
-    },
-    {
-      ...davidHynes,
-      picks: [shaneLowry, justinRose, mattFitzpatrick], // 60 + 20 + 25 = 105/1
-    },
-    {
-      ...phelimOconnor,
-      picks: [adamScott, shaneLowry, roryMcilroy],
-    },
-    {
-      ...aimeeOhanlon,
-      picks: [scottieScheffler, xanderSchauffele, rickieFowler],
-    },
-    {
-      ...robKeartland,
-      picks: [jonRahm, jordanSpieth, shaneLowry],
     },
   ],
 };
