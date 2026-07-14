@@ -452,6 +452,7 @@ export type BroadcastNetwork = {
   channelId?: Maybe<Scalars['String']['output']>;
   daiAssetKey?: Maybe<Scalars['String']['output']>;
   daiPreRollUrl?: Maybe<Scalars['String']['output']>;
+  daiProfileFields?: Maybe<Array<DaiProfileField>>;
   daiStreamActivityId?: Maybe<Scalars['String']['output']>;
   descriptionUrl?: Maybe<Scalars['String']['output']>;
   flag?: Maybe<Scalars['String']['output']>;
@@ -475,6 +476,7 @@ export type BroadcastNetwork = {
   nw?: Maybe<Scalars['String']['output']>;
   priorityNum?: Maybe<Scalars['Int']['output']>;
   prof?: Maybe<Scalars['String']['output']>;
+  profileKey?: Maybe<Scalars['String']['output']>;
   resp?: Maybe<Scalars['String']['output']>;
   simulcast?: Maybe<Scalars['Boolean']['output']>;
   simulcastUrl?: Maybe<Scalars['String']['output']>;
@@ -1267,6 +1269,12 @@ export type CutLinePossibility = {
   displayProbability: Scalars['String']['output'];
   probability: Scalars['Float']['output'];
   score: Scalars['String']['output'];
+};
+
+export type DaiProfileField = {
+  __typename?: 'DaiProfileField';
+  key: Scalars['String']['output'];
+  value?: Maybe<Scalars['String']['output']>;
 };
 
 export type DayWeather = {
@@ -7009,6 +7017,7 @@ export type QueryScheduleYearsArgs = {
 export type QueryScorecardCompressedV3Args = {
   officialEventData?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
+  resultsView?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
@@ -7048,6 +7057,7 @@ export type QueryScorecardV2Args = {
 export type QueryScorecardV3Args = {
   officialEventData?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
+  resultsView?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
@@ -7746,6 +7756,7 @@ export enum RoundFormat {
 
 export type RoundScore = {
   __typename?: 'RoundScore';
+  aiRecaps?: Maybe<Array<ScorecardRecap>>;
   complete: Scalars['Boolean']['output'];
   courseAbbreviation?: Maybe<Scalars['String']['output']>;
   courseId?: Maybe<Scalars['String']['output']>;
@@ -8295,6 +8306,13 @@ export type ScorecardHeaderPlayer = {
   position: Scalars['String']['output'];
   roundDisplay: Scalars['String']['output'];
   total: Scalars['String']['output'];
+};
+
+export type ScorecardRecap = {
+  __typename?: 'ScorecardRecap';
+  icon: PlayerHubWidgetIcon;
+  recap: Scalars['String']['output'];
+  title: Scalars['String']['output'];
 };
 
 export type ScorecardRow = {
