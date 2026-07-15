@@ -5,7 +5,7 @@
     "clean": "turbo clean && git clean -xdf node_modules",
     "codegen": "turbo codegen",
     "build": "turbo build",
-    "format": "turbo format --continue -- --cache --cache-location .cache/.prettiercache",
+    "format": "turbo format --continue -- --cache --cache-location .cache/.prettiercache --write",
     "lint": "turbo lint --continue -- --cache --cache-location .cache/.eslintcache",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
