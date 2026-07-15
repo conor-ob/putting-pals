@@ -8,6 +8,7 @@ import {
   niallCronin,
   phelimOconnor,
   richByrne,
+  robKeartland,
 } from "../competitors/puttingPalsCompetitors";
 import {
   aaronRai,
@@ -15,6 +16,7 @@ import {
   alexNoren,
   brianHarman,
   chrisGotterup,
+  collinMorikawa,
   harrisEnglish,
   joaquinNiemann,
   justinRose,
@@ -22,6 +24,7 @@ import {
   mattFitzpatrick,
   maxHoma,
   robertMacIntyre,
+  roryMcilroy,
   russellHenley,
   scottieScheffler,
   tomKim,
@@ -37,6 +40,10 @@ export default {
     {
       ...cameronFolens,
       picks: [mattFitzpatrick, tommyFleetwood, maxHoma], // 14 + 14 + 125 = 153/1
+    },
+    {
+      ...robKeartland,
+      picks: [roryMcilroy, collinMorikawa, adamScott], // 9 + 30 + 100 = 139/1
     },
     {
       ...conorObrien,
