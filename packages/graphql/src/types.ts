@@ -516,6 +516,7 @@ export type BubbleWatch = {
   bubbleId: Scalars['ID']['output'];
   bubbleType: BubbleType;
   items: Array<BubbleWatchItem>;
+  rankingColumnHeader?: Maybe<Scalars['String']['output']>;
 };
 
 export type BubbleWatchItem = {
@@ -3074,6 +3075,8 @@ export enum LiveStatus {
 
 export type LiveVideoOverride = {
   __typename?: 'LiveVideoOverride';
+  daiAssetKey?: Maybe<Scalars['String']['output']>;
+  daiProfileFields?: Maybe<Array<DaiProfileField>>;
   simulcast?: Maybe<BroadcastFullTelecast>;
   tourCode: TourCode;
   videos: Array<Video>;
@@ -4978,6 +4981,8 @@ export type PlayerHubHoleDetailWidget = {
   /**   Optional widget sponsor */
   sponsor?: Maybe<PlayerHubWidgetSponsor>;
   subTitle?: Maybe<Scalars['String']['output']>;
+  tourcastURI?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use tourcastURI */
   tourcastURL?: Maybe<Scalars['String']['output']>;
 };
 
@@ -5082,6 +5087,8 @@ export type PlayerHubShotCommentaryWidget = {
   /**   Optional widget sponsor */
   sponsor?: Maybe<PlayerHubWidgetSponsor>;
   subTitle: Scalars['String']['output'];
+  tourcastURI?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use tourcastURI */
   tourcastURL?: Maybe<Scalars['String']['output']>;
 };
 
@@ -10515,6 +10522,7 @@ export type TournamentOverview = {
   courses: Array<TournamentCourse>;
   defendingChampion?: Maybe<TournamentChampion>;
   defendingTeamChampion?: Maybe<Array<Maybe<TournamentChampion>>>;
+  eventGuideTitle?: Maybe<Scalars['String']['output']>;
   eventGuideURL?: Maybe<Scalars['String']['output']>;
   formatType: FormatType;
   iosTicketmasterApiKey?: Maybe<Scalars['String']['output']>;
