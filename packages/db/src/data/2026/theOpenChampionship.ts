@@ -36,8 +36,8 @@ import {
 export default {
   tournamentId: "R2026100",
   paddyPowerId: undefined,
-  winnerId: undefined,
-  runnerUpId: undefined,
+  winnerId: conorObrien.id,
+  runnerUpId: aimeeOhanlon.id,
   competitors: [
     {
       ...cameronFolens,
