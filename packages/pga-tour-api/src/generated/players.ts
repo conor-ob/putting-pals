@@ -50,6 +50,10 @@ export const PLAYERS = [
     "displayName": "Mitch Adcock"
   },
   {
+    "id": "67601",
+    "displayName": "Patrick Adler"
+  },
+  {
     "id": "27796",
     "displayName": "Joe Affrunti"
   },
@@ -174,6 +178,10 @@ export const PLAYERS = [
     "displayName": "Mark Anderson"
   },
   {
+    "id": "57321",
+    "displayName": "Matthew Anderson"
+  },
+  {
     "id": "29620",
     "displayName": "Willie Anderson"
   },
@@ -214,6 +222,10 @@ export const PLAYERS = [
     "displayName": "Ray Arinno"
   },
   {
+    "id": "45194",
+    "displayName": "Marcus Armitage"
+  },
+  {
     "id": "19803",
     "displayName": "Ryan Armour"
   },
@@ -232,6 +244,10 @@ export const PLAYERS = [
   {
     "id": "01036",
     "displayName": "Wally Armstrong"
+  },
+  {
+    "id": "52096",
+    "displayName": "Adri Arnaus"
   },
   {
     "id": "01037",
@@ -286,8 +302,16 @@ export const PLAYERS = [
     "displayName": "Tommy Aycock"
   },
   {
+    "id": "64052",
+    "displayName": "Angel Ayora"
+  },
+  {
     "id": "13078",
     "displayName": "Laurie Ayton"
+  },
+  {
+    "id": "63552",
+    "displayName": "Daniel Azallion"
   },
   {
     "id": "01042",
@@ -306,6 +330,10 @@ export const PLAYERS = [
     "displayName": "Sangmoon Bae"
   },
   {
+    "id": "56003",
+    "displayName": "Yongjun Bae"
+  },
+  {
     "id": "13088",
     "displayName": "Eddie Baening"
   },
@@ -316,6 +344,10 @@ export const PLAYERS = [
   {
     "id": "01045",
     "displayName": "Butch Baird"
+  },
+  {
+    "id": "60369",
+    "displayName": "Sam Bairstow"
   },
   {
     "id": "33404",
@@ -334,12 +366,24 @@ export const PLAYERS = [
     "displayName": "Al Balding"
   },
   {
+    "id": "32622",
+    "displayName": "Matthew Baldwin"
+  },
+  {
     "id": "05016",
     "displayName": "Errie Ball"
   },
   {
+    "id": "60165",
+    "displayName": "Jose Luis Ballester"
+  },
+  {
     "id": "01051",
     "displayName": "Seve Ballesteros"
+  },
+  {
+    "id": "70525",
+    "displayName": "Ronin Banerjee"
   },
   {
     "id": "13133",
@@ -574,6 +618,14 @@ export const PLAYERS = [
     "displayName": "Daniel Bennett"
   },
   {
+    "id": "30637",
+    "displayName": "Yohann Benson"
+  },
+  {
+    "id": "39464",
+    "displayName": "Derek Berg"
+  },
+  {
     "id": "07003",
     "displayName": "David Berganio, Jr."
   },
@@ -592,6 +644,10 @@ export const PLAYERS = [
   {
     "id": "05039",
     "displayName": "George Bernardin"
+  },
+  {
+    "id": "65825",
+    "displayName": "Joshua Berry"
   },
   {
     "id": "70106",
@@ -646,6 +702,10 @@ export const PLAYERS = [
     "displayName": "Roy Biancalana"
   },
   {
+    "id": "36964",
+    "displayName": "Francisco Bidé"
+  },
+  {
     "id": "23542",
     "displayName": "Tommy Biershenk"
   },
@@ -680,6 +740,10 @@ export const PLAYERS = [
   {
     "id": "33803",
     "displayName": "Lucas Bjerregaard"
+  },
+  {
+    "id": "70940",
+    "displayName": "Bard Bjoernevikl Skogen"
   },
   {
     "id": "34310",
@@ -906,6 +970,10 @@ export const PLAYERS = [
     "displayName": "Steve Bowman"
   },
   {
+    "id": "51735",
+    "displayName": "Evan Bowser"
+  },
+  {
     "id": "01114",
     "displayName": "Bob Boyd"
   },
@@ -920,6 +988,10 @@ export const PLAYERS = [
   {
     "id": "40009",
     "displayName": "Dominic Bozzelli"
+  },
+  {
+    "id": "63459",
+    "displayName": "Dan Bradbury"
   },
   {
     "id": "05067",
@@ -1088,6 +1160,18 @@ export const PLAYERS = [
   {
     "id": "01143",
     "displayName": "Brad Bryant"
+  },
+  {
+    "id": "60495",
+    "displayName": "Davis Bryant"
+  },
+  {
+    "id": "66202",
+    "displayName": "Jack Buchanan"
+  },
+  {
+    "id": "66742",
+    "displayName": "Jackson Buchanan"
   },
   {
     "id": "25273",
@@ -1262,6 +1346,10 @@ export const PLAYERS = [
     "displayName": "Michael Campbell"
   },
   {
+    "id": "46238",
+    "displayName": "Thomas Campbell"
+  },
+  {
     "id": "13752",
     "displayName": "William Campbell"
   },
@@ -1280,6 +1368,14 @@ export const PLAYERS = [
   {
     "id": "26500",
     "displayName": "Alejandro Cañizares"
+  },
+  {
+    "id": "34362",
+    "displayName": "Laurie Canter"
+  },
+  {
+    "id": "47847",
+    "displayName": "Ivan Cantero Gutierrez"
   },
   {
     "id": "35450",
@@ -1372,6 +1468,14 @@ export const PLAYERS = [
   {
     "id": "20472",
     "displayName": "Alex Cejka"
+  },
+  {
+    "id": "58303",
+    "displayName": "Ryan Celano"
+  },
+  {
+    "id": "52444",
+    "displayName": "Filippo Celli"
   },
   {
     "id": "01179",
@@ -1478,12 +1582,20 @@ export const PLAYERS = [
     "displayName": "K.J. Choi"
   },
   {
+    "id": "57342",
+    "displayName": "Seungbin Choi"
+  },
+  {
     "id": "20850",
     "displayName": "Daniel Chopra"
   },
   {
     "id": "13905",
     "displayName": "George Christ"
+  },
+  {
+    "id": "65071",
+    "displayName": "Tiger Christensen"
   },
   {
     "id": "23204",
@@ -1570,6 +1682,10 @@ export const PLAYERS = [
     "displayName": "Lennie Clements"
   },
   {
+    "id": "51151",
+    "displayName": "Todd Clements"
+  },
+  {
     "id": "19972",
     "displayName": "José Coceres"
   },
@@ -1614,8 +1730,16 @@ export const PLAYERS = [
     "displayName": "Fay Coleman"
   },
   {
+    "id": "70178",
+    "displayName": "Hamilton Coleman"
+  },
+  {
     "id": "20623",
     "displayName": "Gavin Coles"
+  },
+  {
+    "id": "59570",
+    "displayName": "Tyler Collet"
   },
   {
     "id": "05127",
@@ -1774,12 +1898,24 @@ export const PLAYERS = [
     "displayName": "Charles Courtney"
   },
   {
+    "id": "48936",
+    "displayName": "Ugo Coussaud"
+  },
+  {
     "id": "60073",
     "displayName": "Martin Couvra"
   },
   {
+    "id": "32982",
+    "displayName": "Vince Covello"
+  },
+  {
     "id": "14130",
     "displayName": "John Cowan"
+  },
+  {
+    "id": "70695",
+    "displayName": "Ryder Cowan"
   },
   {
     "id": "08835",
@@ -1824,6 +1960,10 @@ export const PLAYERS = [
   {
     "id": "14176",
     "displayName": "Otey Crisman"
+  },
+  {
+    "id": "39524",
+    "displayName": "Sean Crocker"
   },
   {
     "id": "65418",
@@ -1906,6 +2046,10 @@ export const PLAYERS = [
     "displayName": "Joe Daley"
   },
   {
+    "id": "49826",
+    "displayName": "Brad Dalke"
+  },
+  {
     "id": "01248",
     "displayName": "Rick Dalpos"
   },
@@ -1920,6 +2064,10 @@ export const PLAYERS = [
   {
     "id": "19881",
     "displayName": "Robert Damron"
+  },
+  {
+    "id": "33459",
+    "displayName": "Jens Dantorp"
   },
   {
     "id": "14283",
@@ -1958,6 +2106,10 @@ export const PLAYERS = [
     "displayName": "Jason Day"
   },
   {
+    "id": "63223",
+    "displayName": "Alejandro De Castro Piera"
+  },
+  {
     "id": "23638",
     "displayName": "Brendon de Jonge"
   },
@@ -1968,6 +2120,10 @@ export const PLAYERS = [
   {
     "id": "05163",
     "displayName": "Roberto De Vicenzo"
+  },
+  {
+    "id": "37094",
+    "displayName": "Joe Dean"
   },
   {
     "id": "47959",
@@ -1984,6 +2140,10 @@ export const PLAYERS = [
   {
     "id": "01258",
     "displayName": "John DeForest"
+  },
+  {
+    "id": "50762",
+    "displayName": "Alejandro Del Rey"
   },
   {
     "id": "39859",
@@ -2018,6 +2178,10 @@ export const PLAYERS = [
     "displayName": "Rolf Deming"
   },
   {
+    "id": "55412",
+    "displayName": "Mickey DeMorat"
+  },
+  {
     "id": "10875",
     "displayName": "Todd Demsey"
   },
@@ -2028,6 +2192,10 @@ export const PLAYERS = [
   {
     "id": "01268",
     "displayName": "Jim Dent"
+  },
+  {
+    "id": "59338",
+    "displayName": "Laurent Desmarchais"
   },
   {
     "id": "33653",
@@ -2086,8 +2254,16 @@ export const PLAYERS = [
     "displayName": "Chris DiMarco"
   },
   {
+    "id": "63196",
+    "displayName": "Wenyi Ding"
+  },
+  {
     "id": "36983",
     "displayName": "Matt Dobyns"
+  },
+  {
+    "id": "51680",
+    "displayName": "Alistair Docherty"
   },
   {
     "id": "14434",
@@ -2130,12 +2306,20 @@ export const PLAYERS = [
     "displayName": "Jamie Donaldson"
   },
   {
+    "id": "67287",
+    "displayName": "Muzzy Donohue"
+  },
+  {
     "id": "14475",
     "displayName": "Clarence Doser"
   },
   {
     "id": "14477",
     "displayName": "Jackie Doss"
+  },
+  {
+    "id": "58600",
+    "displayName": "Cooper Dossey"
   },
   {
     "id": "37338",
@@ -2178,8 +2362,16 @@ export const PLAYERS = [
     "displayName": "Jack Dowling"
   },
   {
+    "id": "68159",
+    "displayName": "Connor Doyal"
+  },
+  {
     "id": "07267",
     "displayName": "Allen Doyle"
+  },
+  {
+    "id": "65422",
+    "displayName": "Drew Doyle"
   },
   {
     "id": "14504",
@@ -2196,6 +2388,14 @@ export const PLAYERS = [
   {
     "id": "23409",
     "displayName": "James Driscoll"
+  },
+  {
+    "id": "54954",
+    "displayName": "Jesse Droemer"
+  },
+  {
+    "id": "47497",
+    "displayName": "Hennie Du Plessis"
   },
   {
     "id": "28339",
@@ -2284,6 +2484,10 @@ export const PLAYERS = [
   {
     "id": "01302",
     "displayName": "R.W. Eaks"
+  },
+  {
+    "id": "70942",
+    "displayName": "Sam Easterbrook"
   },
   {
     "id": "01303",
@@ -2380,6 +2584,14 @@ export const PLAYERS = [
   {
     "id": "06522",
     "displayName": "Ernie Els"
+  },
+  {
+    "id": "56643",
+    "displayName": "Manuel Elvira"
+  },
+  {
+    "id": "39201",
+    "displayName": "Nacho Elvira"
   },
   {
     "id": "14644",
@@ -2486,6 +2698,10 @@ export const PLAYERS = [
     "displayName": "Brad Fabel"
   },
   {
+    "id": "66776",
+    "displayName": "Brannon Fahrny"
+  },
+  {
     "id": "01325",
     "displayName": "Don Fairfield"
   },
@@ -2546,6 +2762,10 @@ export const PLAYERS = [
     "displayName": "George Fazio"
   },
   {
+    "id": "57124",
+    "displayName": "Michael Feagles"
+  },
+  {
     "id": "01330",
     "displayName": "David Feherty"
   },
@@ -2572,6 +2792,10 @@ export const PLAYERS = [
   {
     "id": "22051",
     "displayName": "Ben Ferguson"
+  },
+  {
+    "id": "50223",
+    "displayName": "Ewen Ferguson"
   },
   {
     "id": "25191",
@@ -2626,6 +2850,14 @@ export const PLAYERS = [
     "displayName": "Patrick Fishburn"
   },
   {
+    "id": "27484",
+    "displayName": "Bryce Fisher"
+  },
+  {
+    "id": "52497",
+    "displayName": "Darin Fisher"
+  },
+  {
     "id": "27896",
     "displayName": "Ross Fisher"
   },
@@ -2678,6 +2910,10 @@ export const PLAYERS = [
     "displayName": "Bruce Fleisher"
   },
   {
+    "id": "70698",
+    "displayName": "Marek Fleming"
+  },
+  {
     "id": "14819",
     "displayName": "Pete Fleming"
   },
@@ -2704,6 +2940,10 @@ export const PLAYERS = [
   {
     "id": "01359",
     "displayName": "Doug Ford"
+  },
+  {
+    "id": "37066",
+    "displayName": "Grant Forrest"
   },
   {
     "id": "14874",
@@ -2842,6 +3082,10 @@ export const PLAYERS = [
     "displayName": "Jim Furyk"
   },
   {
+    "id": "70407",
+    "displayName": "Chris Gabriele"
+  },
+  {
     "id": "23366",
     "displayName": "Brian Gaffney"
   },
@@ -2914,6 +3158,14 @@ export const PLAYERS = [
     "displayName": "Sergio Garcia"
   },
   {
+    "id": "67093",
+    "displayName": "Tony Garcia"
+  },
+  {
+    "id": "48098",
+    "displayName": "Sebastian Garcia Rodriguez"
+  },
+  {
     "id": "24399",
     "displayName": "Scott Gardiner"
   },
@@ -2950,6 +3202,10 @@ export const PLAYERS = [
     "displayName": "Jim Gauntt"
   },
   {
+    "id": "46033",
+    "displayName": "Daniel Gavins"
+  },
+  {
     "id": "19846",
     "displayName": "Brian Gay"
   },
@@ -2976,6 +3232,10 @@ export const PLAYERS = [
   {
     "id": "48045",
     "displayName": "Michael Gellerman"
+  },
+  {
+    "id": "34185",
+    "displayName": "Domenico Geminiani"
   },
   {
     "id": "01402",
@@ -3018,6 +3278,10 @@ export const PLAYERS = [
     "displayName": "Gibby Gilbert"
   },
   {
+    "id": "67947",
+    "displayName": "Josiah Gilbert"
+  },
+  {
     "id": "01413",
     "displayName": "Larry Gilbert"
   },
@@ -3040,6 +3304,10 @@ export const PLAYERS = [
   {
     "id": "05240",
     "displayName": "Roger Ginsberg"
+  },
+  {
+    "id": "35564",
+    "displayName": "Joel Girrbach"
   },
   {
     "id": "01418",
@@ -3190,6 +3458,14 @@ export const PLAYERS = [
     "displayName": "Chris Gotterup"
   },
   {
+    "id": "57263",
+    "displayName": "John Gough"
+  },
+  {
+    "id": "46594",
+    "displayName": "Ricardo Gouveia"
+  },
+  {
     "id": "20105",
     "displayName": "Jeff Gove"
   },
@@ -3286,6 +3562,14 @@ export const PLAYERS = [
     "displayName": "Joe Greer"
   },
   {
+    "id": "22752",
+    "displayName": "Greg Gregory"
+  },
+  {
+    "id": "51174",
+    "displayName": "Stuart Grehan"
+  },
+  {
     "id": "15286",
     "displayName": "Otto Greiner"
   },
@@ -3318,6 +3602,10 @@ export const PLAYERS = [
     "displayName": "Tony Grimes"
   },
   {
+    "id": "70938",
+    "displayName": "Liv Grinberg"
+  },
+  {
     "id": "07941",
     "displayName": "Mike Grob"
   },
@@ -3346,12 +3634,24 @@ export const PLAYERS = [
     "displayName": "Jeff Grygiel"
   },
   {
+    "id": "46301",
+    "displayName": "JJ Guerra"
+  },
+  {
+    "id": "28340",
+    "displayName": "Julien Guerrier"
+  },
+  {
     "id": "15334",
     "displayName": "Charles Guest"
   },
   {
     "id": "15338",
     "displayName": "Jesse Guilford"
+  },
+  {
+    "id": "59798",
+    "displayName": "Oihan Guillamoundeguy"
   },
   {
     "id": "05252",
@@ -3364,6 +3664,10 @@ export const PLAYERS = [
   {
     "id": "12626",
     "displayName": "Joey Gullion"
+  },
+  {
+    "id": "51989",
+    "displayName": "Jordan Gumberg"
   },
   {
     "id": "15347",
@@ -3384,6 +3688,10 @@ export const PLAYERS = [
   {
     "id": "35539",
     "displayName": "Luke Guthrie"
+  },
+  {
+    "id": "67202",
+    "displayName": "Luke Gutschewski"
   },
   {
     "id": "24980",
@@ -3434,6 +3742,10 @@ export const PLAYERS = [
     "displayName": "Adam Hadwin"
   },
   {
+    "id": "59601",
+    "displayName": "Grant Haefner"
+  },
+  {
     "id": "15388",
     "displayName": "Walter Hagen"
   },
@@ -3480,6 +3792,10 @@ export const PLAYERS = [
   {
     "id": "06284",
     "displayName": "Jim Hallet"
+  },
+  {
+    "id": "46724",
+    "displayName": "Jeong Woo Ham"
   },
   {
     "id": "01472",
@@ -3558,6 +3874,14 @@ export const PLAYERS = [
     "displayName": "Peter Hanson"
   },
   {
+    "id": "59326",
+    "displayName": "Albert Hansson"
+  },
+  {
+    "id": "70693",
+    "displayName": "Vaughn Harber"
+  },
+  {
     "id": "05264",
     "displayName": "Chick Harbert"
   },
@@ -3592,6 +3916,10 @@ export const PLAYERS = [
   {
     "id": "27644",
     "displayName": "Brian Harman"
+  },
+  {
+    "id": "37428",
+    "displayName": "Evan Harmeling"
   },
   {
     "id": "15487",
@@ -3714,8 +4042,16 @@ export const PLAYERS = [
     "displayName": "Ted Hayes"
   },
   {
+    "id": "70406",
+    "displayName": "Zach Haynes"
+  },
+  {
     "id": "15563",
     "displayName": "Don Headings"
+  },
+  {
+    "id": "70198",
+    "displayName": "Adam Headley"
   },
   {
     "id": "15564",
@@ -3772,6 +4108,10 @@ export const PLAYERS = [
   {
     "id": "01507",
     "displayName": "Webb Heintzelman"
+  },
+  {
+    "id": "48372",
+    "displayName": "Marcus Helligkilde"
   },
   {
     "id": "28380",
@@ -3870,12 +4210,20 @@ export const PLAYERS = [
     "displayName": "Justin Hicks"
   },
   {
+    "id": "64594",
+    "displayName": "Angel Hidalgo"
+  },
+  {
     "id": "35778",
     "displayName": "Kazuki Higa"
   },
   {
     "id": "06560",
     "displayName": "Mike Higgins"
+  },
+  {
+    "id": "65460",
+    "displayName": "Robbie Higgins"
   },
   {
     "id": "01518",
@@ -3898,6 +4246,10 @@ export const PLAYERS = [
     "displayName": "Bob Hill"
   },
   {
+    "id": "55707",
+    "displayName": "Calum Hill"
+  },
+  {
     "id": "01519",
     "displayName": "Dave Hill"
   },
@@ -3916,6 +4268,10 @@ export const PLAYERS = [
   {
     "id": "15640",
     "displayName": "Ray Hill"
+  },
+  {
+    "id": "49813",
+    "displayName": "Daniel Hillier"
   },
   {
     "id": "15649",
@@ -4018,6 +4374,10 @@ export const PLAYERS = [
     "displayName": "Mike Holland"
   },
   {
+    "id": "36344",
+    "displayName": "Michael Hollick"
+  },
+  {
     "id": "11740",
     "displayName": "Tony Hollifield"
   },
@@ -4028,6 +4388,10 @@ export const PLAYERS = [
   {
     "id": "15708",
     "displayName": "Bud Holscher"
+  },
+  {
+    "id": "54525",
+    "displayName": "Ian Holt"
   },
   {
     "id": "70147",
@@ -4044,6 +4408,10 @@ export const PLAYERS = [
   {
     "id": "15720",
     "displayName": "Wilf Homenuik"
+  },
+  {
+    "id": "59862",
+    "displayName": "Joe Hooks"
   },
   {
     "id": "15725",
@@ -4090,6 +4458,10 @@ export const PLAYERS = [
     "displayName": "Viktor Hovland"
   },
   {
+    "id": "68566",
+    "displayName": "David Howard"
+  },
+  {
     "id": "20608",
     "displayName": "David Howell"
   },
@@ -4108,6 +4480,18 @@ export const PLAYERS = [
   {
     "id": "12449",
     "displayName": "Ryan Howison"
+  },
+  {
+    "id": "66830",
+    "displayName": "Cooper Hrabak"
+  },
+  {
+    "id": "57461",
+    "displayName": "Petr Hruby"
+  },
+  {
+    "id": "70524",
+    "displayName": "Alex Huang"
   },
   {
     "id": "36801",
@@ -4150,6 +4534,10 @@ export const PLAYERS = [
     "displayName": "Willie Hunter"
   },
   {
+    "id": "58584",
+    "displayName": "Charles Huntzinger"
+  },
+  {
     "id": "15822",
     "displayName": "Jules Huot"
   },
@@ -4158,8 +4546,16 @@ export const PLAYERS = [
     "displayName": "Billy Hurley III"
   },
   {
+    "id": "62845",
+    "displayName": "Austin Hurt"
+  },
+  {
     "id": "15832",
     "displayName": "Al Huske"
+  },
+  {
+    "id": "56926",
+    "displayName": "Keenan Huskey"
   },
   {
     "id": "01553",
@@ -4180,6 +4576,10 @@ export const PLAYERS = [
   {
     "id": "05304",
     "displayName": "Bill Hyndman"
+  },
+  {
+    "id": "47277",
+    "displayName": "Daniel Iceman"
   },
   {
     "id": "26908",
@@ -4254,6 +4654,10 @@ export const PLAYERS = [
     "displayName": "Hiroshi Iwata"
   },
   {
+    "id": "69861",
+    "displayName": "Avinash Iyer"
+  },
+  {
     "id": "10821",
     "displayName": "Toshi Izawa"
   },
@@ -4306,6 +4710,10 @@ export const PLAYERS = [
     "displayName": "Filip Jakubcik"
   },
   {
+    "id": "57869",
+    "displayName": "Ben James"
+  },
+  {
     "id": "01572",
     "displayName": "Mark James"
   },
@@ -4342,6 +4750,10 @@ export const PLAYERS = [
     "displayName": "Tom Jenkins"
   },
   {
+    "id": "70415",
+    "displayName": "William Jennings"
+  },
+  {
     "id": "32878",
     "displayName": "Jin Jeong"
   },
@@ -4372,6 +4784,10 @@ export const PLAYERS = [
   {
     "id": "08633",
     "displayName": "Per-Ulrik Johansson"
+  },
+  {
+    "id": "47463",
+    "displayName": "Cameron John"
   },
   {
     "id": "15943",
@@ -4446,6 +4862,10 @@ export const PLAYERS = [
     "displayName": "Ralph Johnston"
   },
   {
+    "id": "63617",
+    "displayName": "Ryggs Johnston"
+  },
+  {
     "id": "01593",
     "displayName": "Philip Jonas"
   },
@@ -4462,12 +4882,20 @@ export const PLAYERS = [
     "displayName": "Brett Jones"
   },
   {
+    "id": "68984",
+    "displayName": "Frazer Jones"
+  },
+  {
     "id": "01596",
     "displayName": "Gordon Jones"
   },
   {
     "id": "01597",
     "displayName": "Grier Jones"
+  },
+  {
+    "id": "58391",
+    "displayName": "Jared Jones"
   },
   {
     "id": "10733",
@@ -4488,6 +4916,14 @@ export const PLAYERS = [
   {
     "id": "01600",
     "displayName": "Tom Jones"
+  },
+  {
+    "id": "60736",
+    "displayName": "Tobias Jonsson"
+  },
+  {
+    "id": "55955",
+    "displayName": "Matthew Jordan"
   },
   {
     "id": "06315",
@@ -4584,6 +5020,14 @@ export const PLAYERS = [
   {
     "id": "20218",
     "displayName": "Shingo Katayama"
+  },
+  {
+    "id": "70408",
+    "displayName": "Michael Katrude"
+  },
+  {
+    "id": "48632",
+    "displayName": "Yuto Katsuragawa"
   },
   {
     "id": "46440",
@@ -4686,6 +5130,10 @@ export const PLAYERS = [
     "displayName": "Ben Kern"
   },
   {
+    "id": "55752",
+    "displayName": "Ben Kern"
+  },
+  {
     "id": "05336",
     "displayName": "Bill Kerr"
   },
@@ -4722,6 +5170,10 @@ export const PLAYERS = [
     "displayName": "Anthony Kim"
   },
   {
+    "id": "66834",
+    "displayName": "Baekjun Kim"
+  },
+  {
     "id": "35087",
     "displayName": "Bio Kim"
   },
@@ -4750,6 +5202,10 @@ export const PLAYERS = [
     "displayName": "Si Woo Kim"
   },
   {
+    "id": "46155",
+    "displayName": "T.K. Kim"
+  },
+  {
     "id": "55182",
     "displayName": "Tom Kim"
   },
@@ -4762,6 +5218,10 @@ export const PLAYERS = [
     "displayName": "Karl Kimball"
   },
   {
+    "id": "45426",
+    "displayName": "Nathan Kimsey"
+  },
+  {
     "id": "16155",
     "displayName": "John Kinder"
   },
@@ -4772,6 +5232,10 @@ export const PLAYERS = [
   {
     "id": "01628",
     "displayName": "Jim King"
+  },
+  {
+    "id": "46404",
+    "displayName": "Marcus Kinhult"
   },
   {
     "id": "01629",
@@ -4866,6 +5330,10 @@ export const PLAYERS = [
     "displayName": "George Knudson"
   },
   {
+    "id": "56987",
+    "displayName": "Jeong Weon Ko"
+  },
+  {
     "id": "54621",
     "displayName": "Kazuma Kobori"
   },
@@ -4892,6 +5360,10 @@ export const PLAYERS = [
   {
     "id": "36884",
     "displayName": "Ben Kohles"
+  },
+  {
+    "id": "66701",
+    "displayName": "Jackson Koivun"
   },
   {
     "id": "27652",
@@ -4970,6 +5442,10 @@ export const PLAYERS = [
     "displayName": "Gary Krueger"
   },
   {
+    "id": "37446",
+    "displayName": "Jacques Kruyswijk"
+  },
+  {
     "id": "20940",
     "displayName": "Kenichi Kuboya"
   },
@@ -4986,6 +5462,10 @@ export const PLAYERS = [
     "displayName": "Peter Kuest"
   },
   {
+    "id": "60547",
+    "displayName": "Tommy Kuhl"
+  },
+  {
     "id": "16286",
     "displayName": "Gene Kunes"
   },
@@ -4996,6 +5476,10 @@ export const PLAYERS = [
   {
     "id": "01659",
     "displayName": "Massy Kuramoto"
+  },
+  {
+    "id": "70692",
+    "displayName": "Chase Kyes"
   },
   {
     "id": "16295",
@@ -5010,12 +5494,20 @@ export const PLAYERS = [
     "displayName": "Charles Lacey"
   },
   {
+    "id": "52585",
+    "displayName": "Frederic LaCroix"
+  },
+  {
     "id": "01662",
     "displayName": "Greg Ladehoff"
   },
   {
     "id": "16309",
     "displayName": "Ky Laffoon"
+  },
+  {
+    "id": "34317",
+    "displayName": "Joakim Lagergren"
   },
   {
     "id": "31420",
@@ -5098,6 +5590,10 @@ export const PLAYERS = [
     "displayName": "Fifa Laopakdee"
   },
   {
+    "id": "34607",
+    "displayName": "Francesco Laporta"
+  },
+  {
     "id": "06016",
     "displayName": "Brad Lardon"
   },
@@ -5106,8 +5602,16 @@ export const PLAYERS = [
     "displayName": "Pablo Larrazabal"
   },
   {
+    "id": "65310",
+    "displayName": "Anders Larson"
+  },
+  {
     "id": "28775",
     "displayName": "Nate Lashley"
+  },
+  {
+    "id": "34364",
+    "displayName": "David Law"
   },
   {
     "id": "16376",
@@ -5130,6 +5634,10 @@ export const PLAYERS = [
     "displayName": "Scott Laycock"
   },
   {
+    "id": "67358",
+    "displayName": "Greyson Leach"
+  },
+  {
     "id": "16393",
     "displayName": "William Leach"
   },
@@ -5146,6 +5654,10 @@ export const PLAYERS = [
     "displayName": "Nelson Ledesma"
   },
   {
+    "id": "68608",
+    "displayName": "Bryan Lee"
+  },
+  {
     "id": "29926",
     "displayName": "Danny Lee"
   },
@@ -5156,6 +5668,14 @@ export const PLAYERS = [
   {
     "id": "28092",
     "displayName": "D.H. Lee"
+  },
+  {
+    "id": "70734",
+    "displayName": "Eric Lee"
+  },
+  {
+    "id": "47443",
+    "displayName": "Junghwan Lee"
   },
   {
     "id": "32791",
@@ -5218,6 +5738,14 @@ export const PLAYERS = [
     "displayName": "Tony Lema"
   },
   {
+    "id": "25799",
+    "displayName": "Niklas Lemke"
+  },
+  {
+    "id": "46581",
+    "displayName": "Ryan Lenahan"
+  },
+  {
     "id": "16423",
     "displayName": "F. Leonard"
   },
@@ -5274,6 +5802,10 @@ export const PLAYERS = [
     "displayName": "Alexander Levy"
   },
   {
+    "id": "70574",
+    "displayName": "Dawson Lew"
+  },
+  {
     "id": "01685",
     "displayName": "J.L. Lewis"
   },
@@ -5326,6 +5858,14 @@ export const PLAYERS = [
     "displayName": "Dick Linares"
   },
   {
+    "id": "48293",
+    "displayName": "Mikael Lindberg"
+  },
+  {
+    "id": "48237",
+    "displayName": "Oliver Lindell"
+  },
+  {
     "id": "37278",
     "displayName": "Nicholas Lindheim"
   },
@@ -5356,6 +5896,10 @@ export const PLAYERS = [
   {
     "id": "01695",
     "displayName": "Gene Littler"
+  },
+  {
+    "id": "58632",
+    "displayName": "David Liu"
   },
   {
     "id": "01697",
@@ -5682,8 +6226,16 @@ export const PLAYERS = [
     "displayName": "Jack Mann"
   },
   {
+    "id": "54190",
+    "displayName": "Richard Mansell"
+  },
+  {
     "id": "16725",
     "displayName": "Dave Marad"
+  },
+  {
+    "id": "60333",
+    "displayName": "Nicholas Marchese"
   },
   {
     "id": "28158",
@@ -5794,6 +6346,10 @@ export const PLAYERS = [
     "displayName": "Brandon Matthews"
   },
   {
+    "id": "66562",
+    "displayName": "Justin Matthews"
+  },
+  {
     "id": "01761",
     "displayName": "Len Mattiace"
   },
@@ -5838,6 +6394,10 @@ export const PLAYERS = [
     "displayName": "John Mazza"
   },
   {
+    "id": "49037",
+    "displayName": "Stefano Mazzoli"
+  },
+  {
     "id": "16978",
     "displayName": "Neil Mc Intyre"
   },
@@ -5870,6 +6430,10 @@ export const PLAYERS = [
     "displayName": "Matt McCarty"
   },
   {
+    "id": "58597",
+    "displayName": "Paul McClure"
+  },
+  {
     "id": "01777",
     "displayName": "John McComish"
   },
@@ -5886,6 +6450,10 @@ export const PLAYERS = [
     "displayName": "Ryan McCormick"
   },
   {
+    "id": "59409",
+    "displayName": "Ashton McCulloch"
+  },
+  {
     "id": "01782",
     "displayName": "Mike McCullough"
   },
@@ -5900,6 +6468,10 @@ export const PLAYERS = [
   {
     "id": "29626",
     "displayName": "John McDermott"
+  },
+  {
+    "id": "36872",
+    "displayName": "Jack McDonald"
   },
   {
     "id": "25572",
@@ -6058,6 +6630,10 @@ export const PLAYERS = [
     "displayName": "Bob Menne"
   },
   {
+    "id": "33674",
+    "displayName": "Adrian Meronk"
+  },
+  {
     "id": "05418",
     "displayName": "Hans Merrell"
   },
@@ -6092,6 +6668,10 @@ export const PLAYERS = [
   {
     "id": "06515",
     "displayName": "Shaun Micheel"
+  },
+  {
+    "id": "47102",
+    "displayName": "David Micheluzzi"
   },
   {
     "id": "01810",
@@ -6234,6 +6814,10 @@ export const PLAYERS = [
     "displayName": "Francesco Molinari"
   },
   {
+    "id": "70941",
+    "displayName": "Matt Moloney"
+  },
+  {
     "id": "01830",
     "displayName": "Lloyd Monroe"
   },
@@ -6350,6 +6934,10 @@ export const PLAYERS = [
     "displayName": "John Morse"
   },
   {
+    "id": "55468",
+    "displayName": "Felix Mory"
+  },
+  {
     "id": "05443",
     "displayName": "Stan Mosel"
   },
@@ -6422,6 +7010,10 @@ export const PLAYERS = [
     "displayName": "Grayson Murray"
   },
   {
+    "id": "55420",
+    "displayName": "Cooper Musselman"
+  },
+  {
     "id": "27118",
     "displayName": "Toshinori Muto"
   },
@@ -6438,12 +7030,20 @@ export const PLAYERS = [
     "displayName": "Larry Nabholtz"
   },
   {
+    "id": "28521",
+    "displayName": "Ryutaro Nagano"
+  },
+  {
     "id": "66447",
     "displayName": "Taisei Nagasaki"
   },
   {
     "id": "05454",
     "displayName": "Kel Nagle"
+  },
+  {
+    "id": "47505",
+    "displayName": "Dylan Naidoo"
   },
   {
     "id": "49228",
@@ -6486,6 +7086,10 @@ export const PLAYERS = [
     "displayName": "Wallie Nelson"
   },
   {
+    "id": "45729",
+    "displayName": "Drew Nesbitt"
+  },
+  {
     "id": "36871",
     "displayName": "Matt NeSmith"
   },
@@ -6508,6 +7112,10 @@ export const PLAYERS = [
   {
     "id": "01866",
     "displayName": "Jack Newton"
+  },
+  {
+    "id": "58188",
+    "displayName": "James Nicholas"
   },
   {
     "id": "01867",
@@ -6579,7 +7187,7 @@ export const PLAYERS = [
   },
   {
     "id": "35706",
-    "displayName": "Niklas Norgaard"
+    "displayName": "Niklas Nørgaard"
   },
   {
     "id": "30163",
@@ -6592,6 +7200,10 @@ export const PLAYERS = [
   {
     "id": "05463",
     "displayName": "Moe Norman"
+  },
+  {
+    "id": "26328",
+    "displayName": "Shaun Norris"
   },
   {
     "id": "01877",
@@ -6640,6 +7252,10 @@ export const PLAYERS = [
   {
     "id": "17494",
     "displayName": "John O'Donnell"
+  },
+  {
+    "id": "64526",
+    "displayName": "Declan O'Donovan"
   },
   {
     "id": "01884",
@@ -6730,6 +7346,14 @@ export const PLAYERS = [
     "displayName": "Aki Ohmachi"
   },
   {
+    "id": "48933",
+    "displayName": "Ryuichi Oiwa"
+  },
+  {
+    "id": "49226",
+    "displayName": "Taehoon Ok"
+  },
+  {
     "id": "06373",
     "displayName": "José María Olazábal"
   },
@@ -6780,6 +7404,10 @@ export const PLAYERS = [
   {
     "id": "08857",
     "displayName": "Steve Oppermann"
+  },
+  {
+    "id": "70296",
+    "displayName": "Jackson Ormond"
   },
   {
     "id": "26341",
@@ -6886,6 +7514,10 @@ export const PLAYERS = [
     "displayName": "Deane Pappas"
   },
   {
+    "id": "37157",
+    "displayName": "Renato Paratore"
+  },
+  {
     "id": "20443",
     "displayName": "Jin Park"
   },
@@ -6976,6 +7608,10 @@ export const PLAYERS = [
   {
     "id": "17674",
     "displayName": "George Payton"
+  },
+  {
+    "id": "66035",
+    "displayName": "Jake Peacock"
   },
   {
     "id": "01930",
@@ -7118,6 +7754,10 @@ export const PLAYERS = [
     "displayName": "Randy Petri"
   },
   {
+    "id": "63307",
+    "displayName": "Nathan Petronzio"
+  },
+  {
     "id": "01948",
     "displayName": "Tim Petrovic"
   },
@@ -7148,6 +7788,10 @@ export const PLAYERS = [
   {
     "id": "46374",
     "displayName": "Tracy Phillips"
+  },
+  {
+    "id": "57625",
+    "displayName": "Trent Phillips"
   },
   {
     "id": "17775",
@@ -7194,12 +7838,24 @@ export const PLAYERS = [
     "displayName": "Gary Player"
   },
   {
+    "id": "70697",
+    "displayName": "Thayer Plewe"
+  },
+  {
+    "id": "59613",
+    "displayName": "Marcus Plunkett"
+  },
+  {
     "id": "01958",
     "displayName": "Dan Pohl"
   },
   {
     "id": "25240",
     "displayName": "D.A. Points"
+  },
+  {
+    "id": "47567",
+    "displayName": "Ben Polland"
   },
   {
     "id": "01960",
@@ -7258,8 +7914,16 @@ export const PLAYERS = [
     "displayName": "Bob Pratt"
   },
   {
+    "id": "56267",
+    "displayName": "Yurav Premlall"
+  },
+  {
     "id": "25336",
     "displayName": "Alistair Presnell"
+  },
+  {
+    "id": "67611",
+    "displayName": "Jansen Preston"
   },
   {
     "id": "28620",
@@ -7294,12 +7958,20 @@ export const PLAYERS = [
     "displayName": "Dillard Pruitt"
   },
   {
+    "id": "68009",
+    "displayName": "Giuseppe Puebla"
+  },
+  {
     "id": "61193",
     "displayName": "David Puig"
   },
   {
     "id": "70145",
     "displayName": "Mateo Pulcini"
+  },
+  {
+    "id": "35946",
+    "displayName": "Willy Pumarol"
   },
   {
     "id": "21959",
@@ -7328,6 +8000,10 @@ export const PLAYERS = [
   {
     "id": "27778",
     "displayName": "Julien Quesne"
+  },
+  {
+    "id": "36327",
+    "displayName": "Justin Quiban"
   },
   {
     "id": "17913",
@@ -7414,6 +8090,10 @@ export const PLAYERS = [
     "displayName": "Charles Raulerson"
   },
   {
+    "id": "52287",
+    "displayName": "David Ravetto"
+  },
+  {
     "id": "17951",
     "displayName": "Ted Ray"
   },
@@ -7482,6 +8162,10 @@ export const PLAYERS = [
     "displayName": "Kyle Reifers"
   },
   {
+    "id": "70696",
+    "displayName": "Logan Reilly"
+  },
+  {
     "id": "49855",
     "displayName": "Kristoffer Reitan"
   },
@@ -7496,6 +8180,10 @@ export const PLAYERS = [
   {
     "id": "31193",
     "displayName": "Jim Renner"
+  },
+  {
+    "id": "65229",
+    "displayName": "Rocco Repetto Taylor"
   },
   {
     "id": "23389",
@@ -7574,6 +8262,10 @@ export const PLAYERS = [
     "displayName": "Bob Risch"
   },
   {
+    "id": "45847",
+    "displayName": "JC Ritchie"
+  },
+  {
     "id": "35732",
     "displayName": "Wes Roach"
   },
@@ -7598,8 +8290,16 @@ export const PLAYERS = [
     "displayName": "Bill Robinson"
   },
   {
+    "id": "65374",
+    "displayName": "Brandon Robinson Thompson"
+  },
+  {
     "id": "18111",
     "displayName": "Jerry Robison"
+  },
+  {
+    "id": "70730",
+    "displayName": "Matthew Robles"
   },
   {
     "id": "12702",
@@ -7626,12 +8326,20 @@ export const PLAYERS = [
     "displayName": "Frank Rodia"
   },
   {
+    "id": "65956",
+    "displayName": "Daniel Rodrigues"
+  },
+  {
     "id": "20158",
     "displayName": "Anthony Rodriguez"
   },
   {
     "id": "02015",
     "displayName": "Chi Chi Rodriguez"
+  },
+  {
+    "id": "71059",
+    "displayName": "Lorenzo Rodriguez"
   },
   {
     "id": "32058",
@@ -7750,6 +8458,14 @@ export const PLAYERS = [
     "displayName": "John Ruedi"
   },
   {
+    "id": "39251",
+    "displayName": "Ryan Ruffels"
+  },
+  {
+    "id": "68670",
+    "displayName": "Nevill Ruiter"
+  },
+  {
     "id": "05539",
     "displayName": "Jack Rule"
   },
@@ -7842,12 +8558,28 @@ export const PLAYERS = [
     "displayName": "Monte Sanders"
   },
   {
+    "id": "69319",
+    "displayName": "Calen Sanderson"
+  },
+  {
     "id": "18278",
     "displayName": "Tom Sanderson"
   },
   {
+    "id": "70869",
+    "displayName": "Sihan Sandhu"
+  },
+  {
+    "id": "33951",
+    "displayName": "Julio Santos"
+  },
+  {
     "id": "02045",
     "displayName": "Cesar Sanudo"
+  },
+  {
+    "id": "32467",
+    "displayName": "Garrett Sapp"
   },
   {
     "id": "05546",
@@ -7866,6 +8598,10 @@ export const PLAYERS = [
     "displayName": "Hisayuki Sasaki"
   },
   {
+    "id": "33908",
+    "displayName": "Taihei Sato"
+  },
+  {
     "id": "02049",
     "displayName": "Gene Sauers"
   },
@@ -7878,12 +8614,20 @@ export const PLAYERS = [
     "displayName": "Frederick Savage"
   },
   {
+    "id": "55592",
+    "displayName": "Joey Savoie"
+  },
+  {
     "id": "05548",
     "displayName": "Chuck Scally"
   },
   {
     "id": "02054",
     "displayName": "Ken Schall"
+  },
+  {
+    "id": "57737",
+    "displayName": "Jayden Schaper"
   },
   {
     "id": "05549",
@@ -7922,6 +8666,10 @@ export const PLAYERS = [
     "displayName": "Leonard Schmutte"
   },
   {
+    "id": "31242",
+    "displayName": "Marcel Schneider"
+  },
+  {
     "id": "18357",
     "displayName": "Sam Schneider"
   },
@@ -7938,6 +8686,14 @@ export const PLAYERS = [
     "displayName": "Ollie Schniederjans"
   },
   {
+    "id": "69864",
+    "displayName": "Jack Schoenberger"
+  },
+  {
+    "id": "58690",
+    "displayName": "Freddy Schott"
+  },
+  {
     "id": "18364",
     "displayName": "George Schoux"
   },
@@ -7952,6 +8708,10 @@ export const PLAYERS = [
   {
     "id": "06136",
     "displayName": "Mike Schuchart"
+  },
+  {
+    "id": "65140",
+    "displayName": "Cooper Schultz"
   },
   {
     "id": "18371",
@@ -8006,6 +8766,10 @@ export const PLAYERS = [
     "displayName": "John Senden"
   },
   {
+    "id": "34708",
+    "displayName": "Jack Senior"
+  },
+  {
     "id": "02076",
     "displayName": "Peter Senior"
   },
@@ -8018,8 +8782,16 @@ export const PLAYERS = [
     "displayName": "John Serafin"
   },
   {
+    "id": "47687",
+    "displayName": "Manav Shah"
+  },
+  {
     "id": "39113",
     "displayName": "Shubhankar Sharma"
+  },
+  {
+    "id": "63181",
+    "displayName": "Braden Shattuck"
   },
   {
     "id": "18456",
@@ -8082,6 +8854,10 @@ export const PLAYERS = [
     "displayName": "Don Shirey, Jr."
   },
   {
+    "id": "51395",
+    "displayName": "Trey Shirley"
+  },
+  {
     "id": "07013",
     "displayName": "Wes Short, Jr."
   },
@@ -8096,6 +8872,10 @@ export const PLAYERS = [
   {
     "id": "02089",
     "displayName": "Dick Siderowf"
+  },
+  {
+    "id": "68991",
+    "displayName": "William Sides"
   },
   {
     "id": "02090",
@@ -8122,12 +8902,20 @@ export const PLAYERS = [
     "displayName": "Greyson Sigg"
   },
   {
+    "id": "62811",
+    "displayName": "Jeevan Sihota"
+  },
+  {
     "id": "06410",
     "displayName": "Dan Sikes"
   },
   {
     "id": "02093",
     "displayName": "R.H. Sikes"
+  },
+  {
+    "id": "37410",
+    "displayName": "Hiram Silfa"
   },
   {
     "id": "02094",
@@ -8216,6 +9004,10 @@ export const PLAYERS = [
   {
     "id": "22293",
     "displayName": "Heath Slocum"
+  },
+  {
+    "id": "53125",
+    "displayName": "Thomas Sloman"
   },
   {
     "id": "02104",
@@ -8314,6 +9106,14 @@ export const PLAYERS = [
     "displayName": "Austin Smotherman"
   },
   {
+    "id": "54185",
+    "displayName": "Elvis Smylie"
+  },
+  {
+    "id": "47078",
+    "displayName": "Travis Smyth"
+  },
+  {
     "id": "02118",
     "displayName": "J.C. Snead"
   },
@@ -8358,6 +9158,10 @@ export const PLAYERS = [
     "displayName": "Mick Soli"
   },
   {
+    "id": "60879",
+    "displayName": "Jake Sollon"
+  },
+  {
     "id": "36521",
     "displayName": "Young-han Song"
   },
@@ -8368,6 +9172,10 @@ export const PLAYERS = [
   {
     "id": "02126",
     "displayName": "Bruce Soulsby"
+  },
+  {
+    "id": "35174",
+    "displayName": "Matthew Southgate"
   },
   {
     "id": "12309",
@@ -8506,6 +9314,10 @@ export const PLAYERS = [
     "displayName": "Jeff Steinberg"
   },
   {
+    "id": "50236",
+    "displayName": "Maximilian Steinlechner"
+  },
+  {
     "id": "21528",
     "displayName": "Henrik Stenson"
   },
@@ -8574,6 +9386,10 @@ export const PLAYERS = [
     "displayName": "Bob Stone"
   },
   {
+    "id": "35225",
+    "displayName": "Brandon Stone"
+  },
+  {
     "id": "18822",
     "displayName": "Ralph Stonehouse"
   },
@@ -8588,6 +9404,10 @@ export const PLAYERS = [
   {
     "id": "23969",
     "displayName": "Graeme Storm"
+  },
+  {
+    "id": "66416",
+    "displayName": "Preston Stout"
   },
   {
     "id": "49960",
@@ -8632,6 +9452,10 @@ export const PLAYERS = [
   {
     "id": "27963",
     "displayName": "Chris Stroud"
+  },
+  {
+    "id": "33023",
+    "displayName": "Ockie Strydom"
   },
   {
     "id": "31560",
@@ -8702,6 +9526,10 @@ export const PLAYERS = [
     "displayName": "Daniel Summerhays"
   },
   {
+    "id": "64054",
+    "displayName": "Caleb Surratt"
+  },
+  {
     "id": "06581",
     "displayName": "David Sutherland"
   },
@@ -8716,6 +9544,10 @@ export const PLAYERS = [
   {
     "id": "02170",
     "displayName": "Hal Sutton"
+  },
+  {
+    "id": "70694",
+    "displayName": "Arni Sveinsson"
   },
   {
     "id": "40115",
@@ -8740,6 +9572,10 @@ export const PLAYERS = [
   {
     "id": "18918",
     "displayName": "Joe Sylvester"
+  },
+  {
+    "id": "50584",
+    "displayName": "Connor Syme"
   },
   {
     "id": "18927",
@@ -8950,6 +9786,10 @@ export const PLAYERS = [
     "displayName": "Jim Thorpe"
   },
   {
+    "id": "57365",
+    "displayName": "Spencer Tibbits"
+  },
+  {
     "id": "12714",
     "displayName": "Chris Tidland"
   },
@@ -9026,6 +9866,10 @@ export const PLAYERS = [
     "displayName": "Ken Towns"
   },
   {
+    "id": "59198",
+    "displayName": "Hugo Townsend"
+  },
+  {
     "id": "19115",
     "displayName": "Peter Townsend"
   },
@@ -9076,6 +9920,10 @@ export const PLAYERS = [
   {
     "id": "19143",
     "displayName": "William Trovinger"
+  },
+  {
+    "id": "45733",
+    "displayName": "Austen Truslow"
   },
   {
     "id": "02218",
@@ -9190,6 +10038,10 @@ export const PLAYERS = [
     "displayName": "Stan Utley"
   },
   {
+    "id": "59827",
+    "displayName": "Tom Vaillant"
+  },
+  {
     "id": "02232",
     "displayName": "Tommy Valentine"
   },
@@ -9214,12 +10066,28 @@ export const PLAYERS = [
     "displayName": "Tjaart van der Walt"
   },
   {
+    "id": "32659",
+    "displayName": "Darius Van Driel"
+  },
+  {
+    "id": "50706",
+    "displayName": "Ashton Van Horne"
+  },
+  {
+    "id": "57864",
+    "displayName": "Jackson Van Paris"
+  },
+  {
     "id": "23623",
     "displayName": "Bo Van Pelt"
   },
   {
     "id": "40006",
     "displayName": "Erik van Rooyen"
+  },
+  {
+    "id": "35181",
+    "displayName": "Daniel van Tonder"
   },
   {
     "id": "58132",
@@ -9250,6 +10118,10 @@ export const PLAYERS = [
     "displayName": "Tommy Veech"
   },
   {
+    "id": "48640",
+    "displayName": "Johannes Veerman"
+  },
+  {
     "id": "27064",
     "displayName": "Jhonattan Vegas"
   },
@@ -9263,7 +10135,7 @@ export const PLAYERS = [
   },
   {
     "id": "35658",
-    "displayName": "Kris Ventura"
+    "displayName": "Kristoffer Ventura"
   },
   {
     "id": "02236",
@@ -9274,6 +10146,10 @@ export const PLAYERS = [
     "displayName": "Steven Veriato"
   },
   {
+    "id": "24964",
+    "displayName": "Ryan Vermeer"
+  },
+  {
     "id": "02239",
     "displayName": "Scott Verplank"
   },
@@ -9282,12 +10158,20 @@ export const PLAYERS = [
     "displayName": "Bob Verwey"
   },
   {
+    "id": "63162",
+    "displayName": "Quim Vidal"
+  },
+  {
     "id": "54304",
     "displayName": "Karl Vilips"
   },
   {
     "id": "27770",
     "displayName": "Camilo Villegas"
+  },
+  {
+    "id": "34126",
+    "displayName": "Scott Vincent"
   },
   {
     "id": "19276",
@@ -9310,12 +10194,20 @@ export const PLAYERS = [
     "displayName": "Wayne Vollmer"
   },
   {
+    "id": "50743",
+    "displayName": "Nicolai Von Dellingshausen"
+  },
+  {
     "id": "19286",
     "displayName": "George Von Elm"
   },
   {
     "id": "19287",
     "displayName": "Norman Von Nida"
+  },
+  {
+    "id": "68994",
+    "displayName": "Ryan Voois"
   },
   {
     "id": "05627",
@@ -9356,6 +10248,10 @@ export const PLAYERS = [
   {
     "id": "54607",
     "displayName": "Danny Walker"
+  },
+  {
+    "id": "57940",
+    "displayName": "Euan Walker"
   },
   {
     "id": "25632",
@@ -9618,6 +10514,10 @@ export const PLAYERS = [
     "displayName": "Phil Wiechman"
   },
   {
+    "id": "63475",
+    "displayName": "Tim Wiedemeyer"
+  },
+  {
     "id": "29454",
     "displayName": "Bernd Wiesberger"
   },
@@ -9636,6 +10536,10 @@ export const PLAYERS = [
   {
     "id": "69503",
     "displayName": "Tyler Wilkes"
+  },
+  {
+    "id": "33445",
+    "displayName": "Patrick Wilkes-Krier"
   },
   {
     "id": "25349",
@@ -9666,6 +10570,10 @@ export const PLAYERS = [
     "displayName": "Lee Williams"
   },
   {
+    "id": "66745",
+    "displayName": "Wells Williams"
+  },
+  {
     "id": "06156",
     "displayName": "Bud Williamson"
   },
@@ -9680,6 +10588,10 @@ export const PLAYERS = [
   {
     "id": "20436",
     "displayName": "Garrett Willis"
+  },
+  {
+    "id": "55940",
+    "displayName": "Andrew Wilson"
   },
   {
     "id": "08057",
@@ -9742,6 +10654,10 @@ export const PLAYERS = [
     "displayName": "Larry Wise"
   },
   {
+    "id": "55417",
+    "displayName": "Timothy Wiseman"
+  },
+  {
     "id": "26497",
     "displayName": "Casey Wittenberg"
   },
@@ -9752,6 +10668,10 @@ export const PLAYERS = [
   {
     "id": "02292",
     "displayName": "Bob Wolcott"
+  },
+  {
+    "id": "45540",
+    "displayName": "Jared Wolfe"
   },
   {
     "id": "56278",
@@ -9768,6 +10688,14 @@ export const PLAYERS = [
   {
     "id": "06450",
     "displayName": "Craig Wood"
+  },
+  {
+    "id": "70244",
+    "displayName": "Grayson Wood"
+  },
+  {
+    "id": "59685",
+    "displayName": "Griffin Wood"
   },
   {
     "id": "19653",
@@ -9890,6 +10818,10 @@ export const PLAYERS = [
     "displayName": "Cameron Yancey"
   },
   {
+    "id": "70939",
+    "displayName": "Jiho Yang"
+  },
+  {
     "id": "24663",
     "displayName": "Y.E. Yang"
   },
@@ -9916,6 +10848,10 @@ export const PLAYERS = [
   {
     "id": "52513",
     "displayName": "Carson Young"
+  },
+  {
+    "id": "48061",
+    "displayName": "Daniel Young"
   },
   {
     "id": "02311",
@@ -9972,6 +10908,10 @@ export const PLAYERS = [
   {
     "id": "32254",
     "displayName": "Xinjun Zhang"
+  },
+  {
+    "id": "70674",
+    "displayName": "Eric Zhao"
   },
   {
     "id": "61431",
