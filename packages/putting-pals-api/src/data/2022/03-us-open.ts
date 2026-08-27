@@ -14,7 +14,7 @@ import {
   ryanFox,
   seamusPower,
   shaneLowry,
-  taylorGooch,
+  talorGooch,
   taylorMontgomery,
   tommyFleetwood,
   tonyFinau,
@@ -58,7 +58,7 @@ export default {
     },
     {
       ...cameronFolens,
-      picks: [willZalatoris, cameronYoung, taylorGooch],
+      picks: [willZalatoris, cameronYoung, talorGooch],
     },
     {
       ...davidHynes,
@@ -86,7 +86,7 @@ export default {
     },
     {
       ...aimeeOhanlon,
-      picks: [jordanSpieth, tonyFinau, taylorGooch],
+      picks: [jordanSpieth, tonyFinau, talorGooch],
     },
     {
       ...phelimOconnor,

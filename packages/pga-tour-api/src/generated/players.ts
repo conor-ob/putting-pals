@@ -10954,18 +10954,6 @@ export const PLAYERS = [
     "displayName": "Richard Bland"
   },
   {
-    "id": "46402",
-    "displayName": "Taylor Gooch"
-  },
-  {
-    "id": "52096",
-    "displayName": "Adri Arnaus"
-  },
-  {
-    "id": "55955",
-    "displayName": "Matthew Jordan"
-  },
-  {
     "id": "56272",
     "displayName": "Wilco Nienaber"
   }

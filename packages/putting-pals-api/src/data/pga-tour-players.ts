@@ -190,7 +190,7 @@ export const stewartCink = "20229";
 
 export const sungjaeIm = "39971";
 
-export const taylorGooch = "46402";
+export const talorGooch = "46402";
 
 export const taylorMontgomery = "55789";
 
