@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noTemplateCurlyInString: <explanation> */
 import {
   defineRailway,
   github,
@@ -48,15 +49,32 @@ export default defineRailway(() => {
     volumeMounts: { "/app": drizzleVolume },
     env: { DATABASE_URL: preserve(), MASTERPASS: preserve() },
   });
-  const proxy = service("proxy", {
+  const expo = service("expo", {
     source: puttingPals,
     replicas: { "europe-west4-drams3a": 1 },
-    env: { EXPO_URL: preserve(), SERVER_URL: preserve() },
+    env: { EXPO_PUBLIC_SERVER_URL: preserve(), PORT: preserve() },
+  });
+  const web = service("web", {
+    source: puttingPals,
+    replicas: { "europe-west4-drams3a": 1 },
+    build: { builder: "DOCKERFILE", dockerfilePath: "apps/web/Dockerfile" },
   });
   const server = service("server", {
     source: puttingPals,
     replicas: { "europe-west4-drams3a": 1 },
     env: { DATABASE_URL: preserve(), ORIGIN: preserve(), PORT: preserve() },
+  });
+
+  const proxy = service("proxy", {
+    source: puttingPals,
+    replicas: { "europe-west4-drams3a": 1 },
+    env: {
+      EXPO_DOMAIN: preserve(),
+      WEB_DOMAIN: preserve(),
+      EXPO_URL: "http://${{expo.RAILWAY_PRIVATE_DOMAIN}}:${{expo.PORT}}",
+      WEB_URL: "http://${{web.RAILWAY_PRIVATE_DOMAIN}}:${{web.PORT}}",
+      SERVER_URL: "http://${{server.RAILWAY_PRIVATE_DOMAIN}}:${{server.PORT}}",
+    },
   });
   const espnSchema = service("espn-schema", {
     source: puttingPals,
@@ -69,16 +87,12 @@ export default defineRailway(() => {
     networking: { privateNetworkEndpoint: "putting-pals" },
     env: { SERVER_URL: preserve() },
   });
-  const expo = service("expo", {
-    source: puttingPals,
-    replicas: { "europe-west4-drams3a": 1 },
-    env: { EXPO_PUBLIC_SERVER_URL: preserve(), PORT: preserve() },
-  });
+
   const jobs = group("jobs", [dbMigrate, espnSchema, leaderboardSync]);
   const gateway = group("gateway", [proxy]);
   const database = group("database", [drizzle, postgresDatabase]);
   const backend = group("backend", [server]);
-  const frontend = group("frontend", [expo]);
+  const frontend = group("frontend", [expo, web]);
 
   return project("putting-pals", {
     resources: [
