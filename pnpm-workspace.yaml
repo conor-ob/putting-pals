@@ -3,6 +3,9 @@ packages:
   - "jobs/*"
   - "packages/*"
 
+allowBuilds:
+  esbuild: true
+
 catalog:
   "@graphql-codegen/cli": ^6.1.0  
   "@graphql-codegen/typescript": ^5.0.7
