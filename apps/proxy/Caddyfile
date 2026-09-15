@@ -20,14 +20,23 @@
 		format json # set access log format to json mode
 	}
 
-	# proxy requests at / to the web server
-	reverse_proxy {$EXPO_URL} {
-		header_up Host {upstream_hostport}
-	}
-
 	# proxy requests at /api/* to the server and rewrite the path to /
 	handle_path /api/* {
 		reverse_proxy {$SERVER_URL} {
+			header_up Host {upstream_hostport}
+		}
+	}
+
+	@expo host {$EXPO_DOMAIN} www.{$EXPO_DOMAIN}
+	handle @expo {
+		reverse_proxy {$EXPO_URL} {
+			header_up Host {upstream_hostport}
+		}
+	}
+
+	@web host {$WEB_DOMAIN} www.{$WEB_DOMAIN}
+	handle @web {
+		reverse_proxy {$WEB_URL} {
 			header_up Host {upstream_hostport}
 		}
 	}

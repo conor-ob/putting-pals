@@ -104,10 +104,10 @@ export const ApiLeaderboardEventSchema = z.object({
   name: z.string(),
   shortName: z.string(),
   primary: z.boolean(),
-  hasPlayerStats: z.boolean(),
-  hasCourseStats: z.boolean(),
-  purse: z.number(),
-  displayPurse: z.string(),
+  hasPlayerStats: z.boolean().optional(),
+  hasCourseStats: z.boolean().optional(),
+  purse: z.number().optional(),
+  displayPurse: z.string().optional(),
   league: z.object({
     id: z.string(),
     name: z.string(),
@@ -126,10 +126,12 @@ export const ApiLeaderboardEventSchema = z.object({
     id: z.string(),
     displayName: z.string(),
     major: z.boolean(),
-    scoringSystem: z.object({
-      id: z.string(),
-      name: z.string(),
-    }),
+    scoringSystem: z
+      .object({
+        id: z.string(),
+        name: z.string(),
+      })
+      .optional(),
     numberOfRounds: z.number(),
     cutRound: z.number(),
     cutScore: z.number(),
@@ -159,7 +161,7 @@ export const ApiLeaderboardEventSchema = z.object({
     description: z.string(),
     minimumHoles: z.number(),
   }),
-  competitions: z.array(ApiLeaderboardCompetitionSchema),
+  competitions: z.array(ApiLeaderboardCompetitionSchema).optional(),
   courses: z.array(
     z.object({
       id: z.string(),

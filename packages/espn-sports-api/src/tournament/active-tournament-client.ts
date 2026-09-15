@@ -15,7 +15,7 @@ export class EspnSportsApiActiveTournamentClient
     const leaderboard = await this.espnSportsApi.getLeaderboard(tourCode);
 
     const eventWithCompetitors = leaderboard.events.find((event) =>
-      event.competitions.some(
+      event.competitions?.some(
         (competition) => (competition.competitors ?? []).length > 0,
       ),
     );
