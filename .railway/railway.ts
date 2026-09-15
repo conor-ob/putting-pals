@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noTemplateCurlyInString: <explanation> */
 import {
   type BuildConfig,
   type DeployConfig,
@@ -9,9 +8,13 @@ import {
   postgres,
   preserve,
   project,
+  type ReferencableServiceNode,
   service,
   volume,
 } from "railway/iac";
+
+const privateUrl = (target: ReferencableServiceNode) =>
+  `http://\${{${target.name}.RAILWAY_PRIVATE_DOMAIN}}:\${{${target.name}.PORT}}`;
 
 export default defineRailway(() => {
   const puttingPals = github("conor-ob/putting-pals", {
@@ -105,14 +108,28 @@ export default defineRailway(() => {
     },
   });
 
+  const expo = service("expo", {
+    source: puttingPals,
+    env: {
+      PORT: preserve(),
+    },
+    build: {
+      ...buildConfig,
+      dockerfilePath: "apps/expo/Dockerfile",
+    },
+    deploy: {
+      ...deployConfig,
+    },
+  });
+
   const proxy = service("proxy", {
     source: puttingPals,
     env: {
       EXPO_DOMAIN: preserve(),
       WEB_DOMAIN: preserve(),
-      EXPO_URL: "http://${{expo.RAILWAY_PRIVATE_DOMAIN}}:${{expo.PORT}}",
-      WEB_URL: "http://${{web.RAILWAY_PRIVATE_DOMAIN}}:${{web.PORT}}",
-      SERVER_URL: "http://${{server.RAILWAY_PRIVATE_DOMAIN}}:${{server.PORT}}",
+      EXPO_URL: privateUrl(expo),
+      WEB_URL: privateUrl(web),
+      // SERVER_URL: "http://${{server.RAILWAY_PRIVATE_DOMAIN}}:${{server.PORT}}",
     },
     build: {
       ...buildConfig,
@@ -138,7 +155,7 @@ export default defineRailway(() => {
   const gateway = group("gateway", [proxy]);
   // const database = group("database", [drizzle, postgresDatabase]);
   // const backend = group("backend", [server]);
-  const frontend = group("frontend", [web]);
+  const frontend = group("frontend", [web, expo]);
 
   return project("putting-pals", {
     resources: [
