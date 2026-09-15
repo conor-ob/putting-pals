@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "^7.1.5"
   }
