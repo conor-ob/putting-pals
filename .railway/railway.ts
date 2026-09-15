@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noTemplateCurlyInString: todo */
 import {
   type BuildConfig,
   type DeployConfig,
@@ -22,9 +23,14 @@ export default defineRailway(() => {
     branch: "chore/arch-refactor",
   });
 
-  // const postgresDatabase = postgres("postgres", {
-  //   region: "europe-west4-drams3a",
-  // });
+  const postgresVolume = volume("postgres-volume", {
+    region: "europe-west4-drams3a",
+    sizeMB: 5_000,
+  });
+  const postgresDatabase = postgres("postgres", {
+    region: "europe-west4-drams3a",
+  });
+
   // postgresDatabase.networking = {
   //   privateNetworkEndpoint: "postgres-abf4ae3d",
   //   tcpProxies: { "5432": {} },
@@ -35,18 +41,7 @@ export default defineRailway(() => {
   //   region: "europe-west4-drams3a",
   //   sizeMB: 5000,
   // });
-  // const postgresVolume = volume("postgres-volume", {
-  //   alerts: { usage: { "100": {}, "80": {}, "95": {} } },
-  //   allowOnlineResize: true,
-  //   region: "europe-west4-drams3a",
-  //   sizeMB: 5000,
-  // });
-  // const dbMigrate = service("db-migrate", {
-  //   source: puttingPals,
-  //   replicas: { "europe-west4-drams3a": 1 },
-  //   networking: { privateNetworkEndpoint: "migrate" },
-  //   env: { DATABASE_URL: preserve() },
-  // });
+
   // const drizzle = service("drizzle", {
   //   source: image("ghcr.io/drizzle-team/gateway:latest"),
   //   healthcheck: "/health",
@@ -122,6 +117,22 @@ export default defineRailway(() => {
     },
   });
 
+  const server = service("server", {
+    source: puttingPals,
+    env: {
+      PORT: preserve(),
+      ORIGIN: preserve(),
+      DATABASE_URL: "${{postgres.DATABASE_URL}}",
+    },
+    build: {
+      ...buildConfig,
+      dockerfilePath: "apps/server/Dockerfile",
+    },
+    deploy: {
+      ...deployConfig,
+    },
+  });
+
   const proxy = service("proxy", {
     source: puttingPals,
     env: {
@@ -129,7 +140,7 @@ export default defineRailway(() => {
       WEB_DOMAIN: preserve(),
       EXPO_URL: privateUrl(expo),
       WEB_URL: privateUrl(web),
-      // SERVER_URL: "http://${{server.RAILWAY_PRIVATE_DOMAIN}}:${{server.PORT}}",
+      SERVER_URL: privateUrl(server),
     },
     build: {
       ...buildConfig,
@@ -139,6 +150,21 @@ export default defineRailway(() => {
       ...deployConfig,
     },
   });
+
+  const dbMigrate = service("db-migrate", {
+    source: puttingPals,
+    env: {
+      DATABASE_URL: "${{postgres.DATABASE_URL}}",
+    },
+    build: {
+      ...buildConfig,
+      dockerfilePath: "jobs/db-migrate/Dockerfile",
+    },
+    deploy: {
+      ...deployConfig,
+    },
+  });
+
   // const espnSchema = service("espn-schema", {
   //   source: puttingPals,
   //   replicas: { "europe-west4-drams3a": 1 },
@@ -151,20 +177,20 @@ export default defineRailway(() => {
   //   env: { SERVER_URL: preserve() },
   // });
 
-  // const jobs = group("jobs", [dbMigrate, espnSchema, leaderboardSync]);
+  const jobs = group("jobs", [dbMigrate]);
   const gateway = group("gateway", [proxy]);
-  // const database = group("database", [drizzle, postgresDatabase]);
-  // const backend = group("backend", [server]);
+  const database = group("database", [postgresDatabase]);
+  const backend = group("backend", [server]);
   const frontend = group("frontend", [web, expo]);
 
   return project("putting-pals", {
     resources: [
       // drizzleVolume,
-      // postgresVolume,
-      // jobs,
+      postgresVolume,
+      jobs,
       gateway,
-      // database,
-      // backend,
+      database,
+      backend,
       frontend,
     ],
   });

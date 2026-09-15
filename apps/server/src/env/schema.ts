@@ -10,7 +10,10 @@ const envSchema = z.object({
     .string()
     .transform((s) => parseInt(s, 10))
     .pipe(z.number()),
-  ORIGIN: z.url(),
+  ORIGIN: z
+    .string()
+    .transform((s) => s.split(",").map((origin) => origin.trim()))
+    .pipe(z.array(z.url())),
   DATABASE_URL: getDatabaseUrlSchema(),
   CI: z
     .string()
