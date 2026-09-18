@@ -23,10 +23,6 @@ export default defineRailway(() => {
     branch: "chore/arch-refactor",
   });
 
-  const postgresVolume = volume("postgres-volume", {
-    region: "europe-west4-drams3a",
-    sizeMB: 5_000,
-  });
   const postgresDatabase = postgres("postgres", {
     region: "europe-west4-drams3a",
   });
@@ -92,7 +88,8 @@ export default defineRailway(() => {
   const web = service("web", {
     source: puttingPals,
     env: {
-      PORT: preserve(),
+      // PORT: preserve(),
+      PORT: "8080",
     },
     build: {
       ...buildConfig,
@@ -106,7 +103,8 @@ export default defineRailway(() => {
   const expo = service("expo", {
     source: puttingPals,
     env: {
-      PORT: preserve(),
+      // PORT: preserve(),
+      PORT: "8080",
     },
     build: {
       ...buildConfig,
@@ -120,8 +118,10 @@ export default defineRailway(() => {
   const server = service("server", {
     source: puttingPals,
     env: {
-      PORT: preserve(),
-      ORIGIN: preserve(),
+      // PORT: preserve(),
+      PORT: "8080",
+      // ORIGIN: preserve(),
+      ORIGIN: "puttingpals-expo.up.railway.app,puttingpals-web.up.railway.app",
       DATABASE_URL: "${{postgres.DATABASE_URL}}",
     },
     build: {
@@ -136,8 +136,11 @@ export default defineRailway(() => {
   const proxy = service("proxy", {
     source: puttingPals,
     env: {
-      EXPO_DOMAIN: preserve(),
-      WEB_DOMAIN: preserve(),
+      // EXPO_DOMAIN: preserve(),
+      EXPO_DOMAIN: "puttingpals-expo.up.railway.app",
+      // WEB_DOMAIN: preserve(),
+      WEB_DOMAIN: "puttingpals-web.up.railway.app",
+      // WEB_DOMAIN: preserve(),
       EXPO_URL: privateUrl(expo),
       WEB_URL: privateUrl(web),
       SERVER_URL: privateUrl(server),
@@ -186,7 +189,6 @@ export default defineRailway(() => {
   return project("putting-pals", {
     resources: [
       // drizzleVolume,
-      postgresVolume,
       jobs,
       gateway,
       database,
