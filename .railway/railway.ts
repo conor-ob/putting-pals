@@ -5,9 +5,7 @@ import {
   defineRailway,
   github,
   group,
-  image,
   postgres,
-  preserve,
   project,
   type ReferencableServiceNode,
   service,
@@ -21,6 +19,12 @@ export default defineRailway(() => {
   const puttingPals = github("conor-ob/putting-pals", {
     checkSuites: false,
     branch: "chore/arch-refactor",
+  });
+
+  const postgresVolume = volume("postgres-volume", {
+    allowOnlineResize: true,
+    region: "europe-west4-drams3a",
+    sizeMB: 5_000,
   });
 
   const postgresDatabase = postgres("postgres", {
@@ -195,6 +199,7 @@ export default defineRailway(() => {
       database,
       backend,
       frontend,
+      postgresVolume,
     ],
   });
 });
