@@ -5,6 +5,7 @@ import {
   defineRailway,
   github,
   group,
+  image,
   postgres,
   project,
   type ReferencableServiceNode,
@@ -15,7 +16,9 @@ import {
 const privateUrl = (target: ReferencableServiceNode) =>
   `http://\${{${target.name}.RAILWAY_PRIVATE_DOMAIN}}:\${{${target.name}.PORT}}`;
 
-export default defineRailway(() => {
+export default defineRailway((ctx) => {
+  const isProd = ctx.isEnvironment("production");
+
   const puttingPals = github("conor-ob/putting-pals", {
     checkSuites: false,
     branch: "chore/arch-refactor",
@@ -31,42 +34,24 @@ export default defineRailway(() => {
     region: "europe-west4-drams3a",
   });
 
-  // postgresDatabase.networking = {
-  //   privateNetworkEndpoint: "postgres-abf4ae3d",
-  //   tcpProxies: { "5432": {} },
-  // };
-  // const drizzleVolume = volume("drizzle-volume", {
-  //   alerts: { usage: { "100": {}, "80": {}, "95": {} } },
-  //   allowOnlineResize: true,
-  //   region: "europe-west4-drams3a",
-  //   sizeMB: 5000,
-  // });
+  const drizzleVolume = volume("drizzle-volume", {
+    allowOnlineResize: true,
+    region: "europe-west4-drams3a",
+    sizeMB: 5000,
+  });
 
-  // const drizzle = service("drizzle", {
-  //   source: image("ghcr.io/drizzle-team/gateway:latest"),
-  //   healthcheck: "/health",
-  //   replicas: { "europe-west4-drams3a": 1 },
-  //   deploy: {
-  //     limitOverride: { containers: { cpu: 1, memoryBytes: 1000000000 } },
-  //   },
-  //   volumeMounts: { "/app": drizzleVolume },
-  //   env: { DATABASE_URL: preserve(), MASTERPASS: preserve() },
-  // });
-  // const expo = service("expo", {
-  //   source: puttingPals,
-  //   replicas: { "europe-west4-drams3a": 1 },
-  //   env: { EXPO_PUBLIC_SERVER_URL: preserve(), PORT: preserve() },
-  // });
-  // const web = service("web", {
-  //   source: puttingPals,
-  //   replicas: { "europe-west4-drams3a": 1 },
-  //   build: { builder: "DOCKERFILE", dockerfilePath: "apps/web/Dockerfile" },
-  // });
-  // const server = service("server", {
-  //   source: puttingPals,
-  //   replicas: { "europe-west4-drams3a": 1 },
-  //   env: { DATABASE_URL: preserve(), ORIGIN: preserve(), PORT: preserve() },
-  // });
+  const drizzle = service("drizzle", {
+    source: image("ghcr.io/drizzle-team/gateway:latest"),
+    healthcheck: "/health",
+    replicas: { "europe-west4-drams3a": 1 },
+    deploy: {
+      limitOverride: { containers: { cpu: 1, memoryBytes: 1000000000 } },
+    },
+    volumeMounts: { "/app": drizzleVolume },
+    env: {
+      DATABASE_URL: "${{postgres.DATABASE_URL}}",
+    },
+  });
 
   const buildConfig: Partial<BuildConfig> = {
     buildEnvironment: "V3",
@@ -86,7 +71,7 @@ export default defineRailway(() => {
     },
     // healthcheckPath: "/api/health",
     // healthcheckTimeout: 300,
-    // sleepApplication: false,
+    sleepApplication: !isProd,
   };
 
   const web = service("web", {
@@ -116,6 +101,7 @@ export default defineRailway(() => {
     },
     deploy: {
       ...deployConfig,
+      healthcheckPath: "/",
     },
   });
 
@@ -135,6 +121,7 @@ export default defineRailway(() => {
     },
     deploy: {
       ...deployConfig,
+      healthcheckPath: "/health",
     },
   });
 
@@ -156,6 +143,7 @@ export default defineRailway(() => {
     },
     deploy: {
       ...deployConfig,
+      healthcheckPath: "/api/health",
     },
   });
 
@@ -173,33 +161,45 @@ export default defineRailway(() => {
     },
   });
 
-  // const espnSchema = service("espn-schema", {
-  //   source: puttingPals,
-  //   replicas: { "europe-west4-drams3a": 1 },
-  //   env: { SERVER_URL: preserve() },
-  // });
-  // const leaderboardSync = service("leaderboard-sync", {
-  //   source: puttingPals,
-  //   replicas: { "europe-west4-drams3a": 1 },
-  //   networking: { privateNetworkEndpoint: "putting-pals" },
-  //   env: { SERVER_URL: preserve() },
-  // });
+  const espnSchema = service("espn-schema", {
+    source: puttingPals,
+    env: {
+      SERVER_URL: privateUrl(server),
+    },
+    build: {
+      ...buildConfig,
+      dockerfilePath: "jobs/espn-schema/Dockerfile",
+    },
+    deploy: {
+      cronSchedule: isProd ? "*/5 * * * *" : "0 0 * * *",
+    },
+  });
+  const leaderboardSync = service("leaderboard-sync", {
+    source: puttingPals,
+    env: {
+      SERVER_URL: privateUrl(server),
+    },
+    build: {
+      ...buildConfig,
+      dockerfilePath: "jobs/leaderboard-sync/Dockerfile",
+    },
+    deploy: {
+      cronSchedule: isProd ? "*/5 * * * *" : "0 0 * * *",
+    },
+  });
 
-  const jobs = group("jobs", [dbMigrate]);
+  const jobs = group("jobs", [dbMigrate, espnSchema, leaderboardSync]);
   const gateway = group("gateway", [proxy]);
-  const database = group("database", [postgresDatabase]);
+  const database = group("database", [
+    postgresDatabase,
+    postgresVolume,
+    drizzle,
+    drizzleVolume,
+  ]);
   const backend = group("backend", [server]);
   const frontend = group("frontend", [web, expo]);
 
   return project("putting-pals", {
-    resources: [
-      // drizzleVolume,
-      jobs,
-      gateway,
-      database,
-      backend,
-      frontend,
-      postgresVolume,
-    ],
+    resources: [jobs, gateway, database, backend, frontend],
   });
 });
