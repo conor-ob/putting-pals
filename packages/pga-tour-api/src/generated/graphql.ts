@@ -1004,6 +1004,7 @@ export type ApiCupRankMovementDirection =
 
 export type ApiCupRankingPlayer = {
   __typename: 'CupRankingPlayer';
+  assets?: Maybe<Array<ApiPlayerAsset>>;
   id: Scalars['String']['output'];
   movement: Scalars['String']['output'];
   movementDirection: ApiCupRankMovementDirection;
@@ -3030,7 +3031,10 @@ export type ApiLegend = {
   __typename: 'Legend';
   accessibilityText?: Maybe<Scalars['String']['output']>;
   icon: ApiIcon;
+  /** @deprecated Use iconLogo and iconLogoDark */
   iconUrl?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use iconLogoDark */
+  iconUrlDark?: Maybe<Scalars['String']['output']>;
   subText?: Maybe<Scalars['String']['output']>;
   text?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
@@ -6044,7 +6048,7 @@ export type ApiQuery = {
   genericContentCompressed: ApiGenericContentCompressed;
   getExpertPicksTable: ApiExpertPicks;
   getPowerRankingsTable: ApiPowerRankings;
-  getRCPhotoGallery: ApiRcPhotoGallery;
+  getRCPhotoGallery?: Maybe<ApiRcPhotoGallery>;
   getRelatedFact: ApiRelatedFact;
   getShotCommentary: ApiShotCommentary;
   /**   Returns full details for a match based on supplied matchId */
@@ -9881,8 +9885,12 @@ export type ApiToughestRound =
 
 export type ApiTourBoundAsset = {
   __typename: 'TourBoundAsset';
+  /** @deprecated Use tourBoundLogoAsset */
   tourBoundLogo?: Maybe<Scalars['String']['output']>;
+  tourBoundLogoAsset?: Maybe<ApiImageAsset>;
+  /** @deprecated Use tourBoundLogoDarkAsset */
   tourBoundLogoDark?: Maybe<Scalars['String']['output']>;
+  tourBoundLogoDarkAsset?: Maybe<ApiImageAsset>;
 };
 
 export type ApiTourCategories = {
@@ -9962,6 +9970,7 @@ export type ApiTourCupCombinedInfo = {
 
 export type ApiTourCupCombinedPlayer = {
   __typename: 'TourCupCombinedPlayer';
+  assets?: Maybe<Array<ApiPlayerAsset>>;
   columnData: Array<Scalars['String']['output']>;
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];

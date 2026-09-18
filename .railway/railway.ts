@@ -121,7 +121,8 @@ export default defineRailway(() => {
       // PORT: preserve(),
       PORT: "8080",
       // ORIGIN: preserve(),
-      ORIGIN: "puttingpals-expo.up.railway.app,puttingpals-web.up.railway.app",
+      ORIGIN:
+        "https://puttingpals-expo.up.railway.app,https://puttingpals-web.up.railway.app",
       DATABASE_URL: "${{postgres.DATABASE_URL}}",
     },
     build: {
