@@ -154,10 +154,12 @@ export default defineRailway((ctx) => {
     },
     build: {
       ...buildConfig,
-      dockerfilePath: "jobs/db-migrate/Dockerfile",
+      dockerfilePath: "packages/putting-pals-db/Dockerfile",
+      watchPatterns: ["packages/putting-pals-db/**"],
     },
     deploy: {
-      ...deployConfig,
+      region: "europe-west4-drams3a",
+      restartPolicyType: "NEVER",
     },
   });
 
