@@ -112,7 +112,7 @@ export default defineRailway((ctx) => {
       PORT: "8080",
       // ORIGIN: preserve(),
       ORIGIN:
-        "https://puttingpals-expo.up.railway.app,https://puttingpals-web.up.railway.app",
+        "https://puttingpals.up.railway.app,https://puttingpals-web.up.railway.app",
       DATABASE_URL: "${{postgres.DATABASE_URL}}",
     },
     build: {
@@ -129,7 +129,7 @@ export default defineRailway((ctx) => {
     source: puttingPals,
     env: {
       // EXPO_DOMAIN: preserve(),
-      EXPO_DOMAIN: "puttingpals-expo.up.railway.app",
+      EXPO_DOMAIN: "puttingpals.up.railway.app",
       // WEB_DOMAIN: preserve(),
       WEB_DOMAIN: "puttingpals-web.up.railway.app",
       // WEB_DOMAIN: preserve(),
