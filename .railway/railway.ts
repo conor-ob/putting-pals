@@ -21,7 +21,6 @@ export default defineRailway((ctx) => {
 
   const puttingPals = github("conor-ob/putting-pals", {
     checkSuites: false,
-    branch: "chore/arch-refactor",
   });
 
   const postgresVolume = volume("postgres-volume", {
