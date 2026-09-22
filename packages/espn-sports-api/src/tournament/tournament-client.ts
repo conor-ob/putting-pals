@@ -49,7 +49,7 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Aggr
       throw new NotFoundError(`Tournament ${id} not found`);
     }
 
-    const competition = leaderboard.events[0]?.competitions.find(
+    const competition = leaderboard.events[0]?.competitions?.find(
       (c) => c.id === id,
     );
     if (competition === undefined) {

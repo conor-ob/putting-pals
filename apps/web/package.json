@@ -1,0 +1,24 @@
+{
+  "name": "@putting-pals/web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc --noEmit true",
+    "start": "vite preview"
+  },
+  "dependencies": {
+    "@putting-pals/putting-pals-trpc": "workspace:*",
+    "@trpc/client": "catalog:",
+    "superjson": "catalog:"
+  },
+  "devDependencies": {
+    "@total-typescript/tsconfig": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "^7.1.5"
+  }
+}

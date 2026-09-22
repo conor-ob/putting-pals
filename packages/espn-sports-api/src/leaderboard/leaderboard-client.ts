@@ -33,7 +33,7 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
   }
 
   override mapLeaderboard(event: ApiLeaderboardEvent): Leaderboard {
-    const competition = event.competitions.find(
+    const competition = event.competitions?.find(
       (competition) => competition.id === event.id,
     );
     if (competition === undefined) {
