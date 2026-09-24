@@ -27,37 +27,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 12.4.2
-
-      - name: Install node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
-      # Populates node_modules/railway (needed to evaluate .railway/railway.ts)
-      # the correct way for this pnpm workspace, since railwayapp/config@v1
-      # would otherwise try `npm install` against root package.json, which
-      # can't resolve pnpm's `catalog:` protocol or run its pnpm-only
-      # `postinstall` script.
-      - name: Install deps
-        run: pnpm install --frozen-lockfile
-
-      # railwayapp/config@v1 runs `npm install` at repo root whenever
-      # package.json exists (this repo already has node_modules from the
-      # step above). Hide it for that step so npm never sees it.
-      - name: Hide package.json from npm install step
-        run: mv package.json package.json.bak
+      - name: Prepare pnpm deps for Railway plan
+        uses: ./.github/actions/railway-plan-deps
 
       - name: Railway config plan
         uses: railwayapp/config@v1
         with:
           command: plan
           railway-token: ${{ secrets.RAILWAY_TOKEN }}
-
-      - name: Restore package.json
-        if: always()
-        run: mv package.json.bak package.json

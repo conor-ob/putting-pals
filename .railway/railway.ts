@@ -61,7 +61,7 @@ export default defineRailway((ctx) => {
     },
     // healthcheckPath: "/api/health",
     // healthcheckTimeout: 300,
-    sleepApplication: !isProd,
+    // sleepApplication: !isProd,
   };
 
   const web = service("web", {

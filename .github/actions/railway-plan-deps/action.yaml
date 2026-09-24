@@ -1,0 +1,29 @@
+name: 🚂 Railway plan deps
+description: >-
+  Installs workspace dependencies with pnpm so pnpm-only specifiers (the
+  `catalog:` protocol, `workspace:*`) resolve correctly, then hides
+  package.json so railwayapp/config@v1's own `npm install` step no-ops
+  instead of failing — npm cannot parse those specifiers at all, and the
+  action always runs npm at repo root with no way to point it elsewhere.
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 12.4.2
+
+    - name: Install node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: "pnpm"
+
+    - name: Install deps
+      shell: bash
+      run: pnpm install --frozen-lockfile
+
+    - name: Hide package.json from npm install step
+      shell: bash
+      run: mv package.json package.json.bak
