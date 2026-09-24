@@ -77,6 +77,19 @@ export default defineRailway((ctx) => {
     },
   });
 
+  const webTest = service("web-test", {
+    source: puttingPals,
+    env: {
+      PORT: "8080",
+    },
+    build: dockerBuildConfig({
+      dockerfilePath: "apps/web/Dockerfile",
+    }),
+    deploy: {
+      ...deployConfig,
+    },
+  });
+
   const expo = service("expo", {
     source: puttingPals,
     env: {
@@ -172,7 +185,7 @@ export default defineRailway((ctx) => {
   const gateway = group("gateway", [proxy]);
   const database = group("database", [postgresDatabase, postgresVolume]);
   const backend = group("backend", [server]);
-  const frontend = group("frontend", [web, expo]);
+  const frontend = group("frontend", [web, expo, webTest]);
 
   return project("putting-pals", {
     resources: [jobs, gateway, database, backend, frontend],
