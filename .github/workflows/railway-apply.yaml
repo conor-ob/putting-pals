@@ -1,0 +1,30 @@
+name: 🚂 Railway
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".railway/**"
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  apply:
+    name: 🚀 Apply
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Railway config apply
+        uses: railwayapp/config@v1
+        with:
+          command: apply
+          railway-token: ${{ secrets.RAILWAY_TOKEN }}
