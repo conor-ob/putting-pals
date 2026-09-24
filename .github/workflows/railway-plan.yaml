@@ -1,4 +1,4 @@
-name: 🚂 Railway Config Plan
+name: 🚂 Railway
 
 on:
   pull_request:
