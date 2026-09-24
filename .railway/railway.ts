@@ -6,6 +6,7 @@ import {
   github,
   group,
   postgres,
+  preserve,
   project,
   type ReferencableServiceNode,
   service,
@@ -95,8 +96,7 @@ export default defineRailway((ctx) => {
     source: puttingPals,
     env: {
       PORT: "8080",
-      ORIGIN:
-        "https://puttingpals.up.railway.app,https://puttingpals-web.up.railway.app",
+      ORIGIN: preserve(),
       DATABASE_URL: "${{postgres.DATABASE_URL}}",
     },
     build: dockerBuildConfig({
@@ -111,9 +111,9 @@ export default defineRailway((ctx) => {
   const proxy = service("proxy", {
     source: puttingPals,
     env: {
-      EXPO_DOMAIN: "puttingpals.up.railway.app",
+      EXPO_DOMAIN: preserve(),
       EXPO_URL: privateNetworkingUrl(expo),
-      WEB_DOMAIN: "puttingpals-web.up.railway.app",
+      WEB_DOMAIN: preserve(),
       WEB_URL: privateNetworkingUrl(web),
       SERVER_URL: privateNetworkingUrl(server),
     },
