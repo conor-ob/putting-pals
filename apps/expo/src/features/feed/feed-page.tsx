@@ -1,6 +1,12 @@
 import { assertNever } from "@putting-pals/putting-pals-utils";
 import { useCallback, useMemo } from "react";
-import { ActivityIndicator, FlatList, Platform, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  Platform,
+  Text,
+  View,
+} from "react-native";
 import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
@@ -112,9 +118,7 @@ export function FeedPage() {
         renderItem={renderItem}
         onEndReached={handleEndReached}
         onEndReachedThreshold={0.5}
-        ListHeaderComponent={
-          <LargeTitleText title="Feed" scrollY={scrollY} />
-        }
+        ListHeaderComponent={<LargeTitleText title="Feed" scrollY={scrollY} />}
         ListFooterComponent={renderFooter}
         contentContainerClassName="gap-2 px-4"
         contentContainerStyle={{
