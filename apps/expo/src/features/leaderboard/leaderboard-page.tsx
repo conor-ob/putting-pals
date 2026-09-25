@@ -1,6 +1,14 @@
 import { FlashList } from "@shopify/flash-list";
 import { useLocalSearchParams } from "expo-router";
-import { ScrollView } from "react-native";
+import { Platform } from "react-native";
+import Animated from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  LARGE_TITLE_HEADER_HEIGHT,
+  LargeTitleHeaderOverlay,
+  LargeTitleText,
+  useLargeTitleHeader,
+} from "~/components/large-title-header";
 import { TournamentHeader } from "~/components/tournament-header";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { TourCodeSwitcher } from "~/providers/tour-code/tour-code-switcher";
@@ -37,28 +45,62 @@ export function LeaderboardPage() {
   // biome-ignore lint/suspicious/noConsole: testing
   console.log("favourites", favourites);
 
-  return (
-    <ScrollView className="p-4 gap-4">
-      {tournament && (
-        <TournamentHeader tournament={tournament} className="mb-4" />
+  const { scrollY, scrollHandler } = useLargeTitleHeader();
+  const insets = useSafeAreaInsets();
+
+  const list = (
+    <FlashList
+      data={[...(leaderboard?.players ?? [])].sort(
+        (a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder,
       )}
-      <TourCodeSwitcher />
-      <FlashList
-        data={[...(leaderboard?.players ?? [])].sort(
-          (a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder,
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => {
+        switch (item.__typename) {
+          case "PlayerRow":
+            return <PlayerRow row={item} />;
+          case "PuttingPalsPlayerRow":
+            return <PuttingPalsPlayerRow row={item} />;
+          case "InformationRow":
+            return <InformationRow row={item} />;
+        }
+      }}
+    />
+  );
+
+  // iOS uses the native headerLargeTitle configured in leaderboard/_layout.tsx.
+  if (Platform.OS === "ios") {
+    return (
+      <Animated.ScrollView
+        className="p-4 gap-4"
+        contentInsetAdjustmentBehavior="automatic"
+      >
+        {tournament && (
+          <TournamentHeader tournament={tournament} className="mb-4" />
         )}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => {
-          switch (item.__typename) {
-            case "PlayerRow":
-              return <PlayerRow row={item} />;
-            case "PuttingPalsPlayerRow":
-              return <PuttingPalsPlayerRow row={item} />;
-            case "InformationRow":
-              return <InformationRow row={item} />;
-          }
+        <TourCodeSwitcher />
+        {list}
+      </Animated.ScrollView>
+    );
+  }
+
+  return (
+    <>
+      <LargeTitleHeaderOverlay title="Leaderboard" scrollY={scrollY} />
+      <Animated.ScrollView
+        className="p-4 gap-4"
+        contentContainerStyle={{
+          paddingTop: insets.top + LARGE_TITLE_HEADER_HEIGHT,
         }}
-      />
-    </ScrollView>
+        onScroll={scrollHandler}
+        scrollEventThrottle={16}
+      >
+        <LargeTitleText title="Leaderboard" scrollY={scrollY} />
+        {tournament && (
+          <TournamentHeader tournament={tournament} className="mb-4" />
+        )}
+        <TourCodeSwitcher />
+        {list}
+      </Animated.ScrollView>
+    </>
   );
 }
