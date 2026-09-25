@@ -7,11 +7,10 @@ export default function Layout() {
       screenOptions={{
         headerShown: Platform.OS === "ios",
         headerLargeTitle: true,
-        headerTitle: "Leaderboard",
+        headerTitle: "Schedule",
       }}
     >
       <Stack.Screen name="index" />
-      <Stack.Screen name="[id]" />
     </Stack>
   );
 }
