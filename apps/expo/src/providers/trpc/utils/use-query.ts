@@ -1,9 +1,9 @@
-import { useIsFocused } from "@react-navigation/native";
 import {
   type UseQueryOptions,
   type UseQueryResult,
   useQuery as useTanstackQuery,
 } from "@tanstack/react-query";
+import { useIsFocused } from "expo-router";
 
 /**
  * A wrapper around useQuery that automatically disables queries when the screen is not focused.

@@ -1,10 +1,10 @@
-import type { Theme } from "@react-navigation/native";
+import type { Theme } from "expo-router";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider as NavigationThemeProvider,
-} from "@react-navigation/native";
-import { useColorScheme } from "react-native";
+} from "expo-router";
+import { type ColorValue, useColorScheme } from "react-native";
 import { useCSSVariable } from "uniwind";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -31,7 +31,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-function useThemeColor(cssVariable: string, fallback: string) {
+function useThemeColor(cssVariable: string, fallback: ColorValue) {
   const color = useCSSVariable(cssVariable);
   return color ? String(color) : fallback;
 }
