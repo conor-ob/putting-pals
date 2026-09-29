@@ -44,7 +44,7 @@ export function TourCodeProvider({
         .join("/");
 
       await saveTourCode(newTourCode);
-      router.navigate(`/${newPath}` as Href);
+      router.replace(`/${newPath}` as Href);
     },
     [router, segments, saveTourCode],
   );
