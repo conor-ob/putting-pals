@@ -499,8 +499,7 @@ export type ApiBroadcastNetworks = {
 
 export type ApiBroadcastTableFragment = {
   __typename: 'BroadcastTableFragment';
-  path: Scalars['String']['output'];
-  webviewUrl: Scalars['String']['output'];
+  showTable: Scalars['Boolean']['output'];
 };
 
 export type ApiBubblePill = {
