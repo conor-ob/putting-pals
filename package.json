@@ -2,9 +2,9 @@
   "name": "putting-pals",
   "private": true,
   "engines": {
-    "node": ">=20"
+    "node": "24"
   },
-  "packageManager": "pnpm@12.4.2",
+  "packageManager": "pnpm@12.8.1",
   "scripts": {
     "clean": "turbo clean && git clean -xdf node_modules",
     "codegen": "turbo codegen",
@@ -27,8 +27,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.7",
-    "railway": "^3.11.0",
-    "turbo": "^2.5.8",
+    "railway": "3.11.0",
+    "turbo": "^2.11.5",
     "typescript": "catalog:"
   }
 }
