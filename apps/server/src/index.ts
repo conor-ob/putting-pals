@@ -1,3 +1,5 @@
+import { LogController } from "fastify";
+
 import { env } from "~/env/schema";
 import { createServer } from "~/server";
 
@@ -9,7 +11,7 @@ const server = createServer({
       options: { translateTime: "HH:MM:ss Z", ignore: "pid,hostname" },
     },
   },
-  disableRequestLogging: true,
+  logController: new LogController({ disableRequestLogging: true }),
 });
 
 if (env.NODE_ENV === "production") {

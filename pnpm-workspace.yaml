@@ -14,15 +14,16 @@ overrides:
 
 catalog:
   "@total-typescript/tsconfig": ^1.0.4
-  "@trpc/client": ^11.8.0
-  "@trpc/server": ^11.8.0
-  "@trpc/tanstack-react-query": ^11.8.0
-  "@types/node": ^24.10.1
-  dotenv: ^17.2.3
-  superjson: ^2.2.5
+  "@trpc/client": ^11.19.0
+  "@trpc/server": ^11.19.0
+  "@trpc/tanstack-react-query": ^11.19.0
+  "@types/node": ^24.19.0
+  date-fns: ^4.4.0
+  dotenv: ^18.0.4
+  superjson: ^2.2.6
   typescript: ^6.0.3
-  vitest: ^4.1.11
-  zod: ^4.1.13
+  vitest: ^5.0.2
+  zod: ^4.6.5
 
 minimumReleaseAgeExclude:
   - expo-constants@57.0.20
@@ -30,3 +31,10 @@ minimumReleaseAgeExclude:
   - expo@57.0.26
   - "@expo/ui@57.0.21"
   - expo-router@57.0.24
+  - railway@3.12.0
+  - "@graphql-codegen/typescript-operations@6.1.9"
+  - "@graphql-codegen/visitor-plugin-common@7.2.7"
+  - "@react-navigation/bottom-tabs@7.20.0"
+  - "@react-navigation/core@7.23.0"
+  - "@react-navigation/elements@2.9.44"
+  - "@react-navigation/native@7.5.0"

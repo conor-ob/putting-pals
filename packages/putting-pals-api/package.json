@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
-    "date-fns": "^4.1.0"
+    "date-fns": "catalog:"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",

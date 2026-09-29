@@ -19,7 +19,7 @@
   "dependencies": {
     "@putting-pals/iso-countries": "workspace:*",
     "@putting-pals/putting-pals-core": "workspace:*",
-    "date-fns": "^4.1.0",
+    "date-fns": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

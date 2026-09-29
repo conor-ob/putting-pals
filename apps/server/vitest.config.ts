@@ -1,9 +1,10 @@
 /// <reference types="vitest" />
-import tsconfigPaths from "vite-tsconfig-paths";
 import { configDefaults, defineConfig } from "vitest/config";
 
 export default defineConfig({
-  plugins: [tsconfigPaths()],
+  resolve: {
+    tsconfigPaths: true,
+  },
   test: {
     exclude: [...configDefaults.exclude],
     reporters: "verbose",
