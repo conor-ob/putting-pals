@@ -58,10 +58,9 @@ function RoundStatusBadge({
   );
 }
 
+export type { RoundStatusBadgeProps };
 export {
   RoundStatusBadge,
   roundStatusBadgeTextVariants,
   roundStatusBadgeVariants,
 };
-
-export type { RoundStatusBadgeProps };
