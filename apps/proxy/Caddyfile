@@ -27,17 +27,7 @@
 		}
 	}
 
-	@expo host {$EXPO_DOMAIN} www.{$EXPO_DOMAIN}
-	handle @expo {
-		reverse_proxy {$EXPO_URL} {
-			header_up Host {upstream_hostport}
-		}
-	}
-
-	@web host {$WEB_DOMAIN} www.{$WEB_DOMAIN}
-	handle @web {
-		reverse_proxy {$WEB_URL} {
-			header_up Host {upstream_hostport}
-		}
+	reverse_proxy {$EXPO_URL} {
+		header_up Host {upstream_hostport}
 	}
 }
