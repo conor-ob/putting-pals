@@ -16,5 +16,20 @@
         "noDuplicateCustomProperties": "warn"
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["public/index.html"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "useValidLang": "off"
+          },
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    }
+  ]
 }

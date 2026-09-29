@@ -1,5 +1,4 @@
 <!doctype html>
-<!-- biome-ignore lint/a11y/useValidLang: placeholder substituted at build time -->
 <html lang="%LANG_ISO_CODE%">
   <head>
     <meta charset="utf-8" />
@@ -44,19 +43,17 @@
     <link rel="icon" href="/favicon.png" />
 
     <script>
-      if ("serviceWorker" in navigator) {
+      if ("serviceWorker" in navigator && location.hostname !== "localhost") {
         window.addEventListener("load", () => {
           navigator.serviceWorker
             .register("/sw.js")
             .then((registration) => {
-              // biome-ignore lint/suspicious/noConsole: logging registration
               console.log(
                 "Service Worker registered with scope:",
                 registration.scope,
               );
             })
             .catch((error) => {
-              // biome-ignore lint/suspicious/noConsole: logging error
               console.error("Service Worker registration failed:", error);
             });
         });
