@@ -1,8 +1,8 @@
-import type { Theme } from "expo-router";
 import {
   DarkTheme,
   DefaultTheme,
-  ThemeProvider as NavigationThemeProvider,
+  ThemeProvider as ExpoThemeProvider,
+  type Theme,
 } from "expo-router";
 import { type ColorValue, useColorScheme } from "react-native";
 import { useCSSVariable } from "uniwind";
@@ -26,9 +26,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     fonts,
   } satisfies Theme;
 
-  return (
-    <NavigationThemeProvider value={theme}>{children}</NavigationThemeProvider>
-  );
+  return <ExpoThemeProvider value={theme}>{children}</ExpoThemeProvider>;
 }
 
 function useThemeColor(cssVariable: string, fallback: ColorValue) {
