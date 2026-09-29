@@ -9,10 +9,7 @@ export default function Layout() {
   return (
     <ThemeProvider>
       <TrpcProvider>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="[tour]" options={{ headerShown: false }} />
-        </Stack>
+        <Stack screenOptions={{ headerShown: false, animation: "none" }} />
       </TrpcProvider>
     </ThemeProvider>
   );

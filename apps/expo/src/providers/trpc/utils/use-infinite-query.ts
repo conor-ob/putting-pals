@@ -1,10 +1,10 @@
-import { useIsFocused } from "@react-navigation/native";
 import {
   type InfiniteData,
   type UseInfiniteQueryOptions,
   type UseInfiniteQueryResult,
   useInfiniteQuery as useTanstackInfiniteQuery,
 } from "@tanstack/react-query";
+import { useIsFocused } from "expo-router";
 
 /**
  * A wrapper around useInfiniteQuery that automatically disables queries when the screen is not focused.

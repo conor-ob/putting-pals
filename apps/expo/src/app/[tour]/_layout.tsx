@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams } from "expo-router";
+import { Slot, useLocalSearchParams } from "expo-router";
 import { DEFAULT_TOUR_CODE } from "~/constants/tour";
 import { TourCodeProvider } from "~/providers/tour-code/tour-code-provider";
 import type { TourCode } from "~/providers/trpc/types";
@@ -9,9 +9,7 @@ export default function Layout() {
 
   return (
     <TourCodeProvider tourCode={tourCode}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(tabs)" />
-      </Stack>
+      <Slot />
     </TourCodeProvider>
   );
 }
