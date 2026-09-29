@@ -24,14 +24,14 @@
     "@putting-pals/putting-pals-utils": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "^0.45.3",
-    "pg": "^8.16.3",
+    "pg": "^8.23.0",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
-    "@types/pg": "^8.16.0",
-    "drizzle-kit": "^0.31.8",
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "^0.31.11",
     "typescript": "catalog:"
   }
 }

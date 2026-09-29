@@ -2,25 +2,26 @@ import { expect, suite, test } from "vitest";
 import { resolve } from "./country-code-resolver";
 
 suite("country-code-resolver", () => {
-  test.each([
-    ["Türkiye", "TUR"],
-  ])("should convert %s to %s", (countryName, expectedCode) => {
-    const result = resolve(countryName);
-    switch (result?.__typename) {
-      case "Country":
-        expect(result.ioc).toBe(expectedCode);
-        break;
-      case "Subdivision":
-        expect(result?.ioc).toBe(expectedCode);
-        break;
-      case "State":
-        expect(result?.iso2).toBe(expectedCode);
-        break;
-      default:
-        expect(result).toBeNull();
-        break;
-    }
-  });
+  test.each([["Türkiye", "TUR"]])(
+    "should convert %s to %s",
+    (countryName, expectedCode) => {
+      const result = resolve(countryName);
+      switch (result?.__typename) {
+        case "Country":
+          expect(result.ioc).toBe(expectedCode);
+          break;
+        case "Subdivision":
+          expect(result?.ioc).toBe(expectedCode);
+          break;
+        case "State":
+          expect(result?.iso2).toBe(expectedCode);
+          break;
+        default:
+          expect(result).toBeNull();
+          break;
+      }
+    },
+  );
 
   test("resolve('US-CA') returns California state", () => {
     const result = resolve("US-CA");

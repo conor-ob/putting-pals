@@ -1,11 +1,10 @@
 import * as path from "node:path";
 import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "./src/index.ts"),
+      entry: path.resolve(import.meta.dirname, "./src/index.ts"),
       formats: ["es"],
       fileName: "index",
     },
@@ -20,5 +19,7 @@ export default defineConfig({
       },
     },
   },
-  plugins: [tsconfigPaths()],
+  resolve: {
+    tsconfigPaths: true,
+  },
 });

@@ -2,21 +2,22 @@
 import * as path from "node:path";
 import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "./src"),
+      entry: path.resolve(import.meta.dirname, "./src"),
       formats: ["es"],
     },
+  },
+  resolve: {
+    tsconfigPaths: true,
   },
   server: {
     // vite server configs, for details see [vite doc](https://vitejs.dev/config/#server-host)
     port: parseInt(process.env.PORT ?? "4000", 10),
   },
   plugins: [
-    tsconfigPaths(),
     ...VitePluginNode({
       // Nodejs native Request adapter
       // currently this plugin support 'express', 'nest', 'koa' and 'fastify' out of box,
@@ -34,12 +35,12 @@ export default defineConfig({
       // if you want to init your app on boot, set this to true
       initAppOnBoot: true,
 
-      // Optional, default: 'esbuild'
-      // The TypeScript compiler you want to use
-      // by default this plugin is using vite default ts compiler which is esbuild
-      // 'swc' compiler is supported to use as well for frameworks
-      // like Nestjs (esbuild dont support 'emitDecoratorMetadata' yet)
-      tsCompiler: "esbuild",
+      // Optional, default: 'vite'
+      // The TypeScript compiler mode you want to use
+      // 'vite' uses Vite's default transformer pipeline (Oxc)
+      // 'swc' is supported as an opt-in path (e.g. decorator metadata workflows)
+      // you need to INSTALL `@swc/core` as dev dependency if you want to use swc
+      tsCompiler: "vite",
     }),
   ],
 });
