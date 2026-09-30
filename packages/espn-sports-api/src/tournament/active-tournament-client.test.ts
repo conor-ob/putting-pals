@@ -66,9 +66,30 @@ suite("EspnSportsApiActiveTournamentClient", () => {
                   fromPartial({
                     id: "previous-event",
                     startDate: "2026-02-05",
+                    fullStatus: {
+                      type: {
+                        name: "STATUS_FINAL",
+                      },
+                    },
                   }),
-                  fromPartial({ id: "current-event", startDate: "2026-02-12" }),
-                  fromPartial({ id: "next-event", startDate: "2026-02-19" }),
+                  fromPartial({
+                    id: "current-event",
+                    startDate: "2026-02-12",
+                    fullStatus: {
+                      type: {
+                        name: "STATUS_CANCELED",
+                      },
+                    },
+                  }),
+                  fromPartial({
+                    id: "next-event",
+                    startDate: "2026-02-19",
+                    fullStatus: {
+                      type: {
+                        name: "STATUS_SCHEDULED",
+                      },
+                    },
+                  }),
                 ],
               }),
             ],
