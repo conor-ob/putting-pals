@@ -11,5 +11,5 @@ export default function Index() {
     return null;
   }
 
-  return <Redirect href={`/${tourCode ?? DEFAULT_TOUR_CODE}/leaderboard`} />;
+  return <Redirect href={`/${tourCode ?? DEFAULT_TOUR_CODE}`} />;
 }

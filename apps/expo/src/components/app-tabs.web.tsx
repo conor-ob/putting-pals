@@ -3,15 +3,9 @@ import { Tabs } from "expo-router";
 
 export function AppTabs() {
   return (
-    <Tabs initialRouteName="leaderboard">
+    <Tabs>
       <Tabs.Screen
         name="index"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="leaderboard"
         options={{
           title: "Leaderboard",
           tabBarIcon: ({ color }) => (

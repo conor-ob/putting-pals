@@ -6,7 +6,7 @@ import { Text } from "~/components/ui/text";
 import { cn } from "~/lib/utils";
 import type { RoundStatusColor } from "~/providers/trpc/types";
 
-const roundStatusBadgeVariants = cva("px-1.5 py-0.25", {
+const roundStatusBadgeVariants = cva("px-1.5 py-px", {
   variants: {
     color: {
       BLUE: "bg-pga-blue",
