@@ -34,7 +34,7 @@
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:",
-    "vite": "^8.3.1",
+    "vite": "catalog:",
     "vite-plugin-node": "^8.0.0",
     "vitest": "catalog:"
   }

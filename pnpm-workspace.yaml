@@ -21,18 +21,8 @@ catalog:
   date-fns: ^4.4.0
   dotenv: ^18.0.4
   superjson: ^2.2.6
+  tsx: ^4.23.15
   typescript: ^6.0.3
+  vite: ^8.3.1
   vitest: ^5.0.2
   zod: ^4.6.5
-
-minimumReleaseAgeExclude:
-  - "@expo/ui@57.0.21"
-  - "@react-navigation/bottom-tabs@7.20.0"
-  - "@react-navigation/core@7.23.0"
-  - "@react-navigation/elements@2.9.44"
-  - "@react-navigation/native@7.5.0"
-  - expo-constants@57.0.20
-  - expo-modules-core@57.0.20
-  - expo-router@57.0.24
-  - expo@57.0.26
-  - railway@3.12.0
