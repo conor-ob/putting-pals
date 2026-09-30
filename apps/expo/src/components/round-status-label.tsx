@@ -11,11 +11,11 @@ const roundStatusLabelVariants = cva(
   {
     variants: {
       color: {
-        BLUE: "text-pga-blue",
-        GRAY: "text-pga-gray",
-        GREEN: "text-pga-green",
-        RED: "text-pga-red",
-        YELLOW: "text-pga-yellow",
+        BLUE: "text-brand-blue",
+        GRAY: "text-brand-gray",
+        GREEN: "text-brand-green",
+        RED: "text-brand-red",
+        YELLOW: "text-brand-yellow",
       } satisfies Record<RoundStatusColor, string>,
     },
     defaultVariants: {
