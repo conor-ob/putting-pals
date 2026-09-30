@@ -31,7 +31,7 @@ export function TotalColumn({ children, className, ...props }: TextProps) {
 const scoreColumnVariants = cva("w-16 text-right", {
   variants: {
     color: {
-      under: "text-pga-red",
+      under: "text-brand-red",
       default: "text-foreground",
     },
   },
