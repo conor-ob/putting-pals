@@ -1,8 +1,8 @@
 import {
   RoundStatusColorSchema,
   RoundStatusSchema,
-  TourCodeSchema,
   TournamentStatusSchema,
+  TourSchema,
 } from "@putting-pals/putting-pals-core";
 import z from "zod";
 
@@ -62,9 +62,4 @@ export const TournamentOutputSchema = z.object({
   tournamentStatus: TournamentStatusSchema,
 });
 
-export const TourOutputSchema = z.array(
-  z.object({
-    tourCode: TourCodeSchema,
-    tourName: z.string(),
-  }),
-);
+export const TourOutputSchema = z.array(TourSchema);

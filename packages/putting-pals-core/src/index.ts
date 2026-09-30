@@ -46,7 +46,7 @@ export type { SeasonService } from "./season/interfaces/inbound/season-service";
 export { AbstractSeasonClient } from "./season/interfaces/outbound/abstract-season-client";
 export type { SeasonClient } from "./season/interfaces/outbound/season-client";
 export { StatsService } from "./stats/stats-service";
-export { TourCodeSchema } from "./tour/domain/schemas";
+export { TourCodeSchema, TourSchema } from "./tour/domain/schemas";
 export type { Tour, TourCode } from "./tour/domain/types";
 export type { TourService } from "./tour/interfaces/inbound/tour-service";
 export {
