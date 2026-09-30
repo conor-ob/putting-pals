@@ -69,14 +69,19 @@ export class EspnSportsApiActiveTournamentClient
       }
 
       return lastEventPreviousSeason.id;
+    } else {
+      const nonCancelledEvents = events.filter(
+        (event) => event.fullStatus.type.name !== "STATUS_CANCELED",
+      );
+
+      const mostRecentNonCancelledEvent =
+        nonCancelledEvents[nonCancelledEvents.length - 1];
+
+      if (mostRecentNonCancelledEvent === undefined) {
+        return undefined;
+      }
+
+      return mostRecentNonCancelledEvent.id;
     }
-
-    const previousEvent = events[eventIndex - 1];
-
-    if (previousEvent === undefined) {
-      return undefined;
-    }
-
-    return previousEvent.id;
   }
 }
