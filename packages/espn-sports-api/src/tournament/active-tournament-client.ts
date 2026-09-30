@@ -70,7 +70,8 @@ export class EspnSportsApiActiveTournamentClient
 
       return lastEventPreviousSeason.id;
     } else {
-      const nonCancelledEvents = events.filter(
+      const previousEvents = events.slice(0, eventIndex);
+      const nonCancelledEvents = previousEvents.filter(
         (event) => event.fullStatus.type.name !== "STATUS_CANCELED",
       );
 
