@@ -1,4 +1,4 @@
-import { type Href, useRouter, useSegments } from "expo-router";
+import { type Href, useRouter } from "expo-router";
 import { createContext, type ReactNode, useCallback, useContext } from "react";
 import type { Tour, TourCode } from "~/providers/trpc/types";
 import { useLocalStorage } from "~/storage/use-local-storage";
@@ -8,7 +8,7 @@ import { useQuery } from "../trpc/utils/use-query";
 interface TourCodeContextType {
   tourCode: TourCode;
   tours: readonly Tour[];
-  setTourCode: (tourCode: TourCode) => void;
+  setTourCode: (tourCode: TourCode, pathname?: string) => void;
 }
 
 const TourCodeContext = createContext<TourCodeContextType | undefined>(
@@ -23,30 +23,23 @@ export function TourCodeProvider({
   children: ReactNode;
 }) {
   const router = useRouter();
-  const segments = useSegments();
   const { data: tours } = useQuery(trpc.tour.getTours.queryOptions());
   const { setValue: saveTourCode } = useLocalStorage(
     "putting-pals:app:tour-code:v1",
   );
 
+  /**
+   * Switches to `newTourCode`, keeping the rest of `pathname` so the user stays
+   * on the same tab, e.g. `/pal/schedule` -> `/pga/schedule`.
+   */
   const setTourCode = useCallback(
-    async (newTourCode: TourCode) => {
-      const newPath = segments
-        .map((s) => {
-          if (s === "[tour]") {
-            return newTourCode;
-          }
-          return s;
-        })
-        .filter((s) => !s.startsWith("_"))
-        .filter((s) => !s.startsWith("("))
-        .filter((s) => !s.startsWith("["))
-        .join("/");
+    async (newTourCode: TourCode, pathname?: string) => {
+      const [, , ...rest] = (pathname ?? `/${tourCode}`).split("/");
 
       await saveTourCode(newTourCode);
-      router.replace(`/${newPath}` as Href);
+      router.replace(`/${[newTourCode, ...rest].join("/")}` as Href);
     },
-    [router, segments, saveTourCode],
+    [router, tourCode, saveTourCode],
   );
 
   return (

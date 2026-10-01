@@ -3,7 +3,6 @@ import { useLocalSearchParams } from "expo-router";
 import { ScrollView } from "react-native";
 import { TournamentHeader } from "~/components/tournament-header";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
-import { TourCodeSwitcher } from "~/providers/tour-code/tour-code-switcher";
 import { trpc } from "~/providers/trpc/utils/trpc";
 import { useQuery } from "~/providers/trpc/utils/use-query";
 import { useLocalStorage } from "~/storage/use-local-storage";
@@ -38,11 +37,13 @@ export function LeaderboardPage() {
   console.log("favourites", favourites);
 
   return (
-    <ScrollView className="p-4 gap-4">
+    <ScrollView
+      className="p-4 gap-4"
+      contentInsetAdjustmentBehavior="automatic"
+    >
       {tournament && (
         <TournamentHeader tournament={tournament} className="mb-4" />
       )}
-      <TourCodeSwitcher />
       <FlashList
         data={[...(leaderboard?.players ?? [])].sort(
           (a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder,

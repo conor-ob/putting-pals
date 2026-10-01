@@ -23,7 +23,7 @@ export function AppTabs() {
         selected: { color: asColor(cardForeground) },
       }}
     >
-      <NativeTabs.Trigger name="index">
+      <NativeTabs.Trigger name="(index)">
         <NativeTabs.Trigger.Label>Leaderboard</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           sf={{ default: "trophy", selected: "trophy.fill" }}

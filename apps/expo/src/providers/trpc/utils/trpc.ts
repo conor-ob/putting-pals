@@ -79,7 +79,7 @@ export const queryClient = new QueryClient({
 });
 
 const httpLink = Platform.select({
-  web: httpBatchStreamLink,
+  web: httpBatchLink,
   default: httpBatchLink,
 });
 

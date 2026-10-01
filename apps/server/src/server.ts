@@ -11,7 +11,15 @@ import registerHealthCheckRoute from "~/routes/health";
 
 export function createServer(opts?: FastifyServerOptions) {
   const fastify: FastifyInstance<Server, IncomingMessage, ServerResponse> =
-    Fastify(opts);
+    Fastify({
+      ...opts,
+      routerOptions: {
+        // tRPC puts batched procedure names in the `:path` param, which
+        // exceeds Fastify's default limit of 100 characters (414 URI Too Long)
+        maxParamLength: 5000,
+        ...opts?.routerOptions,
+      },
+    });
 
   registerLoggerPlugin(fastify);
   registerCorsPlugin(fastify);

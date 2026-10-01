@@ -1,8 +1,8 @@
 import { FlashList } from "@shopify/flash-list";
+import { Link } from "expo-router";
 import { ScrollView } from "react-native";
 import { Text } from "~/components/ui/text";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
-import { TourCodeSwitcher } from "~/providers/tour-code/tour-code-switcher";
 import { trpc } from "~/providers/trpc/utils/trpc";
 import { useQuery } from "~/providers/trpc/utils/use-query";
 
@@ -26,13 +26,24 @@ export function SchedulePage() {
   console.log("schedule.error", scheduleError);
 
   return (
-    <ScrollView className="p-4 gap-4">
-      <TourCodeSwitcher />
+    <ScrollView
+      className="p-4 gap-4"
+      contentInsetAdjustmentBehavior="automatic"
+    >
       <FlashList
         data={[...(schedule?.completed ?? []), ...(schedule?.upcoming ?? [])]}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
-          return <Text className="text-foreground">{item.name}</Text>;
+          return (
+            <Link
+              href={{
+                pathname: "/[tour]/tournament/[id]",
+                params: { tour: tourCode, id: item.id },
+              }}
+            >
+              <Text className="text-foreground">{item.name}</Text>
+            </Link>
+          );
         }}
       />
     </ScrollView>
