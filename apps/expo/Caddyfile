@@ -1,4 +1,3 @@
-
 # global options
 {
 	admin off # theres no need for the admin api in railway's environment
@@ -6,7 +5,7 @@
 	auto_https off # railway handles https for us, this would cause issues if left enabled
 	# runtime logs
 	log {
-		format json # set runtime log format to json mode 
+		format json # set runtime log format to json mode
 	}
 	# server options
 	servers {
@@ -21,6 +20,16 @@
 		format json # set access log format to json mode
 	}
 
+	# security headers, applied to every response
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Content-Security-Policy "frame-ancestors 'none'"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
 	# proxy requests at /api/* to the server and rewrite the path to /
 	handle_path /api/* {
 		reverse_proxy {$SERVER_URL} {
@@ -28,30 +37,37 @@
 		}
 	}
 
+	# source maps are not published
+	@sourcemaps path *.map
+	handle @sourcemaps {
+		respond 404
+	}
+
 	handle {
 		# serve from the set folder
 		root * /srv
 
-		# enable gzipping responses
-		encode gzip
+		# enable compressing responses
+		encode zstd gzip
 
-		# if path doesn't exist, redirect it to 'index.html' for client side routing
-		try_files {path} /index.html
+		# route runs directives in the order written, so the cache headers below
+		# match the path *after* try_files has rewritten it
+		route {
+			# if path doesn't exist, rewrite it to 'index.html' for client side routing
+			try_files {path} /index.html
 
-		# serve files
-		file_server
+			# default: always revalidate (index.html, sw.js and anything not matched below)
+			header Cache-Control "no-cache"
 
-		# assume that everything else is handled by the application router, by injecting the index.html.
-		header / Cache-Control "public, max-age=0, s-maxage=0, must-revalidate"
-		header /registerSW.js Cache-Control "max-age=0"
-		header /sw.js Cache-Control "max-age=0"
-		header /index.html Cache-Control "max-age=0"
-		header /manifest.json Cache-Control "max-age=0"
+			# unhashed public files, rarely change
+			@public path /favicon.ico /favicon.png /logo192.png /logo512.png /manifest.json
+			header @public Cache-Control "public, max-age=86400"
 
-		# all assets contain hash in filename, cache forever
-		header /assets/* Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+			# hashed filenames, cache forever
+			@hashed path /_expo/static/* /assets/* /workbox-*.js
+			header @hashed Cache-Control "public, max-age=31536000, immutable"
 
-		# all workbox scripts are compiled with hash in filename, cache forever
-		header /workbox-* Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+			file_server
+		}
 	}
 }
