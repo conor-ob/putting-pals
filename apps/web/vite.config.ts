@@ -31,11 +31,7 @@ export default defineConfig(({ mode }) => {
           "@lib": path.resolve(__dirname, "./src/lib"),
           "@providers": path.resolve(__dirname, "./src/providers"),
           "@theme": path.resolve(__dirname, "./src/theme"),
-          "@utils": path.resolve(__dirname, "./src/utils"),
         },
-      },
-      define: {
-        "import.meta.env.NODE_ENV": JSON.stringify(env.NODE_ENV),
       },
       build: {
         rollupOptions: {

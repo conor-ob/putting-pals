@@ -61,16 +61,6 @@ const App: React.FC = () => (
               component={LeaderboardPage}
             />
           </IonRouterOutlet>
-          {/* <IonTabBar slot="bottom">
-            <IonTabButton tab="putting-pals" href="/putting-pals">
-              <IonIcon aria-hidden="true" icon={square} />
-              <IonLabel>Putting Pals</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="pga-tour" href="/pga-tour">
-              <IonIcon aria-hidden="true" icon={square} />
-              <IonLabel>PGA Tour</IonLabel>
-            </IonTabButton>
-          </IonTabBar> */}
         </IonTabs>
       </IonReactRouter>
     </TrpcProvider>

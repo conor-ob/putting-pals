@@ -11,5 +11,19 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  viteFinal(config) {
+    // storybook isn't a PWA, and the plugin fails trying to precache its bundle
+    config.plugins = config.plugins
+      ?.flat()
+      .filter(
+        (plugin) =>
+          !(
+            plugin &&
+            "name" in plugin &&
+            plugin.name.startsWith("vite-plugin-pwa")
+          ),
+      );
+    return config;
+  },
 };
 export default config;
