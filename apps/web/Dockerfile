@@ -1,47 +1,41 @@
 # https://fintlabs.medium.com/optimized-multi-stage-docker-builds-with-turborepo-and-pnpm-for-nodejs-microservices-in-a-monorepo-c686fdcf051f
 
-# Alpine image
-FROM node:22-alpine AS alpine
-RUN apk update
+# Base Alpine image
+FROM node:24-alpine AS alpine
 RUN apk add --no-cache libc6-compat
 
-# Setup pnpm and turbo on the alpine base
-FROM alpine as base
-RUN npm install pnpm turbo --global
-RUN pnpm config set store-dir /root/.local/share/pnpm/store/v3
+# Setup pnpm and turbo
+FROM alpine AS base
+RUN npm install -g pnpm turbo \
+    && pnpm config set store-dir /root/.local/share/pnpm/store/v3
 
-# Prune projects
+# Prune projects to isolate subworkspace
 FROM base AS pruner
-
 WORKDIR /app
 COPY . .
-RUN turbo prune --scope=@app/web --docker
+RUN turbo prune --scope=@putting-pals/web --docker
 
-# Build the project
+# Build stage
 FROM base AS builder
-
-ARG PORT
 
 WORKDIR /app
 
-# Copy lockfile and package.json's of isolated subworkspace
+# Copy only lockfiles and pruned workspace manifests first
 COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
-# First install the dependencies (as they change less often)
-# https://docs.railway.com/guides/dockerfiles#cache-mounts
-RUN --mount=type=cache,id=s/140a4bb8-312c-457e-a4e2-e01ab70c5612-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm install --frozen-lockfile
+# Install dependencies (layer cached by Docker if lockfile unchanged)
+RUN pnpm install --frozen-lockfile
 
-# Copy source code of isolated subworkspace
+# Copy full source for the isolated workspace
 COPY --from=pruner /app/out/full/ .
 
-RUN turbo build --filter=@app/web
-RUN --mount=type=cache,id=s/140a4bb8-312c-457e-a4e2-e01ab70c5612-/root/.local/share/pnpm/store/v3,target=/root/.local/share/pnpm/store/v3 pnpm prune --prod --no-optional
-RUN rm -rf ./**/*/src
+# Turbo build
+RUN turbo build --filter=@putting-pals/web
 
 # Final image
-FROM caddy:alpine AS runner
+FROM caddy:2-alpine AS runner
 
 WORKDIR /app
 
@@ -50,4 +44,4 @@ COPY --from=builder /app/apps/web/dist /srv
 COPY apps/web/Caddyfile /etc/caddy/Caddyfile
 
 RUN caddy fmt --overwrite /etc/caddy/Caddyfile
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile", "2>&1"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
