@@ -40,3 +40,7 @@ export type RoundStatusColor =
 export type TourCode = RouterOutputs["tour"]["getTours"][number]["tourCode"];
 
 export type Tournament = RouterOutputs["tournament"]["getById"];
+
+export type WeatherCondition = NonNullable<
+  RouterOutputs["tournament"]["getById"]["weather"]
+>["condition"];

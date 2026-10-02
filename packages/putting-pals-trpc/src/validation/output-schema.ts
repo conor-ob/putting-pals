@@ -3,6 +3,7 @@ import {
   RoundStatusSchema,
   TourCodeSchema,
   TournamentStatusSchema,
+  WeatherConditionSchema,
 } from "@putting-pals/putting-pals-core";
 import z from "zod";
 
@@ -64,6 +65,12 @@ export const TournamentOutputSchema = z.object({
   tournamentLogo: z.array(z.string()),
   tournamentName: z.string(),
   tournamentStatus: TournamentStatusSchema,
+  weather: z
+    .object({
+      temperature: z.string(),
+      condition: WeatherConditionSchema,
+    })
+    .optional(),
 });
 
 export const TourOutputSchema = z.array(
