@@ -77,6 +77,8 @@ export default defineRailway((ctx) => {
     deploy: {
       ...deployConfig,
       healthcheckPath: "/health",
+      // Migrate before the new deployment goes live; a failure aborts the deploy
+      preDeployCommand: ["node", "/app/apps/server/dist/migrate.js"],
     },
   });
 
@@ -92,21 +94,6 @@ export default defineRailway((ctx) => {
     deploy: {
       ...deployConfig,
       healthcheckPath: "/",
-    },
-  });
-
-  const dbMigrate = service("db-migrate", {
-    source: puttingPals,
-    env: {
-      DATABASE_URL: "${{postgres.DATABASE_URL}}",
-    },
-    build: dockerBuildConfig({
-      dockerfilePath: "packages/putting-pals-db/Dockerfile",
-      watchPatterns: ["packages/putting-pals-db/**"],
-    }),
-    deploy: {
-      multiRegionConfig: euWest4,
-      restartPolicyType: "NEVER",
     },
   });
 
@@ -137,7 +124,7 @@ export default defineRailway((ctx) => {
     },
   });
 
-  const jobs = group("jobs", [dbMigrate, espnSchema, leaderboardSync]);
+  const jobs = group("jobs", [espnSchema, leaderboardSync]);
   const database = group("database", [postgresDatabase, postgresVolume]);
   const backend = group("backend", [server]);
   const frontend = group("frontend", [expo]);
