@@ -37,6 +37,9 @@ ENV EXPO_PUBLIC_SERVER_URL=$EXPO_PUBLIC_SERVER_URL
 # Turbo codegen and build
 RUN turbo build --filter=@putting-pals/expo
 
+# Remove source maps so they aren't served publicly
+RUN find apps/expo/dist -name '*.map' -type f -delete
+
 # Prune production dependencies
 RUN pnpm prune --prod --no-optional
 RUN rm -rf ./**/*/src

@@ -37,12 +37,6 @@
 		}
 	}
 
-	# source maps are not published
-	@sourcemaps path *.map
-	handle @sourcemaps {
-		respond 404
-	}
-
 	handle {
 		# serve from the set folder
 		root * /srv
