@@ -1,6 +1,6 @@
 import { api } from "@providers/trpc-provider";
 
-import { cn } from "@pkg/ui/cn";
+import { cn } from "@lib/utils";
 
 export function CompetitionTableHeader({ id }: { id?: string }) {
   const { data } = api.leaderboard.getByCompetitionId.useQuery({ id });

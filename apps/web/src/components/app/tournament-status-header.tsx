@@ -2,7 +2,7 @@ import * as React from "react";
 
 import type { Tournament } from "@pkg/api/types";
 
-import { cn } from "../../lib/utils";
+import { cn } from "@lib/utils";
 import { RoundStatusBadge } from "./round-status-badge";
 import { RoundStatusLabel } from "./round-status-label";
 

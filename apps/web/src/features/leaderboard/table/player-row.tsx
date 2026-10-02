@@ -1,6 +1,6 @@
 import { ListItem } from "@components/list-item";
 
-import { cn } from "@pkg/ui/cn";
+import { cn } from "@lib/utils";
 
 export function LeadboardPlayerRow({
   position,

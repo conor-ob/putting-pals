@@ -30,8 +30,10 @@
       "@components/*": ["src/components/*"],
       "@env/*": ["src/env/*"],
       "@features/*": ["src/features/*"],
+      "@lib/*": ["src/lib/*"],
       "@providers/*": ["src/providers/*"],
-      "@theme/*": ["src/theme/*"]
+      "@theme/*": ["src/theme/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src"]

@@ -4,7 +4,7 @@ import { LeadboardPlayerRow } from "@features/leaderboard/table/player-row";
 import { api } from "@providers/trpc-provider";
 import _ from "lodash";
 
-import { Skeleton } from "@pkg/ui/ui";
+import { Skeleton } from "@components/ui";
 
 import { favouritesStorageKey } from "../utils/favourites";
 import { CompetitionPlayerRow } from "./player-row";

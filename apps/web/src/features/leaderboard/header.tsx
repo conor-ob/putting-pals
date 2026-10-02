@@ -1,8 +1,8 @@
 import { ListItem } from "@components/list-item";
 import { api } from "@providers/trpc-provider";
 
-import { TournamentHeader } from "@pkg/ui/app";
-import { Skeleton } from "@pkg/ui/ui";
+import { TournamentHeader } from "@components/app";
+import { Skeleton } from "@components/ui";
 
 export function LeaderboardHeader({ id }: { id?: string }) {
   const { data } = api.tournament.getById.useQuery({ id });

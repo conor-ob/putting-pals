@@ -2,7 +2,7 @@ import { ListItem } from "@components/list-item";
 import { IonIcon } from "@ionic/react";
 import { star, starOutline } from "ionicons/icons";
 
-import { cn } from "@pkg/ui/cn";
+import { cn } from "@lib/utils";
 
 export function CompetitionPlayerRow({
   id,

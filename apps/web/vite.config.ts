@@ -35,8 +35,10 @@ export default defineConfig(({ mode }) => {
           "@components": path.resolve(__dirname, "./src/components"),
           "@env": path.resolve(__dirname, "./src/env"),
           "@features": path.resolve(__dirname, "./src/features"),
+          "@lib": path.resolve(__dirname, "./src/lib"),
           "@providers": path.resolve(__dirname, "./src/providers"),
           "@theme": path.resolve(__dirname, "./src/theme"),
+          "@utils": path.resolve(__dirname, "./src/utils"),
         },
       },
       define: {

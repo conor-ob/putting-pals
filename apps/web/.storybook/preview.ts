@@ -1,7 +1,7 @@
 import type { Preview, ReactRenderer } from "@storybook/react";
 import { withThemeByClassName } from "@storybook/addon-themes";
 
-import "@pkg/ui/globals.css";
+import "../src/theme/globals.css";
 
 import { DocsContainer } from "./DocsContainer";
 

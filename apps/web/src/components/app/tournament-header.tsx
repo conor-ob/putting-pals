@@ -1,6 +1,6 @@
 import type { Tournament } from "@pkg/api/types";
 
-import { cn } from "../../lib/utils";
+import { cn } from "@lib/utils";
 import { TournamentInfo } from "./tournament-info";
 import { TournamentName } from "./tournament-name";
 import { TournamentStatusHeader } from "./tournament-status-header";

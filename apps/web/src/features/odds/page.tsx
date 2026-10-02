@@ -5,8 +5,8 @@ import { LeaderboardHeader } from "@features/leaderboard/header";
 import { IonList } from "@ionic/react";
 import { api } from "@providers/trpc-provider";
 
-import { cn } from "@pkg/ui/cn";
-import { Skeleton } from "@pkg/ui/ui";
+import { cn } from "@lib/utils";
+import { Skeleton } from "@components/ui";
 
 type Runner = {
   id: string;
