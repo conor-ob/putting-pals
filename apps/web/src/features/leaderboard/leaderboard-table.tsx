@@ -39,31 +39,16 @@ export function LeaderboardTable({
     );
   }
 
-  const rows = [...leaderboard.players]
-    .sort((a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder)
-    .filter((row) => matchesSearchQuery(row, searchQuery));
-  const playerRowsByPlayerId = new Map(
-    leaderboard.players
-      .filter((row) => row.__typename === "PlayerRow")
-      .map((row) => [row.player.id, row]),
+  const groups = groupRows(leaderboard.players).filter((group) =>
+    matchesSearchQuery(group, searchQuery),
   );
-  const favouriteRows = rows
-    .filter(
-      (row) =>
-        row.__typename !== "InformationRow" && favourites.includes(row.id),
-    )
-    .flatMap((row): LeaderboardRow[] => {
-      if (row.__typename !== "PuttingPalsPlayerRow") {
-        return [row];
-      }
-      const picks = row.picks.flatMap((playerId) => {
-        const pick = playerRowsByPlayerId.get(playerId);
-        return pick === undefined
-          ? []
-          : [{ ...pick, id: `${row.id}-${playerId}` }];
-      });
-      return [row, ...picks];
-    });
+  const favouriteGroups = groups.filter((group) => {
+    const [firstRow] = group;
+    return (
+      firstRow?.__typename === "PuttingPalsPlayerRow" &&
+      favourites.includes(firstRow.id)
+    );
+  });
 
   function renderRow(row: LeaderboardRow) {
     switch (row.__typename) {
@@ -85,20 +70,20 @@ export function LeaderboardTable({
 
   return (
     <div>
-      {favouriteRows.length > 0 && (
+      {favouriteGroups.length > 0 && (
         <div className="mb-4">
           <LeaderboardTableTitle>Favourites</LeaderboardTableTitle>
           <LeaderboardTableHeader
             leaderboardRoundHeader={leaderboard.leaderboardRoundHeader}
           />
-          {favouriteRows.map(renderRow)}
+          {favouriteGroups.flat().map(renderRow)}
         </div>
       )}
       <LeaderboardTableTitle>All Players</LeaderboardTableTitle>
       <LeaderboardTableHeader
         leaderboardRoundHeader={leaderboard.leaderboardRoundHeader}
       />
-      {rows.map(renderRow)}
+      {groups.flat().map(renderRow)}
     </div>
   );
 }
@@ -111,15 +96,54 @@ function LeaderboardTableTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-// TODO legacy-web: fix bug where typing then undoing gives weird search results
-function matchesSearchQuery(row: LeaderboardRow, searchQuery?: string) {
+/**
+ * Groups each Putting Pals player with the rows of their picks, so a group is
+ * searched and displayed as a whole. Rows that aren't a pick (e.g. PGA TOUR
+ * players and information rows) are a group of their own.
+ */
+function groupRows(players: readonly LeaderboardRow[]): LeaderboardRow[][] {
+  const sortedRows = [...players].sort(
+    (a, b) => a.leaderboardSortOrder - b.leaderboardSortOrder,
+  );
+  const playerRowsByPlayerId = new Map(
+    sortedRows
+      .filter((row) => row.__typename === "PlayerRow")
+      .map((row) => [row.player.id, row]),
+  );
+  const pickedPlayerIds = new Set(
+    sortedRows.flatMap((row) =>
+      row.__typename === "PuttingPalsPlayerRow" ? row.picks : [],
+    ),
+  );
+
+  return sortedRows.flatMap((row): LeaderboardRow[][] => {
+    if (row.__typename === "PuttingPalsPlayerRow") {
+      const picks = row.picks.flatMap((playerId) => {
+        const pick = playerRowsByPlayerId.get(playerId);
+        return pick === undefined
+          ? []
+          : [{ ...pick, id: `${row.id}-${playerId}` }];
+      });
+      return [[row, ...picks]];
+    }
+    if (row.__typename === "PlayerRow" && pickedPlayerIds.has(row.player.id)) {
+      // picks are already rendered in their Putting Pals player's group
+      return [];
+    }
+    return [[row]];
+  });
+}
+
+function matchesSearchQuery(group: LeaderboardRow[], searchQuery?: string) {
   if (searchQuery === undefined) {
     return true;
-  } else if (row.__typename === "InformationRow") {
-    return false;
-  } else {
-    return _.deburr(row.player.displayName.toLowerCase())
-      .trim()
-      .includes(_.deburr(searchQuery.toLowerCase()).trim());
   }
+  const deburredSearchQuery = _.deburr(searchQuery.toLowerCase()).trim();
+  return group.some(
+    (row) =>
+      row.__typename !== "InformationRow" &&
+      _.deburr(row.player.displayName.toLowerCase())
+        .trim()
+        .includes(deburredSearchQuery),
+  );
 }

@@ -10,10 +10,10 @@ export function LeaderboardSearchBar({
       className="px-4"
       showCancelButton="focus"
       onIonInput={(e) => {
-        const target = e.target;
-        if (target.value) {
-          onSearchQueryChange(target.value.toLowerCase());
-        }
+        const value = e.target.value?.trim();
+        // report an empty input too, otherwise deleting the query leaves the
+        // last non-empty value applied
+        onSearchQueryChange(value ? value.toLowerCase() : undefined);
       }}
       onIonCancel={() => onSearchQueryChange(undefined)}
       onIonClear={() => onSearchQueryChange(undefined)}
