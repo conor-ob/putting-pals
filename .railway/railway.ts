@@ -78,8 +78,6 @@ export default defineRailway((ctx) => {
     deploy: {
       ...deployConfig,
       healthcheckPath: "/health",
-      // Migrate before the new deployment goes live; a failure aborts the deploy
-      // Railway accepts a single command string here, not an argv array
     },
   });
 
