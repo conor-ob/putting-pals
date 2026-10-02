@@ -53,12 +53,12 @@ export default defineRailway((ctx) => {
     multiRegionConfig: euWest4,
     // restartPolicyType: "ON_FAILURE",
     // restartPolicyMaxRetries: 5,
-    limitOverride: {
-      containers: {
-        cpu: 1,
-        memoryBytes: 1_000_000_000,
-      },
-    },
+    // limitOverride: {
+    //   containers: {
+    //     cpu: 1,
+    //     memoryBytes: 1_000_000_000,
+    //   },
+    // },
     // healthcheckPath: "/api/health",
     // healthcheckTimeout: 300,
     // sleepApplication: !isProd,
