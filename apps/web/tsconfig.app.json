@@ -23,15 +23,14 @@
     "tsBuildInfoFile": "${configDir}/.cache/tsconfig.app.tsbuildinfo",
 
     /* alias */
-    "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@env/*": ["src/env/*"],
-      "@features/*": ["src/features/*"],
-      "@lib/*": ["src/lib/*"],
-      "@providers/*": ["src/providers/*"],
-      "@theme/*": ["src/theme/*"],
-      "@utils/*": ["src/utils/*"]
+      "@components/*": ["./src/components/*"],
+      "@env/*": ["./src/env/*"],
+      "@features/*": ["./src/features/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@theme/*": ["./src/theme/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src"]
