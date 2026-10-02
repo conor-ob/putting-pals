@@ -40,6 +40,7 @@ export function LeadboardPlayerRow({
           <div className="me-2 w-8 px-0.5">
             <img
               className="rounded-sm"
+              alt={countryFlag}
               src={`https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@2.4.0/Assets/PNG/${countryFlag}%403x.png`}
             />
           </div>

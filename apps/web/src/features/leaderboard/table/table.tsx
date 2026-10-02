@@ -1,7 +1,7 @@
-import { api } from "@providers/trpc-provider";
+import { Skeleton } from "@components/ui";
 
 import type { InformationRow, PlayerRow } from "@pkg/api/types";
-import { Skeleton } from "@components/ui";
+import { api } from "@providers/trpc-provider";
 
 import { LeadboardPlayerRow } from "./player-row";
 

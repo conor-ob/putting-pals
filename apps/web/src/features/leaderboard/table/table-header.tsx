@@ -1,6 +1,5 @@
-import { api } from "@providers/trpc-provider";
-
 import { cn } from "@lib/utils";
+import { api } from "@providers/trpc-provider";
 
 export function LeaderboardTableHeader({ id }: { id?: string }) {
   const { data } = api.leaderboard.getById.useQuery({ id });

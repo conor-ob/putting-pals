@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-
 import type { Tournament, WeatherCondition } from "@pkg/api/types";
 import { getLocation } from "@utils/location";
 import { getWeatherIconSvgUrl } from "@utils/weather";
+import type React from "react";
+import { useEffect, useState } from "react";
 
 export function TournamentInfo({ tournament }: { tournament: Tournament }) {
   const displayStrings = [

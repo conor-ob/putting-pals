@@ -1,9 +1,9 @@
-import type { RefresherEventDetail } from "@ionic/react";
-import { useState } from "react";
 import { PageLayout } from "@components/page-layout";
 import { LeaderboardSearchBar } from "@features/leaderboard/search-bar";
+import type { RefresherEventDetail } from "@ionic/react";
 import { IonList, IonRefresher, IonRefresherContent } from "@ionic/react";
 import { api } from "@providers/trpc-provider";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { CompetitionHeader } from "./header";

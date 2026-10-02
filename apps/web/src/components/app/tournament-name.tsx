@@ -6,7 +6,7 @@ export function TournamentName({
   ...props
 }: { name: string } & React.HTMLAttributes<HTMLDivElement>) {
   const isNumeric = (val: string): boolean => {
-    return !isNaN(Number(val));
+    return !Number.isNaN(Number(val));
   };
 
   let adjustedName = name;
@@ -18,7 +18,7 @@ export function TournamentName({
       remainder.length > 1 &&
       isNumeric(remainder[0] ?? "")
     ) {
-      adjustedName = parts[0]?.trim() + " " + remainder[1]?.trim();
+      adjustedName = `${parts[0]?.trim()} ${remainder[1]?.trim()}`;
     }
   }
 

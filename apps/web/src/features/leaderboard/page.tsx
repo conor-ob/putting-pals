@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { PageLayout } from "@components/page-layout";
 import { IonList } from "@ionic/react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { LeaderboardHeader } from "./header";

@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
 import type { Tournament } from "@pkg/api/types";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { TournamentStatusHeader } from "./tournament-status-header";
 

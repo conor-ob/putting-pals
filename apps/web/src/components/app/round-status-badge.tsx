@@ -1,8 +1,7 @@
-import type { VariantProps } from "class-variance-authority";
-import * as React from "react";
-import { cva } from "class-variance-authority";
-
 import { cn } from "@lib/utils";
+import type { VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
+import type * as React from "react";
 
 const roundStatusBadgeVariants = cva(
   "inline-flex items-center gap-x-1.5 rounded-sm px-1.5 py-0.5 text-xs font-bold uppercase leading-tight tracking-tight transition-colors",

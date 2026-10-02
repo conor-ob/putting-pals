@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
 import { ListItem } from "@components/list-item";
 import { PageLayout } from "@components/page-layout";
+import { Skeleton } from "@components/ui";
 import { LeaderboardHeader } from "@features/leaderboard/header";
 import { IonList } from "@ionic/react";
-import { api } from "@providers/trpc-provider";
-
 import { cn } from "@lib/utils";
-import { Skeleton } from "@components/ui";
+import { api } from "@providers/trpc-provider";
+import { useEffect, useState } from "react";
 
 type Runner = {
   id: string;
@@ -78,8 +77,7 @@ function PickerList({ id, data }: { id: string; data: Runner[] }) {
             setRunners(data.filter((it) => !picks.includes(it.id)));
           }
         }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (e) {
+      } catch {
         // error reading value
       } finally {
         setLoadingPicks(false);
@@ -105,8 +103,7 @@ function PickerList({ id, data }: { id: string; data: Runner[] }) {
       );
       setPicks(newPicks);
       setRunners(newRunners);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (e) {
+    } catch {
       // saving error
     }
   }
@@ -128,8 +125,7 @@ function PickerList({ id, data }: { id: string; data: Runner[] }) {
         );
         setPicks(newPicks);
         setRunners(newRunners);
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (e) {
+      } catch {
         // saving error
       }
     }

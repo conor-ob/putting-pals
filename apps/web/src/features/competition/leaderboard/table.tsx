@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { Skeleton } from "@components/ui";
 import { LeaderboardTableAllPlayersHeader } from "@features/leaderboard/table/all-players-header";
 import { LeadboardPlayerRow } from "@features/leaderboard/table/player-row";
 import { api } from "@providers/trpc-provider";
 import _ from "lodash";
-
-import { Skeleton } from "@components/ui";
+import { useEffect, useState } from "react";
 
 import { favouritesStorageKey } from "../utils/favourites";
 import { CompetitionPlayerRow } from "./player-row";

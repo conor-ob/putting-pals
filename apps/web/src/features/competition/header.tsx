@@ -1,8 +1,7 @@
-import { ListItem } from "@components/list-item";
-import { api } from "@providers/trpc-provider";
-
 import { TournamentHeader } from "@components/app";
+import { ListItem } from "@components/list-item";
 import { Skeleton } from "@components/ui";
+import { api } from "@providers/trpc-provider";
 
 export function CompetitionHeader({ id }: { id?: string }) {
   const { data, isLoading, isRefetching } =

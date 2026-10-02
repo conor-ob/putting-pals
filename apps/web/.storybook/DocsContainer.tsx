@@ -1,9 +1,9 @@
-import React, { FC, PropsWithChildren } from "react";
 import {
   DocsContainer as BaseContainer,
-  DocsContainerProps,
+  type DocsContainerProps,
 } from "@storybook/blocks";
 import { themes } from "@storybook/theming";
+import type { FC, PropsWithChildren } from "react";
 
 export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({
   children,
