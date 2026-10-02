@@ -262,7 +262,7 @@ export function getCountryFlag({
   alpha2 ??= resolveKnowFlagIssues({ player });
 
   if (alpha2 === undefined) {
-    // TODO: log to Sentry
+    // TODO: log
     // console.log(
     //   "country flag not found for player=" + JSON.stringify(player, null, 2),
     // );

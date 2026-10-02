@@ -21,9 +21,6 @@ RUN turbo prune --scope=@app/web --docker
 FROM base AS builder
 
 ARG PORT
-ARG SENTRY_DSN
-ARG GITHUB_SHA
-ARG RAILWAY_GIT_COMMIT_SHA
 
 WORKDIR /app
 

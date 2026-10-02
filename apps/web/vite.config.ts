@@ -1,6 +1,4 @@
-import * as child from "node:child_process";
 import path from "node:path";
-import { sentryVitePlugin } from "@sentry/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig, loadEnv } from "vite";
@@ -11,14 +9,7 @@ import { envSchema } from "./src/env/schema";
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd(), "");
-  const env = envSchema.parse({
-    ...viteEnv,
-    SENTRY_PROJECT: "putting-pals-web",
-    GIT_COMMIT_SHA:
-      process.env.RAILWAY_GIT_COMMIT_SHA ??
-      process.env.GITHUB_SHA ??
-      child.execSync("git rev-parse HEAD").toString().trim(),
-  });
+  const env = envSchema.parse(viteEnv);
 
   if (mode === "test") {
     return {
@@ -44,15 +35,12 @@ export default defineConfig(({ mode }) => {
       },
       define: {
         "import.meta.env.NODE_ENV": JSON.stringify(env.NODE_ENV),
-        "import.meta.env.SENTRY_DSN": JSON.stringify(env.SENTRY_DSN),
-        "import.meta.env.SENTRY_PROJECT": JSON.stringify(env.SENTRY_PROJECT),
-        "import.meta.env.GIT_COMMIT_SHA": JSON.stringify(env.GIT_COMMIT_SHA),
       },
       build: {
         rollupOptions: {
           output: {
             manualChunks(id) {
-              if (id.includes("node_modules") && !id.includes("sentry")) {
+              if (id.includes("node_modules")) {
                 return (
                   id
                     .toString()
@@ -63,7 +51,6 @@ export default defineConfig(({ mode }) => {
             },
           },
         },
-        sourcemap: env.CI,
       },
       server: {
         open: true,
@@ -115,13 +102,6 @@ export default defineConfig(({ mode }) => {
                 purpose: "maskable",
               },
             ],
-          },
-        }),
-        sentryVitePlugin({
-          project: env.SENTRY_PROJECT,
-          disable: !env.CI,
-          release: {
-            name: `${env.SENTRY_PROJECT}@${env.GIT_COMMIT_SHA}`,
           },
         }),
       ],
