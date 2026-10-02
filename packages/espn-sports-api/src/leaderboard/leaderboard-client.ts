@@ -68,6 +68,8 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
           player: {
             id: competitor.athlete.id,
             displayName: competitor.athlete.displayName,
+            shortName: competitor.athlete.shortName,
+            abbreviations: competitor.athlete.amateur ? "(a)" : "",
             countryFlag: "TBD",
           },
           scoringData: {
