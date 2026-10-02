@@ -64,25 +64,11 @@ export default defineRailway((ctx) => {
     // sleepApplication: !isProd,
   };
 
-  const expo = service("expo", {
-    source: puttingPals,
-    env: {
-      PORT: "8080",
-    },
-    build: dockerBuildConfig({
-      dockerfilePath: "apps/expo/Dockerfile",
-    }),
-    deploy: {
-      ...deployConfig,
-      healthcheckPath: "/",
-    },
-  });
-
   const server = service("server", {
     source: puttingPals,
     env: {
       PORT: "8080",
-      ORIGIN: `https://\${{proxy.RAILWAY_PUBLIC_DOMAIN}}`,
+      ORIGIN: `https://\${{expo.RAILWAY_PUBLIC_DOMAIN}}`,
       DATABASE_URL: "${{postgres.DATABASE_URL}}",
     },
     build: dockerBuildConfig({
@@ -94,18 +80,18 @@ export default defineRailway((ctx) => {
     },
   });
 
-  const proxy = service("proxy", {
+  const expo = service("expo", {
     source: puttingPals,
     env: {
-      EXPO_URL: privateNetworkingUrl(expo),
+      PORT: "8080",
       SERVER_URL: privateNetworkingUrl(server),
     },
     build: dockerBuildConfig({
-      dockerfilePath: "apps/proxy/Dockerfile",
+      dockerfilePath: "apps/expo/Dockerfile",
     }),
     deploy: {
       ...deployConfig,
-      healthcheckPath: "/api/health",
+      healthcheckPath: "/",
     },
   });
 
@@ -152,12 +138,11 @@ export default defineRailway((ctx) => {
   });
 
   const jobs = group("jobs", [dbMigrate, espnSchema, leaderboardSync]);
-  const gateway = group("gateway", [proxy]);
   const database = group("database", [postgresDatabase, postgresVolume]);
   const backend = group("backend", [server]);
   const frontend = group("frontend", [expo]);
 
   return project("putting-pals", {
-    resources: [jobs, gateway, database, backend, frontend],
+    resources: [frontend, backend, database, jobs],
   });
 });
