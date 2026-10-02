@@ -28,7 +28,7 @@ export function CompetitionPage() {
   }
 
   return (
-    <PageLayout title="Putting Pals" largeHeader>
+    <PageLayout title="Putting Pals TOUR" largeHeader>
       <IonRefresher
         slot="fixed"
         onIonRefresh={(event) => handleRefresh(event.detail)}
