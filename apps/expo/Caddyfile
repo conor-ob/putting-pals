@@ -50,12 +50,8 @@
 			# if path doesn't exist, rewrite it to 'index.html' for client side routing
 			try_files {path} /index.html
 
-			# default: always revalidate (index.html, sw.js and anything not matched below)
+			# default: always revalidate (index.html, sw.js, manifest.json and anything not matched below)
 			header Cache-Control "no-cache"
-
-			# unhashed public files, rarely change
-			@public path /favicon.ico /favicon.png /logo192.png /logo512.png /manifest.json
-			header @public Cache-Control "public, max-age=86400"
 
 			# hashed filenames, cache forever
 			@hashed path /_expo/static/* /assets/* /workbox-*.js

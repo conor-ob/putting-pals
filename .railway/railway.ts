@@ -96,6 +96,21 @@ export default defineRailway((ctx) => {
     },
   });
 
+  const web = service("web", {
+    source: puttingPals,
+    env: {
+      PORT: "8080",
+      SERVER_URL: privateNetworkingUrl(server),
+    },
+    build: dockerBuildConfig({
+      dockerfilePath: "apps/web/Dockerfile",
+    }),
+    deploy: {
+      ...deployConfig,
+      healthcheckPath: "/",
+    },
+  });
+
   const espnSchema = service("espn-schema", {
     source: puttingPals,
     env: {
@@ -126,7 +141,7 @@ export default defineRailway((ctx) => {
   const jobs = group("jobs", [espnSchema, leaderboardSync]);
   const database = group("database", [postgresDatabase, postgresVolume]);
   const backend = group("backend", [server]);
-  const frontend = group("frontend", [expo]);
+  const frontend = group("frontend", [expo, web]);
 
   return project("putting-pals", {
     resources: [frontend, backend, database, jobs],

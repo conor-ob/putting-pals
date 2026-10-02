@@ -32,6 +32,12 @@ export function transformTournament(tournament: ApiTournament): Tournament {
       roundStatusColor: tournament.roundStatusColor,
       roundStatusDisplay: tournament.roundStatusDisplay,
     },
+    weather: tournament.weather
+      ? {
+          temperature: tournament.weather.tempC,
+          condition: tournament.weather.condition,
+        }
+      : undefined,
   } satisfies Tournament;
   return TournamentSchema.parse(transformedTournament);
 }

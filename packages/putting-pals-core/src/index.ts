@@ -54,6 +54,7 @@ export {
   RoundStatusSchema,
   TournamentSchema,
   TournamentStatusSchema,
+  WeatherConditionSchema,
 } from "./tournament/domain/schemas";
 export type { Tournament, TournamentStatus } from "./tournament/domain/types";
 export type { BatchTournamentService } from "./tournament/interfaces/inbound/batch-tournament-service";

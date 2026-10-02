@@ -68,6 +68,8 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
           player: {
             id: competitor.athlete.id,
             displayName: competitor.athlete.displayName,
+            shortName: competitor.athlete.shortName,
+            abbreviations: competitor.athlete.amateur ? "(a)" : "",
             countryFlag: "TBD",
           },
           scoringData: {
@@ -83,6 +85,7 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
         };
       }),
       tournamentStatus: this.mapTournamentStatus(event.status.type.state),
+      leaderboardRoundHeader: `R${currentRound}`,
     };
   }
 

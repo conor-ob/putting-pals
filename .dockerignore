@@ -34,9 +34,9 @@ web-build
 **/.vscode
 
 # Env and secrets (never send to daemon)
-.env
-.env.*
-!.env.example
+**/.env
+**/.env.*
+!**/.env.example
 
 # Logs and debug
 *.log
