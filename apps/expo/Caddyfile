@@ -21,28 +21,37 @@
 		format json # set access log format to json mode
 	}
 
-	# serve from the set folder
-	root * /srv
+	# proxy requests at /api/* to the server and rewrite the path to /
+	handle_path /api/* {
+		reverse_proxy {$SERVER_URL} {
+			header_up Host {upstream_hostport}
+		}
+	}
 
-	# enable gzipping responses
-	encode gzip
+	handle {
+		# serve from the set folder
+		root * /srv
 
-	# serve files
-	file_server
+		# enable gzipping responses
+		encode gzip
 
-	# if path doesn't exist, redirect it to 'index.html' for client side routing
-	try_files {path} /index.html
+		# if path doesn't exist, redirect it to 'index.html' for client side routing
+		try_files {path} /index.html
 
-	# assume that everything else is handled by the application router, by injecting the index.html.
-	header / Cache-Control "public, max-age=0, s-maxage=0, must-revalidate"
-	header /registerSW.js Cache-Control "max-age=0"
-	header /sw.js Cache-Control "max-age=0"
-	header /index.html Cache-Control "max-age=0"
-	header /manifest.json Cache-Control "max-age=0"
+		# serve files
+		file_server
 
-	# all assets contain hash in filename, cache forever
-	header /assets/* Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+		# assume that everything else is handled by the application router, by injecting the index.html.
+		header / Cache-Control "public, max-age=0, s-maxage=0, must-revalidate"
+		header /registerSW.js Cache-Control "max-age=0"
+		header /sw.js Cache-Control "max-age=0"
+		header /index.html Cache-Control "max-age=0"
+		header /manifest.json Cache-Control "max-age=0"
 
-	# all workbox scripts are compiled with hash in filename, cache forever
-	header /workbox-* Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+		# all assets contain hash in filename, cache forever
+		header /assets/* Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+
+		# all workbox scripts are compiled with hash in filename, cache forever
+		header /workbox-* Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+	}
 }

@@ -1,6 +1,6 @@
 # v0 template
 
-This is a full-stack [Turborepo](https://turbo.build/) template using a Fastify server on the backend and an Expo app on the frontend which are both sitting behind a Caddy reverse proxy
+This is a full-stack [Turborepo](https://turbo.build/) template using a Fastify server on the backend and an Expo app on the frontend with the Expo app's Caddy server serving the web build and reverse proxying `/api/*` to the server
 
 ## What's inside?
 
@@ -9,7 +9,6 @@ This template includes the following packages/apps:
 ### Apps
 
 - `expo`: [Expo](https://expo.dev/) app
-- `proxy`: [Caddy](https://caddyserver.com/) reverse proxy
 - `server`: [Fastify](https://fastify.dev/) server
 
 ### Packages

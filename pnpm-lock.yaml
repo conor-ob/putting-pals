@@ -351,8 +351,6 @@ importers:
         specifier: ^7.4.1
         version: 7.4.1(supports-color@8.1.1)
 
-  apps/proxy: {}
-
   apps/server:
     dependencies:
       '@fastify/cors':
