@@ -1,54 +1,29 @@
 import { Skeleton } from "@components/ui";
 import { LeaderboardTableAllPlayersHeader } from "@features/leaderboard/table/all-players-header";
-import { LeadboardPlayerRow } from "@features/leaderboard/table/player-row";
-import { api } from "@providers/trpc-provider";
-import _ from "lodash";
-import { useEffect, useState } from "react";
+import {
+  LeaderboardRow,
+  sortAndFilterRows,
+} from "@features/leaderboard/table/leaderboard-row";
+import { LeaderboardTableHeader } from "@features/leaderboard/table/table-header";
+import type { TourCode } from "@providers/trpc/types";
+import { trpc } from "@providers/trpc/utils/trpc";
+import { useQuery } from "@tanstack/react-query";
 
-import { favouritesStorageKey } from "../utils/favourites";
-import { CompetitionPlayerRow } from "./player-row";
-import { CompetitionTableHeader } from "./table-header";
+import { useFavourites } from "../utils/favourites";
 
 export function CompetitionTable({
+  tourCode,
   id,
   searchQuery,
 }: {
+  tourCode: TourCode;
   id?: string;
   searchQuery?: string;
 }) {
-  const { data, isLoading, isRefetching } = api.competition.getById.useQuery({
-    id,
-  });
-
-  const [favourites, setFavourites] = useState<string[]>([]);
-
-  // TODO remove hardcoded favourites key
-  const cacheKey = favouritesStorageKey("R2026100");
-  useEffect(() => {
-    function loadPicks() {
-      const favouritesJson = localStorage.getItem(cacheKey);
-      if (favouritesJson !== null) {
-        const favourites = JSON.parse(favouritesJson) as string[];
-        if (favourites.length !== 0) {
-          setFavourites(favourites);
-        }
-      }
-    }
-
-    loadPicks();
-  }, [cacheKey]);
-
-  function handleAddFavourite(id: string) {
-    const newFavourites = [...favourites, id];
-    localStorage.setItem(cacheKey, JSON.stringify(newFavourites));
-    setFavourites(newFavourites);
-  }
-
-  function handleRemoveFavourite(id: string) {
-    const newFavourites = favourites.filter((it) => it !== id);
-    localStorage.setItem(cacheKey, JSON.stringify(newFavourites));
-    setFavourites(newFavourites);
-  }
+  const { data, isLoading, isRefetching } = useQuery(
+    trpc.leaderboard.getById.queryOptions({ tourCode, id }),
+  );
+  const { favourites, toggleFavourite } = useFavourites(data?.id);
 
   if (isLoading || isRefetching || !data) {
     return (
@@ -71,147 +46,40 @@ export function CompetitionTable({
       </div>
     );
   }
+
+  const rows = sortAndFilterRows(data.players, searchQuery);
+  const favouriteRows = rows.filter(
+    (row) => row.__typename !== "InformationRow" && favourites.includes(row.id),
+  );
+
   return (
     <div>
-      {favourites.length > 0 && (
+      {favouriteRows.length > 0 && (
         <div className="mb-4">
           <div className="px-4 py-2">
             <div className="text-2xl font-bold tracking-tight">Favourites</div>
           </div>
-          <CompetitionTableHeader id={id} />
-          {data.competitors
-            .filter((competitor) => favourites.includes(competitor.id))
-            .filter((competitor) => {
-              if (searchQuery === undefined) {
-                return true;
-              } else {
-                const deburredSearchQuery = _.deburr(
-                  searchQuery.toLowerCase(),
-                ).trim();
-
-                const competitorName = competitor.displayName;
-                const playerNames = competitor.picks.map(
-                  (player) =>
-                    `${player.player.firstName} ${player.player.lastName}`,
-                );
-
-                const deburredNames = [competitorName, ...playerNames].map(
-                  (value) => _.deburr(value.toLowerCase()).trim(),
-                );
-
-                return deburredNames.some((name) =>
-                  name.includes(deburredSearchQuery),
-                );
-              }
-            })
-            .map((competitor) => {
-              return (
-                <div key={competitor.id}>
-                  <CompetitionPlayerRow
-                    id={competitor.id}
-                    position={competitor.position}
-                    shortName={competitor.shortName}
-                    total={competitor.total}
-                    totalSort={competitor.totalSort}
-                    isFavourite={favourites.includes(competitor.id)}
-                    onFavouriteClick={(id, isFavourite) => {
-                      if (isFavourite) {
-                        handleRemoveFavourite(id);
-                      } else {
-                        handleAddFavourite(id);
-                      }
-                    }}
-                  />
-                  {competitor.picks.map((player) => {
-                    return (
-                      <div key={player.id}>
-                        <LeadboardPlayerRow
-                          position={player.scoringData.position}
-                          countryFlag={player.player.countryFlag}
-                          shortName={player.player.shortName}
-                          abbreviations={player.player.abbreviations}
-                          total={player.scoringData.total}
-                          totalSort={player.scoringData.totalSort}
-                          thru={player.scoringData.thru}
-                          score={player.scoringData.score}
-                          teeTime={player.scoringData.teeTime}
-                          variant="secondary"
-                        />
-                      </div>
-                    );
-                  })}
-                  <div className="mx-4 border-b"></div>
-                </div>
-              );
-            })}
+          <LeaderboardTableHeader />
+          {favouriteRows.map((row) => (
+            <LeaderboardRow
+              key={row.id}
+              row={row}
+              favourites={favourites}
+              onFavouriteClick={toggleFavourite}
+            />
+          ))}
         </div>
       )}
       <LeaderboardTableAllPlayersHeader />
-      <CompetitionTableHeader id={id} />
-      {data.competitors
-        .filter((competitor) => {
-          if (searchQuery === undefined) {
-            return true;
-          } else {
-            const deburredSearchQuery = _.deburr(
-              searchQuery.toLowerCase(),
-            ).trim();
-
-            const competitorName = competitor.displayName;
-            const playerNames = competitor.picks.map(
-              (player) =>
-                `${player.player.firstName} ${player.player.lastName}`,
-            );
-
-            const deburredNames = [competitorName, ...playerNames].map(
-              (value) => _.deburr(value.toLowerCase()).trim(),
-            );
-
-            return deburredNames.some((name) =>
-              name.includes(deburredSearchQuery),
-            );
-          }
-        })
-        .map((competitor) => {
-          return (
-            <div key={competitor.id}>
-              <CompetitionPlayerRow
-                id={competitor.id}
-                position={competitor.position}
-                shortName={competitor.shortName}
-                total={competitor.total}
-                totalSort={competitor.totalSort}
-                isFavourite={favourites.includes(competitor.id)}
-                onFavouriteClick={(id, isFavourite) => {
-                  if (isFavourite) {
-                    handleRemoveFavourite(id);
-                  } else {
-                    handleAddFavourite(id);
-                  }
-                }}
-              />
-              {competitor.picks.map((player) => {
-                return (
-                  <div key={player.id}>
-                    <LeadboardPlayerRow
-                      position={player.scoringData.position}
-                      countryFlag={player.player.countryFlag}
-                      shortName={player.player.shortName}
-                      abbreviations={player.player.abbreviations}
-                      total={player.scoringData.total}
-                      totalSort={player.scoringData.totalSort}
-                      thru={player.scoringData.thru}
-                      score={player.scoringData.score}
-                      teeTime={player.scoringData.teeTime}
-                      variant="secondary"
-                    />
-                  </div>
-                );
-              })}
-              <div className="mx-4 border-b"></div>
-            </div>
-          );
-        })}
+      <LeaderboardTableHeader />
+      {rows.map((row) => (
+        <LeaderboardRow
+          key={row.id}
+          row={row}
+          favourites={favourites}
+          onFavouriteClick={toggleFavourite}
+        />
+      ))}
     </div>
   );
 }

@@ -9,18 +9,24 @@ import { LeaderboardTableAllPlayersHeader } from "./table/all-players-header";
 import { LeaderboardTable } from "./table/table";
 import { LeaderboardTableHeader } from "./table/table-header";
 
+const tourCode = "pga";
+
 export function LeaderboardPage() {
-  const params = useParams<{ id: string }>();
+  const params = useParams<{ id?: string }>();
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined);
 
   return (
     <PageLayout title="Leaderboard" largeHeader>
       <IonList lines="none">
-        <LeaderboardHeader id={params.id} />
+        <LeaderboardHeader tourCode={tourCode} id={params.id} />
         <LeaderboardSearchBar onSearchQueryChange={setSearchQuery} />
         <LeaderboardTableAllPlayersHeader />
-        <LeaderboardTableHeader id={params.id} />
-        <LeaderboardTable id={params.id} searchQuery={searchQuery} />
+        <LeaderboardTableHeader />
+        <LeaderboardTable
+          tourCode={tourCode}
+          id={params.id}
+          searchQuery={searchQuery}
+        />
       </IonList>
     </PageLayout>
   );

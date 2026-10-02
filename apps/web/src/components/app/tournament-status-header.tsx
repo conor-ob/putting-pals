@@ -1,6 +1,5 @@
 import { cn } from "@lib/utils";
-
-import type { Tournament } from "@pkg/api/types";
+import type { Tournament } from "@providers/trpc/types";
 import type * as React from "react";
 import { RoundStatusBadge } from "./round-status-badge";
 import { RoundStatusLabel } from "./round-status-label";
@@ -15,14 +14,15 @@ function TournamentStatusHeader({
   ...props
 }: TournamentStatusHeaderProps) {
   if (
-    (tournament.status === "NOT_STARTED" &&
-      tournament.roundStatus === "UPCOMING") ||
-    (tournament.status === "COMPLETED" && tournament.roundStatus === "OFFICIAL")
+    (tournament.schedule.status === "NOT_STARTED" &&
+      tournament.status.roundStatus === "UPCOMING") ||
+    (tournament.schedule.status === "COMPLETED" &&
+      tournament.status.roundStatus === "OFFICIAL")
   ) {
     return (
       <div className={className} {...props}>
-        <RoundStatusBadge color={tournament.roundStatusColor}>
-          {tournament.roundStatusDisplay}
+        <RoundStatusBadge color={tournament.status.roundStatusColor}>
+          {tournament.status.roundStatusDisplay}
         </RoundStatusBadge>
       </div>
     );
@@ -32,14 +32,14 @@ function TournamentStatusHeader({
         className={cn("flex flex-row items-center gap-0.5", className)}
         {...props}
       >
-        <RoundStatusBadge color={tournament.roundStatusColor}>
-          {tournament.roundDisplay}
+        <RoundStatusBadge color={tournament.status.roundStatusColor}>
+          {tournament.status.roundDisplay}
         </RoundStatusBadge>
         <RoundStatusLabel
           className="line-clamp-1"
-          color={tournament.roundStatusColor}
+          color={tournament.status.roundStatusColor}
         >
-          {tournament.roundStatusDisplay}
+          {tournament.status.roundStatusDisplay}
         </RoundStatusLabel>
       </div>
     );

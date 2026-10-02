@@ -7,7 +7,7 @@ import {
   setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { TrpcProvider } from "@providers/trpc-provider";
+import { TrpcProvider } from "@providers/trpc/trpc-provider";
 import { Redirect, Route } from "react-router";
 
 /* Core CSS required for Ionic components to work properly */
@@ -56,7 +56,6 @@ const App: React.FC = () => (
             </Route>
             <Route path="/putting-pals/:id" component={CompetitionPage} />
             <Route path="/pga-tour/:id" component={LeaderboardPage} />
-            {/* <Route path="/odds" component={OddsPage} /> */}
           </IonRouterOutlet>
           {/* <IonTabBar slot="bottom">
             <IonTabButton tab="putting-pals" href="/putting-pals">

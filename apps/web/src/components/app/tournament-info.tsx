@@ -1,20 +1,14 @@
-import type { Tournament, WeatherCondition } from "@pkg/api/types";
-import { getLocation } from "@utils/location";
-import { getWeatherIconSvgUrl } from "@utils/weather";
+import type { Tournament } from "@providers/trpc/types";
 import type React from "react";
 import { useEffect, useState } from "react";
 
 export function TournamentInfo({ tournament }: { tournament: Tournament }) {
   const displayStrings = [
-    tournament.displayDate,
-    getLocation({
-      city: tournament.city,
-      state: tournament.state,
-      country: tournament.country,
-    }),
+    tournament.schedule.displayDate,
+    tournament.location.displayLocation,
     ...tournament.courses.map((c) => c.name),
-    getWeatherDisplay(tournament.weather?.condition, tournament.weather?.tempC),
-  ].filter((s) => s !== undefined);
+    // TODO legacy-web: add support for weather
+  ];
 
   return <Carousel displayStrings={displayStrings} />;
 }
@@ -63,60 +57,4 @@ function Carousel({ displayStrings }: { displayStrings: React.ReactNode[] }) {
       </div>
     </div>
   );
-}
-
-function getWeatherDisplay(
-  condition?: WeatherCondition,
-  tempC?: string,
-): React.ReactNode {
-  if (condition === undefined || tempC === undefined) {
-    return undefined;
-  }
-
-  const svgUrl = getWeatherIconSvgUrl(condition);
-  if (svgUrl === undefined) {
-    return tempC;
-  } else {
-    return (
-      <div className="flex flex-row items-center gap-0.5">
-        <img className="h-5 w-7" src={svgUrl} alt="weather" />
-        {`${tempC} • ${getDisplayCondition(condition)}`}
-      </div>
-    );
-  }
-}
-
-function getDisplayCondition(condition: WeatherCondition): string | undefined {
-  switch (condition) {
-    case "DAY_CLOUDY":
-      return "Cloudy";
-    case "DAY_FOG_MIST":
-      return "Fog";
-    case "DAY_MOSTLY_CLOUDY":
-      return "Mostly cloudy";
-    case "DAY_MOSTLY_SUNNY":
-      return "Mostly sunny";
-    case "DAY_PARTLY_CLOUDY":
-      return "Partly cloudy";
-    case "DAY_RAINY":
-      return "Rain";
-    case "DAY_SCATTERED_SHOWERS":
-      return "Scattered showers";
-    case "DAY_SNOW":
-      return "Snow";
-    case "DAY_SUNNY":
-      return "Sunny";
-    case "DAY_THUNDERSTORMS":
-      return "Thunderstorms";
-    case "NIGHT_CLEAR":
-      return "Clear";
-    case "NIGHT_ISOLATED_CLOUDS":
-      return "Isolated clouds";
-    case "NIGHT_MOSTLY_CLOUDY":
-      return "Mostly cloudy";
-    case "NIGHT_PARTLY_CLOUDY":
-      return "Partly cloudy";
-    default:
-      return undefined;
-  }
 }

@@ -1,5 +1,5 @@
 import { cn } from "@lib/utils";
-import type { Tournament } from "@pkg/api/types";
+import type { Tournament } from "@providers/trpc/types";
 import { TournamentInfo } from "./tournament-info";
 import { TournamentName } from "./tournament-name";
 import { TournamentStatusHeader } from "./tournament-status-header";
@@ -20,7 +20,7 @@ export function TournamentHeader({
     >
       <img
         className="h-20 w-20 rounded-full ring-1 ring-gray-300 dark:ring-0"
-        src={tournament.logos[0]} // TODO
+        src={tournament.images.logo}
         alt={tournament.name}
       />
       <div className="flex flex-col gap-1">

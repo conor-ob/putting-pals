@@ -1,18 +1,24 @@
 import { Skeleton } from "@components/ui";
+import { useFavourites } from "@features/competition/utils/favourites";
+import type { TourCode } from "@providers/trpc/types";
+import { trpc } from "@providers/trpc/utils/trpc";
+import { useQuery } from "@tanstack/react-query";
 
-import type { InformationRow, PlayerRow } from "@pkg/api/types";
-import { api } from "@providers/trpc-provider";
-
-import { LeadboardPlayerRow } from "./player-row";
+import { LeaderboardRow, sortAndFilterRows } from "./leaderboard-row";
 
 export function LeaderboardTable({
+  tourCode,
   id,
   searchQuery,
 }: {
+  tourCode: TourCode;
   id?: string;
   searchQuery?: string;
 }) {
-  const { data } = api.leaderboard.getById.useQuery({ id });
+  const { data } = useQuery(
+    trpc.leaderboard.getById.queryOptions({ tourCode, id }),
+  );
+  const { favourites, toggleFavourite } = useFavourites(data?.id);
 
   if (data === undefined) {
     return (
@@ -37,53 +43,14 @@ export function LeaderboardTable({
   } else {
     return (
       <>
-        {data.rows
-          .filter((row) => {
-            if (searchQuery === undefined) {
-              return true;
-            } else if (Object.keys(row).includes("displayText")) {
-              return false;
-            } else if (Object.keys(row).includes("player")) {
-              return `${(row as PlayerRow).player.firstName} ${(row as PlayerRow).player.lastName}`
-                .toLowerCase()
-                .includes(searchQuery);
-            } else {
-              return false;
-            }
-          })
-          .map((row) => {
-            if (Object.keys(row).includes("displayText")) {
-              return (
-                <div
-                  key={row.id}
-                  className="flex items-center justify-center bg-border p-4"
-                >
-                  <div className="text-sm font-semibold tracking-tight">
-                    {(row as InformationRow).displayText}
-                  </div>
-                </div>
-              );
-            } else if (Object.keys(row).includes("player")) {
-              return (
-                <div key={row.id}>
-                  <LeadboardPlayerRow
-                    position={(row as PlayerRow).scoringData.position}
-                    countryFlag={(row as PlayerRow).player.countryFlag}
-                    shortName={(row as PlayerRow).player.shortName}
-                    abbreviations={(row as PlayerRow).player.abbreviations}
-                    total={(row as PlayerRow).scoringData.total}
-                    totalSort={(row as PlayerRow).scoringData.totalSort}
-                    score={(row as PlayerRow).scoringData.score}
-                    thru={(row as PlayerRow).scoringData.thru}
-                    teeTime={(row as PlayerRow).scoringData.teeTime}
-                  />
-                  <div className="mx-4 border-b"></div>
-                </div>
-              );
-            } else {
-              return <div key={row.id}></div>;
-            }
-          })}
+        {sortAndFilterRows(data.players, searchQuery).map((row) => (
+          <LeaderboardRow
+            key={row.id}
+            row={row}
+            favourites={favourites}
+            onFavouriteClick={toggleFavourite}
+          />
+        ))}
       </>
     );
   }

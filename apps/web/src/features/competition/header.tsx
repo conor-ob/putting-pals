@@ -1,13 +1,20 @@
 import { TournamentHeader } from "@components/app";
 import { ListItem } from "@components/list-item";
 import { Skeleton } from "@components/ui";
-import { api } from "@providers/trpc-provider";
+import type { TourCode } from "@providers/trpc/types";
+import { trpc } from "@providers/trpc/utils/trpc";
+import { useQuery } from "@tanstack/react-query";
 
-export function CompetitionHeader({ id }: { id?: string }) {
-  const { data, isLoading, isRefetching } =
-    api.tournament.getByCompetitionId.useQuery({
-      id,
-    });
+export function CompetitionHeader({
+  tourCode,
+  id,
+}: {
+  tourCode: TourCode;
+  id?: string;
+}) {
+  const { data, isLoading, isRefetching } = useQuery(
+    trpc.tournament.getById.queryOptions({ tourCode, id }),
+  );
 
   if (isLoading || isRefetching || !data) {
     return (

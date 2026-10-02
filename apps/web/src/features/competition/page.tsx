@@ -2,28 +2,30 @@ import { PageLayout } from "@components/page-layout";
 import { LeaderboardSearchBar } from "@features/leaderboard/search-bar";
 import type { RefresherEventDetail } from "@ionic/react";
 import { IonList, IonRefresher, IonRefresherContent } from "@ionic/react";
-import { api } from "@providers/trpc-provider";
+import { trpc } from "@providers/trpc/utils/trpc";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { CompetitionHeader } from "./header";
 import { CompetitionTable } from "./leaderboard/table";
 
-export function CompetitionPage() {
-  const params = useParams<{ id: string }>();
+const tourCode = "pal";
 
-  const { refetch: refetchTournament } =
-    api.tournament.getByCompetitionId.useQuery({
-      id: params.id,
-    });
-  const { refetch: refetchCompetition } = api.competition.getById.useQuery({
-    id: params.id,
-  });
+export function CompetitionPage() {
+  const params = useParams<{ id?: string }>();
+
+  const { refetch: refetchTournament } = useQuery(
+    trpc.tournament.getById.queryOptions({ tourCode, id: params.id }),
+  );
+  const { refetch: refetchLeaderboard } = useQuery(
+    trpc.leaderboard.getById.queryOptions({ tourCode, id: params.id }),
+  );
 
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined);
 
   async function handleRefresh(eventDetail: RefresherEventDetail) {
-    await Promise.all([refetchTournament(), refetchCompetition()]);
+    await Promise.all([refetchTournament(), refetchLeaderboard()]);
     eventDetail.complete();
   }
 
@@ -36,9 +38,13 @@ export function CompetitionPage() {
         <IonRefresherContent></IonRefresherContent>
       </IonRefresher>
       <IonList lines="none">
-        <CompetitionHeader id={params.id} />
+        <CompetitionHeader tourCode={tourCode} id={params.id} />
         <LeaderboardSearchBar onSearchQueryChange={setSearchQuery} />
-        <CompetitionTable id={params.id} searchQuery={searchQuery} />
+        <CompetitionTable
+          tourCode={tourCode}
+          id={params.id}
+          searchQuery={searchQuery}
+        />
       </IonList>
     </PageLayout>
   );

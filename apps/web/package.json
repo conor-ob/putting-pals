@@ -18,8 +18,8 @@
     "@ionic/react-router": "^8.7.3",
     "@radix-ui/react-avatar": "^1.1.1",
     "@tanstack/react-query": "^5.104.0",
-    "@trpc/client": "^11.5.1",
-    "@trpc/react-query": "^11.5.1",
+    "@trpc/client": "catalog:",
+    "@trpc/tanstack-react-query": "catalog:",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "ionicons": "^8.0.13",
@@ -29,11 +29,12 @@
     "react-dom": "19.2.3",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
-    "superjson": "^2.2.2",
+    "superjson": "catalog:",
     "tailwind-merge": "^3.7.0",
     "zod": "^4.1.8"
   },
   "devDependencies": {
+    "@putting-pals/putting-pals-trpc": "workspace:*",
     "@storybook/addon-a11y": "^9.1.5",
     "@storybook/addon-docs": "^9.1.5",
     "@storybook/addon-themes": "^9.1.5",
@@ -43,6 +44,7 @@
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
+    "@trpc/server": "catalog:",
     "@types/lodash": "^4.17.20",
     "@types/node": "^24.4.0",
     "@types/react": "~19.2.18",
@@ -59,7 +61,7 @@
     "vite": "^7.1.5",
     "vite-plugin-pwa": "^1.0.3",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.2.4",
+    "vitest": "catalog:",
     "workbox-window": "^7.3.0"
   }
 }

@@ -1,9 +1,7 @@
 import { cn } from "@lib/utils";
-import { api } from "@providers/trpc-provider";
 
-export function LeaderboardTableHeader({ id }: { id?: string }) {
-  const { data } = api.leaderboard.getById.useQuery({ id });
-
+// TODO legacy-web: {data?.leaderboardRoundHeader ?? "RD"}
+export function LeaderboardTableHeader() {
   return (
     <>
       <div className="flex w-full flex-row justify-between px-4 py-2 text-muted-foreground">
@@ -24,7 +22,7 @@ export function LeaderboardTableHeader({ id }: { id?: string }) {
             THRU
           </div>
           <div className="flex w-8 justify-end text-xs font-semibold tracking-tighter">
-            {data?.leaderboardRoundHeader ?? "RD"}
+            RD
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { cn } from "@lib/utils";
+import type { RoundStatusColor } from "@providers/trpc/types";
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
 import type * as React from "react";
@@ -13,7 +14,7 @@ const roundStatusLabelVariants = cva(
         GREEN: "text-green",
         RED: "text-red",
         YELLOW: "text-black dark:text-yellow",
-      },
+      } satisfies Record<RoundStatusColor, string>,
     },
     defaultVariants: {
       color: "GRAY",

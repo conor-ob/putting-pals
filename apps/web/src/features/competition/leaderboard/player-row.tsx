@@ -23,6 +23,7 @@ export function CompetitionPlayerRow({
   return (
     <ListItem>
       <div className="flex w-full flex-col">
+        <div className="mx-4 border-t"></div>
         <div className="flex w-full flex-row justify-between px-4 py-3">
           <div className="flex flex-row items-center">
             <div className="w-10 text-sm font-semibold tracking-tighter">

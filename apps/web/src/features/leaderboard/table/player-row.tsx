@@ -5,24 +5,20 @@ import { cn } from "@lib/utils";
 export function LeadboardPlayerRow({
   position,
   countryFlag,
-  shortName,
-  abbreviations,
+  displayName,
   total,
   totalSort,
-  thru,
   score,
   teeTime,
   variant = "primary",
 }: {
   position: string;
   countryFlag: string;
-  shortName: string;
-  abbreviations: string;
+  displayName: string;
   total: string;
   totalSort: number;
-  thru: string;
   score: string;
-  teeTime: number;
+  teeTime?: number | null;
   variant?: "primary" | "secondary";
 }) {
   return (
@@ -45,8 +41,7 @@ export function LeadboardPlayerRow({
             />
           </div>
           <div className="line-clamp-1 text-sm font-semibold tracking-tighter">
-            {shortName}
-            <span className="text-muted-foreground">{` ${abbreviations}`}</span>
+            {displayName}
           </div>
         </div>
         <div className="flex flex-row">
@@ -60,7 +55,7 @@ export function LeadboardPlayerRow({
             {total}
           </div>
           <div className="flex w-10 justify-center text-sm font-semibold tracking-tighter">
-            {getThru(thru, teeTime)}
+            {getThru(teeTime)}
           </div>
           <div className="flex w-8 justify-end text-sm font-semibold tracking-tighter">
             {getScore(score)}
@@ -71,11 +66,8 @@ export function LeadboardPlayerRow({
   );
 }
 
-function getThru(thru: string, teeTime: number) {
-  if (thru !== "") {
-    return thru;
-  }
-  if (teeTime !== -1) {
+function getThru(teeTime?: number | null) {
+  if (teeTime !== undefined && teeTime !== null && teeTime !== -1) {
     return new Date(teeTime).toLocaleTimeString(undefined, {
       hour: "2-digit",
       minute: "2-digit",
