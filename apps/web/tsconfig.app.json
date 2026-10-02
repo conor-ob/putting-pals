@@ -25,6 +25,7 @@
     /* alias */
     "paths": {
       "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
       "@env/*": ["./src/env/*"],
       "@features/*": ["./src/features/*"],
       "@lib/*": ["./src/lib/*"],

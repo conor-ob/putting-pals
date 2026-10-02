@@ -15,6 +15,10 @@ export type RouterInputs = inferRouterInputs<AppRouter>;
  */
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
 
+export type Leaderboard = RouterOutputs["leaderboard"]["getById"];
+
+export type LeaderboardRow = Leaderboard["players"][number];
+
 export type InformationRow = Extract<
   RouterOutputs["leaderboard"]["getById"]["players"][number],
   { __typename: "InformationRow" }

@@ -1,5 +1,5 @@
-import { CompetitionPage } from "@features/competition/page";
-import { LeaderboardPage } from "@features/leaderboard/page";
+import { DEFAULT_TOUR_CODE } from "@constants/tour";
+import { LeaderboardPage } from "@features/leaderboard/leaderboard-page";
 import {
   IonApp,
   IonRouterOutlet,
@@ -46,16 +46,20 @@ const App: React.FC = () => (
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/">
-              <Redirect to="/putting-pals" />
+              <Redirect to={`/${DEFAULT_TOUR_CODE}/leaderboard`} />
             </Route>
-            <Route exact path="/putting-pals">
-              <CompetitionPage />
-            </Route>
-            <Route exact path="/pga-tour">
-              <LeaderboardPage />
-            </Route>
-            <Route path="/putting-pals/:id" component={CompetitionPage} />
-            <Route path="/pga-tour/:id" component={LeaderboardPage} />
+            <Route
+              exact
+              path="/:tour"
+              render={({ match }) => (
+                <Redirect to={`/${match.params.tour}/leaderboard`} />
+              )}
+            />
+            <Route
+              exact
+              path="/:tour/leaderboard/:id?"
+              component={LeaderboardPage}
+            />
           </IonRouterOutlet>
           {/* <IonTabBar slot="bottom">
             <IonTabButton tab="putting-pals" href="/putting-pals">

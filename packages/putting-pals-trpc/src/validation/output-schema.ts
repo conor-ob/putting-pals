@@ -8,6 +8,7 @@ import z from "zod";
 
 export const LeaderboardOutputSchema = z.object({
   id: z.string(),
+  leaderboardRoundHeader: z.string(),
   players: z.array(
     z.discriminatedUnion("__typename", [
       z.object({
@@ -22,6 +23,7 @@ export const LeaderboardOutputSchema = z.object({
           total: z.string(),
           totalSort: z.number(),
         }),
+        picks: z.array(z.string()),
       }),
       z.object({
         __typename: z.literal("InformationRow"),
@@ -36,6 +38,7 @@ export const LeaderboardOutputSchema = z.object({
         player: z.object({
           countryFlag: z.string(),
           displayName: z.string(),
+          id: z.string(),
         }),
         scoringData: z.object({
           position: z.string(),

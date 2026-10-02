@@ -78,4 +78,5 @@ export const LeaderboardSchema = z.object({
     ]),
   ),
   tournamentStatus: TournamentStatusSchema,
+  leaderboardRoundHeader: z.string(),
 });

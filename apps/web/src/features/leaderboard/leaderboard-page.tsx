@@ -1,36 +1,38 @@
 import { PageLayout } from "@components/page-layout";
-import { LeaderboardSearchBar } from "@features/leaderboard/search-bar";
+import { DEFAULT_TOUR_CODE } from "@constants/tour";
 import type { RefresherEventDetail } from "@ionic/react";
 import { IonList, IonRefresher, IonRefresherContent } from "@ionic/react";
+import type { TourCode } from "@providers/trpc/types";
 import { trpc } from "@providers/trpc/utils/trpc";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { CompetitionHeader } from "./header";
-import { CompetitionTable } from "./leaderboard/table";
+import { LeaderboardHeader } from "./leaderboard-header";
+import { LeaderboardSearchBar } from "./leaderboard-search-bar";
+import { LeaderboardTable } from "./leaderboard-table";
 
-const tourCode = "pal";
+export function LeaderboardPage() {
+  const params = useParams<{ tour?: string; id?: string }>();
+  const tourCode = (params.tour as TourCode) ?? DEFAULT_TOUR_CODE;
+  const id = params.id;
 
-export function CompetitionPage() {
-  const params = useParams<{ id?: string }>();
-
-  const { refetch: refetchTournament } = useQuery(
-    trpc.tournament.getById.queryOptions({ tourCode, id: params.id }),
+  const tournament = useQuery(
+    trpc.tournament.getById.queryOptions({ tourCode, id }),
   );
-  const { refetch: refetchLeaderboard } = useQuery(
-    trpc.leaderboard.getById.queryOptions({ tourCode, id: params.id }),
+  const leaderboard = useQuery(
+    trpc.leaderboard.getById.queryOptions({ tourCode, id }),
   );
 
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined);
 
   async function handleRefresh(eventDetail: RefresherEventDetail) {
-    await Promise.all([refetchTournament(), refetchLeaderboard()]);
+    await Promise.all([tournament.refetch(), leaderboard.refetch()]);
     eventDetail.complete();
   }
 
   return (
-    <PageLayout title="Putting Pals TOUR" largeHeader>
+    <PageLayout title="Leaderboard" largeHeader>
       <IonRefresher
         slot="fixed"
         onIonRefresh={(event) => handleRefresh(event.detail)}
@@ -38,11 +40,10 @@ export function CompetitionPage() {
         <IonRefresherContent></IonRefresherContent>
       </IonRefresher>
       <IonList lines="none">
-        <CompetitionHeader tourCode={tourCode} id={params.id} />
+        <LeaderboardHeader tournament={tournament.data} />
         <LeaderboardSearchBar onSearchQueryChange={setSearchQuery} />
-        <CompetitionTable
-          tourCode={tourCode}
-          id={params.id}
+        <LeaderboardTable
+          leaderboard={leaderboard.data}
           searchQuery={searchQuery}
         />
       </IonList>

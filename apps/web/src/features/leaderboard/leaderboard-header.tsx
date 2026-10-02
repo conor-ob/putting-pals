@@ -1,22 +1,10 @@
 import { TournamentHeader } from "@components/app";
 import { ListItem } from "@components/list-item";
 import { Skeleton } from "@components/ui";
-import type { TourCode } from "@providers/trpc/types";
-import { trpc } from "@providers/trpc/utils/trpc";
-import { useQuery } from "@tanstack/react-query";
+import type { Tournament } from "@providers/trpc/types";
 
-export function LeaderboardHeader({
-  tourCode,
-  id,
-}: {
-  tourCode: TourCode;
-  id?: string;
-}) {
-  const { data } = useQuery(
-    trpc.tournament.getById.queryOptions({ tourCode, id }),
-  );
-
-  if (data === undefined) {
+export function LeaderboardHeader({ tournament }: { tournament?: Tournament }) {
+  if (tournament === undefined) {
     return (
       <ListItem>
         <div className="flex flex-row items-center gap-4 p-4">
@@ -32,7 +20,7 @@ export function LeaderboardHeader({
   } else {
     return (
       <ListItem>
-        <TournamentHeader className="p-4" tournament={data} />
+        <TournamentHeader className="p-4" tournament={tournament} />
       </ListItem>
     );
   }

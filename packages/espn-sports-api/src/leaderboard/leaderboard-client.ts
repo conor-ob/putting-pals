@@ -83,6 +83,7 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
         };
       }),
       tournamentStatus: this.mapTournamentStatus(event.status.type.state),
+      leaderboardRoundHeader: `R${currentRound}`,
     };
   }
 

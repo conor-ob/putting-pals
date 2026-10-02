@@ -1,7 +1,8 @@
-import { cn } from "@lib/utils";
-
-// TODO legacy-web: {data?.leaderboardRoundHeader ?? "RD"}
-export function LeaderboardTableHeader() {
+export function LeaderboardTableHeader({
+  leaderboardRoundHeader,
+}: {
+  leaderboardRoundHeader: string;
+}) {
   return (
     <>
       <div className="flex w-full flex-row justify-between px-4 py-2 text-muted-foreground">
@@ -11,18 +12,14 @@ export function LeaderboardTableHeader() {
           <div className="text-xs font-semibold tracking-tighter">PLAYER</div>
         </div>
         <div className="flex flex-row">
-          <div
-            className={cn(
-              "flex w-12 justify-center text-xs font-semibold tracking-tighter",
-            )}
-          >
+          <div className="flex w-12 justify-center text-xs font-semibold tracking-tighter">
             TOT
           </div>
           <div className="flex w-10 justify-center text-xs font-semibold tracking-tighter">
             THRU
           </div>
           <div className="flex w-8 justify-end text-xs font-semibold tracking-tighter">
-            RD
+            {leaderboardRoundHeader === "" ? "RD" : leaderboardRoundHeader}
           </div>
         </div>
       </div>

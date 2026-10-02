@@ -1,25 +1,20 @@
 import { ListItem } from "@components/list-item";
 import { IonIcon } from "@ionic/react";
 import { cn } from "@lib/utils";
+import type { PuttingPalsPlayerRow as PuttingPalsPlayerRowType } from "@providers/trpc/types";
 import { star, starOutline } from "ionicons/icons";
 
-export function CompetitionPlayerRow({
-  id,
-  position,
-  shortName,
-  total,
-  totalSort,
+export function PuttingPalsPlayerRow({
+  row,
   isFavourite,
   onFavouriteClick,
 }: {
-  id: string;
-  position: string;
-  shortName: string;
-  total: string;
-  totalSort: number;
+  row: PuttingPalsPlayerRowType;
   isFavourite: boolean;
   onFavouriteClick: (id: string, isFavourite: boolean) => void;
 }) {
+  const { player, scoringData } = row;
+
   return (
     <ListItem>
       <div className="flex w-full flex-col">
@@ -27,7 +22,7 @@ export function CompetitionPlayerRow({
         <div className="flex w-full flex-row justify-between px-4 py-3">
           <div className="flex flex-row items-center">
             <div className="w-10 text-sm font-semibold tracking-tighter">
-              {position}
+              {scoringData.position}
             </div>
             <div className="flex w-10 items-center justify-center pr-2">
               <IonIcon
@@ -37,22 +32,24 @@ export function CompetitionPlayerRow({
                 )}
                 icon={isFavourite ? star : starOutline}
                 size="small"
-                onClick={() => onFavouriteClick(id, isFavourite)}
+                onClick={() => onFavouriteClick(row.id, isFavourite)}
               />
             </div>
             <div className="line-clamp-1 text-sm font-semibold tracking-tighter">
-              {shortName}
+              {player.displayName}
             </div>
           </div>
           <div className="flex flex-row">
             <div
               className={cn(
                 "flex w-12 justify-center text-sm font-semibold tracking-tighter",
-                totalSort < 0 && "text-red",
-                totalSort === 0 && total !== "-" && "text-green",
+                scoringData.totalSort < 0 && "text-red",
+                scoringData.totalSort === 0 &&
+                  scoringData.total !== "-" &&
+                  "text-green",
               )}
             >
-              {total}
+              {scoringData.total}
             </div>
             <div className="flex w-10 justify-center text-sm font-semibold tracking-tighter"></div>
             <div className="flex w-8 justify-end text-sm font-semibold tracking-tighter"></div>

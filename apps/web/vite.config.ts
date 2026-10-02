@@ -25,6 +25,7 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           "@components": path.resolve(__dirname, "./src/components"),
+          "@constants": path.resolve(__dirname, "./src/constants"),
           "@env": path.resolve(__dirname, "./src/env"),
           "@features": path.resolve(__dirname, "./src/features"),
           "@lib": path.resolve(__dirname, "./src/lib"),
