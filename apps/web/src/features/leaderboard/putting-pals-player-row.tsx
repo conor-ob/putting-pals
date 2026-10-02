@@ -36,7 +36,7 @@ export function PuttingPalsPlayerRow({
               />
             </div>
             <div className="line-clamp-1 text-sm font-semibold tracking-tighter">
-              {player.displayName}
+              {player.shortName}
             </div>
           </div>
           <div className="flex flex-row">

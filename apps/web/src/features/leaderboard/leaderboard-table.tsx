@@ -1,5 +1,9 @@
 import { Skeleton } from "@components/ui";
-import type { Leaderboard, LeaderboardRow } from "@providers/trpc/types";
+import type {
+  Leaderboard,
+  LeaderboardRow,
+  TourCode,
+} from "@providers/trpc/types";
 import _ from "lodash";
 
 import { InformationRow } from "./information-row";
@@ -9,9 +13,11 @@ import { PuttingPalsPlayerRow } from "./putting-pals-player-row";
 import { useFavourites } from "./utils/favourites";
 
 export function LeaderboardTable({
+  tourCode,
   leaderboard,
   searchQuery,
 }: {
+  tourCode: TourCode;
   leaderboard?: Leaderboard;
   searchQuery?: string;
 }) {
@@ -50,10 +56,16 @@ export function LeaderboardTable({
     );
   });
 
-  function renderRow(row: LeaderboardRow) {
+  function renderRow(tourCode: TourCode, row: LeaderboardRow) {
     switch (row.__typename) {
       case "PlayerRow":
-        return <PlayerRow key={row.id} row={row} />;
+        return (
+          <PlayerRow
+            key={row.id}
+            row={row}
+            variant={tourCode === "pal" ? "secondary" : "primary"}
+          />
+        );
       case "PuttingPalsPlayerRow":
         return (
           <PuttingPalsPlayerRow
@@ -76,14 +88,14 @@ export function LeaderboardTable({
           <LeaderboardTableHeader
             leaderboardRoundHeader={leaderboard.leaderboardRoundHeader}
           />
-          {favouriteGroups.flat().map(renderRow)}
+          {favouriteGroups.flat().map((row) => renderRow(tourCode, row))}
         </div>
       )}
       <LeaderboardTableTitle>All Players</LeaderboardTableTitle>
       <LeaderboardTableHeader
         leaderboardRoundHeader={leaderboard.leaderboardRoundHeader}
       />
-      {groups.flat().map(renderRow)}
+      {groups.flat().map((row) => renderRow(tourCode, row))}
     </div>
   );
 }

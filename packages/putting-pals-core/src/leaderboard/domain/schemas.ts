@@ -62,6 +62,8 @@ export const PlayerRowSchema = z.object({
   player: z.object({
     countryFlag: z.string(),
     displayName: z.string(),
+    shortName: z.string(),
+    abbreviations: z.string(),
     id: z.string(),
   }),
   scoringData: PlayerRowScoringDataSchema,

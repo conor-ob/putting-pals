@@ -18,6 +18,7 @@ export const LeaderboardOutputSchema = z.object({
         leaderboardSortOrder: z.number(),
         player: z.object({
           displayName: z.string(),
+          shortName: z.string(),
         }),
         scoringData: z.object({
           position: z.string(),
@@ -39,6 +40,8 @@ export const LeaderboardOutputSchema = z.object({
         player: z.object({
           countryFlag: z.string(),
           displayName: z.string(),
+          shortName: z.string(),
+          abbreviations: z.string(),
           id: z.string(),
         }),
         scoringData: z.object({

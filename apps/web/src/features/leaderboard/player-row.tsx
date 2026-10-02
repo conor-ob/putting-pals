@@ -2,7 +2,13 @@ import { ListItem } from "@components/list-item";
 import { cn } from "@lib/utils";
 import type { PlayerRow as PlayerRowType } from "@providers/trpc/types";
 
-export function PlayerRow({ row }: { row: PlayerRowType }) {
+export function PlayerRow({
+  row,
+  variant,
+}: {
+  row: PlayerRowType;
+  variant: "primary" | "secondary";
+}) {
   const { player, scoringData } = row;
 
   return (
@@ -10,7 +16,12 @@ export function PlayerRow({ row }: { row: PlayerRowType }) {
       <div className="flex w-full flex-col">
         <div className="flex w-full flex-row justify-between px-4 py-3">
           <div className="flex flex-row items-center">
-            <div className="w-10 text-sm font-semibold tracking-tighter">
+            <div
+              className={cn(
+                "w-10 text-sm font-semibold tracking-tighter",
+                variant === "secondary" && "text-muted-foreground",
+              )}
+            >
               {scoringData.position}
             </div>
             <div className="me-2 w-8 px-0.5">
@@ -21,7 +32,8 @@ export function PlayerRow({ row }: { row: PlayerRowType }) {
               />
             </div>
             <div className="line-clamp-1 text-sm font-semibold tracking-tighter">
-              {player.displayName}
+              {player.shortName}
+              <span className="text-muted-foreground">{` ${player.abbreviations}`}</span>
             </div>
           </div>
           <div className="flex flex-row">
@@ -44,6 +56,7 @@ export function PlayerRow({ row }: { row: PlayerRowType }) {
             </div>
           </div>
         </div>
+        {variant === "primary" && <div className="mx-4 border-b"></div>}
       </div>
     </ListItem>
   );

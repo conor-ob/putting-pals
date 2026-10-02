@@ -43,6 +43,7 @@ export function LeaderboardPage() {
         <LeaderboardHeader tournament={tournament.data} />
         <LeaderboardSearchBar onSearchQueryChange={setSearchQuery} />
         <LeaderboardTable
+          tourCode={tourCode}
           leaderboard={leaderboard.data}
           searchQuery={searchQuery}
         />
