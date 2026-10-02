@@ -78,7 +78,8 @@ export default defineRailway((ctx) => {
       ...deployConfig,
       healthcheckPath: "/health",
       // Migrate before the new deployment goes live; a failure aborts the deploy
-      preDeployCommand: ["node", "/app/apps/server/dist/migrate.js"],
+      // Railway accepts a single command string here, not an argv array
+      preDeployCommand: "node /app/apps/server/dist/migrate.js",
     },
   });
 
