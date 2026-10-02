@@ -6,6 +6,7 @@ export const envSchema = z.object({
     .default("development"),
   PORT: z
     .string()
+    .default("3000")
     .transform((s) => parseInt(s, 10))
     .pipe(z.number()),
 });
