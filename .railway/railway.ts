@@ -74,12 +74,12 @@ export default defineRailway((ctx) => {
     build: dockerBuildConfig({
       dockerfilePath: "apps/server/Dockerfile",
     }),
+    preDeploy: "node /app/apps/server/dist/migrate.js",
     deploy: {
       ...deployConfig,
       healthcheckPath: "/health",
       // Migrate before the new deployment goes live; a failure aborts the deploy
       // Railway accepts a single command string here, not an argv array
-      preDeployCommand: "node /app/apps/server/dist/migrate.js",
     },
   });
 
