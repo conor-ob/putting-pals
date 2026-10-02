@@ -49,7 +49,7 @@ export function PlayerRow({
               {scoringData.total}
             </div>
             <div className="flex w-10 justify-center text-sm font-semibold tracking-tighter">
-              {getThru(scoringData.teeTime)}
+              {getThru(scoringData.thru, scoringData.teeTime)}
             </div>
             <div className="flex w-8 justify-end text-sm font-semibold tracking-tighter">
               {getScore(scoringData.score)}
@@ -62,7 +62,10 @@ export function PlayerRow({
   );
 }
 
-function getThru(teeTime?: number | null) {
+function getThru(thru: string, teeTime?: number | null) {
+  if (thru !== "") {
+    return thru;
+  }
   if (teeTime !== undefined && teeTime !== null && teeTime !== -1) {
     return new Date(teeTime).toLocaleTimeString(undefined, {
       hour: "2-digit",

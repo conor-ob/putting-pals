@@ -32,7 +32,10 @@ export function LeaderboardPage() {
   }
 
   return (
-    <PageLayout title="Leaderboard" largeHeader>
+    <PageLayout
+      title={tourCode === "pal" ? "Putting Pals" : "Leaderboard"}
+      largeHeader
+    >
       <IonRefresher
         slot="fixed"
         onIonRefresh={(event) => handleRefresh(event.detail)}
