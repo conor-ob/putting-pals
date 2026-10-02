@@ -1,6 +1,7 @@
 import * as child from "node:child_process";
 import path from "node:path";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig, loadEnv } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
@@ -78,6 +79,7 @@ export default defineConfig(({ mode }) => {
       plugins: [
         tsconfigPaths(),
         react(),
+        tailwindcss(),
         VitePWA({
           // devOptions: {
           //   enabled: true, // TODO script dev:pwa

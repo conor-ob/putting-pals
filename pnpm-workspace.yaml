@@ -4,6 +4,8 @@ packages:
   - "packages/*"
 
 allowBuilds:
+  "@sentry/cli": true
+  "@swc/core": true
   esbuild: true
 
 overrides:
