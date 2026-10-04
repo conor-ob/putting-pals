@@ -9,7 +9,8 @@
     ".": {
       "types": "./src/index.ts",
       "default": "./src/index.ts"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",

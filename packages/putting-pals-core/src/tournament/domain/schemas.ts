@@ -23,6 +23,23 @@ export const TournamentStatusSchema = z.enum([
   "NOT_STARTED",
 ]);
 
+export const WeatherConditionSchema = z.enum([
+  "DAY_CLOUDY",
+  "DAY_FOG_MIST",
+  "DAY_MOSTLY_CLOUDY",
+  "DAY_MOSTLY_SUNNY",
+  "DAY_PARTLY_CLOUDY",
+  "DAY_RAINY",
+  "DAY_SCATTERED_SHOWERS",
+  "DAY_SNOW",
+  "DAY_SUNNY",
+  "DAY_THUNDERSTORMS",
+  "NIGHT_CLEAR",
+  "NIGHT_ISOLATED_CLOUDS",
+  "NIGHT_MOSTLY_CLOUDY",
+  "NIGHT_PARTLY_CLOUDY",
+]);
+
 const TournamentLocationSchema = z.object({
   city: z.string(),
   country: z.string(),
@@ -67,4 +84,10 @@ export const TournamentSchema = z.object({
     roundStatusColor: RoundStatusColorSchema,
     roundStatusDisplay: z.string(),
   }),
+  weather: z
+    .object({
+      temperature: z.string(),
+      condition: WeatherConditionSchema,
+    })
+    .optional(),
 });

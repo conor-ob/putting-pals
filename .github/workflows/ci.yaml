@@ -67,3 +67,53 @@ jobs:
 
       - name: Run tests
         run: pnpm test
+
+  migrations:
+    name: 🗄️ Migrations
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_PASSWORD: mypassword
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:mypassword@localhost:5432/postgres
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Check migration journal
+        working-directory: packages/putting-pals-db
+        run: pnpm drizzle-kit check
+
+      - name: Check schema has no ungenerated changes
+        working-directory: packages/putting-pals-db
+        run: |
+          pnpm db:generate
+          if [ -n "$(git status --porcelain drizzle)" ]; then
+            echo "::error::schema.ts has changes without a migration. Run 'pnpm db:generate' and commit the result."
+            git status --porcelain drizzle
+            exit 1
+          fi
+
+      - name: Build server
+        run: pnpm turbo build --filter=@putting-pals/server
+
+      # Same entry point Railway runs as the server pre-deploy command
+      - name: Apply migrations to empty database
+        working-directory: apps/server
+        run: node dist/migrate.js
+
+      - name: Re-apply migrations (no-op)
+        working-directory: apps/server
+        run: node dist/migrate.js

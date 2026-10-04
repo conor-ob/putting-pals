@@ -3,11 +3,13 @@ import {
   RoundStatusSchema,
   TournamentStatusSchema,
   TourSchema,
+  WeatherConditionSchema,
 } from "@putting-pals/putting-pals-core";
 import z from "zod";
 
 export const LeaderboardOutputSchema = z.object({
   id: z.string(),
+  leaderboardRoundHeader: z.string(),
   players: z.array(
     z.discriminatedUnion("__typename", [
       z.object({
@@ -16,12 +18,14 @@ export const LeaderboardOutputSchema = z.object({
         leaderboardSortOrder: z.number(),
         player: z.object({
           displayName: z.string(),
+          shortName: z.string(),
         }),
         scoringData: z.object({
           position: z.string(),
           total: z.string(),
           totalSort: z.number(),
         }),
+        picks: z.array(z.string()),
       }),
       z.object({
         __typename: z.literal("InformationRow"),
@@ -34,11 +38,17 @@ export const LeaderboardOutputSchema = z.object({
         id: z.string(),
         leaderboardSortOrder: z.number(),
         player: z.object({
+          countryFlag: z.string(),
           displayName: z.string(),
+          shortName: z.string(),
+          abbreviations: z.string(),
+          id: z.string(),
         }),
         scoringData: z.object({
           position: z.string(),
           teeTime: z.number().nullable().optional(),
+          thru: z.string(),
+          thruSort: z.number(),
           total: z.string(),
           totalSort: z.number(),
           score: z.string(),
@@ -60,6 +70,12 @@ export const TournamentOutputSchema = z.object({
   tournamentLogo: z.array(z.string()),
   tournamentName: z.string(),
   tournamentStatus: TournamentStatusSchema,
+  weather: z
+    .object({
+      temperature: z.string(),
+      condition: WeatherConditionSchema,
+    })
+    .optional(),
 });
 
 export const TourOutputSchema = z.array(TourSchema);

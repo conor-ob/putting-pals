@@ -42,5 +42,21 @@ export default defineConfig({
       // you need to INSTALL `@swc/core` as dev dependency if you want to use swc
       tsCompiler: "vite",
     }),
+    {
+      // VitePluginNode forces a single build input (appPath), so add the
+      // migrate entry point (Railway pre-deploy command) after it runs
+      name: "migrate-entry",
+      enforce: "post",
+      config: () => ({
+        build: {
+          rolldownOptions: {
+            input: {
+              index: path.resolve(import.meta.dirname, "./src/index.ts"),
+              migrate: path.resolve(import.meta.dirname, "./src/migrate.ts"),
+            },
+          },
+        },
+      }),
+    },
   ],
 });

@@ -21,6 +21,7 @@ runs:
         set -e
         cp ./apps/server/.env.example ./apps/server/.env
         cp ./apps/expo/.env.example ./apps/expo/.env
+        cp ./apps/web/.env.example ./apps/web/.env
         cp ./jobs/espn-schema/.env.example ./jobs/espn-schema/.env
         cp ./jobs/leaderboard-sync/.env.example ./jobs/leaderboard-sync/.env
         cp ./packages/putting-pals-db/.env.example ./packages/putting-pals-db/.env

@@ -5,13 +5,12 @@ export default function (fastify: FastifyInstance) {
   fastify.register(FastifyRateLimit, {
     max: 200,
     timeWindow: "1 minute",
-    // TODO
-    // keyGenerator: function (request) {
-    //   return request.headers['x-real-ip'] // nginx
-    //   || request.headers['x-client-ip'] // apache
-    //   || request.headers['x-forwarded-for'] // use this only if you trust the header
-    //   || request.session.username // you can limit based on any session value
-    //   || request.ip // fallback to default
-    // }
+    // the real client ip, set by cloudflare and passed through by caddy.
+    // falls back to the peer ip for requests that don't come through cloudflare
+    // (e.g. jobs calling us over railway's private network)
+    keyGenerator: (request) => {
+      const ip = request.headers["cf-connecting-ip"];
+      return typeof ip === "string" && ip ? ip : request.ip;
+    },
   });
 }

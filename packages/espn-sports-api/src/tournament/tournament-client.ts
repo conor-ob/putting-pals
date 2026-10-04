@@ -88,6 +88,7 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Aggr
       location: location,
       courses: [],
       status: mapRoundStatus(competition, numberOfRounds),
+      weather: undefined, // TODO weather data
     };
   }
 

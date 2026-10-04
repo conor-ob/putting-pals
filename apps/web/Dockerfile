@@ -1,8 +1,5 @@
 # https://fintlabs.medium.com/optimized-multi-stage-docker-builds-with-turborepo-and-pnpm-for-nodejs-microservices-in-a-monorepo-c686fdcf051f
 
-# Optimized Dockerfile for running database migrations
-# Uses turbo prune to isolate dependencies, but keeps dev dependencies needed for drizzle-kit
-
 # Base Alpine image
 FROM node:24-alpine AS alpine
 RUN apk add --no-cache libc6-compat
@@ -16,10 +13,11 @@ RUN npm install -g pnpm turbo \
 FROM base AS pruner
 WORKDIR /app
 COPY . .
-RUN turbo prune --scope=@putting-pals/putting-pals-db --docker
+RUN turbo prune --scope=@putting-pals/web --docker
 
-# Install dependencies (including dev dependencies needed for drizzle-kit)
-FROM base AS deps
+# Build stage
+FROM base AS builder
+
 WORKDIR /app
 
 # Copy only lockfiles and pruned workspace manifests first
@@ -27,24 +25,23 @@ COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=pruner /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=pruner /app/out/json/ .
 
-# Install all dependencies (including dev dependencies like drizzle-kit, tsx, typescript)
+# Install dependencies (layer cached by Docker if lockfile unchanged)
 RUN pnpm install --frozen-lockfile
 
 # Copy full source for the isolated workspace
 COPY --from=pruner /app/out/full/ .
 
-# Runner stage (non-root for consistency with other app images)
-FROM base AS runner
-RUN addgroup --system --gid 1001 nodejs \
-    && adduser --system --uid 1001 nodejs
-USER nodejs
+# Turbo build
+RUN turbo build --filter=@putting-pals/web
+
+# Final image
+FROM caddy:2-alpine AS runner
 
 WORKDIR /app
-COPY --from=deps --chown=nodejs:nodejs /app .
-WORKDIR /app/packages/putting-pals-db
 
-ARG DATABASE_URL
-ENV NODE_ENV=production
-ENV DATABASE_URL=${DATABASE_URL}
+# Copy built assets from build stage
+COPY --from=builder /app/apps/web/dist /srv
+COPY apps/web/Caddyfile /etc/caddy/Caddyfile
 
-CMD ["pnpm", "db:migrate"]
+RUN caddy fmt --overwrite /etc/caddy/Caddyfile
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

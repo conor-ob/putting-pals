@@ -53,21 +53,39 @@ export default defineRailway((ctx) => {
     multiRegionConfig: euWest4,
     // restartPolicyType: "ON_FAILURE",
     // restartPolicyMaxRetries: 5,
-    limitOverride: {
-      containers: {
-        cpu: 1,
-        memoryBytes: 1_000_000_000,
-      },
-    },
+    // limitOverride: {
+    //   containers: {
+    //     cpu: 1,
+    //     memoryBytes: 1_000_000_000,
+    //   },
+    // },
     // healthcheckPath: "/api/health",
     // healthcheckTimeout: 300,
     // sleepApplication: !isProd,
   };
 
+  const server = service("server", {
+    source: puttingPals,
+    env: {
+      PORT: "8080",
+      ORIGIN: `https://\${{expo.RAILWAY_PUBLIC_DOMAIN}}`,
+      DATABASE_URL: "${{postgres.DATABASE_URL}}",
+    },
+    build: dockerBuildConfig({
+      dockerfilePath: "apps/server/Dockerfile",
+    }),
+    preDeploy: "node /app/apps/server/dist/migrate.js",
+    deploy: {
+      ...deployConfig,
+      healthcheckPath: "/health",
+    },
+  });
+
   const expo = service("expo", {
     source: puttingPals,
     env: {
       PORT: "8080",
+      SERVER_URL: privateNetworkingUrl(server),
     },
     build: dockerBuildConfig({
       dockerfilePath: "apps/expo/Dockerfile",
@@ -78,49 +96,18 @@ export default defineRailway((ctx) => {
     },
   });
 
-  const server = service("server", {
+  const web = service("web", {
     source: puttingPals,
     env: {
       PORT: "8080",
-      ORIGIN: `https://\${{proxy.RAILWAY_PUBLIC_DOMAIN}}`,
-      DATABASE_URL: "${{postgres.DATABASE_URL}}",
-    },
-    build: dockerBuildConfig({
-      dockerfilePath: "apps/server/Dockerfile",
-    }),
-    deploy: {
-      ...deployConfig,
-      healthcheckPath: "/health",
-    },
-  });
-
-  const proxy = service("proxy", {
-    source: puttingPals,
-    env: {
-      EXPO_URL: privateNetworkingUrl(expo),
       SERVER_URL: privateNetworkingUrl(server),
     },
     build: dockerBuildConfig({
-      dockerfilePath: "apps/proxy/Dockerfile",
+      dockerfilePath: "apps/web/Dockerfile",
     }),
     deploy: {
       ...deployConfig,
-      healthcheckPath: "/api/health",
-    },
-  });
-
-  const dbMigrate = service("db-migrate", {
-    source: puttingPals,
-    env: {
-      DATABASE_URL: "${{postgres.DATABASE_URL}}",
-    },
-    build: dockerBuildConfig({
-      dockerfilePath: "packages/putting-pals-db/Dockerfile",
-      watchPatterns: ["packages/putting-pals-db/**"],
-    }),
-    deploy: {
-      multiRegionConfig: euWest4,
-      restartPolicyType: "NEVER",
+      healthcheckPath: "/",
     },
   });
 
@@ -151,13 +138,12 @@ export default defineRailway((ctx) => {
     },
   });
 
-  const jobs = group("jobs", [dbMigrate, espnSchema, leaderboardSync]);
-  const gateway = group("gateway", [proxy]);
+  const jobs = group("jobs", [espnSchema, leaderboardSync]);
   const database = group("database", [postgresDatabase, postgresVolume]);
   const backend = group("backend", [server]);
-  const frontend = group("frontend", [expo]);
+  const frontend = group("frontend", [expo, web]);
 
   return project("putting-pals", {
-    resources: [jobs, gateway, database, backend, frontend],
+    resources: [frontend, backend, database, jobs],
   });
 });
