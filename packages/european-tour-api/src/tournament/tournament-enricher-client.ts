@@ -4,7 +4,7 @@ import type {
   TournamentClient,
 } from "@putting-pals/putting-pals-core";
 import type { EuropeanTourApiImpl } from "../api/european-tour-api";
-import type { EventStatus } from "./domain/types";
+import type { EventMetadata, EventStatus } from "./domain/types";
 
 const NAME_SIMILARITY_THRESHOLD = 0.5;
 const NAME_STOP_WORDS = new Set([
@@ -54,12 +54,14 @@ export class EuropeanTourApiTournamentEnricherClient
       return tournament;
     }
 
-    const eventStatus = await this.europeanTourApi.getEventStatus(
-      matchingEvent.EventId,
-    );
+    const [eventStatus, eventMetadata] = await Promise.all([
+      this.europeanTourApi.getEventStatus(matchingEvent.EventId),
+      this.europeanTourApi.getEventMetadata(matchingEvent.EventId),
+    ]);
 
     return {
       ...tournament,
+      images: this.enrichTournamentImages(tournament, eventMetadata),
       schedule: this.enrichTournamentStatus(tournament, eventStatus),
       status: this.enrichRoundStatus(tournament, eventStatus),
     };
@@ -96,6 +98,19 @@ export class EuropeanTourApiTournamentEnricherClient
     );
   }
 
+  private enrichTournamentImages(
+    tournament: Tournament,
+    eventMetadata: EventMetadata,
+  ): Tournament["images"] {
+    return {
+      ...tournament.images,
+      cover: eventMetadata.imageUrl.replace(
+        "{formatInstructions}",
+        "t_et__banner_lg_720x344-2x",
+      ),
+    };
+  }
+
   private enrichTournamentStatus(
     tournament: Tournament,
     eventStatus: EventStatus,
@@ -114,15 +129,39 @@ export class EuropeanTourApiTournamentEnricherClient
     tournament: Tournament,
     eventStatus: EventStatus,
   ): Tournament["status"] {
-    if (eventStatus.RoundStatus === 2) {
-      return {
-        ...tournament.status,
-        roundStatus: "IN_PROGRESS",
-        roundStatusColor: "RED",
-        roundStatusDisplay: "In Progress",
-      };
-    } else {
-      return tournament.status;
+    switch (eventStatus.RoundStatus) {
+      case 1:
+        if (tournament.status.roundStatus === "COMPLETE") {
+          return {
+            ...tournament.status,
+            roundStatus: "OFFICIAL",
+            roundStatusColor: "GREEN",
+            roundStatusDisplay: "Official",
+          };
+        } else {
+          return {
+            ...tournament.status,
+            roundStatus: "COMPLETE",
+            roundStatusColor: "BLUE",
+            roundStatusDisplay: "Complete",
+          };
+        }
+      case 2:
+        return {
+          ...tournament.status,
+          roundStatus: "IN_PROGRESS",
+          roundStatusColor: "RED",
+          roundStatusDisplay: "In Progress",
+        };
+      case 4:
+        return {
+          ...tournament.status,
+          roundStatus: "OFFICIAL",
+          roundStatusColor: "GREEN",
+          roundStatusDisplay: "Official",
+        };
+      default:
+        return tournament.status;
     }
   }
 }

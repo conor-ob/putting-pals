@@ -8,7 +8,10 @@ import {
 } from "@putting-pals/putting-pals-core";
 import { format, isSameMonth, parseISO } from "date-fns";
 import type { EspnSportsApi } from "../api/espn-sports-api";
-import { mapTournamentStatus } from "../utils/tournament-status";
+import {
+  mapTournamentStatus,
+  mapTournamentStatusToRoundStatus,
+} from "../utils/tournament-status";
 import type { TourScheduleEvent, TourScheduleSeason } from "./domain/types";
 
 export class EspnSportsApiScheduleClient extends AbstractScheduleClient<TourScheduleSeason> {
@@ -73,12 +76,7 @@ export class EspnSportsApiScheduleClient extends AbstractScheduleClient<TourSche
           name: courseName ?? "",
         },
       ],
-      status: {
-        roundDisplay: "Official",
-        roundStatus: "OFFICIAL",
-        roundStatusColor: "GREEN",
-        roundStatusDisplay: "Official",
-      },
+      status: mapTournamentStatusToRoundStatus(event.status),
     };
   }
   // champion: "",

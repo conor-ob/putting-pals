@@ -168,3 +168,25 @@ https://www.europeantour.com/api/sportdata/Event/Status/2026139
 
 status: 0 = in progress?
 round status: 2 = in progress?
+
+```
+{
+  "EventId": 2026139,
+  "LastUpdated": "2026-10-08T18:00:40+00:00",
+  "Status": 0,
+  "RoundNo": 2,
+  "RoundStatus": 1,
+  "CurrentStage": "",
+  "PlayoffStatus": 0,
+  "id": "eventstatus-2026139",
+  "type": "eventstatus-{eventId}",
+  "_rid": "eCoYAPoJ3EapzzMAAAAAAA==",
+  "_self": "dbs/eCoYAA==/colls/eCoYAPoJ3EY=/docs/eCoYAPoJ3EapzzMAAAAAAA==/",
+  "_etag": "\"SG1hXI7e0_6ylg65ogvXlsJdYbr21BWjuFXhs0CndAEWBbDgMRaG4dFnh-YqE4ET7mJ1rvVBBayjS4hK8gx1XA\"",
+  "_attachments": "attachments/",
+  "_ts": 1791482459
+}
+```
+
+status: 0 = in progress?
+round status: 1 = complete?

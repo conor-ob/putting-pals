@@ -8,11 +8,15 @@ import {
 } from "@putting-pals/putting-pals-core";
 import { EuropeanTourMiniScheduleSchema } from "../schedule/domain/schemas";
 import type { EuropeanTourMiniScheduleEvent } from "../schedule/domain/types";
-import { EventStatusSchema } from "../tournament/domain/schemas";
-import type { EventStatus } from "../tournament/domain/types";
+import {
+  EventMetadataSchema,
+  EventStatusSchema,
+} from "../tournament/domain/schemas";
+import type { EventMetadata, EventStatus } from "../tournament/domain/types";
 
 export interface EuropeanTourApi {
   getEventStatus(eventId: number): Promise<EventStatus>;
+  getEventMetadata(eventId: number): Promise<EventMetadata>;
   getMiniSchedule(tourCode: TourCode): Promise<EuropeanTourMiniScheduleEvent[]>;
   getTournament(tourCode: TourCode, id: string): Promise<Tournament>;
 }
@@ -36,6 +40,11 @@ export class EuropeanTourApiImpl implements EuropeanTourApi {
   async getEventStatus(eventId: number): Promise<EventStatus> {
     const response = await this.get(`api/sportdata/Event/Status/${eventId}`);
     return EventStatusSchema.parse(response);
+  }
+
+  async getEventMetadata(eventId: number): Promise<EventMetadata> {
+    const response = await this.get(`library/events/${eventId}/favourite`);
+    return EventMetadataSchema.parse(response);
   }
 
   async getTournament(_tourCode: TourCode, id: string): Promise<Tournament> {

@@ -6,6 +6,36 @@ import {
 import type { ApiLeaderboardCompetition } from "../leaderboard/domain/types";
 import type { TourScheduleEvent } from "../schedule/domain/types";
 
+export function mapTournamentStatusToRoundStatus(
+  status: TourScheduleEvent["status"],
+): Tournament["status"] {
+  switch (status) {
+    case "pre":
+      return {
+        roundDisplay: "RD",
+        roundStatus: "UPCOMING",
+        roundStatusColor: "GRAY",
+        roundStatusDisplay: "Upcoming",
+      };
+    case "in":
+      return {
+        roundDisplay: "RD",
+        roundStatus: "IN_PROGRESS",
+        roundStatusColor: "RED",
+        roundStatusDisplay: "In Progress",
+      };
+    case "post":
+      return {
+        roundDisplay: "RD",
+        roundStatus: "OFFICIAL",
+        roundStatusColor: "GREEN",
+        roundStatusDisplay: "Official",
+      };
+    default:
+      throw new NotFoundError(`Unknown tournament status: ${status}`);
+  }
+}
+
 export function mapTournamentStatus(
   status: TourScheduleEvent["status"],
 ): TournamentStatus {
