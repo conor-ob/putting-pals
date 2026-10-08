@@ -19,20 +19,17 @@ export class ScheduleServiceImpl implements ScheduleService {
 
   async getSchedule(tourCode: TourCode, year?: string): Promise<Schedule> {
     switch (tourCode) {
-      case "pal": {
+      case "pal":
         return this.puttingPalsApiScheduleClient.getSchedule(tourCode, year);
-      }
       case "pga":
       case "dev":
       case "snr":
-      case "pam": {
+      case "pam":
         return this.pgaTourApiScheduleClient.getSchedule(tourCode, year);
-      }
       case "eur":
         return this.europeanTourApiScheduleClient.getSchedule(tourCode, year);
-      case "liv": {
+      case "liv":
         return this.espnSportsApiScheduleClient.getSchedule(tourCode, year);
-      }
       default:
         throw new UnsupportedTourCodeError(tourCode);
     }

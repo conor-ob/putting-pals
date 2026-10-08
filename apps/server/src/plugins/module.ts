@@ -22,7 +22,13 @@ export default function (fastify: FastifyInstance) {
     pgaTourApiDependencies.scheduleClient,
   );
   const espnSportsApiDependencies = injectEspnSportsApiDependencies();
-  const europeanTourApiDependencies = injectEuropeanTourApiDependencies();
+  const europeanTourApiDependencies = injectEuropeanTourApiDependencies(
+    espnSportsApiDependencies.leaderboardClient,
+    espnSportsApiDependencies.scheduleClient,
+    espnSportsApiDependencies.seasonClient,
+    espnSportsApiDependencies.tournamentClient,
+    espnSportsApiDependencies.activeTournamentClient,
+  );
   const coreDependencies = injectCoreDependencies(
     puttingPalsApiDependencies.competitionRepository,
     databaseDependencies.activeTournamentRepository,
@@ -36,12 +42,16 @@ export default function (fastify: FastifyInstance) {
     pgaTourApiDependencies.scheduleClient,
     pgaTourApiDependencies.tournamentClient,
     pgaTourApiDependencies.batchTournamentClient,
-    europeanTourApiDependencies.scheduleClient,
     espnSportsApiDependencies.activeTournamentClient,
     espnSportsApiDependencies.leaderboardClient,
     espnSportsApiDependencies.seasonClient,
     espnSportsApiDependencies.scheduleClient,
     espnSportsApiDependencies.tournamentClient,
+    europeanTourApiDependencies.activeTournamentClient,
+    europeanTourApiDependencies.leaderboardClient,
+    europeanTourApiDependencies.seasonClient,
+    europeanTourApiDependencies.scheduleClient,
+    europeanTourApiDependencies.tournamentClient,
     puttingPalsApiDependencies.activeTournamentClient,
     puttingPalsApiDependencies.leaderboardClient,
     puttingPalsApiDependencies.seasonClient,

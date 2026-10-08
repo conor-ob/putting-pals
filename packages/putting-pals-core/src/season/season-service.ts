@@ -9,10 +9,12 @@ export class SeasonServiceImpl implements SeasonService {
     private readonly puttingPalsApiSeasonClient: SeasonClient,
     private readonly pgaTourApiSeasonClient: SeasonClient,
     private readonly espnSportsApiSeasonClient: SeasonClient,
+    private readonly europeanTourApiSeasonClient: SeasonClient,
   ) {
     this.puttingPalsApiSeasonClient = puttingPalsApiSeasonClient;
     this.pgaTourApiSeasonClient = pgaTourApiSeasonClient;
     this.espnSportsApiSeasonClient = espnSportsApiSeasonClient;
+    this.europeanTourApiSeasonClient = europeanTourApiSeasonClient;
   }
 
   async getSeasons(tourCode: TourCode): Promise<Season[]> {
@@ -25,6 +27,7 @@ export class SeasonServiceImpl implements SeasonService {
       case "pam":
         return this.pgaTourApiSeasonClient.getSeasons(tourCode);
       case "eur":
+        return this.europeanTourApiSeasonClient.getSeasons(tourCode);
       case "liv":
         return this.espnSportsApiSeasonClient.getSeasons(tourCode);
       default:

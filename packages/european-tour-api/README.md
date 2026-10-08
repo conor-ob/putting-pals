@@ -144,3 +144,27 @@ https://lb.europeantour.com/api/distribution/v1/en-US/Blogs/
     }
 }
 ```
+
+https://www.europeantour.com/api/sportdata/Event/Status/2026139
+
+```
+{
+  "EventId": 2026139,
+  "LastUpdated": "2026-10-08T06:28:32+00:00",
+  "Status": 0,
+  "RoundNo": 1,
+  "RoundStatus": 2,
+  "CurrentStage": "",
+  "PlayoffStatus": 0,
+  "id": "eventstatus-2026139",
+  "type": "eventstatus-{eventId}",
+  "_rid": "eCoYAPoJ3EapzzMAAAAAAA==",
+  "_self": "dbs/eCoYAA==/colls/eCoYAPoJ3EY=/docs/eCoYAPoJ3EapzzMAAAAAAA==/",
+  "_etag": "\"5uzFCcqRhdpDXcAPHhRq1XY0LPKiLyegdYQBJd-n6nyZgDt0THfYqkh8XoAS_N0D7mJ1rvVBBayjS4hK8gx1XA\"",
+  "_attachments": "attachments/",
+  "_ts": 1791440931
+}
+```
+
+status: 0 = in progress?
+round status: 2 = in progress?

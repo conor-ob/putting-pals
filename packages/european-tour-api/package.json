@@ -13,14 +13,13 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "test": "vitest",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
     "@putting-pals/iso-countries": "workspace:*",
     "@putting-pals/putting-pals-core": "workspace:*",
-    "cheerio": "^1.1.2",
-    "date-fns": "^4.1.0",
+    "cheerio": "^1.2.0",
+    "date-fns": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

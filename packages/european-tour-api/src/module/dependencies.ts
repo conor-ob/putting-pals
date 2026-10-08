@@ -1,13 +1,40 @@
-import type { ScheduleClient } from "@putting-pals/putting-pals-core";
+import type {
+  ActiveTournamentClient,
+  LeaderboardClient,
+  ScheduleClient,
+  SeasonClient,
+  TournamentClient,
+} from "@putting-pals/putting-pals-core";
 import { EuropeanTourApiImpl } from "../api/european-tour-api";
-import { EuropeanTourApiScheduleClient } from "../schedule/schedule-client";
+import { EuropeanTourApiTournamentEnricherClient } from "../tournament/tournament-enricher-client";
 
-export function injectDependencies(): {
+export function injectDependencies(
+  espnSportsApiLeaderboardClient: LeaderboardClient,
+  espnSportsApiScheduleClient: ScheduleClient,
+  espnSportsApiSeasonClient: SeasonClient,
+  espnSportsApiTournamentClient: TournamentClient,
+  espnSportsApiActiveTournamentClient: ActiveTournamentClient,
+): {
+  activeTournamentClient: ActiveTournamentClient;
+  leaderboardClient: LeaderboardClient;
+  seasonClient: SeasonClient;
   scheduleClient: ScheduleClient;
+  tournamentClient: TournamentClient;
 } {
+  const europeanTourApi = new EuropeanTourApiImpl(
+    "https://www.europeantour.com",
+  );
   return {
-    scheduleClient: new EuropeanTourApiScheduleClient(
-      new EuropeanTourApiImpl("https://www.europeantour.com"),
+    activeTournamentClient: espnSportsApiActiveTournamentClient,
+    leaderboardClient: espnSportsApiLeaderboardClient,
+    seasonClient: espnSportsApiSeasonClient,
+    // scheduleClient: new EuropeanTourApiScheduleClient(
+    //   new EuropeanTourApiImpl("https://www.europeantour.com"),
+    // ),
+    scheduleClient: espnSportsApiScheduleClient,
+    tournamentClient: new EuropeanTourApiTournamentEnricherClient(
+      europeanTourApi,
+      espnSportsApiTournamentClient,
     ),
   };
 }

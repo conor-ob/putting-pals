@@ -24,3 +24,20 @@ export const EuropeanTourScheduleSchema = z.object({
   EndDate: z.string(),
   subEvent: z.array(EuropeanTourTournamentSchema),
 });
+
+export const EuropeanTourMiniScheduleEventSchema = z.object({
+  EventId: z.number(),
+  EventName: z.string(),
+  CurrentRound: z.number(),
+  StartDate: z.string(),
+  EndDate: z.string(),
+});
+
+export const EuropeanTourMiniScheduleSchema = z.object({
+  Tours: z.array(
+    z.object({
+      TourId: z.number(),
+      Events: z.array(EuropeanTourMiniScheduleEventSchema),
+    }),
+  ),
+});

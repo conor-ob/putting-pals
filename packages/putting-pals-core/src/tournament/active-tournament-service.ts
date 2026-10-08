@@ -16,6 +16,7 @@ export class ActiveTournamentServiceImpl implements ActiveTournamentService {
     private readonly pgaTourApiActiveTournamentClient: ActiveTournamentClient,
     private readonly puttingPalsApiActiveTournamentClient: ActiveTournamentClient,
     private readonly espnSportsApiActiveTournamentClient: ActiveTournamentClient,
+    private readonly europeanTourApiActiveTournamentClient: ActiveTournamentClient,
     private readonly activeTournamentRepository: ActiveTournamentRepository,
   ) {
     this.pgaTourApiActiveTournamentClient = pgaTourApiActiveTournamentClient;
@@ -23,6 +24,8 @@ export class ActiveTournamentServiceImpl implements ActiveTournamentService {
       puttingPalsApiActiveTournamentClient;
     this.espnSportsApiActiveTournamentClient =
       espnSportsApiActiveTournamentClient;
+    this.europeanTourApiActiveTournamentClient =
+      europeanTourApiActiveTournamentClient;
     this.activeTournamentRepository = activeTournamentRepository;
   }
 
@@ -79,6 +82,9 @@ export class ActiveTournamentServiceImpl implements ActiveTournamentService {
           tourCode,
         );
       case "eur":
+        return this.europeanTourApiActiveTournamentClient.getActiveTournamentId(
+          tourCode,
+        );
       case "liv":
         return this.espnSportsApiActiveTournamentClient.getActiveTournamentId(
           tourCode,

@@ -10,11 +10,13 @@ export class LeaderboardServiceImpl implements LeaderboardService {
     private readonly puttingPalsApiLeaderboardClient: LeaderboardClient,
     private readonly pgaTourApiLeaderboardClient: LeaderboardClient,
     private readonly espnSportsApiLeaderboardClient: LeaderboardClient,
+    private readonly europeanTourApiLeaderboardClient: LeaderboardClient,
     private readonly activeTournamentService: ActiveTournamentService,
   ) {
     this.puttingPalsApiLeaderboardClient = puttingPalsApiLeaderboardClient;
     this.pgaTourApiLeaderboardClient = pgaTourApiLeaderboardClient;
     this.espnSportsApiLeaderboardClient = espnSportsApiLeaderboardClient;
+    this.europeanTourApiLeaderboardClient = europeanTourApiLeaderboardClient;
     this.activeTournamentService = activeTournamentService;
   }
 
@@ -36,6 +38,10 @@ export class LeaderboardServiceImpl implements LeaderboardService {
           tournamentId,
         );
       case "eur":
+        return this.europeanTourApiLeaderboardClient.getLeaderboard(
+          tourCode,
+          tournamentId,
+        );
       case "liv":
         return this.espnSportsApiLeaderboardClient.getLeaderboard(
           tourCode,

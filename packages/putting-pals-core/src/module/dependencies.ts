@@ -48,12 +48,16 @@ export function injectDependencies(
   pgaTourApiScheduleClient: ScheduleClient,
   pgaTourApiTournamentClient: TournamentClient,
   pgaTourApiBatchTournamentClient: BatchTournamentClient,
-  europeanTourApiScheduleClient: ScheduleClient,
   espnSportsApiActiveTournamentClient: ActiveTournamentClient,
   espnSportsApiLeaderboardClient: LeaderboardClient,
   espnSportsApiSeasonClient: SeasonClient,
   espnSportsApiScheduleClient: ScheduleClient,
   espnSportsApiTournamentClient: TournamentClient,
+  europeanTourApiActiveTournamentClient: ActiveTournamentClient,
+  europeanTourApiLeaderboardClient: LeaderboardClient,
+  europeanTourApiSeasonClient: SeasonClient,
+  europeanTourApiScheduleClient: ScheduleClient,
+  europeanTourApiTournamentClient: TournamentClient,
   puttingPalsApiActiveTournamentClient: ActiveTournamentClient,
   puttingPalsApiLeaderboardClient: LeaderboardClient,
   puttingPalsApiSeasonClient: SeasonClient,
@@ -75,11 +79,13 @@ export function injectDependencies(
     pgaTourApiActiveTournamentClient,
     puttingPalsApiActiveTournamentClient,
     espnSportsApiActiveTournamentClient,
+    europeanTourApiActiveTournamentClient,
     activeTournamentRepository,
   );
   const tournamentService = new TournamentServiceImpl(
     pgaTourApiTournamentClient,
     espnSportsApiTournamentClient,
+    europeanTourApiTournamentClient,
     activeTournamentService,
   );
   const batchTournamentService = new BatchTournamentServiceImpl(
@@ -89,6 +95,7 @@ export function injectDependencies(
     puttingPalsApiLeaderboardClient,
     pgaTourApiLeaderboardClient,
     espnSportsApiLeaderboardClient,
+    europeanTourApiLeaderboardClient,
     activeTournamentService,
   );
   const featureFlagService = new FeatureFlagServiceImpl(featureFlagRepository);
@@ -125,6 +132,7 @@ export function injectDependencies(
       puttingPalsApiSeasonClient,
       pgaTourApiSeasonClient,
       espnSportsApiSeasonClient,
+      europeanTourApiSeasonClient,
     ),
     tournamentService: tournamentService,
     batchTournamentService: batchTournamentService,

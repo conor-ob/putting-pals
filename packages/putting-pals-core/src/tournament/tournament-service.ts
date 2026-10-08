@@ -9,10 +9,12 @@ export class TournamentServiceImpl implements TournamentService {
   constructor(
     private readonly pgaTourApiTournamentClient: TournamentClient,
     private readonly espnSportsApiTournamentClient: TournamentClient,
+    private readonly europeanTourApiTournamentClient: TournamentClient,
     private readonly activeTournamentService: ActiveTournamentService,
   ) {
     this.pgaTourApiTournamentClient = pgaTourApiTournamentClient;
     this.espnSportsApiTournamentClient = espnSportsApiTournamentClient;
+    this.europeanTourApiTournamentClient = europeanTourApiTournamentClient;
     this.activeTournamentService = activeTournamentService;
   }
 
@@ -30,6 +32,10 @@ export class TournamentServiceImpl implements TournamentService {
           tournamentId,
         );
       case "eur":
+        return this.europeanTourApiTournamentClient.getTournament(
+          tourCode,
+          tournamentId,
+        );
       case "liv":
         return this.espnSportsApiTournamentClient.getTournament(
           tourCode,
