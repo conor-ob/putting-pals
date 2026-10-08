@@ -50,7 +50,6 @@ export default defineConfig(({ mode }) => {
         },
       },
       server: {
-        open: true,
         port: env.PORT,
         proxy: {
           "/api": {
