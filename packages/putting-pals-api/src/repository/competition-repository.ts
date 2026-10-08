@@ -27,6 +27,10 @@ import mastersTournament2026 from "../data/2026/01-masters-tournament";
 import pgaChampionship2026 from "../data/2026/02-pga-championship";
 import usOpen2026 from "../data/2026/03-us-open";
 import theOpenChampionship2026 from "../data/2026/04-the-open-championship";
+import mastersTournament2027 from "../data/2027/01-masters-tournament";
+import pgaChampionship2027 from "../data/2027/02-pga-championship";
+import usOpen2027 from "../data/2027/03-us-open";
+import theOpenChampionship2027 from "../data/2027/04-the-open-championship";
 
 export class CompetitionRepositoryImpl implements CompetitionRepository {
   getCompetition(id: string): Competition | undefined {
@@ -65,6 +69,10 @@ export class CompetitionRepositoryImpl implements CompetitionRepository {
       pgaChampionship2026,
       usOpen2026,
       theOpenChampionship2026,
+      mastersTournament2027,
+      pgaChampionship2027,
+      usOpen2027,
+      theOpenChampionship2027,
     ].map((fileContent) => CompetitionSchema.parse(fileContent));
   }
 }

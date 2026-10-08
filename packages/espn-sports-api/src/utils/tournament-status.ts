@@ -23,7 +23,12 @@ export function mapTournamentStatus(
 
 export function mapRoundStatus(
   competition: ApiLeaderboardCompetition,
+  numberOfRounds: number,
 ): Tournament["status"] {
+  const currentRound = getCurrentRound(
+    numberOfRounds,
+    competition.status.period,
+  );
   switch (competition.status.type.name) {
     case "STATUS_SCHEDULED": {
       if (
@@ -46,36 +51,32 @@ export function mapRoundStatus(
       }
     }
     case "STATUS_IN_PROGRESS": {
-      const round = competition.status.period;
       return {
-        roundDisplay: `R${round}`,
+        roundDisplay: `R${currentRound}`,
         roundStatus: "IN_PROGRESS",
         roundStatusColor: "RED",
         roundStatusDisplay: "In Progress",
       };
     }
     case "STATUS_PLAY_COMPLETE": {
-      const round = competition.status.period;
       return {
-        roundDisplay: `R${round}`,
+        roundDisplay: `R${currentRound}`,
         roundStatus: "COMPLETE",
         roundStatusColor: "BLUE",
         roundStatusDisplay: "Complete",
       };
     }
     case "STATUS_FINAL": {
-      const round = competition.status.period;
       return {
-        roundDisplay: `R${round}`,
+        roundDisplay: `R${currentRound}`,
         roundStatus: "OFFICIAL",
         roundStatusColor: "GREEN",
         roundStatusDisplay: "Official",
       };
     }
     case "STATUS_SUSPENDED": {
-      const round = competition.status.period;
       return {
-        roundDisplay: `R${round}`,
+        roundDisplay: `R${currentRound}`,
         roundStatus: "SUSPENDED",
         roundStatusColor: "YELLOW",
         roundStatusDisplay: "Suspended",
@@ -89,4 +90,16 @@ export function mapRoundStatus(
         roundStatusDisplay: "TBD",
       };
   }
+}
+
+export function getCurrentRound(
+  numberOfRounds: number,
+  period: number,
+): number {
+  if (period > numberOfRounds) {
+    // in a playoff - example: https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=liv&event=401805587
+    return numberOfRounds;
+  }
+
+  return period;
 }

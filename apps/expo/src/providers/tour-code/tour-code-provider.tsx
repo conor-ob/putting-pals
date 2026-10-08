@@ -1,4 +1,4 @@
-import { useRouter, useSegments } from "expo-router";
+import { type Href, useRouter, useSegments } from "expo-router";
 import { createContext, type ReactNode, useCallback, useContext } from "react";
 import type { Tour, TourCode } from "~/providers/trpc/types";
 import { useLocalStorage } from "~/storage/use-local-storage";
@@ -44,7 +44,7 @@ export function TourCodeProvider({
         .join("/");
 
       await saveTourCode(newTourCode);
-      router.replace(`/${newPath}` as never);
+      router.replace(`/${newPath}` as Href);
     },
     [router, segments, saveTourCode],
   );

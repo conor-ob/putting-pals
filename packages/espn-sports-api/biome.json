@@ -1,6 +1,4 @@
 {
-  "extends": "//",
-  "files": {
-    "includes": ["**", "!src/generated/"]
-  }
+  "root": false,
+  "extends": "//"
 }

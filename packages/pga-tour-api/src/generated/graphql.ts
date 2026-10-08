@@ -45,6 +45,7 @@ export type ApiAdConfig = {
   cupTeeTimesGroup?: Maybe<ApiAdTagConfig>;
   cupTeeTimesSingles?: Maybe<ApiAdTagConfig>;
   dpwtRankings?: Maybe<ApiAdTagConfig>;
+  earnings?: Maybe<ApiAdTagConfig>;
   fantasy?: Maybe<ApiAdTagConfig>;
   fedexCup?: Maybe<ApiAdTagConfig>;
   fedexcupSection?: Maybe<ApiAdTagConfig>;
@@ -56,6 +57,8 @@ export type ApiAdConfig = {
   groupStageStandings?: Maybe<ApiAdTagConfig>;
   groupstageStandings?: Maybe<ApiAdTagConfig>;
   homepage?: Maybe<ApiAdTagConfig>;
+  hotstreakLeaderboard?: Maybe<ApiAdTagConfig>;
+  hotstreakTop10?: Maybe<ApiAdTagConfig>;
   knockoutLeaderboard?: Maybe<ApiAdTagConfig>;
   leaderboard?: Maybe<ApiAdTagConfig>;
   leaderboardCutline?: Maybe<ApiAdTagConfig>;
@@ -340,10 +343,15 @@ export type ApiBioRank = {
 
 export type ApiBrazeFragment = {
   __typename: 'BrazeFragment';
+  checkZipCode: Scalars['Boolean']['output'];
   ctaLink?: Maybe<Scalars['String']['output']>;
   ctaText?: Maybe<Scalars['String']['output']>;
+  displayBanner: Scalars['Boolean']['output'];
   feedType?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  placementId?: Maybe<Scalars['String']['output']>;
   sectionTitle?: Maybe<Scalars['String']['output']>;
+  sectionType?: Maybe<Scalars['String']['output']>;
 };
 
 export type ApiBroadcastAudioStream = {
@@ -448,6 +456,7 @@ export type ApiBroadcastNetwork = {
   channelId?: Maybe<Scalars['String']['output']>;
   daiAssetKey?: Maybe<Scalars['String']['output']>;
   daiPreRollUrl?: Maybe<Scalars['String']['output']>;
+  daiProfileFields?: Maybe<Array<ApiDaiProfileField>>;
   daiStreamActivityId?: Maybe<Scalars['String']['output']>;
   descriptionUrl?: Maybe<Scalars['String']['output']>;
   flag?: Maybe<Scalars['String']['output']>;
@@ -471,6 +480,7 @@ export type ApiBroadcastNetwork = {
   nw?: Maybe<Scalars['String']['output']>;
   priorityNum?: Maybe<Scalars['Int']['output']>;
   prof?: Maybe<Scalars['String']['output']>;
+  profileKey?: Maybe<Scalars['String']['output']>;
   resp?: Maybe<Scalars['String']['output']>;
   simulcast?: Maybe<Scalars['Boolean']['output']>;
   simulcastUrl?: Maybe<Scalars['String']['output']>;
@@ -489,8 +499,7 @@ export type ApiBroadcastNetworks = {
 
 export type ApiBroadcastTableFragment = {
   __typename: 'BroadcastTableFragment';
-  path: Scalars['String']['output'];
-  webviewUrl: Scalars['String']['output'];
+  showTable: Scalars['Boolean']['output'];
 };
 
 export type ApiBubblePill = {
@@ -508,7 +517,9 @@ export type ApiBubbleWatch = {
   __typename: 'BubbleWatch';
   bubbleId: Scalars['ID']['output'];
   bubbleType: ApiBubbleType;
+  cutoffIncluded?: Maybe<Scalars['Boolean']['output']>;
   items: Array<ApiBubbleWatchItem>;
+  rankingColumnHeader?: Maybe<Scalars['String']['output']>;
 };
 
 export type ApiBubbleWatchItem = {
@@ -540,6 +551,8 @@ export type ApiCategoryPlayerStat = {
   color: ApiStatColor;
   statName: Scalars['String']['output'];
   statValue: Scalars['String']['output'];
+  supportingData?: Maybe<Scalars['String']['output']>;
+  supportingDataColor?: Maybe<ApiStatColor>;
 };
 
 export type ApiCategoryStat = {
@@ -609,7 +622,7 @@ export type ApiContentFragmentType = {
   path: Scalars['String']['output'];
 };
 
-export type ApiContentFragments = ApiBrazeFragment | ApiDropdownFragment | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopUserProfile | ApiKopZigZag | ApiMediaGallery | ApiOddsToWinTracker | ApiTglBoxScoreFragment | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVideoHero;
+export type ApiContentFragments = ApiBrazeFragment | ApiDropdownFragment | ApiHomepageLead | ApiHomepageNews | ApiHomepageProgramStanding | ApiKopHeader | ApiKopSignUp | ApiKopStandingsList | ApiKopSubheader | ApiKopUpcomingTournament | ApiKopUserProfile | ApiKopZigZag | ApiLandingPageImageBlock | ApiMediaGallery | ApiOddsToWinTracker | ApiRangePromoFragment | ApiTglBoxScoreFragment | ApiThreeUpPhoto | ApiThreeUpStats | ApiTwoColumn | ApiVaultHomepageModule | ApiVideoHero;
 
 export type ApiContentFragmentsCompressed = {
   __typename: 'ContentFragmentsCompressed';
@@ -990,11 +1003,13 @@ export type ApiCupRankMovementDirection =
 
 export type ApiCupRankingPlayer = {
   __typename: 'CupRankingPlayer';
+  assets?: Maybe<Array<ApiPlayerAsset>>;
   id: Scalars['String']['output'];
   movement: Scalars['String']['output'];
   movementDirection: ApiCupRankMovementDirection;
   name: Scalars['String']['output'];
   playerCountry: Scalars['String']['output'];
+  pointsDelta?: Maybe<Scalars['String']['output']>;
   position: Scalars['String']['output'];
   rankLogoDark?: Maybe<Scalars['String']['output']>;
   rankLogoLight?: Maybe<Scalars['String']['output']>;
@@ -1255,6 +1270,12 @@ export type ApiCutLinePossibility = {
   score: Scalars['String']['output'];
 };
 
+export type ApiDaiProfileField = {
+  __typename: 'DaiProfileField';
+  key: Scalars['String']['output'];
+  value?: Maybe<Scalars['String']['output']>;
+};
+
 export type ApiDayWeather = {
   __typename: 'DayWeather';
   day: Scalars['String']['output'];
@@ -1476,8 +1497,15 @@ export type ApiField = {
   lastUpdated?: Maybe<Scalars['AWSTimestamp']['output']>;
   message?: Maybe<Scalars['String']['output']>;
   players: Array<ApiPlayerField>;
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   standingsHeader: Scalars['String']['output'];
   tournamentName: Scalars['String']['output'];
+};
+
+export type ApiFieldEarningsOption = ApiWinnerOption & {
+  __typename: 'FieldEarningsOption';
+  overrideLink?: Maybe<Scalars['String']['output']>;
+  type: ApiWinnerOptionType;
 };
 
 export type ApiFieldGroup = {
@@ -2632,6 +2660,19 @@ export type ApiLbRound = {
   roundNumber: Scalars['Int']['output'];
 };
 
+export type ApiLandingPageImageBlock = {
+  __typename: 'LandingPageImageBlock';
+  consentCategory?: Maybe<Scalars['String']['output']>;
+  cta?: Maybe<ApiCallToAction>;
+  deniedConsent: Scalars['Boolean']['output'];
+  image?: Maybe<Scalars['String']['output']>;
+  imageDark?: Maybe<Scalars['String']['output']>;
+  locationFallback: Scalars['Boolean']['output'];
+  mobileImage?: Maybe<Scalars['String']['output']>;
+  subTitle: Scalars['String']['output'];
+  title: Scalars['String']['output'];
+};
+
 export type ApiLeaderStat = {
   __typename: 'LeaderStat';
   country: Scalars['String']['output'];
@@ -2906,6 +2947,7 @@ export type ApiLeaderboardUpdateV3 = {
   leaderboardRoundHeader: Scalars['String']['output'];
   messages: Array<ApiLeaderboardMessage>;
   players: Array<ApiLeaderboardUpdateRowV3>;
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   rounds: Array<ApiLbRound>;
   subEvent: Scalars['Boolean']['output'];
   tournamentStatus: ApiTournamentStatus;
@@ -2965,6 +3007,7 @@ export type ApiLeaderboardV3 = {
   messages: Array<ApiLeaderboardMessage>;
   players: Array<ApiLeaderboardRowV3>;
   profileEnabled: Scalars['Boolean']['output'];
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   rounds: Array<ApiLbRound>;
   scorecardEnabled: Scalars['Boolean']['output'];
   standingsEnabled: Scalars['Boolean']['output'];
@@ -2987,7 +3030,10 @@ export type ApiLegend = {
   __typename: 'Legend';
   accessibilityText?: Maybe<Scalars['String']['output']>;
   icon: ApiIcon;
+  /** @deprecated Use iconLogo and iconLogoDark */
   iconUrl?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use iconLogoDark */
+  iconUrlDark?: Maybe<Scalars['String']['output']>;
   subText?: Maybe<Scalars['String']['output']>;
   text?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
@@ -2998,7 +3044,7 @@ export type ApiListItem = {
   segments: Array<Maybe<ApiListNodeItems>>;
 };
 
-export type ApiListNodeItems = ApiNewsArticleContentSegment | ApiNewsArticleParagraph | ApiNewsArticlePlayerTournamentOdds | ApiUnorderedListNode;
+export type ApiListNodeItems = ApiListItem | ApiNewsArticleContentSegment | ApiNewsArticleParagraph | ApiNewsArticlePlayerTournamentOdds | ApiUnorderedListNode;
 
 export type ApiLiveOverride =
   | 'FORCE_OFF'
@@ -3012,6 +3058,8 @@ export type ApiLiveStatus =
 
 export type ApiLiveVideoOverride = {
   __typename: 'LiveVideoOverride';
+  daiAssetKey?: Maybe<Scalars['String']['output']>;
+  daiProfileFields?: Maybe<Array<ApiDaiProfileField>>;
   simulcast?: Maybe<ApiBroadcastFullTelecast>;
   tourCode: ApiTourCode;
   videos: Array<ApiVideo>;
@@ -3874,6 +3922,7 @@ export type ApiNewsArticleDetails = {
   cta?: Maybe<ApiCallToAction>;
   datePublished: Scalars['AWSTimestamp']['output'];
   disableAds: Scalars['Boolean']['output'];
+  favoritePlayers?: Maybe<Array<ApiNewsArticleFavoritePlayer>>;
   franchise: Scalars['String']['output'];
   franchiseDisplayName: Scalars['String']['output'];
   headline: Scalars['String']['output'];
@@ -3906,6 +3955,7 @@ export type ApiNewsArticleDetails = {
   /** @deprecated Use tournaments.tournamentName */
   tournamentName?: Maybe<Scalars['String']['output']>;
   tournaments?: Maybe<Array<ApiNewsArticleDetailsTournament>>;
+  trendingArticles: Array<ApiTrendingFeedItem>;
   url: Scalars['String']['output'];
 };
 
@@ -3935,6 +3985,14 @@ export type ApiNewsArticleEmbedded = {
   mobileHeight?: Maybe<Scalars['String']['output']>;
   scroll?: Maybe<Scalars['Boolean']['output']>;
   url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ApiNewsArticleFavoritePlayer = {
+  __typename: 'NewsArticleFavoritePlayer';
+  countryCode: Scalars['String']['output'];
+  countryName: Scalars['String']['output'];
+  playerId: Scalars['String']['output'];
+  playerName: Scalars['String']['output'];
 };
 
 export type ApiNewsArticleFormat = {
@@ -4015,7 +4073,7 @@ export type ApiNewsArticleMetadataSegment = {
   value?: Maybe<Scalars['String']['output']>;
 };
 
-export type ApiNewsArticleNode = ApiArticleOddsTableQuery | ApiCerosEmbedPlugin | ApiExpertPicksNode | ApiNewsArticleBlockQuote | ApiNewsArticleDivider | ApiNewsArticleEmbedded | ApiNewsArticleHeader | ApiNewsArticleHowToWatch | ApiNewsArticleImage | ApiNewsArticleInstagram | ApiNewsArticleLineBreak | ApiNewsArticleLink | ApiNewsArticleOddsGraph | ApiNewsArticleOddsParagraph | ApiNewsArticleParagraph | ApiNewsArticlePhotoGallery | ApiNewsArticlePlayerComparison | ApiNewsArticleScoreCard | ApiNewsArticleStats | ApiNewsArticleText | ApiNewsArticleTweetNode | ApiNewsArticleVideo | ApiNewsArticleWeather | ApiRelatedFactsNode | ApiTglBoxScore | ApiTableFragment | ApiUnorderedListNode;
+export type ApiNewsArticleNode = ApiArticleOddsTableQuery | ApiCerosEmbedPlugin | ApiExpertPicksNode | ApiNewsArticleBlockQuote | ApiNewsArticleDivider | ApiNewsArticleEmbedded | ApiNewsArticleHeader | ApiNewsArticleHowToWatch | ApiNewsArticleImage | ApiNewsArticleInstagram | ApiNewsArticleLineBreak | ApiNewsArticleLink | ApiNewsArticleOddsGraph | ApiNewsArticleOddsParagraph | ApiNewsArticleParagraph | ApiNewsArticlePhotoGallery | ApiNewsArticlePlayerComparison | ApiNewsArticleScoreCard | ApiNewsArticleStats | ApiNewsArticleText | ApiNewsArticleTweetNode | ApiNewsArticleVideo | ApiNewsArticleWeather | ApiRelatedFactsNode | ApiTglBoxScore | ApiTableFragment | ApiTrendingModuleNode | ApiUnorderedListNode;
 
 export type ApiNewsArticleOddsGraph = {
   __typename: 'NewsArticleOddsGraph';
@@ -4745,6 +4803,7 @@ export type ApiPlayerDirectoryPlayer = {
   id: Scalars['ID']['output'];
   isActive: Scalars['Boolean']['output'];
   lastName: Scalars['String']['output'];
+  nameVariants: Array<Maybe<Scalars['String']['output']>>;
   playerBio: ApiPlayerDirectoryBio;
   shortName: Scalars['String']['output'];
 };
@@ -4828,6 +4887,7 @@ export type ApiPlayerHubArticleLink = {
   franchise: Scalars['String']['output'];
   franchiseDisplayName: Scalars['String']['output'];
   players?: Maybe<Array<ApiArticlePlayer>>;
+  publishDate?: Maybe<Scalars['AWSTimestamp']['output']>;
   /**   Optional sponsor for sponsored articles */
   sponsor?: Maybe<ApiNewsArticleSponsor>;
   thumbnail?: Maybe<ApiImageAsset>;
@@ -4892,6 +4952,8 @@ export type ApiPlayerHubHoleDetailWidget = {
   /**   Optional widget sponsor */
   sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
   subTitle?: Maybe<Scalars['String']['output']>;
+  tourcastURI?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use tourcastURI */
   tourcastURL?: Maybe<Scalars['String']['output']>;
 };
 
@@ -4994,6 +5056,8 @@ export type ApiPlayerHubShotCommentaryWidget = {
   /**   Optional widget sponsor */
   sponsor?: Maybe<ApiPlayerHubWidgetSponsor>;
   subTitle: Scalars['String']['output'];
+  tourcastURI?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Use tourcastURI */
   tourcastURL?: Maybe<Scalars['String']['output']>;
 };
 
@@ -5944,6 +6008,7 @@ export type ApiQuery = {
   allTimeRecordCategories: ApiAllTimeRecordCategories;
   allTimeRecordStat: ApiAllTimeRecordStat;
   alltoursponsors: Array<Maybe<ApiTourSponsor>>;
+  /** @deprecated no longer supported */
   aon: ApiAon;
   /** @deprecated use REST API */
   articleAdConfig: ApiAdTagConfig;
@@ -5982,7 +6047,7 @@ export type ApiQuery = {
   genericContentCompressed: ApiGenericContentCompressed;
   getExpertPicksTable: ApiExpertPicks;
   getPowerRankingsTable: ApiPowerRankings;
-  getRCPhotoGallery: ApiRcPhotoGallery;
+  getRCPhotoGallery?: Maybe<ApiRcPhotoGallery>;
   getRelatedFact: ApiRelatedFact;
   getShotCommentary: ApiShotCommentary;
   /**   Returns full details for a match based on supplied matchId */
@@ -6065,7 +6130,9 @@ export type ApiQuery = {
   priorityRankings: ApiPriorityRankings;
   promoSection: ApiPromoSectionContainer;
   rankingsWinners: Array<ApiRankingsPastWinner>;
+  /** @deprecated no longer supported */
   rsm: ApiRsmStandings;
+  /** @deprecated no longer supported */
   rsmLeaderboard: ApiRsmLeaderboard;
   ryderCupArticleDetailsCompressed: ApiNewsArticleDetailsCompressed;
   ryderCupBroadcastCoverage: ApiRyderCupBroadcastCoverage;
@@ -6921,6 +6988,7 @@ export type ApiQueryScheduleYearsArgs = {
 export type ApiQueryScorecardCompressedV3Args = {
   officialEventData?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
+  resultsView?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
@@ -6960,6 +7028,7 @@ export type ApiQueryScorecardV2Args = {
 export type ApiQueryScorecardV3Args = {
   officialEventData?: InputMaybe<Scalars['Boolean']['input']>;
   playerId: Scalars['ID']['input'];
+  resultsView?: InputMaybe<Scalars['Boolean']['input']>;
   tournamentId: Scalars['ID']['input'];
 };
 
@@ -7514,6 +7583,11 @@ export type ApiRadarNormalizedTrajectoryV2 = {
   zFit?: Maybe<Array<Scalars['Float']['output']>>;
 };
 
+export type ApiRangePromoFragment = {
+  __typename: 'RangePromoFragment';
+  tournamentId: Scalars['String']['output'];
+};
+
 export type ApiRangeWeatherTemp = {
   __typename: 'RangeWeatherTemp';
   maxTempC: Scalars['String']['output'];
@@ -7649,6 +7723,7 @@ export type ApiRoundFormat =
 
 export type ApiRoundScore = {
   __typename: 'RoundScore';
+  aiRecaps?: Maybe<Array<ApiScorecardRecap>>;
   complete: Scalars['Boolean']['output'];
   courseAbbreviation?: Maybe<Scalars['String']['output']>;
   courseId?: Maybe<Scalars['String']['output']>;
@@ -8091,6 +8166,11 @@ export type ApiScheduleDisplay =
   | 'SHOW'
   | 'SHOW_NO_LINK';
 
+export type ApiScheduleFlights = {
+  __typename: 'ScheduleFlights';
+  url: Scalars['String']['output'];
+};
+
 export type ApiScheduleMonth = {
   __typename: 'ScheduleMonth';
   month: Scalars['String']['output'];
@@ -8117,6 +8197,7 @@ export type ApiScheduleTournament = {
   date: Scalars['String']['output'];
   dateAccessibilityText: Scalars['String']['output'];
   display: ApiScheduleDisplay;
+  flights?: Maybe<ApiScheduleFlights>;
   id: Scalars['ID']['output'];
   iosTicketmasterApiKey?: Maybe<Scalars['String']['output']>;
   purse?: Maybe<Scalars['String']['output']>;
@@ -8181,6 +8262,7 @@ export type ApiScorecardCompressedV3 = {
   __typename: 'ScorecardCompressedV3';
   id: Scalars['ID']['output'];
   payload: Scalars['String']['output'];
+  tournamentName: Scalars['String']['output'];
 };
 
 export type ApiScorecardHeaderPlayer = {
@@ -8191,6 +8273,13 @@ export type ApiScorecardHeaderPlayer = {
   position: Scalars['String']['output'];
   roundDisplay: Scalars['String']['output'];
   total: Scalars['String']['output'];
+};
+
+export type ApiScorecardRecap = {
+  __typename: 'ScorecardRecap';
+  icon: ApiPlayerHubWidgetIcon;
+  recap: Scalars['String']['output'];
+  title: Scalars['String']['output'];
 };
 
 export type ApiScorecardRow = {
@@ -8257,6 +8346,7 @@ export type ApiScorecardUpdateV3 = {
   playerId: Scalars['String']['output'];
   playerState?: Maybe<ApiPlayerState>;
   profileEnabled: Scalars['Boolean']['output'];
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   roundScores: Array<ApiRoundScore>;
   teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
   tournamentName: Scalars['String']['output'];
@@ -8277,6 +8367,7 @@ export type ApiScorecardV3 = {
   player: ApiPlayer;
   playerState?: Maybe<ApiPlayerState>;
   profileEnabled: Scalars['Boolean']['output'];
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   roundScores: Array<ApiRoundScore>;
   standings?: Maybe<ApiScorecardStandings>;
   teeTime?: Maybe<Scalars['AWSTimestamp']['output']>;
@@ -8700,6 +8791,7 @@ export type ApiStatCategory =
   | 'FACTS_AND_FIGURES'
   | 'MONEY_FINISHES'
   | 'OFF_TEE'
+  | 'PACE_OF_PLAY'
   | 'POINTS_RANKINGS'
   | 'PUTTING'
   | 'SCORING'
@@ -8716,6 +8808,7 @@ export type ApiStatCategoryConfig = {
 
 export type ApiStatCategoryConfigType =
   | 'ALL_TIME_RECORDS'
+  | 'PACE_OF_PLAY'
   | 'TRADITIONAL_STAT';
 
 export type ApiStatCategoryStat = {
@@ -9352,6 +9445,7 @@ export type ApiTglTeam = {
 
 export type ApiTspLeaderboard = {
   __typename: 'TSPLeaderboard';
+  bubblePill?: Maybe<ApiBubblePill>;
   currentRound: Scalars['Int']['output'];
   currentRoundScoringFormat?: Maybe<Scalars['String']['output']>;
   disableOdds: Scalars['Boolean']['output'];
@@ -9685,6 +9779,7 @@ export type ApiTeeTimesV2 = {
   hideSov: Scalars['Boolean']['output'];
   id: Scalars['ID']['output'];
   informationSections: Array<ApiInformationSection>;
+  rangeAvailable?: Maybe<Scalars['Boolean']['output']>;
   rounds: Array<ApiTeeTimeRoundV2>;
   teeTimesFeatures: Array<ApiTeeTimesFeature>;
   timezone: Scalars['String']['output'];
@@ -9702,18 +9797,26 @@ export type ApiThreeUpPhoto = {
   mobileImageTwo?: Maybe<Scalars['String']['output']>;
   photoFour?: Maybe<Scalars['String']['output']>;
   photoFourAccessibilityText?: Maybe<Scalars['String']['output']>;
+  photoFourMobileAppUrl?: Maybe<Scalars['String']['output']>;
+  photoFourMobileWebUrl?: Maybe<Scalars['String']['output']>;
   photoFourUrl?: Maybe<Scalars['String']['output']>;
   photoOne?: Maybe<Scalars['String']['output']>;
   photoOneAccessibilityText?: Maybe<Scalars['String']['output']>;
   photoOneCtaTarget?: Maybe<Scalars['String']['output']>;
+  photoOneMobileAppUrl?: Maybe<Scalars['String']['output']>;
+  photoOneMobileWebUrl?: Maybe<Scalars['String']['output']>;
   photoOneUrl?: Maybe<Scalars['String']['output']>;
   photoThree?: Maybe<Scalars['String']['output']>;
   photoThreeAccessibilityText?: Maybe<Scalars['String']['output']>;
   photoThreeCtaTarget?: Maybe<Scalars['String']['output']>;
+  photoThreeMobileAppUrl?: Maybe<Scalars['String']['output']>;
+  photoThreeMobileWebUrl?: Maybe<Scalars['String']['output']>;
   photoThreeUrl?: Maybe<Scalars['String']['output']>;
   photoTwo?: Maybe<Scalars['String']['output']>;
   photoTwoAccessibilityText?: Maybe<Scalars['String']['output']>;
   photoTwoCtaTarget?: Maybe<Scalars['String']['output']>;
+  photoTwoMobileAppUrl?: Maybe<Scalars['String']['output']>;
+  photoTwoMobileWebUrl?: Maybe<Scalars['String']['output']>;
   photoTwoUrl?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
 };
@@ -9781,8 +9884,12 @@ export type ApiToughestRound =
 
 export type ApiTourBoundAsset = {
   __typename: 'TourBoundAsset';
+  /** @deprecated Use tourBoundLogoAsset */
   tourBoundLogo?: Maybe<Scalars['String']['output']>;
+  tourBoundLogoAsset?: Maybe<ApiImageAsset>;
+  /** @deprecated Use tourBoundLogoDarkAsset */
   tourBoundLogoDark?: Maybe<Scalars['String']['output']>;
+  tourBoundLogoDarkAsset?: Maybe<ApiImageAsset>;
 };
 
 export type ApiTourCategories = {
@@ -9862,6 +9969,7 @@ export type ApiTourCupCombinedInfo = {
 
 export type ApiTourCupCombinedPlayer = {
   __typename: 'TourCupCombinedPlayer';
+  assets?: Maybe<Array<ApiPlayerAsset>>;
   columnData: Array<Scalars['String']['output']>;
   country: Scalars['String']['output'];
   countryFlag: Scalars['String']['output'];
@@ -10119,6 +10227,7 @@ export type ApiTournament = {
   displayDate: Scalars['String']['output'];
   events: Array<ApiEvent>;
   features?: Maybe<Array<ApiTournamentFeature>>;
+  flights?: Maybe<ApiScheduleFlights>;
   formatType: ApiFormatType;
   headshotBaseUrl?: Maybe<Scalars['String']['output']>;
   hideRolexClock: Scalars['Boolean']['output'];
@@ -10361,7 +10470,9 @@ export type ApiTournamentOverview = {
   courses: Array<ApiTournamentCourse>;
   defendingChampion?: Maybe<ApiTournamentChampion>;
   defendingTeamChampion?: Maybe<Array<Maybe<ApiTournamentChampion>>>;
+  eventGuideTitle?: Maybe<Scalars['String']['output']>;
   eventGuideURL?: Maybe<Scalars['String']['output']>;
+  flights?: Maybe<ApiScheduleFlights>;
   formatType: ApiFormatType;
   iosTicketmasterApiKey?: Maybe<Scalars['String']['output']>;
   overview: Array<ApiInformationData>;
@@ -10500,6 +10611,13 @@ export type ApiTournamentsPillConfig = {
   currentSeason: Scalars['Int']['output'];
 };
 
+export type ApiTrendingFeedItem = ApiNewsArticle | ApiVideo;
+
+export type ApiTrendingModuleNode = {
+  __typename: 'TrendingModuleNode';
+  title?: Maybe<Scalars['String']['output']>;
+};
+
 export type ApiTspPlayer = {
   __typename: 'TspPlayer';
   abbreviations: Scalars['String']['output'];
@@ -10519,6 +10637,8 @@ export type ApiTspPlayer = {
   rankingMovement: ApiCupRankMovementDirection;
   rankingMovementAmount: Scalars['String']['output'];
   shortName: Scalars['String']['output'];
+  tooltipText?: Maybe<Scalars['String']['output']>;
+  tooltipTitle?: Maybe<Scalars['String']['output']>;
 };
 
 export type ApiTspPlayerHole = {
@@ -10767,6 +10887,26 @@ export type ApiUpcomingMatchPotentialPlayer = {
   relationshipLabel?: Maybe<Scalars['String']['output']>;
 };
 
+export type ApiVaultHomepageModule = {
+  __typename: 'VaultHomepageModule';
+  ctaLink: Scalars['String']['output'];
+  ctaText: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  image: ApiImageAsset;
+  sponsor?: Maybe<ApiVaultSponsor>;
+  title: Scalars['String']['output'];
+  video: ApiVideo;
+};
+
+export type ApiVaultSponsor = {
+  __typename: 'VaultSponsor';
+  description: Scalars['String']['output'];
+  logoAsset: ApiImageAsset;
+  logoDarkAsset: ApiImageAsset;
+  name: Scalars['String']['output'];
+  sponsorPrefix: Scalars['String']['output'];
+};
+
 export type ApiVideo = {
   __typename: 'Video';
   /** @deprecated No longer supported */
@@ -10988,6 +11128,7 @@ export type ApiWinner = {
   totalScore: Scalars['String']['output'];
   totalStrokes: Scalars['Int']['output'];
   winnerIcon?: Maybe<ApiWinnerIcon>;
+  winnerOptions?: Maybe<Array<ApiWinnerOption>>;
 };
 
 export type ApiWinnerIcon = {
@@ -11002,6 +11143,13 @@ export type ApiWinnerIconType =
   | 'BRONZE'
   | 'GOLD'
   | 'SILVER';
+
+export type ApiWinnerOption = {
+  type: ApiWinnerOptionType;
+};
+
+export type ApiWinnerOptionType =
+  | 'FIELD_EARNINGS';
 
 export type ApiWinnerRoundScore = {
   __typename: 'WinnerRoundScore';
@@ -11162,6 +11310,7 @@ export type ApiYourTourStory = {
   homeCard?: Maybe<ApiYourTourCard>;
   id: Scalars['ID']['output'];
   tglMatchIds?: Maybe<Array<Scalars['String']['output']>>;
+  vaultHomepageModule?: Maybe<ApiVaultHomepageModule>;
   videoStories: Array<ApiYtVideoStory>;
 };
 

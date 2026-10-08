@@ -7,13 +7,12 @@ runs:
     - name: Install pnpm
       uses: pnpm/action-setup@v4
       with:
-        version: 9.15.9
         run_install: false
 
     - name: Install node
       uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version-file: package.json
         cache: "pnpm"
 
     - name: Copy env
@@ -22,6 +21,7 @@ runs:
         set -e
         cp ./apps/server/.env.example ./apps/server/.env
         cp ./apps/expo/.env.example ./apps/expo/.env
+        cp ./apps/web/.env.example ./apps/web/.env
         cp ./jobs/espn-schema/.env.example ./jobs/espn-schema/.env
         cp ./jobs/leaderboard-sync/.env.example ./jobs/leaderboard-sync/.env
         cp ./packages/putting-pals-db/.env.example ./packages/putting-pals-db/.env

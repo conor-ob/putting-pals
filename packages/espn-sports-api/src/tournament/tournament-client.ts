@@ -13,11 +13,11 @@ import {
   mapRoundStatus,
   mapTournamentStatus,
 } from "../utils/tournament-status";
-import { resolve as resolveTournamentData } from "./tournament-data-resolver";
 
 type AggregatedTournament = {
   tournament: TourScheduleEvent;
   competition: ApiLeaderboardCompetition;
+  numberOfRounds: number;
 };
 
 export class EspnSportsApiTournamentClient extends AbstractTournamentClient<AggregatedTournament> {
@@ -49,7 +49,7 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Aggr
       throw new NotFoundError(`Tournament ${id} not found`);
     }
 
-    const competition = leaderboard.events[0]?.competitions.find(
+    const competition = leaderboard.events[0]?.competitions?.find(
       (c) => c.id === id,
     );
     if (competition === undefined) {
@@ -59,21 +59,17 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Aggr
     return {
       tournament,
       competition,
+      numberOfRounds: leaderboard.events[0]?.tournament.numberOfRounds ?? 0,
     };
   }
 
   override mapTournament(
     aggregatedTournament: AggregatedTournament,
   ): Tournament {
-    const { tournament, competition } = aggregatedTournament;
+    const { tournament, competition, numberOfRounds } = aggregatedTournament;
     const location = this.getTournamentLocation(tournament);
-    const tournamentData = resolveTournamentData(tournament.id);
-    const logo =
-      tournamentData?.images?.logo ??
-      `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`;
-    const cover =
-      tournamentData?.images?.cover ??
-      `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`;
+    const logo = `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`;
+    const cover = `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`; // TODO cover image
 
     return {
       __typename: "Tournament",
@@ -91,7 +87,8 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Aggr
       },
       location: location,
       courses: [],
-      status: mapRoundStatus(competition),
+      status: mapRoundStatus(competition, numberOfRounds),
+      weather: undefined, // TODO weather data
     };
   }
 

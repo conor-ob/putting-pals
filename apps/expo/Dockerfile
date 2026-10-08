@@ -1,7 +1,7 @@
 # https://fintlabs.medium.com/optimized-multi-stage-docker-builds-with-turborepo-and-pnpm-for-nodejs-microservices-in-a-monorepo-c686fdcf051f
 
 # Base Alpine image
-FROM node:22-alpine AS alpine
+FROM node:24-alpine AS alpine
 RUN apk add --no-cache libc6-compat
 
 # Setup pnpm and turbo
@@ -36,6 +36,9 @@ ENV EXPO_PUBLIC_SERVER_URL=$EXPO_PUBLIC_SERVER_URL
 
 # Turbo codegen and build
 RUN turbo build --filter=@putting-pals/expo
+
+# Remove source maps so they aren't served publicly
+RUN find apps/expo/dist -name '*.map' -type f -delete
 
 # Prune production dependencies
 RUN pnpm prune --prod --no-optional

@@ -6,6 +6,7 @@ import {
   type TournamentStatus,
 } from "@putting-pals/putting-pals-core";
 import type { EspnSportsApi } from "../api/espn-sports-api";
+import { getCurrentRound } from "../utils/tournament-status";
 import type { ApiLeaderboardEvent } from "./domain/types";
 
 export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<ApiLeaderboardEvent> {
@@ -32,7 +33,7 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
   }
 
   override mapLeaderboard(event: ApiLeaderboardEvent): Leaderboard {
-    const competition = event.competitions.find(
+    const competition = event.competitions?.find(
       (competition) => competition.id === event.id,
     );
     if (competition === undefined) {
@@ -41,7 +42,10 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
       );
     }
 
-    const currentRound = competition.status.period;
+    const currentRound = getCurrentRound(
+      event.tournament.numberOfRounds,
+      competition.status.period,
+    );
 
     const competitors = competition.competitors ?? [];
 
@@ -64,6 +68,8 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
           player: {
             id: competitor.athlete.id,
             displayName: competitor.athlete.displayName,
+            shortName: competitor.athlete.shortName,
+            abbreviations: competitor.athlete.amateur ? "(a)" : "",
             countryFlag: "TBD",
           },
           scoringData: {
@@ -79,6 +85,7 @@ export class EspnSportsApiLeaderboardClient extends AbstractLeaderboardClient<Ap
         };
       }),
       tournamentStatus: this.mapTournamentStatus(event.status.type.state),
+      leaderboardRoundHeader: `R${currentRound}`,
     };
   }
 

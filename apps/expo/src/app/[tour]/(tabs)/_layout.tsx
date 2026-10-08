@@ -1,51 +1,5 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Tabs } from "expo-router";
+import { AppTabs } from "~/components/app-tabs";
 
 export default function Layout() {
-  return (
-    <Tabs initialRouteName="leaderboard">
-      <Tabs.Screen
-        name="index"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="leaderboard"
-        options={{
-          title: "Leaderboard",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="trophy" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="feed"
-        options={{
-          title: "Feed",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="newspaper-o" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="schedule"
-        options={{
-          title: "Schedule",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="calendar" color={color} />
-          ),
-        }}
-      />
-      {/* <Tabs.Screen
-        name="earnings"
-        options={{
-          title: "Earnings",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="money" color={color} />
-          ),
-        }}
-      /> */}
-    </Tabs>
-  );
+  return <AppTabs />;
 }

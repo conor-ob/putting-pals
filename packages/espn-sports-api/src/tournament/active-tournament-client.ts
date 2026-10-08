@@ -15,7 +15,7 @@ export class EspnSportsApiActiveTournamentClient
     const leaderboard = await this.espnSportsApi.getLeaderboard(tourCode);
 
     const eventWithCompetitors = leaderboard.events.find((event) =>
-      event.competitions.some(
+      event.competitions?.some(
         (competition) => (competition.competitors ?? []).length > 0,
       ),
     );
@@ -69,14 +69,20 @@ export class EspnSportsApiActiveTournamentClient
       }
 
       return lastEventPreviousSeason.id;
+    } else {
+      const previousEvents = events.slice(0, eventIndex);
+      const nonCancelledEvents = previousEvents.filter(
+        (event) => event.fullStatus.type.name !== "STATUS_CANCELED",
+      );
+
+      const mostRecentNonCancelledEvent =
+        nonCancelledEvents[nonCancelledEvents.length - 1];
+
+      if (mostRecentNonCancelledEvent === undefined) {
+        return undefined;
+      }
+
+      return mostRecentNonCancelledEvent.id;
     }
-
-    const previousEvent = events[eventIndex - 1];
-
-    if (previousEvent === undefined) {
-      return undefined;
-    }
-
-    return previousEvent.id;
   }
 }

@@ -3,19 +3,27 @@ packages:
   - "jobs/*"
   - "packages/*"
 
+allowBuilds:
+  "@swc/core": true
+  esbuild: true
+
+overrides:
+  # uniwind@1.12.0's Metro web wrapper has no InputAccessoryView implementation,
+  # which breaks `expo export -p web` on react-native-web 0.21.3+.
+  # https://github.com/uni-stack/uniwind/issues/695 - remove once uniwind ships the fix (PR #697).
+  react-native-web: 0.21.2
+
 catalog:
-  "@graphql-codegen/cli": ^6.1.0  
-  "@graphql-codegen/typescript": ^5.0.7
   "@total-typescript/tsconfig": ^1.0.4
-  "@trpc/client": ^11.8.0
-  "@trpc/server": ^11.8.0
-  "@trpc/tanstack-react-query": ^11.8.0
-  "@types/node": ^24.10.1
-  dotenv: ^17.2.3
-  drizzle-orm: ^0.45.1
-  graphql: ^16.12.0
-  graphql-request: ^7.4.0
-  superjson: ^2.2.5
-  typescript: ^5.9.3
-  vitest: ^4.0.14
-  zod: ^4.1.13
+  "@trpc/client": ^11.19.0
+  "@trpc/server": ^11.19.0
+  "@trpc/tanstack-react-query": ^11.19.0
+  "@types/node": ^24.19.0
+  date-fns: ^4.4.0
+  dotenv: ^18.0.4
+  superjson: ^2.2.6
+  tsx: ^4.23.15
+  typescript: ^6.0.3
+  vite: ^8.3.1
+  vitest: ^5.0.2
+  zod: ^4.6.5

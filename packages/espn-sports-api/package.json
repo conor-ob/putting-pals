@@ -13,21 +13,19 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "codegen": "tsx codegen.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
     "@putting-pals/iso-countries": "workspace:*",
     "@putting-pals/putting-pals-core": "workspace:*",
-    "date-fns": "^4.1.0",
+    "date-fns": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@total-typescript/shoehorn": "^0.1.2",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
-    "tsx": "^4.21.0",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }

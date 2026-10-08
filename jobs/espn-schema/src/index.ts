@@ -95,9 +95,10 @@ sendEvent()
         // biome-ignore lint/suspicious/noConsole: error logging
         console.error(e);
       }
+      process.exit(0);
     } else {
       // biome-ignore lint/suspicious/noConsole: error logging
       console.error(err);
+      process.exit(1);
     }
-    process.exit(1);
   });
