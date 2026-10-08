@@ -6,6 +6,19 @@ import type {
 import type { EuropeanTourApiImpl } from "../api/european-tour-api";
 import type { EventStatus } from "./domain/types";
 
+const NAME_SIMILARITY_THRESHOLD = 0.5;
+const NAME_STOP_WORDS = new Set([
+  "the",
+  "presented",
+  "pres",
+  "by",
+  "at",
+  "in",
+  "of",
+  "and",
+]);
+
+// TODO: majors are not included in espn sports eur schedule
 export class EuropeanTourApiTournamentEnricherClient
   implements TournamentClient
 {
@@ -24,13 +37,18 @@ export class EuropeanTourApiTournamentEnricherClient
     );
 
     const miniSchedule = await this.europeanTourApi.getMiniSchedule("eur");
-    const matchingEvent = miniSchedule.find((event) => {
-      // TODO: include fuzzy string matching for event name and tournament name, as they may not always match exactly
-      return (
-        this.isSameIsoDay(event.StartDate, tournament.schedule.startDate) &&
-        this.isSameIsoDay(event.EndDate, tournament.schedule.endDate)
-      );
-    });
+    const matchingEvent = miniSchedule
+      .filter(
+        (event) =>
+          this.isSameIsoDay(event.StartDate, tournament.schedule.startDate) &&
+          this.isSameIsoDay(event.EndDate, tournament.schedule.endDate),
+      )
+      .map((event) => ({
+        event,
+        score: this.nameSimilarity(event.EventName, tournament.name),
+      }))
+      .filter(({ score }) => score >= NAME_SIMILARITY_THRESHOLD)
+      .sort((a, b) => b.score - a.score)[0]?.event;
 
     if (matchingEvent === undefined) {
       return tournament;
@@ -49,6 +67,33 @@ export class EuropeanTourApiTournamentEnricherClient
 
   private isSameIsoDay(a: string, b: string) {
     return a.slice(0, 10) === b.slice(0, 10);
+  }
+
+  /**
+   * Fraction of the shorter name's words that appear in the other name, so
+   * extra sponsor words like "presented by X" don't reduce the score.
+   */
+  private nameSimilarity(a: string, b: string): number {
+    const ta = this.nameTokens(a);
+    const tb = this.nameTokens(b);
+    if (ta.size === 0 || tb.size === 0) {
+      return 0;
+    }
+
+    const shared = [...ta].filter((token) => tb.has(token)).length;
+    return shared / Math.min(ta.size, tb.size);
+  }
+
+  private nameTokens(name: string): Set<string> {
+    return new Set(
+      name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9 ]/g, " ")
+        .split(/\s+/)
+        .filter((token) => token.length > 1 && !NAME_STOP_WORDS.has(token)),
+    );
   }
 
   private enrichTournamentStatus(
