@@ -1,5 +1,6 @@
 import { FlashList } from "@shopify/flash-list";
-import { ScrollView } from "react-native";
+import { Image } from "expo-image";
+import { ScrollView, View } from "react-native";
 import { Text } from "~/components/ui/text";
 import { useTourCode } from "~/providers/tour-code/tour-code-provider";
 import { TourCodeSwitcher } from "~/providers/tour-code/tour-code-switcher";
@@ -32,7 +33,12 @@ export function SchedulePage() {
         data={[...(schedule?.completed ?? []), ...(schedule?.upcoming ?? [])]}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
-          return <Text className="text-foreground">{item.name}</Text>;
+          return (
+            <View>
+              <Text className="text-foreground">{item.name}</Text>
+              <Image source={item.images.cover} className="h-80" />
+            </View>
+          );
         }}
       />
     </ScrollView>

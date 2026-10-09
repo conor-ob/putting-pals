@@ -98,6 +98,7 @@ export class EuropeanTourApiTournamentEnricherClient
         if (tournament.status.roundStatus === "COMPLETE") {
           return {
             ...tournament.status,
+            roundDisplay: `R${eventStatus.RoundNo}`,
             roundStatus: "OFFICIAL",
             roundStatusColor: "GREEN",
             roundStatusDisplay: "Official",
@@ -105,6 +106,7 @@ export class EuropeanTourApiTournamentEnricherClient
         } else {
           return {
             ...tournament.status,
+            roundDisplay: `R${eventStatus.RoundNo}`,
             roundStatus: "COMPLETE",
             roundStatusColor: "BLUE",
             roundStatusDisplay: "Complete",
@@ -113,6 +115,7 @@ export class EuropeanTourApiTournamentEnricherClient
       case 2:
         return {
           ...tournament.status,
+          roundDisplay: `R${eventStatus.RoundNo}`,
           roundStatus: "IN_PROGRESS",
           roundStatusColor: "RED",
           roundStatusDisplay: "In Progress",
@@ -120,6 +123,7 @@ export class EuropeanTourApiTournamentEnricherClient
       case 4:
         return {
           ...tournament.status,
+          roundDisplay: `R${eventStatus.RoundNo}`,
           roundStatus: "OFFICIAL",
           roundStatusColor: "GREEN",
           roundStatusDisplay: "Official",

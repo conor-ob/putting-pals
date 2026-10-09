@@ -59,8 +59,6 @@ export class EuropeanTourScheduleScraper implements ScheduleScraper {
 
     const matched = matchEventIds(scheduledEvents.subEvent, eventIds);
 
-    console.log("MATCHED", JSON.stringify(matched, null, 2));
-
     return {
       events: matched.map((m) => {
         return {
