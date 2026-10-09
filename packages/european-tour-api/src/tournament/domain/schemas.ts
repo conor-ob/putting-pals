@@ -1,12 +1,12 @@
 import { z } from "zod";
 
-export const EventStatusSchema = z.object({
+export const ApiEventStatusSchema = z.object({
   EventId: z.number(),
   Status: z.number(),
   RoundStatus: z.number(),
 });
 
-export const EventMetadataSchema = z.object({
+export const ApiEventCardSchema = z.object({
   eventId: z.number(),
   imageUrl: z.url(),
 });

@@ -18,6 +18,7 @@
   "dependencies": {
     "@putting-pals/iso-countries": "workspace:*",
     "@putting-pals/putting-pals-core": "workspace:*",
+    "@putting-pals/putting-pals-utils": "workspace:*",
     "cheerio": "^1.2.0",
     "date-fns": "catalog:",
     "zod": "catalog:"

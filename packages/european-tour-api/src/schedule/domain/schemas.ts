@@ -25,19 +25,19 @@ export const EuropeanTourScheduleSchema = z.object({
   subEvent: z.array(EuropeanTourTournamentSchema),
 });
 
-export const EuropeanTourMiniScheduleEventSchema = z.object({
-  EventId: z.number(),
-  EventName: z.string(),
-  CurrentRound: z.number(),
-  StartDate: z.string(),
-  EndDate: z.string(),
-});
-
-export const EuropeanTourMiniScheduleSchema = z.object({
+export const ApiMiniScheduleSchema = z.object({
   Tours: z.array(
     z.object({
       TourId: z.number(),
-      Events: z.array(EuropeanTourMiniScheduleEventSchema),
+      Events: z.array(
+        z.object({
+          EventId: z.number(),
+          EventName: z.string(),
+          CurrentRound: z.number(),
+          StartDate: z.string(),
+          EndDate: z.string(),
+        }),
+      ),
     }),
   ),
 });

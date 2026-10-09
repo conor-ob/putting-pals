@@ -1,7 +1,6 @@
 import type z from "zod";
 import type {
-  EuropeanTourMiniScheduleEventSchema,
-  EuropeanTourMiniScheduleSchema,
+  ApiMiniScheduleSchema,
   EuropeanTourScheduleSchema,
   EuropeanTourTournamentSchema,
 } from "./schemas";
@@ -12,10 +11,4 @@ export type EuropeanTourTournament = z.infer<
   typeof EuropeanTourTournamentSchema
 >;
 
-export type EuropeanTourMiniScheduleEvent = z.infer<
-  typeof EuropeanTourMiniScheduleEventSchema
->;
-
-export type EuropeanTourMiniSchedule = z.infer<
-  typeof EuropeanTourMiniScheduleSchema
->;
+export type ApiMiniSchedule = z.infer<typeof ApiMiniScheduleSchema>;

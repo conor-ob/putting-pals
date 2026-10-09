@@ -1,6 +1,6 @@
 import type z from "zod";
-import type { EventMetadataSchema, EventStatusSchema } from "./schemas";
+import type { ApiEventCardSchema, ApiEventStatusSchema } from "./schemas";
 
-export type EventStatus = z.infer<typeof EventStatusSchema>;
+export type ApiEventStatus = z.infer<typeof ApiEventStatusSchema>;
 
-export type EventMetadata = z.infer<typeof EventMetadataSchema>;
+export type ApiEventCard = z.infer<typeof ApiEventCardSchema>;

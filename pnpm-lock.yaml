@@ -673,6 +673,9 @@ importers:
       '@putting-pals/putting-pals-core':
         specifier: workspace:*
         version: link:../putting-pals-core
+      '@putting-pals/putting-pals-utils':
+        specifier: workspace:*
+        version: link:../putting-pals-utils
       cheerio:
         specifier: ^1.2.0
         version: 1.2.0

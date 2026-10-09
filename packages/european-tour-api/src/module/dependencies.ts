@@ -6,6 +6,8 @@ import type {
   TournamentClient,
 } from "@putting-pals/putting-pals-core";
 import { EuropeanTourApiImpl } from "../api/european-tour-api";
+import { EuropeanTourApiScheduleEnricherClient } from "../schedule/schedule-enricher-client";
+import { EuropeanTourScheduleScraper } from "../schedule/schedule-scraper";
 import { EuropeanTourApiTournamentEnricherClient } from "../tournament/tournament-enricher-client";
 
 export function injectDependencies(
@@ -21,17 +23,18 @@ export function injectDependencies(
   scheduleClient: ScheduleClient;
   tournamentClient: TournamentClient;
 } {
-  const europeanTourApi = new EuropeanTourApiImpl(
-    "https://www.europeantour.com",
-  );
+  const baseUrl = "https://www.europeantour.com";
+  const europeanTourApi = new EuropeanTourApiImpl(baseUrl);
+  const europeanTourScheduleScraper = new EuropeanTourScheduleScraper(baseUrl);
   return {
     activeTournamentClient: espnSportsApiActiveTournamentClient,
     leaderboardClient: espnSportsApiLeaderboardClient,
     seasonClient: espnSportsApiSeasonClient,
-    // scheduleClient: new EuropeanTourApiScheduleClient(
-    //   new EuropeanTourApiImpl("https://www.europeantour.com"),
-    // ),
-    scheduleClient: espnSportsApiScheduleClient,
+    scheduleClient: new EuropeanTourApiScheduleEnricherClient(
+      europeanTourApi,
+      europeanTourScheduleScraper,
+      espnSportsApiScheduleClient,
+    ),
     tournamentClient: new EuropeanTourApiTournamentEnricherClient(
       europeanTourApi,
       espnSportsApiTournamentClient,
