@@ -1,3 +1,7 @@
+## Project
+
+Read `README.md` first: package layout, design notes too small for an ADR, and the TODO list. Domain vocabulary is in `CONTEXT.md`, decisions in `docs/adr/`.
+
 ## Agent skills
 
 ### Issue tracker
