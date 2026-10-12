@@ -2,10 +2,8 @@ import type {
   BatchTournamentService,
   CompetitionService,
   FeedService,
-  LeaderboardEventProcessor,
   LeaderboardService,
   ScheduleService,
-  SchemaInferenceObserver,
   SeasonService,
   TournamentService,
   TourService,
@@ -25,13 +23,10 @@ suite("tournamentRouter", () => {
         batchTournamentService: vi.fn() as unknown as BatchTournamentService,
         competitionService: vi.fn() as unknown as CompetitionService,
         leaderboardService: vi.fn() as unknown as LeaderboardService,
-        leaderboardEventProcessor:
-          vi.fn() as unknown as LeaderboardEventProcessor,
         feedService: vi.fn() as unknown as FeedService,
         scheduleService: vi.fn() as unknown as ScheduleService,
         seasonService: vi.fn() as unknown as SeasonService,
         tourService: vi.fn() as unknown as TourService,
-        schemaInferenceObserver: vi.fn() as unknown as SchemaInferenceObserver,
       }),
     );
 

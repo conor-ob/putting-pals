@@ -114,7 +114,7 @@ export default defineRailway((ctx) => {
   const espnSchema = service("espn-schema", {
     source: puttingPals,
     env: {
-      SERVER_URL: privateNetworkingUrl(server),
+      DATABASE_URL: "${{postgres.DATABASE_URL}}",
     },
     build: dockerBuildConfig({
       dockerfilePath: "jobs/espn-schema/Dockerfile",
@@ -127,7 +127,7 @@ export default defineRailway((ctx) => {
   const leaderboardSync = service("leaderboard-sync", {
     source: puttingPals,
     env: {
-      SERVER_URL: privateNetworkingUrl(server),
+      DATABASE_URL: "${{postgres.DATABASE_URL}}",
     },
     build: dockerBuildConfig({
       dockerfilePath: "jobs/leaderboard-sync/Dockerfile",

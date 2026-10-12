@@ -11,13 +11,13 @@
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
-    "@trpc/client": "catalog:",
+    "@putting-pals/putting-pals-core": "workspace:*",
+    "@putting-pals/putting-pals-module": "workspace:*",
+    "@putting-pals/putting-pals-utils": "workspace:*",
     "dotenv": "catalog:",
-    "superjson": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@putting-pals/putting-pals-trpc": "workspace:*",
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "tsx": "catalog:",

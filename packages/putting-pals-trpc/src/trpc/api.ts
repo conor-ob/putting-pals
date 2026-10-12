@@ -1,4 +1,3 @@
-import { eventRouter } from "../router/event";
 import { feedRouter } from "../router/feed";
 import { leaderboardRouter } from "../router/leaderboard";
 import { scheduleRouter } from "../router/schedule";
@@ -14,7 +13,6 @@ import { createCallerFactory, router } from "./router";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = router({
-  event: eventRouter,
   feed: feedRouter,
   leaderboard: leaderboardRouter,
   schedule: scheduleRouter,
