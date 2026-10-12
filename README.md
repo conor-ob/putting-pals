@@ -21,7 +21,7 @@ This template includes the following packages/apps:
 
 ## Using this template
 
-1. Copy `.env.example` into `.env` in `server`
+1. Copy `.env.example` into `.env` in `server` and `packages/putting-pals-db`
 
 2. Install dependencies with pnpm:
 
@@ -29,7 +29,16 @@ This template includes the following packages/apps:
 pnpm install
 ```
 
-3. Start the development server:
+3. Start Postgres 18 on localhost:5432 (db: putting-pals) in Docker and run migrations:
+
+```sh
+pnpm db:up
+pnpm db:migrate
+```
+
+`pnpm db:down` stops it and `pnpm db:reset` wipes the database volume and starts fresh. It uses the default port 5432, so stop any other local Postgres (e.g. tfi-gtfs') first.
+
+4. Start the development server:
 
 ```sh
 pnpm dev

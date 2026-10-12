@@ -1,0 +1,22 @@
+# Local Postgres for development: `pnpm db:up` / `pnpm db:down`. Uses the
+# default port 5432, so stop any other local Postgres (e.g. tfi-gtfs') first.
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: putting-pals-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: putting-pals
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d putting-pals"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
+volumes:
+  postgres-data:
