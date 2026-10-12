@@ -27,11 +27,10 @@ export type {
 export type { SchemaInferenceObserver } from "./inference/interfaces/inbound/schema-inference-observer";
 export type { SchemaInferenceRepository } from "./inference/interfaces/outbound/schema-inference-repository";
 export type {
+  CompetitorRow,
+  CompetitorRowScoringData,
   Leaderboard,
   PlayerRow,
-  PuttingPalsPlayer,
-  PuttingPalsPlayerRow,
-  PuttingPalsPlayerScoringData,
 } from "./leaderboard/domain/types";
 export type { LeaderboardService } from "./leaderboard/interfaces/inbound/leaderboard-service";
 export { AbstractLeaderboardClient } from "./leaderboard/interfaces/outbound/abstract-leaderboard-client";

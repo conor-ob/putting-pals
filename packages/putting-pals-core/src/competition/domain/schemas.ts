@@ -20,9 +20,9 @@ export const CompetitionSchema = z
   })
   .transform((data) => {
     const defaultEntryFee = 10;
-    const totalPurse = data.competitors.length * defaultEntryFee;
+    const pot = data.competitors.length * defaultEntryFee;
     const runnerUpPayout = defaultEntryFee * 2;
-    const winnerPayout = totalPurse - runnerUpPayout;
+    const winnerPayout = pot - runnerUpPayout;
     return {
       ...data,
       entryFee: defaultEntryFee,

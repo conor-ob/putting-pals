@@ -70,8 +70,8 @@ export type LeaderChangedV1 = ChangeEvent<
           };
         }
       | {
-          __typename: "PuttingPalsPlayerRow";
-          player: {
+          __typename: "CompetitorRow";
+          competitor: {
             id: string;
           };
           scoringData: {

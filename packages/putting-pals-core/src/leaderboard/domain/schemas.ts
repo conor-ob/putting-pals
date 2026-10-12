@@ -11,27 +11,24 @@ export const PlayerStateSchema = z.enum([
   "WITHDRAWN",
 ]);
 
-export const PuttingPalsPlayerSchema = z.object({
-  __typename: z.literal("PuttingPalsPlayer"),
-  countryFlag: z.string(),
-  displayName: z.string(),
-  id: z.string(),
-  shortName: z.string(),
-});
-
-export const PuttingPalsPlayerScoringDataSchema = z.object({
-  __typename: z.literal("PuttingPalsPlayerScoringData"),
+export const CompetitorRowScoringDataSchema = z.object({
+  __typename: z.literal("CompetitorRowScoringData"),
   position: z.string(),
   total: z.string(),
   totalSort: z.number(),
 });
 
-export const PuttingPalsPlayerRowSchema = z.object({
-  __typename: z.literal("PuttingPalsPlayerRow"),
+export const CompetitorRowSchema = z.object({
+  __typename: z.literal("CompetitorRow"),
   id: z.string(),
   leaderboardSortOrder: z.number(),
-  player: PuttingPalsPlayerSchema,
-  scoringData: PuttingPalsPlayerScoringDataSchema,
+  competitor: z.object({
+    countryFlag: z.string(),
+    displayName: z.string(),
+    id: z.string(),
+    shortName: z.string(),
+  }),
+  scoringData: CompetitorRowScoringDataSchema,
   picks: z.array(z.string()),
 });
 
@@ -74,7 +71,7 @@ export const LeaderboardSchema = z.object({
   id: z.string(),
   players: z.array(
     z.discriminatedUnion("__typename", [
-      PuttingPalsPlayerRowSchema,
+      CompetitorRowSchema,
       InformationRowSchema,
       PlayerRowSchema,
     ]),

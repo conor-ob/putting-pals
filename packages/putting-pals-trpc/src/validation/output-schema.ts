@@ -13,10 +13,10 @@ export const LeaderboardOutputSchema = z.object({
   players: z.array(
     z.discriminatedUnion("__typename", [
       z.object({
-        __typename: z.literal("PuttingPalsPlayerRow"),
+        __typename: z.literal("CompetitorRow"),
         id: z.string(),
         leaderboardSortOrder: z.number(),
-        player: z.object({
+        competitor: z.object({
           displayName: z.string(),
           shortName: z.string(),
         }),

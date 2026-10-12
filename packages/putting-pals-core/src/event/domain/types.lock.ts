@@ -34,8 +34,8 @@ type Locked = {
             };
           }
         | {
-            __typename: "PuttingPalsPlayerRow";
-            player: {
+            __typename: "CompetitorRow";
+            competitor: {
               id: string;
             };
             scoringData: {
@@ -64,8 +64,8 @@ type Locked = {
             };
           }
         | {
-            __typename: "PuttingPalsPlayerRow";
-            player: {
+            __typename: "CompetitorRow";
+            competitor: {
               id: string;
             };
             scoringData: {

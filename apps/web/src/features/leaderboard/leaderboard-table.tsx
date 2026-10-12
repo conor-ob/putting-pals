@@ -5,11 +5,10 @@ import type {
   TourCode,
 } from "@providers/trpc/types";
 import _ from "lodash";
-
+import { CompetitorRow } from "./competitor-row";
 import { InformationRow } from "./information-row";
 import { LeaderboardTableHeader } from "./leaderboard-table-header";
 import { PlayerRow } from "./player-row";
-import { PuttingPalsPlayerRow } from "./putting-pals-player-row";
 import { useFavourites } from "./utils/favourites";
 
 export function LeaderboardTable({
@@ -51,7 +50,7 @@ export function LeaderboardTable({
   const favouriteGroups = groups.filter((group) => {
     const [firstRow] = group;
     return (
-      firstRow?.__typename === "PuttingPalsPlayerRow" &&
+      firstRow?.__typename === "CompetitorRow" &&
       favourites.includes(firstRow.id)
     );
   });
@@ -66,9 +65,9 @@ export function LeaderboardTable({
             variant={tourCode === "pal" ? "secondary" : "primary"}
           />
         );
-      case "PuttingPalsPlayerRow":
+      case "CompetitorRow":
         return (
-          <PuttingPalsPlayerRow
+          <CompetitorRow
             key={row.id}
             row={row}
             isFavourite={favourites.includes(row.id)}
@@ -109,7 +108,7 @@ function LeaderboardTableTitle({ children }: { children: React.ReactNode }) {
 }
 
 /**
- * Groups each Putting Pals player with the rows of their picks, so a group is
+ * Groups each Competitor with the rows of their picks, so a group is
  * searched and displayed as a whole. Rows that aren't a pick (e.g. PGA TOUR
  * players and information rows) are a group of their own.
  */
@@ -124,12 +123,12 @@ function groupRows(players: readonly LeaderboardRow[]): LeaderboardRow[][] {
   );
   const pickedPlayerIds = new Set(
     sortedRows.flatMap((row) =>
-      row.__typename === "PuttingPalsPlayerRow" ? row.picks : [],
+      row.__typename === "CompetitorRow" ? row.picks : [],
     ),
   );
 
   return sortedRows.flatMap((row): LeaderboardRow[][] => {
-    if (row.__typename === "PuttingPalsPlayerRow") {
+    if (row.__typename === "CompetitorRow") {
       const picks = row.picks.flatMap((playerId) => {
         const pick = playerRowsByPlayerId.get(playerId);
         return pick === undefined
@@ -139,7 +138,7 @@ function groupRows(players: readonly LeaderboardRow[]): LeaderboardRow[][] {
       return [[row, ...picks]];
     }
     if (row.__typename === "PlayerRow" && pickedPlayerIds.has(row.player.id)) {
-      // picks are already rendered in their Putting Pals player's group
+      // picks are already rendered in their Competitor's group
       return [];
     }
     return [[row]];
@@ -151,11 +150,22 @@ function matchesSearchQuery(group: LeaderboardRow[], searchQuery?: string) {
     return true;
   }
   const deburredSearchQuery = _.deburr(searchQuery.toLowerCase()).trim();
-  return group.some(
-    (row) =>
-      row.__typename !== "InformationRow" &&
-      _.deburr(row.player.displayName.toLowerCase())
-        .trim()
-        .includes(deburredSearchQuery),
-  );
+  return group.some((row) => {
+    const displayName = getDisplayName(row);
+    return (
+      displayName !== undefined &&
+      _.deburr(displayName.toLowerCase()).trim().includes(deburredSearchQuery)
+    );
+  });
+}
+
+function getDisplayName(row: LeaderboardRow): string | undefined {
+  switch (row.__typename) {
+    case "CompetitorRow":
+      return row.competitor.displayName;
+    case "PlayerRow":
+      return row.player.displayName;
+    case "InformationRow":
+      return undefined;
+  }
 }
