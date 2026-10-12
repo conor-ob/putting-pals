@@ -161,15 +161,9 @@ function applyScoringRules({
 }): PlayerRow[] {
   if (scoringRules === "MISSED_CUT") {
     return picks.map((playerRow) => {
-      if (
-        playerRow.scoringData.position === "CUT" ||
-        playerRow.scoringData.position === "WD"
-      ) {
+      if (hasMissedCut(playerRow)) {
         const otherPlayersMakingCut = allPicks.filter(
-          (it) =>
-            it.id !== playerRow.id &&
-            it.scoringData.position !== "CUT" &&
-            it.scoringData.position !== "WD",
+          (it) => it.id !== playerRow.id && !hasMissedCut(it),
         );
         if (otherPlayersMakingCut.length === 0) {
           return playerRow;
@@ -180,9 +174,8 @@ function applyScoringRules({
           if (worstPerformingPlayerMakingCut === undefined) {
             return playerRow;
           } else if (
-            playerRow.scoringData.position === "WD" ||
             worstPerformingPlayerMakingCut.scoringData.totalSort >
-              playerRow.scoringData.totalSort
+            playerRow.scoringData.totalSort
           ) {
             return {
               ...playerRow,
@@ -203,4 +196,20 @@ function applyScoringRules({
   } else {
     return picks;
   }
+}
+
+/**
+ * Whether a Pick has left the Tournament early, i.e. missed the cut, withdrew
+ * or was disqualified, so the Missed Cut Rule applies to them.
+ */
+function hasMissedCut(playerRow: PlayerRow): boolean {
+  const { position, playerState } = playerRow.scoringData;
+  return (
+    playerState === "CUT" ||
+    playerState === "WITHDRAWN" ||
+    playerState === "DISQUALIFIED" ||
+    position === "CUT" ||
+    position === "WD" ||
+    position === "DQ"
+  );
 }
