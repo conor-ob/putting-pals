@@ -1,0 +1,93 @@
+version: 2
+
+updates:
+  # One entry covers the whole pnpm workspace, catalog included
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    # Give the registry a week to catch compromised or yanked releases
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: chore
+      prefix-development: chore
+      include: scope
+    groups:
+      # Expo SDK packages move together, so review them as one PR
+      expo:
+        patterns:
+          - "expo"
+          - "expo-*"
+          - "@expo/*"
+          - "react-native"
+          - "react-native-*"
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # Pinned to the Expo SDK by `expo install`, and web pins the same react.
+      # Upgrade these with an SDK bump (`npx expo install --fix`) instead
+      - dependency-name: "react"
+      - dependency-name: "react-dom"
+      - dependency-name: "react-native"
+      - dependency-name: "expo"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: "expo-*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: "@expo/*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: "react-native-*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: ci
+      include: scope
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: docker
+    directories:
+      - /apps/expo
+      - /apps/server
+      - /apps/web
+      - /jobs/espn-schema
+      - /jobs/leaderboard-sync
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: build
+      include: scope
+    groups:
+      docker:
+        patterns:
+          - "*"
+    ignore:
+      # Node majors are moved deliberately, to the next LTS, alongside engines
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: docker-compose
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: build
+      include: scope
+    ignore:
+      # Postgres majors need a data upgrade, and must match Railway and CI
+      - dependency-name: "postgres"
+        update-types: ["version-update:semver-major"]

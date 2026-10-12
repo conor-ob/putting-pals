@@ -25,10 +25,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
-      - name: Prepare pnpm deps for Railway plan
-        uses: ./.github/actions/railway-plan-deps
+      # railway.ts imports railway/iac, but railwayapp/config always runs
+      # `npm install` at the repo root, and npm can't parse `catalog:` or
+      # `workspace:*`. Install with pnpm, then hide package.json so the npm step
+      # no-ops
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Install node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: package.json
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Hide package.json from npm
+        run: mv package.json package.json.bak
 
       - name: Railway config plan
         uses: railwayapp/config@v1

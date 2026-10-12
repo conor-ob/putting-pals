@@ -34,8 +34,9 @@ function dockerBuildConfig({
 export default defineRailway((ctx) => {
   const isProd = ctx.isEnvironment("production");
 
+  // Deploy a commit only once its GitHub checks (CI, Railway apply) pass
   const puttingPals = github("conor-ob/putting-pals", {
-    checkSuites: false,
+    checkSuites: true,
   });
 
   const postgresVolume = volume("postgres-volume", {
