@@ -22,6 +22,7 @@ catalog:
   date-fns: ^4.4.0
   dotenv: ^18.0.4
   superjson: ^2.2.6
+  tsdown: ^0.23.0
   tsx: ^4.23.15
   typescript: ^6.0.3
   vite: ^8.3.1
