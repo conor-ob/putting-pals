@@ -34,25 +34,12 @@ export class SchemaInferenceObserverImpl implements SchemaInferenceObserver {
     type: InferenceType,
     value: unknown,
   ): Promise<void> {
-    const prevInferredSchema =
-      await this.schemaInferenceRepository.getSchema(type);
     const nextInferredSchema = infer(value);
-
-    if (prevInferredSchema === undefined) {
-      await this.schemaInferenceRepository.createSchema(
-        type,
-        nextInferredSchema,
-      );
-
-      return;
-    }
-
-    const mergedSchema = merge(prevInferredSchema, nextInferredSchema);
-    if (mergedSchema === undefined) {
-      return;
-    }
-
-    await this.schemaInferenceRepository.updateSchema(type, mergedSchema);
+    await this.schemaInferenceRepository.updateSchema(
+      type,
+      (prevInferredSchema) =>
+        merge(prevInferredSchema, nextInferredSchema) ?? nextInferredSchema,
+    );
   }
 
   private async getLeaderboard(tourCode: InferenceTourCode): Promise<unknown> {
