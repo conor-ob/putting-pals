@@ -5,11 +5,11 @@
   "private": true,
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "build": "vite build",
+    "build": "tsdown",
     "typecheck": "tsc --noEmit true",
     "test": "vitest",
-    "dev": "vite --host",
-    "start": "node dist/index.js"
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.mjs"
   },
   "dependencies": {
     "@fastify/cors": "^11.3.0",
@@ -30,9 +30,9 @@
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
+    "tsdown": "catalog:",
+    "tsx": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:",
-    "vite-plugin-node": "^8.0.0",
     "vitest": "catalog:"
   }
 }

@@ -63,4 +63,4 @@ ENV DATABASE_URL=${DATABASE_URL}
 
 EXPOSE ${PORT}
 
-CMD ["node", "dist/index.js"]
+CMD ["node", "dist/index.mjs"]

@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "build": "vite build",
+    "build": "tsdown",
     "dev": "tsx watch src/index.ts",
-    "start": "node dist/index.js",
+    "start": "node dist/index.mjs",
     "typecheck": "tsc --noEmit true"
   },
   "dependencies": {
@@ -20,8 +20,8 @@
   "devDependencies": {
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
+    "tsdown": "catalog:",
     "tsx": "catalog:",
-    "typescript": "catalog:",
-    "vite": "catalog:"
+    "typescript": "catalog:"
   }
 }

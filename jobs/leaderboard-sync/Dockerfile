@@ -55,4 +55,4 @@ ARG DATABASE_URL
 ENV NODE_ENV=production
 ENV DATABASE_URL=${DATABASE_URL}
 
-CMD ["node", "dist/index.js"]
+CMD ["node", "dist/index.mjs"]

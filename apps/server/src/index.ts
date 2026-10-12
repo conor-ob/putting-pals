@@ -14,15 +14,11 @@ const server = createServer({
   logController: new LogController({ disableRequestLogging: true }),
 });
 
-if (env.NODE_ENV === "production") {
-  server.listen({ host: "::", port: env.PORT }, (err, address) => {
-    if (err) {
-      server.log.error("Error starting server: %s", err);
-      server.log.error("Stacktrace: %s", err.stack);
-      process.exit(1);
-    }
-    server.log.info(`Server listening on ${address} 🚀`);
-  });
-}
-
-export const viteNodeApp = server;
+server.listen({ host: "::", port: env.PORT }, (err, address) => {
+  if (err) {
+    server.log.error("Error starting server: %s", err);
+    server.log.error("Stacktrace: %s", err.stack);
+    process.exit(1);
+  }
+  server.log.info(`Server listening on ${address} 🚀`);
+});
