@@ -74,7 +74,7 @@ export default defineRailway((ctx) => {
     build: dockerBuildConfig({
       dockerfilePath: "apps/server/Dockerfile",
     }),
-    preDeploy: "node /app/apps/server/dist/migrate.js",
+    preDeploy: "node /app/apps/server/dist/migrate.mjs",
     deploy: {
       ...deployConfig,
       healthcheckPath: "/health",

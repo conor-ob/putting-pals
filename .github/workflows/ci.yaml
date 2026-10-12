@@ -114,8 +114,8 @@ jobs:
       # Same entry point Railway runs as the server pre-deploy command
       - name: Apply migrations to empty database
         working-directory: apps/server
-        run: node dist/migrate.js
+        run: node dist/migrate.mjs
 
       - name: Re-apply migrations (no-op)
         working-directory: apps/server
-        run: node dist/migrate.js
+        run: node dist/migrate.mjs

@@ -5,7 +5,6 @@ export default defineConfig({
   entry: ["src/index.ts", "src/migrate.ts"],
   platform: "node",
   format: "esm",
-  fixedExtension: false,
   deps: {
     // Workspace packages export TypeScript source, which the Docker image
     // deletes, so bundle them along with their dependencies. The server's own
