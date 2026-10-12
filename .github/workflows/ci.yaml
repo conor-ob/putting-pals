@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   ci:
-    name: ⚡️ CI
+    name: ✅ Checks
     runs-on: ubuntu-latest
     services:
       postgres:
