@@ -1,19 +1,19 @@
 import { ListItem } from "@components/list-item";
 import { IonIcon } from "@ionic/react";
 import { cn } from "@lib/utils";
-import type { PuttingPalsPlayerRow as PuttingPalsPlayerRowType } from "@providers/trpc/types";
+import type { CompetitorRow as CompetitorRowType } from "@providers/trpc/types";
 import { star, starOutline } from "ionicons/icons";
 
-export function PuttingPalsPlayerRow({
+export function CompetitorRow({
   row,
   isFavourite,
   onFavouriteClick,
 }: {
-  row: PuttingPalsPlayerRowType;
+  row: CompetitorRowType;
   isFavourite: boolean;
   onFavouriteClick: (id: string, isFavourite: boolean) => void;
 }) {
-  const { player, scoringData } = row;
+  const { competitor, scoringData } = row;
 
   return (
     <ListItem>
@@ -36,7 +36,7 @@ export function PuttingPalsPlayerRow({
               />
             </div>
             <div className="line-clamp-1 text-sm font-semibold tracking-tighter">
-              {player.shortName}
+              {competitor.shortName}
             </div>
           </div>
           <div className="flex flex-row">

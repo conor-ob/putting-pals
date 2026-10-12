@@ -1,26 +1,23 @@
 import type z from "zod";
 import type {
+  CompetitorRowSchema,
+  CompetitorRowScoringDataSchema,
   InformationRowSchema,
   LeaderboardSchema,
   PlayerRowSchema,
   PlayerRowScoringDataSchema,
   PlayerStateSchema,
-  PuttingPalsPlayerRowSchema,
-  PuttingPalsPlayerSchema,
-  PuttingPalsPlayerScoringDataSchema,
 } from "./schemas";
 
 export type Leaderboard = z.infer<typeof LeaderboardSchema>;
 
 export type PlayerState = z.infer<typeof PlayerStateSchema>;
 
-export type PuttingPalsPlayer = z.infer<typeof PuttingPalsPlayerSchema>;
-
-export type PuttingPalsPlayerScoringData = z.infer<
-  typeof PuttingPalsPlayerScoringDataSchema
+export type CompetitorRowScoringData = z.infer<
+  typeof CompetitorRowScoringDataSchema
 >;
 
-export type PuttingPalsPlayerRow = z.infer<typeof PuttingPalsPlayerRowSchema>;
+export type CompetitorRow = z.infer<typeof CompetitorRowSchema>;
 
 export type InformationRow = z.infer<typeof InformationRowSchema>;
 

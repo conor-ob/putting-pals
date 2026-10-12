@@ -25,9 +25,9 @@ export type PlayerRow = Extract<
   { __typename: "PlayerRow" }
 >;
 
-export type PuttingPalsPlayerRow = Extract<
+export type CompetitorRow = Extract<
   RouterOutputs["leaderboard"]["getById"]["players"][number],
-  { __typename: "PuttingPalsPlayerRow" }
+  { __typename: "CompetitorRow" }
 >;
 
 export type RoundStatus =

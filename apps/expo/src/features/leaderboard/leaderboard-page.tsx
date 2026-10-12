@@ -7,9 +7,9 @@ import { TourCodeSwitcher } from "~/providers/tour-code/tour-code-switcher";
 import { trpc } from "~/providers/trpc/utils/trpc";
 import { useQuery } from "~/providers/trpc/utils/use-query";
 import { useLocalStorage } from "~/storage/use-local-storage";
+import { CompetitorRow } from "./competitor-row";
 import { InformationRow } from "./information-row";
 import { PlayerRow } from "./player-row";
-import { PuttingPalsPlayerRow } from "./putting-pals-player-row";
 
 export function LeaderboardPage() {
   const { tourCode } = useTourCode();
@@ -52,8 +52,8 @@ export function LeaderboardPage() {
           switch (item.__typename) {
             case "PlayerRow":
               return <PlayerRow row={item} />;
-            case "PuttingPalsPlayerRow":
-              return <PuttingPalsPlayerRow row={item} />;
+            case "CompetitorRow":
+              return <CompetitorRow row={item} />;
             case "InformationRow":
               return <InformationRow row={item} />;
           }
