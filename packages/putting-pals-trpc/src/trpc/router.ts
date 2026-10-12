@@ -11,10 +11,8 @@ import type {
   BatchTournamentService,
   CompetitionService,
   FeedService,
-  LeaderboardEventProcessor,
   LeaderboardService,
   ScheduleService,
-  SchemaInferenceObserver,
   SeasonService,
   TournamentService,
   TourService,
@@ -39,37 +37,31 @@ import { onError } from "../error/error-handler";
 export function createTrpcContext({
   competitionService,
   feedService,
-  leaderboardEventProcessor,
   leaderboardService,
   scheduleService,
   seasonService,
   tourService,
   tournamentService,
   batchTournamentService,
-  schemaInferenceObserver,
 }: {
   competitionService: CompetitionService;
   feedService: FeedService;
-  leaderboardEventProcessor: LeaderboardEventProcessor;
   leaderboardService: LeaderboardService;
   scheduleService: ScheduleService;
   seasonService: SeasonService;
   tourService: TourService;
   tournamentService: TournamentService;
   batchTournamentService: BatchTournamentService;
-  schemaInferenceObserver: SchemaInferenceObserver;
 }) {
   return {
     competitionService,
     feedService,
-    leaderboardEventProcessor,
     leaderboardService,
     scheduleService,
     seasonService,
     tourService,
     tournamentService,
     batchTournamentService,
-    schemaInferenceObserver,
   };
 }
 

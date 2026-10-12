@@ -18,7 +18,7 @@ RUN turbo prune --scope=@putting-pals/espn-schema --docker
 # Build stage
 FROM base AS builder
 
-ARG SERVER_URL
+ARG DATABASE_URL
 
 WORKDIR /app
 
@@ -50,9 +50,9 @@ WORKDIR /app
 COPY --from=builder --chown=nodejs:nodejs /app .
 WORKDIR /app/jobs/espn-schema
 
-ARG SERVER_URL
+ARG DATABASE_URL
 
 ENV NODE_ENV=production
-ENV SERVER_URL=${SERVER_URL}
+ENV DATABASE_URL=${DATABASE_URL}
 
 CMD ["node", "dist/index.js"]

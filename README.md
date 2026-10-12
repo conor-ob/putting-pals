@@ -10,15 +10,16 @@ Turborepo + pnpm monorepo, TypeScript throughout, hexagonal architecture: `putti
 
 | Path | Role |
 |---|---|
-| `apps/server` | Fastify server, composition root, tRPC at `/trpc`, `/health` |
+| `apps/server` | Fastify server, tRPC at `/trpc`, `/health` |
 | `apps/expo` | Expo Router app (web, iOS, Android); the web build is served by Caddy, which proxies `/api/*` to the server |
 | `apps/web` | React + Ionic + Tailwind PWA (the legacy web app, migrated in), served by Caddy the same way |
-| `jobs/leaderboard-sync` | Railway cron: calls `event.syncLeaderboard` for every Tour, which diffs Leaderboard snapshots into Feed Events |
-| `jobs/espn-schema` | Railway cron: calls `event.inferSchema` to record the shape of ESPN responses as they're observed |
+| `jobs/leaderboard-sync` | Railway cron: runs the `LeaderboardEventProcessor` for every Tour, which diffs Leaderboard snapshots into Feed Events |
+| `jobs/espn-schema` | Railway cron: runs the `SchemaInferenceObserver` to record the shape of ESPN responses as they're observed |
 | `packages/putting-pals-core` | Domain, services, inbound/outbound ports. No I/O |
 | `packages/putting-pals-api` | Adapter for the `pal` tour code: Competitions and their Picks as data in `src/data/<year>`, aggregated over the PGA TOUR Leaderboard |
 | `packages/putting-pals-db` | Drizzle schema + migrations and repositories (active tournament, feature flags, Leaderboard snapshots, Feed, inferred schemas) |
-| `packages/putting-pals-trpc` | tRPC router (`tour`, `schedule`, `season`, `tournament`, `leaderboard`, `feed`, `stats`, `event`), thin layer over core services |
+| `packages/putting-pals-module` | Composition root shared by the server and the jobs: wires every adapter into the core services |
+| `packages/putting-pals-trpc` | tRPC router (`tour`, `schedule`, `season`, `tournament`, `leaderboard`, `feed`, `stats`), thin layer over core services |
 | `packages/putting-pals-utils` | Shared helpers (env and schema utils, type utils) |
 | `packages/pga-tour-api` | Adapter: PGA TOUR GraphQL API (`pga`, `dev`, `snr`, `pam`), with codegen'd types |
 | `packages/espn-sports-api` | Adapter: ESPN golf API (`eur`, `liv`) |
@@ -35,7 +36,7 @@ pnpm dev          # server on :4000, Expo, and the web app on :3000
 
 Env vars live in a per-package `.env`; copy each `.env.example` (`apps/server`, `apps/expo`, `apps/web`, `packages/putting-pals-db`, and the jobs). `pnpm db:down` stops Postgres and `pnpm db:reset` wipes the database volume and starts fresh. It uses the default port 5432, so stop any other local Postgres (e.g. tfi-gtfs') first.
 
-Other scripts: `pnpm check` (Biome), `pnpm typecheck`, `pnpm test`, `pnpm build`, `pnpm codegen` (PGA TOUR GraphQL types, ISO countries, Expo tsconfig), `pnpm db:generate` after changing `packages/putting-pals-db/src/db/schema.ts`, `pnpm db:studio`. Run a job locally against a running server with `pnpm --filter @putting-pals/leaderboard-sync dev`.
+Other scripts: `pnpm check` (Biome), `pnpm typecheck`, `pnpm test`, `pnpm build`, `pnpm codegen` (PGA TOUR GraphQL types, ISO countries, Expo tsconfig), `pnpm db:generate` after changing `packages/putting-pals-db/src/db/schema.ts`, `pnpm db:studio`. Run a job locally against the database with `pnpm --filter @putting-pals/leaderboard-sync dev`.
 
 ## Design notes
 
@@ -44,7 +45,7 @@ Smaller decisions that don't warrant an ADR:
 - **Tour codes**: `pal` (Putting Pals, see ADR 0001), `pga`, `eur`, `liv`, `dev` (Korn Ferry), `snr` (Champions), `pam` (PGA TOUR Americas). Core services switch on the tour code to pick the `putting-pals-api`, `pga-tour-api` or `espn-sports-api` client. DP World Tour and LIV Golf are behind the `enable-dp-world-tour` and `enable-liv-golf-tour` feature flags (rows in `feature_flag`).
 - **Competitions as data**: each Competition (Competitors, Picks, Scoring Rules) is a file under `packages/putting-pals-api/src/data/<year>/`, registered in `CompetitionRepositoryImpl`. Adding next year's majors is a code change, not a database write.
 - **Scoring**: the Missed Cut Rule applies from 2025; withdrawn and disqualified Picks are treated like missed cuts. Ties are broken by Combined Odds, then the single longest-odds Pick.
-- **Feed**: `leaderboard-sync` runs every 5 minutes in production (daily elsewhere). Each run fetches the Leaderboard, compares it with the last snapshot in Postgres, and stores any Feed Events (leader changed, missed cut, withdrawn, round status changed, ...). Jobs talk to the server over tRPC, never to the database.
+- **Feed**: `leaderboard-sync` runs every 5 minutes in production (daily elsewhere). Each run fetches the Leaderboard, compares it with the last snapshot in Postgres, and stores any Feed Events (leader changed, missed cut, withdrawn, round status changed, ...). Jobs compose the core services themselves (via `putting-pals-module`) and talk to Postgres directly, so their work never runs on the server and none of it is exposed over tRPC.
 - **Schema inference**: ESPN's API is undocumented, so `espn-schema` samples its responses and stores the inferred schema in `inferred_schema`, to spot fields that are optional or new before they break parsing.
 - **Web serving**: both frontends are static builds served by Caddy, which proxies `/api/*` to the server over Railway private networking, so the browser never calls the server directly. Hashed assets are cached forever; everything else revalidates. In development the Expo app calls `EXPO_PUBLIC_SERVER_URL` and `apps/web` proxies `/api` to `localhost:4000`.
 - **Deploy**: `.railway/railway.ts` declares the `server`, `expo` and `web` services, Postgres with its 5 GB `postgres-volume`, and the two crons, all in `europe-west4`. The server runs migrations (`node dist/migrate.js`) as its pre-deploy command. `ORIGIN` on the server is the Expo app's public domain, for CORS.

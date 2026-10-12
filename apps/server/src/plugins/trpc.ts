@@ -23,15 +23,12 @@ export default function (fastify: FastifyInstance) {
         return createTrpcContext({
           competitionService: fastify.dependencies.competitionService,
           feedService: fastify.dependencies.feedService,
-          leaderboardEventProcessor:
-            fastify.dependencies.leaderboardEventProcessor,
           leaderboardService: fastify.dependencies.leaderboardService,
           scheduleService: fastify.dependencies.scheduleService,
           seasonService: fastify.dependencies.seasonService,
           tourService: fastify.dependencies.tourService,
           tournamentService: fastify.dependencies.tournamentService,
           batchTournamentService: fastify.dependencies.batchTournamentService,
-          schemaInferenceObserver: fastify.dependencies.schemaInferenceObserver,
         });
       },
       onError({ path, type, error }) {
