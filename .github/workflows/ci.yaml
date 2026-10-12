@@ -8,68 +8,18 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
+# Cancel superseded PR runs only: with checkSuites on, Railway waits for every
+# main commit's CI to finish before deploying it
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  check:
-    name: 🔬 Check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Setup Biome
-        uses: biomejs/setup-biome@v2
-
-      - name: Run check
-        run: biome ci .
-
-  typecheck:
-    name: 🧬 Typecheck
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Run typecheck
-        run: pnpm typecheck
-
-  build:
-    name: 🔨 Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Run build
-        run: pnpm build
-
-  test:
-    name: 🧪 Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Run tests
-        run: pnpm test
-
-  migrations:
-    name: 🗄️ Migrations
+  ci:
+    name: ✅ Checks
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -85,20 +35,59 @@ jobs:
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
+    # What the apps' .env files would provide. dotenv never overrides
+    # variables that are already set, so CI needs no .env files
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/putting-pals
+      PORT: "4000"
+      ORIGIN: http://localhost:8081
+      EXPO_PUBLIC_SERVER_URL: http://localhost:4000
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
-      - name: Setup
-        uses: ./.github/actions/setup
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Install node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: package.json
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Codegen
+        id: setup
+        run: pnpm codegen
+
+      # Checks below run even if an earlier one fails, so one run reports every
+      # failure. They still skip if any setup step above failed
+      - name: Check
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+        run: pnpm biome ci .
+
+      - name: Typecheck
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+        run: pnpm typecheck
+
+      - name: Build
+        id: build
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+        run: pnpm build
+
+      - name: Test
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+        run: pnpm test
 
       - name: Check migration journal
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         working-directory: packages/putting-pals-db
         run: pnpm drizzle-kit check
 
       - name: Check schema has no ungenerated changes
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         working-directory: packages/putting-pals-db
         run: |
           pnpm db:generate
@@ -108,14 +97,14 @@ jobs:
             exit 1
           fi
 
-      - name: Build server
-        run: pnpm turbo build --filter=@putting-pals/server
-
       # Same entry point Railway runs as the server pre-deploy command
       - name: Apply migrations to empty database
+        id: migrate
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         working-directory: apps/server
         run: node dist/migrate.mjs
 
       - name: Re-apply migrations (no-op)
+        if: ${{ !cancelled() && steps.migrate.outcome == 'success' }}
         working-directory: apps/server
         run: node dist/migrate.mjs
