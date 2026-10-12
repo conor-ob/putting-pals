@@ -1,0 +1,3 @@
+# Putting Pals is modelled as a tour code
+
+Putting Pals is not a Tour, but the Competition view of a Tournament is addressed with the pseudo tour code `pal` alongside real ones (`pga`, `eur`, `liv`, ...). This lets Competitions reuse the existing per-tour plumbing (schedule, tournament, leaderboard, feed and tRPC routes, and the web app's tour switching) instead of a parallel set of Competition-specific services and endpoints. The cost is that every service switching on `TourCode` must handle `pal` as a special case, usually by delegating to the PGA TOUR source and then aggregating Competitors and their Picks on top.
