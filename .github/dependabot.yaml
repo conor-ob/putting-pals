@@ -1,11 +1,15 @@
 version: 2
 
+# rebase-strategy is disabled so Dependabot doesn't run update jobs on every
+# push to main: Railway's checkSuites waits for all Actions runs on a commit,
+# so those jobs held deploys. Comment `@dependabot rebase` on a stale PR
 updates:
   # One entry covers the whole pnpm workspace, catalog included
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
+    rebase-strategy: disabled
     # Give the registry a week to catch compromised or yanked releases
     cooldown:
       default-days: 7
@@ -45,6 +49,7 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    rebase-strategy: disabled
     cooldown:
       default-days: 7
     commit-message:
@@ -64,6 +69,7 @@ updates:
       - /jobs/leaderboard-sync
     schedule:
       interval: weekly
+    rebase-strategy: disabled
     cooldown:
       default-days: 7
     commit-message:
@@ -82,6 +88,7 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    rebase-strategy: disabled
     cooldown:
       default-days: 7
     commit-message:
