@@ -18,12 +18,12 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-    "dev": "drizzle-kit studio"
+    "dev": "drizzle-kit studio",
+    "test": "vitest"
   },
   "dependencies": {
     "@putting-pals/putting-pals-core": "workspace:*",
     "@putting-pals/putting-pals-utils": "workspace:*",
-    "dotenv": "catalog:",
     "drizzle-orm": "^0.45.3",
     "pg": "^8.23.0",
     "zod": "catalog:"
@@ -32,7 +32,9 @@
     "@total-typescript/tsconfig": "catalog:",
     "@types/node": "catalog:",
     "@types/pg": "^8.23.1",
+    "dotenv": "catalog:",
     "drizzle-kit": "^0.31.11",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }

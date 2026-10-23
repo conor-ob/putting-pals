@@ -1,3 +1,6 @@
+// load .env for DATABASE_URL. Not the server env schema, which also requires
+// PORT and NODE_ENV that migrations don't need
+import "dotenv/config";
 import { runMigrations } from "@putting-pals/putting-pals-db";
 
 // Runs as the Railway pre-deploy command so the schema is migrated before the

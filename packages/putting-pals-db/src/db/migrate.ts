@@ -3,7 +3,7 @@ import * as path from "node:path";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { Pool } from "pg";
-import { env } from "../env/schema";
+import { getEnv } from "../env/env";
 
 // Resolve via the package rather than this file's location so the drizzle
 // folder is still found when this module is bundled into another app
@@ -17,7 +17,7 @@ function getMigrationsFolder() {
 
 export async function runMigrations() {
   const pool = new Pool({
-    connectionString: env.DATABASE_URL,
+    connectionString: getEnv().DATABASE_URL,
     connectionTimeoutMillis: 10000,
     max: 1,
     application_name: "putting-pals-migrate",

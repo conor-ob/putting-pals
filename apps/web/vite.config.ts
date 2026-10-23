@@ -54,7 +54,7 @@ export default defineConfig(({ mode }) => {
         port: env.PORT,
         proxy: {
           "/api": {
-            target: "http://localhost:4000",
+            target: env.SERVER_URL,
             changeOrigin: true,
             rewrite: (path) => path.replace(/^\/api/, ""),
           },

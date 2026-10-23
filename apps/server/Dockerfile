@@ -18,7 +18,6 @@ RUN turbo prune --scope=@putting-pals/server --docker
 # Build stage
 FROM base AS builder
 ARG PORT
-ARG ORIGIN
 ARG DATABASE_URL
 
 WORKDIR /app
@@ -53,12 +52,10 @@ COPY --from=builder --chown=nodejs:nodejs /app .
 WORKDIR /app/apps/server
 
 ARG PORT
-ARG ORIGIN
 ARG DATABASE_URL
 
 ENV NODE_ENV=production
 ENV PORT=${PORT}
-ENV ORIGIN=${ORIGIN}
 ENV DATABASE_URL=${DATABASE_URL}
 
 EXPOSE ${PORT}
