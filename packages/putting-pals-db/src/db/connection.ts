@@ -1,10 +1,10 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
-import { getEnv } from "../env/env";
+import { env } from "../env/schema";
 
 export function createDatabaseConnection() {
   const pool = new Pool({
-    connectionString: getEnv().DATABASE_URL,
+    connectionString: env.DATABASE_URL,
 
     // ═══════════════════════════════════════════════════════════════════
     // POOL MANAGEMENT
