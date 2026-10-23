@@ -41,7 +41,6 @@
   "globalEnv": [
     "NODE_ENV",
     "PORT",
-    "ORIGIN",
     "DATABASE_URL",
     "SERVER_URL",
     "EXPO_PUBLIC_SERVER_URL"

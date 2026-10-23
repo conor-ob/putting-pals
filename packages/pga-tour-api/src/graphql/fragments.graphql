@@ -105,6 +105,10 @@ fragment LeaderboardV3Fields on LeaderboardV3 {
   standingsHeader
   hideSov
   disableOdds
+  oddsFeatures {
+    feature
+    name
+  }
   disableBettingProfileColumn
   cutLineProbabilities {
     projectedCutLine

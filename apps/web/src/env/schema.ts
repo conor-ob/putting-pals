@@ -1,12 +1,15 @@
+import { config as dotenv } from "dotenv";
 import { z } from "zod";
 
 export const envSchema = z.object({
-  NODE_ENV: z
-    .enum(["production", "development", "test"])
-    .default("development"),
-  PORT: z
-    .string()
-    .default("3000")
-    .transform((s) => parseInt(s, 10))
-    .pipe(z.number()),
+  PORT: z.coerce.number().int(),
+  SERVER_URL: z.url(),
 });
+
+// a .env file must only contain keys declared in the schema
+export const dotenvSchema = z.strictObject(envSchema.shape);
+const { parsed, error } = dotenv({ encoding: "utf8", quiet: true });
+// dotenv returns an empty object and an ENOENT error when there is no .env
+if (error === undefined) {
+  dotenvSchema.parse(parsed);
+}

@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noTemplateCurlyInString: todo */
 import {
   type BuildConfig,
   type DeployConfig,
@@ -7,13 +6,25 @@ import {
   group,
   postgres,
   project,
+  type RailwayProvidedVariable,
   type ReferencableServiceNode,
   service,
   volume,
 } from "railway/iac";
 
-function privateNetworkingUrl(target: ReferencableServiceNode) {
-  return `http://\${{${target.name}.RAILWAY_PRIVATE_DOMAIN}}:\${{${target.name}.PORT}}`;
+function railwayPrivateNetworkingUrl(
+  target: ReferencableServiceNode<RailwayProvidedVariable>,
+): string {
+  return `http://${toReferenceSyntax(target, "RAILWAY_PRIVATE_DOMAIN")}:${toReferenceSyntax(target, "PORT")}`;
+}
+
+// The SDK only supports whole-value references, so use Railway's
+// `${{service.VAR}}` syntax to compose them into a string.
+function toReferenceSyntax<K extends string>(
+  target: ReferencableServiceNode<K>,
+  variable: NoInfer<K>,
+): string {
+  return `\${{${target.name}.${variable}}}`;
 }
 
 function dockerBuildConfig({
@@ -69,8 +80,7 @@ export default defineRailway((ctx) => {
     source: puttingPals,
     env: {
       PORT: "8080",
-      ORIGIN: `https://\${{expo.RAILWAY_PUBLIC_DOMAIN}}`,
-      DATABASE_URL: "${{postgres.DATABASE_URL}}",
+      DATABASE_URL: postgresDatabase.env.DATABASE_URL,
     },
     build: dockerBuildConfig({
       dockerfilePath: "apps/server/Dockerfile",
@@ -86,7 +96,7 @@ export default defineRailway((ctx) => {
     source: puttingPals,
     env: {
       PORT: "8080",
-      SERVER_URL: privateNetworkingUrl(server),
+      SERVER_URL: railwayPrivateNetworkingUrl(server),
     },
     build: dockerBuildConfig({
       dockerfilePath: "apps/expo/Dockerfile",
@@ -101,7 +111,7 @@ export default defineRailway((ctx) => {
     source: puttingPals,
     env: {
       PORT: "8080",
-      SERVER_URL: privateNetworkingUrl(server),
+      SERVER_URL: railwayPrivateNetworkingUrl(server),
     },
     build: dockerBuildConfig({
       dockerfilePath: "apps/web/Dockerfile",
@@ -115,7 +125,7 @@ export default defineRailway((ctx) => {
   const espnSchema = service("espn-schema", {
     source: puttingPals,
     env: {
-      DATABASE_URL: "${{postgres.DATABASE_URL}}",
+      DATABASE_URL: postgresDatabase.env.DATABASE_URL,
     },
     build: dockerBuildConfig({
       dockerfilePath: "jobs/espn-schema/Dockerfile",
@@ -128,7 +138,7 @@ export default defineRailway((ctx) => {
   const leaderboardSync = service("leaderboard-sync", {
     source: puttingPals,
     env: {
-      DATABASE_URL: "${{postgres.DATABASE_URL}}",
+      DATABASE_URL: postgresDatabase.env.DATABASE_URL,
     },
     build: dockerBuildConfig({
       dockerfilePath: "jobs/leaderboard-sync/Dockerfile",
