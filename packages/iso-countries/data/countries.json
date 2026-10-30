@@ -315,7 +315,8 @@
     "iso2": "CN",
     "iso3": "CHN",
     "ioc": "CHN",
-    "name": "China"
+    "name": "China",
+    "alias": ["People's Republic of China"]
   },
   {
     "__typename": "Country",

@@ -8,6 +8,13 @@ import type { ApiSchedule, ApiScheduleTournament } from "../generated/graphql";
 import { getImageUrl } from "../utils/image-utils";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
+// The PGA TOUR API sends neither a country nor a country code for these.
+const MISSING_COUNTRIES: Record<string, string> = {
+  R2015032: "Canada", // RBC Canadian Open
+  R2016032: "Canada", // RBC Canadian Open
+  R2016100: "Scotland", // The Open Championship
+};
+
 export function transformSchedule(
   schedule: ApiSchedule,
   upcomingTournaments: ApiScheduleTournament[],
@@ -107,7 +114,11 @@ function getTournamentLocation(
   }
 
   const country = resolve(
-    tournament.country === "" ? tournament.countryCode : tournament.country,
+    tournament.country === ""
+      ? tournament.countryCode === ""
+        ? (MISSING_COUNTRIES[tournament.id] ?? "")
+        : tournament.countryCode
+      : tournament.country,
   );
   if (country === null || country.__typename === "State") {
     throw new NotFoundError(`Country ${tournament.country} not found`);
