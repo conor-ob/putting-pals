@@ -41,6 +41,10 @@ export type RoundStatusChangedV1 =
 export type RoundStatusColor =
   RouterOutputs["tournament"]["getById"]["status"]["roundStatusColor"];
 
+export type Schedule = RouterOutputs["schedule"]["getByYear"];
+
+export type Season = RouterOutputs["season"]["get"][number];
+
 export type Tour = RouterOutputs["tour"]["getTours"][number];
 
 export type TourCode = RouterOutputs["tour"]["getTours"][number]["tourCode"];

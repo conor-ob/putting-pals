@@ -9,6 +9,7 @@ import { format, isSameMonth, parseISO } from "date-fns";
 import type { EspnSportsApi } from "../api/espn-sports-api";
 import type { ApiLeaderboardCompetition } from "../leaderboard/domain/types";
 import type { TourScheduleEvent } from "../schedule/domain/types";
+import { getTournamentLogo } from "../utils/tournament-logo";
 import {
   mapRoundStatus,
   mapTournamentStatus,
@@ -68,8 +69,8 @@ export class EspnSportsApiTournamentClient extends AbstractTournamentClient<Aggr
   ): Tournament {
     const { tournament, competition, numberOfRounds } = aggregatedTournament;
     const location = this.getTournamentLocation(tournament);
-    const logo = `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`;
-    const cover = `https://www.europeantour.com/Images/Flags/${location.countryCode}_64x64_2x.png`; // TODO cover image
+    const logo = getTournamentLogo(location.countryCode);
+    const cover = getTournamentLogo(location.countryCode); // TODO cover image
 
     return {
       __typename: "Tournament",
