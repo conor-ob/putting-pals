@@ -2,7 +2,7 @@
 
 A golf prediction game among friends: for each major Tournament, Competitors pick three professional Players and are ranked on their Picks' combined scores. The app shows live Leaderboards and Feeds for the Competition and for the real Tours it follows.
 
-Domain language lives in [CONTEXT.md](CONTEXT.md); architectural decisions in [docs/adr](docs/adr).
+Domain language lives in [GLOSSARY.md](GLOSSARY.md); architectural decisions in [docs/adr](docs/adr).
 
 ## Layout
 
