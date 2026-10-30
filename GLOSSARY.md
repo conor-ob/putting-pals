@@ -23,6 +23,12 @@ A professional golf circuit that runs Tournaments, e.g. the PGA TOUR or DP World
 A real-world professional golf event (e.g. the Masters) run by a Tour.
 _Avoid_: event
 
+**Season**:
+A Tour's year of Tournaments, e.g. the 2026 PGA TOUR Season.
+
+**Schedule**:
+The Tournaments a Tour runs in a Season, split into upcoming and completed.
+
 **Competition**:
 The Putting Pals game played on a single Tournament; there is at most one Competition per Tournament.
 _Avoid_: game, contest

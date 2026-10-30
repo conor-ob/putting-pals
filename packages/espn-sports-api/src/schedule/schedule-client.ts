@@ -8,6 +8,7 @@ import {
 } from "@putting-pals/putting-pals-core";
 import { format, isSameMonth, parseISO } from "date-fns";
 import type { EspnSportsApi } from "../api/espn-sports-api";
+import { getTournamentLogo } from "../utils/tournament-logo";
 import { mapTournamentStatus } from "../utils/tournament-status";
 import type { TourScheduleEvent, TourScheduleSeason } from "./domain/types";
 
@@ -51,12 +52,13 @@ export class EspnSportsApiScheduleClient extends AbstractScheduleClient<TourSche
     const [courseName, _location] = (venue ?? "")
       .split("-")
       .map((s) => s.trim());
+    const location = this.getTournamentLocation(event);
     return {
       __typename: "Tournament" as const,
       id: event.id,
       name: event.label,
       images: {
-        logo: "",
+        logo: getTournamentLogo(location.countryCode),
         cover: "",
       },
       schedule: {
@@ -65,7 +67,7 @@ export class EspnSportsApiScheduleClient extends AbstractScheduleClient<TourSche
         endDate: event.endDate,
         displayDate: this.formatDate(event.startDate, event.endDate),
       },
-      location: this.getTournamentLocation(event),
+      location: location,
       courses: [
         {
           __typename: "Course" as const,
