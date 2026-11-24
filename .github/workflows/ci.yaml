@@ -72,6 +72,13 @@ jobs:
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         run: pnpm typecheck
 
+      # The Expo SDK sets the TypeScript version (Dependabot ignores its majors),
+      # so fail if it drifts from what the SDK expects. Only typescript is checked:
+      # a full check also fails whenever Expo publishes a patch release
+      - name: Check TypeScript matches the Expo SDK
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+        run: pnpm --filter @putting-pals/expo exec expo install --check typescript
+
       - name: Build
         id: build
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
