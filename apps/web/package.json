@@ -26,7 +26,7 @@
     "lodash": "^4.17.21",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-router": "^5.3.4",
+    "react-router": "^8.5.1",
     "react-router-dom": "^5.3.4",
     "superjson": "catalog:",
     "tailwind-merge": "^3.7.0",
