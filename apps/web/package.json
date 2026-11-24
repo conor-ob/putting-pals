@@ -58,7 +58,7 @@
     "typescript": "catalog:",
     "vite": "^7.1.5",
     "vite-plugin-pwa": "^2.0.0",
-    "vite-tsconfig-paths": "^5.1.4",
+    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "catalog:",
     "workbox-window": "^7.3.0"
   }
