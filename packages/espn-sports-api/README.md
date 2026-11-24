@@ -22,8 +22,8 @@ https://site.api.espn.com/apis/site/v2/sports/golf/eur/scoreboard
 ## Tournament
 
 - GET current tournament / leaderboard
-https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=eur
-https://site.web.api.espn.com/apis/personalized/v2/scoreboard/header?sport=golf&league=eur&event=401822682
+  https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=eur
+  https://site.web.api.espn.com/apis/personalized/v2/scoreboard/header?sport=golf&league=eur&event=401822682
 
 ## News
 
