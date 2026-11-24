@@ -12,7 +12,7 @@
     "start": "node dist/index.mjs"
   },
   "dependencies": {
-    "@fastify/cors": "^11.4.1",
+    "@fastify/cors": "^11.4.3",
     "@fastify/rate-limit": "^11.2.2",
     "@mgcrea/fastify-request-logger": "^1.9.1",
     "@mgcrea/pino-pretty-compact": "^1.6.0",

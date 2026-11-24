@@ -17,11 +17,11 @@
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
     "@react-native-async-storage/async-storage": "2.2.0",
-    "@react-navigation/bottom-tabs": "^7.21.0",
-    "@react-navigation/elements": "^2.9.44",
-    "@react-navigation/native": "^7.5.1",
+    "@react-navigation/bottom-tabs": "^7.22.0",
+    "@react-navigation/elements": "^2.9.46",
+    "@react-navigation/native": "^7.5.2",
     "@shopify/flash-list": "2.0.2",
-    "@tanstack/react-query": "^5.107.1",
+    "@tanstack/react-query": "^5.108.0",
     "@trpc/client": "catalog:",
     "@trpc/tanstack-react-query": "catalog:",
     "class-variance-authority": "^0.7.1",
@@ -30,8 +30,8 @@
     "expo-constants": "~57.0.20",
     "expo-font": "~57.0.4",
     "expo-image": "~57.0.5",
-    "expo-linking": "~57.0.13",
-    "expo-router": "~57.0.30",
+    "expo-linking": "~57.0.14",
+    "expo-router": "~57.0.31",
     "expo-splash-screen": "~57.0.11",
     "expo-status-bar": "~57.0.1",
     "expo-symbols": "~57.0.3",
@@ -49,7 +49,7 @@
     "superjson": "catalog:",
     "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.5",
-    "uniwind": "^1.13.2"
+    "uniwind": "^1.14.0"
   },
   "devDependencies": {
     "@putting-pals/putting-pals-trpc": "workspace:*",
