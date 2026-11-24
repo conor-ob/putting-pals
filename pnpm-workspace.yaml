@@ -12,7 +12,7 @@ catalog:
   "@trpc/client": ^11.28.6
   "@trpc/server": ^11.28.6
   "@trpc/tanstack-react-query": ^11.28.6
-  "@types/node": ^24.19.0
+  "@types/node": ^26.6.6
   date-fns: ^4.4.0
   dotenv: ^18.0.10
   superjson: ^2.2.6
