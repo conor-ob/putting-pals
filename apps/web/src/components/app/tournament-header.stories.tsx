@@ -1,5 +1,5 @@
 import type { Tournament } from "@providers/trpc/types";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import type { TournamentHeaderProps } from "./tournament-header";
 import { TournamentHeader } from "./tournament-header";

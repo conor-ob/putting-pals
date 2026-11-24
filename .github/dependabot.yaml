@@ -22,6 +22,11 @@ updates:
           - "@expo/*"
           - "react-native"
           - "react-native-*"
+      # Storybook fails to install unless all its packages share a version
+      storybook:
+        patterns:
+          - "storybook"
+          - "@storybook/*"
       minor-and-patch:
         update-types:
           - minor

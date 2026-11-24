@@ -1,5 +1,5 @@
 import { withThemeByClassName } from "@storybook/addon-themes";
-import type { Preview, ReactRenderer } from "@storybook/react";
+import type { Preview, ReactRenderer } from "@storybook/react-vite";
 
 import "../src/theme/globals.css";
 
@@ -12,7 +12,7 @@ const preview: Preview = {
       container: DocsContainer,
     },
     layout: "centered",
-    backgrounds: { disable: true },
+    backgrounds: { disabled: true },
     controls: {
       matchers: {
         color: /(background|color)$/i,
