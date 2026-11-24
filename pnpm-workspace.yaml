@@ -7,12 +7,6 @@ allowBuilds:
   "@swc/core": true
   esbuild: true
 
-overrides:
-  # uniwind@1.12.0's Metro web wrapper has no InputAccessoryView implementation,
-  # which breaks `expo export -p web` on react-native-web 0.21.3+.
-  # https://github.com/uni-stack/uniwind/issues/695 - remove once uniwind ships the fix (PR #697).
-  react-native-web: 0.21.2
-
 catalog:
   "@total-typescript/tsconfig": ^1.0.4
   "@trpc/client": ^11.25.2
