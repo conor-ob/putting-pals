@@ -4,13 +4,16 @@ import {
   type Schedule,
   type Tournament,
 } from "@putting-pals/putting-pals-core";
-import type { ApiSchedule, ApiScheduleTournament } from "../generated/graphql";
+import type {
+  ApiScheduleFieldsFragment,
+  ApiScheduleTournamentFieldsFragment,
+} from "../generated/graphql";
 import { getImageUrl } from "../utils/image-utils";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
 export function transformSchedule(
-  schedule: ApiSchedule,
-  upcomingTournaments: ApiScheduleTournament[],
+  schedule: ApiScheduleFieldsFragment,
+  upcomingTournaments: ApiScheduleTournamentFieldsFragment[],
 ): Schedule {
   return {
     completed: schedule.completed.flatMap((scheduleMonth) =>
@@ -31,9 +34,9 @@ export function transformSchedule(
 }
 
 function transformScheduleTournament(
-  tournament: ApiScheduleTournament,
-  upcomingTournaments: ApiScheduleTournament[],
-): ApiScheduleTournament {
+  tournament: ApiScheduleTournamentFieldsFragment,
+  upcomingTournaments: ApiScheduleTournamentFieldsFragment[],
+): ApiScheduleTournamentFieldsFragment {
   const upcomingTournament = upcomingTournaments.find(
     (upcomingTournament) => upcomingTournament.id === tournament.id,
   );
@@ -52,7 +55,9 @@ function transformScheduleTournament(
   }
 }
 
-function mapTournament(tournament: ApiScheduleTournament): Tournament {
+function mapTournament(
+  tournament: ApiScheduleTournamentFieldsFragment,
+): Tournament {
   return {
     __typename: "Tournament",
     id: tournament.id,
@@ -81,7 +86,7 @@ function mapTournament(tournament: ApiScheduleTournament): Tournament {
 }
 
 function getTournamentLocation(
-  tournament: ApiScheduleTournament,
+  tournament: ApiScheduleTournamentFieldsFragment,
 ): Tournament["location"] {
   const state = resolve(
     tournament.state === ""
@@ -123,7 +128,7 @@ function getTournamentLocation(
 
 // TODO status === "UPCOMING" if in future
 function mapTournamentStatus(
-  tournament: ApiScheduleTournament,
+  tournament: ApiScheduleTournamentFieldsFragment,
 ): Tournament["status"] {
   return {
     roundDisplay: tournament.status?.roundDisplay ?? "",

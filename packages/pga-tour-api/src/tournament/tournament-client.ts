@@ -4,10 +4,10 @@ import {
   type TourCode,
   type Tournament,
 } from "@putting-pals/putting-pals-core";
-import type { ApiTournament, Sdk } from "../generated/graphql";
+import type { ApiTournamentFieldsFragment, Sdk } from "../generated/graphql";
 import { transformTournament } from "./tournament-utils";
 
-export class PgaTourApiTournamentClient extends AbstractTournamentClient<ApiTournament> {
+export class PgaTourApiTournamentClient extends AbstractTournamentClient<ApiTournamentFieldsFragment> {
   constructor(private readonly sdk: Sdk) {
     super();
     this.sdk = sdk;
@@ -16,7 +16,7 @@ export class PgaTourApiTournamentClient extends AbstractTournamentClient<ApiTour
   override async getTournamentRemote(
     _tourCode: TourCode,
     id: string,
-  ): Promise<ApiTournament> {
+  ): Promise<ApiTournamentFieldsFragment> {
     const tournaments = await this.sdk
       .Tournaments({ ids: [id] })
       .then((data) => data.tournaments);
@@ -27,7 +27,7 @@ export class PgaTourApiTournamentClient extends AbstractTournamentClient<ApiTour
     return tournament;
   }
 
-  override mapTournament(tournament: ApiTournament): Tournament {
+  override mapTournament(tournament: ApiTournamentFieldsFragment): Tournament {
     return transformTournament(tournament);
   }
 }

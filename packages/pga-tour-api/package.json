@@ -24,11 +24,10 @@
     "date-fns": "catalog:"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^6.3.1",
-    "@graphql-codegen/client-preset": "^5.3.0",
-    "@graphql-codegen/typescript": "^5.0.10",
-    "@graphql-codegen/typescript-graphql-request": "^6.4.0",
-    "@graphql-codegen/typescript-operations": "^5.1.0",
+    "@graphql-codegen/cli": "^8.0.0",
+    "@graphql-codegen/client-preset": "^7.0.0",
+    "@graphql-codegen/typescript-graphql-request": "^8.0.2",
+    "@graphql-codegen/typescript-operations": "^7.0.2",
     "@putting-pals/putting-pals-utils": "workspace:*",
     "@total-typescript/shoehorn": "^0.1.2",
     "@total-typescript/tsconfig": "catalog:",

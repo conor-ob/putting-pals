@@ -3,8 +3,11 @@ import {
   type Leaderboard,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
-import type { ApiLeaderboardV3, Sdk } from "../generated/graphql";
-import { transformLeaderboard } from "./leaderboard-utils";
+import type { Sdk } from "../generated/graphql";
+import {
+  type ApiLeaderboardV3,
+  transformLeaderboard,
+} from "./leaderboard-utils";
 
 export class PgaTourApiLeaderboardClient extends AbstractLeaderboardClient<ApiLeaderboardV3> {
   constructor(private readonly sdk: Sdk) {

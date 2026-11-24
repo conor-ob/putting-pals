@@ -14,11 +14,7 @@ const config: CodegenConfig = {
         },
       ],
       documents: ["src/graphql/**/*.graphql"],
-      plugins: [
-        "typescript",
-        "typescript-operations",
-        "typescript-graphql-request",
-      ],
+      plugins: ["typescript-operations", "typescript-graphql-request"],
       documentTransforms: [addTypenameSelectionDocumentTransform],
       config: {
         addTypename: true,

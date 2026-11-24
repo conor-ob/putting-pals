@@ -6,11 +6,13 @@ import type {
 import { NotFoundError } from "@putting-pals/putting-pals-core";
 import { formatISO, parse } from "date-fns";
 import { TournamentSchema } from "../../../putting-pals-core/src/tournament/domain/schemas";
-import type { ApiTournament } from "../generated/graphql";
+import type { ApiTournamentFieldsFragment } from "../generated/graphql";
 import { getImageUrl } from "../utils/image-utils";
 import { stripParenthesizedYear } from "../utils/string-utils";
 
-export function transformTournament(tournament: ApiTournament): Tournament {
+export function transformTournament(
+  tournament: ApiTournamentFieldsFragment,
+): Tournament {
   const transformedTournament = {
     ...tournament,
     name: stripParenthesizedYear(tournament.tournamentName),
@@ -88,17 +90,19 @@ export function parseDate(
   };
 }
 
-export function parseStartDate(tournament: ApiTournament): string {
+export function parseStartDate(
+  tournament: ApiTournamentFieldsFragment,
+): string {
   return parseDate(tournament.tournamentStatus, tournament.displayDate)
     .startDate;
 }
 
-export function parseEndDate(tournament: ApiTournament): string {
+export function parseEndDate(tournament: ApiTournamentFieldsFragment): string {
   return parseDate(tournament.tournamentStatus, tournament.displayDate).endDate;
 }
 
 function getTournamentLocation(
-  tournament: ApiTournament,
+  tournament: ApiTournamentFieldsFragment,
 ): Tournament["location"] {
   const state = resolve(tournament.state);
   if (state !== null && state.__typename === "State") {
