@@ -3,8 +3,10 @@ import {
   type Season,
   type TourCode,
 } from "@putting-pals/putting-pals-core";
-import type { ApiScheduleYears, Sdk } from "../generated/graphql";
+import type { ApiScheduleYearsQuery, Sdk } from "../generated/graphql";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
+
+type ApiScheduleYears = ApiScheduleYearsQuery["scheduleYears"];
 
 export class PgaTourApiSeasonClient extends AbstractSeasonClient<ApiScheduleYears> {
   constructor(private readonly sdk: Sdk) {

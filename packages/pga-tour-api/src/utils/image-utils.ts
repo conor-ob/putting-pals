@@ -1,7 +1,11 @@
-import type { ApiImageAsset } from "../generated/graphql";
+type ImageAsset = {
+  imageOrg: string;
+  imagePath: string;
+  fallbackImage: string | null;
+};
 
 export function getImageUrl(
-  imageAsset: ApiImageAsset,
+  imageAsset: ImageAsset,
   imageFormat: "jpg" | "png",
   imageAdjustment?: string,
 ): string {
