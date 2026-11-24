@@ -4,16 +4,18 @@ import {
   type TourCode,
 } from "@putting-pals/putting-pals-core";
 import type {
-  ApiSchedule,
-  ApiScheduleUpcoming,
+  ApiScheduleFieldsFragment,
   ApiTourCode,
+  ApiUpcomingScheduleQuery,
   Sdk,
 } from "../generated/graphql";
 import { mapDomainToApiTourCode } from "../utils/tour-code";
 import { transformSchedule } from "./schedule-transformer";
 
+type ApiScheduleUpcoming = ApiUpcomingScheduleQuery["upcomingSchedule"];
+
 type AggregateSchedule = {
-  schedule: ApiSchedule[];
+  schedule: ApiScheduleFieldsFragment[];
   upcoming: ApiScheduleUpcoming;
 };
 
@@ -52,7 +54,7 @@ export class PgaTourApiScheduleClient extends AbstractScheduleClient<AggregateSc
   private async getFullSchedule(
     tourCode: ApiTourCode,
     year?: string,
-  ): Promise<ApiSchedule[]> {
+  ): Promise<ApiScheduleFieldsFragment[]> {
     if (year === undefined) {
       return this.sdk
         .CompleteSchedule({ tourCode })

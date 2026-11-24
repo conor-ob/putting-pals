@@ -1,6 +1,8 @@
 import type { Leaderboard } from "@putting-pals/putting-pals-core";
-import type { ApiLeaderboardV3 } from "../generated/graphql";
+import type { ApiLeaderboardV3Query } from "../generated/graphql";
 import { getCountryFlag } from "./leaderboard-flag-utils";
+
+export type ApiLeaderboardV3 = ApiLeaderboardV3Query["leaderboardV3"];
 
 export function transformLeaderboard(
   leaderboard: ApiLeaderboardV3,
