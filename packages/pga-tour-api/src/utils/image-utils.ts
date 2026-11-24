@@ -1,11 +1,7 @@
-type ImageAsset = {
-  imageOrg: string;
-  imagePath: string;
-  fallbackImage: string | null;
-};
+import type { ApiImageAssetFieldsFragment } from "../generated/graphql";
 
 export function getImageUrl(
-  imageAsset: ImageAsset,
+  imageAsset: ApiImageAssetFieldsFragment,
   imageFormat: "jpg" | "png",
   imageAdjustment?: string,
 ): string {

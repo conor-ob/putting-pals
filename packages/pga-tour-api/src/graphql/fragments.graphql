@@ -84,19 +84,11 @@ fragment LeaderboardV3Fields on LeaderboardV3 {
     sponsor {
       sponsorLogo
       sponsorLogoAsset {
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
+        ...ImageAssetFields
       }
       sponsorLogoDark
       sponsorLogoDarkAsset {
-        imageOrg
-        imagePath
-        assetType
-        deliveryType
-        fallbackImage
+        ...ImageAssetFields
       }
       sponsorText
     }
@@ -114,11 +106,7 @@ fragment LeaderboardV3Fields on LeaderboardV3 {
     projectedCutLine
     probableCutLine
     sponsorLogo {
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
+      ...ImageAssetFields
     }
     sponsorName
     lastUpdated
@@ -132,18 +120,10 @@ fragment LeaderboardV3Fields on LeaderboardV3 {
   disableLeaderboard
   bubblePill {
     iconLight {
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
+      ...ImageAssetFields
     }
     iconDark {
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
+      ...ImageAssetFields
     }
     pillText
   }
@@ -237,11 +217,7 @@ fragment ScheduleTournamentFields on ScheduleTournament {
   tournamentName
   tournamentLogo
   tournamentLogoAsset {
-    imageOrg
-    imagePath
-    assetType
-    deliveryType
-    fallbackImage
+    ...ImageAssetFields
   }
   city
   state
@@ -258,11 +234,7 @@ fragment ScheduleTournamentFields on ScheduleTournament {
   championEarnings
   beautyImage
   beautyImageAsset {
-    imageOrg
-    imagePath
-    assetType
-    deliveryType
-    fallbackImage
+    ...ImageAssetFields
   }
   status {
     roundStatusDisplay
@@ -283,19 +255,11 @@ fragment ScheduleTournamentFields on ScheduleTournament {
     type
     logoLight
     logoLightAsset {
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
+      ...ImageAssetFields
     }
     logoDark
     logoDarkAsset {
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
+      ...ImageAssetFields
     }
     label
   }
@@ -338,11 +302,7 @@ fragment TournamentFields on Tournament {
   tournamentName
   tournamentLogo
   tournamentLogoAsset {
-    imageOrg
-    imagePath
-    assetType
-    deliveryType
-    fallbackImage
+    ...ImageAssetFields
   }
   tournamentLocation
   tournamentStatus
@@ -378,19 +338,11 @@ fragment TournamentFields on Tournament {
   weather {
     logo
     logoAsset {
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
+      ...ImageAssetFields
     }
     logoDark
     logoDarkAsset {
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
+      ...ImageAssetFields
     }
     logoAccessibility
     tempF
@@ -410,11 +362,7 @@ fragment TournamentFields on Tournament {
   conductedByLink
   beautyImage
   beautyImageAsset {
-    imageOrg
-    imagePath
-    assetType
-    deliveryType
-    fallbackImage
+    ...ImageAssetFields
   }
   shouldSubscribe
   infoPath
@@ -436,21 +384,21 @@ fragment TournamentFields on Tournament {
     type
     logoLight
     logoLightAsset {
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
+      ...ImageAssetFields
     }
     logoDark
     logoDarkAsset {
-      imageOrg
-      imagePath
-      assetType
-      deliveryType
-      fallbackImage
+      ...ImageAssetFields
     }
     label
   }
   disabledScorecardTabs
+}
+
+fragment ImageAssetFields on ImageAsset {
+  imageOrg
+  imagePath
+  assetType
+  deliveryType
+  fallbackImage
 }
