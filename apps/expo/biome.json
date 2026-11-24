@@ -12,6 +12,14 @@
   },
   "linter": {
     "rules": {
+      "correctness": {
+        "noReactNativeRawText": {
+          "level": "on",
+          "options": {
+            "skip": ["NativeTabs.Trigger.Label"]
+          }
+        }
+      },
       "suspicious": {
         "noDuplicateCustomProperties": "warn"
       }
