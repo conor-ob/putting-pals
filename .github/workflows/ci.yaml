@@ -72,12 +72,14 @@ jobs:
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         run: pnpm typecheck
 
-      # The Expo SDK sets the TypeScript version (Dependabot ignores its majors),
-      # so fail if it drifts from what the SDK expects. Only typescript is checked:
-      # a full check also fails whenever Expo publishes a patch release
-      - name: Check TypeScript matches the Expo SDK
+      # The Expo SDK sets these versions (Dependabot leaves them alone), so fail
+      # if they drift from what the SDK expects. Only these are checked: a full
+      # check also fails whenever Expo publishes a patch release
+      - name: Check pinned packages match the Expo SDK
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
-        run: pnpm --filter @putting-pals/expo exec expo install --check typescript
+        run: >-
+          pnpm --filter @putting-pals/expo exec expo install --check
+          typescript @shopify/flash-list react-native-reanimated react-native-worklets
 
       - name: Build
         id: build

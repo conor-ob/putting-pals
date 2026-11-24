@@ -37,6 +37,11 @@ updates:
       - dependency-name: "react"
       - dependency-name: "react-dom"
       - dependency-name: "react-native"
+      # The Expo SDK pins these to exact versions, so even patch bumps break
+      # `expo install --check`. They move with an SDK bump too
+      - dependency-name: "@shopify/flash-list"
+      - dependency-name: "react-native-reanimated"
+      - dependency-name: "react-native-worklets"
       # Expo SDK 57 expects typescript ~6.0.3; CI runs `expo install --check typescript`
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
