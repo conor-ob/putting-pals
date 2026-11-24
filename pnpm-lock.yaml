@@ -168,14 +168,14 @@ catalogs:
       specifier: ^1.0.4
       version: 1.0.4
     '@trpc/client':
-      specifier: ^11.28.6
-      version: 11.28.6
+      specifier: ^11.29.0
+      version: 11.29.0
     '@trpc/server':
-      specifier: ^11.28.6
-      version: 11.28.6
+      specifier: ^11.29.0
+      version: 11.29.0
     '@trpc/tanstack-react-query':
-      specifier: ^11.28.6
-      version: 11.28.6
+      specifier: ^11.29.0
+      version: 11.29.0
     '@types/node':
       specifier: ^24.19.0
       version: 24.19.0
@@ -246,10 +246,10 @@ importers:
         version: 5.108.0(@types/react@19.2.18)(react@19.2.3)
       '@trpc/client':
         specifier: 'catalog:'
-        version: 11.28.6(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3)
+        version: 11.29.0(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3)
       '@trpc/tanstack-react-query':
         specifier: 'catalog:'
-        version: 11.28.6(@tanstack/react-query@5.108.0(@types/react@19.2.18)(react@19.2.3))(@trpc/client@11.28.6(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(react@19.2.3)(typescript@6.0.3)
+        version: 11.29.0(@tanstack/react-query@5.108.0(@types/react@19.2.18)(react@19.2.3))(@trpc/client@11.29.0(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(react@19.2.3)(typescript@6.0.3)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -337,7 +337,7 @@ importers:
         version: link:../../packages/putting-pals-utils
       '@trpc/server':
         specifier: 'catalog:'
-        version: 11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
+        version: 11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
       '@types/react':
         specifier: ~19.2.18
         version: 19.2.18
@@ -376,7 +376,7 @@ importers:
         version: link:../../packages/putting-pals-utils
       '@trpc/server':
         specifier: 'catalog:'
-        version: 11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
+        version: 11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
       dotenv:
         specifier: 'catalog:'
         version: 18.0.10
@@ -428,10 +428,10 @@ importers:
         version: 5.108.0(@types/react@19.2.18)(react@19.2.3)
       '@trpc/client':
         specifier: 'catalog:'
-        version: 11.28.6(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3)
+        version: 11.29.0(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3)
       '@trpc/tanstack-react-query':
         specifier: 'catalog:'
-        version: 11.28.6(@tanstack/react-query@5.108.0(@types/react@19.2.18)(react@19.2.3))(@trpc/client@11.28.6(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(react@19.2.3)(typescript@6.0.3)
+        version: 11.29.0(@tanstack/react-query@5.108.0(@types/react@19.2.18)(react@19.2.3))(@trpc/client@11.29.0(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(react@19.2.3)(typescript@6.0.3)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -495,7 +495,7 @@ importers:
         version: 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@trpc/server':
         specifier: 'catalog:'
-        version: 11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
+        version: 11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
       '@types/lodash':
         specifier: ^4.17.27
         version: 4.17.27
@@ -852,7 +852,7 @@ importers:
         version: link:../putting-pals-utils
       '@trpc/server':
         specifier: 'catalog:'
-        version: 11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
+        version: 11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
       superjson:
         specifier: 'catalog:'
         version: 2.2.6
@@ -4483,14 +4483,14 @@ packages:
     resolution: {integrity: sha512-/67zpWDBLV+oYAEL682s1ktXL0HgqX76f6gaVGkGnVZlBbm1zd0v4Bz8MFF2GGhoX9rvfq3KSQHubFHwa6w6/Q==}
     engines: {node: '>=12'}
 
-  '@trpc/client@11.28.6':
-    resolution: {integrity: sha512-pj3CGacQVOsktvmJN2qEgRcrYVnwRT3Ik36fbHGo89puZpzQ+2Jnl9DV16Hl/9qKFbimGkkBBawRSIN1VuRVZA==}
+  '@trpc/client@11.29.0':
+    resolution: {integrity: sha512-tBDdiavqzmMS7sH0OfVi9OEbkbAwLYgbioUa7Sp5CK/Z6wtx2JaPGjXjQgX+45k7RxCx1es8QTdP1gZaMp82tA==}
     peerDependencies:
-      '@trpc/server': 11.28.6
+      '@trpc/server': 11.29.0
       typescript: '>=5.7.2'
 
-  '@trpc/server@11.28.6':
-    resolution: {integrity: sha512-VoUTZUnjPzSGcW7R4pCyeyLL2Pj2INbI/xHeju1epTbNZeomLfeD3xMK4XnaNmHgFXAF5GNhViG4rEo7K8PpdQ==}
+  '@trpc/server@11.29.0':
+    resolution: {integrity: sha512-emmzlpU2CBOrp543Zc/f30kaAhbxPP6AbLViiNRzFDJ1JfHaSUbN6riMl2RgD3Tke+eqGU2DFQ8Ks1FqbXb13Q==}
     peerDependencies:
       '@types/aws-lambda': '*'
       '@types/express': '*'
@@ -4510,12 +4510,12 @@ packages:
       next:
         optional: true
 
-  '@trpc/tanstack-react-query@11.28.6':
-    resolution: {integrity: sha512-aCrg6a94Hu4+THWgT6oeeFbEMl2r2b94kb68i0TBfnQySsjPFHgfm0OVA//v3fY6iqGazW+Db1ERUgNfpkJalg==}
+  '@trpc/tanstack-react-query@11.29.0':
+    resolution: {integrity: sha512-mjMWa0qGE8Fba3XGyv03SYOEfiZkwQumeL0s0p9NY9n7uZp7b80Wcfhm8CQvnJgSYitbyXanAfXf/nHzyH8T6Q==}
     peerDependencies:
       '@tanstack/react-query': ^5.106.0
-      '@trpc/client': 11.28.6
-      '@trpc/server': 11.28.6
+      '@trpc/client': 11.29.0
+      '@trpc/server': 11.29.0
       react: '>=18.2.0'
       typescript: '>=5.7.2'
 
@@ -12979,23 +12979,23 @@ snapshots:
       magic-string: 0.30.21
       string.prototype.matchall: 4.1.0
 
-  '@trpc/client@11.28.6(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3)':
+  '@trpc/client@11.29.0(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3)':
     dependencies:
-      '@trpc/server': 11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
+      '@trpc/server': 11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
       typescript: 6.0.3
 
-  '@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)':
+  '@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)':
     dependencies:
       typescript: 6.0.3
     optionalDependencies:
       '@types/ws': 8.18.2
       fastify: 5.12.8
 
-  '@trpc/tanstack-react-query@11.28.6(@tanstack/react-query@5.108.0(@types/react@19.2.18)(react@19.2.3))(@trpc/client@11.28.6(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(react@19.2.3)(typescript@6.0.3)':
+  '@trpc/tanstack-react-query@11.29.0(@tanstack/react-query@5.108.0(@types/react@19.2.18)(react@19.2.3))(@trpc/client@11.29.0(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(react@19.2.3)(typescript@6.0.3)':
     dependencies:
       '@tanstack/react-query': 5.108.0(@types/react@19.2.18)(react@19.2.3)
-      '@trpc/client': 11.28.6(@trpc/server@11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3)
-      '@trpc/server': 11.28.6(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
+      '@trpc/client': 11.29.0(@trpc/server@11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3))(typescript@6.0.3)
+      '@trpc/server': 11.29.0(@types/ws@8.18.2)(fastify@5.12.8)(typescript@6.0.3)
       react: 19.2.3
       typescript: 6.0.3
 
