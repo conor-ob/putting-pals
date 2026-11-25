@@ -55,6 +55,10 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: "@types/react-router-dom"
         update-types: ["version-update:semver-major"]
+      # Types must match the Node runtime (node:24 images, engines >=24.19), so
+      # the major moves with the Docker node image instead
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
       - dependency-name: "expo"
         update-types:
           ["version-update:semver-major", "version-update:semver-minor"]
