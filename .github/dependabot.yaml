@@ -40,6 +40,7 @@ updates:
       # The Expo SDK pins these to exact versions, so even patch bumps break
       # `expo install --check`. They move with an SDK bump too
       - dependency-name: "@shopify/flash-list"
+      - dependency-name: "@react-native-async-storage/async-storage"
       - dependency-name: "react-native-reanimated"
       - dependency-name: "react-native-worklets"
       # Expo SDK 57 expects typescript ~6.0.3; CI runs `expo install --check typescript`
@@ -54,6 +55,10 @@ updates:
       # Types must match the Node runtime (node:24 images, engines >=24.19), so
       # the major moves with the Docker node image instead
       - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      # graphql-request 7 (used at runtime by pga-tour-api) only supports
+      # graphql 14 - 16. Drop this once graphql-request supports 17
+      - dependency-name: "graphql"
         update-types: ["version-update:semver-major"]
       - dependency-name: "expo"
         update-types:
