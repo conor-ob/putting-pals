@@ -1,19 +1,27 @@
+# Dependabot baseline. Source of truth: conor-ob/hq templates/dependabot/dependabot.yaml
+# Policy and reasons: conor-ob/hq docs/dependabot.md
+#
+# Copy to .github/dependabot.yaml.
+# Keep the baseline entries as they are. Repo-specific changes go under
+# "Repo exceptions" comments, so a diff against the template shows only them.
 version: 2
 
 updates:
-  # One entry covers the whole pnpm workspace, catalog included
+  # One entry per pnpm workspace, at the workspace root. It covers every
+  # package in the workspace and the catalogs in pnpm-workspace.yaml.
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
-    # Give the registry a week to catch compromised or yanked releases
+      day: monday
+      time: "06:00"
+      timezone: Europe/Dublin
     cooldown:
       default-days: 7
-    commit-message:
-      prefix: chore
-      prefix-development: chore
-      include: scope
+      semver-major-days: 30
     groups:
+      # Repo exceptions: these groups come before minor-and-patch, because an
+      # update joins the first group it matches. They aren't auto-merged.
       # Expo SDK packages move together, so review them as one PR
       expo:
         patterns:
@@ -27,10 +35,16 @@ updates:
         patterns:
           - "storybook"
           - "@storybook/*"
+      # Majors stay out of the group, so each one gets its own PR.
       minor-and-patch:
         update-types:
           - minor
           - patch
+    commit-message:
+      # Without prefix-development, dev dependencies use this prefix too.
+      prefix: chore
+      include: scope
+    # Repo exceptions: deliberate ignores
     ignore:
       # Pinned to the Expo SDK by `expo install`, and web pins the same react.
       # Upgrade these with an SDK bump (`npx expo install --fix`) instead
@@ -60,6 +74,7 @@ updates:
       # graphql 14 - 16. Drop this once graphql-request supports 17
       - dependency-name: "graphql"
         update-types: ["version-update:semver-major"]
+      # Expo SDK minors and majors move with an SDK bump (see expo-sdk-check.yaml)
       - dependency-name: "expo"
         update-types:
           ["version-update:semver-major", "version-update:semver-minor"]
@@ -77,16 +92,22 @@ updates:
     directory: /
     schedule:
       interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Dublin
     cooldown:
       default-days: 7
+    groups:
+      # Majors stay out of the group, so each one gets its own PR.
+      github-actions:
+        update-types:
+          - minor
+          - patch
     commit-message:
       prefix: ci
       include: scope
-    groups:
-      github-actions:
-        patterns:
-          - "*"
 
+  # Add when the repo has a Dockerfile. List every directory that has one.
   - package-ecosystem: docker
     directories:
       - /apps/expo
@@ -96,29 +117,43 @@ updates:
       - /jobs/leaderboard-sync
     schedule:
       interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Dublin
     cooldown:
       default-days: 7
-    commit-message:
-      prefix: build
-      include: scope
     groups:
       docker:
         patterns:
           - "*"
+    commit-message:
+      prefix: build
+      include: scope
+    # Repo exceptions: deliberate ignores
     ignore:
       # Node majors are moved deliberately, to the next LTS, alongside engines
       - dependency-name: "node"
         update-types: ["version-update:semver-major"]
 
+  # Add when the repo has compose files. List every directory that has one.
   - package-ecosystem: docker-compose
-    directory: /
+    directories:
+      - /
     schedule:
       interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Dublin
     cooldown:
       default-days: 7
+    groups:
+      docker-compose:
+        patterns:
+          - "*"
     commit-message:
       prefix: build
       include: scope
+    # Repo exceptions: deliberate ignores
     ignore:
       # Postgres majors need a data upgrade, and must match Railway and CI
       - dependency-name: "postgres"
