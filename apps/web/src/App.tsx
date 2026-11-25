@@ -8,7 +8,7 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { TrpcProvider } from "@providers/trpc/trpc-provider";
-import { Redirect, Route } from "react-router";
+import { Navigate, Route, useParams } from "react-router-dom";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -39,26 +39,27 @@ import "@theme/globals.css";
 
 setupIonicReact({ mode: "ios" });
 
+const TourRedirect: React.FC = () => {
+  const { tour } = useParams<{ tour: string }>();
+  return <Navigate to={`/${tour}/leaderboard`} replace />;
+};
+
 const App: React.FC = () => (
   <IonApp>
     <TrpcProvider>
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/">
-              <Redirect to={`/${DEFAULT_TOUR_CODE}/leaderboard`} />
-            </Route>
             <Route
-              exact
-              path="/:tour"
-              render={({ match }) => (
-                <Redirect to={`/${match.params.tour}/leaderboard`} />
-              )}
+              path="/"
+              element={
+                <Navigate to={`/${DEFAULT_TOUR_CODE}/leaderboard`} replace />
+              }
             />
+            <Route path="/:tour" element={<TourRedirect />} />
             <Route
-              exact
               path="/:tour/leaderboard/:id?"
-              component={LeaderboardPage}
+              element={<LeaderboardPage />}
             />
           </IonRouterOutlet>
         </IonTabs>
