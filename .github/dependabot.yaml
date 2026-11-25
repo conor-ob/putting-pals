@@ -45,15 +45,11 @@ updates:
       # Expo SDK 57 expects typescript ~6.0.3; CI runs `expo install --check typescript`
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
-      # Ionic sets the router version (`@ionic/react-router` 8 needs
-      # react-router 5), so the major moves with an Ionic upgrade
+      # Ionic sets the router version (`@ionic/react-router` 9 needs
+      # react-router 6), so the major moves with an Ionic upgrade
       - dependency-name: "react-router"
         update-types: ["version-update:semver-major"]
       - dependency-name: "react-router-dom"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@types/react-router"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@types/react-router-dom"
         update-types: ["version-update:semver-major"]
       # Types must match the Node runtime (node:24 images, engines >=24.19), so
       # the major moves with the Docker node image instead
