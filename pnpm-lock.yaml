@@ -419,7 +419,7 @@ importers:
         version: 9.0.12(@stencil/core@4.45.5)(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@ionic/react-router':
         specifier: ^9.0.12
-        version: 9.0.12(@stencil/core@4.45.5)(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react-router-dom@6.30.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-router@6.30.6(react@19.2.3))(react@19.2.3)
+        version: 9.0.12(@stencil/core@4.45.5)(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react-router-dom@6.30.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-router@7.18.7(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       '@radix-ui/react-avatar':
         specifier: ^1.3.1
         version: 1.3.1(@types/react-dom@19.3.0(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -451,8 +451,8 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
       react-router:
-        specifier: ^6.30.6
-        version: 6.30.6(react@19.2.3)
+        specifier: ^7.18.2
+        version: 7.18.7(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-router-dom:
         specifier: ^6.30.6
         version: 6.30.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -4824,6 +4824,11 @@ packages:
 
   ajv-formats@3.0.1:
     resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
+    peerDependencies:
+      ajv: ^8.0.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
 
   ajv@8.20.0:
     resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
@@ -8032,6 +8037,19 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
+  react-router@7.18.7:
+    resolution: {integrity: sha512-nXl672FFobymVY/Ywbo0DnlXV/+VXOB5pOslCeuVqoegwwL7sau2yASdyGoWHvPRxAoqUBrAiFZRdli4nT7Wow==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@types/react': '>=18'
+      react: '>=18'
+      react-dom: '>=18'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react-dom:
+        optional: true
+
   react-style-singleton@2.2.3:
     resolution: {integrity: sha512-b6jSvxvVnyptAiLjbkWLE/lOnR4lfTtDAl+eUC7RZy+QQWc6wRzIV2CE6xBuMmDxc2qIihtDCZD5NPOFl7fRBQ==}
     engines: {node: '>=10'}
@@ -11137,7 +11155,7 @@ snapshots:
   '@fastify/ajv-compiler@4.0.6':
     dependencies:
       ajv: 8.20.0
-      ajv-formats: 3.0.1
+      ajv-formats: 3.0.1(ajv@8.20.0)
       fast-uri: 4.2.1
 
   '@fastify/busboy@3.2.2': {}
@@ -11727,13 +11745,13 @@ snapshots:
       ionicons: 8.1.0
       tslib: 2.9.1
 
-  '@ionic/react-router@9.0.12(@stencil/core@4.45.5)(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react-router-dom@6.30.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-router@6.30.6(react@19.2.3))(react@19.2.3)':
+  '@ionic/react-router@9.0.12(@stencil/core@4.45.5)(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react-router-dom@6.30.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-router@7.18.7(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@ionic/core': 9.0.12
       '@ionic/react': 9.0.12(@stencil/core@4.45.5)(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
-      react-router: 6.30.6(react@19.2.3)
+      react-router: 7.18.7(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-router-dom: 6.30.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       tslib: 2.9.1
     transitivePeerDependencies:
@@ -13378,8 +13396,8 @@ snapshots:
 
   agent-cli-detector@0.1.7: {}
 
-  ajv-formats@3.0.1:
-    dependencies:
+  ajv-formats@3.0.1(ajv@8.20.0):
+    optionalDependencies:
       ajv: 8.20.0
 
   ajv@8.20.0:
@@ -14689,7 +14707,7 @@ snapshots:
     dependencies:
       '@fastify/merge-json-schemas': 0.2.1
       ajv: 8.20.0
-      ajv-formats: 3.0.1
+      ajv-formats: 3.0.1(ajv@8.20.0)
       fast-uri: 4.2.1
       json-schema-ref-resolver: 3.0.0
       rfdc: 1.4.1
@@ -17071,6 +17089,15 @@ snapshots:
     dependencies:
       '@remix-run/router': 1.23.4
       react: 19.2.3
+
+  react-router@7.18.7(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      cookie: 1.1.1
+      react: 19.2.3
+      set-cookie-parser: 2.7.2
+    optionalDependencies:
+      '@types/react': 19.2.18
+      react-dom: 19.2.3(react@19.2.3)
 
   react-style-singleton@2.2.3(@types/react@19.2.18)(react@19.2.3):
     dependencies:
