@@ -11,10 +11,12 @@ on:
 permissions:
   contents: read
 
-# Cancel superseded PR runs only: with checkSuites on, Railway waits for every
-# main commit's CI to finish before deploying it
+# PR runs share a group per branch, so a new push cancels the stale run.
+# Each main commit gets its own group, so no main run is ever cancelled:
+# GitHub keeps one waiting run per group and cancels it when another queues,
+# and a cancelled run on main would skip that commit's Railway deploy.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
