@@ -20,7 +20,12 @@ permissions:
 
 jobs:
   auto-merge:
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    # Both checks: the author check alone also matches a push by someone else
+    # to a Dependabot branch. That run gets no Dependabot secrets, so it would
+    # fail, and it shouldn't turn on auto-merge for a commit nobody reviewed.
+    if: >-
+      github.event.pull_request.user.login == 'dependabot[bot]'
+      && github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Fetch Dependabot metadata
