@@ -8,10 +8,10 @@ This project defines its Railway infrastructure in code.
 
 Use this file to describe the Railway project you want: services, databases, buckets, custom domains, replicas, groups, and environment variables.
 
-The TypeScript file imports `railway/iac`. Install the SDK from the repository root:
+The TypeScript file imports `railway/iac`, from the `railway` dev dependency in the root `package.json`. Install it with the rest of the workspace from the repository root (npm can't parse pnpm's `catalog:` or `workspace:*`):
 
 ```bash
-npm install railway
+pnpm install
 ```
 
 ## Common commands
