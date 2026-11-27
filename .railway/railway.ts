@@ -158,3 +158,5 @@ export default defineRailway((ctx) => {
     resources: [frontend, backend, database, jobs],
   });
 });
+
+// temporary: runs the plan job on this PR, reverted before merge
