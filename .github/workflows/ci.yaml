@@ -144,8 +144,11 @@ jobs:
             dockerfile: apps/expo/Dockerfile
           - image: server
             dockerfile: apps/server/Dockerfile
+          # Railway passes the service's variables as build args, and the
+          # web build validates them. Placeholders: nothing here is deployed
           - image: web
             dockerfile: apps/web/Dockerfile
+            build-args: PORT=8080 SERVER_URL=http://server:8080
           - image: espn-schema
             dockerfile: jobs/espn-schema/Dockerfile
           - image: leaderboard-sync
@@ -155,9 +158,13 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Build image
-        run: docker build --file "$DOCKERFILE" .
+        run: |
+          args=()
+          for arg in $BUILD_ARGS; do args+=(--build-arg "$arg"); done
+          docker build --file "$DOCKERFILE" "${args[@]}" .
         env:
           DOCKERFILE: ${{ matrix.dockerfile }}
+          BUILD_ARGS: ${{ matrix.build-args }}
 
   # The Gate check: the only required status check in protect-main. It runs
   # even when a job before it failed (a skipped required check counts as
