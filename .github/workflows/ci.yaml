@@ -89,7 +89,7 @@ jobs:
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: pnpm run test
 
-      # Repo-specific checks and Guards
+      # Repo-specific checks and Guards go here, after Test, with the same if:
 
       # The Expo SDK sets these versions (Dependabot leaves them alone), so fail
       # if they drift from what the SDK expects. Only these are checked: a full
