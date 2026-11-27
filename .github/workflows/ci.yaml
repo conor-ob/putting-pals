@@ -40,16 +40,15 @@ jobs:
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
-    # What the apps' .env files would provide. dotenv never overrides
-    # variables that are already set, so CI needs no .env files
-    env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/putting-pals
-      PORT: "4000"
-      SERVER_URL: http://localhost:4000
-      EXPO_PUBLIC_SERVER_URL: http://localhost:4000
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Each package reads its own .env, as it does locally. Each schema test
+      # keeps .env.example in line with the schema, and the examples already
+      # point at the postgres service above
+      - name: Copy env files
+        run: for f in $(git ls-files '*.env.example'); do cp "$f" "${f%.example}"; done
 
       - name: Install pnpm
         uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
@@ -144,11 +143,8 @@ jobs:
             dockerfile: apps/expo/Dockerfile
           - image: server
             dockerfile: apps/server/Dockerfile
-          # Railway passes the service's variables as build args, and the
-          # web build validates them. Placeholders: nothing here is deployed
           - image: web
             dockerfile: apps/web/Dockerfile
-            build-args: PORT=8080 SERVER_URL=http://server:8080
           - image: espn-schema
             dockerfile: jobs/espn-schema/Dockerfile
           - image: leaderboard-sync
@@ -157,14 +153,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      # Railway passes a service's variables as build args, and some builds
+      # validate them, so pass the .env.example next to the Dockerfile.
+      # Sourced, then passed by name, so dotenv's quotes aren't in the values
       - name: Build image
         run: |
+          env_file="$(dirname "$DOCKERFILE")/.env.example"
+          set -a
+          # shellcheck source=/dev/null
+          . "$env_file"
+          set +a
           args=()
-          for arg in $BUILD_ARGS; do args+=(--build-arg "$arg"); done
+          while IFS= read -r key; do
+            args+=(--build-arg "$key")
+          done < <(sed -n 's/^\([A-Z0-9_]*\)=.*/\1/p' "$env_file")
           docker build --file "$DOCKERFILE" "${args[@]}" .
         env:
           DOCKERFILE: ${{ matrix.dockerfile }}
-          BUILD_ARGS: ${{ matrix.build-args }}
 
   # The Gate check: the only required status check in protect-main. It runs
   # even when a job before it failed (a skipped required check counts as
