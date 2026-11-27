@@ -1,0 +1,90 @@
+name: 🚂 Deploy
+
+# Plan runs on PRs and pins the plan as an artifact. Apply runs on merge and
+# applies exactly that plan, so there's no manual trigger: the action finds the
+# plan through the merged PR, and fails if the environment or .railway/ moved
+# since
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - ".railway/**"
+  push:
+    branches:
+      - main
+    paths:
+      - ".railway/**"
+
+permissions:
+  contents: read
+
+# Cancel superseded PR plans only: an apply must never be cut off mid-run
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  plan:
+    name: 📋 Plan
+    # Fork PRs get no secrets
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      # Lets railwayapp/config post the plan comment as the Railway bot
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # railway.ts imports railway/iac, but railwayapp/config always runs
+      # `npm install` at the repo root, and npm can't parse `catalog:` or
+      # `workspace:*`. Install with pnpm, then hide package.json so the npm step
+      # no-ops
+      - name: Install pnpm
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+
+      - name: Install node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          # .nvmrc holds the Node major the image runs, e.g. 24. Not
+          # package.json: an open engines range resolves to the newest Node.
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Hide package.json from npm
+        run: mv package.json package.json.bak
+
+      # Uploads the plan as an artifact; the apply job applies exactly this
+      # plan on merge
+      - name: Railway config plan
+        uses: railwayapp/config@9e17d413dbe219f19d62538d9c06b5dbb5e9abf8 # v1.2.0
+        with:
+          command: plan
+          railway-token: ${{ secrets.RAILWAY_TOKEN }}
+
+  apply:
+    name: 🚀 Apply
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Download the plan artifact and find the commit's merged PR
+      actions: read
+      pull-requests: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Railway config apply
+        uses: railwayapp/config@9e17d413dbe219f19d62538d9c06b5dbb5e9abf8 # v1.2.0
+        with:
+          command: apply
+          railway-token: ${{ secrets.RAILWAY_TOKEN }}
