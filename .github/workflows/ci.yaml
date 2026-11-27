@@ -14,15 +14,18 @@ permissions:
 # PR runs share a group per branch, so a new push cancels the stale run.
 # Each main commit gets its own group, so no main run is ever cancelled:
 # GitHub keeps one waiting run per group and cancels it when another queues,
-# and a cancelled run on main would skip that commit's Railway deploy.
+# and a cancelled run on main would hold back that commit's deploy
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
+# Every job must be listed in the gate job's needs:, or it can fail and the PR
+# still merges
 jobs:
-  ci:
-    name: ✅ Checks
+  node:
+    name: 🟢 Node
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     services:
       postgres:
         image: postgres:18-alpine
@@ -37,16 +40,15 @@ jobs:
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
-    # What the apps' .env files would provide. dotenv never overrides
-    # variables that are already set, so CI needs no .env files
-    env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/putting-pals
-      PORT: "4000"
-      SERVER_URL: http://localhost:4000
-      EXPO_PUBLIC_SERVER_URL: http://localhost:4000
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Each package reads its own .env, as it does locally. Each schema test
+      # keeps .env.example in line with the schema, and the examples already
+      # point at the postgres service above
+      - name: Copy env files
+        run: for f in $(git ls-files '*.env.example'); do cp "$f" "${f%.example}"; done
 
       - name: Install pnpm
         uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
@@ -58,47 +60,52 @@ jobs:
           cache: pnpm
 
       - name: Install deps
+        id: install
         run: pnpm install --frozen-lockfile
 
+      # One step per task, and each runs even if an earlier one failed, so one
+      # run reports every failure. They still skip if install failed
       - name: Codegen
-        id: setup
-        run: pnpm codegen
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: pnpm run codegen
 
-      # Checks below run even if an earlier one fails, so one run reports every
-      # failure. They still skip if any setup step above failed
-      - name: Check
-        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+      # Run the tool's own read-only bundle (format, lint rules, import
+      # order) directly, never a script: the lint script runs lint rules only
+      - name: Format and lint
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: pnpm biome ci .
 
       - name: Typecheck
-        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
-        run: pnpm typecheck
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: pnpm run typecheck
+
+      - name: Build
+        id: build
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: pnpm run build
+
+      - name: Test
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: pnpm run test
+
+      # Repo-specific checks and Guards go here, after Test, with the same if:
 
       # The Expo SDK sets these versions (Dependabot leaves them alone), so fail
       # if they drift from what the SDK expects. Only these are checked: a full
       # check also fails whenever Expo publishes a patch release
-      - name: Check pinned packages match the Expo SDK
-        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+      - name: Expo SDK check
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: >-
           pnpm --filter @putting-pals/expo exec expo install --check
           typescript @shopify/flash-list react-native-reanimated react-native-worklets
 
-      - name: Build
-        id: build
-        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
-        run: pnpm build
-
-      - name: Test
-        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
-        run: pnpm test
-
-      - name: Check migration journal
-        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+      - name: Drizzle check
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         working-directory: packages/putting-pals-db
         run: pnpm drizzle-kit check
 
       - name: Check schema has no ungenerated changes
-        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         working-directory: packages/putting-pals-db
         run: |
           pnpm db:generate
@@ -119,3 +126,71 @@ jobs:
         if: ${{ !cancelled() && steps.migrate.outcome == 'success' }}
         working-directory: apps/server
         run: node dist/migrate.mjs
+
+  # Railway builds these Dockerfiles on deploy, so build them here first.
+  # Otherwise an auto-merged base image update could break a build and only
+  # show up as a failed deploy on main. One entry per service in
+  # .railway/railway.ts. Built, never pushed, with no cache
+  docker:
+    name: 🐳 Docker (${{ matrix.image }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image: expo
+            dockerfile: apps/expo/Dockerfile
+          - image: server
+            dockerfile: apps/server/Dockerfile
+          - image: web
+            dockerfile: apps/web/Dockerfile
+          - image: espn-schema
+            dockerfile: jobs/espn-schema/Dockerfile
+          - image: leaderboard-sync
+            dockerfile: jobs/leaderboard-sync/Dockerfile
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Railway passes a service's variables as build args, and some builds
+      # validate them, so pass the .env.example next to the Dockerfile.
+      # Sourced, then passed by name, so dotenv's quotes aren't in the values
+      - name: Build image
+        run: |
+          env_file="$(dirname "$DOCKERFILE")/.env.example"
+          set -a
+          # shellcheck source=/dev/null
+          . "$env_file"
+          set +a
+          args=()
+          while IFS= read -r key; do
+            args+=(--build-arg "$key")
+          done < <(sed -n 's/^\([A-Z0-9_]*\)=.*/\1/p' "$env_file")
+          docker build --file "$DOCKERFILE" "${args[@]}" .
+        env:
+          DOCKERFILE: ${{ matrix.dockerfile }}
+
+  # The Gate check: the only required status check in protect-main. It runs
+  # even when a job before it failed (a skipped required check counts as
+  # passed), and fails if any needed job failed or was cancelled. A skipped
+  # job counts as fine, so jobs limited to main or to some paths don't block
+  # PRs. always(), not !cancelled(), so a cancelled run leaves it red
+  gate:
+    name: 🚦 Gate
+    needs:
+      - node
+      - docker
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # always() here too: a step's default success() would skip it on a
+      # cancelled run, and the gate would pass with nothing checked
+      - name: Check results
+        if: ${{ always() }}
+        run: |
+          jq -r 'to_entries[] | "\(.key): \(.value.result)"' <<<"$NEEDS"
+          jq -e 'all(.[]; .result != "failure" and .result != "cancelled")' <<<"$NEEDS" >/dev/null
+        env:
+          NEEDS: ${{ toJSON(needs) }}
