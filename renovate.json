@@ -7,15 +7,16 @@
   ],
   "packageRules": [
     {
-      "description": "Repo exception: Ionic sets the router major (@ionic/react-router 9 needs react-router 6, which needs history), so an Ionic major and the router major it needs arrive as one PR. Minors and patches stay in default's minor and patch group. The earlier split was #191/#194.",
-      "matchPackageNames": [
-        "@ionic/*",
-        "react-router",
-        "react-router-dom",
-        "history"
-      ],
+      "description": "Repo exception: Ionic majors arrive as one PR, so @ionic/react and @ionic/react-router move together.",
+      "matchPackageNames": ["@ionic/*"],
       "matchUpdateTypes": ["major"],
       "groupName": "ionic"
+    },
+    {
+      "description": "Repo exception: router majors are never offered. @ionic/react-router's peer range sets the router major (9 needs react-router >=6.4 <7), and Renovate can't read it, so it would offer the latest router whatever Ionic supports (#223). When an Ionic major needs a new router, its PR fails install on the strict peer check, and the router moves in that PR.",
+      "matchPackageNames": ["react-router", "react-router-dom"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     },
     {
       "description": "Repo exception: graphql-request 7 (used by pga-tour-api) only supports graphql 14-16. Drop this once graphql-request supports 17.",
