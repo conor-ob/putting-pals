@@ -7,13 +7,14 @@
   ],
   "packageRules": [
     {
-      "description": "Repo exception: Ionic sets the router major (@ionic/react-router 9 needs react-router 6), so an Ionic major and the router major it needs arrive as one PR. The earlier split was #191/#194.",
+      "description": "Repo exception: Ionic sets the router major (@ionic/react-router 9 needs react-router 6, which needs history), so an Ionic major and the router major it needs arrive as one PR. Minors and patches stay in default's minor and patch group. The earlier split was #191/#194.",
       "matchPackageNames": [
         "@ionic/*",
         "react-router",
         "react-router-dom",
         "history"
       ],
+      "matchUpdateTypes": ["major"],
       "groupName": "ionic"
     },
     {

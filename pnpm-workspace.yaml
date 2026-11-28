@@ -3,6 +3,8 @@ packages:
   - "jobs/*"
   - "packages/*"
 
+# Guard: Renovate opens security fixes one package at a time, so fail the
+# install when an update splits packages that must share a version
 strictPeerDependencies: true
 peerDependencyRules:
   allowedVersions:
