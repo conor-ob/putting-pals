@@ -1,7 +1,7 @@
 # https://fintlabs.medium.com/optimized-multi-stage-docker-builds-with-turborepo-and-pnpm-for-nodejs-microservices-in-a-monorepo-c686fdcf051f
 
 # Base Alpine image
-FROM node:24-alpine AS alpine
+FROM node:24.22.3-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5 AS alpine
 RUN apk add --no-cache libc6-compat
 
 # Setup pnpm and turbo
@@ -45,7 +45,7 @@ RUN pnpm prune --prod --no-optional
 RUN rm -rf ./**/*/src
 
 # Final image
-FROM caddy:2-alpine AS runner
+FROM caddy:2.11.9-alpine@sha256:003a97808e781aa9f7e75cc2f43d34d461099031faf5e20faefb9f61126836f0 AS runner
 
 WORKDIR /app
 

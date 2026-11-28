@@ -3,6 +3,15 @@ packages:
   - "jobs/*"
   - "packages/*"
 
+# Guard: Renovate opens security fixes one package at a time, so fail the
+# install when an update splits packages that must share a version
+strictPeerDependencies: true
+peerDependencyRules:
+  allowedVersions:
+    # vite-tsconfig-paths uses tsconfck 3, which declares typescript ^5 but works
+    # with 6. Drop this once tsconfck widens its peer range
+    tsconfck>typescript: "6"
+
 allowBuilds:
   "@swc/core": true
   esbuild: true
