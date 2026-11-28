@@ -25,7 +25,7 @@
     "@putting-pals/putting-pals-utils": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "^0.45.4",
-    "pg": "^8.23.0",
+    "pg": "^8.23.1",
     "zod": "catalog:"
   },
   "devDependencies": {
