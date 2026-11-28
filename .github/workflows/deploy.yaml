@@ -48,8 +48,6 @@ jobs:
         with:
           command: plan
           railway-token: ${{ secrets.RAILWAY_TOKEN }}
-          # Installs deps with the pnpm version in package.json's packageManager
-          package-manager: pnpm
 
   apply:
     name: 🚀 Apply
